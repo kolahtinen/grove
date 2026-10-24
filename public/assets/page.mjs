@@ -1,4 +1,4 @@
-// Shared page parts: the header's signed-in email and Sign out button (FR-014).
+// The top bar's account part: the signed-in email and Sign out (FR-014).
 import { getMe, post } from './api.mjs';
 
 export async function showAccount() {
@@ -7,7 +7,7 @@ export async function showAccount() {
   if (!me || !box) return me;
   box.querySelector('.account-email').textContent = me.email;
   box.hidden = false;
-  document.getElementById('signout').addEventListener('click', async () => {
+  box.querySelector('.signout').addEventListener('click', async () => {
     await post('/api/signout', {});
     window.location.assign('/signin');
   });

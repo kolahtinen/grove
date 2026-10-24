@@ -1,4 +1,4 @@
-// The password-reset page (FR-015).
+// The password-reset page (FR-015): the same answer for any address.
 import { prepare, post, showMessage } from './api.mjs';
 
 const form = document.getElementById('reset');

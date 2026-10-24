@@ -9,10 +9,12 @@
 <script type="module" src="/assets/terms.mjs"></script>
 </head>
 <body>
-<header class="topbar"><div class="topbar-inner">
-<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="title">grove<span class="tagline">read, listen, grow</span></span></a>
-<div class="account" hidden><span class="account-email"></span><button type="button" class="small" id="signout">Sign out</button></div>
-</div></header>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+</div>
+</header>
 <main>
 <section class="card" id="agreement" hidden>
 <h2>Before you start</h2>
@@ -26,7 +28,6 @@
 </section>
 <section class="card terms">
 <h2>Terms of use and privacy notice</h2>
-<!-- terms-text -->
 <p class="small muted">Draft for the owner to review. Last changed 24 October 2026.</p>
 <h2>Who grove is for</h2>
 <p>Grove is a language-learning app run by one person (the owner) on their own computer in Finland. Right now it is open only to the owner and a few invited course reviewers. <strong>You must be 13 or over to use grove.</strong></p>
@@ -37,7 +38,7 @@
 <h2>What grove keeps and why</h2>
 <ul>
 <li><strong>Your email address</strong>: to sign you in and to send password-reset emails.</li>
-<li><strong>Your password</strong>: kept only by Firebase, scrambled (hashed); grove never sees or stores it.</li>
+<li><strong>Your password</strong>: kept only by Firebase, scrambled (hashed); grove never stores it.</li>
 <li><strong>Your learning history and progress</strong> (in later versions): so grove can give you material at your level.</li>
 <li><strong>Each sign-in’s agreement to these terms</strong>, with its time: to show you agreed.</li>
 <li><strong>A security log</strong> of sign-ins, failed sign-ins, lockouts and password-reset requests, with the internet address used: to protect accounts. It is deleted after 30 days.</li>
@@ -47,7 +48,6 @@
 <p>Firebase Authentication (Google) handles sign-in and passwords for grove. Cloudflare carries the connection between your browser and grove. What you paste into your own AI chat (ChatGPT, Claude, Gemini or another) is governed by that AI’s own terms, not grove’s.</p>
 <h2>Your rights</h2>
 <p>To get a copy of your data, or to have it deleted, ask the owner. There is no button for this yet.</p>
-<!-- /terms-text -->
 </section>
 </main>
 </body>
