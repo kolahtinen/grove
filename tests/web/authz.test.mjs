@@ -27,6 +27,15 @@ const BODIES = {
   '/api/own-text': { title: 'T', text: 'Hej.' },
   '/api/leaf': { textId: 999999, form: 'x' },
   '/api/meanings-prompt': {},
+  '/api/welcome': {},
+  '/api/marking': { textId: 999999, marks: [] },
+  '/api/marks': { lemma: 'zzz', read: false, remember: false },
+  '/api/let-it-fall': { lemma: 'zzz', right: false },
+  '/api/pick-up': { lemma: 'zzz' },
+  '/api/review': { lemma: 'zzz', mode: 'read', right: true },
+  '/api/leaves': { text: 'zzz' },
+  '/api/leaf-delete': { lemma: 'zzz' },
+  '/api/input': { seconds: 1, day: '2026-10-24' },
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);
 

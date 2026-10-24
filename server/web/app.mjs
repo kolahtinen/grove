@@ -6,6 +6,7 @@ import { registerStaticRoutes } from './static.mjs';
 import { registerAccountRoutes } from '../accounts/routes.mjs';
 import { registerTextRoutes } from '../texts/routes.mjs';
 import { registerReadingRoutes } from '../reading/routes.mjs';
+import { registerDrillRoutes } from '../drill/routes.mjs';
 
 export function createApp({ config, db, seclog, firebase, now = () => Date.now() }) {
   const router = createRouter();
@@ -21,6 +22,7 @@ export function createApp({ config, db, seclog, firebase, now = () => Date.now()
   registerAccountRoutes(router, { config, db, seclog, firebase, sessions, now });
   registerTextRoutes(router, { db, now });
   registerReadingRoutes(router, { db, now });
+  registerDrillRoutes(router, { db, now });
   registerStaticRoutes(router);
 
   const handler = createHandler({ router, guard, csrf: checkCsrf, log: seclog.app });

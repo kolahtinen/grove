@@ -22,6 +22,16 @@ export function createPackages({ db, words, now = () => Date.now() }) {
     db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(accountId);
     return db.prepare('SELECT * FROM learner_settings WHERE account_id = ?').get(accountId);
   }
+  // Words to reuse (G-02 FR-210, G-04 research R7): drilled leaves, fading first, then due, then most
+  // recently marked; before anything is drilled, the most recently added leaves.
+  function reuseList(accountId) {
+    const t = now();
+    const drilled = db.prepare("SELECT lemma, gap_days, last_review_at FROM words WHERE account_id = ? AND drilled = 1 AND kind = 'word'").all(accountId)
+      .map((w) => ({ lemma: w.lemma, strength: 2 ** (-Math.max(0, t - w.last_review_at) / 86400000 / w.gap_days), at: w.last_review_at }))
+      .sort((a, b) => a.strength - b.strength || b.at - a.at).map((w) => w.lemma);
+    return (drilled.length ? drilled : words.recentLeaves(accountId, 10)).slice(0, 10);
+  }
+
   const openPackage = (accountId) => db.prepare("SELECT * FROM packages WHERE account_id = ? AND status = 'open'").get(accountId);
   const waitingOf = (accountId, packageId) => db.prepare(`SELECT * FROM exchanges WHERE account_id = ? AND package_id = ?
     AND status = 'waiting' AND kind IN ('part', 'fix') ORDER BY id DESC LIMIT 1`).get(accountId, packageId);
@@ -51,7 +61,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
     const prompt = buildPartPrompt({
       code, partNo, of: PARTS, topic, newTopic: !used.includes(topic.toLowerCase()),
       known: chooseKnown(words.groundLemmas(accountId), tokenize(topic).map((t) => t.word)),
-      reuse: words.recentLeaves(accountId, 10), targetShare: s.target_share,
+      reuse: reuseList(accountId), targetShare: s.target_share,
       firmNew: !!s.firm_new, shorter: !!s.shorter, summary: sum, continueHint: partNo > 1,
       ...openRequests(db, accountId),
     });

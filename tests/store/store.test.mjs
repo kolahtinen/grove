@@ -172,3 +172,24 @@ test('FR-307 RQ-29: migration 005 keeps every row and allows pattern items, own 
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-418 RQ-75: migration 006 keeps every row and adds the drill columns with their defaults', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 5 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO words (id, account_id, lemma, kind, en, state, added_at) VALUES (5, 1, 'kopp', 'word', 'cup', 'leaf', 1)").run();
+    db.prepare('INSERT INTO learner_settings (account_id) VALUES (1)').run();
+    migrate(db);
+    const w = db.prepare('SELECT * FROM words WHERE id = 5').get();
+    assert.equal(w.lemma, 'kopp');
+    assert.equal(w.en, 'cup');
+    for (const [k, v] of Object.entries({ to_read: 0, to_remember: 0, drilled: 0, gap_days: null, last_review_at: null, reviews: 0, fell_marks: null })) assert.equal(w[k], v, k);
+    assert.equal(db.prepare('SELECT welcome_dismissed FROM learner_settings').get().welcome_dismissed, 0);
+    for (const t of ['review_answers', 'input_days', 'level_words']) assert.ok(db.prepare("SELECT 1 FROM sqlite_master WHERE name = ?").get(t), t);
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

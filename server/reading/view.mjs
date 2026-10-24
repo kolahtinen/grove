@@ -4,6 +4,7 @@ import { HttpError } from '../web/http.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { createResolver } from '../words/resolve.mjs';
 import { createWordStore } from '../words/store.mjs';
+import { unmarkedOf } from '../drill/marking.mjs';
 
 const WORD = /\p{L}+(?:[-’']\p{L}+)*/gu;
 
@@ -44,6 +45,8 @@ export function buildReading(db, accountId, textId) {
 
   const meaningHere = new Map(db.prepare(`SELECT w.lemma, m.en FROM word_meanings m JOIN words w ON w.id = m.word_id
     WHERE m.text_id = ?`).all(text.id).map((r) => [r.lemma, r.en]));
+  const itemRows = db.prepare("SELECT lemma, to_read, to_remember, drilled, fell_marks, state, uses FROM words WHERE account_id = ? AND kind = 'word'").all(accountId);
+  const itemOf = new Map(itemRows.map((r) => [r.lemma, r]));
   const meaningOf = new Map(db.prepare("SELECT lemma, en FROM words WHERE account_id = ? AND en IS NOT NULL AND kind = 'word'").all(accountId).map((r) => [r.lemma, r.en]));
   const formMeaning = new Map();
   for (const r of db.prepare(`SELECT f.form, m.en FROM word_forms f JOIN word_meanings m ON m.word_id = f.word_id
@@ -76,6 +79,13 @@ export function buildReading(db, accountId, textId) {
             ?? meaningHere.get(tok.word) ?? r.lemmas.map((l) => meaningOf.get(l)).find(Boolean) ?? null;
           const ex = explanations.filter((e) => e.form === tok.word || (e.lemma && r.lemmas.includes(e.lemma)) || r.lemmas.includes(e.form)).at(-1);
           if (ex) tok.explanation = ex.explain_en;
+        }
+        // G-04: marks, the marks it had when it fell, times met (FR-408, FR-413).
+        const item = r.lemmas.map((l) => itemOf.get(l)).find(Boolean);
+        if (item) {
+          tok.marks = { read: !!(item.drilled && item.to_read), remember: !!(item.drilled && item.to_remember) };
+          tok.fell = item.state === 'ground' ? item.fell_marks : null;
+          tok.met = item.uses;
         }
         tok.phrases = [];
         tok.patterns = [];
@@ -120,6 +130,7 @@ export function buildReading(db, accountId, textId) {
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },
     lines,
     patterns,
+    marking: unmarkedOf(db, accountId, text.id).length,
     questions,
     answered,
     rating,

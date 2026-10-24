@@ -62,6 +62,10 @@ export function checkSchema(body, schema) {
       }
     } else if (rule.type === 'enum') {
       if (!rule.values.includes(value)) throw new HttpError(400, 'bad_request', 'The request was not understood.');
+    } else if (rule.type === 'array') {
+      if (!Array.isArray(value) || value.length > rule.max) throw new HttpError(400, 'bad_request', 'The request was not understood.');
+      out[key] = value.map((entry) => checkSchema(entry, rule.of));
+      continue;
     } else if (rule.type === 'boolean') {
       if (typeof value !== 'boolean') throw new HttpError(400, 'bad_request', 'The request was not understood.');
     } else {
