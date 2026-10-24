@@ -21,6 +21,12 @@ const BODIES = {
   '/api/answer': { exchangeId: 999999, answer: 'x' },
   '/api/question': { textId: 999999, position: 0, option: 0 },
   '/api/rating': { textId: 999999, value: 'most' },
+  '/api/settings': { showTranslations: true },
+  '/api/explain': { sentenceId: 999999, form: 'x', reason: 'other' },
+  '/api/report': { textId: 999999, questionPosition: 0, reason: 'other' },
+  '/api/own-text': { title: 'T', text: 'Hej.' },
+  '/api/leaf': { textId: 999999, form: 'x' },
+  '/api/meanings-prompt': {},
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);
 

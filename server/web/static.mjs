@@ -23,6 +23,7 @@ export const PAGES = [
   { path: '/reset', file: 'reset.html', access: 'public' },
   { path: '/terms', file: 'terms.html', access: 'public' },
   { path: '/text', file: 'text.html', access: 'agreed' },
+  { path: '/dictionary', file: 'dictionary.html', access: 'agreed' },
 ];
 
 // Files under /assets/ that the public pages need; every other asset needs a signed-in session.

@@ -2,8 +2,9 @@
 // sentences; new words and phrases as leaves; plausible inflections; uses of known words.
 import { transaction } from '../store/db.mjs';
 import { tokenize } from '../words/tokens.mjs';
+import { applyExplanations, applyFixes } from '../reading/flags.mjs';
 
-export function acceptAnswer({ db, words, accountId, exchange, answer, check, topic, now }) {
+export function acceptAnswer({ db, words, accountId, exchange, answer, check, topic, now, counter }) {
   return transaction(db, () => {
     const at = now();
     const textIds = [];
@@ -52,6 +53,29 @@ export function acceptAnswer({ db, words, accountId, exchange, answer, check, to
     }
     for (const inf of answer.inflections) words.learnForm(accountId, inf.form, inf.lemma);
     words.addUses(accountId, usedKnown);
+
+    // G-03: each new word's meaning in its text, its listed form, the names, patterns, explanations, fixes.
+    for (const w of answer.new_words) {
+      const word = words.find(accountId, w.lemma);
+      const textOf = firstTextOf.get(w.form.toLowerCase()) ?? textIds[0].id;
+      if (word) db.prepare('INSERT OR IGNORE INTO word_meanings (account_id, word_id, text_id, en) VALUES (?, ?, ?, ?)').run(accountId, word.id, textOf, w.en);
+      if (w.form.toLowerCase() !== w.lemma.toLowerCase()) words.learnForm(accountId, w.form, w.lemma);
+    }
+    for (const name of answer.names) {
+      db.prepare('INSERT OR IGNORE INTO names (account_id, name, lower, text_id) VALUES (?, ?, ?, ?)').run(accountId, name, name.toLowerCase(), textIds[0].id);
+    }
+    for (const p of answer.patterns || []) {
+      words.addLeaf({ accountId, lemma: p.name, kind: 'pattern', en: p.explain_en, sourceTextId: textIds[0].id });
+      const pattern = words.find(accountId, p.name, 'pattern');
+      for (const place of p.places) {
+        const target = textIds[place.text - 1];
+        if (!target) continue;
+        db.prepare('INSERT INTO pattern_places (account_id, word_id, text_id, line_position, words) VALUES (?, ?, ?, ?, ?)')
+          .run(accountId, pattern.id, target.id, place.line - 1, place.words);
+      }
+    }
+    applyExplanations(db, accountId, answer.explanations || [], at);
+    if (counter) applyFixes(db, accountId, answer.fixes || [], counter, at);
 
     return { texts: textIds, added: [...new Set(added)] };
   });

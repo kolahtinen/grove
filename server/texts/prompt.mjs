@@ -33,11 +33,14 @@ const FORMAT = `\`\`\`json
   "new_phrases": [ { "sv": "…", "en": "…", "explain_sv": "…" } ],
   "inflections": [ { "form": "as written", "lemma": "dictionary form" } ],
   "names": ["…"],
-  "starter_words": [ { "lemma": "…", "en": "…", "explain_sv": "…" } ]
+  "starter_words": [ { "lemma": "…", "en": "…", "explain_sv": "…" } ],
+  "patterns": [ { "name": "short name", "explain_en": "short English explanation", "places": [ { "text": 1, "line": 3, "words": "the exact words" } ] } ],
+  "explanations": [ { "code": "E1", "explain_en": "…" } ],
+  "fixes": [ { "code": "R1", "q": "…", "options": ["…", "…"], "answer": 0 } ]
 }
 \`\`\``;
 
-export function buildPartPrompt({ code, partNo, of, topic, newTopic, known, reuse, targetShare, firmNew, shorter, summary, continueHint }) {
+export function buildPartPrompt({ code, partNo, of, topic, newTopic, known, reuse, targetShare, firmNew, shorter, summary, continueHint, flags = [], reports = [] }) {
   const beginner = known.length === 0;
   const out = [];
   out.push("I'm learning Swedish (my own language is English) with an app called grove. It gives me comprehensible input: texts where I know almost every word.");
@@ -60,7 +63,10 @@ export function buildPartPrompt({ code, partNo, of, topic, newTopic, known, reus
   rules.push('- Names of people and places are fine; list them in "names".');
   rules.push('- List every new word in "new_words" with its dictionary form, a short English meaning and a simple Swedish explanation that uses known words ("explain_sv"). List new fixed phrases in "new_phrases". List inflected forms of known words that aren\'t spelled as in my list in "inflections".');
   rules.push('- Write one sentence per line, and give an English translation for every line.');
+  rules.push('- List the grammar patterns the texts use in "patterns": a short name, a short English explanation, and the places used (text number, line number, and the exact words).');
   out.push(rules.join('\n'));
-  out.push(`Reply with ONLY exactly one \`\`\`json code block in this format, and no other text. Copy the "part" value exactly:\n${FORMAT.replace('<PART>', code)}`);
+  if (flags.length) out.push(`Please explain these for me in "explanations" (one entry per code):\n${flags.join('\n')}`);
+  if (reports.length) out.push(`I reported these problems; please fix each in "fixes" with its code (a corrected question with "q", "options" and "answer", or a corrected sentence with "sv" and "en"):\n${reports.join('\n')}`);
+  out.push(`Reply with ONLY exactly one \`\`\`json code block in this format, and no other text. Copy the "part" value exactly; leave out "explanations" and "fixes" if nothing was asked:\n${FORMAT.replace('<PART>', code)}`);
   return out.join('\n\n');
 }

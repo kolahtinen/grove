@@ -11,6 +11,7 @@ import { buildFixPrompt, buildMeaningsPrompt } from './fixit.mjs';
 import { acceptAnswer } from './accept.mjs';
 import { LABELS } from './ratings.mjs';
 import { tokenize } from '../words/tokens.mjs';
+import { openRequests } from '../reading/flags.mjs';
 
 export const PARTS = 3;
 export const DEFAULT_TOPIC = 'everyday life';
@@ -30,8 +31,10 @@ export function createPackages({ db, words, now = () => Date.now() }) {
   // What changed since the last summary: texts rated or answered since then (FR-203, RQ-01, RQ-02).
   function summary(accountId, since) {
     const rows = db.prepare(`SELECT t.id, t.title, r.value,
-        (SELECT COUNT(*) FROM question_answers q WHERE q.text_id = t.id AND q.right = 1) AS right,
-        (SELECT COUNT(*) FROM question_answers q WHERE q.text_id = t.id) AS asked
+        (SELECT COUNT(*) FROM question_answers q WHERE q.text_id = t.id AND q.right = 1 AND NOT EXISTS
+          (SELECT 1 FROM reports r2 WHERE r2.text_id = q.text_id AND r2.question_position = q.position)) AS right,
+        (SELECT COUNT(*) FROM question_answers q WHERE q.text_id = t.id AND NOT EXISTS
+          (SELECT 1 FROM reports r2 WHERE r2.text_id = q.text_id AND r2.question_position = q.position)) AS asked
       FROM texts t LEFT JOIN ratings r ON r.text_id = t.id
       WHERE t.account_id = ? AND (r.at > ? OR EXISTS (SELECT 1 FROM question_answers q WHERE q.text_id = t.id AND q.at > ?))
       ORDER BY t.id`).all(accountId, since, since);
@@ -50,6 +53,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
       known: chooseKnown(words.groundLemmas(accountId), tokenize(topic).map((t) => t.word)),
       reuse: words.recentLeaves(accountId, 10), targetShare: s.target_share,
       firmNew: !!s.firm_new, shorter: !!s.shorter, summary: sum, continueHint: partNo > 1,
+      ...openRequests(db, accountId),
     });
     // The nudges are asked for once (FR-212).
     db.prepare(`UPDATE learner_settings SET shorter = 0, firm_new = 0${withSummary ? ', last_summary_at = ?' : ''} WHERE account_id = ?`)
@@ -119,7 +123,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
       const pkg = openPackage(accountId);
       const waiting = pkg ? waitingOf(accountId, pkg.id) : null;
       const meanings = db.prepare("SELECT id, prompt FROM exchanges WHERE account_id = ? AND kind = 'meanings' AND status = 'waiting' ORDER BY id DESC LIMIT 1").get(accountId);
-      const texts = db.prepare(`SELECT t.id, t.title, t.part_no, t.created_at, t.read_at, r.value FROM texts t
+      const texts = db.prepare(`SELECT t.id, t.title, t.part_no, t.created_at, t.read_at, t.own, r.value FROM texts t
         LEFT JOIN ratings r ON r.text_id = t.id WHERE t.account_id = ? ORDER BY t.created_at DESC, t.id DESC`).all(accountId);
       return {
         topic: s.topic || DEFAULT_TOPIC,
@@ -127,7 +131,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
         package: pkg ? { id: pkg.id, partsAccepted: pkg.parts_accepted, of: pkg.parts_total, status: pkg.status, unrated: unratedIn(accountId, pkg.id) } : null,
         waiting: waiting ? { exchangeId: waiting.id, kind: waiting.kind, code: waiting.code, part: waiting.part_no, of: PARTS, prompt: waiting.prompt } : null,
         meanings: meanings ? { exchangeId: meanings.id, prompt: meanings.prompt } : null,
-        texts: texts.map((t) => ({ id: t.id, title: t.title, partNo: t.part_no, createdAt: t.created_at, state: t.value ? 'rated' : t.read_at ? 'read' : 'new' })),
+        texts: texts.map((t) => ({ id: t.id, title: t.title, partNo: t.part_no, own: !!t.own, createdAt: t.created_at, state: t.value ? 'rated' : t.read_at ? 'read' : 'new' })),
       };
     },
 
@@ -189,7 +193,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
       if (!result.ok) return refuse(exchange, result.problems);
 
       const topic = s.topic || DEFAULT_TOPIC;
-      const stored = acceptAnswer({ db, words, accountId, exchange, answer, check: result, topic, now });
+      const stored = acceptAnswer({ db, words, accountId, exchange, answer, check: result, topic, now, counter });
       transaction(db, () => {
         db.prepare("UPDATE exchanges SET status = 'accepted', answer_hash = ?, answered_at = ? WHERE id = ?").run(hash, now(), exchange.id);
         db.prepare("UPDATE exchanges SET status = 'replaced' WHERE account_id = ? AND code = ? AND id != ? AND status IN ('waiting', 'needs_fix')").run(accountId, exchange.code, exchange.id);
