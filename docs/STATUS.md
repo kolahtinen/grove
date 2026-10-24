@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** `/speckit-analyze` for G-01, then `/speckit-implement` (tasks 2026-10-24); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** `/speckit-implement` for G-01 (analyzed and revised 2026-10-24: one shared reviewer account); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
 
 ## Phases
 
@@ -39,7 +39,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
-| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 65 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | | | | | |
+| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | | | | |
 
 ## Addenda
 
@@ -101,5 +101,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-01 | `/speckit-clarify` (question-pages/54): FR-012 settled (every sign-up ends with 'Done, now sign in'; a taken address changes nothing); a password reset doesn't end existing sign-ins (FR-013, accepted). |
 | 2026-10-24 | G-01 | `/speckit-plan`: plan, research (R1–R13), data model (7 tables), contracts (HTTP API, owner commands), quickstart; Node.js 22 with built-in HTTP/SQLite/crypto/test, Firebase over REST, static client, Playwright; constitution check passes; `docs/modules.md` filled (8 modules). |
 | 2026-10-24 | G-01 | `/speckit-tasks`: T001–T065 in 9 phases (setup, foundation, US1–US6, polish), tests first with FR/RQ names; every FR-001…031 has a test task. |
+| 2026-10-24 | G-01, app-wide | `/speckit-analyze`: 0 critical, 3 high (durability on power cut, no deploy tasks, no availability check), 4 medium, 2 low; all fixed. Then question-pages/55: one shared reviewer account made by an owner command, no sign-up in the first build (RQ-217, RQ-360, RQ-368 changed; RQ-218, 222, 160, 225 not in the first build; FR-021 withdrawn); terms and 13+ agreed on each new sign-in; **constitution 1.1.0** (rule 3.1 amended); RQ-363 changed for G-07 (no 'Set my starting level again' on the reviewer account); a leaked reviewer password doesn't end existing sign-ins (accepted). Tasks rebuilt: T001–T066 incl. a deploy-and-verify phase. |
 
 ## Notes

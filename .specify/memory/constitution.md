@@ -58,9 +58,11 @@ Rationale: grove runs on the owner's own computer and holds other people's data 
 Grove holds personal data: email addresses, hashed passwords (in Firebase), learning history and
 pasted texts (C-04).
 
-- 3.1 *(code)* Sign-up MUST record the learner's agreement to the terms and privacy notice, with its
-  time, and their confirmation that they are 13 or over; without both, no account is made.
-  Checked by: sign-up tests. (C-04, X-p1-03, RQ-228)
+- 3.1 *(code)* Before an account can be used on a device, the person signing in MUST agree to the
+  terms and privacy notice and confirm that they are 13 or over; grove records both with their time
+  for that sign-in, and until then only the terms, the agreement and sign-out are available. When
+  open sign-up arrives, sign-up MUST also record both, or no account is made.
+  Checked by: sign-in tests. (C-04, X-p1-03, RQ-228; amended 1.1.0, question-pages/55)
 - 3.2 *(code)* The owner can delete a learner's account and all their data with one command (on
   request, RQ-229; no button yet). Checked by: a deletion test that looks for leftover data,
   including in Firebase.
@@ -157,4 +159,4 @@ Rationale: the owner is in Finland and invites outside reviewers, so GDPR applie
 - Compliance: every `/speckit.plan` runs the Constitution Check against this file; every review
   checks the code rules' tests exist and pass.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-24 | **Last Amended**: 2026-10-24
+**Version**: 1.1.0 | **Ratified**: 2026-10-24 | **Last Amended**: 2026-10-24

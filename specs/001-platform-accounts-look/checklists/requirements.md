@@ -33,4 +33,4 @@
 
 - Named services and mechanisms (Firebase Authentication, the quick tunnel, the GitHub README, cookie attributes, CSRF, CSP, JSON export) are fixed by the combined requirements (RQ-125, RQ-364, RQ-366, RQ-367), the constraints and the constitution, so they count as requirements here, not implementation choices. No language, framework or code structure is named.
 - All 51 G-01 combined requirements and all 18 G-01 needs are cited (checked by script, 2026-10-24). RQ-24, RQ-25 and RQ-163 are scope statements with nothing to build in G-01.
-- One marker left, in FR-012 (sign-up with an address that already has an account, under RQ-372). Per CLAUDE.md, questions inside Spec Kit are asked only in its clarify step, so it goes to `/speckit-clarify`.
+- FR-012's marker resolved on question-pages/54. After `/speckit-analyze`, reviewer accounts changed on question-pages/55 (one shared reviewer account, no sign-up; FR-021 withdrawn; constitution 3.1 v1.1.0); re-checked 2026-10-24: all items still pass.
