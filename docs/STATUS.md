@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** Friday 23rd: git init and first commit, Spec Kit initialised, `/speckit.constitution` from the constitution draft, then `/speckit.specify` for G-01; Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** `/speckit-specify` for G-01 (git, Spec Kit and the constitution done 2026-10-24, a day late); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
 
 ## Phases
 
@@ -17,7 +17,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 - [x] 2. Scope reviewed (2026-10-21; question-pages/47): [scope](middle/scope.md)
 - [x] 2. `/pre.ready` finds nothing missing (2026-10-23)
 - [x] 2. Middle-steps document frozen; user goals confirmed; constitution drafted (2026-10-23; question-pages/53): [document](middle-steps.md), [constitution draft](constitution-draft.md)
-- [ ] 3. Git started; Spec Kit initialised; constitution set
+- [x] 3. Git started; Spec Kit initialised; constitution set (2026-10-24): [constitution](../.specify/memory/constitution.md) v1.0.0
 
 ## Prototypes
 
@@ -95,5 +95,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-23 | app-wide | /pre.ready (second run): needs, implicit requirements, combined lists and scope complete (379 RQ, every active one with needs, a rating and a priority; every prototype requirement carried). Gaps: (1) feasibility: PR-p1-235, 236 have no rating in p1 (app-wide F-213, F-214 cover them; PR-p1-236 still active in p1 though RQ-220 is dropped, PR-p1-235's note still says 'cut for now'); RQ-102 was reworded on page 51 (content maintainers) but F-102 only inherits and quotes the old wording. (2) risks predate RQ-371…379: R-01 (cut-short answers) doesn't reflect the X-03 test, R-13 doesn't count the maintainers' review work. (3) The middle-steps document doesn't exist yet. Not ticked. |
 | 2026-10-23 | app-wide | Gaps from /pre.ready fixed: PR-p1-235 rated (F-213, through Firebase) and its note updated; PR-p1-236 marked dropped (page 49); F-102 own check for RQ-102's new wording: easy. Risks: R-01 updated with the X-03 results (likelihood high → medium; RQ-186, 377–379 added as techniques); R-13 now counts the content maintainers' review work (RQ-373–375). |
 | 2026-10-23 | app-wide | `/pre.middle-doc` (question-pages/53): 8 user goals confirmed; the look's basics moved into G-01 (51 requirements), G-08 keeps the extras (7); constitution draft accepted; RQ-377 moved to the second build with easy reads, so the first build is 158 requirements (R-02 updated). `/pre.ready` finds nothing missing. [Middle-steps document](middle-steps.md) frozen 2026-10-23; phase 1 closed, `prototypes/` read-only. |
+| 2026-10-24 | app-wide | Phase 3 started: git repository (branch main; `.gitignore` for node_modules, data, .env, logs), Spec Kit 1.2.2.dev0 initialised for Claude (skills in `.claude/skills/`, `/speckit-*`), constitution v1.0.0 set from the accepted draft (rule numbers kept; wording in MUST form). |
 
 ## Notes
