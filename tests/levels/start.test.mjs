@@ -86,7 +86,7 @@ test('FR-603 RQ-113: beginner leaves the ground as it was and finishes the check
   assert.equal((await c.get('/api/stages')).body.needsStart, false);
 });
 
-test('FR-607: 20 or more unknown suggests the level below (never for A1)', async () => {
+test('FR-607 RQ-114 R-11: 20 or more unknown suggests the level below (never for A1)', async () => {
   const c = await client('beginner@example.test');
   const b1 = (await c.get('/api/start/sample?level=B1')).body.words.map((w) => w.lemma);
   assert.equal((await c.post('/api/start', { level: 'B1', unknown: b1.slice(0, 20) })).body.suggestLower, true);

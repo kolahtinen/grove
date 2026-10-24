@@ -194,7 +194,7 @@ test('FR-418 RQ-75: migration 006 keeps every row and adds the drill columns wit
   }
 });
 
-test('FR-610: migration 007 keeps every row and adds the level columns with their defaults', () => {
+test('FR-610 Q-03: migration 007 keeps every row and adds the level columns with their defaults', () => {
   const dir = tempDir();
   try {
     const db = openDb(join(dir, 'grove.db'));
