@@ -40,7 +40,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
 | G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
-| G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | | | | | | | |
+| G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | | | | | | |
 
 ## Addenda
 
@@ -107,5 +107,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | app-wide, G-01 | Question-pages/56: tagline stays 'grow from what you know' (RQ-309); leaves = saved words, phrases and grammar patterns, in one **Leaves** collection marked **To remember** / **To read** (replacing 'Heard words' / 'Reading list'); leaves **fall** to the **ground** automatically (RQ-60), at the retire check (RQ-15) or with a new **Let it fall** button that first asks the meaning; explainer animation in the logo's style (storyboard on page 56) after agreeing, on the help page and on logo tap, built in G-08. New `docs/glossary.md` for all specs from G-02 on. G-01 spec FR-030 now names the tagline (the build showed an invented one); client to be regenerated. |
 | 2026-10-24 | G-02 | `/speckit-specify`: spec drafted in `specs/002-texts-from-own-ai/` (5 user stories, FR-201…221 citing all 33 RQ and 15 N of G-02, using the glossary's terms); one open question for clarify (FR-203: when a session starts). |
 | 2026-10-24 | G-02 | `/speckit-clarify` (question-pages/57): sessions are packages, not time: one package of 3 parts at a time; its first prompt carries the summary; a new package starts when finished or when asked; next-part prompts are self-contained; a part is 3 texts of ~130 words. RQ-188 moved from the second build into the first; RQ-01 and RQ-186 reworded in the spec. |
+| 2026-10-24 | G-02 | `/speckit-plan`: plan, research (R1–R8), data model (11 tables, all with account_id), HTTP contract and the AI answer format, quickstart; no new dependencies; new modules `words` and `texts` in `docs/modules.md`; constitution check passes. |
 
 ## Notes
