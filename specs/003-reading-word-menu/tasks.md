@@ -49,6 +49,7 @@ description: "Tasks for G-03: reading and the word menu"
 
 - [ ] T212 [US1] Extend `server/texts/accept.mjs`: store each new word's meaning for its text (`word_meanings`), learn listed new-word forms that differ from the dictionary form (plausibility rule), store the answer's names (`names`)
 - [ ] T213 [US1] Write `server/reading/view.mjs`: the reading payload of the contract (lines → sentences → tokens with resolution, meaning here, explanation, phrases, pattern ids; stats; patterns; questions with `reported`), and `server/reading/routes.mjs` with `GET /api/reading`, `POST /api/settings`; register in `server/web/app.mjs`
+- [ ] T214a [US1] Update G-02's browser test `tests/e2e/texts.spec.mjs` (part 3) for its changed rule (G-02 FR-218 now follows G-03 FR-301): English is visible under the line by default instead of hidden until tapped (constitution 1.3)
 - [ ] T214 [US1] Rebuild `public/text.html` + `public/assets/reading.mjs` (replacing `text.mjs`): sentences of word buttons and plain spaces/punctuation, new-count badge per sentence, stats line, English under each line per setting with a per-line English button, translations toggle; tapping a word speaks it (`speechSynthesis`, Swedish voice if any) and opens a bottom-sheet menu from the payload; questions and rating as in G-02; all text via `textContent`; styles in `public/assets/grove.css` (pattern colour `--gpk`)
 
 **Checkpoint**: US1 passes.
@@ -73,12 +74,12 @@ description: "Tasks for G-03: reading and the word menu"
 ### Tests (write first)
 
 - [ ] T218 [P] [US3] Tests in `tests/reading/practice.test.mjs`: `FR-310 RQ-274 RQ-278 RQ-58:` `/api/practice` returns at most 8 questions, one per sentence with a leaf, in text order; each has the sentence, the leaf, 3–4 distinct options with the meaning here at `right`, and wrong options that are other words' meanings; a word with fewer than 2 other meanings available is skipped; `FR-319 RQ-155:` another account gets 404
-- [ ] T219 [P] [US3] Playwright test `tests/e2e/reading.spec.mjs` (part 3): `FR-310 FR-311 FR-312 RQ-274 RQ-276:` Practise shows a sentence with a word question, answering marks right/wrong; after the word questions come the passage questions; then the full text with a Play button (with a stubbed `speechSynthesis`, each sentence is highlighted in turn and Stop ends it)
+- [ ] T219 [P] [US3] Playwright test `tests/e2e/reading.spec.mjs` (part 3): `FR-310 FR-311 FR-312 RQ-274 RQ-276:` Practise shows a sentence with a word question, answering marks right/wrong and shows the sentence's English; after the word questions come the passage questions; then the full text with a Play button (with a stubbed `speechSynthesis`, each sentence is highlighted in turn and Stop ends it)
 
 ### Implementation
 
 - [ ] T220 [US3] Write `server/reading/practice.mjs` (research R5) and `GET /api/practice` in `server/reading/routes.mjs`
-- [ ] T221 [US3] Practice mode in `public/assets/reading.mjs`: word questions, then passage questions, then the full text with Play/Stop and sentence highlighting
+- [ ] T221 [US3] Practice mode in `public/assets/reading.mjs`: word questions (after each answer the sentence's English shows, per the setting — RQ-10), then passage questions, then the full text with Play/Stop and sentence highlighting
 
 ---
 
@@ -129,6 +130,8 @@ description: "Tasks for G-03: reading and the word menu"
 - [ ] T234 Walk through quickstart §2; record in `docs/STATUS.md` (Implemented for G-03)
 
 ---
+
+Note (analyze L1): G-02's `GET /api/text` stays for G-02's tests; the rebuilt page uses `GET /api/reading`. Drop `/api/text` through G-02's spec at its next regeneration.
 
 ## Dependencies & Execution Order
 

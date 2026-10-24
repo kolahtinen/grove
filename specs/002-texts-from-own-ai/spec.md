@@ -77,7 +77,7 @@ The learner opens a text, reads it line by line (with the English translation on
 
 **Acceptance Scenarios**:
 
-1. **Given** an added text, **When** the learner opens it, **Then** they see its title and lines in Swedish, can show each line's English translation, and after the text get its questions with their options. (RQ-36, RQ-46)
+1. **Given** an added text, **When** the learner opens it, **Then** they see its title and lines in Swedish with English as G-03 FR-301 says, and after the text get its questions with their options. (RQ-36, RQ-46)
 2. **Given** the learner has read a text, **When** they choose one of the five ratings (almost nothing, a little, about half, most, everything), **Then** the rating is saved; "most" or "everything" counts the text as understood. (RQ-11, RQ-355)
 3. **Given** a rating of "almost nothing" or "a little", **When** the next prompt is made, **Then** it asks for a higher share of known words (fewer new words) and shorter sentences. (RQ-168, RQ-193)
 4. **Given** three "most" or "everything" ratings in a row, **When** the next prompt is made, **Then** it asks for a slightly lower share of known words (slightly more new words). (RQ-168, RQ-195)
@@ -169,7 +169,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 
 **Reading, questions and ratings**
 
-- **FR-218** (RQ-36, RQ-46, RQ-11, RQ-355, RQ-193, RQ-195, RQ-167, RQ-168; N-42, N-02, N-13, N-44): A text MUST be readable line by line in Swedish, with each line's English translation shown on tap; after it, its questions in simple Swedish with their options, showing right or wrong after each answer; then a five-button rating: almost nothing, a little, about half, most, everything. "Most" or "everything" counts the text as understood. The target share of known words moves with the ratings: "almost nothing" +2 points and shorter sentences, "a little" +1 point and shorter sentences, "about half" no change, three "most" or "everything" in a row −1 point; always between 93% and 98%.
+- **FR-218** (RQ-36, RQ-46, RQ-11, RQ-355, RQ-193, RQ-195, RQ-167, RQ-168; N-42, N-02, N-13, N-44): A text MUST be readable line by line in Swedish, with each line's English translation shown as G-03 FR-301 says (under each line by default, off by a setting, one line still viewable; changed on question-pages/58); after it, its questions in simple Swedish with their options, showing right or wrong after each answer; then a five-button rating: almost nothing, a little, about half, most, everything. "Most" or "everything" counts the text as understood. The target share of known words moves with the ratings: "almost nothing" +2 points and shorter sentences, "a little" +1 point and shorter sentences, "about half" no change, three "most" or "everything" in a row −1 point; always between 93% and 98%.
 - **FR-219** (RQ-19, RQ-188; N-41, N-42): Home MUST show the learner's topic with a way to change it; the package's progress (e.g. "part 2 of 3"); a **Get texts** button (starting a package), **Next part** (within a package) and **New package**; the waiting prompt if one is open; and the learner's texts, newest first, each marked new, read or rated.
 
 **Data and safety**
