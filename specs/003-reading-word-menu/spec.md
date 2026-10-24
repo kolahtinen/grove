@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-24
 
-**Status**: Draft
+**Status**: Draft (clarified 2026-10-24, question-pages/58)
 
 **Input**: User description: "G-03: Reading and the word menu. The feature description is the G-03 section of docs/middle-steps.md (Part 2: Feed for Spec Kit), with grove's terms (docs/glossary.md). Follow the combined requirements as written; every spec requirement names its RQ and N IDs."
 
@@ -13,6 +13,13 @@
 **Terms** (docs/glossary.md): **leaf**, **Leaves**, **Ground**, **known**, **new** as in G-02. Marking leaves (To remember / To read), colouring them in texts, "Let it fall" and drilling are G-04's; listening options (speed, replay, voice help) are G-05's. G-03's word menu shows a word's status but doesn't change it.
 
 **Requirement numbers**: FR-301… so test names stay unique across goals.
+
+## Clarifications
+
+### Session 2026-10-24
+
+- Q: Should the English version show under each Swedish sentence? → A: Yes, by default; a setting turns it off, and one line can still be peeked at with its English button (question-pages/58). This changes G-02's reading page, where English was tap-to-show.
+- Q: How many "what does this word mean here?" questions per text in Practise? → A: Up to 8 (question-pages/58).
 
 ## User Scenarios & Testing *(mandatory)*
 
