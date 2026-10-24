@@ -193,3 +193,23 @@ test('FR-418 RQ-75: migration 006 keeps every row and adds the drill columns wit
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-610: migration 007 keeps every row and adds the level columns with their defaults', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 6 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO words (id, account_id, lemma, kind, state, added_at) VALUES (5, 1, 'kopp', 'word', 'ground', 1)").run();
+    db.prepare("INSERT INTO level_words (level, lemma) VALUES ('A1', 'och')").run();
+    db.prepare('INSERT INTO learner_settings (account_id) VALUES (1)').run();
+    migrate(db);
+    assert.equal(db.prepare('SELECT origin FROM words WHERE id = 5').get().origin, null);
+    assert.deepEqual({ ...db.prepare('SELECT kind, wpm, source, licence FROM level_words').get() }, { kind: 'word', wpm: null, source: null, licence: null });
+    assert.deepEqual({ ...db.prepare('SELECT start_level, start_done, start_at FROM learner_settings').get() }, { start_level: null, start_done: 0, start_at: null });
+    assert.ok(db.prepare("SELECT 1 FROM sqlite_master WHERE name = 'sources'").get());
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

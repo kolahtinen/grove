@@ -142,7 +142,8 @@ test('FR-413 RQ-294: words are coloured by their marks and by the marks they had
 
 test('FR-414 FR-415 RQ-03 RQ-71: Home shows the level line and today\'s minutes; Progress shows 14 day bars', async ({ page }) => {
   await signIn(page);
-  await expect(page.locator('#level-line')).toContainText('Set your starting level');
+  // With level word lists present (G-06), the line shows the level; without them, "Set your starting level" (FR-414, FR-608).
+  await expect(page.locator('#level-line')).toContainText(/Level: |Set your starting level/);
   await expect(page.locator('#level-line')).toContainText('min of input today');
   await page.goto('/progress');
   await expect(page.locator('#bars .bar')).toHaveCount(14);

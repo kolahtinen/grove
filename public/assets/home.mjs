@@ -173,6 +173,9 @@ async function loadStages() {
   if (!res.ok) return;
   const s = await res.json();
   $('welcome').hidden = !s.welcome;
+  $('restart').hidden = !s.canRestart;
+  // G-06: a new account goes to the starting check once the welcome is closed (FR-605).
+  if (s.needsStart && !s.welcome) { window.location.assign('/start'); return; }
   const level = s.level === null ? 'Set your starting level' : s.level === 'below A1' ? 'Level: below A1' : `Level: ${s.level}`;
   $('level-line').textContent = `${level} · ${s.todayMinutes} min of input today`;
   const unread = document.querySelectorAll('#texts .text-state.new').length;
@@ -185,4 +188,5 @@ await loadStages();
 $('welcome-close').addEventListener('click', async () => {
   await post('/api/welcome', {});
   $('welcome').hidden = true;
+  await loadStages();
 });

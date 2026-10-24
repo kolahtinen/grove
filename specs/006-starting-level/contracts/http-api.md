@@ -14,5 +14,5 @@ All G-01 rules apply.
 | Method, path | Access | Body | Responses |
 |---|---|---|---|
 | `GET /api/start/sample?level=A2` | agreed | – | `200 {level, words: [{lemma, kind}] (≤ 30)}` · `400` bad level · `503 levels_unavailable` (no Kelly data) |
-| `POST /api/start` | agreed | `{level: "A1"…"C2" \| "beginner", unknown: [string ≤80] ≤ 30}` | `200 {ground: n, leaves: n, suggestLower: bool}` · `403 forbidden` for the reviewer account |
+| `POST /api/start` | agreed | `{level: "A1"…"C2" \| "beginner", unknown: [string ≤80] ≤ 30}` | `200 {ground: n, leaves: n, suggestLower: bool}` · `403 not_for_reviewer` for the reviewer account (its own code, so it isn't mistaken for the role guard) |
 | `GET /api/stages` | agreed | – | G-04's answer plus `needsStart: bool`, `canRestart: bool` |

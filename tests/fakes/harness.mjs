@@ -10,7 +10,7 @@ import { createGrove } from '../../server/main.mjs';
 
 export const PASSWORD = 'Forest-walk-42';
 
-export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0 } = {}) {
+export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0, levels = false } = {}) {
   const fb = await startFakeFirebase();
   const gh = await startFakeGithub();
   const dir = mkdtempSync(join(tmpdir(), 'grove-test-'));
@@ -19,6 +19,7 @@ export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1',
     dataDir: join(dir, 'data'),
     backupDir: join(dir, 'backup'),
     answerMinMs,
+    importLevels: levels,
     firebase: {
       projectId: fb.projectId,
       apiKey: fb.apiKey,

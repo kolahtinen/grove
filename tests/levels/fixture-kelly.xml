@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lexicon>
+  <LexicalEntry>
+    <id>1</id>
+    <wpm>1000000,00</wpm>
+    <cefr>1</cefr>
+    <gf>och (vardagl. å; förk. o.)</gf>
+    <pos>conj</pos>
+  </LexicalEntry>
+  <LexicalEntry>
+    <id>2</id>
+    <wpm>53,10</wpm>
+    <cefr>2</cefr>
+    <gf>Kafé</gf>
+    <pos>noun-ett</pos>
+  </LexicalEntry>
+  <LexicalEntry>
+    <id>3</id>
+    <wpm>12,00</wpm>
+    <cefr>4</cefr>
+    <gf>kafé</gf>
+    <pos>noun-ett</pos>
+  </LexicalEntry>
+  <LexicalEntry>
+    <id>4</id>
+    <wpm>8,50</wpm>
+    <cefr>3</cefr>
+    <gf>i dag</gf>
+    <pos>adverb</pos>
+  </LexicalEntry>
+  <LexicalEntry>
+    <id>5</id>
+    <wpm>1,00</wpm>
+    <cefr>6</cefr>
+    <gf></gf>
+    <pos>noun</pos>
+  </LexicalEntry>
+</Lexicon>

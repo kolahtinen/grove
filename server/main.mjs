@@ -10,6 +10,7 @@ import { createFirebase } from './firebase/client.mjs';
 import { createApp } from './web/app.mjs';
 import { listen } from './web/http.mjs';
 import { hourlyJob } from './jobs.mjs';
+import { importKelly } from './levels/import.mjs';
 
 const HOUR = 60 * 60 * 1000;
 
@@ -23,6 +24,8 @@ export function openStore(config) {
 export function createGrove(config, { now = () => Date.now(), fetchImpl } = {}) {
   const db = openStore(config);
   const seclog = createSeclog({ db, logDir: join(config.dataDir, 'logs'), now });
+  // Test servers skip the import unless asked (config.importLevels false); real installs always import.
+  if (config.importLevels !== false) importKelly({ db, seclog });
   const firebase = createFirebase(config.firebase, { now, ...(fetchImpl ? { fetchImpl } : {}) });
   const app = createApp({ config, db, seclog, firebase, now });
   let server = null;

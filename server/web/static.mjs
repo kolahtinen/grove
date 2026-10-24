@@ -27,6 +27,8 @@ export const PAGES = [
   { path: '/review', file: 'review.html', access: 'agreed' },
   { path: '/leaves', file: 'leaves.html', access: 'agreed' },
   { path: '/progress', file: 'progress.html', access: 'agreed' },
+  { path: '/start', file: 'start.html', access: 'agreed' },
+  { path: '/credits', file: 'credits.html', access: 'public' },
 ];
 
 // Files under /assets/ that the public pages need; every other asset needs a signed-in session.

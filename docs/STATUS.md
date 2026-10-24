@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** G-06 (starting level: Kelly list import fills level_words and a learner's starting ground) and G-07 (reviewer demo content), then G-05 (listening) and G-08 (the look's extras, the leaves-and-ground animation, the help page). Open: G-02 T141 (real AIs), G-01 Phase 10 (deploy), a fresh-session review of G-01–G-04.
+**Next:** G-07 (reviewer demo content), then G-05 (listening) and G-08 (the look's extras, the leaves-and-ground animation, the help page, the phone header fix). Open: G-02 T141 (real AIs), G-01 Phase 10 (deploy), a fresh-session review of G-01–G-06.
 
 ## Phases
 
@@ -43,7 +43,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  | built 2026-10-24 (T101–T140): 136 unit + 32 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 | G-03 | clarified 2026-10-24 ([spec](../specs/003-reading-word-menu/spec.md); question-pages/58) | drafted 2026-10-24 ([plan](../specs/003-reading-word-menu/plan.md)) | 34 tasks 2026-10-24 ([tasks](../specs/003-reading-word-menu/tasks.md)) | analyzed 2026-10-24; H1, M1 fixed, L1 noted |  | built 2026-10-24 (T201–T234): 164 unit + 44 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 | G-04 | clarified 2026-10-24 ([spec](../specs/004-ground-drilling-progress/spec.md); question-pages/59) | drafted 2026-10-24 ([plan](../specs/004-ground-drilling-progress/plan.md)) | 32 tasks 2026-10-24 ([tasks](../specs/004-ground-drilling-progress/tasks.md)) | analyzed 2026-10-24; M1, L1 fixed, L2 noted |  | built 2026-10-24 (T301–T332): 192 unit + 56 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
-| G-06 | clarified 2026-10-25 ([spec](../specs/006-starting-level/spec.md); question-pages/60) | drafted 2026-10-25 ([plan](../specs/006-starting-level/plan.md)) | 19 tasks 2026-10-25 ([tasks](../specs/006-starting-level/tasks.md)) |  |  |  |  |  |
+| G-06 | clarified 2026-10-25 ([spec](../specs/006-starting-level/spec.md); question-pages/60) | drafted 2026-10-25 ([plan](../specs/006-starting-level/plan.md)) | 19 tasks 2026-10-25 ([tasks](../specs/006-starting-level/tasks.md)) | analyzed 2026-10-25; L1 accepted, L2 added |  | built 2026-10-25 (T401–T419): 208 unit + 62 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
 
@@ -127,5 +127,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-25 | G-06 | `/speckit-specify`: spec drafted in `specs/006-starting-level/` (3 user stories, FR-601…610 citing all 6 RQ and 3 N); the Swedish Kelly list checked (8,425 entries, CEFR 1–6, CC BY-SA 3.0 / LGPL 3.0, no English meanings); two open questions for clarify. |
 | 2026-10-25 | G-06 | `/speckit-clarify` (question-pages/60): words ticked as unknown become unmarked leaves; a new starting level replaces only the words the earlier check added. |
 | 2026-10-25 | G-06 | `/speckit-plan` and `/speckit-tasks`: Kelly XML → cleaned TSV in the build, import at start-up with source and licence, credits page, migration 007, starting check (sample of 30 spread by frequency, apply in one transaction, re-run replaces only untouched starting words), new module `levels`; T401–T419. |
+| 2026-10-25 | G-06 | `/speckit-analyze`: 0 critical/high/medium; L1 (Home sends non-reviewers to the check until done) accepted, L2 (no-lists message) given a server test. `/speckit-implement` T401–T419: `scripts/build-kelly.mjs` + `server/levels/kelly-sv.tsv` (8,170 cleaned forms from Språkbanken's kelly.xml, CC BY-SA 3.0 / LGPL 3.0, licence file), import at start-up with source and licence (test servers skip it unless asked), migration 007, credits page, starting check (30 samples spread by frequency; ticked → unmarked leaves; re-run replaces only untouched starting words), Home redirect and restart link. The reviewer refusal got its own code `not_for_reviewer` (contract changed first); G-04's level-line browser check now accepts a level (FR-608). |
 
 ## Notes

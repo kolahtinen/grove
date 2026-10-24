@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starting level · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/start.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+</div>
+</header>
+<main>
+<section class="card" id="choose">
+<h2>Your starting level</h2>
+<p>Pick the level you think you are at. grove then shows 30 words from it: tick the ones you <strong>don't</strong> know. Everything else from that level and the levels below goes into your ground as known.</p>
+<p class="message bad" id="start-unavailable" role="alert" hidden></p>
+<div class="grid-3 level-buttons" id="levels">
+<button type="button" data-level="A1">A1</button><button type="button" data-level="A2">A2</button><button type="button" data-level="B1">B1</button>
+<button type="button" data-level="B2">B2</button><button type="button" data-level="C1">C1</button><button type="button" data-level="C2">C2</button>
+</div>
+<p><button type="button" id="beginner">I'm a complete beginner</button></p>
+</section>
+<section class="card" id="sample-card" hidden>
+<h2 id="sample-heading"></h2>
+<p class="small muted">Tick the words you don't know.</p>
+<ul class="sample-list" id="sample"></ul>
+<p class="message" id="start-message" role="status" hidden></p>
+<div class="row"><button type="button" class="main" id="confirm">Confirm</button><button type="button" id="lower" hidden></button></div>
+<p class="small"><a href="/" id="to-home" hidden>Go to Home</a></p>
+</section>
+</main>
+</body>
+</html>

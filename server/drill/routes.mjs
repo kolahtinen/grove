@@ -6,6 +6,7 @@ import { createReview } from './review.mjs';
 import { createMarks } from './marks.mjs';
 import { createLeaves } from './leaves.mjs';
 import { createProgress, computeLevel } from './progress.mjs';
+import { createStart } from '../levels/start.mjs';
 
 const lemma = { type: 'string', min: 1, max: 80 };
 const kind = { type: 'enum', values: KINDS, optional: true };
@@ -16,6 +17,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
   const marks = createMarks({ db, now });
   const leaves = createLeaves({ db, now });
   const progress = createProgress({ db, now });
+  const start = createStart({ db, now });
   const query = (ctx) => ({ lemma: ctx.url.searchParams.get('lemma') || '', kind: KINDS.includes(ctx.url.searchParams.get('kind')) ? ctx.url.searchParams.get('kind') : 'word' });
 
   router.add({
@@ -23,7 +25,9 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
     handler: (ctx) => {
       const id = ctx.account.id;
       const welcome = !(db.prepare('SELECT welcome_dismissed FROM learner_settings WHERE account_id = ?').get(id)?.welcome_dismissed);
-      sendJson(ctx.res, 200, { level: computeLevel(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome });
+      // G-06: before the starting check, the level line keeps "Set your starting level" (FR-608).
+      const flags = start.flags(id);
+      sendJson(ctx.res, 200, { level: flags.needsStart ? null : computeLevel(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome, ...flags });
     },
   });
   router.add({

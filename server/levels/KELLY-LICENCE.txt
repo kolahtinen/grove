@@ -1,0 +1,9 @@
+server/levels/kelly-sv.tsv is derived from the Swedish Kelly list:
+
+  Kelly list, Swedish. Språkbanken Text, University of Gothenburg.
+  https://spraakbanken.gu.se/en/resources/kelly
+  Licence: CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/) and LGPL 3.0.
+
+Changes made: notes in brackets removed from the base forms, forms lower-cased, duplicate forms kept
+once at their lowest CEFR level, and only the form, level, part of speech and frequency kept.
+The derived file is shared under the same licence (CC BY-SA 3.0).

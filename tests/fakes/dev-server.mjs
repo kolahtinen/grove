@@ -7,7 +7,7 @@ import { OWNER, REVIEWER, HTMLISH } from './dev-accounts.mjs';
 const portArg = process.argv.indexOf('--port');
 const port = portArg > 0 ? Number(process.argv[portArg + 1]) : 8787;
 
-const t = await startTestGrove({ port, host: 'localhost' });
+const t = await startTestGrove({ port, host: 'localhost', levels: true });
 t.seedAccount({ ...OWNER, role: 'owner' });
 const reviewer = t.seedAccount({ ...REVIEWER, role: 'reviewer' });
 // The reviewer's ground: the X-03 known words (until G-07's demo history).

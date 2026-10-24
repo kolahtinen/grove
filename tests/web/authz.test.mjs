@@ -36,6 +36,7 @@ const BODIES = {
   '/api/leaves': { text: 'zzz' },
   '/api/leaf-delete': { lemma: 'zzz' },
   '/api/input': { seconds: 1, day: '2026-10-24' },
+  '/api/start': { level: 'beginner', unknown: [] },
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);
 
@@ -107,7 +108,7 @@ test('FR-019 RQ-162: signed out, / redirects to sign-in and signed-in API routes
   assert.equal(home.headers.get('location'), '/signin');
   assert.equal((await c.get('/api/me')).status, 401);
   assert.equal((await c.get('/assets/home.mjs')).status, 401);
-  for (const path of ['/signin', '/reset', '/terms', '/health', '/assets/grove.css', '/assets/api.mjs', '/assets/page.mjs',
+  for (const path of ['/signin', '/reset', '/terms', '/credits', '/health', '/assets/grove.css', '/assets/api.mjs', '/assets/page.mjs',
     '/assets/signin.mjs', '/assets/reset.mjs', '/assets/terms.mjs', '/assets/logo.svg', '/fonts/fonts.css']) {
     assert.equal((await c.get(path)).status, 200, path);
   }
