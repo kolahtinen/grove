@@ -43,7 +43,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  | built 2026-10-24 (T101–T140): 136 unit + 32 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 | G-03 | clarified 2026-10-24 ([spec](../specs/003-reading-word-menu/spec.md); question-pages/58) | drafted 2026-10-24 ([plan](../specs/003-reading-word-menu/plan.md)) | 34 tasks 2026-10-24 ([tasks](../specs/003-reading-word-menu/tasks.md)) | analyzed 2026-10-24; H1, M1 fixed, L1 noted |  | built 2026-10-24 (T201–T234): 164 unit + 44 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 | G-04 | clarified 2026-10-24 ([spec](../specs/004-ground-drilling-progress/spec.md); question-pages/59) | drafted 2026-10-24 ([plan](../specs/004-ground-drilling-progress/plan.md)) | 32 tasks 2026-10-24 ([tasks](../specs/004-ground-drilling-progress/tasks.md)) | analyzed 2026-10-24; M1, L1 fixed, L2 noted |  | built 2026-10-24 (T301–T332): 192 unit + 56 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
-| G-06 | clarified 2026-10-25 ([spec](../specs/006-starting-level/spec.md); question-pages/60) |  |  |  |  |  |  |  |
+| G-06 | clarified 2026-10-25 ([spec](../specs/006-starting-level/spec.md); question-pages/60) | drafted 2026-10-25 ([plan](../specs/006-starting-level/plan.md)) | 19 tasks 2026-10-25 ([tasks](../specs/006-starting-level/tasks.md)) |  |  |  |  |  |
 
 ## Addenda
 
@@ -126,5 +126,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-04 | `/speckit-implement` T301–T332: migration 006, spacing rule, marking step with To read / To remember switches (unmarked fall to the ground), Review (fading first; To read shown, To remember spoken and hidden; recall cards), Master (reverse direction), menu switches, Let it fall with a meaning check, Pick up, Leaves (incl. Unmarked), colours by mark and by marks when fallen, level from level_words (empty until G-06), input minutes from an activity heartbeat, Progress, welcome card; the prompt's reuse list now comes from drilled leaves. |
 | 2026-10-25 | G-06 | `/speckit-specify`: spec drafted in `specs/006-starting-level/` (3 user stories, FR-601…610 citing all 6 RQ and 3 N); the Swedish Kelly list checked (8,425 entries, CEFR 1–6, CC BY-SA 3.0 / LGPL 3.0, no English meanings); two open questions for clarify. |
 | 2026-10-25 | G-06 | `/speckit-clarify` (question-pages/60): words ticked as unknown become unmarked leaves; a new starting level replaces only the words the earlier check added. |
+| 2026-10-25 | G-06 | `/speckit-plan` and `/speckit-tasks`: Kelly XML → cleaned TSV in the build, import at start-up with source and licence, credits page, migration 007, starting check (sample of 30 spread by frequency, apply in one transaction, re-run replaces only untouched starting words), new module `levels`; T401–T419. |
 
 ## Notes
