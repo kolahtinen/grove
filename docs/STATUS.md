@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** review the G-01 plan, then `/speckit-tasks` (plan drafted 2026-10-24); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** `/speckit-analyze` for G-01, then `/speckit-implement` (tasks 2026-10-24); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
 
 ## Phases
 
@@ -39,7 +39,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
-| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | | | | | | |
+| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 65 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | | | | | |
 
 ## Addenda
 
@@ -100,5 +100,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-01 | `/speckit-specify`: spec drafted in `specs/001-platform-accounts-look/` (6 user stories, FR-001…031 citing all 51 RQ and 18 N of G-01); one open question for clarify (FR-012: sign-up with an address that already has an account, RQ-372). |
 | 2026-10-24 | G-01 | `/speckit-clarify` (question-pages/54): FR-012 settled (every sign-up ends with 'Done, now sign in'; a taken address changes nothing); a password reset doesn't end existing sign-ins (FR-013, accepted). |
 | 2026-10-24 | G-01 | `/speckit-plan`: plan, research (R1–R13), data model (7 tables), contracts (HTTP API, owner commands), quickstart; Node.js 22 with built-in HTTP/SQLite/crypto/test, Firebase over REST, static client, Playwright; constitution check passes; `docs/modules.md` filled (8 modules). |
+| 2026-10-24 | G-01 | `/speckit-tasks`: T001–T065 in 9 phases (setup, foundation, US1–US6, polish), tests first with FR/RQ names; every FR-001…031 has a test task. |
 
 ## Notes
