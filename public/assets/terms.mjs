@@ -16,7 +16,11 @@ if (me && !me.termsAgreed) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const result = await post('/api/agree', { agreeTerms: boxes[0].checked, confirmAge13: boxes[1].checked });
-    if (result.ok) window.location.assign('/');
+    if (result.ok) {
+      // G-08 FR-802: Home plays the leaves-and-ground scene once after agreeing.
+      try { sessionStorage.setItem('grove-grow-due', '1'); } catch { /* then it doesn't play */ }
+      window.location.assign('/');
+    }
     else showMessage(section.querySelector('.message'), result.message);
   });
 }

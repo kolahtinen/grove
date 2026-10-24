@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** G-08 (the look's extras: the leaves-and-ground animation, the help page, the phone header fix). Open: G-02 T141 (real AIs), G-01 Phase 10 (deploy), a fresh-session review of G-01–G-07.
+**Next:** the first build is complete (G-01…G-08). Open: G-01 Phase 10 (deploy), G-02 T141 (real AIs), a fresh-session review of G-01–G-08 (constitution 1.6), validation against the needs.
 
 ## Phases
 
@@ -46,7 +46,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | G-05 | drafted 2026-10-25 ([spec](../specs/005-listening/spec.md)); no open markers | drafted 2026-10-25 ([plan](../specs/005-listening/plan.md)) | 7 tasks 2026-10-25 ([tasks](../specs/005-listening/tasks.md)) | no findings |  | built 2026-10-25 (T601–T607): 218 unit + 74 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 | G-06 | clarified 2026-10-25 ([spec](../specs/006-starting-level/spec.md); question-pages/60) | drafted 2026-10-25 ([plan](../specs/006-starting-level/plan.md)) | 19 tasks 2026-10-25 ([tasks](../specs/006-starting-level/tasks.md)) | analyzed 2026-10-25; L1 accepted, L2 added |  | built 2026-10-25 (T401–T419): 208 unit + 62 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 | G-07 | clarified 2026-10-25 ([spec](../specs/007-reviewer-demo/spec.md); question-pages/61) | drafted 2026-10-25 ([plan](../specs/007-reviewer-demo/plan.md)) | 8 tasks 2026-10-25 ([tasks](../specs/007-reviewer-demo/tasks.md)) | analyzed 2026-10-25; no findings |  | built 2026-10-25 (T501–T508): 215 unit + 64 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
-| G-08 | drafted 2026-10-25 ([spec](../specs/008-look-extras-help/spec.md)); no open markers | drafted 2026-10-25 ([plan](../specs/008-look-extras-help/plan.md)) | 7 tasks 2026-10-25 ([tasks](../specs/008-look-extras-help/tasks.md)) |  |  |  |  |  |
+| G-08 | drafted 2026-10-25 ([spec](../specs/008-look-extras-help/spec.md)); no open markers | drafted 2026-10-25 ([plan](../specs/008-look-extras-help/plan.md)) | 7 tasks 2026-10-25 ([tasks](../specs/008-look-extras-help/tasks.md)) | no findings |  | built 2026-10-25 (T701–T707): 220 unit + 86 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
 
@@ -136,5 +136,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-25 | G-05 | `/speckit-specify` (no open markers; voice facts checked: late voices, `sv_SE` on Android, no confirmed named voices per device, so the help says where to add one), `/speckit-plan` (shared speech module, listening mode, migration 008), `/speckit-tasks` T601–T607. |
 | 2026-10-25 | G-05 | `/speckit-implement` T601–T607: migration 008 (speech rate, voice help shown), settings route takes optional fields (new `number` schema type), shared `public/assets/speech.mjs` (Swedish voice only, late voices, `sv_SE`, rate) used by the reading page, Review and Leaves; listening mode (blur until tapped or played through, Play/Pause with highlighting, replay with play count, loop, speed slider with note, the one-time voice help with where to add a voice per system, questions after). |
 | 2026-10-25 | G-08 | `/speckit-specify` (no open markers; storyboard and placements from question-pages/56; after agreeing the scene plays in a card on Home rather than a cover, so nothing is blocked), `/speckit-plan` (browser-only; scene with CSS keyframes and step classes; public `/how` page), `/speckit-tasks` T701–T707. |
+| 2026-10-25 | G-08 | `/speckit-implement` T701–T707: leaves-and-ground scene (`grow.mjs`, CSS step classes; four still frames with reduced motion) once on Home after agreeing, on the new public `/how` page with Replay, and on a logo tap; "?" link and the A.5 logo classes on every page; answer feedback (✓ bounce, ✗ shake), menu slide-up with header strip; top bar fits 360 px (the new test caught Sign out overlapping "?"; fixed). A screen slide-in was tried and removed: no spec asked for it and it slowed taps. |
 
 ## Notes

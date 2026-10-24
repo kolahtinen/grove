@@ -344,3 +344,80 @@ a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82re
 #voice-help { background: var(--soft); color: var(--ink); }
 #voice-help ul { margin: .2rem 0 .4rem; padding-left: 1.1rem; }
 @media (prefers-reduced-motion: reduce), (prefers-reduced-transparency: reduce) { .blurred { filter: blur(6px); } }
+
+/* G-08: the top bar fits a phone (FR-807): buttons never wrap; the email and tagline give way */
+.topbar-inner > .help-link { flex: none; min-width: 2rem; text-align: center; font-weight: 700; }
+.account[hidden] + .help-link { margin-left: auto; }
+button.bar-button, a.bar-button.nav { white-space: nowrap; flex: none; }
+.brand { flex: 0 1 auto; }
+.account { min-width: auto; }
+.name { min-width: 0; }
+.title { white-space: nowrap; }
+@media (max-width: 520px) {
+  .account-email { display: none; }
+  .tagline { white-space: normal; font-size: .62rem; line-height: 1.15; }
+  .topbar-inner { gap: .45rem; }
+}
+.logo { cursor: pointer; }
+
+/* G-08: answer buttons (FR-805; A.3, A.4) */
+button.option { position: relative; min-height: 3rem; padding: .8rem 2.6rem .8rem 1rem; }
+button.option.right:disabled, button.option.wrong:disabled { opacity: 1; }
+button.option.right { animation: answer-bounce .38s ease; }
+button.option.wrong { animation: answer-shake .4s ease; }
+button.option.right::after, button.option.wrong::after { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; animation: mark-pop .3s ease; }
+button.option.right::after { content: "✓"; }
+button.option.wrong::after { content: "✗"; }
+@keyframes answer-bounce { 0%, 100% { transform: scale(1); } 45% { transform: scale(1.03); } }
+@keyframes answer-shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+@keyframes mark-pop { from { opacity: 0; transform: translateY(-50%) scale(.4); } to { opacity: 1; transform: translateY(-50%) scale(1); } }
+
+/* G-08: the word menu slides up with a coloured header strip (FR-806; A.1, A.4) */
+.sheet:not([hidden]) { animation: sheet-up .25s ease; }
+.sheet .sheet-head { background: var(--pbord); color: var(--phtx); margin: -1rem -1.05rem .8rem; padding: .55rem 1.05rem; border-radius: 22px 22px 0 0; }
+.sheet .sheet-head button.bar-button { color: var(--phtx); background: transparent; border-color: currentColor; }
+@keyframes sheet-up { from { opacity: 0; transform: translate(-50%, 48px); } to { opacity: 1; transform: translate(-50%, 0); } }
+.sheet-backdrop:not([hidden]) { animation: fade-in .25s ease; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* G-08: the leaves-and-ground scene (FR-801; question-pages/56) */
+.grow { margin: 0; text-align: center; }
+.grow-svg { width: 100%; max-width: 320px; height: auto; stroke: var(--accent); color: var(--accent); }
+.grow-svg text { fill: var(--ink); stroke: none; font-size: 9px; font-family: inherit; }
+.grow-caption { min-height: 1.5em; margin: .3rem 0 .6rem; font-size: .95rem; }
+.grow-skip { display: block; margin: 0 auto; }
+.grow-card, .grow-pop { text-align: center; }
+.grow-pop { position: fixed; z-index: 22; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, calc(100% - 2rem)); margin: 0; animation: fade-in .2s ease; }
+.grow-frames { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; margin-bottom: .6rem; }
+.grow-frames .grow-caption { font-size: .78rem; }
+.how .grow-host { margin-bottom: .4rem; }
+.how #replay { display: block; margin: .5rem auto 1rem; }
+.terms-list dt { font-weight: 700; margin-top: .6rem; }
+.terms-list dd { margin: .1rem 0 0; }
+
+.grow .g-ground { stroke-dasharray: 160; stroke-dashoffset: 160; transition: stroke-dashoffset .9s ease; }
+.grow.s1 .g-ground { stroke-dashoffset: 0; }
+.grow .g-soil { stroke: var(--wood); stroke-width: 0; opacity: 0; transition: stroke-width 1.4s ease, opacity 1.4s ease; }
+.grow.s4 .g-soil { stroke-width: 7; opacity: .8; }
+.grow .g-tree { opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: 50% 100%; transition: opacity .8s ease .5s, transform 1s ease .5s; }
+.grow.s1 .g-tree { opacity: 1; transform: scale(1); }
+.grow.s4 .g-tree { transform: scale(1.18); transition: transform 1.8s ease; }
+.grow .g-leaf { fill: var(--soft); color: var(--accent); transform: scale(0); transform-box: fill-box; transform-origin: 0 50%; transition: transform .6s ease, color .6s ease, fill .6s ease; }
+.grow .g-leaf path { stroke: currentColor; }
+.grow .g-leaf .vein { stroke-width: 1; }
+.grow.s2 .g-leaf { transform: scale(1); }
+.grow.s2 .leaf-bok { transition-delay: .25s; }
+.grow.s2 .leaf-lasa { transition-delay: .5s; }
+.grow.s3 .leaf-bok { color: var(--wood); fill: color-mix(in srgb, var(--wood) 25%, transparent); transform: translate(8px, 46px) rotate(16deg); transition: color .5s ease, fill .5s ease, transform 1.8s ease-in .5s; }
+.grow.s4 .leaf-hej { color: var(--wood); transform: translate(6px, 54px) rotate(14deg); transition: color .4s ease, transform 1.6s ease-in .3s; }
+.grow.s4 .leaf-lasa { color: var(--wood); transform: translate(34px, 70px) rotate(-12deg); transition: color .4s ease, transform 1.4s ease-in .6s; }
+.grow .g-scene { transition: opacity .7s ease; }
+.grow.s5 .g-scene { opacity: 0; }
+.grow .g-logo { opacity: 0; transition: opacity .9s ease .4s; }
+.grow.s5 .g-logo { opacity: 1; }
+
+/* G-08: reduced motion keeps short fades only (FR-803; A.4). These win over FR-031's rule above. */
+@media (prefers-reduced-motion: reduce) {
+  .sheet:not([hidden]), .grow-pop, button.option.right, button.option.wrong { animation: fade-in .15s ease !important; }
+  button.option.right::after, button.option.wrong::after { animation: none !important; }
+}

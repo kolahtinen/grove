@@ -2,6 +2,7 @@
 // problems, the meanings card, and the texts list. Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { playGrow } from './grow.mjs';
 
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
@@ -175,7 +176,7 @@ async function loadStages() {
   $('welcome').hidden = !s.welcome;
   $('restart').hidden = !s.canRestart;
   // G-06: a new account goes to the starting check once the welcome is closed (FR-605).
-  if (s.needsStart && !s.welcome) { window.location.assign('/start'); return; }
+  if (s.needsStart && !s.welcome) { window.location.assign('/start'); return 'start'; }
   const level = s.level === null ? 'Set your starting level' : s.level === 'below A1' ? 'Level: below A1' : `Level: ${s.level}`;
   $('level-line').textContent = `${level} · ${s.todayMinutes} min of input today`;
   const unread = document.querySelectorAll('#texts .text-state.new').length;
@@ -184,9 +185,23 @@ async function loadStages() {
   $('review-count').textContent = due ? `${due} due${s.review.fading ? ` (${s.review.fading} fading)` : ''}` : 'nothing due';
   $('master-count').textContent = s.master ? `${s.master} ready` : 'none yet';
 }
-await loadStages();
+const going = await loadStages();
 $('welcome-close').addEventListener('click', async () => {
   await post('/api/welcome', {});
   $('welcome').hidden = true;
   await loadStages();
 });
+
+// G-08 FR-802: once after agreeing to the terms, the leaves-and-ground scene in a card at the top of
+// Home (kept until Home is reached, so a learner sent to the starting check first still sees it).
+function growDue() {
+  try { return sessionStorage.getItem('grove-grow-due') === '1'; } catch { return false; }
+}
+if (going !== 'start' && growDue()) {
+  try { sessionStorage.removeItem('grove-grow-due'); } catch { /* nothing kept */ }
+  const card = document.createElement('section');
+  card.className = 'card grow-card';
+  card.id = 'grow-card';
+  document.querySelector('main').prepend(card);
+  playGrow(card, { onend: () => card.remove() });
+}

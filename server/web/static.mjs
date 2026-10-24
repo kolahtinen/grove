@@ -29,10 +29,11 @@ export const PAGES = [
   { path: '/progress', file: 'progress.html', access: 'agreed' },
   { path: '/start', file: 'start.html', access: 'agreed' },
   { path: '/credits', file: 'credits.html', access: 'public' },
+  { path: '/how', file: 'how.html', access: 'public' },
 ];
 
 // Files under /assets/ that the public pages need; every other asset needs a signed-in session.
-export const PUBLIC_ASSETS = new Set(['grove.css', 'api.mjs', 'page.mjs', 'signin.mjs', 'reset.mjs', 'terms.mjs', 'logo.svg']);
+export const PUBLIC_ASSETS = new Set(['grove.css', 'api.mjs', 'page.mjs', 'signin.mjs', 'reset.mjs', 'terms.mjs', 'logo.svg', 'how.mjs', 'grow.mjs', 'topbar.mjs']);
 
 async function sendFile(ctx, relative) {
   const full = normalize(join(PUBLIC_DIR, relative));
