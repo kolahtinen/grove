@@ -26,7 +26,7 @@ All G-01 rules apply; every route is `access: agreed`; the account comes from th
 | `POST /api/pick-up` | `{lemma, kind?}` | `200 {result: "picked_up"}` · `409 not_ground` |
 | `GET /api/review?mode=review\|master` | – | `200 {items: [{lemma, kind, mode: "read"\|"remember"\|"master"\|"recall", sentence?, word?, meaning?, options?, right?}] (≤ 10), nextDue}` |
 | `POST /api/review` | `{lemma, kind?, mode: enum, right: boolean}` | `200 {gap, fell: bool}` |
-| `GET /api/leaves` | – | `200 {remember: [item], read: [item]}`, item = `{lemma, kind, en, gap, strength, due: bool}` |
+| `GET /api/leaves` | – | `200 {remember: [item], read: [item], unmarked: [item]}`, item = `{lemma, kind, en, gap, strength, due: bool}` |
 | `POST /api/leaves` | `{text: string 1–80, kind?: enum}` | `200 {result: "added"}` |
 | `POST /api/leaf-delete` | `{lemma, kind?}` | `200 {result: "deleted"}` |
 | `GET /api/progress` | – | `200 {level, days: [{day, minutes}] (14), ground, drilled}` |

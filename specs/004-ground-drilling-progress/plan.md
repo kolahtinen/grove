@@ -42,6 +42,8 @@ The second half of the learning loop. After a text is rated, a marking step lets
 
 No violations.
 
+Note (analyze L2): whether a Let it fall question was answered right is checked in the browser, like G-03's practice; a learner could only cheat their own ground, so a server check isn't worth the round trip.
+
 ## Project Structure
 
 ```text
