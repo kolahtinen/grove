@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-24
 
-**Status**: Draft
+**Status**: Draft (clarified 2026-10-24, question-pages/57)
 
 **Input**: User description: "G-02: Texts from the learner's own AI. The feature description is the G-02 section of docs/middle-steps.md (Part 2: Feed for Spec Kit), with the X-03 test (docs/middle/ai-test/) and grove's terms (docs/glossary.md). Follow the combined requirements as written; every spec requirement names its RQ and N IDs."
 
@@ -12,11 +12,28 @@
 
 **Terms** (docs/glossary.md): a **leaf** is a saved word, phrase or grammar pattern that isn't learned yet; all leaves are in **Leaves**; learned ones are in the **Ground**. In this spec, a word is **known** when it is in the learner's ground (RQ-34), and **new** otherwise. Marking leaves (To remember / To read), drilling and falling come in G-03 and G-04.
 
+## Clarifications
+
+### Session 2026-10-24
+
+- Q: When does a new session start, so the prompt carries the summary? → A: Not by time: grove works on one **package** at a time; a new package (whose first prompt carries the summary) starts when the current one is finished or the learner asks for a new one (question-pages/57).
+- Q: How big is a package? → A: Several parts: **3 parts** of about 10 minutes, about 30 minutes in all (question-pages/57).
+- Q: What does a "next part" prompt look like? → A: Self-contained (known words, rules and format every time) with a hint to continue part 1's story if the chat has it (question-pages/57).
+- Q: What's in one part? → A: **3 texts of about 130 words** each, with 2–3 questions each (question-pages/57).
+
+### Combined requirements changed in clarify
+
+| RQ | As written for the first build | In this spec |
+|---|---|---|
+| RQ-01 | Once per session, a summary exchange | Once per package: the package's first prompt carries the summary (FR-203) |
+| RQ-186 | Reduced: each exchange returns one part; 'more texts' asks for another part; packages later | Packages of 3 parts; a part is 3 texts of ~130 words; sizes to choose from (RQ-348) still later (FR-202) |
+| RQ-188 | 'Next part' prompt until the package is complete (second build in docs/middle/scope.md; not in G-02's feed) | Moved into the first build: grove gives the next part's prompt until the package's 3 parts are in (FR-203) |
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Get a part of texts from my own AI (Priority: P1)
 
-A learner on Home sees their topic and taps **Get texts**. Grove shows a prompt for about 10 minutes of reading on that topic, made from the words in their ground, with a **Copy prompt** button. The learner pastes it into their own chat AI (free ChatGPT, Claude, Gemini or another), copies the whole answer, pastes it into grove's paste box and taps **Add texts**. Grove checks it and, if it's within the margins, adds the texts and shows them.
+A learner on Home sees their topic and taps **Get texts**. Grove shows a prompt for part 1 of a package: about 10 minutes of reading (three short texts) on that topic, made from the words in their ground, with a **Copy prompt** button. The learner pastes it into their own chat AI (free ChatGPT, Claude, Gemini or another), copies the whole answer, pastes it into grove's paste box and taps **Add texts**. Grove checks it and, if it's within the margins, adds the texts and shows them.
 
 **Why this priority**: Texts are grove's input; without this exchange nothing else in the learning loop has material (C-08).
 
@@ -83,18 +100,19 @@ The learner picks a topic (their own words, e.g. "a small café in Stockholm"). 
 
 ---
 
-### User Story 5 - Once a session, tell the AI what changed (Priority: P2)
+### User Story 5 - A package at a time, starting with what changed (Priority: P2)
 
-The first exchange of a session carries a short summary of what changed since the last one: the texts read, their ratings, question results, and (once those goals exist) marks, reports and explanations wanted. Further exchanges in the same session ask only for another part.
+Grove works on one package of 3 parts at a time. The package's first prompt carries a short summary of what changed since the last summary: the texts read, their ratings, question results, and (once those goals exist) marks, reports and explanations wanted. Parts 2 and 3 are asked for with **Next part** prompts without a summary. When the package is finished, or the learner asks for a new one, the next prompt starts a new package with a new summary.
 
-**Why this priority**: The summary lets the learner's AI adapt across sessions without grove storing or sending the whole learner data (RQ-01, RQ-02).
+**Why this priority**: The summary lets the learner's AI adapt between packages without grove storing or sending the whole learner data (RQ-01, RQ-02).
 
-**Independent Test**: Read and rate two texts, start a new session, and see the next prompt carry a summary listing exactly those two texts with their ratings and question results; ask for more texts in the same session and see a prompt without a summary.
+**Independent Test**: Finish a package, then see the next prompt carry a summary listing exactly the texts read since the last summary with their ratings and question results; ask for part 2 within a package and see a prompt without a summary; ask for a new package early and see the summary come with it.
 
 **Acceptance Scenarios**:
 
-1. **Given** the learner's first exchange of a session, **When** the prompt is made, **Then** it carries a plain-text summary of only what changed since the last summary: texts done with their ratings and question results. (RQ-01, RQ-02, RQ-11)
-2. **Given** a later exchange in the same session, **When** the learner asks for more texts, **Then** the prompt asks for another part of about 10 minutes and carries no summary. (RQ-186)
+1. **Given** no package is open (none yet, or the last one is finished), **When** the learner asks for texts, **Then** the prompt is part 1 of 3 of a new package and carries a plain-text summary of only what changed since the last summary: texts done with their ratings and question results. (RQ-01, RQ-02, RQ-11)
+2. **Given** an open package with parts left, **When** the learner asks for the next part, **Then** the prompt asks for part 2 (or 3) of 3, is self-contained (known words, rules, format) with a hint to continue the earlier parts' story if the chat has them, and carries no summary. (RQ-186, RQ-188)
+3. **Given** an open package with parts left, **When** the learner asks for a new package instead, **Then** the open package is closed as it stands and the new package's first prompt carries the summary. (RQ-01)
 
 ---
 
@@ -111,6 +129,7 @@ The first exchange of a session carries a short summary of what changed since th
 - The paste is larger than 100 KB: refused with the G-01 message. (RQ-231, T-07)
 - The answer has extra fields, wrong types or absurd sizes (e.g. 500 texts): refused as not matching the format, with a fix-it prompt; nothing is stored. (T-07; constitution 2.4)
 - A meanings prompt's answer lists a word grove didn't ask about: ignored.
+- The learner changes topic in the middle of a package: the remaining parts use the new topic; the summary of the next package says the topic changed.
 - Several devices of the shared reviewer account paste at once: each answer is checked against its own part code; the last save wins for the topic and target share. (question-pages/55)
 
 ## Requirements *(mandatory)*
@@ -122,8 +141,8 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 **The exchange**
 
 - **FR-201** (RQ-182, RQ-183, RQ-40, RQ-36; N-15, N-42, N-06; C-01, C-08): Every AI feature MUST show a prompt, a **Copy prompt** button and a paste box. The learner copies the prompt into their own chat AI and pastes the answer back; grove never calls an AI itself. The prompts MUST work in any chat AI: plain English instructions, no tool use, no file upload.
-- **FR-202** (RQ-186; N-42): A **part** MUST be about 10 minutes of reading: two texts of about 200 words each, each with 2–3 questions. **Reduced for the first build:** every exchange returns one part; "More texts" asks for another part. Packages, mixes and sizes come later (RQ-348).
-- **FR-203** (RQ-01, RQ-02, RQ-11; N-15, N-39, N-13, N-44): The first exchange of a session MUST carry a plain-text summary of only what changed since the last summary: each text done (title, rating, questions right out of asked); later goals add marks, reports and explanations wanted. It never carries the whole learner data. A session is [NEEDS CLARIFICATION: when does a new session start, so the next prompt carries a summary? e.g. the first exchange of each calendar day, or the first exchange after 4 hours away].
+- **FR-202** (RQ-186; N-42): A **part** MUST be about 10 minutes of reading: three texts of about 130 words each, each with 2–3 questions. A **package** is 3 parts. **Reduced for the first build:** every exchange returns one part; the package size is fixed; mixes and sizes to choose from come later (RQ-348).
+- **FR-203** (RQ-01, RQ-02, RQ-11, RQ-186, RQ-188; N-15, N-39, N-13, N-44, N-42): Grove MUST work on one package at a time. The first prompt of a package carries a plain-text summary of only what changed since the last summary: each text done (title, rating, questions right out of asked); later goals add marks, reports and explanations wanted. It never carries the whole learner data. Grove then gives a **Next part** prompt for parts 2 and 3, without a summary; each is self-contained (known words, rules, format) and asks the AI to continue the earlier parts' story and characters if the chat has them. A package is **finished** when its 3 parts are accepted and every text in it is rated; the next prompt then starts a new package. The learner can also ask for a **New package** early, which closes the open one as it stands.
 - **FR-204** (RQ-184; N-15): Every prompt MUST ask for exactly one JSON block in a fixed format: a part code (echoed from the prompt), texts (title, lines with Swedish and English, questions with options and the index of the right one), new words (form, dictionary form, English meaning, simple Swedish explanation), new fixed phrases, inflected forms of known words, names, and, for a new topic, starter vocabulary. Lines hold one sentence each.
 - **FR-205** (RQ-41, RQ-184; N-15, N-43; T-07; constitution 2.4): Grove MUST find the JSON block in the pasted answer (inside prose or code fences), parse it strictly against the format with size limits (at most 4 texts, 60 lines per text, 400 characters per line, 6 questions per text, 200 new words), and refuse anything else with the problems listed. Nothing from a refused answer is stored.
 - **FR-206** (RQ-185, RQ-63; N-15, N-43): When an answer is refused, grove MUST give a **fix-it prompt** to paste into the same chat, listing each problem: cut off, not valid JSON, missing or wrong fields, or, for rule breaks, the exact sentences quoted with the new words that broke the rule. It asks for the whole corrected JSON block again. The paste box takes the corrected answer for the same part.
@@ -151,7 +170,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 **Reading, questions and ratings**
 
 - **FR-218** (RQ-36, RQ-46, RQ-11, RQ-355, RQ-193, RQ-195, RQ-167, RQ-168; N-42, N-02, N-13, N-44): A text MUST be readable line by line in Swedish, with each line's English translation shown on tap; after it, its questions in simple Swedish with their options, showing right or wrong after each answer; then a five-button rating: almost nothing, a little, about half, most, everything. "Most" or "everything" counts the text as understood. The target share of known words moves with the ratings: "almost nothing" +2 points and shorter sentences, "a little" +1 point and shorter sentences, "about half" no change, three "most" or "everything" in a row −1 point; always between 93% and 98%.
-- **FR-219** (RQ-19; N-41): Home MUST show the learner's topic with a way to change it, a **Get texts** button (or **More texts** within a session), the waiting prompt if one is open, and the learner's texts, newest first, each marked new, read or rated.
+- **FR-219** (RQ-19, RQ-188; N-41, N-42): Home MUST show the learner's topic with a way to change it; the package's progress (e.g. "part 2 of 3"); a **Get texts** button (starting a package), **Next part** (within a package) and **New package**; the waiting prompt if one is open; and the learner's texts, newest first, each marked new, read or rated.
 
 **Data and safety**
 
@@ -160,13 +179,14 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 
 ### Key Entities *(include if feature involves data)*
 
-- **Exchange**: one prompt and its answer: account, kind (part, fix-it, meanings), part code, whether it carries a session summary, the prompt text, status (waiting, needs fix, accepted), created and answered times. A fix-it exchange belongs to the part it fixes.
+- **Package**: account, number of parts (3), parts accepted, status (open, finished, closed early), created time, and whether its first prompt carried the summary.
+- **Exchange**: one prompt and its answer: account, package and part number, kind (part, fix-it, meanings), part code, whether it carries the summary, the prompt text, status (waiting, needs fix, accepted), created and answered times. A fix-it exchange belongs to the part it fixes.
 - **Text**: an accepted text: account, exchange, title, topic, created time; its **lines** (Swedish, English) and **questions** (question, options, right option).
 - **Sentence**: one sentence of a text's line, kept for exercises: text, position, Swedish, and its new items when added.
 - **Word entry**: a word or fixed phrase grove has met: dictionary form, kind (word or phrase), English meaning, simple Swedish explanation (may be missing until a meanings answer); and its **forms** (inflected forms learned).
 - **Learner word**: a word entry for one account, with its state (**leaf** or **ground**), when it was added and the text it came from. Ground words are the learner's known words.
 - **Rating**: account, text, value (one of five), time; and **question answers** (right or wrong).
-- **Learner settings**: topic, topics used before, target share of known words, the "ask more firmly for new words" flag, the time of the last session summary.
+- **Learner settings**: topic, topics used before, target share of known words, the "ask more firmly for new words" flag, the time of the last summary.
 
 ## Success Criteria *(mandatory)*
 
@@ -182,7 +202,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 ## Assumptions
 
 - The learner's ground comes from the starting level (G-06) or, for the reviewer account, the demo history (G-07); until then a learner has an empty ground and gets beginner texts (edge case).
-- Text kinds (series, retellings, dialogues, choose-your-path, easy reads; RQ-43, RQ-256, RQ-257) are not in the first build; a part is two plain texts.
+- Text kinds (series, retellings, dialogues, choose-your-path, easy reads; RQ-43, RQ-256, RQ-257) are not in the first build; a part is three plain texts.
 - Word marks (To remember / To read), the word menu and colours in texts come in G-03; drilling, fading words and falling in G-04; listening in G-05. G-02 stores what they need.
 - The five rating labels are p1's: almost nothing, a little, about half, most, everything.
 - The starting values of the margins (FR-214) and the rating steps (FR-218) are settings, to be tuned after trying real answers (RQ-127, RQ-216).

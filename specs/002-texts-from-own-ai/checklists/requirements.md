@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -33,5 +33,5 @@
 
 - JSON is named because the combined requirements fix it (RQ-184: one JSON block the learner's AI returns); no language, framework or code structure is named.
 - All 33 G-02 combined requirements and all 15 G-02 needs are cited (checked by script, 2026-10-24). Requirements are numbered FR-201… so test names stay unique across goals.
-- Defaults chosen without asking (to confirm in clarify if wanted): a part is two texts of ~200 words; at most 1,500 known words in a prompt (R-04); the margins and rating steps in FR-214 and FR-218; up to 10 leaves to reuse (FR-210); 10–15 starter words per new topic.
-- One marker left, in FR-203 (when a new session starts). Per CLAUDE.md it goes to `/speckit-clarify`.
+- Defaults chosen without asking (to confirm in clarify if wanted): a part is three texts of ~130 words (page 57); at most 1,500 known words in a prompt (R-04); the margins and rating steps in FR-214 and FR-218; up to 10 leaves to reuse (FR-210); 10–15 starter words per new topic.
+- FR-203's marker resolved on question-pages/57 (packages of 3 parts; a part is 3 texts of ~130 words; self-contained next-part prompts); re-checked 2026-10-24: all items pass.
