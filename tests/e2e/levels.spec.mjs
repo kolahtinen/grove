@@ -12,7 +12,7 @@ async function signIn(page, account) {
   await page.getByRole('button', { name: 'Agree' }).click();
 }
 
-test('FR-602: the terms page links to Credits, which names the Kelly list and the font with their licences', async ({ page }) => {
+test('FR-602 C-05: the terms page links to Credits, which names the Kelly list and the font with their licences', async ({ page }) => {
   await page.goto('/terms');
   await page.getByRole('link', { name: /Credits/ }).click();
   await expect(page).toHaveURL(/\/credits$/);

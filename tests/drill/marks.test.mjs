@@ -19,7 +19,7 @@ test('FR-409 RQ-07: the menu switches mark a ground word, create a leaf for a wo
   assert.deepEqual(r.body, { state: 'leaf', drilled: false, read: false, remember: false });
 });
 
-test('FR-410: Let it fall asks a meaning question; right falls (keeping its marks), wrong stays; a pattern just confirms', async () => {
+test('FR-410 (question-pages/56): Let it fall asks a meaning question; right falls (keeping its marks), wrong stays; a pattern just confirms', async () => {
   const q = await c.get('/api/fall-check?lemma=kopp');
   assert.ok(q.body.question);
   assert.ok(['cup', 'the cups'].includes(q.body.question.options[q.body.question.right]), 'the right option is kopp\'s meaning');
@@ -35,7 +35,7 @@ test('FR-410: Let it fall asks a meaning question; right falls (keeping its mark
   assert.equal(word(t, learner.id, 'har + supine', 'pattern').state, 'ground');
 });
 
-test('FR-411: Pick up drills a ground word To read, due now; a leaf can\'t be picked up', async () => {
+test('FR-411 (glossary): Pick up drills a ground word To read, due now; a leaf can\'t be picked up', async () => {
   assert.deepEqual((await c.post('/api/pick-up', { lemma: 'hund' })).body, { result: 'picked_up' });
   const hund = word(t, learner.id, 'hund');
   assert.deepEqual([hund.state, hund.drilled, hund.to_read, hund.gap_days], ['leaf', 1, 1, 1]);
