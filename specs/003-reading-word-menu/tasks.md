@@ -14,8 +14,8 @@ description: "Tasks for G-03: reading and the word menu"
 
 ## Phase 1: Setup
 
-- [ ] T201 Create `server/reading/`, `tests/reading/`
-- [ ] T202 [P] Write sample answer `tests/texts/answers/good-patterns.json`: good.json plus `patterns` (2 patterns: "har + supine" at text 2 line 9 `har han glömt`, and "adjective -a after a definite word" at text 1 line 18 `nya`, plus one place whose words aren't in the line) and `explanations`/`fixes` left out; and `answer-with-fixes.json` built in tests from codes
+- [X] T201 Create `server/reading/`, `tests/reading/`
+- [X] T202 [P] Write sample answer `tests/texts/answers/good-patterns.json`: good.json plus `patterns` (2 patterns: "har + supine" at text 2 line 9 `har han glömt`, and "adjective -a after a definite word" at text 1 line 18 `nya`, plus one place whose words aren't in the line) and `explanations`/`fixes` left out; and `answer-with-fixes.json` built in tests from codes
 
 ---
 
@@ -23,16 +23,16 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T203 [P] Test addition in `tests/store/store.test.mjs`: `FR-307 RQ-29: migration 005 keeps every row and allows pattern items, own texts and package-less exchanges` — fill a version-4 database (accounts, words with forms, a package, exchanges, texts with lines, questions, sentences, ratings), migrate to 5, check every row and id survives, `PRAGMA foreign_key_check` is empty, and that a `pattern` word, a text with NULL exchange and an exchange with NULL package can be inserted
-- [ ] T204 [P] Tests in `tests/words/resolve.test.mjs`: `FR-306 RQ-18:` a token resolves to status ground/leaf/new/name with its dictionary forms: a ground lemma, a learned form of a leaf (*kopparna* → *kopp*, leaf), an irregular form (*gick* → *gå*), a regular ending (*läser* → *läsa*), a homograph listing two forms (*var* → *vara*, *var* if both are words), a name from the list and a capitalised mid-sentence word; `FR-303 RQ-56:` names never get status new
-- [ ] T205 [P] Tests in `tests/texts/schema.test.mjs` additions: `FR-307 RQ-29 RQ-177:` `patterns`, `explanations`, `fixes` pass within limits and are refused beyond them (21 patterns, a place with text 5, an explanation of 501 characters, a fix with 4 options, a fix with neither question nor sentence)
+- [X] T203 [P] Test addition in `tests/store/store.test.mjs`: `FR-307 RQ-29: migration 005 keeps every row and allows pattern items, own texts and package-less exchanges` — fill a version-4 database (accounts, words with forms, a package, exchanges, texts with lines, questions, sentences, ratings), migrate to 5, check every row and id survives, `PRAGMA foreign_key_check` is empty, and that a `pattern` word, a text with NULL exchange and an exchange with NULL package can be inserted
+- [X] T204 [P] Tests in `tests/words/resolve.test.mjs`: `FR-306 RQ-18:` a token resolves to status ground/leaf/new/name with its dictionary forms: a ground lemma, a learned form of a leaf (*kopparna* → *kopp*, leaf), an irregular form (*gick* → *gå*), a regular ending (*läser* → *läsa*), a homograph listing two forms (*var* → *vara*, *var* if both are words), a name from the list and a capitalised mid-sentence word; `FR-303 RQ-56:` names never get status new
+- [X] T205 [P] Tests in `tests/texts/schema.test.mjs` additions: `FR-307 RQ-29 RQ-177:` `patterns`, `explanations`, `fixes` pass within limits and are refused beyond them (21 patterns, a place with text 5, an explanation of 501 characters, a fix with 4 options, a fix with neither question nor sentence)
 
 ### Implementation
 
-- [ ] T206 Extend `server/store/migrate.mjs`: a migration file starting with `-- foreign-keys-off` runs as `PRAGMA foreign_keys = OFF`, the transaction, `PRAGMA foreign_key_check` (throw if any row), `PRAGMA foreign_keys = ON` (research R4)
-- [ ] T207 Write `server/store/migrations/005-reading.sql`: rebuild `words` (kind CHECK in ('word','phrase','pattern')), `texts` (exchange_id, package_id, part_no NULL allowed; `own INTEGER NOT NULL DEFAULT 0`) and `exchanges` (package_id, part_no NULL allowed) by create-copy-drop-rename keeping ids and indexes; add `word_meanings`, `pattern_places`, `names`, `explain_flags`, `explanations`, `reports` exactly as data-model.md; `ALTER TABLE learner_settings ADD COLUMN show_translations INTEGER NOT NULL DEFAULT 1`
-- [ ] T208 [P] Write `server/words/resolve.mjs`: `createResolver(db, accountId, {names})` → `resolve(word, {capitalisedMidSentence})` → `{status, lemmas, wordIds}` as research R2, reusing `inflect.mjs` and `irregular.mjs` against all the learner's words
-- [ ] T209 Extend `server/texts/schema.mjs` with `patterns`, `explanations`, `fixes` (contract limits)
+- [X] T206 Extend `server/store/migrate.mjs`: a migration file starting with `-- foreign-keys-off` runs as `PRAGMA foreign_keys = OFF`, the transaction, `PRAGMA foreign_key_check` (throw if any row), `PRAGMA foreign_keys = ON` (research R4)
+- [X] T207 Write `server/store/migrations/005-reading.sql`: rebuild `words` (kind CHECK in ('word','phrase','pattern')), `texts` (exchange_id, package_id, part_no NULL allowed; `own INTEGER NOT NULL DEFAULT 0`) and `exchanges` (package_id, part_no NULL allowed) by create-copy-drop-rename keeping ids and indexes; add `word_meanings`, `pattern_places`, `names`, `explain_flags`, `explanations`, `reports` exactly as data-model.md; `ALTER TABLE learner_settings ADD COLUMN show_translations INTEGER NOT NULL DEFAULT 1`
+- [X] T208 [P] Write `server/words/resolve.mjs`: `createResolver(db, accountId, {names})` → `resolve(word, {capitalisedMidSentence})` → `{status, lemmas, wordIds}` as research R2, reusing `inflect.mjs` and `irregular.mjs` against all the learner's words
+- [X] T209 Extend `server/texts/schema.mjs` with `patterns`, `explanations`, `fixes` (contract limits)
 
 **Checkpoint**: T203–T205 pass.
 

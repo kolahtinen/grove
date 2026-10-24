@@ -48,3 +48,22 @@ test('FR-207 RQ-379: the meanings answer has its own small format', () => {
   assert.equal(validateMeanings({ meanings: [{ form: 'säljer' }] }).ok, false);
   assert.equal(validateMeanings({ texts: [] }).ok, false);
 });
+
+test('FR-307 RQ-29 RQ-177: patterns, explanations and fixes pass within their limits and are refused beyond them', () => {
+  const good = load('good.json');
+  const ok = validateAnswer({ ...good,
+    patterns: [{ name: 'har + supine', explain_en: 'past', places: [{ text: 2, line: 9, words: 'har han glömt' }] }],
+    explanations: [{ code: 'E1', explain_en: 'Plural definite.' }],
+    fixes: [{ code: 'R1', q: 'Vad?', options: ['a', 'b'], answer: 1 }, { code: 'R2', sv: 'Hej.', en: 'Hi.' }] });
+  assert.equal(ok.ok, true, JSON.stringify(ok.problems));
+  assert.equal(ok.value.patterns[0].places[0].words, 'har han glömt');
+  const pattern = { name: 'p', explain_en: 'x', places: [] };
+  const bad = {
+    '21 patterns': { patterns: Array(21).fill(pattern) },
+    'place in text 5': { patterns: [{ ...pattern, places: [{ text: 5, line: 1, words: 'x' }] }] },
+    'long explanation': { explanations: [{ code: 'E1', explain_en: 'x'.repeat(501) }] },
+    'fix with 4 options': { fixes: [{ code: 'R1', q: 'Q', options: ['a', 'b', 'c', 'd'], answer: 0 }] },
+    'fix with nothing': { fixes: [{ code: 'R1' }] },
+  };
+  for (const [name, extra] of Object.entries(bad)) assert.equal(validateAnswer({ ...good, ...extra }).ok, false, name);
+});

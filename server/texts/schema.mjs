@@ -75,8 +75,44 @@ export function validateAnswer(input) {
     inflections: { optional: true, default: [], check: entry({ form: s80, lemma: s80 }) },
     names: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 200 }, (n, nw) => c.str(n, nw, 80)) },
     starter_words: { optional: true, default: [], check: entry({ lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) } }) },
+    // G-03 (FR-307, FR-313, FR-315): patterns, explanations for Explain flags, fixes for reports.
+    patterns: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 20 }, (p, pw) => c.obj(p, pw, {
+      name: s80,
+      explain_en: { check: (y, yw) => c.str(y, yw, 300) },
+      places: { optional: true, default: [], check: (y, yw) => c.arr(y, yw, { max: 20 }, (pl, plw) => c.obj(pl, plw, {
+        text: { check: (z, zw) => int(z, zw, 1, 4) },
+        line: { check: (z, zw) => int(z, zw, 1, 60) },
+        words: s80,
+      })) },
+    })) },
+    explanations: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 20 }, (e, ew) => c.obj(e, ew, {
+      code: { check: (y, yw) => c.str(y, yw, 10) },
+      explain_en: { check: (y, yw) => c.str(y, yw, 500) },
+    })) },
+    fixes: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 20 }, (f, fw) => {
+      const out = c.obj(f, fw, {
+        code: { check: (y, yw) => c.str(y, yw, 10) },
+        q: { optional: true, check: (y, yw) => c.str(y, yw, 300) },
+        options: { optional: true, check: (y, yw) => c.arr(y, yw, { min: 2, max: 3 }, (o, ow) => c.str(o, ow, 200)) },
+        answer: { optional: true, check: (y, yw) => int(y, yw, 0, 2) },
+        sv: { optional: true, check: (y, yw) => c.str(y, yw, 400) },
+        en: { optional: true, check: (y, yw) => c.str(y, yw, 400) },
+      });
+      if (out) {
+        const question = out.q !== undefined && out.options !== undefined && out.answer !== undefined;
+        const sentence = out.sv !== undefined && out.en !== undefined;
+        if (question === sentence) c.note(fw, 'needs either q, options and answer, or sv and en');
+        else if (question && Array.isArray(out.options) && out.answer >= out.options.length) c.note(fw, 'answer points to an option that does not exist');
+      }
+      return out;
+    }) },
   });
   return c.problems.length ? { ok: false, problems: c.problems } : { ok: true, value };
+
+  function int(v, where, min, max) {
+    if (!Number.isInteger(v) || v < min || v > max) { c.note(where, `should be a whole number from ${min} to ${max}`); return null; }
+    return v;
+  }
 }
 
 export function validateMeanings(input) {

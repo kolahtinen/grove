@@ -17,10 +17,22 @@ export function migrate(db, { upTo = Infinity, dir = MIGRATIONS_DIR } = {}) {
   let current = db.prepare('PRAGMA user_version').get().user_version;
   for (const m of listMigrations(dir)) {
     if (m.version <= current || m.version > upTo) continue;
-    transaction(db, () => {
-      db.exec(m.sql);
-      db.exec(`PRAGMA user_version = ${m.version}`);
-    });
+    // A table rebuild needs foreign keys off, or dropping the old table would empty its children
+    // (research R4 of specs/003-reading-word-menu).
+    const keysOff = m.sql.startsWith('-- foreign-keys-off');
+    if (keysOff) db.exec('PRAGMA foreign_keys = OFF');
+    try {
+      transaction(db, () => {
+        db.exec(m.sql);
+        if (keysOff) {
+          const broken = db.prepare('PRAGMA foreign_key_check').all();
+          if (broken.length) throw new Error(`migration ${m.name} breaks ${broken.length} foreign keys`);
+        }
+        db.exec(`PRAGMA user_version = ${m.version}`);
+      });
+    } finally {
+      if (keysOff) db.exec('PRAGMA foreign_keys = ON');
+    }
     current = m.version;
   }
   return current;

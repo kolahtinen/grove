@@ -132,3 +132,43 @@ test('FR-220 RQ-54: every G-02 table has account_id, so export and delete cover 
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-307 RQ-29: migration 005 keeps every row and allows pattern items, own texts and package-less exchanges', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 4 });
+    const run = (sql, ...args) => db.prepare(sql).run(...args);
+    run("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)");
+    run("INSERT INTO words (id, account_id, lemma, kind, en, state, added_at) VALUES (5, 1, 'kopp', 'word', 'cup', 'leaf', 1)");
+    run("INSERT INTO words (id, account_id, lemma, kind, state, added_at) VALUES (6, 1, 'hur mår du', 'phrase', 'leaf', 1)");
+    run("INSERT INTO word_forms (account_id, form, word_id) VALUES (1, 'kopparna', 5)");
+    run('INSERT INTO learner_settings (account_id, topic) VALUES (1, ?)', 'kafé');
+    run("INSERT INTO packages (id, account_id, status, created_at) VALUES (3, 1, 'open', 1)");
+    run("INSERT INTO exchanges (id, account_id, package_id, part_no, kind, code, prompt, status, created_at) VALUES (7, 1, 3, 1, 'part', 'ABCD-1', 'p', 'accepted', 1)");
+    run("INSERT INTO texts (id, account_id, exchange_id, package_id, part_no, position, title, topic, created_at) VALUES (9, 1, 7, 3, 1, 1, 'T', 'kafé', 1)");
+    run("INSERT INTO text_lines (account_id, text_id, position, sv, en) VALUES (1, 9, 0, 'Hej.', 'Hi.')");
+    run("INSERT INTO questions (account_id, text_id, position, q, options, answer) VALUES (1, 9, 0, 'Q?', '[\"a\",\"b\"]', 0)");
+    run("INSERT INTO sentences (account_id, text_id, line_position, position, sv) VALUES (1, 9, 0, 0, 'Hej.')");
+    run("INSERT INTO ratings (account_id, text_id, value, at) VALUES (1, 9, 'most', 1)");
+    run("INSERT INTO question_answers (account_id, text_id, position, option, right, at) VALUES (1, 9, 0, 0, 1, 1)");
+    const tables = ['accounts', 'words', 'word_forms', 'learner_settings', 'packages', 'exchanges', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers'];
+    const before = Object.fromEntries(tables.map((t) => [t, db.prepare(`SELECT * FROM "${t}" ORDER BY rowid`).all()]));
+    migrate(db);
+    assert.equal(db.prepare('PRAGMA user_version').get().user_version >= 5, true);
+    assert.deepEqual(db.prepare('PRAGMA foreign_key_check').all(), []);
+    assert.equal(db.prepare('PRAGMA foreign_keys').get().foreign_keys, 1, 'foreign keys are back on');
+    for (const t of tables) {
+      const after = db.prepare(`SELECT * FROM "${t}" ORDER BY rowid`).all();
+      assert.equal(after.length, before[t].length, t);
+      before[t].forEach((row, i) => { for (const [k, v] of Object.entries(row)) assert.equal(after[i][k], v, `${t}.${k}`); });
+    }
+    run("INSERT INTO words (account_id, lemma, kind, en, state, added_at) VALUES (1, 'har + supine', 'pattern', 'x', 'leaf', 2)");
+    run("INSERT INTO texts (account_id, position, title, topic, created_at, own) VALUES (1, 1, 'Own', '', 2, 1)");
+    run("INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at) VALUES (1, 'meanings', 'OWN', 'p', 'waiting', 2)");
+    assert.equal(db.prepare("SELECT COUNT(*) AS n FROM word_forms WHERE word_id = 5").get().n, 1, 'children of rebuilt tables survive');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
