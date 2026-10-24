@@ -20,6 +20,7 @@
 - Q: With one shared reviewer account, how are the terms and the 13+ confirmation agreed? → A: On each new sign-in, before anything else opens, recorded with its time for that sign-in; constitution 3.1 amended to v1.1.0 (question-pages/55).
 - Q: "Set my starting level again" would wipe the demo for every reviewer; what then? → A: The reviewer account has no such button (RQ-363 changed; built in G-07) (question-pages/55).
 - Q: If the shared reviewer password leaks, how are signed-in people thrown out? → A: Nothing extra; sign-ins last up to 30 days unless the owner deletes the account (question-pages/55).
+- Q: Which tagline does the top bar show? → A: 'grow from what you know' (RQ-309), not the 'read, listen, grow' the first build invented (question-pages/56).
 
 ### Combined requirements changed in clarify
 
@@ -203,7 +204,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 - **FR-027** (RQ-331, RQ-337; N-34): Text SHOULD use Zen Kaku Gothic New (weights 400, 500, 700) served by grove, falling back to Hiragino Sans, Noto Sans JP, then the device's sans-serif, at the sizes of Appendix A.2; content text sizes are defined relative to a size factor (default 1, range 0.8–1.6).
 - **FR-028** (RQ-314, RQ-338, RQ-339; N-34): Content SHOULD sit on rounded, frosted-glass cards with the corner radii, blur, saturation, shadow and glow of Appendix A.3.
 - **FR-029** (RQ-316, RQ-340; N-34): Buttons SHOULD be rounded (14 px) and shrink to 97% while pressed; main buttons have the green gradient, text colour and glow of Appendix A.3.
-- **FR-030** (RQ-341, RQ-23; N-34, N-19): The layout SHOULD follow Appendix A.3: one column at most 560 px wide with its padding, and a sticky top bar fading from the page colour and blurred 14 px, holding the three-tree logo of Appendix A.5 and the app title.
+- **FR-030** (RQ-341, RQ-23, RQ-309; N-34, N-19): The layout SHOULD follow Appendix A.3: one column at most 560 px wide with its padding, and a sticky top bar fading from the page colour and blurred 14 px, holding the three-tree logo of Appendix A.5, the app name 'grove' and the tagline 'grow from what you know' (RQ-309, question-pages/56).
 - **FR-031** (RQ-314, RQ-339; N-34; R-15): When the device asks for reduced transparency or reduced motion, cards and the top bar SHOULD drop the blur and glows (solid card colours instead), so older phones don't lag.
 
 **Scope statements** (carried by the content of later goals; nothing to build in G-01)

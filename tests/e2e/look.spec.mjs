@@ -30,7 +30,7 @@ test('FR-027 RQ-331 RQ-337: text uses Zen Kaku Gothic New at 15px with line heig
   expect(loaded).toBeGreaterThan(0);
 });
 
-test('FR-005 FR-030 RQ-23 RQ-38 RQ-341: one centred column at most 560px, no sideways scroll, a sticky blurred top bar with the logo', async ({ page }) => {
+test('FR-005 FR-030 RQ-23 RQ-38 RQ-341 RQ-309: one centred column at most 560px, no sideways scroll, a sticky blurred top bar with the logo and tagline', async ({ page }) => {
   for (const path of ['/signin', '/reset', '/terms']) {
     await page.goto(path);
     const main = page.locator('main');
@@ -43,6 +43,7 @@ test('FR-005 FR-030 RQ-23 RQ-38 RQ-341: one centred column at most 560px, no sid
     expect(await style(bar, 'position')).toBe('sticky');
     expect(await style(bar, 'backdrop-filter')).toBe('blur(14px)');
     await expect(bar.locator('svg.logo')).toBeVisible();
+    await expect(bar.locator('.tagline')).toHaveText('grow from what you know');
   }
 });
 
