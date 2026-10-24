@@ -36,9 +36,14 @@ test('FR-010 RQ-217 RQ-360 RQ-221: reviewer:setup creates one reviewer account a
   await assert.rejects(createAccount({ ...deps, role: 'reviewer', email: 'second@example.test', password: 'Forest-walk-42' }), /reviewer account already exists/);
 });
 
-test('FR-010 RQ-217: no route creates accounts', () => {
-  const posts = t.grove.app.router.table().filter((r) => r.method === 'POST').map((r) => r.path);
-  assert.deepEqual(posts.sort(), ['/api/agree', '/api/reset', '/api/signin', '/api/signout']);
+test('FR-010 RQ-217: no route creates accounts', async () => {
+  const paths = t.grove.app.router.table().map((r) => r.path);
+  assert.ok(!paths.some((p) => /sign-?up|register|account|invite/i.test(p)), paths.join(', '));
+  // Signing in with an address Firebase knows but grove doesn't never makes an account.
+  t.fb.addUser('newcomer@example.test', 'Forest-walk-42');
+  const before = t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts').get().n;
+  await t.client().signIn('newcomer@example.test', 'Forest-walk-42');
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts').get().n, before);
 });
 
 test('FR-023 RQ-371: both setups are logged', () => {

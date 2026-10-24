@@ -65,8 +65,8 @@
      "en": "Then they start working."
     },
     {
-     "sv": "Många människor kommer in.",
-     "en": "Many people come in."
+     "sv": "Många människor kommer till kaféet.",
+     "en": "Many people come to the café."
     },
     {
      "sv": "De köper kaffe, bröd och tårta.",
@@ -113,8 +113,8 @@
      "en": "Now it is lunch at the café."
     },
     {
-     "sv": "En gammal man kommer in.",
-     "en": "An old man comes in."
+     "sv": "En gammal man kommer till kaféet.",
+     "en": "An old man comes to the café."
     },
     {
      "sv": "Han heter Olle och han bor i en lägenhet vid parken.",
@@ -133,8 +133,8 @@
      "en": "It is raining outside, and he has an umbrella."
     },
     {
-     "sv": "Han vill alltid ha soppa och bröd.",
-     "en": "He always wants soup and bread."
+     "sv": "Han beställer soppa och bröd.",
+     "en": "He orders soup and bread."
     },
     {
      "sv": "Idag har han glömt sin väska.",
@@ -145,8 +145,8 @@
      "en": "\"My key is in the bag!\" he says."
     },
     {
-     "sv": "Han ser ledsen och rädd ut.",
-     "en": "He looks sad and afraid."
+     "sv": "Han är ledsen och rädd.",
+     "en": "He is sad and afraid."
     },
     {
      "sv": "”Vi hjälper dig”, säger Maja.",
@@ -237,6 +237,30 @@
      "en": "Outside it is dark and cold."
     },
     {
+     "sv": "De pratar om dagen och om Olle.",
+     "en": "They talk about the day and about Olle."
+    },
+    {
+     "sv": "Maja tycker att Elsa är en bra chef.",
+     "en": "Maja thinks that Elsa is a good boss."
+    },
+    {
+     "sv": "Elsa tycker att Maja är snabb och snäll.",
+     "en": "Elsa thinks that Maja is quick and kind."
+    },
+    {
+     "sv": "Sedan dricker de lite mer te.",
+     "en": "Then they drink a little more tea."
+    },
+    {
+     "sv": "Klockan är nio, och det är sent.",
+     "en": "It is nine o'clock, and it is late."
+    },
+    {
+     "sv": "Elsa är trött men glad.",
+     "en": "Elsa is tired but happy."
+    },
+    {
      "sv": "Elsa tittar på Maja.",
      "en": "Elsa looks at Maja."
     },
@@ -249,8 +273,8 @@
      "en": "\"Yes, gladly!\" says Maja."
     },
     {
-     "sv": "Hon tar sin jacka och går ut.",
-     "en": "She takes her jacket and goes out."
+     "sv": "Hon tar sin jacka och går hem.",
+     "en": "She takes her jacket and goes home."
     },
     {
      "sv": "Elsa stänger dörren och släcker lampan.",
@@ -345,8 +369,8 @@
      "en": "Then they start working."
     },
     {
-     "sv": "Många människor kommer in.",
-     "en": "Many people come in."
+     "sv": "Många människor kommer till kaféet.",
+     "en": "Many people come to the café."
     },
     {
      "sv": "De köper kaffe, bröd och tårta.",
@@ -393,8 +417,8 @@
      "en": "Now it is lunch at the café."
     },
     {
-     "sv": "En gammal man kommer in.",
-     "en": "An old man comes in."
+     "sv": "En gammal man kommer till kaféet.",
+     "en": "An old man comes to the café."
     },
     {
      "sv": "Han heter Olle och han bor i en lägenhet vid parken.",
@@ -413,8 +437,8 @@
      "en": "It is raining outside, and he has an umbrella."
     },
     {
-     "sv": "Han vill alltid ha soppa och bröd.",
-     "en": "He always wants soup and bread."
+     "sv": "Han beställer soppa och bröd.",
+     "en": "He orders soup and bread."
     },
     {
      "sv": "Idag har han glömt sin väska.",
@@ -425,8 +449,8 @@
      "en": "\"My key is in the bag!\" he says."
     },
     {
-     "sv": "Han ser ledsen och rädd ut.",
-     "en": "He looks sad and afraid."
+     "sv": "Han är ledsen och rädd.",
+     "en": "He is sad and afraid."
     },
     {
      "sv": "”Vi hjälper dig”, säger Maja.",
@@ -542,6 +566,18 @@
    "lemma": "släcka",
    "en": "turns off",
    "explain_sv": "Man gör så att lampan inte lyser."
+  },
+  {
+   "form": "chef",
+   "lemma": "chef",
+   "en": "boss",
+   "explain_sv": "Den som bestämmer på ett jobb."
+  },
+  {
+   "form": "beställer",
+   "lemma": "beställa",
+   "en": "orders",
+   "explain_sv": "Han säger vad han vill äta."
   }
  ],
  "new_phrases": [

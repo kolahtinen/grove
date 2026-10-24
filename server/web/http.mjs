@@ -123,14 +123,18 @@ export function createHandler({ router, guard, csrf, log }) {
       if (req.method !== 'GET' && req.method !== 'HEAD') {
         const raw = await readBody(req);
         csrf(ctx);
+        // The access rule decides before the body is looked at (G-01 contract).
+        const blocked = guard.check(route.access, ctx);
+        if (blocked) return blocked();
         if (route.schema) {
           let parsed;
           try { parsed = JSON.parse(raw || 'null'); } catch { throw new HttpError(400, 'bad_request', 'The request was not understood.'); }
           ctx.body = checkSchema(parsed, route.schema);
         }
+      } else {
+        const blocked = guard.check(route.access, ctx);
+        if (blocked) return blocked();
       }
-      const blocked = guard.check(route.access, ctx);
-      if (blocked) return blocked();
       await route.handler(ctx);
     } catch (error) {
       if (res.headersSent) { res.end(); return; }
