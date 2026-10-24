@@ -9,7 +9,7 @@ let t;
 before(async () => { t = await startTestGrove(); });
 after(() => t.close());
 
-test('FR-023 RQ-371: after setup, sign-in, a failed sign-in, an agreement, a reset and an oversized request, no log holds a password, token or body text', async () => {
+test('FR-023 RQ-371: after setup, sign-in, a failed sign-in, an agreement, a reset, an oversized request and a pasted AI answer, no log holds a password, token or body text', async () => {
   const deps = { db: t.grove.db, seclog: t.grove.seclog, firebase: t.grove.firebase };
   const ownerPw = 'Owner-secret-71!';
   const reviewerPw = 'Reviewer-secret-72!';
@@ -30,6 +30,9 @@ test('FR-023 RQ-371: after setup, sign-in, a failed sign-in, an agreement, a res
     await c.post('/api/reset', { email: 'reviewer@example.test' });
     await c.post('/api/signin', undefined, { raw: JSON.stringify({ email: 'x', password: bodyText.repeat(4000) }), headers: { 'content-type': 'application/json' } });
     await c.post('/api/signin', { email: 'reviewer@example.test', password: idToken });
+    // A pasted AI answer (G-02) must not reach any log either.
+    const p = await c.post('/api/prompt', { action: 'next' });
+    await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: `{"part": "${p.body.code}", "texts": [{"title": "Loggtest", "lines": [{"sv": "${bodyText}.", "en": "x"}]}]}` });
   } finally {
     process.stdout.write = write;
     process.stderr.write = ewrite;

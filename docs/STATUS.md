@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** G-01 Phase 10, deploy and verify on the owner's computer (T062–T066; Firebase project and GitHub token first), and a review of the G-01 code by a fresh session (constitution 1.6); then `/speckit-specify` for G-02; Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** G-02 T141 (try real answers from free ChatGPT, Claude and Gemini on the phone); G-01 Phase 10 (deploy and verify); a fresh-session review of G-01 and G-02 (constitution 1.6); then `/speckit-specify` for G-03.
 
 ## Phases
 
@@ -40,7 +40,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
 | G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
-| G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  |  |  |  |
+| G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  | built 2026-10-24 (T101–T140): 136 unit + 32 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
 
@@ -110,5 +110,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-02 | `/speckit-plan`: plan, research (R1–R8), data model (11 tables, all with account_id), HTTP contract and the AI answer format, quickstart; no new dependencies; new modules `words` and `texts` in `docs/modules.md`; constitution check passes. |
 | 2026-10-24 | G-02 | `/speckit-tasks`: T101–T141 in 8 phases (setup, foundation, US1–US5, polish incl. the real-AI check), tests first; every FR-201…221 has a test task. |
 | 2026-10-24 | G-02 | `/speckit-analyze`: 0 critical, 0 high, 2 medium, 1 low; fixed: answers capped at 80,000 characters (under the 100 KB request limit), listed inflections learned only when plausible (same first two letters, dictionary form already a leaf or ground word), Q-07 baseline may only rise. |
+| 2026-10-24 | G-02 | `/speckit-implement` T101–T140: words module (sentences, Unicode words, names, phrases, regular endings, ~100 common irregular forms, compounds; Q-07 48 of 50), answer schema and extraction (JSON inside prose, cut-off and line numbers), prompts (packages of 3 parts, 3 texts × ~130 words, ≤1,500 known words, summary, nudges), checking with the margins, fix-it and meanings prompts, texts/questions/ratings, Home and the reading page. Also changed in G-01 code: the access rule now decides before the request body is read (latent bug, now covered), and the 'no route creates accounts' test checks the rule rather than a fixed route list. Research R2 gained the 'r' ending, the doubled-consonant verb rule, the irregular-forms table and a tighter compound rule while measuring Q-07. Left: T141 needs the owner with real AIs. |
 
 ## Notes

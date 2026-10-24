@@ -5,8 +5,8 @@
    "title": "<b>x</b> rubrik",
    "lines": [
     {
-     "sv": "<script>alert(1)</script> Det är en kall morgon.",
-     "en": "<b>x</b>"
+     "sv": "Det är en kall morgon i Stockholm.",
+     "en": "<script>alert(1)</script> <b>x</b>"
     },
     {
      "sv": "Elsa öppnar dörren till sitt kafé.",

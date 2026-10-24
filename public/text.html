@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/text.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+</div>
+</header>
+<main>
+<section class="card">
+<h2 id="title"></h2>
+<ol class="lines" id="lines"></ol>
+</section>
+<section class="card" id="questions-card" hidden>
+<h2>Questions</h2>
+<div id="questions"></div>
+</section>
+<section class="card">
+<h2>How much did you understand?</h2>
+<div class="ratings" id="ratings">
+<button type="button" data-value="almost_nothing">Almost nothing</button>
+<button type="button" data-value="a_little">A little</button>
+<button type="button" data-value="about_half">About half</button>
+<button type="button" data-value="most">Most</button>
+<button type="button" data-value="everything">Everything</button>
+</div>
+<p class="message" id="rating-message" role="status" hidden></p>
+<p><a href="/">Back to Home</a></p>
+</section>
+</main>
+</body>
+</html>

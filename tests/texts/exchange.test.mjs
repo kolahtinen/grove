@@ -37,7 +37,7 @@ test('FR-201 RQ-182 RQ-40: asking for texts gives a part prompt, and asking agai
   assert.equal(again.body.exchangeId, first.body.exchangeId);
 });
 
-test('FR-205 RQ-41: pasting an answer wrapped in prose accepts it and Home lists 3 texts; FR-215 RQ-41: within 2 s', async () => {
+test('FR-205 FR-215 RQ-41: pasting an answer wrapped in prose accepts it, within 2 s, and Home lists 3 texts', async () => {
   const c = await reviewerClient();
   const p = await c.post('/api/prompt', { action: 'next' });
   const started = Date.now();
@@ -52,7 +52,7 @@ test('FR-205 RQ-41: pasting an answer wrapped in prose accepts it and Home lists
   assert.deepEqual(home.body.texts.map((x) => x.state), ['new', 'new', 'new']);
 });
 
-test('FR-217 RQ-17: each text keeps its sentences with their position for exercises; FR-216 RQ-54 RQ-65 RQ-64: new words become leaves with meaning and source, plausible inflections are learned, uses grow', () => {
+test('FR-217 FR-216 RQ-17 RQ-54 RQ-65 RQ-64: each text keeps its sentences with their position for exercises; new words become leaves with meaning and source, plausible inflections are learned, uses grow', () => {
   const db = t.grove.db;
   const id = reviewer.id;
   const sentences = db.prepare('SELECT * FROM sentences WHERE account_id = ? ORDER BY text_id, line_position, position').all(id);

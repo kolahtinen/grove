@@ -16,9 +16,46 @@
 </div>
 </header>
 <main>
+<section class="card" id="topic-card">
+<h2>Topic</h2>
+<p class="topic-line"><span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>
+<form id="topic-form" hidden>
+<label>Your topic<input type="text" name="topic" maxlength="80" required></label>
+<button type="submit" class="main">Save topic</button>
+</form>
+</section>
+<section class="card" id="package-card">
+<h2>Texts from your AI</h2>
+<p class="muted small" id="progress"></p>
+<p class="message" id="package-message" role="status" hidden></p>
+<ul class="problems" id="problems" hidden></ul>
+<div id="prompt-area" hidden>
+<h3 class="small" id="prompt-heading">Prompt</h3>
+<p class="small muted">Copy this into your own AI chat (ChatGPT, Claude, Gemini or another), then paste its whole answer below.</p>
+<textarea id="prompt" readonly rows="6" aria-labelledby="prompt-heading"></textarea>
+<button type="button" class="copy">Copy prompt</button>
+<label>Paste the AI's answer here<textarea id="answer" rows="6"></textarea></label>
+<p class="small muted" id="answer-size"></p>
+<button type="button" class="main" id="add-texts">Add texts</button>
+</div>
+<div class="row">
+<button type="button" class="main" id="get-texts">Get texts</button>
+<button type="button" id="new-package" hidden>New package</button>
+</div>
+</section>
+<section class="card" id="meanings-card" hidden>
+<h2>Meanings for new words</h2>
+<p class="small muted">Some new words came without a meaning. Copy this into the same AI chat and paste its answer below.</p>
+<textarea id="meanings-prompt" readonly rows="4" aria-label="Meanings prompt"></textarea>
+<button type="button" class="copy">Copy prompt</button>
+<label>Paste the meanings answer here<textarea id="meanings-answer" rows="4"></textarea></label>
+<p class="message" id="meanings-message" role="status" hidden></p>
+<button type="button" class="main" id="add-meanings">Add meanings</button>
+</section>
 <section class="card">
-<h2>Your grove</h2>
-<p class="muted">Your grove is empty for now.</p>
+<h2>Your texts</h2>
+<p class="muted" id="no-texts">No texts yet. Get some from your AI above.</p>
+<ul class="text-list" id="texts"></ul>
 </section>
 </main>
 </body>

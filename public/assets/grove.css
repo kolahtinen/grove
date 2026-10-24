@@ -221,3 +221,44 @@ input:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid 
   button.main { box-shadow: none; }
   * { transition: none !important; animation: none !important; }
 }
+
+/* G-02: Home's package card, the texts list and the reading page (FR-218, FR-219) */
+textarea {
+  display: block;
+  width: 100%;
+  margin: .3rem 0 .6rem;
+  font: inherit;
+  font-size: .85rem;
+  color: var(--ink);
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .6rem .75rem;
+  resize: vertical;
+}
+input[type=text] {
+  display: block; width: 100%; margin-top: .3rem; font: inherit; color: var(--ink);
+  background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem;
+}
+.row { display: flex; gap: .5rem; margin-top: .6rem; }
+.row > button { flex: 1; }
+.topic-line { display: flex; align-items: center; gap: .5rem; justify-content: space-between; }
+.problems { margin: 0 0 .8rem; padding: .6rem .8rem .6rem 1.6rem; border-radius: 16px; background: var(--bad-bg); color: var(--bad); font-size: .88rem; }
+.problems li + li { margin-top: .3rem; }
+.text-list { list-style: none; margin: 0; padding: 0; }
+.text-list li + li { border-top: 1px solid var(--line); }
+.text-list a { display: flex; justify-content: space-between; gap: .6rem; padding: .55rem .1rem; color: var(--ink); text-decoration: none; }
+.text-state { font-size: .75rem; padding: .1rem .55rem; border-radius: 999px; background: var(--soft); color: var(--muted); align-self: center; }
+.text-state.new { color: var(--accent2); }
+.lines { list-style: none; margin: 0; padding: 0; }
+.lines li { padding: .35rem 0; }
+.lines .en-toggle { margin-left: .4rem; vertical-align: middle; }
+.lines .en { display: block; color: var(--muted); font-size: .86rem; font-family: system-ui, sans-serif; }
+fieldset { border: none; margin: 0 0 .9rem; padding: 0; }
+legend { font-size: calc(1.1rem * var(--size-factor)); margin-bottom: .4rem; }
+button.option { display: block; width: 100%; text-align: left; margin: 0 0 .4rem; border-radius: 16px; }
+button.option.right { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); }
+button.option.wrong { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); }
+.feedback { font-size: .88rem; color: var(--muted); }
+.ratings { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: .4rem; margin-bottom: .6rem; }
+.ratings button.chosen { background: var(--soft); border-color: var(--accent); box-shadow: var(--glow); }

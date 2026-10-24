@@ -58,17 +58,17 @@ description: "Tasks for G-02: texts from the learner's own AI"
 
 ### Tests (write first)
 
-- [ ] T114 [P] [US1] Tests in `tests/texts/prompt.test.mjs`: `FR-201 RQ-182 RQ-183 RQ-40:` a part prompt is plain English, names no tool or file, asks for exactly one JSON block in the format, and contains the part code; `FR-202 RQ-186:` it asks for 3 texts of about 130 words with 2–3 questions each, one sentence per line, English per line; `FR-204 RQ-184:` it lists every field of the format; `FR-208 RQ-28 RQ-172 RQ-33 RQ-64:` it lists the ground's dictionary forms, at most 1,500, topic words first, then most recently fallen, then by uses; `FR-209 RQ-167 RQ-168:` it states the target share and the one-new-item-per-sentence rule; `FR-210 RQ-50:` it asks to reuse up to 10 leaves, most recent first; SC-006: with a generated 5,000-word ground the prompt is under 16,000 characters; with an empty ground it asks for beginner texts from starter words
-- [ ] T115 [P] [US1] Tests in `tests/texts/exchange.test.mjs`: `FR-201 RQ-182 RQ-40:` `POST /api/prompt` returns a part prompt and asking again returns the same waiting prompt; `FR-205 RQ-41:` pasting `good-in-prose.txt` to `POST /api/answer` accepts it and `GET /api/home` lists 3 texts; `FR-217 RQ-17:` each text's sentences are kept with their position for exercises; `FR-216 RQ-54 RQ-65 RQ-64:` the texts' sentences are saved, new words are leaves with the AI's meaning, explanation and source text, listed inflections are learned forms only when their dictionary form is a leaf or ground word and they share its first two letters (X-03's "Elsas → Elsa (namn)" and a swapped le/ler pair are not learned), `uses` grow; an answer of 80,001 characters is refused with a plain message; pasting the same answer again gives `409 duplicate` and nothing doubles; an answer with another part code gives `409 wrong_part`; `FR-215 RQ-41:` checking and storing the answer takes ≤ 2 s (timed); `FR-220 RQ-54 RQ-155:` another account can't answer, read or list this account's exchanges or texts (404)
-- [ ] T116 [P] [US1] Playwright test `tests/e2e/texts.spec.mjs` (part 1): `FR-201 FR-219 RQ-40 RQ-19:` on Home, Get texts shows the prompt and Copy prompt puts it on the clipboard; pasting `good-in-prose.txt` and Add texts lists the three texts
+- [X] T114 [P] [US1] Tests in `tests/texts/prompt.test.mjs`: `FR-201 RQ-182 RQ-183 RQ-40:` a part prompt is plain English, names no tool or file, asks for exactly one JSON block in the format, and contains the part code; `FR-202 RQ-186:` it asks for 3 texts of about 130 words with 2–3 questions each, one sentence per line, English per line; `FR-204 RQ-184:` it lists every field of the format; `FR-208 RQ-28 RQ-172 RQ-33 RQ-64:` it lists the ground's dictionary forms, at most 1,500, topic words first, then most recently fallen, then by uses; `FR-209 RQ-167 RQ-168:` it states the target share and the one-new-item-per-sentence rule; `FR-210 RQ-50:` it asks to reuse up to 10 leaves, most recent first; SC-006: with a generated 5,000-word ground the prompt is under 16,000 characters; with an empty ground it asks for beginner texts from starter words
+- [X] T115 [P] [US1] Tests in `tests/texts/exchange.test.mjs`: `FR-201 RQ-182 RQ-40:` `POST /api/prompt` returns a part prompt and asking again returns the same waiting prompt; `FR-205 RQ-41:` pasting `good-in-prose.txt` to `POST /api/answer` accepts it and `GET /api/home` lists 3 texts; `FR-217 RQ-17:` each text's sentences are kept with their position for exercises; `FR-216 RQ-54 RQ-65 RQ-64:` the texts' sentences are saved, new words are leaves with the AI's meaning, explanation and source text, listed inflections are learned forms only when their dictionary form is a leaf or ground word and they share its first two letters (X-03's "Elsas → Elsa (namn)" and a swapped le/ler pair are not learned), `uses` grow; an answer of 80,001 characters is refused with a plain message; pasting the same answer again gives `409 duplicate` and nothing doubles; an answer with another part code gives `409 wrong_part`; `FR-215 RQ-41:` checking and storing the answer takes ≤ 2 s (timed); `FR-220 RQ-54 RQ-155:` another account can't answer, read or list this account's exchanges or texts (404)
+- [X] T116 [P] [US1] Playwright test `tests/e2e/texts.spec.mjs` (part 1): `FR-201 FR-219 RQ-40 RQ-19:` on Home, Get texts shows the prompt and Copy prompt puts it on the clipboard; pasting `good-in-prose.txt` and Add texts lists the three texts
 
 ### Implementation
 
-- [ ] T117 [US1] Write `server/texts/packages.mjs`: open package (create part 1 of 3 when none is open or the last is finished; return the waiting exchange if any), part codes (4 random letters + part number), `nextPart`, `newPackage` (closes the open one), status updates as research R6
-- [ ] T118 [US1] Write `server/texts/prompt.mjs`: the part prompt of research R4 (known words chosen and capped at 1,500, leaves to reuse, topic, starter-word request for a new topic, target share and rules, the format, empty-ground variant; summary and continue hint added in US5; nudges in US3)
-- [ ] T119 [US1] Write `server/texts/check.mjs` (counts per sentence and per text with `server/words/count.mjs`; accept/refuse per FR-214 is completed in US2) and `server/texts/accept.mjs` (in one transaction: texts, lines, questions, sentences with new items, leaves, learned forms, uses, the topic's starter words, exchange and package updates, answer hash)
-- [ ] T120 [US1] Write `server/texts/routes.mjs` with `GET /api/home`, `POST /api/prompt`, `POST /api/answer` (access `agreed`; schemas of the contract; every query filtered by the session's account) and register it in `server/web/app.mjs`; add `/text` to the static pages (access `agreed`)
-- [ ] T121 [US1] Rebuild `public/index.html` + `public/assets/home.mjs`: topic card, package card (progress "part n of 3", prompt in a read-only box, Copy prompt with clipboard and select-all fallback, paste box with a warning above 80,000 characters, Add texts, messages), texts list (newest first, new/read/rated); all values via `textContent`
+- [X] T117 [US1] Write `server/texts/packages.mjs`: open package (create part 1 of 3 when none is open or the last is finished; return the waiting exchange if any), part codes (4 random letters + part number), `nextPart`, `newPackage` (closes the open one), status updates as research R6
+- [X] T118 [US1] Write `server/texts/prompt.mjs`: the part prompt of research R4 (known words chosen and capped at 1,500, leaves to reuse, topic, starter-word request for a new topic, target share and rules, the format, empty-ground variant; summary and continue hint added in US5; nudges in US3)
+- [X] T119 [US1] Write `server/texts/check.mjs` (counts per sentence and per text with `server/words/count.mjs`; accept/refuse per FR-214 is completed in US2) and `server/texts/accept.mjs` (in one transaction: texts, lines, questions, sentences with new items, leaves, learned forms, uses, the topic's starter words, exchange and package updates, answer hash)
+- [X] T120 [US1] Write `server/texts/routes.mjs` with `GET /api/home`, `POST /api/prompt`, `POST /api/answer` (access `agreed`; schemas of the contract; every query filtered by the session's account) and register it in `server/web/app.mjs`; add `/text` to the static pages (access `agreed`)
+- [X] T121 [US1] Rebuild `public/index.html` + `public/assets/home.mjs`: topic card, package card (progress "part n of 3", prompt in a read-only box, Copy prompt with clipboard and select-all fallback, paste box with a warning above 80,000 characters, Add texts, messages), texts list (newest first, new/read/rated); all values via `textContent`
 
 **Checkpoint**: US1 passes on its own.
 
@@ -82,15 +82,15 @@ description: "Tasks for G-02: texts from the learner's own AI"
 
 ### Tests (write first)
 
-- [ ] T122 [P] [US2] Tests in `tests/texts/check.test.mjs`: `FR-214 RQ-127 RQ-216 RQ-28:` `too-many-new.json` is refused (a sentence with 3 new items; 2 of 10 sentences with 2 new items); a text 3 points below the target share is refused; a text with exactly 1 in 10 sentences with 2 new items and within 2 points is accepted; `FR-212 RQ-378:` `few-new.json` is accepted and sets "ask more firmly"; `FR-207 RQ-379:` `unlisted-new.json` is accepted when within the margins by grove's own count, and a meanings prompt lists exactly the new words without a meaning
-- [ ] T123 [P] [US2] Tests in `tests/texts/fixit.test.mjs`: `FR-206 RQ-185 RQ-63:` for `too-many-new.json` the problems and the fix-it prompt quote each offending sentence and its new words; for `cut-off.txt` and `not-json.txt` the fix-it prompt asks for the whole block again; the fix-it exchange shares the part code; pasting a corrected answer into it is accepted and adds the texts once; `FR-207 RQ-379:` a meanings answer fills meanings, ignores words not asked about, and leaves the rest "meaning missing"; `FR-205 RQ-41:` nothing from a refused answer is stored
-- [ ] T124 [P] [US2] Playwright test `tests/e2e/texts.spec.mjs` (part 2): `FR-206 FR-221 RQ-185 RQ-63:` pasting `too-many-new.json` shows the problems and a fix-it prompt with Copy; pasting `script.json` shows `<script>` and `<b>` as text and runs nothing
+- [X] T122 [P] [US2] Tests in `tests/texts/check.test.mjs`: `FR-214 RQ-127 RQ-216 RQ-28:` `too-many-new.json` is refused (a sentence with 3 new items; 2 of 10 sentences with 2 new items); a text 3 points below the target share is refused; a text with exactly 1 in 10 sentences with 2 new items and within 2 points is accepted; `FR-212 RQ-378:` `few-new.json` is accepted and sets "ask more firmly"; `FR-207 RQ-379:` `unlisted-new.json` is accepted when within the margins by grove's own count, and a meanings prompt lists exactly the new words without a meaning
+- [X] T123 [P] [US2] Tests in `tests/texts/fixit.test.mjs`: `FR-206 RQ-185 RQ-63:` for `too-many-new.json` the problems and the fix-it prompt quote each offending sentence and its new words; for `cut-off.txt` and `not-json.txt` the fix-it prompt asks for the whole block again; the fix-it exchange shares the part code; pasting a corrected answer into it is accepted and adds the texts once; `FR-207 RQ-379:` a meanings answer fills meanings, ignores words not asked about, and leaves the rest "meaning missing"; `FR-205 RQ-41:` nothing from a refused answer is stored
+- [X] T124 [P] [US2] Playwright test `tests/e2e/texts.spec.mjs` (part 2): `FR-206 FR-221 RQ-185 RQ-63:` pasting `too-many-new.json` shows the problems and a fix-it prompt with Copy; pasting `script.json` shows `<script>` and `<b>` as text and runs nothing
 
 ### Implementation
 
-- [ ] T125 [US2] Complete `server/texts/check.mjs` with the margins of FR-214 (as settings in one object) and problem messages naming text, sentence and words; set `firm_new` after a text more than 2 points above the target
-- [ ] T126 [US2] Write `server/texts/fixit.mjs`: fix-it prompt of research R5 (numbered problems, quoted sentences, "reply with the whole corrected JSON block") and the meanings prompt; exchanges of kind `fix` and `meanings`; handle `POST /api/answer` for both kinds in `server/texts/routes.mjs`
-- [ ] T127 [US2] Show problems, the fix-it prompt and the meanings prompt (each with Copy prompt and its paste box) on Home in `public/assets/home.mjs`
+- [X] T125 [US2] Complete `server/texts/check.mjs` with the margins of FR-214 (as settings in one object) and problem messages naming text, sentence and words; set `firm_new` after a text more than 2 points above the target
+- [X] T126 [US2] Write `server/texts/fixit.mjs`: fix-it prompt of research R5 (numbered problems, quoted sentences, "reply with the whole corrected JSON block") and the meanings prompt; exchanges of kind `fix` and `meanings`; handle `POST /api/answer` for both kinds in `server/texts/routes.mjs`
+- [X] T127 [US2] Show problems, the fix-it prompt and the meanings prompt (each with Copy prompt and its paste box) on Home in `public/assets/home.mjs`
 
 **Checkpoint**: US1 and US2 pass together: the MVP.
 
@@ -104,13 +104,13 @@ description: "Tasks for G-02: texts from the learner's own AI"
 
 ### Tests (write first)
 
-- [ ] T128 [P] [US3] Tests in `tests/texts/ratings.test.mjs`: `FR-218 RQ-11 RQ-355 RQ-193 RQ-195 RQ-167 RQ-168:` the share starts at 95; "almost nothing" → +2 and shorter, "a little" → +1 and shorter, "about half" → no change; three "most"/"everything" in a row → −1, a lower rating resets the streak; the share never leaves 93–98; a new rating of the same text replaces the old; "most"/"everything" count as understood; `POST /api/question` returns right/wrong and the right option, and only the first answer per question counts; `FR-212 RQ-193:` the next prompt asks for shorter sentences after a low rating and stops after one prompt; `FR-220 RQ-155:` another account's text id is refused on `/api/text`, `/api/question`, `/api/rating`
-- [ ] T129 [P] [US3] Playwright test `tests/e2e/texts.spec.mjs` (part 3): `FR-218 RQ-36 RQ-46 RQ-11:` open a text from Home, tap a line to show its English, answer a question and see right/wrong, rate it, and see it marked rated on Home
+- [X] T128 [P] [US3] Tests in `tests/texts/ratings.test.mjs`: `FR-218 RQ-11 RQ-355 RQ-193 RQ-195 RQ-167 RQ-168:` the share starts at 95; "almost nothing" → +2 and shorter, "a little" → +1 and shorter, "about half" → no change; three "most"/"everything" in a row → −1, a lower rating resets the streak; the share never leaves 93–98; a new rating of the same text replaces the old; "most"/"everything" count as understood; `POST /api/question` returns right/wrong and the right option, and only the first answer per question counts; `FR-212 RQ-193:` the next prompt asks for shorter sentences after a low rating and stops after one prompt; `FR-220 RQ-155:` another account's text id is refused on `/api/text`, `/api/question`, `/api/rating`
+- [X] T129 [P] [US3] Playwright test `tests/e2e/texts.spec.mjs` (part 3): `FR-218 RQ-36 RQ-46 RQ-11:` open a text from Home, tap a line to show its English, answer a question and see right/wrong, rate it, and see it marked rated on Home
 
 ### Implementation
 
-- [ ] T130 [US3] Write `server/texts/ratings.mjs` (target share rules of research R7) and routes `GET /api/text`, `POST /api/question`, `POST /api/rating` in `server/texts/routes.mjs`; mark `read_at` when a text is opened; add the shorter-sentences and firm-new nudges to `server/texts/prompt.mjs`
-- [ ] T131 [P] [US3] Write `public/text.html` + `public/assets/text.mjs`: title, lines in Swedish with the English shown on tap (button per line), questions with option buttons showing right/wrong (the forest look's right/wrong colours), five rating buttons, back to Home; values via `textContent`
+- [X] T130 [US3] Write `server/texts/ratings.mjs` (target share rules of research R7) and routes `GET /api/text`, `POST /api/question`, `POST /api/rating` in `server/texts/routes.mjs`; mark `read_at` when a text is opened; add the shorter-sentences and firm-new nudges to `server/texts/prompt.mjs`
+- [X] T131 [P] [US3] Write `public/text.html` + `public/assets/text.mjs`: title, lines in Swedish with the English shown on tap (button per line), questions with option buttons showing right/wrong (the forest look's right/wrong colours), five rating buttons, back to Home; values via `textContent`
 
 **Checkpoint**: US3 passes.
 
@@ -120,11 +120,11 @@ description: "Tasks for G-02: texts from the learner's own AI"
 
 ### Tests (write first)
 
-- [ ] T132 [P] [US4] Tests in `tests/texts/topic.test.mjs`: `FR-219 RQ-19:` `POST /api/topic` sets the topic, `GET /api/home` shows it, the next prompt names it; without a topic the prompt uses "everyday life"; `FR-211 RQ-165 RQ-175:` a new topic's prompt asks for 10–15 starter words, an accepted answer's starter words become leaves and the topic is recorded as used; a used topic doesn't ask again; changing topic mid-package makes the remaining parts use the new topic
+- [X] T132 [P] [US4] Tests in `tests/texts/topic.test.mjs`: `FR-219 RQ-19:` `POST /api/topic` sets the topic, `GET /api/home` shows it, the next prompt names it; without a topic the prompt uses "everyday life"; `FR-211 RQ-165 RQ-175:` a new topic's prompt asks for 10–15 starter words, an accepted answer's starter words become leaves and the topic is recorded as used; a used topic doesn't ask again; changing topic mid-package makes the remaining parts use the new topic
 
 ### Implementation
 
-- [ ] T133 [US4] Route `POST /api/topic` and topic handling in `server/texts/routes.mjs`, `prompt.mjs` and `accept.mjs`; topic card with an edit form on Home in `public/assets/home.mjs`
+- [X] T133 [US4] Route `POST /api/topic` and topic handling in `server/texts/routes.mjs`, `prompt.mjs` and `accept.mjs`; topic card with an edit form on Home in `public/assets/home.mjs`
 
 ---
 
@@ -132,21 +132,21 @@ description: "Tasks for G-02: texts from the learner's own AI"
 
 ### Tests (write first)
 
-- [ ] T134 [P] [US5] Tests in `tests/texts/package.test.mjs`: `FR-203 RQ-01 RQ-02 RQ-11 RQ-186 RQ-188:` part 1 of a package carries a plain-text summary listing exactly the texts done since the last summary (title, rating, questions right of asked) and nothing else from the learner's data; parts 2 and 3 carry no summary, are self-contained (known words, rules, format) and ask to continue the earlier story if the chat has it; after 3 accepted parts with all texts rated, the next request starts a new package; with texts unrated, `next` gives `409 package_waiting`; `new_package` closes the open package and its first prompt carries the summary; two requests at once open one package only
+- [X] T134 [P] [US5] Tests in `tests/texts/package.test.mjs`: `FR-203 RQ-01 RQ-02 RQ-11 RQ-186 RQ-188:` part 1 of a package carries a plain-text summary listing exactly the texts done since the last summary (title, rating, questions right of asked) and nothing else from the learner's data; parts 2 and 3 carry no summary, are self-contained (known words, rules, format) and ask to continue the earlier story if the chat has it; after 3 accepted parts with all texts rated, the next request starts a new package; with texts unrated, `next` gives `409 package_waiting`; `new_package` closes the open package and its first prompt carries the summary; two requests at once open one package only
 
 ### Implementation
 
-- [ ] T135 [US5] Summary building and the continue hint in `server/texts/prompt.mjs`; finished/closed rules and `409 package_waiting` in `server/texts/packages.mjs` and `routes.mjs`; package progress, Next part and New package buttons on Home in `public/assets/home.mjs`
+- [X] T135 [US5] Summary building and the continue hint in `server/texts/prompt.mjs`; finished/closed rules and `409 package_waiting` in `server/texts/packages.mjs` and `routes.mjs`; package progress, Next part and New package buttons on Home in `public/assets/home.mjs`
 
 ---
 
 ## Phase 8: Polish & cross-cutting
 
-- [ ] T136 [P] Extend `tests/web/authz.test.mjs` bodies for the new POST routes (the table test then covers them) and `tests/seclog/logscan.test.mjs` with a pasted answer whose text must not appear in any log
-- [ ] T137 [P] Test `tests/owner/data.test.mjs` addition: `FR-220 RQ-54: export includes texts and words; delete leaves no G-02 rows` (constitution 3.2, 3.3)
-- [ ] T138 Give the dev server's reviewer a ground of the X-03 known words (`docs/middle/ai-test/known.txt`) in `tests/fakes/dev-server.mjs`
-- [ ] T139 Run `npm test`, `npm run test:e2e`, `npm run check`; fix through spec and tasks only (constitution 1.1); all of FR-201…FR-221 traced
-- [ ] T140 Walk through quickstart §1–2; record in `docs/STATUS.md` (Implemented for G-02)
+- [X] T136 [P] Extend `tests/web/authz.test.mjs` bodies for the new POST routes (the table test then covers them) and `tests/seclog/logscan.test.mjs` with a pasted answer whose text must not appear in any log
+- [X] T137 [P] Test `tests/owner/data.test.mjs` addition: `FR-220 RQ-54: export includes texts and words; delete leaves no G-02 rows` (constitution 3.2, 3.3)
+- [X] T138 Give the dev server's reviewer a ground of the X-03 known words (`docs/middle/ai-test/known.txt`) in `tests/fakes/dev-server.mjs`
+- [X] T139 Run `npm test`, `npm run test:e2e`, `npm run check`; fix through spec and tasks only (constitution 1.1); all of FR-201…FR-221 traced
+- [X] T140 Walk through quickstart §1–2; record in `docs/STATUS.md` (Implemented for G-02)
 - [ ] T141 (owner, phone) Quickstart §3 with free ChatGPT, Claude and Gemini: first-try acceptance, fix-it rounds, minutes to first text (SC-001, SC-002, SC-005); record in `docs/STATUS.md` (Verified for G-02)
 
 ---

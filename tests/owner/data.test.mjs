@@ -55,3 +55,27 @@ test('FR-023 RQ-371: log:show prints entries filtered by event and hours', () =>
   assert.match(only, /export/);
   assert.doesNotMatch(only, /delete/);
 });
+
+test('FR-220 RQ-54: export includes texts and words, and delete leaves no G-02 rows (constitution 3.2, 3.3)', async () => {
+  const { seedGround } = await import('../fakes/harness.mjs');
+  const { readFileSync } = await import('node:fs');
+  await createAccount({ ...deps, role: 'reviewer', email: 'texts@example.test', password: 'Forest-walk-42' });
+  const { id } = t.grove.db.prepare('SELECT id FROM accounts WHERE email = ?').get('texts@example.test');
+  seedGround(t.grove.db, id, readFileSync(new URL('../../docs/middle/ai-test/known.txt', import.meta.url), 'utf8').split(/\s+/).filter(Boolean));
+  const c = t.client();
+  await c.signInAgreed('texts@example.test', 'Forest-walk-42');
+  const p = await c.post('/api/prompt', { action: 'next' });
+  const good = readFileSync(new URL('../texts/answers/good.json', import.meta.url), 'utf8').replaceAll('TEST-1', p.body.code);
+  assert.equal((await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: good })).body.result, 'accepted');
+  const texts = (await c.get('/api/home')).body.texts;
+  await c.post('/api/rating', { textId: texts[0].id, value: 'most' });
+
+  const data = exportAccount({ ...deps, email: 'texts@example.test' });
+  for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings']) {
+    assert.ok(data.tables[table]?.length > 0, `export has ${table}`);
+  }
+  await deleteAccount({ ...deps, email: 'texts@example.test' });
+  for (const table of ['words', 'word_forms', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers', 'packages', 'exchanges', 'learner_settings']) {
+    assert.equal(t.grove.db.prepare(`SELECT COUNT(*) AS n FROM "${table}" WHERE account_id = ?`).get(id).n, 0, table);
+  }
+});
