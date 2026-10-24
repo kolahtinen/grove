@@ -41,7 +41,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 |---|---|---|---|---|---|---|---|---|
 | G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 | G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  | built 2026-10-24 (T101–T140): 136 unit + 32 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
-| G-03 | clarified 2026-10-24 ([spec](../specs/003-reading-word-menu/spec.md); question-pages/58) |  |  |  |  |  |  |  |
+| G-03 | clarified 2026-10-24 ([spec](../specs/003-reading-word-menu/spec.md); question-pages/58) | drafted 2026-10-24 ([plan](../specs/003-reading-word-menu/plan.md)) | 34 tasks 2026-10-24 ([tasks](../specs/003-reading-word-menu/tasks.md)) |  |  |  |  |  |
 
 ## Addenda
 
@@ -114,5 +114,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-02 | `/speckit-implement` T101–T140: words module (sentences, Unicode words, names, phrases, regular endings, ~100 common irregular forms, compounds; Q-07 48 of 50), answer schema and extraction (JSON inside prose, cut-off and line numbers), prompts (packages of 3 parts, 3 texts × ~130 words, ≤1,500 known words, summary, nudges), checking with the margins, fix-it and meanings prompts, texts/questions/ratings, Home and the reading page. Also changed in G-01 code: the access rule now decides before the request body is read (latent bug, now covered), and the 'no route creates accounts' test checks the rule rather than a fixed route list. Research R2 gained the 'r' ending, the doubled-consonant verb rule, the irregular-forms table and a tighter compound rule while measuring Q-07. Left: T141 needs the owner with real AIs. |
 | 2026-10-24 | G-03 | `/speckit-specify`: spec drafted in `specs/003-reading-word-menu/` (6 user stories, FR-301…319 citing all 20 RQ and 14 N of G-03); no open markers; defaults listed in the checklist for clarify. |
 | 2026-10-24 | G-03 | `/speckit-clarify` (question-pages/58): English shown under every sentence by default, off by a setting, one line still peekable (changes G-02's tap-to-show); up to 8 word questions per text in Practise. |
+| 2026-10-24 | G-03 | `/speckit-plan` and `/speckit-tasks`: reading payload with tokens (menu data sent with the text), resolver against all the learner's words, answer format gains patterns/explanations/fixes, migration 005 rebuilds words/texts/exchanges with foreign keys off, new module `reading`; T201–T234, every FR-301…319 has a test task. |
 
 ## Notes
