@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** `/speckit-specify` for G-01 (git, Spec Kit and the constitution done 2026-10-24, a day late); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** review the G-01 plan, then `/speckit-tasks` (plan drafted 2026-10-24); Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
 
 ## Phases
 
@@ -39,6 +39,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
+| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | | | | | | |
 
 ## Addenda
 
@@ -96,5 +97,8 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-23 | app-wide | Gaps from /pre.ready fixed: PR-p1-235 rated (F-213, through Firebase) and its note updated; PR-p1-236 marked dropped (page 49); F-102 own check for RQ-102's new wording: easy. Risks: R-01 updated with the X-03 results (likelihood high → medium; RQ-186, 377–379 added as techniques); R-13 now counts the content maintainers' review work (RQ-373–375). |
 | 2026-10-23 | app-wide | `/pre.middle-doc` (question-pages/53): 8 user goals confirmed; the look's basics moved into G-01 (51 requirements), G-08 keeps the extras (7); constitution draft accepted; RQ-377 moved to the second build with easy reads, so the first build is 158 requirements (R-02 updated). `/pre.ready` finds nothing missing. [Middle-steps document](middle-steps.md) frozen 2026-10-23; phase 1 closed, `prototypes/` read-only. |
 | 2026-10-24 | app-wide | Phase 3 started: git repository (branch main; `.gitignore` for node_modules, data, .env, logs), Spec Kit 1.2.2.dev0 initialised for Claude (skills in `.claude/skills/`, `/speckit-*`), constitution v1.0.0 set from the accepted draft (rule numbers kept; wording in MUST form). |
+| 2026-10-24 | G-01 | `/speckit-specify`: spec drafted in `specs/001-platform-accounts-look/` (6 user stories, FR-001…031 citing all 51 RQ and 18 N of G-01); one open question for clarify (FR-012: sign-up with an address that already has an account, RQ-372). |
+| 2026-10-24 | G-01 | `/speckit-clarify` (question-pages/54): FR-012 settled (every sign-up ends with 'Done, now sign in'; a taken address changes nothing); a password reset doesn't end existing sign-ins (FR-013, accepted). |
+| 2026-10-24 | G-01 | `/speckit-plan`: plan, research (R1–R13), data model (7 tables), contracts (HTTP API, owner commands), quickstart; Node.js 22 with built-in HTTP/SQLite/crypto/test, Firebase over REST, static client, Playwright; constitution check passes; `docs/modules.md` filled (8 modules). |
 
 ## Notes
