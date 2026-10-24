@@ -39,7 +39,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 
 | Goal | Spec reviewed | Plan reviewed | Tasks | Analyze | Checklist | Implemented | Verified | Validated |
 |---|---|---|---|---|---|---|---|---|
-| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean | | | | | | |
+| G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
 
