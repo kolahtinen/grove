@@ -1,0 +1,222 @@
+/* The forest look: Appendix A of docs/middle-steps.md (FR-026…FR-031). */
+@import url('/fonts/fonts.css');
+
+/* A.1 Night forest (dark) is the default; Pale birch (light) follows the device's setting. */
+:root {
+  color-scheme: dark;
+  --bg: #0A110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(98,140,80,.22), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(199,154,100,.14), transparent 60%), radial-gradient(700px 520px at 50% 115%, rgba(60,110,90,.16), transparent 60%);
+  --card: rgba(255,255,255,.05);
+  --card2: rgba(255,255,255,.08);
+  --ink: #E8F0E9;
+  --muted: #93A399;
+  --line: rgba(255,255,255,.09);
+  --accent: #7FA866;
+  --accent2: #A3C487;
+  --onacc: #0C160A;
+  --soft: rgba(127,168,102,.16);
+  --ok: #76DB5E;
+  --ok-bg: rgba(102,214,86,.15);
+  --bad: #EB8A62;
+  --bad-bg: rgba(214,110,70,.17);
+  --amber: #D9A55B;
+  --wood: #C79A64;
+  --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(127,168,102,.45), 0 6px 22px rgba(127,168,102,.28);
+  --pbg: #121C16;
+  --pink: #E8F0E9;
+  --pbord: #7FA866;
+  --phtx: #0C160A;
+  --okb: #5FC54B;
+  --cw: #7CB4FF;
+  --rlc: #D59BFF;
+  --cb: #4FD1C5;
+  --gpk: #FF6FB0;
+  --rw: #5E7697;
+  --rr: #83679A;
+  --rb: #A08B6A;
+  --t1: #FF8A80;
+  --t2: #7FD68A;
+  --t3: #8FB4FF;
+  --t4: #D7A3E6;
+  --t5: #A8A8A8;
+  --size-factor: 1;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #F3F0E8;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(150,180,120,.30), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(214,190,150,.38), transparent 60%), radial-gradient(700px 500px at 50% 120%, rgba(225,215,190,.55), transparent 60%);
+    --card: rgba(255,255,255,.72);
+    --card2: rgba(255,255,255,.92);
+    --ink: #1E2A22;
+    --muted: #626C61;
+    --line: rgba(30,42,34,.10);
+    --accent: #4A6B3A;
+    --accent2: #6B8F55;
+    --onacc: #FFFFFF;
+    --soft: rgba(74,107,58,.11);
+    --ok: #2F9A2A;
+    --ok-bg: #E3F5DF;
+    --bad: #B4532A;
+    --bad-bg: #F8E5DC;
+    --amber: #B7791F;
+    --wood: #9A6B3E;
+    --shadow: 0 10px 30px rgba(70,60,40,.12);
+    --glow: 0 0 0 1px rgba(74,107,58,.35), 0 6px 20px rgba(74,107,58,.22);
+    --pbg: #FFFFFF;
+    --pink: #1C2130;
+    --pbord: #4A6B3A;
+    --phtx: #FFFFFF;
+    --okb: #3E9B35;
+    --cw: #2563EB;
+    --rlc: #9333EA;
+    --cb: #0F8F86;
+    --gpk: #DB2777;
+    --rw: #94A7C6;
+    --rr: #B89AC6;
+    --rb: #A48A62;
+    --t1: #D0342C;
+    --t2: #2E8B3A;
+    --t3: #2563C9;
+    --t4: #8A3B9E;
+    --t5: #7A7A7A;
+  }
+}
+
+/* A.2 Type */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: var(--bgimg);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0 0 .8rem; }
+a { color: var(--accent2); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+.passage { font-size: calc(1.15rem * var(--size-factor)); line-height: 1.9; }
+
+/* A.3 Layout: one column at most 560px, a sticky blurred top bar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: .55rem .75rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; }
+.logo { width: 30px; height: 30px; stroke: var(--accent); }
+.title { font-size: 1.15rem; font-weight: 700; letter-spacing: .01em; }
+.tagline { display: block; font-size: .7rem; color: var(--muted); font-weight: 400; }
+.account { margin-left: auto; display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.account-email { font-size: .82rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 46vw; }
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: .7rem .75rem 6rem;
+}
+
+/* A.3 Frosted-glass cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  padding: 1rem 1.05rem;
+  margin: 0 0 .9rem;
+}
+
+/* A.3 Buttons */
+button, .button {
+  font: inherit;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .6rem 1rem;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, opacity .2s ease;
+}
+button:active, .button:active { transform: scale(.97); }
+button.main {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: var(--onacc);
+  font-weight: 600;
+  border: none;
+  box-shadow: var(--glow);
+  width: 100%;
+}
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+button.small { padding: .3rem .7rem; font-size: .82rem; border-radius: 14px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+
+/* Forms */
+label { display: block; margin: 0 0 .75rem; font-size: .9rem; }
+input[type=email], input[type=password], input[type=text] {
+  display: block;
+  width: 100%;
+  margin-top: .3rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card2);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: .6rem .75rem;
+}
+input:focus-visible, button:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+.check { display: flex; gap: .6rem; align-items: flex-start; }
+.check input { margin-top: .3rem; width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.links { display: flex; justify-content: space-between; gap: .5rem; margin-top: .8rem; font-size: .85rem; }
+[hidden] { display: none !important; }
+
+/* A.3 Progress bars and grids, used by later goals */
+.progress { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.progress > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 0 8px var(--accent); }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; }
+
+/* Terms text */
+.terms h2 { margin-top: 1rem; }
+.terms ul { padding-left: 1.2rem; margin: 0 0 .8rem; }
+
+/* FR-031: fewer effects when the device asks for them (older phones, R-15) */
+@media (prefers-reduced-motion: reduce), (prefers-reduced-transparency: reduce) {
+  .card, .topbar, button.small {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .card { background: var(--card2); }
+  .topbar { background: var(--bg); }
+  button.main { box-shadow: none; }
+  * { transition: none !important; animation: none !important; }
+}

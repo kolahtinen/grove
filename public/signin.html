@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/signin.mjs"></script>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="title">grove<span class="tagline">read, listen, grow</span></span></a>
+<div class="account" hidden><span class="account-email"></span><button type="button" class="small" id="signout">Sign out</button></div>
+</div></header>
+<main>
+<section class="card">
+<h2>Sign in</h2>
+<p class="message bad" role="alert" hidden></p>
+<form id="signin" novalidate>
+<label>Email<input type="email" name="email" autocomplete="username" required maxlength="254"></label>
+<label>Password<input type="password" name="password" autocomplete="current-password" required maxlength="128"></label>
+<button type="submit" class="main">Sign in</button>
+</form>
+<div class="links"><a href="/reset">Forgot your password?</a><a href="/terms">Terms and privacy</a></div>
+</section>
+</main>
+</body>
+</html>

@@ -3,3 +3,8 @@ data/
 .env
 .env.*
 *.log
+test-results/
+playwright-report/
+public/fonts/
+*.db
+*.db-*
