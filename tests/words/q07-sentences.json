@@ -1,0 +1,299 @@
+{
+ "about": "Q-07 test set: 50 Swedish sentences with the new items they really contain, given docs/middle/ai-test/known.txt as the ground. 'new' lists surface forms, lower-cased. Built 2026-10-24 from the X-03 answers and by hand (inflections, homographs, compounds, irregular forms, names).",
+ "sentences": [
+  {
+   "sv": "Det är en kall morgon i Stockholm.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Elsa öppnar dörren till sitt kafé.",
+   "names": [
+    "elsa"
+   ],
+   "new": []
+  },
+  {
+   "sv": "Hon jobbar här varje dag.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Klockan är sju, och det är tidigt.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Elsa gör kaffe och sätter kakor på bordet.",
+   "names": [
+    "elsa"
+   ],
+   "new": []
+  },
+  {
+   "sv": "Snart kommer Maja.",
+   "names": [
+    "maja"
+   ],
+   "new": []
+  },
+  {
+   "sv": "Maja är ung och hon är trött.",
+   "names": [
+    "maja"
+   ],
+   "new": []
+  },
+  {
+   "sv": "”Hej, Elsa!” säger hon.",
+   "names": [
+    "elsa"
+   ],
+   "new": []
+  },
+  {
+   "sv": "Hon säljer bröd och tårta.",
+   "names": [],
+   "new": [
+    "säljer"
+   ]
+  },
+  {
+   "sv": "Han har glömt sin väska på tåget.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Barnen leker i parken.",
+   "names": [],
+   "new": [
+    "leker"
+   ]
+  },
+  {
+   "sv": "Vi gick hem efter middagen.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "De såg en film igår.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Min bror bor i en stor lägenhet.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Det var många människor på torget.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon köpte två nya böcker.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Var bor du?",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hunden springer runt i trädgården.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Vädret är fint idag.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Jag dricker kaffe med mjölk varje morgon.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Läraren skriver på tavlan.",
+   "names": [],
+   "new": [
+    "tavlan"
+   ]
+  },
+  {
+   "sv": "Han ringer sin mamma på söndagar.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Vi åker buss till skolan.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon är ledsen för att hon har förlorat sin nyckel.",
+   "names": [],
+   "new": [
+    "förlorat"
+   ]
+  },
+  {
+   "sv": "Kan du hjälpa mig med väskan?",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Det regnar och blåser ute.",
+   "names": [],
+   "new": [
+    "blåser"
+   ]
+  },
+  {
+   "sv": "Stationen ligger nära torget.",
+   "names": [],
+   "new": [
+    "nära"
+   ]
+  },
+  {
+   "sv": "Barnen äter glass i parken.",
+   "names": [],
+   "new": [
+    "glass"
+   ]
+  },
+  {
+   "sv": "Han tittar på tv hela kvällen.",
+   "names": [],
+   "new": [
+    "tv"
+   ]
+  },
+  {
+   "sv": "Sjukhuset är stängt på natten.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Jag tycker om att laga mat.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon har en röd jacka och svarta skor.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Familjen åker till landet på sommaren.",
+   "names": [],
+   "new": [
+    "sommaren"
+   ]
+  },
+  {
+   "sv": "Han kom hem sent i natt.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Vi måste vänta på tåget.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Fåglarna sjunger i skogen.",
+   "names": [],
+   "new": [
+    "sjunger"
+   ]
+  },
+  {
+   "sv": "Kaffebordet är litet.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon bär en tung väska.",
+   "names": [],
+   "new": [
+    "tung"
+   ]
+  },
+  {
+   "sv": "Det gör inget, säger Erik.",
+   "names": [
+    "erik"
+   ],
+   "new": []
+  },
+  {
+   "sv": "Han är rädd för hundar.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Bussen var full av glada människor.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Imorgon ska vi träffa våra grannar.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon skrattar när han berättar en historia.",
+   "names": [],
+   "new": [
+    "berättar",
+    "historia"
+   ]
+  },
+  {
+   "sv": "Biblioteket öppnar klockan nio.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Vi behöver köpa mer socker.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Den gamla mannen sitter i soffan.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Hon har bott i Sverige i tio år.",
+   "names": [],
+   "new": []
+  },
+  {
+   "sv": "Pojken och flickan leker tillsammans.",
+   "names": [],
+   "new": [
+    "leker",
+    "tillsammans"
+   ]
+  },
+  {
+   "sv": "Jag har inte sett honom på länge.",
+   "names": [],
+   "new": [
+    "länge"
+   ]
+  },
+  {
+   "sv": "Han cyklar till jobbet varje dag.",
+   "names": [],
+   "new": [
+    "jobbet"
+   ]
+  }
+ ]
+}

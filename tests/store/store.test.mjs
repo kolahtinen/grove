@@ -117,3 +117,18 @@ test('FR-002 RQ-180: a failed migration leaves the database at its previous vers
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-220 RQ-54: every G-02 table has account_id, so export and delete cover it', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db);
+    for (const name of ['words', 'word_forms', 'learner_settings', 'packages', 'exchanges', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers']) {
+      const cols = db.prepare(`PRAGMA table_info("${name}")`).all().map((c) => c.name);
+      assert.ok(cols.includes('account_id'), `${name} has account_id`);
+    }
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

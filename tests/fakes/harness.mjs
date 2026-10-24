@@ -102,3 +102,10 @@ export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1',
     },
   };
 }
+
+// Puts dictionary forms into an account's ground (G-06 and G-07 do this for real learners).
+export function seedGround(db, accountId, lemmas) {
+  const stmt = db.prepare(`INSERT OR IGNORE INTO words (account_id, lemma, kind, state, added_at, fallen_at)
+    VALUES (?, ?, 'word', 'ground', ?, ?)`);
+  for (const lemma of lemmas) stmt.run(accountId, lemma.toLowerCase(), Date.now(), Date.now());
+}

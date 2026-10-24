@@ -1,0 +1,597 @@
+{
+ "part": "TEST-1",
+ "texts": [
+  {
+   "title": "En kall morgon",
+   "lines": [
+    {
+     "sv": "Det är en kall morgon i Stockholm.",
+     "en": "It is a cold morning in Stockholm."
+    },
+    {
+     "sv": "Elsa öppnar dörren till sitt kafé.",
+     "en": "Elsa opens the door to her café."
+    },
+    {
+     "sv": "Kaféet heter Kafé Björk.",
+     "en": "The café is called Kafé Björk."
+    },
+    {
+     "sv": "Det är litet, men det är varmt och fint.",
+     "en": "It is small, but it is warm and nice."
+    },
+    {
+     "sv": "Elsa är inte ung, men hon är alltid glad.",
+     "en": "Elsa is not young, but she is always happy."
+    },
+    {
+     "sv": "Hon jobbar här varje dag.",
+     "en": "She works here every day."
+    },
+    {
+     "sv": "Klockan är sju, och det är tidigt.",
+     "en": "It is seven o'clock, and it is early."
+    },
+    {
+     "sv": "Elsa gör kaffe och sätter kakor på bordet.",
+     "en": "Elsa makes coffee and puts cakes on the table."
+    },
+    {
+     "sv": "Snart kommer Maja.",
+     "en": "Soon Maja comes."
+    },
+    {
+     "sv": "Maja är ung och hon är trött.",
+     "en": "Maja is young and she is tired."
+    },
+    {
+     "sv": "”Hej, Elsa!” säger hon.",
+     "en": "\"Hi, Elsa!\" she says."
+    },
+    {
+     "sv": "”Hej, Maja. Hur mår du?” frågar Elsa.",
+     "en": "\"Hi, Maja. How are you?\" Elsa asks."
+    },
+    {
+     "sv": "”Jag är trött, men det gör inget”, svarar Maja.",
+     "en": "\"I'm tired, but it doesn't matter,\" Maja answers."
+    },
+    {
+     "sv": "Hon dricker en kopp kaffe.",
+     "en": "She drinks a cup of coffee."
+    },
+    {
+     "sv": "Sedan börjar de arbeta.",
+     "en": "Then they start working."
+    },
+    {
+     "sv": "Många människor kommer in.",
+     "en": "Many people come in."
+    },
+    {
+     "sv": "De köper kaffe, bröd och tårta.",
+     "en": "They buy coffee, bread and cake."
+    },
+    {
+     "sv": "Elsa skrattar och pratar med alla.",
+     "en": "Elsa laughs and talks with everyone."
+    },
+    {
+     "sv": "Maja tycker om sitt nya jobb.",
+     "en": "Maja likes her new job."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad heter kaféet?",
+     "options": [
+      "Kafé Björk",
+      "Kafé Sol",
+      "Kafé Maja"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Hur mår Maja?",
+     "options": [
+      "Hon är glad",
+      "Hon är trött"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "title": "Olles väska",
+   "lines": [
+    {
+     "sv": "Klockan är tolv.",
+     "en": "It is twelve o'clock."
+    },
+    {
+     "sv": "Nu är det lunch på kaféet.",
+     "en": "Now it is lunch at the café."
+    },
+    {
+     "sv": "En gammal man kommer in.",
+     "en": "An old man comes in."
+    },
+    {
+     "sv": "Han heter Olle och han bor i en lägenhet vid parken.",
+     "en": "His name is Olle and he lives in a flat by the park."
+    },
+    {
+     "sv": "Olle är pensionär.",
+     "en": "Olle is retired."
+    },
+    {
+     "sv": "Han kommer hit varje dag.",
+     "en": "He comes here every day."
+    },
+    {
+     "sv": "Det regnar ute, och han har ett paraply.",
+     "en": "It is raining outside, and he has an umbrella."
+    },
+    {
+     "sv": "Han vill alltid ha soppa och bröd.",
+     "en": "He always wants soup and bread."
+    },
+    {
+     "sv": "Idag har han glömt sin väska.",
+     "en": "Today he has forgotten his bag."
+    },
+    {
+     "sv": "”Min nyckel är i väskan!” säger han.",
+     "en": "\"My key is in the bag!\" he says."
+    },
+    {
+     "sv": "Han ser ledsen och rädd ut.",
+     "en": "He looks sad and afraid."
+    },
+    {
+     "sv": "”Vi hjälper dig”, säger Maja.",
+     "en": "\"We'll help you,\" Maja says."
+    },
+    {
+     "sv": "Hon och Elsa letar under borden och stolarna.",
+     "en": "She and Elsa look under the tables and chairs."
+    },
+    {
+     "sv": "Elsa hittar väskan bakom en soffa.",
+     "en": "Elsa finds the bag behind a sofa."
+    },
+    {
+     "sv": "Olle blir mycket glad.",
+     "en": "Olle becomes very happy."
+    },
+    {
+     "sv": "”Tack, tack!” säger han.",
+     "en": "\"Thank you, thank you!\" he says."
+    },
+    {
+     "sv": "Han betalar för maten och går hem.",
+     "en": "He pays for the food and goes home."
+    },
+    {
+     "sv": "Maja tittar på Elsa och ler.",
+     "en": "Maja looks at Elsa and smiles."
+    },
+    {
+     "sv": "”Han är en snäll man”, säger hon.",
+     "en": "\"He is a kind man,\" she says."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad har Olle glömt?",
+     "options": [
+      "Sin väska",
+      "Sin jacka",
+      "Sin hund"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Var hittar Elsa väskan?",
+     "options": [
+      "Under ett bord",
+      "Bakom en soffa"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "title": "En bra dag",
+   "lines": [
+    {
+     "sv": "På kvällen är kaféet tomt.",
+     "en": "In the evening the café is empty."
+    },
+    {
+     "sv": "Elsa och Maja städar.",
+     "en": "Elsa and Maja clean."
+    },
+    {
+     "sv": "Maja tvättar kopparna.",
+     "en": "Maja washes the cups."
+    },
+    {
+     "sv": "Elsa räknar pengarna.",
+     "en": "Elsa counts the money."
+    },
+    {
+     "sv": "”Det var en bra dag”, säger Elsa.",
+     "en": "\"It was a good day,\" says Elsa."
+    },
+    {
+     "sv": "”Ja, och Olle var så glad”, svarar Maja.",
+     "en": "\"Yes, and Olle was so happy,\" Maja answers."
+    },
+    {
+     "sv": "De sitter vid ett bord och dricker te.",
+     "en": "They sit at a table and drink tea."
+    },
+    {
+     "sv": "Ute är det mörkt och kallt.",
+     "en": "Outside it is dark and cold."
+    },
+    {
+     "sv": "Elsa tittar på Maja.",
+     "en": "Elsa looks at Maja."
+    },
+    {
+     "sv": "”Vill du jobba här imorgon också?” frågar hon.",
+     "en": "\"Do you want to work here tomorrow too?\" she asks."
+    },
+    {
+     "sv": "”Ja, gärna!” säger Maja.",
+     "en": "\"Yes, gladly!\" says Maja."
+    },
+    {
+     "sv": "Hon tar sin jacka och går ut.",
+     "en": "She takes her jacket and goes out."
+    },
+    {
+     "sv": "Elsa stänger dörren och släcker lampan.",
+     "en": "Elsa closes the door and turns off the lamp."
+    },
+    {
+     "sv": "Imorgon är en ny dag på Kafé Björk.",
+     "en": "Tomorrow is a new day at Kafé Björk."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad dricker Elsa och Maja?",
+     "options": [
+      "Kaffe",
+      "Te",
+      "Juice"
+     ],
+     "answer": 1
+    },
+    {
+     "q": "Vill Maja jobba imorgon?",
+     "options": [
+      "Ja",
+      "Nej"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "title": "En kall morgon",
+   "lines": [
+    {
+     "sv": "Det är en kall morgon i Stockholm.",
+     "en": "It is a cold morning in Stockholm."
+    },
+    {
+     "sv": "Elsa öppnar dörren till sitt kafé.",
+     "en": "Elsa opens the door to her café."
+    },
+    {
+     "sv": "Kaféet heter Kafé Björk.",
+     "en": "The café is called Kafé Björk."
+    },
+    {
+     "sv": "Det är litet, men det är varmt och fint.",
+     "en": "It is small, but it is warm and nice."
+    },
+    {
+     "sv": "Elsa är inte ung, men hon är alltid glad.",
+     "en": "Elsa is not young, but she is always happy."
+    },
+    {
+     "sv": "Hon jobbar här varje dag.",
+     "en": "She works here every day."
+    },
+    {
+     "sv": "Klockan är sju, och det är tidigt.",
+     "en": "It is seven o'clock, and it is early."
+    },
+    {
+     "sv": "Elsa gör kaffe och sätter kakor på bordet.",
+     "en": "Elsa makes coffee and puts cakes on the table."
+    },
+    {
+     "sv": "Snart kommer Maja.",
+     "en": "Soon Maja comes."
+    },
+    {
+     "sv": "Maja är ung och hon är trött.",
+     "en": "Maja is young and she is tired."
+    },
+    {
+     "sv": "”Hej, Elsa!” säger hon.",
+     "en": "\"Hi, Elsa!\" she says."
+    },
+    {
+     "sv": "”Hej, Maja. Hur mår du?” frågar Elsa.",
+     "en": "\"Hi, Maja. How are you?\" Elsa asks."
+    },
+    {
+     "sv": "”Jag är trött, men det gör inget”, svarar Maja.",
+     "en": "\"I'm tired, but it doesn't matter,\" Maja answers."
+    },
+    {
+     "sv": "Hon dricker en kopp kaffe.",
+     "en": "She drinks a cup of coffee."
+    },
+    {
+     "sv": "Sedan börjar de arbeta.",
+     "en": "Then they start working."
+    },
+    {
+     "sv": "Många människor kommer in.",
+     "en": "Many people come in."
+    },
+    {
+     "sv": "De köper kaffe, bröd och tårta.",
+     "en": "They buy coffee, bread and cake."
+    },
+    {
+     "sv": "Elsa skrattar och pratar med alla.",
+     "en": "Elsa laughs and talks with everyone."
+    },
+    {
+     "sv": "Maja tycker om sitt nya jobb.",
+     "en": "Maja likes her new job."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad heter kaféet?",
+     "options": [
+      "Kafé Björk",
+      "Kafé Sol",
+      "Kafé Maja"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Hur mår Maja?",
+     "options": [
+      "Hon är glad",
+      "Hon är trött"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "title": "Olles väska",
+   "lines": [
+    {
+     "sv": "Klockan är tolv.",
+     "en": "It is twelve o'clock."
+    },
+    {
+     "sv": "Nu är det lunch på kaféet.",
+     "en": "Now it is lunch at the café."
+    },
+    {
+     "sv": "En gammal man kommer in.",
+     "en": "An old man comes in."
+    },
+    {
+     "sv": "Han heter Olle och han bor i en lägenhet vid parken.",
+     "en": "His name is Olle and he lives in a flat by the park."
+    },
+    {
+     "sv": "Olle är pensionär.",
+     "en": "Olle is retired."
+    },
+    {
+     "sv": "Han kommer hit varje dag.",
+     "en": "He comes here every day."
+    },
+    {
+     "sv": "Det regnar ute, och han har ett paraply.",
+     "en": "It is raining outside, and he has an umbrella."
+    },
+    {
+     "sv": "Han vill alltid ha soppa och bröd.",
+     "en": "He always wants soup and bread."
+    },
+    {
+     "sv": "Idag har han glömt sin väska.",
+     "en": "Today he has forgotten his bag."
+    },
+    {
+     "sv": "”Min nyckel är i väskan!” säger han.",
+     "en": "\"My key is in the bag!\" he says."
+    },
+    {
+     "sv": "Han ser ledsen och rädd ut.",
+     "en": "He looks sad and afraid."
+    },
+    {
+     "sv": "”Vi hjälper dig”, säger Maja.",
+     "en": "\"We'll help you,\" Maja says."
+    },
+    {
+     "sv": "Hon och Elsa letar under borden och stolarna.",
+     "en": "She and Elsa look under the tables and chairs."
+    },
+    {
+     "sv": "Elsa hittar väskan bakom en soffa.",
+     "en": "Elsa finds the bag behind a sofa."
+    },
+    {
+     "sv": "Olle blir mycket glad.",
+     "en": "Olle becomes very happy."
+    },
+    {
+     "sv": "”Tack, tack!” säger han.",
+     "en": "\"Thank you, thank you!\" he says."
+    },
+    {
+     "sv": "Han betalar för maten och går hem.",
+     "en": "He pays for the food and goes home."
+    },
+    {
+     "sv": "Maja tittar på Elsa och ler.",
+     "en": "Maja looks at Elsa and smiles."
+    },
+    {
+     "sv": "”Han är en snäll man”, säger hon.",
+     "en": "\"He is a kind man,\" she says."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad har Olle glömt?",
+     "options": [
+      "Sin väska",
+      "Sin jacka",
+      "Sin hund"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Var hittar Elsa väskan?",
+     "options": [
+      "Under ett bord",
+      "Bakom en soffa"
+     ],
+     "answer": 1
+    }
+   ]
+  }
+ ],
+ "new_words": [
+  {
+   "form": "kopp",
+   "lemma": "kopp",
+   "en": "cup",
+   "explain_sv": "Man dricker kaffe ur en kopp."
+  },
+  {
+   "form": "jobb",
+   "lemma": "jobb",
+   "en": "job",
+   "explain_sv": "Det man arbetar med."
+  },
+  {
+   "form": "tolv",
+   "lemma": "tolv",
+   "en": "twelve",
+   "explain_sv": "Tio och två."
+  },
+  {
+   "form": "pensionär",
+   "lemma": "pensionär",
+   "en": "retired person",
+   "explain_sv": "En gammal person som inte jobbar mer."
+  },
+  {
+   "form": "paraply",
+   "lemma": "paraply",
+   "en": "umbrella",
+   "explain_sv": "Man har det när det regnar."
+  },
+  {
+   "form": "kopparna",
+   "lemma": "kopp",
+   "en": "the cups",
+   "explain_sv": "Mer än en kopp."
+  },
+  {
+   "form": "räknar",
+   "lemma": "räkna",
+   "en": "counts",
+   "explain_sv": "Ett, två, tre, fyra …"
+  },
+  {
+   "form": "mörkt",
+   "lemma": "mörk",
+   "en": "dark",
+   "explain_sv": "Inte ljust, som på natten."
+  },
+  {
+   "form": "gärna",
+   "lemma": "gärna",
+   "en": "gladly",
+   "explain_sv": "Ja, det vill jag."
+  },
+  {
+   "form": "släcker",
+   "lemma": "släcka",
+   "en": "turns off",
+   "explain_sv": "Man gör så att lampan inte lyser."
+  }
+ ],
+ "new_phrases": [
+  {
+   "sv": "hur mår du",
+   "en": "how are you",
+   "explain_sv": "Man frågar om någon är glad eller trött."
+  },
+  {
+   "sv": "det gör inget",
+   "en": "it doesn't matter",
+   "explain_sv": "Det är okej."
+  }
+ ],
+ "inflections": [
+  {
+   "form": "kaféet",
+   "lemma": "kafé"
+  },
+  {
+   "form": "stolarna",
+   "lemma": "stol"
+  },
+  {
+   "form": "ler",
+   "lemma": "le"
+  }
+ ],
+ "names": [
+  "Elsa",
+  "Maja",
+  "Olle",
+  "Björk",
+  "Stockholm"
+ ],
+ "starter_words": [
+  {
+   "lemma": "kopp",
+   "en": "cup",
+   "explain_sv": "Man dricker kaffe ur en kopp."
+  },
+  {
+   "lemma": "servitör",
+   "en": "waiter",
+   "explain_sv": "En person som ger dig mat på en restaurang."
+  },
+  {
+   "lemma": "meny",
+   "en": "menu",
+   "explain_sv": "Där står vad man kan äta."
+  }
+ ]
+}
