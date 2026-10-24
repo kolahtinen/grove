@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>grove p1: implicit requirements, follow-up</title>
+<style>
+:root{--bg:#EEF1F4;--card:#FFFFFF;--ink:#1B2A41;--muted:#5B6878;--line:#D3DAE2;--accent:#2E4A7D;--soft:#E2E8F2;--bad:#9B2C1F;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#11161D;--card:#1A212B;--ink:#E4E9F0;--muted:#9AA6B5;--line:#2C3642;--accent:#8FB0E6;--soft:#243044;--bad:#F0A597}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:1.2rem 1rem calc(7rem + env(safe-area-inset-bottom,0px))}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+.lede{color:var(--muted);margin:0 0 1rem;font-size:.92rem}
+h2{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:1.4rem 0 .5rem}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem;margin-bottom:.6rem}
+.q p{margin:0 0 .3rem;font-size:.95rem}
+.q p b{color:var(--muted);font-weight:600;margin-right:.3rem}
+.q .hint{font-size:.8rem;color:var(--muted);margin:0 0 .6rem}
+.opts{display:flex;flex-direction:column;gap:.35rem}
+button{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;font-size:.88rem}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opts button{display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;border-radius:10px;padding:.5rem .7rem}
+.opts button .bx{flex:none;width:1.1rem;height:1.1rem;margin-top:.17rem;border:1.5px solid var(--muted);border-radius:4px;display:grid;place-items:center;font-size:.72rem;line-height:1;color:var(--card)}
+.opts button[aria-checked="true"]{background:var(--soft);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx{background:var(--accent);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx::after{content:"✓"}
+.opts button.extra{color:var(--muted)}
+.other{display:block;width:100%;margin-top:.5rem;font:inherit;font-size:.92rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .6rem}
+.other[hidden]{display:none}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+.bar .in{max-width:640px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.bar .prog{flex:1;min-width:8rem;font-size:.85rem;color:var(--muted)}
+.bar .dl{background:var(--accent);border-color:var(--accent);color:var(--card);border-radius:10px;font-weight:500}
+.bar .msg{width:100%;font-size:.8rem;color:var(--muted);min-height:1em}
+</style>
+</head>
+<body>
+<main>
+<h1>grove p1: implicit requirements, follow-up</h1>
+<p class="lede">Tick every answer that fits; you can pick several. Tap one again to untick it. "None of these" says nothing fits, and Other… lets you add your own. Skipped questions get a sensible default. When you're done, copy the answers and paste them into the chat with Claude.</p>
+<div id="list"></div>
+<h2>Notes</h2>
+<div class="q"><p>Anything else Claude should know? (optional)</p><textarea id="notes" class="other" rows="5" style="resize:vertical" aria-label="Notes"></textarea></div>
+<label class="q" style="display:flex;gap:.6rem;align-items:center;cursor:pointer"><input type="checkbox" id="fu" style="width:1.2rem;height:1.2rem;accent-color:var(--accent)"><span>I'd like a round of follow-up questions before you build</span></label>
+</main>
+<div class="bar"><div class="in"><span class="prog" id="prog"></span><button type="button" class="dl" id="md">Download .md</button><button type="button" class="dl" id="txt">Download .txt</button><button type="button" class="dl" id="cp">Copy answers</button><span class="msg" id="msg"></span><textarea id="box" readonly hidden style="width:100%;min-height:9rem;font:inherit;font-size:.8rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem"></textarea></div></div>
+<script>
+const R=[["You ticked both keep and drop", "PR-p1-48: Listening mode blurs the text until clicked. What it means: in listening mode the Swedish text is shown blurred, so you have to listen instead of read; you click the text when you want to see it. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-54: Meeting a grammar pattern in a text gives it a light review. What it means: grammar patterns (e.g. 'verb second': in a Swedish sentence the verb comes second) are practised on a review schedule that pushes the next review further away after each correct answer (spaced repetition). When you meet a pattern you already know in a text, grove counts it as a small review and moves its next review a little later. Words don't get this: PR-p1-36 says meeting a word in a text is counted but doesn't change its schedule. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-56: The fix-it message names the exact sentences and words that broke the rules. What it means: when your AI's answer breaks grove's rules (e.g. a sentence with two new words), grove gives you a message to paste back into the AI chat. With this, the message quotes exactly which sentences and words were wrong, instead of just asking the AI to try again. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-62: Unit lengths: about 5 minutes per story episode, 4 per retelling, 4 per dialogue, 6 per choose-your-path story. What it means: a content package is about an hour of input (PR-p1-30), made of units: episodes of a story series, retellings (the same story told again in a different way), dialogues, and choose-your-path stories (you pick what happens next). Grove uses these lengths to plan how many units fit in an hour and in each 20-minute part. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-81: Default package mix: 4 episodes, 2 retellings, 3 dialogues, 2 choose-your-path stories. What it means: when you ask for a package without choosing, this is what you get (about an hour with the lengths in PR-p1-62). You can still change the mix each time. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-83: A package can be cancelled. What it means: a package comes in parts, one prompt each (PR-p1-30). Cancelling drops the parts you haven't fetched yet; the parts you already have stay in the library. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Left undecided on page 14", "PR-p1-87: Progress compares each skill's share of practice with its slider. What it means: the sliders (PR-p1-04) say how much of each skill you want (reading, listening, vocabulary, grammar, writing). The progress view shows, next to each slider, the share of your practice that actually went to that skill. Tick Keep or Drop (pick one); tick neither to leave it undecided.", ["Keep", "Drop"]], ["Drops that touch other requirements", "You dropped PR-p1-46 (a 'Drill this' button wherever a known word appears). But PR-p1-12 says you can mark any word in your 'ground' for drilling later. The ground is the words you know, which never fade; 'drilling' is spaced-repetition practice for words you mark. The button was how PR-p1-12 was built. What now? (pick one)", ["Keep PR-p1-12, but marking works some other way (say how under Other)", "Change PR-p1-12: known words can't be marked for drilling later", "Undo the drop: keep the button"]], ["Drops that touch other requirements", "You dropped PR-p1-47 (character and place names have their own list and never count as new words). AI stories use names like Lisa or Omar that aren't in grove's vocabulary. Without the list, grove counts them as unknown words: texts look harder than they are, and answers can be rejected for breaking PR-p1-06 (at most 1 new word per sentence). What now? (pick one)", ["Names count as new words; that's fine", "Names are recognised another way (e.g. a capital letter mid-sentence), without a list", "Undo the drop: keep the names list"]], ["Drops that touch other requirements", "You dropped PR-p1-52 ('Continue', the button that picks your next activity, weighs reading and listening double). PR-p1-37 says input (reading and listening) gets more focus than drill exercises; doubling was how that was built. What now? (pick one)", ["Keep PR-p1-37: the sliders' starting values favour reading and listening instead", "Change PR-p1-37: no extra focus on input; the sliders alone decide", "Undo the drop: keep the double weight"]], ["Drops that touch other requirements", "You dropped PR-p1-43 (one learner per server: no accounts or login). Today grove holds one person's progress, and whoever opens it sees it. What should it be instead? Tick any.", ["Several learners, each with an account and login", "Several learners picked from a list, without passwords", "Teachers with their classes (PR-p1-01)"]], ["Drops that touch other requirements", "You dropped PR-p1-49 (speech plays at 0.9× speed by default, slightly slower than normal). What should the starting speed be? (pick one)", ["Normal speed (1×)", "The learner chooses on first use"]], ["Your new requirement PR-p1-89", "PR-p1-89: The server collects a large bank of vocabulary and grammar, with translations, examples, inflections (the different forms of a word, e.g. bok, boken, böcker) and so on. Where should the bank's content come from? Tick any. Note PR-p1-24: grove costs nothing beyond your Claude Pro.", ["From the AI answers learners paste in", "Imported from open dictionaries such as Wiktionary (licences to check)", "Written or corrected by me or by teachers"]], ["Your new requirement PR-p1-89", "PR-p1-89: Is the bank shared? If several learners use one server, the answers one learner pastes could fill the bank for everyone. (pick one)", ["Shared by all learners on the server", "Each learner has their own"]], ["Your new requirement PR-p1-89", "PR-p1-89: What should grove use the bank for? Tick any.", ["Word meanings without asking the AI each time", "Recognising inflected forms, so they don't count as unknown", "Example sentences for exercises", "Checking AI answers"]], ["Your new requirement PR-p1-89", "PR-p1-89 pulls against PR-p1-20, which says a small server stores learner data in a JSON file (one plain text file holding everything). That's fine for one learner but slow for a large shared bank. What now? (pick one)", ["Change PR-p1-20: a database is fine", "Keep PR-p1-20: JSON files for now"]]];
+const ans=R.map(()=>({s:[],o:"",n:false,open:false}));
+try{const s=JSON.parse(localStorage.getItem("grove-p1-implicit-15")||"null");if(Array.isArray(s)&&s.length===R.length)s.forEach((v,i)=>{if(v&&Array.isArray(v.s))ans[i]={s:v.s.filter(k=>Number.isInteger(k)&&k>=0&&k<R[i][2].length),o:typeof v.o==="string"?v.o:"",n:!!v.n,open:!!v.open};});}catch(e){}
+const $=id=>document.getElementById(id);
+const done=a=>a.n||a.s.length>0||a.o.trim()!=="";
+function save(){try{localStorage.setItem("grove-p1-implicit-15",JSON.stringify(ans));localStorage.setItem("grove-p1-implicit-15-notes",$("notes").value);}catch(e){}}
+function prog(){$("prog").textContent=ans.filter(done).length+" of "+R.length+" answered";}
+function mk(text,extra){const x=document.createElement("button");x.type="button";x.setAttribute("role","checkbox");if(extra)x.className="extra";const b=document.createElement("span");b.className="bx";b.setAttribute("aria-hidden","true");const t=document.createElement("span");t.textContent=text;x.append(b,t);return x;}
+let last="";
+R.forEach((r,i)=>{
+if(r[0]!==last){const h=document.createElement("h2");h.textContent=r[0];$("list").appendChild(h);last=r[0];}
+const a=ans[i];
+const d=document.createElement("div");d.className="q";
+const p=document.createElement("p");const b=document.createElement("b");b.textContent=(i+1)+".";p.append(b,document.createTextNode(r[1]));
+const hint=document.createElement("p");hint.className="hint";
+const o=document.createElement("div");o.className="opts";o.setAttribute("role","group");o.setAttribute("aria-label","Question "+(i+1));
+const inp=document.createElement("input");inp.type="text";inp.placeholder="Your own answer";inp.className="other";inp.setAttribute("aria-label","Your own answer to question "+(i+1));inp.value=a.o;
+const btns=r[2].map((t,k)=>{const x=mk(t);x.onclick=()=>{const j=a.s.indexOf(k);if(j>=0)a.s.splice(j,1);else{a.s.push(k);a.n=false;}paint();save();prog();};o.appendChild(x);return x;});
+const nb=mk("None of these",true);nb.onclick=()=>{a.n=!a.n;if(a.n){a.s=[];a.o="";a.open=false;inp.value="";}paint();save();prog();};o.appendChild(nb);
+const ob=mk("Other…",true);ob.onclick=()=>{if(a.open){a.open=false;a.o="";inp.value="";}else{a.open=true;a.n=false;setTimeout(()=>inp.focus(),0);}paint();save();prog();};o.appendChild(ob);
+inp.oninput=()=>{a.o=inp.value;if(a.o.trim())a.n=false;paint();save();prog();};
+const paint=()=>{btns.forEach((x,k)=>x.setAttribute("aria-checked",a.s.includes(k)?"true":"false"));nb.setAttribute("aria-checked",a.n?"true":"false");ob.setAttribute("aria-checked",a.open?"true":"false");inp.hidden=!a.open;const c=a.s.length+(a.o.trim()?1:0);hint.textContent=a.n?"None of these":(c?c+" picked":"Pick as many as fit");};
+d.append(p,hint,o,inp);paint();$("list").appendChild(d);});
+function build(md){
+const L=[md?"# grove p1: implicit requirements, follow-up: answers":"grove p1: implicit requirements, follow-up: answers",""];let g="";
+R.forEach((r,i)=>{if(r[0]!==g){if(md)L.push("## "+r[0]);else L.push(r[0].toUpperCase());g=r[0];}
+const a=ans[i];
+if(!done(a))L.push((i+1)+". "+r[1]+" → (no answer, use a sensible default)");
+else if(a.n)L.push((i+1)+". "+r[1]+" → None of these");
+else{L.push((i+1)+". "+r[1]+" →");a.s.slice().sort((x,y)=>x-y).forEach(k=>L.push("   - "+r[2][k]));if(a.o.trim())L.push("   - Other: "+a.o.trim());}
+if(i===R.length-1||R[i+1][0]!==g)L.push("");});
+const nt=$("notes").value.trim();if(nt){L.push(md?"## Notes":"NOTES");L.push(nt);L.push("");}
+L.push((md?"**Follow-up round:** ":"FOLLOW-UP ROUND: ")+($("fu").checked?"yes":"no"));L.push("");
+return L.join("\n");}
+function dl(md){
+try{const blob=new Blob([build(md)],{type:md?"text/markdown;charset=utf-8":"text/plain;charset=utf-8"});
+const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="grove-p1-implicit-15"+(md?".md":".txt");
+document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+const n=R.length-ans.filter(done).length;$("msg").textContent="Downloaded."+(n?" "+n+" skipped; Claude will use defaults for those.":"");}
+catch(e){$("msg").textContent="Download didn't work here. Use Copy answers instead.";}}
+$("cp").onclick=async()=>{const t=build(false);
+try{await navigator.clipboard.writeText(t);$("msg").textContent="Copied. Paste it into the chat with Claude.";$("box").hidden=true;}
+catch(e){$("box").value=t;$("box").hidden=false;$("box").focus();$("box").select();$("msg").textContent="Copying is blocked here. Select all the text in the box below, copy it, and paste it into the chat.";}};
+$("md").onclick=()=>dl(true);$("txt").onclick=()=>dl(false);
+try{$("notes").value=localStorage.getItem("grove-p1-implicit-15-notes")||"";}catch(e){}
+$("notes").oninput=save;
+try{$("fu").checked=localStorage.getItem("grove-p1-implicit-15-fu")==="1";}catch(e){}
+$("fu").onchange=()=>{try{localStorage.setItem("grove-p1-implicit-15-fu",$("fu").checked?"1":"0");}catch(e){}};
+prog();
+</script>
+</body>
+</html>

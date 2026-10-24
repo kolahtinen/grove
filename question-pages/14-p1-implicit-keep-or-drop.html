@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>grove p1: implicit requirements (keep or drop)</title>
+<style>
+:root{--bg:#EEF1F4;--card:#FFFFFF;--ink:#1B2A41;--muted:#5B6878;--line:#D3DAE2;--accent:#2E4A7D;--soft:#E2E8F2;--bad:#9B2C1F;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#11161D;--card:#1A212B;--ink:#E4E9F0;--muted:#9AA6B5;--line:#2C3642;--accent:#8FB0E6;--soft:#243044;--bad:#F0A597}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:1.2rem 1rem calc(7rem + env(safe-area-inset-bottom,0px))}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+.lede{color:var(--muted);margin:0 0 1rem;font-size:.92rem}
+h2{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:1.4rem 0 .5rem}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem;margin-bottom:.6rem}
+.q p{margin:0 0 .3rem;font-size:.95rem}
+.q p b{color:var(--muted);font-weight:600;margin-right:.3rem}
+.q .hint{font-size:.8rem;color:var(--muted);margin:0 0 .6rem}
+.opts{display:flex;flex-direction:column;gap:.35rem}
+button{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;font-size:.88rem}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opts button{display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;border-radius:10px;padding:.5rem .7rem}
+.opts button .bx{flex:none;width:1.1rem;height:1.1rem;margin-top:.17rem;border:1.5px solid var(--muted);border-radius:4px;display:grid;place-items:center;font-size:.72rem;line-height:1;color:var(--card)}
+.opts button[aria-checked="true"]{background:var(--soft);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx{background:var(--accent);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx::after{content:"✓"}
+.opts button.extra{color:var(--muted)}
+.other{display:block;width:100%;margin-top:.5rem;font:inherit;font-size:.92rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .6rem}
+.other[hidden]{display:none}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+.bar .in{max-width:640px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.bar .prog{flex:1;min-width:8rem;font-size:.85rem;color:var(--muted)}
+.bar .dl{background:var(--accent);border-color:var(--accent);color:var(--card);border-radius:10px;font-weight:500}
+.bar .msg{width:100%;font-size:.8rem;color:var(--muted);min-height:1em}
+</style>
+</head>
+<body>
+<main>
+<h1>grove p1: implicit requirements (keep or drop)</h1>
+<p class="lede">Tick every answer that fits; you can pick several. Tap one again to untick it. "None of these" says nothing fits, and Other… lets you add your own. Skipped questions get a sensible default. When you're done, copy the answers and paste them into the chat with Claude.</p>
+<div id="list"></div>
+<h2>Notes</h2>
+<div class="q"><p>Anything else Claude should know? (optional)</p><textarea id="notes" class="other" rows="5" style="resize:vertical" aria-label="Notes"></textarea></div>
+<label class="q" style="display:flex;gap:.6rem;align-items:center;cursor:pointer"><input type="checkbox" id="fu" style="width:1.2rem;height:1.2rem;accent-color:var(--accent)"><span>I'd like a round of follow-up questions before you build</span></label>
+</main>
+<div class="bar"><div class="in"><span class="prog" id="prog"></span><button type="button" class="dl" id="md">Download .md</button><button type="button" class="dl" id="txt">Download .txt</button><button type="button" class="dl" id="cp">Copy answers</button><span class="msg" id="msg"></span><textarea id="box" readonly hidden style="width:100%;min-height:9rem;font:inherit;font-size:.8rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem"></textarea></div></div>
+<script>
+const R=[["Saving", "Saving: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-42: Sentences from accepted AI texts are saved and reused in later exercises.", "PR-p1-71: Texts the learner pastes are saved (without English).", "PR-p1-43: One learner per server: no accounts or login.", "PR-p1-72: The learner's data is saved after every change."]], ["Saving", "Saving: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-42: Sentences from accepted AI texts are saved and reused in later exercises.", "PR-p1-71: Texts the learner pastes are saved (without English).", "PR-p1-43: One learner per server: no accounts or login.", "PR-p1-72: The learner's data is saved after every change."]], ["Reading", "Reading: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-44: Each sentence shows how many new words it has.", "PR-p1-73: Each text shows its word count, its new words and their share.", "PR-p1-45: Clicking any word opens an inspector with its meaning, status, strength, and the phrases and patterns it's part of.", "PR-p1-74: Unknown words can be added from the inspector, with an AI prompt for the meaning.", "PR-p1-46: A 'Drill this' button wherever a known word appears (inspector, dictionary, map).", "PR-p1-47: Character and place names have their own list and never count as new words."]], ["Reading", "Reading: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-44: Each sentence shows how many new words it has.", "PR-p1-73: Each text shows its word count, its new words and their share.", "PR-p1-45: Clicking any word opens an inspector with its meaning, status, strength, and the phrases and patterns it's part of.", "PR-p1-74: Unknown words can be added from the inspector, with an AI prompt for the meaning.", "PR-p1-46: A 'Drill this' button wherever a known word appears (inspector, dictionary, map).", "PR-p1-47: Character and place names have their own list and never count as new words."]], ["Listening", "Listening: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-48: Listening mode blurs the text until clicked.", "PR-p1-75: English translations can be shown or hidden.", "PR-p1-49: Speech plays at 0.9× speed by default.", "PR-p1-76: Settings hold the speech speed and the level above which English is hidden."]], ["Listening", "Listening: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-48: Listening mode blurs the text until clicked.", "PR-p1-75: English translations can be shown or hidden.", "PR-p1-49: Speech plays at 0.9× speed by default.", "PR-p1-76: Settings hold the speech speed and the level above which English is hidden."]], ["Practice", "Practice: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-50: Multiple choice asks for a word's meaning inside a sentence, not on its own.", "PR-p1-51: Write with a pattern: grove checks for the pattern with a rule and lists words not in the tree, as a hint only.", "PR-p1-77: Write with a pattern: the AI's verdict (correct, and uses the pattern) grades the exercise.", "PR-p1-52: 'Continue' (the automatic next activity) weighs reading and listening double."]], ["Practice", "Practice: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-50: Multiple choice asks for a word's meaning inside a sentence, not on its own.", "PR-p1-51: Write with a pattern: grove checks for the pattern with a rule and lists words not in the tree, as a hint only.", "PR-p1-77: Write with a pattern: the AI's verdict (correct, and uses the pattern) grades the exercise.", "PR-p1-52: 'Continue' (the automatic next activity) weighs reading and listening double."]], ["Learning model", "Learning model: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-53: A drilled word joins the ground after a correct answer once its review interval reaches 4 days.", "PR-p1-78: A drilled word counts as fading when its strength drops below 0.2.", "PR-p1-79: Practice shows fading items first.", "PR-p1-54: Meeting a grammar pattern in a text gives it a light review (patterns only).", "PR-p1-55: Input time per text counts at most three times its estimated length and at least 30 seconds."]], ["Learning model", "Learning model: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-53: A drilled word joins the ground after a correct answer once its review interval reaches 4 days.", "PR-p1-78: A drilled word counts as fading when its strength drops below 0.2.", "PR-p1-79: Practice shows fading items first.", "PR-p1-54: Meeting a grammar pattern in a text gives it a light review (patterns only).", "PR-p1-55: Input time per text counts at most three times its estimated length and at least 30 seconds."]], ["AI answers", "AI answers: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-56: The fix-it message lists the exact sentences and words that broke the rules.", "PR-p1-57: Prompts ask the AI for inflected forms of known words; grove learns them so they stop counting as unknown.", "PR-p1-58: New words from an accepted text, grammar example or topic go straight into the tree as new, with the AI's meaning.", "PR-p1-59: AI grammar explanations are saved with the pattern; their examples are reused in exercises.", "PR-p1-60: With an API key, the fix-it message is sent automatically, up to 3 tries.", "PR-p1-61: A choose-your-path answer is accepted only with a start, valid links, every part reachable and at least one ending.", "PR-p1-80: After a choose-your-path story, the reader offers 'Try another path'."]], ["AI answers", "AI answers: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-56: The fix-it message lists the exact sentences and words that broke the rules.", "PR-p1-57: Prompts ask the AI for inflected forms of known words; grove learns them so they stop counting as unknown.", "PR-p1-58: New words from an accepted text, grammar example or topic go straight into the tree as new, with the AI's meaning.", "PR-p1-59: AI grammar explanations are saved with the pattern; their examples are reused in exercises.", "PR-p1-60: With an API key, the fix-it message is sent automatically, up to 3 tries.", "PR-p1-61: A choose-your-path answer is accepted only with a start, valid links, every part reachable and at least one ending.", "PR-p1-80: After a choose-your-path story, the reader offers 'Try another path'."]], ["Content packages", "Content packages: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-62: Unit lengths: about 5 min per episode, 4 per retelling, 4 per dialogue, 6 per choose-your-path story.", "PR-p1-81: Default package mix: 4 episodes, 2 retellings, 3 dialogues, 2 choose-your-path stories.", "PR-p1-82: The whole package can be asked for in one prompt instead of in parts.", "PR-p1-83: A package can be cancelled.", "PR-p1-63: Five preset series ideas to choose from, plus your own topic."]], ["Content packages", "Content packages: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-62: Unit lengths: about 5 min per episode, 4 per retelling, 4 per dialogue, 6 per choose-your-path story.", "PR-p1-81: Default package mix: 4 episodes, 2 retellings, 3 dialogues, 2 choose-your-path stories.", "PR-p1-82: The whole package can be asked for in one prompt instead of in parts.", "PR-p1-83: A package can be cancelled.", "PR-p1-63: Five preset series ideas to choose from, plus your own topic."]], ["Progress", "Progress: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-64: Estimated CEFR level from known words: A1 250, A2 750, B1 1500, B2 3000, C1 6000, C2 10000.", "PR-p1-84: A 'What your hours can bring' roadmap.", "PR-p1-65: Progress shows minutes of input per day.", "PR-p1-85: Progress shows the ground over time (from daily snapshots).", "PR-p1-86: Progress shows the words met most often, as drilling candidates.", "PR-p1-87: Progress compares each skill's share of practice with its slider."]], ["Progress", "Progress: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-64: Estimated CEFR level from known words: A1 250, A2 750, B1 1500, B2 3000, C1 6000, C2 10000.", "PR-p1-84: A 'What your hours can bring' roadmap.", "PR-p1-65: Progress shows minutes of input per day.", "PR-p1-85: Progress shows the ground over time (from daily snapshots).", "PR-p1-86: Progress shows the words met most often, as drilling candidates.", "PR-p1-87: Progress compares each skill's share of practice with its slider."]], ["Screens and map", "Screens and map: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-66: Locked items (parts not yet known) are shown with dashed outlines on the map.", "PR-p1-67: Navigation: Home, Library, Practice, Dictionary, My grove, Progress, Topics, Why this works.", "PR-p1-68: A welcome screen on the first visit.", "PR-p1-88: Tips."]], ["Screens and map", "Screens and map: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-66: Locked items (parts not yet known) are shown with dashed outlines on the map.", "PR-p1-67: Navigation: Home, Library, Practice, Dictionary, My grove, Progress, Topics, Why this works.", "PR-p1-68: A welcome screen on the first visit.", "PR-p1-88: Tips."]], ["Prototype only", "Prototype only: which should grove keep? Tick each one to keep; it becomes an active requirement.", ["PR-p1-69: Reset buttons: back to the demo learner, or start from zero.", "PR-p1-70: Sample texts (an episode, a dialogue, a choose-your-path story) in the demo library."]], ["Prototype only", "Prototype only: which should be dropped? Anything you tick in neither question stays undecided.", ["PR-p1-69: Reset buttons: back to the demo learner, or start from zero.", "PR-p1-70: Sample texts (an episode, a dialogue, a choose-your-path story) in the demo library."]]];
+const ans=R.map(()=>({s:[],o:"",n:false,open:false}));
+try{const s=JSON.parse(localStorage.getItem("grove-p1-implicit-14")||"null");if(Array.isArray(s)&&s.length===R.length)s.forEach((v,i)=>{if(v&&Array.isArray(v.s))ans[i]={s:v.s.filter(k=>Number.isInteger(k)&&k>=0&&k<R[i][2].length),o:typeof v.o==="string"?v.o:"",n:!!v.n,open:!!v.open};});}catch(e){}
+const $=id=>document.getElementById(id);
+const done=a=>a.n||a.s.length>0||a.o.trim()!=="";
+function save(){try{localStorage.setItem("grove-p1-implicit-14",JSON.stringify(ans));localStorage.setItem("grove-p1-implicit-14-notes",$("notes").value);}catch(e){}}
+function prog(){$("prog").textContent=ans.filter(done).length+" of "+R.length+" answered";}
+function mk(text,extra){const x=document.createElement("button");x.type="button";x.setAttribute("role","checkbox");if(extra)x.className="extra";const b=document.createElement("span");b.className="bx";b.setAttribute("aria-hidden","true");const t=document.createElement("span");t.textContent=text;x.append(b,t);return x;}
+let last="";
+R.forEach((r,i)=>{
+if(r[0]!==last){const h=document.createElement("h2");h.textContent=r[0];$("list").appendChild(h);last=r[0];}
+const a=ans[i];
+const d=document.createElement("div");d.className="q";
+const p=document.createElement("p");const b=document.createElement("b");b.textContent=(i+1)+".";p.append(b,document.createTextNode(r[1]));
+const hint=document.createElement("p");hint.className="hint";
+const o=document.createElement("div");o.className="opts";o.setAttribute("role","group");o.setAttribute("aria-label","Question "+(i+1));
+const inp=document.createElement("input");inp.type="text";inp.placeholder="Your own answer";inp.className="other";inp.setAttribute("aria-label","Your own answer to question "+(i+1));inp.value=a.o;
+const btns=r[2].map((t,k)=>{const x=mk(t);x.onclick=()=>{const j=a.s.indexOf(k);if(j>=0)a.s.splice(j,1);else{a.s.push(k);a.n=false;}paint();save();prog();};o.appendChild(x);return x;});
+const nb=mk("None of these",true);nb.onclick=()=>{a.n=!a.n;if(a.n){a.s=[];a.o="";a.open=false;inp.value="";}paint();save();prog();};o.appendChild(nb);
+const ob=mk("Other…",true);ob.onclick=()=>{if(a.open){a.open=false;a.o="";inp.value="";}else{a.open=true;a.n=false;setTimeout(()=>inp.focus(),0);}paint();save();prog();};o.appendChild(ob);
+inp.oninput=()=>{a.o=inp.value;if(a.o.trim())a.n=false;paint();save();prog();};
+const paint=()=>{btns.forEach((x,k)=>x.setAttribute("aria-checked",a.s.includes(k)?"true":"false"));nb.setAttribute("aria-checked",a.n?"true":"false");ob.setAttribute("aria-checked",a.open?"true":"false");inp.hidden=!a.open;const c=a.s.length+(a.o.trim()?1:0);hint.textContent=a.n?"None of these":(c?c+" picked":"Pick as many as fit");};
+d.append(p,hint,o,inp);paint();$("list").appendChild(d);});
+function build(md){
+const L=[md?"# grove p1: implicit requirements (keep or drop): answers":"grove p1: implicit requirements (keep or drop): answers",""];let g="";
+R.forEach((r,i)=>{if(r[0]!==g){if(md)L.push("## "+r[0]);else L.push(r[0].toUpperCase());g=r[0];}
+const a=ans[i];
+if(!done(a))L.push((i+1)+". "+r[1]+" → (no answer, use a sensible default)");
+else if(a.n)L.push((i+1)+". "+r[1]+" → None of these");
+else{L.push((i+1)+". "+r[1]+" →");a.s.slice().sort((x,y)=>x-y).forEach(k=>L.push("   - "+r[2][k]));if(a.o.trim())L.push("   - Other: "+a.o.trim());}
+if(i===R.length-1||R[i+1][0]!==g)L.push("");});
+const nt=$("notes").value.trim();if(nt){L.push(md?"## Notes":"NOTES");L.push(nt);L.push("");}
+L.push((md?"**Follow-up round:** ":"FOLLOW-UP ROUND: ")+($("fu").checked?"yes":"no"));L.push("");
+return L.join("\n");}
+function dl(md){
+try{const blob=new Blob([build(md)],{type:md?"text/markdown;charset=utf-8":"text/plain;charset=utf-8"});
+const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="grove-p1-implicit-14"+(md?".md":".txt");
+document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+const n=R.length-ans.filter(done).length;$("msg").textContent="Downloaded."+(n?" "+n+" skipped; Claude will use defaults for those.":"");}
+catch(e){$("msg").textContent="Download didn't work here. Use Copy answers instead.";}}
+$("cp").onclick=async()=>{const t=build(false);
+try{await navigator.clipboard.writeText(t);$("msg").textContent="Copied. Paste it into the chat with Claude.";$("box").hidden=true;}
+catch(e){$("box").value=t;$("box").hidden=false;$("box").focus();$("box").select();$("msg").textContent="Copying is blocked here. Select all the text in the box below, copy it, and paste it into the chat.";}};
+$("md").onclick=()=>dl(true);$("txt").onclick=()=>dl(false);
+try{$("notes").value=localStorage.getItem("grove-p1-implicit-14-notes")||"";}catch(e){}
+$("notes").oninput=save;
+try{$("fu").checked=localStorage.getItem("grove-p1-implicit-14-fu")==="1";}catch(e){}
+$("fu").onchange=()=>{try{localStorage.setItem("grove-p1-implicit-14-fu",$("fu").checked?"1":"0");}catch(e){}};
+prog();
+</script>
+</body>
+</html>

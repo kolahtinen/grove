@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>grove p1 round 5: needs (1 of 2)</title>
+<style>
+:root{--bg:#EEF1F4;--card:#FFFFFF;--ink:#1B2A41;--muted:#5B6878;--line:#D3DAE2;--accent:#2E4A7D;--soft:#E2E8F2;--bad:#9B2C1F;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#11161D;--card:#1A212B;--ink:#E4E9F0;--muted:#9AA6B5;--line:#2C3642;--accent:#8FB0E6;--soft:#243044;--bad:#F0A597}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:1.2rem 1rem calc(7rem + env(safe-area-inset-bottom,0px))}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+.lede{color:var(--muted);margin:0 0 1rem;font-size:.92rem}
+h2{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:1.4rem 0 .5rem}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem;margin-bottom:.6rem}
+.q p{margin:0 0 .3rem;font-size:.95rem}
+.q p b{color:var(--muted);font-weight:600;margin-right:.3rem}
+.q .hint{font-size:.8rem;color:var(--muted);margin:0 0 .6rem}
+.opts{display:flex;flex-direction:column;gap:.35rem}
+button{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;font-size:.88rem}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opts button{display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;border-radius:10px;padding:.5rem .7rem}
+.opts button .bx{flex:none;width:1.1rem;height:1.1rem;margin-top:.17rem;border:1.5px solid var(--muted);border-radius:4px;display:grid;place-items:center;font-size:.72rem;line-height:1;color:var(--card)}
+.opts button[aria-checked="true"]{background:var(--soft);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx{background:var(--accent);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx::after{content:"✓"}
+.opts button.extra{color:var(--muted)}
+.other{display:block;width:100%;margin-top:.5rem;font:inherit;font-size:.92rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .6rem}
+.other[hidden]{display:none}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+.bar .in{max-width:640px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.bar .prog{flex:1;min-width:8rem;font-size:.85rem;color:var(--muted)}
+.bar .dl{background:var(--accent);border-color:var(--accent);color:var(--card);border-radius:10px;font-weight:500}
+.bar .msg{width:100%;font-size:.8rem;color:var(--muted);min-height:1em}
+</style>
+</head>
+<body>
+<main>
+<h1>grove p1 round 5: needs (1 of 2)</h1>
+<p class="lede">Tick every answer that fits; you can pick several. Tap one again to untick it. "None of these" says nothing fits, and Other… lets you add your own. Skipped questions get a sensible default. When you're done, copy the answers and paste them into the chat with Claude.</p>
+<div id="list"></div>
+<h2>Notes</h2>
+<div class="q"><p>Anything else Claude should know? (optional)</p><textarea id="notes" class="other" rows="5" style="resize:vertical" aria-label="Notes"></textarea></div>
+<label class="q" style="display:flex;gap:.6rem;align-items:center;cursor:pointer"><input type="checkbox" id="fu" style="width:1.2rem;height:1.2rem;accent-color:var(--accent)"><span>I'd like a round of follow-up questions before you build</span></label>
+</main>
+<div class="bar"><div class="in"><span class="prog" id="prog"></span><button type="button" class="dl" id="md">Download .md</button><button type="button" class="dl" id="txt">Download .txt</button><button type="button" class="dl" id="cp">Copy answers</button><span class="msg" id="msg"></span><textarea id="box" readonly hidden style="width:100%;min-height:9rem;font:inherit;font-size:.8rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem"></textarea></div></div>
+<script>
+const R=[["Needs", "N-p1-01: A learner needs to build on what they already know, with only a little new at a time so that new material is never overwhelming. What it means: Every text should be mostly words you know, with only a few new ones, so you can follow it. This is behind the 'at most 1 new word per sentence' rule and the new-word counters. (Source: PR-p1-06, PR-p1-08, PR-p1-10, PR-p1-11, PR-p1-44, PR-p1-47, PR-p1-57, PR-p1-73.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-02: A learner needs to see their knowledge grow so that they stay motivated. What it means: You want to see that you're getting somewhere: the tree of known words, hours of input, an estimated level, charts over time. (Source: PR-p1-09, PR-p1-35, PR-p1-41, PR-p1-64, PR-p1-65, PR-p1-66, PR-p1-84, PR-p1-85, PR-p1-87.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-03: A learner needs to get a lot of understandable reading and listening on things that interest them so that they pick up the language naturally. What it means: The core of comprehensible input: lots of reading and listening you can mostly understand, on topics you like. Behind story series, dialogues, choose-your-path stories and content packages. (Source: PR-p1-05, PR-p1-15, PR-p1-28, PR-p1-29, PR-p1-30, PR-p1-31, PR-p1-61, PR-p1-62, PR-p1-63, PR-p1-80, PR-p1-81, PR-p1-82, PR-p1-83.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-04: A learner needs to understand texts without translating so that they learn to think in the language. What it means: Understanding Swedish directly, not by translating in your head. Behind questions in simple Swedish and English shown only on tap. (Source: PR-p1-32, PR-p1-48, PR-p1-75, PR-p1-76.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-05: A learner needs to hear the language spoken so that they learn pronunciation and listening. What it means: Hearing Swedish, not just reading it: read-aloud, listen-first, audio-only. (Source: PR-p1-22, PR-p1-34, PR-p1-48, PR-p1-93.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-06: A learner needs to have the words they keep forgetting practised until they stick so that gaps don't stay gaps. What it means: Words you mark as hard get extra practice on a schedule until you know them. Behind drilling and the 'Drill this' button. (Source: PR-p1-12, PR-p1-18, PR-p1-36, PR-p1-37, PR-p1-38, PR-p1-40, PR-p1-53, PR-p1-78, PR-p1-79, PR-p1-90, PR-p1-50.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-07: A learner needs to not re-study what they already know so that their time goes to what's new. What it means: Not wasting time on words you already know. Behind 'known by default' marking and the starting check. (Source: PR-p1-12, PR-p1-40, PR-p1-115, PR-p1-116, PR-p1-120, PR-p1-122.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-08: A learner who already knows some of the language needs to start at their own level so that they aren't shown basics they know. What it means: Someone who already knows some Swedish shouldn't start from zero. Behind the level choice, the reading test and 'Expand your grove'. (Source: PR-p1-02, PR-p1-115, PR-p1-116, PR-p1-117, PR-p1-118, PR-p1-120, PR-p1-121, PR-p1-123.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-09: A learner needs to understand the grammar patterns behind sentences so that they can build sentences of their own. What it means: Knowing the patterns behind sentences (like 'the verb comes second'), so you can make your own. (Source: PR-p1-07, PR-p1-16, PR-p1-54, PR-p1-59, PR-p1-124.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-10: A learner needs to practise producing the language so that they can write as well as understand. What it means: Writing as well as understanding. Behind the writing exercises. (Source: PR-p1-15, PR-p1-18, PR-p1-51, PR-p1-77.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-11: A learner needs to decide what to work on so that practice matches their goals. What it means: Choosing what to practise: the sliders, and picking any exercise from the home page. (Source: PR-p1-04, PR-p1-23, PR-p1-37, PR-p1-87.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-12: A learner needs to get new material without paying for an AI service so that cost doesn't stop them learning. What it means: Getting new texts without paying for an AI service: grove gives you a prompt for your own AI chat instead. (Source: PR-p1-24, PR-p1-25, PR-p1-26, PR-p1-27, PR-p1-56, PR-p1-60.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-13: The owner needs to run grove for nothing beyond their Claude Pro so that it can be offered free. What it means: You (the owner) can run grove for free apart from your Claude Pro. (Source: PR-p1-14, PR-p1-20, PR-p1-24.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-14: A learner needs to have AI answers checked before they learn from them so that they don't learn mistakes. What it means: AI answers can be wrong; grove checks them (rules, dictionary) before you learn from them. (Source: PR-p1-26, PR-p1-56, PR-p1-61, PR-p1-96, PR-p1-97, PR-p1-103, PR-p1-111, PR-p1-112.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-15: A learner needs to look up a word and see where they met it so that they recall its meaning in context. What it means: Looking up a word you met and seeing the sentence where you met it. (Source: PR-p1-13, PR-p1-41, PR-p1-45, PR-p1-58, PR-p1-74.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-16: A learner needs to keep their progress safe between sessions and devices so that nothing they've done is lost. What it means: Your progress is never lost, and is there on another device too. (Source: PR-p1-20, PR-p1-42, PR-p1-71, PR-p1-72, PR-p1-91.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]], ["Needs", "N-p1-17: A learner needs to have their own account so that their progress is private and theirs. What it means: Your own account, so your progress is yours and private. (Source: PR-p1-91, PR-p1-99.) (pick one; skipped: right)", ["Right", "Wrong: withdraw it", "Unclear or worded wrong (say how under Other)"]]];
+const ans=R.map(()=>({s:[],o:"",n:false,open:false}));
+try{const s=JSON.parse(localStorage.getItem("grove-p1-r5-a")||"null");if(Array.isArray(s)&&s.length===R.length)s.forEach((v,i)=>{if(v&&Array.isArray(v.s))ans[i]={s:v.s.filter(k=>Number.isInteger(k)&&k>=0&&k<R[i][2].length),o:typeof v.o==="string"?v.o:"",n:!!v.n,open:!!v.open};});}catch(e){}
+const $=id=>document.getElementById(id);
+const done=a=>a.n||a.s.length>0||a.o.trim()!=="";
+function save(){try{localStorage.setItem("grove-p1-r5-a",JSON.stringify(ans));localStorage.setItem("grove-p1-r5-a-notes",$("notes").value);}catch(e){}}
+function prog(){$("prog").textContent=ans.filter(done).length+" of "+R.length+" answered";}
+function mk(text,extra){const x=document.createElement("button");x.type="button";x.setAttribute("role","checkbox");if(extra)x.className="extra";const b=document.createElement("span");b.className="bx";b.setAttribute("aria-hidden","true");const t=document.createElement("span");t.textContent=text;x.append(b,t);return x;}
+let last="";
+R.forEach((r,i)=>{
+if(r[0]!==last){const h=document.createElement("h2");h.textContent=r[0];$("list").appendChild(h);last=r[0];}
+const a=ans[i];
+const d=document.createElement("div");d.className="q";
+const p=document.createElement("p");const b=document.createElement("b");b.textContent=(i+1)+".";p.append(b,document.createTextNode(r[1]));
+const hint=document.createElement("p");hint.className="hint";
+const o=document.createElement("div");o.className="opts";o.setAttribute("role","group");o.setAttribute("aria-label","Question "+(i+1));
+const inp=document.createElement("input");inp.type="text";inp.placeholder="Your own answer";inp.className="other";inp.setAttribute("aria-label","Your own answer to question "+(i+1));inp.value=a.o;
+const btns=r[2].map((t,k)=>{const x=mk(t);x.onclick=()=>{const j=a.s.indexOf(k);if(j>=0)a.s.splice(j,1);else{a.s.push(k);a.n=false;}paint();save();prog();};o.appendChild(x);return x;});
+const nb=mk("None of these",true);nb.onclick=()=>{a.n=!a.n;if(a.n){a.s=[];a.o="";a.open=false;inp.value="";}paint();save();prog();};o.appendChild(nb);
+const ob=mk("Other…",true);ob.onclick=()=>{if(a.open){a.open=false;a.o="";inp.value="";}else{a.open=true;a.n=false;setTimeout(()=>inp.focus(),0);}paint();save();prog();};o.appendChild(ob);
+inp.oninput=()=>{a.o=inp.value;if(a.o.trim())a.n=false;paint();save();prog();};
+const paint=()=>{btns.forEach((x,k)=>x.setAttribute("aria-checked",a.s.includes(k)?"true":"false"));nb.setAttribute("aria-checked",a.n?"true":"false");ob.setAttribute("aria-checked",a.open?"true":"false");inp.hidden=!a.open;const c=a.s.length+(a.o.trim()?1:0);hint.textContent=a.n?"None of these":(c?c+" picked":"Pick as many as fit");};
+d.append(p,hint,o,inp);paint();$("list").appendChild(d);});
+function build(md){
+const L=[md?"# grove p1 round 5: needs (1 of 2): answers":"grove p1 round 5: needs (1 of 2): answers",""];let g="";
+R.forEach((r,i)=>{if(r[0]!==g){if(md)L.push("## "+r[0]);else L.push(r[0].toUpperCase());g=r[0];}
+const a=ans[i];
+if(!done(a))L.push((i+1)+". "+r[1]+" → (no answer, use a sensible default)");
+else if(a.n)L.push((i+1)+". "+r[1]+" → None of these");
+else{L.push((i+1)+". "+r[1]+" →");a.s.slice().sort((x,y)=>x-y).forEach(k=>L.push("   - "+r[2][k]));if(a.o.trim())L.push("   - Other: "+a.o.trim());}
+if(i===R.length-1||R[i+1][0]!==g)L.push("");});
+const nt=$("notes").value.trim();if(nt){L.push(md?"## Notes":"NOTES");L.push(nt);L.push("");}
+L.push((md?"**Follow-up round:** ":"FOLLOW-UP ROUND: ")+($("fu").checked?"yes":"no"));L.push("");
+return L.join("\n");}
+function dl(md){
+try{const blob=new Blob([build(md)],{type:md?"text/markdown;charset=utf-8":"text/plain;charset=utf-8"});
+const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="grove-p1-r5-a"+(md?".md":".txt");
+document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+const n=R.length-ans.filter(done).length;$("msg").textContent="Downloaded."+(n?" "+n+" skipped; Claude will use defaults for those.":"");}
+catch(e){$("msg").textContent="Download didn't work here. Use Copy answers instead.";}}
+$("cp").onclick=async()=>{const t=build(false);
+try{await navigator.clipboard.writeText(t);$("msg").textContent="Copied. Paste it into the chat with Claude.";$("box").hidden=true;}
+catch(e){$("box").value=t;$("box").hidden=false;$("box").focus();$("box").select();$("msg").textContent="Copying is blocked here. Select all the text in the box below, copy it, and paste it into the chat.";}};
+$("md").onclick=()=>dl(true);$("txt").onclick=()=>dl(false);
+try{$("notes").value=localStorage.getItem("grove-p1-r5-a-notes")||"";}catch(e){}
+$("notes").oninput=save;
+try{$("fu").checked=localStorage.getItem("grove-p1-r5-a-fu")==="1";}catch(e){}
+$("fu").onchange=()=>{try{localStorage.setItem("grove-p1-r5-a-fu",$("fu").checked?"1":"0");}catch(e){}};
+prog();
+</script>
+</body>
+</html>

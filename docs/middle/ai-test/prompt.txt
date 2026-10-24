@@ -1,0 +1,102 @@
+I'm learning Swedish (my own language is English) with an app called grove. It gives me comprehensible input: texts where I know almost every word.
+
+Please write these texts (about 20 minutes of reading and listening):
+
+1. Episode 1 of a NEW story series (about 250 words). Topic: a small café in Stockholm. Invent the characters (give them names) and the setting, and give the series a short Swedish title.
+
+2. Episode 2 of the story series "the same series as text 1" (about 250 words). Story so far: Continue straight on from episode 1 above. 
+
+3. [EASY READ: use ONLY my known words – no new words or phrases at all] A dialogue between two people about a Saturday at the market (about 150 words, 10–16 lines). Give every line a speaker name.
+
+4. A choose-your-path story about a lost key (about 250 words in total): a start part that ends with 2–3 choices; each choice leads to a short part that either ends the story or offers 2 more choices leading to endings. Pre-write every branch.
+
+After every text, add 2–3 comprehension questions in simple Swedish, each with 2–3 answer options (also simple Swedish) and the index of the right option.
+
+Language rules for ALL Swedish text, including questions and choices:
+- Use my known words (any inflection is fine): jag, du, han, hon, den, det, vi, ni, de, man, mig, dig, honom, henne, oss, er, dem, min, din, hans, hennes, vår, deras, sin, sitt, sina, en, ett, och, eller, men, att, som, om, för, så, inte, också, bara, redan, nog, kanske, alltid, aldrig, ofta, ibland, igen, sedan, då, nu, snart, sent, tidigt, idag, igår, imorgon, ikväll, här, där, hit, dit, hem, hemma, borta, ute, inne, upp, ner, bort, fram, tillbaka, i, på, till, från, med, utan, av, under, över, efter, före, vid, hos, mellan, bakom, framför, runt, genom, mot, vara, ha, göra, gå, komma, åka, se, titta, höra, säga, fråga, svara, veta, tro, tycka, tänka, vilja, kunna, måste, ska, få, ta, ge, sätta, ligga, sitta, stå, bo, heta, leva, jobba, arbeta, läsa, skriva, lära, förstå, prata, tala, ringa, köpa, betala, kosta, äta, dricka, laga, sova, vakna, duscha, klä, öppna, stänga, börja, sluta, vänta, hjälpa, leta, hitta, glömma, minnas, gilla, älska, behöva, använda, spela, springa, simma, cykla, köra, flyga, resa, träffa, visa, bli, hända, stanna, lämna, bära, tvätta, städa, handla, välja, hoppas, skratta, gråta, le, dag, natt, morgon, kväll, vecka, månad, år, timme, minut, klocka, tid, gång, måndag, tisdag, onsdag, torsdag, fredag, lördag, söndag, mamma, pappa, barn, son, dotter, bror, syster, familj, vän, kompis, kvinna, pojke, flicka, person, människa, granne, lärare, läkare, hus, lägenhet, rum, kök, badrum, sovrum, dörr, fönster, bord, stol, säng, soffa, lampa, golv, vägg, trädgård, mat, frukost, lunch, middag, kaffe, te, vatten, mjölk, juice, bröd, smör, ost, ägg, kött, fisk, kyckling, potatis, ris, pasta, soppa, sallad, grönsak, frukt, äpple, banan, tårta, kaka, socker, salt, stad, by, land, gata, väg, affär, butik, restaurang, kafé, skola, sjukhus, station, tåg, buss, bil, cykel, flygplats, biljett, hotell, park, torg, bibliotek, kyrka, bank, skog, sjö, hav, strand, berg, träd, blomma, gräs, fågel, hund, katt, häst, sol, regn, snö, vind, väder, himmel, stjärna, pengar, kronor, bok, tidning, dator, telefon, film, musik, bild, brev, nyckel, väska, jacka, tröja, skor, byxor, bra, dålig, stor, liten, lång, kort, ny, gammal, ung, varm, kall, god, snäll, glad, ledsen, trött, arg, rädd, sjuk, frisk, fin, vacker, ful, lätt, svår, enkel, billig, dyr, snabb, långsam, tidig, sen, full, tom, öppen, stängd, rolig, tråkig, viktig, vanlig, egen, hel, röd, blå, grön, gul, svart, vit, brun, grå, två, tre, fyra, fem, sex, sju, åtta, nio, tio, tjugo, hundra, första, andra, vad, vem, var, vart, när, hur, varför, vilken, vilket, mycket, många, lite, alla, ingen, inget, något, någon, varje, annan, samma, ja, nej, hej, tack, förlåt, ursäkta, snälla
+- About 95% of the words in each text must be known: at most ONE new word or new fixed phrase per sentence, and at most 5% new words in each text.
+- Please reuse these words I'm practising: glömma, granne, biljett
+- These fixed phrases are new to me and count as new: hur mår du, det gör inget
+- Names of people and places are fine; list them in "names".
+- List every new word in "new_words" with a short English meaning and a simple Swedish explanation that uses known words ("explain_sv"). List new fixed phrases in "new_phrases". List inflected forms of known words that aren't spelled as in my list in "inflections".
+- Give an English translation for every line.
+
+Reply with ONLY one ```json code block in exactly this format, and no other text:
+```json
+{
+  "texts": [
+    {
+      "kind": "episode | retell | dialogue | cyoa (same order as above)",
+      "title": "…",
+      "series": "series title (episodes only)",
+      "episode": 1,
+      "lines": [
+        {
+          "speaker": "name (dialogues only)",
+          "sv": "…",
+          "en": "…"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "start",
+          "lines": [
+            {
+              "sv": "…",
+              "en": "…"
+            }
+          ],
+          "choices": [
+            {
+              "sv": "…",
+              "en": "…",
+              "to": "node id"
+            }
+          ]
+        }
+      ],
+      "questions": [
+        {
+          "q": "…",
+          "options": [
+            "…",
+            "…"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "new_words": [
+    {
+      "form": "as written",
+      "lemma": "dictionary form",
+      "en": "meaning",
+      "explain_sv": "enkel förklaring"
+    }
+  ],
+  "new_phrases": [
+    {
+      "sv": "…",
+      "en": "…",
+      "explain_sv": "…"
+    }
+  ],
+  "inflections": [
+    {
+      "form": "as written",
+      "lemma": "the known word"
+    }
+  ],
+  "names": [
+    "…"
+  ],
+  "series_summaries": [
+    {
+      "series": "series title",
+      "summary": "the story so far, in English, 2–4 sentences"
+    }
+  ]
+}
+```
+(For non-cyoa texts leave "nodes" empty; for cyoa texts leave "lines" empty.)

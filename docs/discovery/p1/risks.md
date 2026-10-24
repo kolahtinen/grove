@@ -1,0 +1,21 @@
+# Risks: grove (p1)
+
+Draft from round 4's short pass (2026-10-20); reviewed on page 25 (round 5). Needs re-linked to the current needs. Each risk is a testable failure scenario, ranked by cost of failure × likelihood. Reviewed on the next round's question page.
+
+Sources considered: the needs and requirements · the domain's typical risks (web: security, availability) · the four worlds · project risks (time, skills, budget)
+
+| Rank | ID | Failure scenario | Kind (engineering / project) | Cost (to whom) | Likelihood | Technique to reduce it | Needs | Requirements |
+|---|---|---|---|---|---|---|---|---|
+| 1 | R-p1-01 | Real AI answers often break grove's rules (JSON, at most 1 new word per sentence), so learners need several fix-it rounds, hit their free AI's message cap, and give up. | engineering | high (learners) | high | Try real Claude, ChatGPT and Gemini answers early; measure how many pass first time; simplify the prompts where they fail. Page 25: tolerate rule-breaking by a margin; test how big a margin, and how many fix-it rounds it saves. | N-p1-03, N-p1-48 | PR-p1-24, 25, 26, 06 |
+| 2 | R-p1-11 | The requirements grew a lot (accounts, classes, shared bank, review list, starting level) for one person, so the first build is too big to finish or check. | project | high (owner) | high | A small first build. Page 25: the shared bank stays; teachers are cut for now; other cuts proposed on page 31. | N-p1-34 | PR-p1-91…124 |
+| 3 | R-p1-02 | Copying prompts and pasting answers feels tedious, so learners stop using grove after a few days. | engineering | high (learners) | medium | Page 25: watching other learners isn't possible. Ways to need fewer prompts are asked on page 31; the owner times their own use. | N-p1-48, N-p1-03, N-p1-52 | PR-p1-24, 25, 30 |
+| 4 | R-p1-03 | The free database pauses, hits its limit or is deleted, and learners' progress is lost. | engineering | high (learners, owner) | medium | Page 25: the database runs on the owner's own computer (PR-p1-127), with backups to another disk. | N-p1-59, N-p1-51 | PR-p1-20, 72 |
+| 5 | R-p1-04 | A wrong AI entry gets into the shared bank and many learners learn the mistake. | engineering | high (learners) | medium | Tests over the visibility rules (unchecked stays private); spot-check the bank. | N-p1-39, N-p1-51 | PR-p1-95, 97, 98 |
+| 6 | R-p1-05 | The owner's review list grows faster than the owner can handle, so entries stay 'unchecked' for good. | project | medium (owner, learners) | high | Page 25: automatic checking with the dictionary, the internet and AI together; the owner reviews in batches by copy-paste to their own AI (PR-p1-128). | N-p1-51, N-p1-34 | PR-p1-104, 111, 112 |
+| 7 | R-p1-07 | Children under 13 sign up or join a class without a parent's consent (a GDPR breach in Sweden). | project | high (owner, children) | medium | Ask for age at sign-up; 13+ only for now (X-p1-03). | N-p1-33, N-p1-57 | PR-p1-99, 107 |
+| 8 | R-p1-06 | The shared bank is built from Wiktionary and the Kelly-list without the credit and same-licence sharing they require. | project | medium (owner) | medium | A licence field per entry; a credits page; check the primary licence pages before import. | N-p1-32 | PR-p1-94, 103, 119 |
+| 9 | R-p1-08 | The learner's device has no Swedish voice, so listening is silent or a Swedish text is read by an English voice. | engineering | medium (learners) | medium | Check the voices at start; say so and how to install one (X-p1-02). | N-p1-05 | PR-p1-22, 34 |
+| 10 | R-p1-09 | The starting level guesses wrong, so the ground holds words the learner doesn't know and texts are too hard. | engineering | medium (learners) | medium | Before words join the ground in bulk, the learner checks a set and ticks unfamiliar ones (page 25; this is PR-p1-116 and PR-p1-120); 'Expand your grove' mixes in ground words (PR-p1-122); ratings lower the difficulty (PR-p1-33). | N-p1-37, N-p1-35 | PR-p1-115, 116, 122 |
+| 11 | R-p1-10 | Open sign-up is abused: spam accounts fill the free database or the review list. | engineering | medium (owner) | medium | Sign-up rate limits; email confirmation; size limits on pastes. | N-p1-51, N-p1-34 | PR-p1-99 |
+
+Cost and likelihood: high / medium / low.

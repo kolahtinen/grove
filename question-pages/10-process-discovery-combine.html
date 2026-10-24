@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Process change: discovery and combine</title>
+<style>
+:root{--bg:#EEF1F4;--card:#FFFFFF;--ink:#1B2A41;--muted:#5B6878;--line:#D3DAE2;--accent:#2E4A7D;--soft:#E2E8F2;--bad:#9B2C1F;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root{--bg:#11161D;--card:#1A212B;--ink:#E4E9F0;--muted:#9AA6B5;--line:#2C3642;--accent:#8FB0E6;--soft:#243044;--bad:#F0A597}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+main{max-width:640px;margin:0 auto;padding:1.2rem 1rem calc(7rem + env(safe-area-inset-bottom,0px))}
+h1{font-size:1.4rem;margin:0 0 .3rem}
+.lede{color:var(--muted);margin:0 0 1rem;font-size:.92rem}
+h2{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:1.4rem 0 .5rem}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.8rem;margin-bottom:.6rem}
+.q p{margin:0 0 .3rem;font-size:.95rem}
+.q p b{color:var(--muted);font-weight:600;margin-right:.3rem}
+.q .hint{font-size:.8rem;color:var(--muted);margin:0 0 .6rem}
+.opts{display:flex;flex-direction:column;gap:.35rem}
+button{font:inherit;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:.4rem .8rem;cursor:pointer;font-size:.88rem}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opts button{display:flex;gap:.6rem;align-items:flex-start;text-align:left;width:100%;border-radius:10px;padding:.5rem .7rem}
+.opts button .bx{flex:none;width:1.1rem;height:1.1rem;margin-top:.17rem;border:1.5px solid var(--muted);border-radius:4px;display:grid;place-items:center;font-size:.72rem;line-height:1;color:var(--card)}
+.opts button[aria-checked="true"]{background:var(--soft);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx{background:var(--accent);border-color:var(--accent)}
+.opts button[aria-checked="true"] .bx::after{content:"✓"}
+.opts button.extra{color:var(--muted)}
+.other{display:block;width:100%;margin-top:.5rem;font:inherit;font-size:.92rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem .6rem}
+.other[hidden]{display:none}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom,0px))}
+.bar .in{max-width:640px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.bar .prog{flex:1;min-width:8rem;font-size:.85rem;color:var(--muted)}
+.bar .dl{background:var(--accent);border-color:var(--accent);color:var(--card);border-radius:10px;font-weight:500}
+.bar .msg{width:100%;font-size:.8rem;color:var(--muted);min-height:1em}
+</style>
+</head>
+<body>
+<main>
+<h1>Process change: discovery and combine</h1>
+<p class="lede">Tick every answer that fits; you can pick several. Tap one again to untick it. "None of these" says nothing fits, and Other… lets you add your own. Skipped questions get a sensible default. When you're done, copy the answers and paste them into the chat with Claude.</p>
+<div id="list"></div>
+<h2>Notes</h2>
+<div class="q"><p>Anything else Claude should know? (optional)</p><textarea id="notes" class="other" rows="5" style="resize:vertical" aria-label="Notes"></textarea></div>
+<label class="q" style="display:flex;gap:.6rem;align-items:center;cursor:pointer"><input type="checkbox" id="fu" style="width:1.2rem;height:1.2rem;accent-color:var(--accent)"><span>I'd like a round of follow-up questions before you build</span></label>
+</main>
+<div class="bar"><div class="in"><span class="prog" id="prog"></span><button type="button" class="dl" id="md">Download .md</button><button type="button" class="dl" id="txt">Download .txt</button><button type="button" class="dl" id="cp">Copy answers</button><span class="msg" id="msg"></span><textarea id="box" readonly hidden style="width:100%;min-height:9rem;font:inherit;font-size:.8rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:.5rem"></textarea></div></div>
+<script>
+const R=[["New shape", "Proposed shape: 0 Set up → 1 Discovery, per prototype (question rounds, builds when you say yes, needs/risks/feasibility found along the way) → 2 Combine and decide (all prototypes' findings in one place, app-wide checks, middle-steps document, freeze) → 3 Spec Kit → 4 Verify → 5 Validate → 6 Change. You can go back from 2 to 1 anytime; 'iteration' disappears; STATUS keeps a changelog. Right?", ["Yes", "Yes, but keep the old phase numbers where possible", "Mostly, see my note under Other"]], ["New shape", "Which analysis steps run per prototype in phase 1? The rest run once, app-wide, in phase 2. Constraints are always app-wide. Pick any. (skipped; default: needs, risks, feasibility)", ["Needs", "Risks", "Feasibility", "Quality attributes", "Threat model", "Scope"]], ["New shape", "When do the phase 1 analysis steps run? (skipped; default: both)", ["Each round ends with a short pass over the new or changed requirements", "As separate commands whenever I choose"]], ["One prototype or a mix", "Two answers pull: 'no mix, pick one prototype to go forward with' and 'the requirements from different documents still need combining (phase 2)'. Which? These exclude each other. (skipped; default: first)", ["Pick one; I may pull in needs from the others, each approved one by one", "Pick one; the others only inform (kept as rejected alternatives)", "Combine freely after all"]], ["Feasibility", "Should feasibility be checked on requirements or needs? A requirement (PR) is one possible solution; a need is the problem behind it and may not be built at all (scope can say 'won't'). These exclude each other. (skipped; default: first)", ["On needs, naming the PRs that solved them; won't-have needs are skipped", "On every PR (the prototype's own solution)", "Short check on every PR in phase 1, full check on in-scope needs in phase 2"]], ["Feasibility", "Spec Kit overlaps a bit: /speckit.plan researches technical choices, and /speckit.checklist checks requirement quality. It has no budget, legal, risk, threat or cross-prototype step, so phases 1–2 aren't redundant. Trim anything? (skipped; default: keep all)", ["Keep all middle steps", "Feasibility checks cost, time, skills and legal; Spec Kit's plan handles technical detail"]], ["Exit rule", "What counts as 'every requirement covered' before Spec Kit? Pick any. (skipped; default: all four)", ["Every PR traced to a need, or marked 'prototype detail, no need'", "Every in-scope need has its feasibility check", "Every implicit requirement confirmed, denied or undecided", "Risks, quality, constraints, threats and scope are up to date"]], ["Exit rule", "May implicit requirements still marked 'undecided' go into Spec Kit? (skipped; default: no, the exit command lists them)", ["No; decide them first", "Yes; they're left out of the spec and listed as open"]], ["Implicit requirements", "Your note says 'implicit prototypes'. I read it as implicit requirements: things the built code does that nobody asked for. Right?", ["Yes, implicit requirements", "No, see my note under Other"]], ["Implicit requirements", "Where do they go, and how are they decided? Pick any. (skipped; default: all three)", ["Listed in requirements.md, marked 'implicit: undecided'", "Asked on a question page right after each build", "Things added while building (you allowed builds to change requirements.md) are treated as implicit too"]], ["Import", "Importing an existing prototype: (skipped; default: copy it into prototypes/<name>/, then list every behaviour as an implicit requirement)", ["Copy it into prototypes/<name>/", "Leave it where it is and only point to it", "Every behaviour is listed as an implicit requirement for me to decide"]], ["Grove", "Grove's prototype is one among others. What's it called? (skipped; default: ci, since it centres on comprehensible input)", ["ci", "p1", "reader"]], ["Grove", "Its IDs: earlier you said the first prototype stays unprefixed, but it isn't 'main'. These exclude each other. (skipped; default: first)", ["Stay PR-01…PR-41; unprefixed just because it came first", "Renamed to its prefix (e.g. PR-ci-01); nothing downstream uses them yet"]]];
+const ans=R.map(()=>({s:[],o:"",n:false,open:false}));
+try{const s=JSON.parse(localStorage.getItem("process-discovery-10")||"null");if(Array.isArray(s)&&s.length===R.length)s.forEach((v,i)=>{if(v&&Array.isArray(v.s))ans[i]={s:v.s.filter(k=>Number.isInteger(k)&&k>=0&&k<R[i][2].length),o:typeof v.o==="string"?v.o:"",n:!!v.n,open:!!v.open};});}catch(e){}
+const $=id=>document.getElementById(id);
+const done=a=>a.n||a.s.length>0||a.o.trim()!=="";
+function save(){try{localStorage.setItem("process-discovery-10",JSON.stringify(ans));localStorage.setItem("process-discovery-10-notes",$("notes").value);}catch(e){}}
+function prog(){$("prog").textContent=ans.filter(done).length+" of "+R.length+" answered";}
+function mk(text,extra){const x=document.createElement("button");x.type="button";x.setAttribute("role","checkbox");if(extra)x.className="extra";const b=document.createElement("span");b.className="bx";b.setAttribute("aria-hidden","true");const t=document.createElement("span");t.textContent=text;x.append(b,t);return x;}
+let last="";
+R.forEach((r,i)=>{
+if(r[0]!==last){const h=document.createElement("h2");h.textContent=r[0];$("list").appendChild(h);last=r[0];}
+const a=ans[i];
+const d=document.createElement("div");d.className="q";
+const p=document.createElement("p");const b=document.createElement("b");b.textContent=(i+1)+".";p.append(b,document.createTextNode(r[1]));
+const hint=document.createElement("p");hint.className="hint";
+const o=document.createElement("div");o.className="opts";o.setAttribute("role","group");o.setAttribute("aria-label","Question "+(i+1));
+const inp=document.createElement("input");inp.type="text";inp.placeholder="Your own answer";inp.className="other";inp.setAttribute("aria-label","Your own answer to question "+(i+1));inp.value=a.o;
+const btns=r[2].map((t,k)=>{const x=mk(t);x.onclick=()=>{const j=a.s.indexOf(k);if(j>=0)a.s.splice(j,1);else{a.s.push(k);a.n=false;}paint();save();prog();};o.appendChild(x);return x;});
+const nb=mk("None of these",true);nb.onclick=()=>{a.n=!a.n;if(a.n){a.s=[];a.o="";a.open=false;inp.value="";}paint();save();prog();};o.appendChild(nb);
+const ob=mk("Other…",true);ob.onclick=()=>{if(a.open){a.open=false;a.o="";inp.value="";}else{a.open=true;a.n=false;setTimeout(()=>inp.focus(),0);}paint();save();prog();};o.appendChild(ob);
+inp.oninput=()=>{a.o=inp.value;if(a.o.trim())a.n=false;paint();save();prog();};
+const paint=()=>{btns.forEach((x,k)=>x.setAttribute("aria-checked",a.s.includes(k)?"true":"false"));nb.setAttribute("aria-checked",a.n?"true":"false");ob.setAttribute("aria-checked",a.open?"true":"false");inp.hidden=!a.open;const c=a.s.length+(a.o.trim()?1:0);hint.textContent=a.n?"None of these":(c?c+" picked":"Pick as many as fit");};
+d.append(p,hint,o,inp);paint();$("list").appendChild(d);});
+function build(md){
+const L=[md?"# Process change: discovery and combine: answers":"Process change: discovery and combine: answers",""];let g="";
+R.forEach((r,i)=>{if(r[0]!==g){if(md)L.push("## "+r[0]);else L.push(r[0].toUpperCase());g=r[0];}
+const a=ans[i];
+if(!done(a))L.push((i+1)+". "+r[1]+" → (no answer, use a sensible default)");
+else if(a.n)L.push((i+1)+". "+r[1]+" → None of these");
+else{L.push((i+1)+". "+r[1]+" →");a.s.slice().sort((x,y)=>x-y).forEach(k=>L.push("   - "+r[2][k]));if(a.o.trim())L.push("   - Other: "+a.o.trim());}
+if(i===R.length-1||R[i+1][0]!==g)L.push("");});
+const nt=$("notes").value.trim();if(nt){L.push(md?"## Notes":"NOTES");L.push(nt);L.push("");}
+L.push((md?"**Follow-up round:** ":"FOLLOW-UP ROUND: ")+($("fu").checked?"yes":"no"));L.push("");
+return L.join("\n");}
+function dl(md){
+try{const blob=new Blob([build(md)],{type:md?"text/markdown;charset=utf-8":"text/plain;charset=utf-8"});
+const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="process-discovery-10"+(md?".md":".txt");
+document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+const n=R.length-ans.filter(done).length;$("msg").textContent="Downloaded."+(n?" "+n+" skipped; Claude will use defaults for those.":"");}
+catch(e){$("msg").textContent="Download didn't work here. Use Copy answers instead.";}}
+$("cp").onclick=async()=>{const t=build(false);
+try{await navigator.clipboard.writeText(t);$("msg").textContent="Copied. Paste it into the chat with Claude.";$("box").hidden=true;}
+catch(e){$("box").value=t;$("box").hidden=false;$("box").focus();$("box").select();$("msg").textContent="Copying is blocked here. Select all the text in the box below, copy it, and paste it into the chat.";}};
+$("md").onclick=()=>dl(true);$("txt").onclick=()=>dl(false);
+try{$("notes").value=localStorage.getItem("process-discovery-10-notes")||"";}catch(e){}
+$("notes").oninput=save;
+try{$("fu").checked=localStorage.getItem("process-discovery-10-fu")==="1";}catch(e){}
+$("fu").onchange=()=>{try{localStorage.setItem("process-discovery-10-fu",$("fu").checked?"1":"0");}catch(e){}};
+prog();
+</script>
+</body>
+</html>
