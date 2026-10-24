@@ -2,6 +2,7 @@
 // No page or route creates accounts (FR-010, FR-016).
 import { FirebaseError } from '../firebase/client.mjs';
 import { normaliseEmail } from '../accounts/same-answer.mjs';
+import { applyDemo } from '../demo/apply.mjs';
 
 export function passwordProblem(password) {
   if (typeof password !== 'string' || password.length < 8) return 'The password needs at least 8 characters.';
@@ -35,5 +36,7 @@ export async function createAccount({ db, seclog, firebase, role, email, passwor
   const info = db.prepare(`INSERT INTO accounts (firebase_uid, email, ${flag}, created_at) VALUES (?, ?, 1, ?)`).run(uid, address, now());
   const id = Number(info.lastInsertRowid);
   seclog.security(role === 'owner' ? 'owner_setup' : 'account_created', { accountId: id, detail: { role } });
+  // G-07: the reviewer account starts as the demo learner (FR-704, FR-705).
+  if (role === 'reviewer') applyDemo({ db, accountId: id, now });
   return { id, email: address };
 }

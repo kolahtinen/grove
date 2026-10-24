@@ -213,3 +213,23 @@ test('FR-610 Q-03: migration 007 keeps every row and adds the level columns with
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-002 RQ-180: a nested transaction is part of the outer one; an inner failure undoes only the inner part', async () => {
+  const { transaction } = await import('../../server/store/db.mjs');
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db);
+    transaction(db, () => {
+      db.prepare("INSERT INTO settings (key, value) VALUES ('outer', '1')").run();
+      transaction(db, () => db.prepare("INSERT INTO settings (key, value) VALUES ('inner', '1')").run());
+      assert.throws(() => transaction(db, () => { db.prepare("INSERT INTO settings (key, value) VALUES ('failed', '1')").run(); throw new Error('boom'); }));
+    });
+    assert.deepEqual(db.prepare('SELECT key FROM settings ORDER BY key').all().map((r) => r.key), ['inner', 'outer']);
+    assert.throws(() => transaction(db, () => { transaction(db, () => db.prepare("INSERT INTO settings (key, value) VALUES ('gone', '1')").run()); throw new Error('outer fails'); }));
+    assert.equal(db.prepare("SELECT COUNT(*) AS n FROM settings WHERE key = 'gone'").get().n, 0, 'an outer failure undoes the inner part too');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

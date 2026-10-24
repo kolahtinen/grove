@@ -20,14 +20,24 @@ export function openDb(path) {
   return db;
 }
 
+// Runs fn in a transaction; nested calls become savepoints inside the outer one (G-07 applies the
+// demo answer through G-02's accept path, which has its own transaction).
+const depth = new WeakMap();
+
 export function transaction(db, fn) {
-  db.exec('BEGIN IMMEDIATE');
+  const level = depth.get(db) ?? 0;
+  const savepoint = `sp_${level}`;
+  db.exec(level === 0 ? 'BEGIN IMMEDIATE' : `SAVEPOINT ${savepoint}`);
+  depth.set(db, level + 1);
   try {
     const result = fn();
-    db.exec('COMMIT');
+    db.exec(level === 0 ? 'COMMIT' : `RELEASE ${savepoint}`);
     return result;
   } catch (error) {
-    db.exec('ROLLBACK');
+    db.exec(level === 0 ? 'ROLLBACK' : `ROLLBACK TO ${savepoint}`);
+    if (level > 0) db.exec(`RELEASE ${savepoint}`);
     throw error;
+  } finally {
+    depth.set(db, level);
   }
 }

@@ -1,0 +1,9 @@
+{
+ "granne": { "lemma": "granne", "en": "neighbour", "explain_sv": "En person som bor i huset bredvid." },
+ "biljett": { "lemma": "biljett", "en": "ticket", "explain_sv": "Man köper den för att åka buss eller tåg." },
+ "biljetter": { "lemma": "biljett", "en": "tickets", "explain_sv": "Mer än en biljett." },
+ "glömmer": { "lemma": "glömma", "en": "forgets", "explain_sv": "Man minns inte." },
+ "glömt": { "lemma": "glömma", "en": "forgotten", "explain_sv": "Man minns det inte längre." },
+ "glömde": { "lemma": "glömma", "en": "forgot", "explain_sv": "Man mindes det inte." },
+ "säljer": { "lemma": "sälja", "en": "sells", "explain_sv": "Man ger något och får pengar." }
+}

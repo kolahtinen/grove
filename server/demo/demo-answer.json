@@ -1,0 +1,550 @@
+{
+ "part": "DEMO-1",
+ "texts": [
+  {
+   "title": "En kall morgon",
+   "lines": [
+    {
+     "sv": "Det är en kall morgon i Stockholm.",
+     "en": "It is a cold morning in Stockholm."
+    },
+    {
+     "sv": "Elsa öppnar dörren till sitt kafé.",
+     "en": "Elsa opens the door to her café."
+    },
+    {
+     "sv": "Kaféet heter Kafé Björk.",
+     "en": "The café is called Kafé Björk."
+    },
+    {
+     "sv": "Det är litet, men det är varmt och fint.",
+     "en": "It is small, but it is warm and nice."
+    },
+    {
+     "sv": "Elsa är inte ung, men hon är alltid glad.",
+     "en": "Elsa is not young, but she is always happy."
+    },
+    {
+     "sv": "Hon jobbar här varje dag.",
+     "en": "She works here every day."
+    },
+    {
+     "sv": "Klockan är sju, och det är tidigt.",
+     "en": "It is seven o'clock, and it is early."
+    },
+    {
+     "sv": "Elsa gör kaffe och sätter kakor på bordet.",
+     "en": "Elsa makes coffee and puts cookies on the table."
+    },
+    {
+     "sv": "Snart kommer Maja.",
+     "en": "Soon Maja comes."
+    },
+    {
+     "sv": "Maja är ung och hon är trött.",
+     "en": "Maja is young and she is tired."
+    },
+    {
+     "sv": "”Hej, Elsa!” säger hon.",
+     "en": "\"Hi, Elsa!\" she says."
+    },
+    {
+     "sv": "”Hej, Maja. Hur mår du?” frågar Elsa.",
+     "en": "\"Hi, Maja. How are you?\" Elsa asks."
+    },
+    {
+     "sv": "”Jag är trött. Jag sov inte bra,” svarar Maja.",
+     "en": "\"I am tired. I did not sleep well,\" Maja answers."
+    },
+    {
+     "sv": "”Du måste dricka kaffe,” säger Elsa och ler.",
+     "en": "\"You must drink coffee,\" Elsa says and smiles."
+    },
+    {
+     "sv": "Maja dricker kaffe och äter en kaka.",
+     "en": "Maja drinks coffee and eats a cookie."
+    },
+    {
+     "sv": "Klockan åtta kommer en man hit.",
+     "en": "At eight o'clock a man comes here."
+    },
+    {
+     "sv": "Han heter Karl och han är Elsas granne.",
+     "en": "His name is Karl and he is Elsa's neighbor."
+    },
+    {
+     "sv": "Karl bor i huset vid torget.",
+     "en": "Karl lives in the house by the square."
+    },
+    {
+     "sv": "Han kommer varje dag och dricker te.",
+     "en": "He comes every day and drinks tea."
+    },
+    {
+     "sv": "Idag är han inte glad.",
+     "en": "Today he is not happy."
+    },
+    {
+     "sv": "”Vad är det, Karl?” frågar Elsa.",
+     "en": "\"What is it, Karl?\" Elsa asks."
+    },
+    {
+     "sv": "”Jag har en biljett till Göteborg, men jag kan inte hitta den,” säger Karl.",
+     "en": "\"I have a ticket to Gothenburg, but I cannot find it,\" Karl says."
+    },
+    {
+     "sv": "”Du glömmer alltid något,” säger Maja och skrattar.",
+     "en": "\"You always forget something,\" Maja says and laughs."
+    },
+    {
+     "sv": "”Det gör inget,” säger Elsa. ”Vi hjälper dig att leta.”",
+     "en": "\"It doesn't matter,\" Elsa says. \"We will help you look.\""
+    },
+    {
+     "sv": "De letar på golvet, under bordet och bakom soffan.",
+     "en": "They look on the floor, under the table and behind the sofa."
+    },
+    {
+     "sv": "Då ser Maja något på en stol.",
+     "en": "Then Maja sees something on a chair."
+    },
+    {
+     "sv": "Det är en gammal brun väska.",
+     "en": "It is an old brown bag."
+    },
+    {
+     "sv": "”Är det din väska, Karl?” frågar hon.",
+     "en": "\"Is it your bag, Karl?\" she asks."
+    },
+    {
+     "sv": "Karl tittar på väskan.",
+     "en": "Karl looks at the bag."
+    },
+    {
+     "sv": "”Nej,” säger han. ”Det är inte min väska.”",
+     "en": "\"No,\" he says. \"It is not my bag.\""
+    },
+    {
+     "sv": "Vem har glömt den här?",
+     "en": "Who has forgotten it here?"
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad heter kaféet?",
+     "options": [
+      "Kafé Björk",
+      "Kafé Elsa"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Vem är Karl?",
+     "options": [
+      "Elsas granne",
+      "Majas bror"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Vad hittar Maja?",
+     "options": [
+      "En biljett",
+      "En väska",
+      "En bok"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "title": "Brevet i väskan",
+   "lines": [
+    {
+     "sv": "Idag är det onsdag, och det är mycket regn.",
+     "en": "Today it is Wednesday, and there is a lot of rain."
+    },
+    {
+     "sv": "Väskan står på bordet.",
+     "en": "The bag is on the table."
+    },
+    {
+     "sv": "Ingen kommer och tar den.",
+     "en": "Nobody comes and takes it."
+    },
+    {
+     "sv": "Elsa vill veta vem som har väskan.",
+     "en": "Elsa wants to know who has the bag."
+    },
+    {
+     "sv": "”Vi måste öppna den,” säger Maja.",
+     "en": "\"We must open it,\" Maja says."
+    },
+    {
+     "sv": "”Nej, det går inte,” säger Elsa. ”Det är inte vår väska.”",
+     "en": "\"No, we can't,\" Elsa says. \"It is not our bag.\""
+    },
+    {
+     "sv": "”Men kanske kan vi se vad han eller hon heter.”",
+     "en": "\"But maybe we can see what he or she is called.\""
+    },
+    {
+     "sv": "Elsa tänker en minut.",
+     "en": "Elsa thinks for a minute."
+    },
+    {
+     "sv": "Sedan öppnar hon väskan.",
+     "en": "Then she opens the bag."
+    },
+    {
+     "sv": "I väskan ligger en bok, en tröja och ett brev.",
+     "en": "In the bag there is a book, a sweater and a letter."
+    },
+    {
+     "sv": "Brevet är gammalt och det är till en kvinna.",
+     "en": "The letter is old and it is to a woman."
+    },
+    {
+     "sv": "Hon heter Alma Berg.",
+     "en": "Her name is Alma Berg."
+    },
+    {
+     "sv": "”Alma Berg?” säger Karl. ”Jag vet vem det är!”",
+     "en": "\"Alma Berg?\" Karl says. \"I know who that is!\""
+    },
+    {
+     "sv": "”Hon är min gamla lärare.”",
+     "en": "\"She is my old teacher.\""
+    },
+    {
+     "sv": "”Hon bor i en annan stad nu.”",
+     "en": "\"She lives in another city now.\""
+    },
+    {
+     "sv": "”Men varför är hennes väska här?” frågar Maja.",
+     "en": "\"But why is her bag here?\" Maja asks."
+    },
+    {
+     "sv": "Då öppnar en kvinna dörren.",
+     "en": "Then a woman opens the door."
+    },
+    {
+     "sv": "Hon är liten och gammal, och hon har en röd jacka.",
+     "en": "She is small and old, and she has a red jacket."
+    },
+    {
+     "sv": "”Förlåt,” säger hon. ”Jag glömde min väska här igår.”",
+     "en": "\"Sorry,\" she says. \"I forgot my bag here yesterday.\""
+    },
+    {
+     "sv": "Karl tittar på kvinnan.",
+     "en": "Karl looks at the woman."
+    },
+    {
+     "sv": "”Alma!” säger han. ”Hej!”",
+     "en": "\"Alma!\" he says. \"Hi!\""
+    },
+    {
+     "sv": "”Karl? Är det du?” Alma ler.",
+     "en": "\"Karl? Is it you?\" Alma smiles."
+    },
+    {
+     "sv": "”Det var många år sedan. Hur mår du?”",
+     "en": "\"It was many years ago. How are you?\""
+    },
+    {
+     "sv": "”Bra, tack. Och du?”",
+     "en": "\"Fine, thanks. And you?\""
+    },
+    {
+     "sv": "Elsa ger Alma väskan.",
+     "en": "Elsa gives Alma the bag."
+    },
+    {
+     "sv": "”Tack för att ni hjälper mig,” säger Alma. ”Jag köper kaffe till er alla.”",
+     "en": "\"Thank you for helping me,\" Alma says. \"I will buy coffee for all of you.\""
+    },
+    {
+     "sv": "Alla skrattar.",
+     "en": "Everybody laughs."
+    },
+    {
+     "sv": "Maja gör kaffe, och Karl sitter vid Alma.",
+     "en": "Maja makes coffee, and Karl sits next to Alma."
+    },
+    {
+     "sv": "Då tittar Karl i sin jacka.",
+     "en": "Then Karl looks in his jacket."
+    },
+    {
+     "sv": "Där är hans biljett!",
+     "en": "There is his ticket!"
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vem är Alma?",
+     "options": [
+      "Karls gamla lärare",
+      "Elsas syster",
+      "Majas mamma"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Vem öppnar väskan?",
+     "options": [
+      "Elsa",
+      "Karl",
+      "Maja"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Var hittar Karl sin biljett?",
+     "options": [
+      "I sin jacka",
+      "I väskan",
+      "Under bordet"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "title": "Lördag på torget",
+   "lines": [
+    {
+     "sv": "Anna: Hej Erik! Vad gör du idag?",
+     "en": "Anna: Hi Erik! What are you doing today?"
+    },
+    {
+     "sv": "Erik: Hej Anna! Idag är det lördag, så jag går till torget.",
+     "en": "Erik: Hi Anna! Today is Saturday, so I am going to the square."
+    },
+    {
+     "sv": "Anna: Bra! Jag vill också gå dit. Kan jag komma med dig?",
+     "en": "Anna: Good! I also want to go there. Can I come with you?"
+    },
+    {
+     "sv": "Erik: Ja, kom med mig!",
+     "en": "Erik: Yes, come with me!"
+    },
+    {
+     "sv": "Anna: Jag måste köpa frukt och grönsaker.",
+     "en": "Anna: I have to buy fruit and vegetables."
+    },
+    {
+     "sv": "Erik: Jag ska köpa ost, bröd och fisk.",
+     "en": "Erik: I am going to buy cheese, bread and fish."
+    },
+    {
+     "sv": "Anna: Är det dyrt där?",
+     "en": "Anna: Is it expensive there?"
+    },
+    {
+     "sv": "Erik: Nej, det är inte dyrt. Det är ofta billigt på lördag.",
+     "en": "Erik: No, it is not expensive. It is often cheap on Saturday."
+    },
+    {
+     "sv": "Anna: Vad är klockan?",
+     "en": "Anna: What time is it?"
+    },
+    {
+     "sv": "Erik: Den är nio. Vi kan åka med bussen.",
+     "en": "Erik: It is nine. We can go by bus."
+    },
+    {
+     "sv": "Anna: Jag har ingen biljett. Jag glömde den hemma.",
+     "en": "Anna: I have no ticket. I forgot it at home."
+    },
+    {
+     "sv": "Erik: Du glömmer alltid något! Men jag har två biljetter. Du får en av mig.",
+     "en": "Erik: You always forget something! But I have two tickets. You get one from me."
+    },
+    {
+     "sv": "Anna: Tack, du är snäll!",
+     "en": "Anna: Thanks, you are kind!"
+    },
+    {
+     "sv": "Erik: Min granne säljer blommor på torget. Vi kan träffa henne där.",
+     "en": "Erik: My neighbor sells flowers at the square. We can meet her there."
+    },
+    {
+     "sv": "Anna: Bra! Sedan köper vi kaffe och en kaka.",
+     "en": "Anna: Good! Then we buy coffee and a cookie."
+    },
+    {
+     "sv": "Erik: Ja! Jag älskar kaka.",
+     "en": "Erik: Yes! I love cake."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad ska Anna köpa?",
+     "options": [
+      "Frukt och grönsaker",
+      "Fisk och ost"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Hur åker de?",
+     "options": [
+      "Med bussen",
+      "Med tåg",
+      "Med bil"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Vem träffar de på torget?",
+     "options": [
+      "Eriks granne",
+      "Annas lärare"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "title": "Den borttappade nyckeln",
+   "lines": [
+    {
+     "sv": "Det är kväll. Du kommer hem sent.",
+     "en": "It is evening. You come home late."
+    },
+    {
+     "sv": "Du står vid dörren och letar efter din nyckel.",
+     "en": "You stand at the door and look for your key."
+    },
+    {
+     "sv": "Den är inte i din jacka. Den är inte i din väska.",
+     "en": "It is not in your jacket. It is not in your bag."
+    },
+    {
+     "sv": "Det är kallt, och du är trött. Vad gör du?",
+     "en": "It is cold, and you are tired. What do you do?"
+    },
+    {
+     "sv": "Din granne heter Olle. Han öppnar sin dörr och ler.",
+     "en": "Your neighbor is called Olle. He opens his door and smiles."
+    },
+    {
+     "sv": "”Hej! Vad har hänt?” säger han.",
+     "en": "\"Hi! What has happened?\" he says."
+    },
+    {
+     "sv": "Du säger att du har glömt din nyckel.",
+     "en": "You say that you have forgotten your key."
+    },
+    {
+     "sv": "Olle har en nyckel till din lägenhet. ”Vill du ha den?” frågar han. ”Eller ska jag ringa en man som kan öppna dörren?”",
+     "en": "Olle has a key to your apartment. \"Do you want it?\" he asks. \"Or should I call a man who can open the door?\""
+    },
+    {
+     "sv": "Du får nyckeln av Olle. Du öppnar dörren. Du är hemma!",
+     "en": "You get the key from Olle. You open the door. You are home!"
+    },
+    {
+     "sv": "Du lagar soppa, och Olle äter med dig. Det blir en bra kväll.",
+     "en": "You make soup, and Olle eats with you. It becomes a good evening."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Vad letar du efter?",
+     "options": [
+      "Din nyckel",
+      "Din väska",
+      "Din bok"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Vem är Olle?",
+     "options": [
+      "Din granne",
+      "Din lärare",
+      "Din bror"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ ],
+ "new_words": [
+  {
+   "form": "granne",
+   "lemma": "granne",
+   "en": "neighbour",
+   "explain_sv": "En person som bor i huset bredvid."
+  },
+  {
+   "form": "biljett",
+   "lemma": "biljett",
+   "en": "ticket",
+   "explain_sv": "Man köper den för att åka buss eller tåg."
+  },
+  {
+   "form": "glömmer",
+   "lemma": "glömma",
+   "en": "forgets",
+   "explain_sv": "Man minns inte."
+  },
+  {
+   "form": "glömt",
+   "lemma": "glömma",
+   "en": "forgotten",
+   "explain_sv": "Man minns det inte längre."
+  },
+  {
+   "form": "glömde",
+   "lemma": "glömma",
+   "en": "forgot",
+   "explain_sv": "Man mindes det inte."
+  },
+  {
+   "form": "biljetter",
+   "lemma": "biljett",
+   "en": "tickets",
+   "explain_sv": "Mer än en biljett."
+  },
+  {
+   "form": "säljer",
+   "lemma": "sälja",
+   "en": "sells",
+   "explain_sv": "Man ger något och får pengar."
+  }
+ ],
+ "new_phrases": [
+  {
+   "sv": "hur mår du",
+   "en": "how are you",
+   "explain_sv": "Du frågar en person om han eller hon är glad, trött eller sjuk."
+  },
+  {
+   "sv": "det gör inget",
+   "en": "it doesn't matter / never mind",
+   "explain_sv": "Man säger det när något inte är ett problem."
+  }
+ ],
+ "inflections": [
+  {
+   "form": "hänt",
+   "lemma": "hända"
+  }
+ ],
+ "names": [
+  "Stockholm",
+  "Göteborg",
+  "Elsa",
+  "Maja",
+  "Karl",
+  "Alma Berg",
+  "Kafé Björk",
+  "Anna",
+  "Erik",
+  "Olle"
+ ]
+}
