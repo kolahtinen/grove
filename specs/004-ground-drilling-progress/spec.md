@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-24
 
-**Status**: Draft
+**Status**: Draft (clarified 2026-10-24, question-pages/59)
 
 **Input**: User description: "G-04: Ground, drilling and progress. The feature description is the G-04 section of docs/middle-steps.md (Part 2: Feed for Spec Kit), with grove's terms (docs/glossary.md, question-pages/56). Follow the combined requirements as written; every spec requirement names its RQ and N IDs."
 
@@ -14,21 +14,35 @@
 
 **Requirement numbers**: FR-401… so test names stay unique across goals.
 
+## Clarifications
+
+### Session 2026-10-24
+
+- Q: In the quick step after each text, what can a mark on a new word say? → A: Two switches per word, **To read** and **To remember** (either or both), setting how it is drilled; unmarked words fall to the ground on Done (question-pages/59).
+- Q: What are Master's exercises in the first build? → A: The reverse direction: a gapped sentence plus the English meaning, pick the Swedish word; for leaves with gaps of 2 days or more; counts like Review (question-pages/59).
+
+### Combined requirements changed in clarify
+
+| RQ | As written | In this spec |
+|---|---|---|
+| RQ-52 | The learner marks words they don't know, only half know, or never remember | The learner marks words To read and/or To remember (how they're drilled); the three levels are not used (FR-401) |
+| RQ-06 | Master: the hardest exercises (e.g. grammar build) | Master: the reverse direction for strong leaves, until grammar exercises arrive (FR-407) |
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Mark what I don't know; the rest joins my ground (Priority: P1)
 
-After reading a text and rating it, the learner sees its new words (with meanings) and taps the ones they don't know. The marked ones become drilled leaves; the unmarked ones fall to the ground. It takes seconds, not minutes.
+After reading a text and rating it, the learner sees its new words (with meanings) and, for each word they don't know, switches on **To read** (recognise it when reading) and/or **To remember** (recall it, also by ear). The marked ones become drilled leaves; the unmarked ones fall to the ground. It takes seconds, not minutes.
 
 **Why this priority**: This is how practice goes to what the learner doesn't know (N-12) and how the ground grows, which in turn makes new texts harder (G-02 FR-208).
 
-**Independent Test**: Read a sample text, rate it, mark 2 of its 6 new words, press Done; the 2 are drilled leaves, the 4 are in the ground, and the next prompt lists the 4 as known.
+**Independent Test**: Read a sample text, rate it, switch on To read for 2 of its 6 new words (one also To remember), press Done; the 2 are drilled leaves, the 4 are in the ground, and the next prompt lists the 4 as known.
 
 **Acceptance Scenarios**:
 
 1. **Given** a finished text, **When** the learner marks some new words and leaves the rest, **Then** the marked ones are drilled and the rest join the ground. (RQ-52, RQ-203, RQ-204, RQ-06)
 2. **Given** the marking step, **When** it is shown, **Then** each new word shows its meaning and one tap marks it; the step fits on one phone screen for a text's usual 4–8 new words, with Done at the end. (RQ-52, R-12)
-3. **Given** a mark, **When** the learner chooses it, **Then** [NEEDS CLARIFICATION: which marks does the step offer, and what do they decide? e.g. one tap = "don't know" (drilled To read); RQ-52's three levels (don't know / half know / never remember) setting how soon it comes back; and/or RQ-07's To remember / To read setting how it is drilled]. (RQ-52, RQ-07)
+3. **Given** the marking step, **When** the learner switches on **To read** and/or **To remember** for a word, **Then** it is drilled that way (both = both), starting with a 1-day gap; a word with neither switched on falls to the ground on Done. (RQ-52, RQ-07; question-pages/59)
 4. **Given** the learner skips the marking step, **When** they leave the text, **Then** its new words stay unmarked leaves and the step is offered again next time the text is opened. (R-12)
 
 ---
@@ -49,7 +63,7 @@ Home shows three stages: **Discover** (new texts), **Review** (drilled leaves th
 4. **Given** a wrong answer, **When** it is recorded, **Then** the gap shrinks and the leaf comes back sooner. (RQ-170)
 5. **Given** a ground word or an unmarked leaf, **When** time passes, **Then** it never fades and has no schedule. (RQ-169, RQ-170)
 6. **Given** a word met in a new text, **When** the text is added, **Then** its "times met" count goes up, but its schedule doesn't change. (RQ-201, RQ-356)
-7. **Given** Master, **When** the learner opens it, **Then** [NEEDS CLARIFICATION: what are Master's "hardest exercises" in the first build, without writing and grammar exercises? e.g. the reverse direction (English meaning → pick the Swedish word in a gapped sentence) for leaves with the longest gaps]. (RQ-06)
+7. **Given** drilled leaves with gaps of 2 days or more, **When** the learner opens Master, **Then** each is shown as a sentence they've read with that word blanked out plus its English meaning, and they pick the Swedish word from 3–4; the answer counts like a Review answer. (RQ-06; question-pages/59)
 
 ---
 
@@ -134,7 +148,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 
 **Marking and the ground**
 
-- **FR-401** (RQ-52, RQ-203, RQ-204; N-04, N-12): After a text is rated, grove MUST offer a **marking step** listing that text's unmarked leaves with their meanings; marked ones become drilled leaves; on **Done** the unmarked ones fall to the ground (they count as known from then on). Skipping the step leaves them unmarked, and it is offered again when the text is next opened. The marks offered: [NEEDS CLARIFICATION: see User Story 1, scenario 3].
+- **FR-401** (RQ-52, RQ-203, RQ-204; N-04, N-12): After a text is rated, grove MUST offer a **marking step** listing that text's unmarked leaves with their meanings; marked ones become drilled leaves; on **Done** the unmarked ones fall to the ground (they count as known from then on). Skipping the step leaves them unmarked, and it is offered again when the text is next opened. Each word has two switches, **To read** and **To remember** (either or both); a marked word starts with a 1-day gap (question-pages/59; RQ-52's three levels are not used).
 - **FR-402** (RQ-34, RQ-204; N-11): Unmarked leaves MUST count as new (not known) until they fall; the ground is what counts as known for every count and prompt (G-02 FR-213, FR-208).
 
 **Drilling**
@@ -143,7 +157,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 - **FR-404** (RQ-79, RQ-80; N-04, N-38): A drilled leaf MUST count as **fading** when its strength is below 0.2, and as **due** when its strength is 0.5 or less; Review shows fading leaves first (weakest first), then due ones.
 - **FR-405** (RQ-60, RQ-200; N-04): A right answer MUST multiply the gap by 2.5 (a new drilled leaf starts at 1 day); a right answer when the gap is already 4 days or more makes the leaf fall to the ground. A wrong answer halves the gap (never below half a day).
 - **FR-406** (RQ-32, RQ-07; N-11, N-37): Review MUST show each leaf in a sentence from a text the learner has read (never as a bare word): To read → the sentence with "what does *X* mean here?"; To remember → the sentence played aloud and hidden until answered, with the same question; a leaf with both marks alternates. Options as G-03 FR-310 (the meaning here and 2–3 other words' meanings). A leaf with no sentence (added by hand, never met) is shown with its meaning to recall first and gets sentences once met.
-- **FR-407** (RQ-06; N-37, N-04): Home MUST show three stages: **Discover** (new texts: the G-02 package card and unread texts), **Review** (count of fading and due leaves, a start button) and **Master** (count and a start button). Master's exercises: [NEEDS CLARIFICATION: see User Story 2, scenario 7].
+- **FR-407** (RQ-06; N-37, N-04): Home MUST show three stages: **Discover** (new texts: the G-02 package card and unread texts), **Review** (count of fading and due leaves, a start button) and **Master** (count and a start button). Master's exercises: the reverse direction — a sentence the learner has read with the leaf blanked out and its English meaning; pick the Swedish word from 3–4 (the leaf's form in that sentence and 2–3 other leaves' or ground words' forms); for drilled leaves with a gap of 2 days or more; the answer updates the schedule like a Review answer (question-pages/59).
 - **FR-408** (RQ-201, RQ-356; N-04, N-29): Each item's **times met** MUST count its appearances in accepted texts (G-02's `uses`) and show in the word menu and the dictionary; meeting an item never changes its schedule.
 
 **Marks, Let it fall, pick up, Leaves**

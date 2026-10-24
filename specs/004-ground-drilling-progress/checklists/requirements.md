@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -33,5 +33,5 @@
 
 - No language, framework or code structure is named.
 - All 26 G-04 combined requirements and all 13 G-04 needs are cited (checked by script, 2026-10-24). Requirements are numbered FR-401…
-- Two markers for `/speckit-clarify`: the marking step's marks (RQ-52's three levels vs RQ-07's To remember / To read), and Master's exercises (RQ-06).
+- Both markers resolved on question-pages/59 (marks = To read / To remember switches; Master = reverse direction).
 - Defaults chosen without asking: marking after each text's rating; spacing ×2.5 from 1 day, falls at ≥ 4 days; halve on a wrong answer; fading < 0.2, due ≤ 0.5; level needs 90% of each level's words (RQ-253); input counted while active in view.
