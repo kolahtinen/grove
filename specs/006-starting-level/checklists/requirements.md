@@ -13,7 +13,7 @@
 
 ## Requirement Completeness
 
-- [ ] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous
 - [x] Success criteria are measurable
 - [x] Success criteria are technology-agnostic (no implementation details)
@@ -33,5 +33,5 @@
 
 - No language, framework or code structure is named; the Kelly list is named as the data source the requirements fix (RQ-117, X-p1-04).
 - All 6 G-06 combined requirements and all 3 G-06 needs are cited (checked by script, 2026-10-25). Requirements are numbered FR-601…
-- Two markers for `/speckit-clarify`: what words ticked as unknown become; what a new starting level does to an existing ground.
+- Both markers resolved on question-pages/60 (ticked words → unmarked leaves; a new starting level replaces only starting-check words).
 - Found while specifying: the Kelly list has no English meanings (the earlier summary to the owner said G-06 would bring meanings; corrected).

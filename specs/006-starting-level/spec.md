@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-25
 
-**Status**: Draft
+**Status**: Draft (clarified 2026-10-25, question-pages/60)
 
 **Input**: User description: "G-06: Starting level. The feature description is the G-06 section of docs/middle-steps.md (Part 2: Feed for Spec Kit), with the Swedish Kelly list as the level word lists and grove's terms (docs/glossary.md). Follow the combined requirements as written; every spec requirement names its RQ and N IDs."
 
@@ -13,6 +13,13 @@
 **The Kelly list** (checked 2026-10-25 at https://spraakbanken.gu.se/en/resources/kelly): the Swedish Kelly list from Språkbanken, 8,425 entries, each with a dictionary form, part of speech, frequency (per million words) and CEFR level 1–6 (A1–C2, about 1,400 entries per level); licence CC BY-SA 3.0 and LGPL 3.0. It has **no English meanings**.
 
 **Requirement numbers**: FR-601… so test names stay unique across goals.
+
+## Clarifications
+
+### Session 2026-10-25
+
+- Q: In the starting check, what happens to the words ticked as unknown? → A: They become unmarked leaves (not in the ground), waiting on Leaves to be marked later (question-pages/60).
+- Q: What does "Set my starting level again" do to the ground? → A: It replaces only the words the earlier starting check added; everything learned from texts, drilling and Let it fall stays (question-pages/60).
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -27,7 +34,7 @@ A new learner (not the reviewer account) closes the welcome and lands on **Start
 **Acceptance Scenarios**:
 
 1. **Given** a new learner, **When** they choose a level, **Then** grove shows a sample of 30 of that level's words to tick as unknown, and on confirming the rest of that level's words and all words of the levels below join the ground. (RQ-113, RQ-114, RQ-249)
-2. **Given** ticked words, **When** the learner confirms, **Then** [NEEDS CLARIFICATION: what happens to the words ticked as unknown? e.g. they stay out of the ground as unmarked leaves (shown on Leaves to mark later), or become drilled leaves To read, or are simply left out]. (RQ-114)
+2. **Given** ticked words, **When** the learner confirms, **Then** they stay out of the ground as unmarked leaves (without meanings), waiting under Leaves → Unmarked to be marked later. (RQ-114; question-pages/60)
 3. **Given** "I'm a complete beginner", **When** the learner chooses it, **Then** the ground stays empty and the first texts are beginner texts (G-02's empty-ground prompt). (edge case)
 4. **Given** a new account other than the reviewer's, **When** the welcome is closed, **Then** grove goes straight to Starting level; the reviewer account doesn't. (RQ-248)
 5. **Given** the learner ticks 20 or more of the 30 as unknown, **When** they confirm, **Then** grove suggests trying the level below, without forcing it. (edge case)
@@ -45,7 +52,7 @@ Home has **Set my starting level again**. It runs the starting check again with 
 **Acceptance Scenarios**:
 
 1. **Given** Home, **When** the learner taps "Set my starting level again", **Then** the starting check runs again. (RQ-252)
-2. **Given** a learner who has learned words from texts and drilling since, **When** the check runs again, **Then** [NEEDS CLARIFICATION: what does a new starting level do to the ground? e.g. it replaces only the words the earlier starting level added (keeping everything learned from texts and drilling), or it only adds words and never removes any]. (RQ-252)
+2. **Given** a learner who has learned words from texts and drilling since, **When** the check runs again, **Then** only the words the earlier starting check added are replaced by the new level's words; everything learned from texts, drilling and Let it fall stays. (RQ-252; question-pages/60)
 3. **Given** the reviewer account, **When** Home is shown, **Then** it has no "Set my starting level again" (question-pages/55: RQ-363 changed). (RQ-252)
 
 ---
@@ -87,9 +94,9 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 **The starting check**
 
 - **FR-603** (RQ-113; N-12, N-13): A learner MUST be able to pick a CEFR level (A1–C2), or "I'm a complete beginner" (empty ground).
-- **FR-604** (RQ-114, RQ-249; N-12): After a level is picked, grove MUST show a sample of 30 of that level's words (spread over the level from most to least common), each tickable as "I don't know this"; confirming puts every word of the levels below and the level's other words in the ground (known). Words ticked as unknown: [NEEDS CLARIFICATION: see User Story 1, scenario 2].
+- **FR-604** (RQ-114, RQ-249; N-12): After a level is picked, grove MUST show a sample of 30 of that level's words (spread over the level from most to least common), each tickable as "I don't know this"; confirming puts every word of the levels below and the level's other words in the ground (known). Words ticked as unknown become unmarked leaves, without meanings (question-pages/60).
 - **FR-605** (RQ-248; N-13): A new account other than the reviewer's MUST go straight to the starting check after closing the welcome (G-04 FR-416), until it has made a choice; the reviewer account never does.
-- **FR-606** (RQ-252; N-13): Home MUST show **Set my starting level again** (not for the reviewer account), running the check again. Effect on the existing ground: [NEEDS CLARIFICATION: see User Story 2, scenario 2].
+- **FR-606** (RQ-252; N-13): Home MUST show **Set my starting level again** (not for the reviewer account), running the check again. It replaces only what the earlier check added: starting-check words still untouched (never drilled, never met in a text, never fallen from a leaf) are removed, then the new choice is applied; everything else stays (question-pages/60).
 - **FR-607** (R-11; N-13): When 20 or more of the 30 are ticked as unknown, grove MUST suggest the level below (one tap to switch), without forcing it.
 - **FR-608** (RQ-03, RQ-253; N-13): After the check, G-04's level line MUST show the level from the ground (G-04 FR-414), now that level word lists exist.
 
