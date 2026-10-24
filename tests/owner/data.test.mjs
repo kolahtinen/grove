@@ -56,7 +56,7 @@ test('FR-023 RQ-371: log:show prints entries filtered by event and hours', () =>
   assert.doesNotMatch(only, /delete/);
 });
 
-test('FR-220 RQ-54: export includes texts and words, and delete leaves no G-02 rows (constitution 3.2, 3.3)', async () => {
+test('FR-220 FR-319 RQ-54 RQ-155: export includes texts, words, flags and reports, and delete leaves no G-02 or G-03 rows (constitution 3.2, 3.3)', async () => {
   const { seedGround } = await import('../fakes/harness.mjs');
   const { readFileSync } = await import('node:fs');
   await createAccount({ ...deps, role: 'reviewer', email: 'texts@example.test', password: 'Forest-walk-42' });
@@ -69,13 +69,18 @@ test('FR-220 RQ-54: export includes texts and words, and delete leaves no G-02 r
   assert.equal((await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: good })).body.result, 'accepted');
   const texts = (await c.get('/api/home')).body.texts;
   await c.post('/api/rating', { textId: texts[0].id, value: 'most' });
+  // G-03 data: a name and meanings came with the answer; add a flag, a report and an own text.
+  const sentence = t.grove.db.prepare('SELECT id FROM sentences WHERE account_id = ? LIMIT 1').get(id);
+  await c.post('/api/explain', { sentenceId: sentence.id, form: 'kaffe', reason: 'other' });
+  await c.post('/api/report', { textId: texts[0].id, questionPosition: 0, reason: 'other' });
+  await c.post('/api/own-text', { title: 'Egen', text: 'Hej på dig.' });
 
   const data = exportAccount({ ...deps, email: 'texts@example.test' });
-  for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings']) {
+  for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'explain_flags', 'reports']) {
     assert.ok(data.tables[table]?.length > 0, `export has ${table}`);
   }
   await deleteAccount({ ...deps, email: 'texts@example.test' });
-  for (const table of ['words', 'word_forms', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers', 'packages', 'exchanges', 'learner_settings']) {
+  for (const table of ['words', 'word_forms', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'pattern_places', 'explain_flags', 'explanations', 'reports']) {
     assert.equal(t.grove.db.prepare(`SELECT COUNT(*) AS n FROM "${table}" WHERE account_id = ?`).get(id).n, 0, table);
   }
 });

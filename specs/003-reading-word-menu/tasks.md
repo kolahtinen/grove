@@ -42,15 +42,15 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T210 [P] [US1] Tests in `tests/reading/view.test.mjs`: `FR-305 FR-306 RQ-18:` `/api/reading` for the sample text returns sentences with tokens; *kopparna* → kopp, leaf, meaning here "the cups" (the per-text meaning), *säger* → säga, ground, *Elsa* → name; phrases listed for words in *hur mår du*; `FR-302 RQ-55 RQ-76:` each sentence has its new count and the text its word count, new words and share, matching G-02's counting; `FR-301 RQ-10:` `showTranslations` follows `POST /api/settings` and each line carries its English; `FR-303 RQ-56:` the answer's names are stored in `names` and no name counts as new; `FR-319 RQ-155:` another account gets 404 for the text and can't change its settings
-- [ ] T211 [P] [US1] Playwright test `tests/e2e/reading.spec.mjs` (part 1): `FR-305 FR-301 FR-304 RQ-18 RQ-10:` English shows under each sentence; tapping *kopparna* opens the menu with kopp, the meaning and "leaf" within 500 ms; turning translations off hides them after reload, and a line's English button still shows it; a title and line with HTML show as text
+- [X] T210 [P] [US1] Tests in `tests/reading/view.test.mjs`: `FR-305 FR-306 RQ-18:` `/api/reading` for the sample text returns sentences with tokens; *kopparna* → kopp, leaf, meaning here "the cups" (the per-text meaning), *säger* → säga, ground, *Elsa* → name; phrases listed for words in *hur mår du*; `FR-302 RQ-55 RQ-76:` each sentence has its new count and the text its word count, new words and share, matching G-02's counting; `FR-301 RQ-10:` `showTranslations` follows `POST /api/settings` and each line carries its English; `FR-303 RQ-56:` the answer's names are stored in `names` and no name counts as new; `FR-319 RQ-155:` another account gets 404 for the text and can't change its settings
+- [X] T211 [P] [US1] Playwright test `tests/e2e/reading.spec.mjs` (part 1): `FR-305 FR-301 FR-304 RQ-18 RQ-10:` English shows under each sentence; tapping *kopparna* opens the menu with kopp, the meaning and "leaf" within 500 ms; turning translations off hides them after reload, and a line's English button still shows it; a title and line with HTML show as text
 
 ### Implementation
 
-- [ ] T212 [US1] Extend `server/texts/accept.mjs`: store each new word's meaning for its text (`word_meanings`), learn listed new-word forms that differ from the dictionary form (plausibility rule), store the answer's names (`names`)
-- [ ] T213 [US1] Write `server/reading/view.mjs`: the reading payload of the contract (lines → sentences → tokens with resolution, meaning here, explanation, phrases, pattern ids; stats; patterns; questions with `reported`), and `server/reading/routes.mjs` with `GET /api/reading`, `POST /api/settings`; register in `server/web/app.mjs`
-- [ ] T214a [US1] Update G-02's browser test `tests/e2e/texts.spec.mjs` (part 3) for its changed rule (G-02 FR-218 now follows G-03 FR-301): English is visible under the line by default instead of hidden until tapped (constitution 1.3)
-- [ ] T214 [US1] Rebuild `public/text.html` + `public/assets/reading.mjs` (replacing `text.mjs`): sentences of word buttons and plain spaces/punctuation, new-count badge per sentence, stats line, English under each line per setting with a per-line English button, translations toggle; tapping a word speaks it (`speechSynthesis`, Swedish voice if any) and opens a bottom-sheet menu from the payload; questions and rating as in G-02; all text via `textContent`; styles in `public/assets/grove.css` (pattern colour `--gpk`)
+- [X] T212 [US1] Extend `server/texts/accept.mjs`: store each new word's meaning for its text (`word_meanings`), learn listed new-word forms that differ from the dictionary form (plausibility rule), store the answer's names (`names`)
+- [X] T213 [US1] Write `server/reading/view.mjs`: the reading payload of the contract (lines → sentences → tokens with resolution, meaning here, explanation, phrases, pattern ids; stats; patterns; questions with `reported`), and `server/reading/routes.mjs` with `GET /api/reading`, `POST /api/settings`; register in `server/web/app.mjs`
+- [X] T214a [US1] Update G-02's browser test `tests/e2e/texts.spec.mjs` (part 3) for its changed rule (G-02 FR-218 now follows G-03 FR-301): English is visible under the line by default instead of hidden until tapped (constitution 1.3)
+- [X] T214 [US1] Rebuild `public/text.html` + `public/assets/reading.mjs` (replacing `text.mjs`): sentences of word buttons and plain spaces/punctuation, new-count badge per sentence, stats line, English under each line per setting with a per-line English button, translations toggle; tapping a word speaks it (`speechSynthesis`, Swedish voice if any) and opens a bottom-sheet menu from the payload; questions and rating as in G-02; all text via `textContent`; styles in `public/assets/grove.css` (pattern colour `--gpk`)
 
 **Checkpoint**: US1 passes.
 
@@ -60,12 +60,12 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T215 [P] [US2] Tests in `tests/reading/patterns.test.mjs`: `FR-307 RQ-29 RQ-177:` every part prompt asks for `patterns` with name, explanation and places; accepting `good-patterns.json` stores each pattern once as a `pattern` leaf with its explanation, and its places; the same pattern name in a later answer is the same item; `FR-308 RQ-12:` the reading payload marks the tokens of *har han glömt* with the pattern's id and doesn't mark the place whose words aren't in the line; a text without patterns has no marks; `FR-309 RQ-171:` a pattern item has the same fields as a word (state, added time) so G-04 can schedule it
-- [ ] T216 [P] [US2] Playwright test `tests/e2e/reading.spec.mjs` (part 2): `FR-308 RQ-12:` the pattern's words are coloured, and tapping one shows the pattern's name and explanation in the menu
+- [X] T215 [P] [US2] Tests in `tests/reading/patterns.test.mjs`: `FR-307 RQ-29 RQ-177:` every part prompt asks for `patterns` with name, explanation and places; accepting `good-patterns.json` stores each pattern once as a `pattern` leaf with its explanation, and its places; the same pattern name in a later answer is the same item; `FR-308 RQ-12:` the reading payload marks the tokens of *har han glömt* with the pattern's id and doesn't mark the place whose words aren't in the line; a text without patterns has no marks; `FR-309 RQ-171:` a pattern item has the same fields as a word (state, added time) so G-04 can schedule it
+- [X] T216 [P] [US2] Playwright test `tests/e2e/reading.spec.mjs` (part 2): `FR-308 RQ-12:` the pattern's words are coloured, and tapping one shows the pattern's name and explanation in the menu
 
 ### Implementation
 
-- [ ] T217 [US2] Add the patterns request and format to `server/texts/prompt.mjs`; store patterns and places in `server/texts/accept.mjs`; pattern marks in `server/reading/view.mjs`; pattern section in the menu in `public/assets/reading.mjs`
+- [X] T217 [US2] Add the patterns request and format to `server/texts/prompt.mjs`; store patterns and places in `server/texts/accept.mjs`; pattern marks in `server/reading/view.mjs`; pattern section in the menu in `public/assets/reading.mjs`
 
 ---
 
@@ -73,13 +73,13 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T218 [P] [US3] Tests in `tests/reading/practice.test.mjs`: `FR-310 RQ-274 RQ-278 RQ-58:` `/api/practice` returns at most 8 questions, one per sentence with a leaf, in text order; each has the sentence, the leaf, 3–4 distinct options with the meaning here at `right`, and wrong options that are other words' meanings; a word with fewer than 2 other meanings available is skipped; `FR-319 RQ-155:` another account gets 404
-- [ ] T219 [P] [US3] Playwright test `tests/e2e/reading.spec.mjs` (part 3): `FR-310 FR-311 FR-312 RQ-274 RQ-276:` Practise shows a sentence with a word question, answering marks right/wrong and shows the sentence's English; after the word questions come the passage questions; then the full text with a Play button (with a stubbed `speechSynthesis`, each sentence is highlighted in turn and Stop ends it)
+- [X] T218 [P] [US3] Tests in `tests/reading/practice.test.mjs`: `FR-310 RQ-274 RQ-278 RQ-58:` `/api/practice` returns at most 8 questions, one per sentence with a leaf, in text order; each has the sentence, the leaf, 3–4 distinct options with the meaning here at `right`, and wrong options that are other words' meanings; a word with fewer than 2 other meanings available is skipped; `FR-319 RQ-155:` another account gets 404
+- [X] T219 [P] [US3] Playwright test `tests/e2e/reading.spec.mjs` (part 3): `FR-310 FR-311 FR-312 RQ-274 RQ-276:` Practise shows a sentence with a word question, answering marks right/wrong and shows the sentence's English; after the word questions come the passage questions; then the full text with a Play button (with a stubbed `speechSynthesis`, each sentence is highlighted in turn and Stop ends it)
 
 ### Implementation
 
-- [ ] T220 [US3] Write `server/reading/practice.mjs` (research R5) and `GET /api/practice` in `server/reading/routes.mjs`
-- [ ] T221 [US3] Practice mode in `public/assets/reading.mjs`: word questions (after each answer the sentence's English shows, per the setting — RQ-10), then passage questions, then the full text with Play/Stop and sentence highlighting
+- [X] T220 [US3] Write `server/reading/practice.mjs` (research R5) and `GET /api/practice` in `server/reading/routes.mjs`
+- [X] T221 [US3] Practice mode in `public/assets/reading.mjs`: word questions (after each answer the sentence's English shows, per the setting — RQ-10), then passage questions, then the full text with Play/Stop and sentence highlighting
 
 ---
 
@@ -87,13 +87,13 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T222 [P] [US4] Tests in `tests/reading/flags.test.mjs`: `FR-313 RQ-297:` `POST /api/explain` stores a flag with code E1, reason and note; the next part prompt lists `E1:` with the word, sentence, reason and note and asks for `explanations`; `FR-314 RQ-298:` an accepted answer with `explanations: [{code: "E1"}]` stores it, the reading payload shows it for that word (in any text), and the flag is answered; an answer without it leaves the flag open; `FR-315 RQ-301:` `POST /api/report` on a question stores R1; that question's answers stop counting in the G-02 summary and the reading payload marks it reported; the next part prompt lists `R1:` with the text, question, reason and note; an accepted fix replaces the question (or a reported sentence's line, re-split into sentences) and closes the report; a body with both or neither position is refused; codes count up per account; `FR-319 RQ-155:` flags and reports on another account's text are refused (404)
-- [ ] T223 [P] [US4] Playwright test `tests/e2e/reading.spec.mjs` (part 4): `FR-313 FR-315 RQ-297 RQ-301:` Explain from the menu with a reason and note shows "Asked — the next prompt will include it"; Report on a question with a reason shows it as reported
+- [X] T222 [P] [US4] Tests in `tests/reading/flags.test.mjs`: `FR-313 RQ-297:` `POST /api/explain` stores a flag with code E1, reason and note; the next part prompt lists `E1:` with the word, sentence, reason and note and asks for `explanations`; `FR-314 RQ-298:` an accepted answer with `explanations: [{code: "E1"}]` stores it, the reading payload shows it for that word (in any text), and the flag is answered; an answer without it leaves the flag open; `FR-315 RQ-301:` `POST /api/report` on a question stores R1; that question's answers stop counting in the G-02 summary and the reading payload marks it reported; the next part prompt lists `R1:` with the text, question, reason and note; an accepted fix replaces the question (or a reported sentence's line, re-split into sentences) and closes the report; a body with both or neither position is refused; codes count up per account; `FR-319 RQ-155:` flags and reports on another account's text are refused (404)
+- [X] T223 [P] [US4] Playwright test `tests/e2e/reading.spec.mjs` (part 4): `FR-313 FR-315 RQ-297 RQ-301:` Explain from the menu with a reason and note shows "Asked — the next prompt will include it"; Report on a question with a reason shows it as reported
 
 ### Implementation
 
-- [ ] T224 [US4] Write `server/reading/flags.mjs` (flags, reports, codes) and routes `POST /api/explain`, `POST /api/report`; add open flags and reports to `server/texts/prompt.mjs`; store explanations and apply fixes in `server/texts/accept.mjs`; skip reported questions in the summary in `server/texts/packages.mjs`
-- [ ] T225 [US4] Explain form (reason buttons, note) in the menu, and Report buttons (questions; a line's menu) with reason and note, in `public/assets/reading.mjs`
+- [X] T224 [US4] Write `server/reading/flags.mjs` (flags, reports, codes) and routes `POST /api/explain`, `POST /api/report`; add open flags and reports to `server/texts/prompt.mjs`; store explanations and apply fixes in `server/texts/accept.mjs`; skip reported questions in the summary in `server/texts/packages.mjs`
+- [X] T225 [US4] Explain form (reason buttons, note) in the menu, and Report buttons (questions; a line's menu) with reason and note, in `public/assets/reading.mjs`
 
 ---
 
@@ -101,12 +101,12 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T226 [P] [US5] Tests in `tests/reading/dictionary.test.mjs`: `FR-316 RQ-53 RQ-205 RQ-357:` `/api/dictionary` lists every word, phrase and pattern of the learner (ground and leaves) with its translation or null, state and one example sentence where it was met (kopp → "Maja tvättar kopparna." or another sentence with it); `FR-317 RQ-56:` names are listed apart and not among the items; `FR-319 RQ-155:` it lists only the learner's own
-- [ ] T227 [P] [US5] Playwright test `tests/e2e/reading.spec.mjs` (part 5): `FR-316 FR-317 RQ-53 RQ-56:` the Dictionary page shows kopp with its meaning and example, the search box filters, and Elsa is under Names
+- [X] T226 [P] [US5] Tests in `tests/reading/dictionary.test.mjs`: `FR-316 RQ-53 RQ-205 RQ-357:` `/api/dictionary` lists every word, phrase and pattern of the learner (ground and leaves) with its translation or null, state and one example sentence where it was met (kopp → "Maja tvättar kopparna." or another sentence with it); `FR-317 RQ-56:` names are listed apart and not among the items; `FR-319 RQ-155:` it lists only the learner's own
+- [X] T227 [P] [US5] Playwright test `tests/e2e/reading.spec.mjs` (part 5): `FR-316 FR-317 RQ-53 RQ-56:` the Dictionary page shows kopp with its meaning and example, the search box filters, and Elsa is under Names
 
 ### Implementation
 
-- [ ] T228 [US5] Write `server/reading/dictionary.mjs` and `GET /api/dictionary`; `public/dictionary.html` + `public/assets/dictionary.mjs` (search, sections for words/phrases/patterns and names); a Dictionary link in the top bar of the signed-in pages; add `/dictionary` to the static pages (access `agreed`)
+- [X] T228 [US5] Write `server/reading/dictionary.mjs` and `GET /api/dictionary`; `public/dictionary.html` + `public/assets/dictionary.mjs` (search, sections for words/phrases/patterns and names); a Dictionary link in the top bar of the signed-in pages; add `/dictionary` to the static pages (access `agreed`)
 
 ---
 
@@ -114,20 +114,20 @@ description: "Tasks for G-03: reading and the word menu"
 
 ### Tests (write first)
 
-- [ ] T229 [P] [US6] Tests in `tests/reading/own.test.mjs`: `FR-318 RQ-74:` `POST /api/own-text` saves a text with `own = 1`, no English, its lines and sentences with new items; it appears on Home as own; the reading payload works for it; a text over 20,000 characters is refused; `POST /api/leaf` adds a new word as a leaf without meaning; `POST /api/meanings-prompt` makes a meanings exchange (no package) for leaves without meaning, and `409 nothing_missing` when none; `FR-319 RQ-155:` another account can't read the own text or save leaves from it
-- [ ] T230 [P] [US6] Playwright test `tests/e2e/reading.spec.mjs` (part 6): `FR-318 RQ-74:` paste an own text on Home, open it, tap a new word and Save as leaf
+- [X] T229 [P] [US6] Tests in `tests/reading/own.test.mjs`: `FR-318 RQ-74:` `POST /api/own-text` saves a text with `own = 1`, no English, its lines and sentences with new items; it appears on Home as own; the reading payload works for it; a text over 20,000 characters is refused; `POST /api/leaf` adds a new word as a leaf without meaning; `POST /api/meanings-prompt` makes a meanings exchange (no package) for leaves without meaning, and `409 nothing_missing` when none; `FR-319 RQ-155:` another account can't read the own text or save leaves from it
+- [X] T230 [P] [US6] Playwright test `tests/e2e/reading.spec.mjs` (part 6): `FR-318 RQ-74:` paste an own text on Home, open it, tap a new word and Save as leaf
 
 ### Implementation
 
-- [ ] T231 [US6] Write `server/reading/own.mjs` and routes `POST /api/own-text`, `POST /api/leaf`, `POST /api/meanings-prompt`; own-text form and Get meanings on Home (`public/index.html`, `public/assets/home.mjs`); Save as leaf in the menu
+- [X] T231 [US6] Write `server/reading/own.mjs` and routes `POST /api/own-text`, `POST /api/leaf`, `POST /api/meanings-prompt`; own-text form and Get meanings on Home (`public/index.html`, `public/assets/home.mjs`); Save as leaf in the menu
 
 ---
 
 ## Phase 9: Polish
 
-- [ ] T232 [P] Extend `tests/web/authz.test.mjs` bodies for the new POST routes; `tests/seclog/logscan.test.mjs` with an own text and an Explain note that must not reach any log; `tests/owner/data.test.mjs` so export and delete cover the G-03 tables
-- [ ] T233 Run `npm test`, `npm run test:e2e`, `npm run check`; fix through spec and tasks; FR-301…FR-319 traced
-- [ ] T234 Walk through quickstart §2; record in `docs/STATUS.md` (Implemented for G-03)
+- [X] T232 [P] Extend `tests/web/authz.test.mjs` bodies for the new POST routes; `tests/seclog/logscan.test.mjs` with an own text and an Explain note that must not reach any log; `tests/owner/data.test.mjs` so export and delete cover the G-03 tables
+- [X] T233 Run `npm test`, `npm run test:e2e`, `npm run check`; fix through spec and tasks; FR-301…FR-319 traced
+- [X] T234 Walk through quickstart §2; record in `docs/STATUS.md` (Implemented for G-03)
 
 ---
 

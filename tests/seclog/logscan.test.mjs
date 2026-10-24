@@ -33,6 +33,10 @@ test('FR-023 RQ-371: after setup, sign-in, a failed sign-in, an agreement, a res
     // A pasted AI answer (G-02) must not reach any log either.
     const p = await c.post('/api/prompt', { action: 'next' });
     await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: `{"part": "${p.body.code}", "texts": [{"title": "Loggtest", "lines": [{"sv": "${bodyText}.", "en": "x"}]}]}` });
+    // An own text and an Explain note (G-03) must not reach any log either.
+    const own = await c.post('/api/own-text', { title: 'Egen', text: `${bodyText} igen.` });
+    const sentence = t.grove.db.prepare('SELECT id FROM sentences WHERE text_id = ?').get(own.body.id);
+    await c.post('/api/explain', { sentenceId: sentence.id, form: 'björn', reason: 'other', note: 'Hemlig anteckning om björnen' });
   } finally {
     process.stdout.write = write;
     process.stderr.write = ewrite;
@@ -42,7 +46,7 @@ test('FR-023 RQ-371: after setup, sign-in, a failed sign-in, an agreement, a res
   const appLogs = readdirSync(logDir).map((name) => readFileSync(join(logDir, name), 'utf8')).join('\n');
   const security = JSON.stringify(t.grove.seclog.list());
   for (const [name, text] of [['app log', appLogs], ['security log', security], ['standard output', captured.join('')]]) {
-    for (const secret of [ownerPw, reviewerPw, 'Wrong-secret-73!', idToken, bodyText]) {
+    for (const secret of [ownerPw, reviewerPw, 'Wrong-secret-73!', idToken, bodyText, 'Hemlig anteckning om björnen']) {
       assert.ok(!text.includes(secret), `${name} holds a secret`);
     }
   }

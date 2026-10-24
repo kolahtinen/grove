@@ -47,7 +47,7 @@ function render(home) {
     title.textContent = t.title;
     const state = document.createElement('span');
     state.className = `text-state ${t.state}`;
-    state.textContent = t.state;
+    state.textContent = t.own ? `own · ${t.state}` : t.state;
     a.append(title, state);
     li.append(a);
     list.append(li);
@@ -146,4 +146,23 @@ $('add-meanings').addEventListener('click', async () => {
   $('meanings-answer').value = '';
   showMessage($('package-message'), `Meanings added for ${result.data.filled} words.`, 'ok');
   await load();
+});
+
+// Own texts and meanings for leaves without one (G-03 FR-318).
+$('own-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const title = form.elements.title.value.trim();
+  const text = form.elements.text.value.trim();
+  if (!title || !text) return;
+  const result = await post('/api/own-text', { title, text });
+  if (!result.ok) { showMessage($('own-message'), result.message); return; }
+  form.reset();
+  window.location.assign(`/text?id=${result.data.id}`);
+});
+$('get-meanings').addEventListener('click', async () => {
+  const result = await post('/api/meanings-prompt', {});
+  if (!result.ok) { showMessage($('own-message'), result.message); return; }
+  await load();
+  $('meanings-card').scrollIntoView({ block: 'nearest' });
 });

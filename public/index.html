@@ -12,7 +12,7 @@
 <header class="topbar">
 <div class="topbar-inner">
 <a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
-<div class="account" hidden><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
 </div>
 </header>
 <main>
@@ -51,6 +51,17 @@
 <label>Paste the meanings answer here<textarea id="meanings-answer" rows="4"></textarea></label>
 <p class="message" id="meanings-message" role="status" hidden></p>
 <button type="button" class="main" id="add-meanings">Add meanings</button>
+</section>
+<section class="card" id="own-card">
+<h2>Read your own text</h2>
+<p class="small muted">Paste a Swedish text you want to read (an article, a song). It stays private to you.</p>
+<form id="own-form">
+<label>Title<input type="text" name="title" maxlength="120" required></label>
+<label>Swedish text<textarea name="text" rows="5" maxlength="20000" required></textarea></label>
+<p class="message" id="own-message" role="status" hidden></p>
+<button type="submit" class="main">Save text</button>
+</form>
+<p class="small"><button type="button" id="get-meanings">Get meanings for leaves without one</button></p>
 </section>
 <section class="card">
 <h2>Your texts</h2>

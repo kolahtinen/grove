@@ -1,0 +1,332 @@
+// The reading page (FR-301…FR-318): sentences of tappable words, English per the setting, pattern
+// marks, the word menu sheet, Explain and Report, Practise and Play. All text via textContent.
+import { getMe, post, showMessage } from './api.mjs';
+import { showAccount } from './page.mjs';
+
+const $ = (id) => document.getElementById(id);
+const id = Number(new URLSearchParams(window.location.search).get('id'));
+const STATUS = { new: 'New word', leaf: 'Leaf — a word you are learning', ground: 'In your ground — you know it', name: 'Name — never counts as new' };
+let data = null;
+let current = null; // { token, sentence, line }
+let showEn = true;
+let playing = false;
+
+function swedishVoice() {
+  return (window.speechSynthesis?.getVoices() || []).find((v) => v.lang?.toLowerCase().startsWith('sv'));
+}
+
+function speak(text, onend) {
+  const synth = window.speechSynthesis;
+  if (!synth) { onend?.(); return false; }
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'sv-SE';
+  const voice = swedishVoice();
+  // Some engines hand out voices the setter won't take; the language alone then picks one.
+  try { if (voice) u.voice = voice; } catch { /* keep u.lang */ }
+  u.onend = () => onend?.();
+  synth.speak(u);
+  return true;
+}
+
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+// Renders lines into a list; with `practice`, words aren't buttons and sentences can be highlighted.
+function renderLines(list, { tappable = true } = {}) {
+  list.replaceChildren();
+  for (const line of data.lines) {
+    const li = el('li', line.reported ? 'reported' : '');
+    const sv = el('p', 'sv passage');
+    for (const s of line.sentences) {
+      const span = el('span', 'sentence');
+      span.dataset.sentence = s.id;
+      for (const tok of s.tokens) {
+        if (!tok.word) { span.append(document.createTextNode(tok.t)); continue; }
+        const w = el(tappable ? 'button' : 'span', `w ${tok.status}${tok.patterns?.length ? ' pattern' : ''}`, tok.t);
+        if (tappable) {
+          w.type = 'button';
+          w.addEventListener('click', () => openMenu(tok, s, line));
+        }
+        span.append(w);
+      }
+      if (s.newCount > 0) span.append(el('span', 'new-count', `${s.newCount} new`));
+      sv.append(span, document.createTextNode(' '));
+    }
+    li.append(sv);
+    if (line.en) {
+      const en = el('p', 'en', line.en);
+      en.hidden = !showEn;
+      li.append(en);
+      if (!showEn) {
+        const peek = el('button', 'bar-button en-toggle', 'English');
+        peek.type = 'button';
+        peek.addEventListener('click', () => { en.hidden = !en.hidden; });
+        li.append(peek);
+      }
+    }
+    list.append(li);
+  }
+}
+
+function openMenu(token, sentence, line) {
+  current = { token, sentence, line };
+  speak(token.t);
+  $('menu-word').textContent = token.t;
+  $('menu-status').textContent = STATUS[token.status] || '';
+  $('menu-status').className = `menu-status ${token.status}`;
+  $('menu-lemma').textContent = token.lemmas?.length ? token.lemmas.join(' / ') : token.status === 'name' ? '—' : token.word;
+  $('menu-meaning').textContent = token.status === 'name' ? '—' : token.meaning || 'meaning missing';
+  $('menu-explanation').hidden = !token.explanation;
+  $('menu-explanation').textContent = token.explanation || '';
+  const phrases = token.phrases || [];
+  $('menu-phrases').hidden = phrases.length === 0;
+  $('menu-phrase-list').replaceChildren(...phrases.map((p) => el('li', '', p)));
+  const pats = (token.patterns || []).map((pid) => data.patterns.find((p) => p.id === pid)).filter(Boolean);
+  $('menu-patterns').hidden = pats.length === 0;
+  $('menu-pattern-list').replaceChildren(...pats.map((p) => {
+    const li = el('li');
+    li.append(el('strong', '', p.name), document.createTextNode(` — ${p.explain || ''}`));
+    return li;
+  }));
+  $('menu-save').hidden = !(data.own && token.status === 'new');
+  $('menu-explain').hidden = token.status === 'name';
+  $('explain-form').hidden = true;
+  $('report-form').hidden = true;
+  showMessage($('menu-message'), '');
+  $('menu').hidden = false;
+  $('sheet-backdrop').hidden = false;
+}
+
+function closeMenu() {
+  $('menu').hidden = true;
+  $('sheet-backdrop').hidden = true;
+}
+
+let reportTarget = null;
+function openReport(target, what) {
+  reportTarget = target;
+  $('report-what').textContent = what;
+  $('explain-form').hidden = true;
+  $('report-form').hidden = false;
+  if ($('menu').hidden) {
+    $('menu-word').textContent = 'Report';
+    $('menu-status').textContent = '';
+    for (const id2 of ['menu-explanation', 'menu-phrases', 'menu-patterns']) $(id2).hidden = true;
+    $('menu-lemma').textContent = '—';
+    $('menu-meaning').textContent = '—';
+    $('menu').hidden = false;
+    $('sheet-backdrop').hidden = false;
+  }
+}
+
+function renderQuestions(container) {
+  container.replaceChildren();
+  for (const q of data.questions) {
+    const fieldset = el('fieldset', q.reported ? 'reported' : '');
+    fieldset.append(el('legend', '', q.q));
+    const feedback = el('p', 'feedback');
+    const previous = data.answered.find((a) => a.position === q.position);
+    q.options.forEach((option, index) => {
+      const b = el('button', 'option', option);
+      b.type = 'button';
+      b.addEventListener('click', async () => {
+        const result = await post('/api/question', { textId: id, position: q.position, option: index });
+        if (!result.ok) return;
+        fieldset.querySelectorAll('button.option').forEach((x, i) => {
+          x.classList.toggle('right', i === result.data.rightOption);
+          x.classList.toggle('wrong', i === index && !result.data.right);
+        });
+        feedback.textContent = result.data.right ? 'Right!' : 'Not quite — the right answer is marked.';
+      });
+      fieldset.append(b);
+    });
+    if (q.reported) feedback.textContent = 'Reported — this question doesn’t count.';
+    else if (previous) feedback.textContent = previous.right ? 'You answered this right.' : 'You answered this before.';
+    fieldset.append(feedback);
+    const report = el('button', 'bar-button report', q.reported ? 'Reported' : 'Report');
+    report.type = 'button';
+    report.disabled = q.reported;
+    report.addEventListener('click', () => openReport({ questionPosition: q.position }, `Question ${q.position + 1}: ${q.q}`));
+    fieldset.append(report);
+    container.append(fieldset);
+  }
+}
+
+// Practise (FR-310…FR-312): word questions, then the passage questions, then the full text with Play.
+async function practise() {
+  const res = await fetch(`/api/practice?id=${id}`, { credentials: 'same-origin' });
+  if (!res.ok) return;
+  const { questions } = await res.json();
+  $('reading-card').hidden = true;
+  $('questions-card').hidden = true;
+  $('practice-card').hidden = false;
+  const box = $('practice');
+  let i = 0;
+
+  function wordQuestion() {
+    if (i >= questions.length) { passage(); return; }
+    const q = questions[i];
+    box.replaceChildren();
+    $('practice-heading').textContent = `Practise — word ${i + 1} of ${questions.length}`;
+    box.append(el('p', 'passage practice-sentence', q.sentence));
+    const fieldset = el('fieldset');
+    fieldset.append(el('legend', '', `What does “${q.word}” mean here?`));
+    const feedback = el('p', 'feedback');
+    const line = data.lines.find((l) => l.sentences.some((s) => s.sv === q.sentence));
+    q.options.forEach((option, index) => {
+      const b = el('button', 'option', option);
+      b.type = 'button';
+      b.addEventListener('click', () => {
+        fieldset.querySelectorAll('button.option').forEach((x, k) => { x.disabled = true; x.classList.toggle('right', k === q.right); x.classList.toggle('wrong', k === index && index !== q.right); });
+        feedback.textContent = index === q.right ? 'Right!' : 'Not quite — the right answer is marked.';
+        if (line?.en && showEn) box.append(el('p', 'en practice-en', line.en));
+        const next = el('button', 'main', 'Next');
+        next.type = 'button';
+        next.addEventListener('click', () => { i += 1; wordQuestion(); });
+        box.append(next);
+      });
+      fieldset.append(b);
+    });
+    fieldset.append(feedback);
+    box.append(fieldset);
+  }
+
+  function passage() {
+    box.replaceChildren();
+    $('practice-heading').textContent = 'Practise — questions about the text';
+    const qs = el('div', 'practice-questions');
+    renderQuestions(qs);
+    box.append(qs);
+    const next = el('button', 'main', 'Show the whole text');
+    next.type = 'button';
+    next.addEventListener('click', full);
+    box.append(next);
+  }
+
+  function full() {
+    box.replaceChildren();
+    $('practice-heading').textContent = 'The whole text';
+    const play = el('button', 'main', 'Play');
+    play.type = 'button';
+    play.id = 'play';
+    const stop = el('button', '', 'Stop');
+    stop.type = 'button';
+    stop.id = 'stop';
+    const tools = el('div', 'row');
+    tools.append(play, stop);
+    const list = el('ol', 'lines');
+    list.id = 'practice-lines';
+    box.append(tools, list);
+    renderLines(list, { tappable: false });
+    play.addEventListener('click', () => {
+      const spans = [...list.querySelectorAll('.sentence')];
+      if (!window.speechSynthesis || !swedishVoice()) {
+        if (!window.speechSynthesis) { play.textContent = 'No Swedish voice on this device'; return; }
+      }
+      playing = true;
+      let k = 0;
+      const step = () => {
+        spans.forEach((s) => s.classList.remove('speaking'));
+        if (!playing || k >= spans.length) { playing = false; return; }
+        spans[k].classList.add('speaking');
+        const sentence = data.lines.flatMap((l) => l.sentences).find((s) => String(s.id) === spans[k].dataset.sentence);
+        k += 1;
+        speak(sentence.sv, step);
+      };
+      step();
+    });
+    stop.addEventListener('click', () => {
+      playing = false;
+      window.speechSynthesis?.cancel();
+      list.querySelectorAll('.speaking').forEach((s) => s.classList.remove('speaking'));
+    });
+    const back = el('a', '', 'Back to the text');
+    back.href = `/text?id=${id}`;
+    box.append(el('p'), back);
+  }
+
+  wordQuestion();
+}
+
+await showAccount();
+await getMe();
+const res = await fetch(`/api/reading?id=${id}`, { credentials: 'same-origin' });
+if (!res.ok) {
+  $('title').textContent = 'This text was not found.';
+} else {
+  data = await res.json();
+  showEn = data.showTranslations;
+  $('title').textContent = data.title;
+  document.title = `${data.title} · grove`;
+  $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}`;
+  $('toggle-en').textContent = `English: ${showEn ? 'on' : 'off'}`;
+  $('toggle-en').setAttribute('aria-pressed', String(showEn));
+  renderLines($('lines'));
+  $('questions-card').hidden = data.questions.length === 0;
+  renderQuestions($('questions'));
+
+  for (const b of $('ratings').querySelectorAll('button')) {
+    b.classList.toggle('chosen', b.dataset.value === data.rating);
+    b.addEventListener('click', async () => {
+      const r = await post('/api/rating', { textId: id, value: b.dataset.value });
+      if (!r.ok) { showMessage($('rating-message'), r.message); return; }
+      for (const x of $('ratings').querySelectorAll('button')) x.classList.toggle('chosen', x === b);
+      showMessage($('rating-message'), 'Thanks! Your next texts will take this into account.', 'ok');
+    });
+  }
+
+  $('toggle-en').addEventListener('click', async () => {
+    showEn = !showEn;
+    await post('/api/settings', { showTranslations: showEn });
+    $('toggle-en').textContent = `English: ${showEn ? 'on' : 'off'}`;
+    $('toggle-en').setAttribute('aria-pressed', String(showEn));
+    renderLines($('lines'));
+  });
+  $('practise').addEventListener('click', practise);
+}
+
+$('menu-close').addEventListener('click', closeMenu);
+$('sheet-backdrop').addEventListener('click', closeMenu);
+$('menu-explain').addEventListener('click', () => { $('report-form').hidden = true; $('explain-form').hidden = false; });
+$('menu-report-line').addEventListener('click', () => {
+  if (!current) return;
+  openReport({ linePosition: current.line.position }, `Sentence: ${current.sentence.sv}`);
+});
+$('explain-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const result = await post('/api/explain', { sentenceId: current.sentence.id, form: current.token.t, reason: form.elements.reason.value, note: form.elements.note.value.trim() });
+  if (result.ok) {
+    form.hidden = true;
+    form.reset();
+    showMessage($('menu-message'), 'Asked — the next prompt will include it.', 'ok');
+  } else showMessage($('menu-message'), result.message);
+});
+$('report-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const result = await post('/api/report', { textId: id, ...reportTarget, reason: form.elements.reason.value, note: form.elements.note.value.trim() });
+  if (result.ok) {
+    form.hidden = true;
+    form.reset();
+    showMessage($('menu-message'), `Reported (${result.data.code}) — it won’t count, and the next prompt asks for a fix.`, 'ok');
+    if (reportTarget.questionPosition !== undefined) {
+      const q = data.questions.find((x) => x.position === reportTarget.questionPosition);
+      if (q) q.reported = true;
+      renderQuestions($('questions'));
+    }
+  } else showMessage($('menu-message'), result.message);
+});
+$('menu-save').addEventListener('click', async () => {
+  const result = await post('/api/leaf', { textId: id, form: current.token.t });
+  if (result.ok) {
+    current.token.status = 'leaf';
+    $('menu-save').hidden = true;
+    $('menu-status').textContent = STATUS.leaf;
+    showMessage($('menu-message'), 'Saved as a leaf.', 'ok');
+  } else showMessage($('menu-message'), result.message);
+});

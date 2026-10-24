@@ -73,12 +73,11 @@ test('FR-206 FR-221 RQ-185 RQ-63: a bad answer shows its problems and a fix-it p
   await expect(item.locator('b')).toHaveCount(0);
   await item.click();
   const line = page.locator('#lines li').first();
-  await line.getByRole('button', { name: 'English' }).click();
   await expect(line.locator('.en')).toHaveText('<script>alert(1)</script> <b>x</b>');
   await expect(line.locator('script, b')).toHaveCount(0);
 });
 
-test('FR-218 RQ-36 RQ-46 RQ-11: open a text, show a line in English, answer a question, rate it, and see it rated on Home', async ({ page }) => {
+test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a question, rate it, and see it rated on Home', async ({ page }) => {
   await signIn(page);
   const first = page.locator('#texts a').first();
   await expect(first).toBeVisible();
@@ -86,9 +85,8 @@ test('FR-218 RQ-36 RQ-46 RQ-11: open a text, show a line in English, answer a qu
   await first.click();
   await page.waitForURL(/\/text\?id=\d+$/);
   await expect(page.locator('#title')).toHaveText(title);
+  // G-02 FR-218 now follows G-03 FR-301: English shows under each line by default.
   const line = page.locator('#lines li').first();
-  await expect(line.locator('.en')).toBeHidden();
-  await line.getByRole('button', { name: 'English' }).click();
   await expect(line.locator('.en')).toBeVisible();
   const question = page.locator('#questions fieldset').first();
   await question.getByRole('button').first().click();
