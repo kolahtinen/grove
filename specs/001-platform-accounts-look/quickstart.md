@@ -24,9 +24,9 @@ Expected: all pass; `check-trace` lists every FR-001…031 except the withdrawn 
 
 ```sh
 npm run dev       # grove on localhost:8787 with the fake Firebase and a temp data folder
-npm run owner:setup -- --email owner@example.test
-npm run reviewer:setup -- --email reviewer@example.test
 ```
+
+The dev server creates the owner and reviewer accounts itself (it prints their emails and passwords; see `tests/fakes/dev-accounts.mjs`). The owner commands run against the real setup of §3.
 
 Then in a browser at `http://localhost:8787`:
 

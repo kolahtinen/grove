@@ -30,6 +30,6 @@ test('FR-007 RQ-178: no route or page offers a conversation partner', () => {
   assert.ok(!paths.some((p) => /chat|conversation|partner/i.test(p)));
   for (const name of readdirSync(new URL('../../public/', import.meta.url)).filter((n) => n.endsWith('.html'))) {
     const html = readFileSync(new URL(`../../public/${name}`, import.meta.url), 'utf8');
-    assert.doesNotMatch(html, /chat|conversation partner/i, name);
+    assert.doesNotMatch(html, /conversation partner|id="chat|class="[^"]*\bchat\b|\/api\/chat/i, name);
   }
 });

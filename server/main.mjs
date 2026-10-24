@@ -1,5 +1,5 @@
 // Starts grove: config, store, web server, and the hourly job.
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadConfig } from './config.mjs';
@@ -30,14 +30,17 @@ export function createGrove(config, { now = () => Date.now(), fetchImpl } = {}) 
 
   return {
     config, db, seclog, firebase, app,
-    async start(port = config.port) {
+    async start(port = config.port, { pidFile = false } = {}) {
       server = await listen(app.handler, port);
+      // Lets backup:restore see that grove is running.
+      if (pidFile) writeFileSync(join(config.dataDir, 'grove.pid'), String(process.pid));
       timer = setInterval(() => hourlyJob({ config, db, seclog, sessions: app.sessions, now }), HOUR);
       timer.unref();
       return server.address().port;
     },
     async stop() {
       clearInterval(timer);
+      rmSync(join(config.dataDir, 'grove.pid'), { force: true });
       if (server) await new Promise((resolve) => { server.closeAllConnections(); server.close(resolve); });
       db.close();
     },
@@ -46,7 +49,7 @@ export function createGrove(config, { now = () => Date.now(), fetchImpl } = {}) 
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const grove = createGrove(loadConfig());
-  const port = await grove.start();
+  const port = await grove.start(undefined, { pidFile: true });
   grove.seclog.app('info', 'grove started', { url: `http://127.0.0.1:${port}` });
   const shutdown = async () => { await grove.stop(); process.exit(0); };
   process.on('SIGTERM', shutdown);

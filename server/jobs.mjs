@@ -1,6 +1,12 @@
-// The hourly job: log clean-up, expired sessions and idle counters (backups join it in US4).
+// The hourly job: a checked backup, log clean-up, expired sessions and idle counters.
+import { backupNow } from './store/backup.mjs';
 
-export async function hourlyJob({ db, seclog, sessions, now = () => Date.now() }) {
+export async function hourlyJob({ config, db, seclog, sessions, now = () => Date.now() }) {
+  try {
+    backupNow({ db, backupDir: config.backupDir, now });
+  } catch (error) {
+    seclog.app('error', 'backup failed', { code: error?.code || error?.name || 'Error' });
+  }
   try {
     seclog.cleanUp(now());
     sessions.removeExpired();

@@ -1,0 +1,22 @@
+[Unit]
+Description=grove web server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=grove
+Group=grove
+WorkingDirectory=/opt/grove
+EnvironmentFile=/etc/grove/grove.env
+ExecStart=/usr/bin/node server/main.mjs
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/grove /mnt/grove-backup
+
+[Install]
+WantedBy=multi-user.target

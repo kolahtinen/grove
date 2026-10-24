@@ -8,7 +8,7 @@
   "scripts": {
     "test": "node --test --test-concurrency=1 \"tests/**/*.test.mjs\"",
     "test:e2e": "playwright test",
-    "check": "npm audit --audit-level=high && gitleaks detect --no-banner && semgrep --config p/javascript --error --quiet server tunnel public/assets scripts && node scripts/check-trace.mjs",
+    "check": "npm audit --audit-level=high && gitleaks detect --no-banner && semgrep --config p/javascript --error --quiet --metrics off server tunnel public/assets scripts && node scripts/check-trace.mjs",
     "dev": "node tests/fakes/dev-server.mjs --port 8787",
     "start": "node server/main.mjs",
     "tunnel": "node tunnel/supervisor.mjs",

@@ -1,0 +1,22 @@
+[Unit]
+Description=grove quick tunnel and README link updater
+After=network-online.target grove.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=grove
+Group=grove
+WorkingDirectory=/opt/grove
+EnvironmentFile=/etc/grove/grove.env
+ExecStart=/usr/bin/node tunnel/supervisor.mjs
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/grove
+
+[Install]
+WantedBy=multi-user.target
