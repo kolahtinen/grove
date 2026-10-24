@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** `/regenerate client` for the G-01 tagline (FR-030, question-pages/56); G-01 Phase 10, deploy and verify on the owner's computer (T062–T066; Firebase project and GitHub token first), and a review of the G-01 code by a fresh session (constitution 1.6); then `/speckit-specify` for G-02; Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
+**Next (plan to Sunday 25 October):** G-01 Phase 10, deploy and verify on the owner's computer (T062–T066; Firebase project and GitHub token first), and a review of the G-01 code by a fresh session (constitution 1.6); then `/speckit-specify` for G-02; Friday–Saturday: G-01…G-08 in order with tests (shoulds cut before musts if time runs short); Sunday: verify, fix, invite reviewers.
 
 ## Phases
 
