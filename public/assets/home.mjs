@@ -166,3 +166,23 @@ $('get-meanings').addEventListener('click', async () => {
   await load();
   $('meanings-card').scrollIntoView({ block: 'nearest' });
 });
+
+// G-04: the three stages, level, today's minutes and the welcome card (FR-407, FR-414…FR-416).
+async function loadStages() {
+  const res = await fetch('/api/stages', { credentials: 'same-origin' });
+  if (!res.ok) return;
+  const s = await res.json();
+  $('welcome').hidden = !s.welcome;
+  const level = s.level === null ? 'Set your starting level' : s.level === 'below A1' ? 'Level: below A1' : `Level: ${s.level}`;
+  $('level-line').textContent = `${level} · ${s.todayMinutes} min of input today`;
+  const unread = document.querySelectorAll('#texts .text-state.new').length;
+  $('discover-count').textContent = unread ? `${unread} new` : 'get texts';
+  const due = s.review.fading + s.review.due;
+  $('review-count').textContent = due ? `${due} due${s.review.fading ? ` (${s.review.fading} fading)` : ''}` : 'nothing due';
+  $('master-count').textContent = s.master ? `${s.master} ready` : 'none yet';
+}
+await loadStages();
+$('welcome-close').addEventListener('click', async () => {
+  await post('/api/welcome', {});
+  $('welcome').hidden = true;
+});

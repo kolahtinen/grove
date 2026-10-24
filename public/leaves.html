@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leaves · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/leaves.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+</div>
+</header>
+<main>
+<section class="card">
+<h2>Leaves</h2>
+<p class="small muted">Words you are learning. They fall to your ground when you know them.</p>
+<form id="add-form" class="row">
+<input type="text" name="text" maxlength="80" aria-label="Add a word, phrase or pattern" placeholder="Add a word or phrase">
+<button type="submit">Add</button>
+</form>
+<p class="message" id="leaves-message" role="status" hidden></p>
+<h3 class="small">To remember</h3><ul class="dict" id="leaves-remember"></ul>
+<h3 class="small">To read</h3><ul class="dict" id="leaves-read"></ul>
+<h3 class="small">Unmarked</h3><ul class="dict" id="leaves-unmarked"></ul>
+</section>
+</main>
+</body>
+</html>

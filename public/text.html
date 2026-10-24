@@ -25,6 +25,13 @@
 </div>
 <ol class="lines" id="lines"></ol>
 </section>
+<section class="card" id="marking-card" hidden>
+<h2>Which new words don't you know?</h2>
+<p class="small muted">Switch on <strong>To read</strong> (recognise it when reading) and/or <strong>To remember</strong> (recall it, also by ear). Words you leave go to your ground.</p>
+<ul class="marking-list" id="marking-list"></ul>
+<p class="message" id="marking-message" role="status" hidden></p>
+<div class="row"><button type="button" class="main" id="marking-done">Done</button><button type="button" id="marking-later">Later</button></div>
+</section>
 <section class="card" id="practice-card" hidden>
 <h2 id="practice-heading">Practise</h2>
 <div id="practice"></div>
@@ -53,6 +60,11 @@
 <dt>Dictionary form</dt><dd id="menu-lemma"></dd>
 <dt>Meaning here</dt><dd id="menu-meaning"></dd>
 </dl>
+<p class="small muted" id="menu-met"></p>
+<div class="row menu-marks" id="menu-marks">
+<button type="button" class="switch" id="menu-read" aria-pressed="false">To read</button>
+<button type="button" class="switch" id="menu-remember" aria-pressed="false">To remember</button>
+</div>
 <p id="menu-explanation" class="menu-explanation" hidden></p>
 <div id="menu-phrases" hidden><h4 class="small">Part of</h4><ul id="menu-phrase-list"></ul></div>
 <div id="menu-patterns" hidden><h4 class="small">Grammar pattern</h4><ul id="menu-pattern-list"></ul></div>
@@ -61,6 +73,11 @@
 <button type="button" id="menu-save" hidden>Save as leaf</button>
 <button type="button" id="menu-report-line">Report sentence</button>
 </div>
+<div class="row">
+<button type="button" id="menu-fall" hidden>Let it fall</button>
+<button type="button" id="menu-pickup" hidden>Pick up</button>
+</div>
+<div id="fall-check" hidden></div>
 <form id="explain-form" hidden>
 <p class="small">Why do you want it explained?</p>
 <div class="reasons" id="explain-reasons">

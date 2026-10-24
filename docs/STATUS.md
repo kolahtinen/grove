@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next (plan to Sunday 25 October):** `/speckit-specify` for G-04 (ground, drilling and progress: marks To remember / To read, Let it fall, colours); open: G-02 T141 (real AIs), G-01 Phase 10 (deploy), a fresh-session review of G-01–G-03.
+**Next:** G-06 (starting level: Kelly list import fills level_words and a learner's starting ground) and G-07 (reviewer demo content), then G-05 (listening) and G-08 (the look's extras, the leaves-and-ground animation, the help page). Open: G-02 T141 (real AIs), G-01 Phase 10 (deploy), a fresh-session review of G-01–G-04.
 
 ## Phases
 
@@ -42,7 +42,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | G-01 | clarified 2026-10-24 ([spec](../specs/001-platform-accounts-look/spec.md); question-pages/54) | drafted 2026-10-24 ([plan](../specs/001-platform-accounts-look/plan.md)) | 66 tasks 2026-10-24 ([tasks](../specs/001-platform-accounts-look/tasks.md)) | analyzed 2026-10-24; fixes and page 55 applied | – | built 2026-10-24 (T001–T061): 75 unit + 26 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 | G-02 | clarified 2026-10-24 ([spec](../specs/002-texts-from-own-ai/spec.md); question-pages/57) | drafted 2026-10-24 ([plan](../specs/002-texts-from-own-ai/plan.md)) | 41 tasks 2026-10-24 ([tasks](../specs/002-texts-from-own-ai/tasks.md)) | analyzed 2026-10-24; U1, U2, L1 fixed |  | built 2026-10-24 (T101–T140): 136 unit + 32 browser tests pass; audit, gitleaks, semgrep, trace clean |  |  |
 | G-03 | clarified 2026-10-24 ([spec](../specs/003-reading-word-menu/spec.md); question-pages/58) | drafted 2026-10-24 ([plan](../specs/003-reading-word-menu/plan.md)) | 34 tasks 2026-10-24 ([tasks](../specs/003-reading-word-menu/tasks.md)) | analyzed 2026-10-24; H1, M1 fixed, L1 noted |  | built 2026-10-24 (T201–T234): 164 unit + 44 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
-| G-04 | clarified 2026-10-24 ([spec](../specs/004-ground-drilling-progress/spec.md); question-pages/59) | drafted 2026-10-24 ([plan](../specs/004-ground-drilling-progress/plan.md)) | 32 tasks 2026-10-24 ([tasks](../specs/004-ground-drilling-progress/tasks.md)) | analyzed 2026-10-24; M1, L1 fixed, L2 noted |  |  |  |  |
+| G-04 | clarified 2026-10-24 ([spec](../specs/004-ground-drilling-progress/spec.md); question-pages/59) | drafted 2026-10-24 ([plan](../specs/004-ground-drilling-progress/plan.md)) | 32 tasks 2026-10-24 ([tasks](../specs/004-ground-drilling-progress/tasks.md)) | analyzed 2026-10-24; M1, L1 fixed, L2 noted |  | built 2026-10-24 (T301–T332): 192 unit + 56 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
 
@@ -122,5 +122,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-24 | G-04 | `/speckit-clarify` (question-pages/59): the marking step has two switches per word, To read and To remember (RQ-52's three levels not used); Master is the reverse direction (gapped sentence + English → pick the Swedish word) for leaves with gaps of 2+ days. |
 | 2026-10-24 | G-04 | `/speckit-plan` and `/speckit-tasks`: spacing rule (2^(−days/gap), ×2.5 from 1 day, fall at ≥ 4), questions in read sentences (To read, To remember spoken, Master reversed, recall cards), migration 006 (columns + review_answers, input_days, level_words), new module `drill`; T301–T332, every FR-401…419 has a test task. |
 | 2026-10-24 | G-04 | `/speckit-analyze`: 0 critical, 0 high, 1 medium, 2 low. M1: Leaves gets an Unmarked section (starter words); L1: G-02 FR-210 now points to G-04 research R7 for the reuse list; L2 noted (Let it fall checked in the browser, own data only). |
+| 2026-10-24 | G-04 | `/speckit-implement` T301–T332: migration 006, spacing rule, marking step with To read / To remember switches (unmarked fall to the ground), Review (fading first; To read shown, To remember spoken and hidden; recall cards), Master (reverse direction), menu switches, Let it fall with a meaning check, Pick up, Leaves (incl. Unmarked), colours by mark and by marks when fallen, level from level_words (empty until G-06), input minutes from an activity heartbeat, Progress, welcome card; the prompt's reuse list now comes from drilled leaves. |
 
 ## Notes

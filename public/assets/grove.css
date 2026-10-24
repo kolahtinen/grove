@@ -301,3 +301,29 @@ fieldset.reported legend { opacity: .6; }
 .names { display: flex; flex-wrap: wrap; gap: .4rem; list-style: none; padding: 0; margin: 0; }
 .names li { background: var(--soft); border-radius: 999px; padding: .15rem .6rem; font-size: .88rem; }
 a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card2); color: var(--ink); }
+
+/* G-04: stages, welcome, marking step, colours, review, leaves, progress */
+.stages { margin: .4rem 0 .6rem; }
+.stage { display: flex; flex-direction: column; gap: .2rem; padding: .7rem .6rem; border-radius: 18px; background: var(--card2); border: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+.stage-name { font-weight: 700; }
+.stage-count { font-size: .8rem; color: var(--muted); }
+.welcome { border-color: var(--accent); }
+.marking-list { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.marking-list li { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .35rem 0; border-top: 1px solid var(--line); }
+.marking-list .mark-word { flex: 1 1 8rem; }
+.switch[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--accent2); }
+.w.m-read { color: var(--rlc); }
+.w.m-remember { color: var(--cw); }
+.w.m-both { color: var(--cb); }
+.w.f-read { color: var(--rr); }
+.w.f-remember { color: var(--rw); }
+.w.f-both { color: var(--rb); }
+.w.other-reading::after { content: ''; display: inline-block; width: .35em; height: .35em; margin-left: .1em; border-radius: 50%; background: var(--amber); vertical-align: super; }
+.menu-marks { margin: .2rem 0 .6rem; }
+.review-sentence { margin-bottom: .6rem; }
+.small-row { margin-top: .2rem; }
+.small-row > button { flex: 0 0 auto; }
+.bars { display: grid; grid-template-columns: repeat(14, 1fr); gap: .25rem; align-items: end; height: 140px; margin: .4rem 0 .8rem; }
+.bar { display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+.bar-fill { display: block; width: 100%; height: var(--h, 0%); min-height: 2px; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--accent2), var(--accent)); }
+.bar-label { font-size: .65rem; color: var(--muted); margin-top: .2rem; }

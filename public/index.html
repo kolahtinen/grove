@@ -16,6 +16,23 @@
 </div>
 </header>
 <main>
+<section class="card welcome" id="welcome" hidden>
+<h2>Welcome to grove</h2>
+<p>Every new word you meet is a <strong>leaf</strong>. Mark the ones you don't know yet and grove drills them, in sentences you have read, until you know them; then they <strong>fall to the ground</strong>.</p>
+<p>Your <strong>ground</strong> is everything you know. New texts are written mostly from it, so they stay readable as they get harder.</p>
+<p>Practice comes in three stages: <strong>Discover</strong> new texts, <strong>Review</strong> your leaves when they're due, and <strong>Master</strong> your strongest ones.</p>
+<button type="button" class="main" id="welcome-close">Got it</button>
+</section>
+<section class="card" id="stages-card">
+<h2>Today</h2>
+<p class="small muted" id="level-line"></p>
+<div class="grid-3 stages">
+<a class="stage" href="#package-card"><span class="stage-name">Discover</span><span class="stage-count" id="discover-count"></span></a>
+<a class="stage" href="/review?mode=review" id="review-link"><span class="stage-name">Review</span><span class="stage-count" id="review-count"></span></a>
+<a class="stage" href="/review?mode=master" id="master-link"><span class="stage-name">Master</span><span class="stage-count" id="master-count"></span></a>
+</div>
+<p class="links"><a href="/leaves">Leaves</a><a href="/dictionary">Dictionary</a><a href="/progress">Progress</a></p>
+</section>
 <section class="card" id="topic-card">
 <h2>Topic</h2>
 <p class="topic-line"><span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>

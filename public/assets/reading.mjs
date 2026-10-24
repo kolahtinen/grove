@@ -2,6 +2,7 @@
 // marks, the word menu sheet, Explain and Report, Practise and Play. All text via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { startHeartbeat } from './heartbeat.mjs';
 
 const $ = (id) => document.getElementById(id);
 const id = Number(new URLSearchParams(window.location.search).get('id'));
@@ -35,6 +36,17 @@ function el(tag, className, text) {
   return node;
 }
 
+// Colour classes (FR-413): To read / To remember / both, fallen from each, another reading.
+function markClass(tok) {
+  let c = '';
+  if (tok.marks?.read && tok.marks?.remember) c += ' m-both';
+  else if (tok.marks?.remember) c += ' m-remember';
+  else if (tok.marks?.read) c += ' m-read';
+  else if (tok.fell) c += ` f-${tok.fell}`;
+  if ((tok.lemmas?.length || 0) > 1) c += ' other-reading';
+  return c;
+}
+
 // Renders lines into a list; with `practice`, words aren't buttons and sentences can be highlighted.
 function renderLines(list, { tappable = true } = {}) {
   list.replaceChildren();
@@ -46,7 +58,7 @@ function renderLines(list, { tappable = true } = {}) {
       span.dataset.sentence = s.id;
       for (const tok of s.tokens) {
         if (!tok.word) { span.append(document.createTextNode(tok.t)); continue; }
-        const w = el(tappable ? 'button' : 'span', `w ${tok.status}${tok.patterns?.length ? ' pattern' : ''}`, tok.t);
+        const w = el(tappable ? 'button' : 'span', `w ${tok.status}${tok.patterns?.length ? ' pattern' : ''}${markClass(tok)}`, tok.t);
         if (tappable) {
           w.type = 'button';
           w.addEventListener('click', () => openMenu(tok, s, line));
@@ -93,6 +105,14 @@ function openMenu(token, sentence, line) {
     return li;
   }));
   $('menu-save').hidden = !(data.own && token.status === 'new');
+  // G-04: times met, the two switches, Let it fall, Pick up (FR-408…FR-411).
+  $('menu-met').textContent = token.met ? `Met ${token.met} time${token.met === 1 ? '' : 's'}` : '';
+  $('menu-marks').hidden = token.status === 'name';
+  setSwitch($('menu-read'), !!token.marks?.read);
+  setSwitch($('menu-remember'), !!token.marks?.remember);
+  $('menu-fall').hidden = token.status !== 'leaf';
+  $('menu-pickup').hidden = token.status !== 'ground';
+  $('fall-check').hidden = true;
   $('menu-explain').hidden = token.status === 'name';
   $('explain-form').hidden = true;
   $('report-form').hidden = true;
@@ -330,3 +350,126 @@ $('menu-save').addEventListener('click', async () => {
     showMessage($('menu-message'), 'Saved as a leaf.', 'ok');
   } else showMessage($('menu-message'), result.message);
 });
+
+// G-04: switches, Let it fall, Pick up in the menu (FR-409…FR-411).
+function setSwitch(button, on) {
+  button.setAttribute('aria-pressed', String(on));
+}
+const itemOf = (token) => ({ lemma: token.lemmas?.[0] || token.word, kind: 'word' });
+async function toggleMark(which) {
+  const token = current.token;
+  const marks = { read: !!token.marks?.read, remember: !!token.marks?.remember };
+  marks[which] = !marks[which];
+  const result = await post('/api/marks', { ...itemOf(token), ...marks });
+  if (!result.ok) { showMessage($('menu-message'), result.message); return; }
+  token.marks = { read: result.data.read, remember: result.data.remember };
+  token.status = result.data.state === 'ground' ? 'ground' : 'leaf';
+  if (!token.lemmas?.length) token.lemmas = [itemOf(token).lemma];
+  setSwitch($('menu-read'), token.marks.read);
+  setSwitch($('menu-remember'), token.marks.remember);
+  $('menu-status').textContent = STATUS[token.status];
+  $('menu-fall').hidden = token.status !== 'leaf';
+  $('menu-pickup').hidden = token.status !== 'ground';
+  renderLines($('lines'));
+}
+$('menu-read').addEventListener('click', () => toggleMark('read'));
+$('menu-remember').addEventListener('click', () => toggleMark('remember'));
+
+$('menu-fall').addEventListener('click', async () => {
+  const item = itemOf(current.token);
+  const res2 = await fetch(`/api/fall-check?lemma=${encodeURIComponent(item.lemma)}&kind=${item.kind}`, { credentials: 'same-origin' });
+  const { question } = res2.ok ? await res2.json() : { question: null };
+  const box = $('fall-check');
+  box.replaceChildren();
+  box.hidden = false;
+  const done = async (payload) => {
+    const r = await post('/api/let-it-fall', { ...item, ...payload });
+    if (r.ok && r.data.fell) {
+      current.token.status = 'ground';
+      current.token.fell = current.token.marks?.read && current.token.marks?.remember ? 'both' : current.token.marks?.remember ? 'remember' : current.token.marks?.read ? 'read' : null;
+      current.token.marks = { read: false, remember: false };
+      showMessage($('menu-message'), 'It fell to your ground.', 'ok');
+      renderLines($('lines'));
+    } else showMessage($('menu-message'), 'Not quite — it stays a leaf for now.');
+    box.hidden = true;
+    $('menu-fall').hidden = current.token.status !== 'leaf';
+  };
+  if (!question) {
+    box.append(el('p', '', 'Are you sure you know it?'));
+    const yes = el('button', 'main', 'Yes, let it fall');
+    yes.type = 'button';
+    yes.addEventListener('click', () => done({ confirmed: true }));
+    box.append(yes);
+    return;
+  }
+  box.append(el('p', 'passage', question.sentence), el('p', 'small', `What does “${question.word}” mean here?`));
+  question.options.forEach((option, index) => {
+    const b = el('button', 'option', option);
+    b.type = 'button';
+    b.addEventListener('click', () => done({ right: index === question.right }));
+    box.append(b);
+  });
+});
+
+$('menu-pickup').addEventListener('click', async () => {
+  const r = await post('/api/pick-up', itemOf(current.token));
+  if (!r.ok) { showMessage($('menu-message'), r.message); return; }
+  current.token.status = 'leaf';
+  current.token.marks = { read: true, remember: false };
+  current.token.fell = null;
+  setSwitch($('menu-read'), true);
+  $('menu-status').textContent = STATUS.leaf;
+  $('menu-pickup').hidden = true;
+  showMessage($('menu-message'), 'Picked up — it is due for review now.', 'ok');
+  renderLines($('lines'));
+});
+
+// G-04: the marking step after a rating (FR-401).
+async function offerMarking() {
+  const r = await fetch(`/api/marking?textId=${id}`, { credentials: 'same-origin' });
+  if (!r.ok) return;
+  const { words } = await r.json();
+  if (!words.length) { $('marking-card').hidden = true; return; }
+  const list = $('marking-list');
+  list.replaceChildren();
+  for (const w of words) {
+    const li = el('li');
+    li.dataset.lemma = w.lemma;
+    li.dataset.kind = w.kind;
+    const label = el('span', 'mark-word');
+    label.append(el('strong', '', w.lemma), document.createTextNode(` — ${w.en || 'meaning missing'}`));
+    li.append(label);
+    for (const [key, text] of [['read', 'To read'], ['remember', 'To remember']]) {
+      const b = el('button', 'switch bar-button', text);
+      b.type = 'button';
+      b.dataset.mark = key;
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
+      li.append(b);
+    }
+    list.append(li);
+  }
+  $('marking-card').hidden = false;
+  showMessage($('marking-message'), '');
+  $('marking-card').scrollIntoView({ block: 'nearest' });
+}
+$('marking-done').addEventListener('click', async () => {
+  const marks = [...$('marking-list').querySelectorAll('li')].map((li) => ({
+    lemma: li.dataset.lemma,
+    kind: li.dataset.kind,
+    read: li.querySelector('[data-mark="read"]').getAttribute('aria-pressed') === 'true',
+    remember: li.querySelector('[data-mark="remember"]').getAttribute('aria-pressed') === 'true',
+  }));
+  const r = await post('/api/marking', { textId: id, marks });
+  if (!r.ok) { showMessage($('marking-message'), r.message); return; }
+  showMessage($('marking-message'), `${r.data.drilled} to drill, ${r.data.fell} to your ground.`, 'ok');
+  $('marking-list').replaceChildren();
+  $('marking-done').hidden = true;
+  $('marking-later').hidden = true;
+});
+$('marking-later').addEventListener('click', () => { $('marking-card').hidden = true; });
+document.getElementById('ratings').addEventListener('click', (event) => {
+  if (event.target.closest('button')) setTimeout(offerMarking, 300);
+});
+if (data?.rating && data?.marking > 0) offerMarking();
+startHeartbeat();
