@@ -15,11 +15,23 @@ export function registerReadingRoutes(router, { db, now = () => Date.now() }) {
 
   router.add({
     method: 'POST', path: '/api/settings', access: 'agreed',
-    schema: { showTranslations: { type: 'boolean' } },
+    schema: {
+      showTranslations: { type: 'boolean', optional: true },
+      speechRate: { type: 'number', min: 0.5, max: 1.5, optional: true },
+      voiceHelpShown: { type: 'boolean', optional: true },
+    },
     handler: (ctx) => {
+      // Saves only the settings sent, and answers with them (G-03 FR-301, G-05 FR-502, FR-503).
+      const columns = { showTranslations: 'show_translations', speechRate: 'speech_rate', voiceHelpShown: 'voice_help_shown' };
       db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(ctx.account.id);
-      db.prepare('UPDATE learner_settings SET show_translations = ? WHERE account_id = ?').run(ctx.body.showTranslations ? 1 : 0, ctx.account.id);
-      sendJson(ctx.res, 200, { showTranslations: ctx.body.showTranslations });
+      const sent = {};
+      for (const [key, column] of Object.entries(columns)) {
+        if (ctx.body[key] === undefined) continue;
+        const value = typeof ctx.body[key] === 'boolean' ? (ctx.body[key] ? 1 : 0) : Math.round(ctx.body[key] * 10) / 10;
+        db.prepare(`UPDATE learner_settings SET ${column} = ? WHERE account_id = ?`).run(value, ctx.account.id);
+        sent[key] = ctx.body[key];
+      }
+      sendJson(ctx.res, 200, sent);
     },
   });
 

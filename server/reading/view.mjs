@@ -35,7 +35,7 @@ export function reportedQuestions(db, textId) {
 
 export function buildReading(db, accountId, textId) {
   const text = ownText(db, accountId, textId);
-  const settings = db.prepare('SELECT show_translations FROM learner_settings WHERE account_id = ?').get(accountId);
+  const settings = db.prepare('SELECT show_translations, speech_rate, voice_help_shown FROM learner_settings WHERE account_id = ?').get(accountId);
   const resolver = createResolver(db, accountId);
   const words = createWordStore({ db });
   const names = db.prepare('SELECT name FROM names WHERE account_id = ?').all(accountId).map((r) => r.name);
@@ -127,6 +127,8 @@ export function buildReading(db, accountId, textId) {
     title: text.title,
     own: !!text.own,
     showTranslations: settings ? !!settings.show_translations : true,
+    speechRate: settings?.speech_rate ?? 1,
+    voiceHelpShown: !!settings?.voice_help_shown,
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },
     lines,
     patterns,

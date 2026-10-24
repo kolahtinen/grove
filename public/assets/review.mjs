@@ -3,25 +3,17 @@
 import { getMe, post } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { startHeartbeat } from './heartbeat.mjs';
+import { speak, setRate } from './speech.mjs';
 
 const $ = (id) => document.getElementById(id);
 const mode = new URLSearchParams(window.location.search).get('mode') === 'master' ? 'master' : 'review';
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
 
-function speak(text) {
-  const synth = window.speechSynthesis;
-  if (!synth) return false;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'sv-SE';
-  const voice = synth.getVoices().find((v) => v.lang?.toLowerCase().startsWith('sv'));
-  try { if (voice) u.voice = voice; } catch { /* keep u.lang */ }
-  synth.speak(u);
-  return true;
-}
-
 await showAccount();
 await getMe();
 startHeartbeat();
+const stagesRes = await fetch('/api/stages', { credentials: 'same-origin' });
+if (stagesRes.ok) setRate((await stagesRes.json()).speechRate);
 $('review-heading').textContent = mode === 'master' ? 'Master' : 'Review';
 const res = await fetch(`/api/review?mode=${mode}`, { credentials: 'same-origin' });
 const data = res.ok ? await res.json() : { items: [], nextDue: null };

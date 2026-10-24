@@ -24,10 +24,11 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
     method: 'GET', path: '/api/stages', access: 'agreed',
     handler: (ctx) => {
       const id = ctx.account.id;
-      const welcome = !(db.prepare('SELECT welcome_dismissed FROM learner_settings WHERE account_id = ?').get(id)?.welcome_dismissed);
+      const settings = db.prepare('SELECT welcome_dismissed, speech_rate, voice_help_shown FROM learner_settings WHERE account_id = ?').get(id);
+      const welcome = !settings?.welcome_dismissed;
       // G-06: before the starting check, the level line keeps "Set your starting level" (FR-608).
       const flags = start.flags(id);
-      sendJson(ctx.res, 200, { level: flags.needsStart ? null : computeLevel(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome, ...flags });
+      sendJson(ctx.res, 200, { level: flags.needsStart ? null : computeLevel(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome, ...flags, speechRate: settings?.speech_rate ?? 1, voiceHelpShown: !!settings?.voice_help_shown });
     },
   });
   router.add({

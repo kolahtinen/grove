@@ -21,9 +21,35 @@
 <p class="small muted" id="stats"></p>
 <div class="row reading-tools">
 <button type="button" id="toggle-en" aria-pressed="true">English: on</button>
+<button type="button" id="listen">Listen</button>
 <button type="button" class="main" id="practise">Practise</button>
 </div>
 <ol class="lines" id="lines"></ol>
+</section>
+<section class="card" id="listening-card" hidden>
+<h2>Listen</h2>
+<div class="message" id="voice-help" role="status" hidden>
+<p><strong>This device has no Swedish voice</strong>, so grove stays silent rather than read Swedish with another language's voice.</p>
+<p class="small">To add one:</p>
+<ul class="small">
+<li>iPhone, iPad, Mac: Settings → Accessibility → Spoken Content → Voices → Swedish.</li>
+<li>Android: Settings → Text-to-speech → your speech engine's language data → Swedish.</li>
+<li>Windows: Settings → Time &amp; language → Speech → add Swedish.</li>
+<li>On a computer, Chrome and Microsoft Edge often have Swedish voices while online.</li>
+</ul>
+<p class="small">Then reload this page.</p>
+</div>
+<div class="row listen-tools">
+<button type="button" class="main" id="listen-play">Play</button>
+<button type="button" id="listen-pause">Pause</button>
+<button type="button" id="listen-show">Show the text</button>
+</div>
+<label class="speed">Speed <span id="speed-value">1.0×</span>
+<input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1">
+</label>
+<p class="small muted">How well the speed works depends on your device's voice.</p>
+<p class="small"><button type="button" class="bar-button" id="voice-help-link">No Swedish voice?</button></p>
+<ol class="listen-list" id="listen-list"></ol>
 </section>
 <section class="card" id="marking-card" hidden>
 <h2>Which new words don't you know?</h2>

@@ -1,16 +1,10 @@
 // Leaves (FR-412): drilled leaves by mark with play, meaning and delete; unmarked leaves with switches; add.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { speak, setRate } from './speech.mjs';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
-
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'sv-SE';
-  window.speechSynthesis.speak(u);
-}
 
 async function load() {
   const res = await fetch('/api/leaves', { credentials: 'same-origin' });
@@ -49,6 +43,8 @@ async function load() {
 
 await showAccount();
 await getMe();
+const stagesRes = await fetch('/api/stages', { credentials: 'same-origin' });
+if (stagesRes.ok) setRate((await stagesRes.json()).speechRate);
 await load();
 $('add-form').addEventListener('submit', async (event) => {
   event.preventDefault();

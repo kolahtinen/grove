@@ -233,3 +233,18 @@ test('FR-002 RQ-180: a nested transaction is part of the outer one; an inner fai
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-503 RQ-13: migration 008 keeps every row and adds speech_rate (1) and voice_help_shown (0)', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 7 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO learner_settings (account_id, topic) VALUES (1, 'kafé')").run();
+    migrate(db);
+    assert.deepEqual({ ...db.prepare('SELECT topic, speech_rate, voice_help_shown FROM learner_settings').get() }, { topic: 'kafé', speech_rate: 1, voice_help_shown: 0 });
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

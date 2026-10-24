@@ -60,6 +60,10 @@ export function checkSchema(body, schema) {
       if (!Number.isSafeInteger(value) || value < (rule.min ?? 0) || value > (rule.max ?? Number.MAX_SAFE_INTEGER)) {
         throw new HttpError(400, 'bad_request', 'The request was not understood.');
       }
+    } else if (rule.type === 'number') {
+      if (typeof value !== 'number' || !Number.isFinite(value) || value < rule.min || value > rule.max) {
+        throw new HttpError(400, 'bad_request', 'The request was not understood.');
+      }
     } else if (rule.type === 'enum') {
       if (!rule.values.includes(value)) throw new HttpError(400, 'bad_request', 'The request was not understood.');
     } else if (rule.type === 'list') {

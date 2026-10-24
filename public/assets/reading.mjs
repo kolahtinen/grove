@@ -3,6 +3,9 @@
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { startHeartbeat } from './heartbeat.mjs';
+import { speak as say, cancel, hasSwedish, setRate, getRate, onVoices } from './speech.mjs';
+
+const speak = (text, onend) => say(text, { onend });
 
 const $ = (id) => document.getElementById(id);
 const id = Number(new URLSearchParams(window.location.search).get('id'));
@@ -11,23 +14,6 @@ let data = null;
 let current = null; // { token, sentence, line }
 let showEn = true;
 let playing = false;
-
-function swedishVoice() {
-  return (window.speechSynthesis?.getVoices() || []).find((v) => v.lang?.toLowerCase().startsWith('sv'));
-}
-
-function speak(text, onend) {
-  const synth = window.speechSynthesis;
-  if (!synth) { onend?.(); return false; }
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'sv-SE';
-  const voice = swedishVoice();
-  // Some engines hand out voices the setter won't take; the language alone then picks one.
-  try { if (voice) u.voice = voice; } catch { /* keep u.lang */ }
-  u.onend = () => onend?.();
-  synth.speak(u);
-  return true;
-}
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -244,9 +230,7 @@ async function practise() {
     renderLines(list, { tappable: false });
     play.addEventListener('click', () => {
       const spans = [...list.querySelectorAll('.sentence')];
-      if (!window.speechSynthesis || !swedishVoice()) {
-        if (!window.speechSynthesis) { play.textContent = 'No Swedish voice on this device'; return; }
-      }
+      if (!hasSwedish()) { play.textContent = 'No Swedish voice on this device'; return; }
       playing = true;
       let k = 0;
       const step = () => {
@@ -261,7 +245,7 @@ async function practise() {
     });
     stop.addEventListener('click', () => {
       playing = false;
-      window.speechSynthesis?.cancel();
+      cancel();
       list.querySelectorAll('.speaking').forEach((s) => s.classList.remove('speaking'));
     });
     const back = el('a', '', 'Back to the text');
@@ -280,6 +264,7 @@ if (!res.ok) {
 } else {
   data = await res.json();
   showEn = data.showTranslations;
+  setRate(data.speechRate);
   $('title').textContent = data.title;
   document.title = `${data.title} · grove`;
   $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}`;
@@ -473,3 +458,113 @@ document.getElementById('ratings').addEventListener('click', (event) => {
 });
 if (data?.rating && data?.marking > 0) offerMarking();
 startHeartbeat();
+
+// G-05: listening mode (FR-501…FR-508): blurred text, Play with highlighting, replay with count, loop,
+// speed, the one-time voice help, then the questions.
+const counts = new Map();
+let loopId = null;
+let listenIndex = 0;
+let listening = false;
+const allSentences = () => data.lines.flatMap((l) => l.sentences);
+
+function showVoiceHelp(save) {
+  $('voice-help').hidden = false;
+  if (save && !data.voiceHelpShown) { data.voiceHelpShown = true; post('/api/settings', { voiceHelpShown: true }); }
+}
+
+function renderListenList() {
+  const list = $('listen-list');
+  list.replaceChildren();
+  allSentences().forEach((s, i) => {
+    const li = el('li', 'listen-row');
+    li.dataset.index = String(i);
+    const replay = el('button', 'bar-button', 'Replay');
+    replay.type = 'button';
+    replay.addEventListener('click', () => { stopListening(); playOne(i); });
+    const loop = el('button', 'bar-button switch', 'Loop');
+    loop.type = 'button';
+    loop.setAttribute('aria-pressed', String(loopId === i));
+    loop.addEventListener('click', () => {
+      const on = loopId !== i;
+      stopListening();
+      loopId = on ? i : null;
+      renderListenList();
+      if (on) playOne(i);
+    });
+    const count = el('span', 'small muted play-count', counts.get(i) ? `played ${counts.get(i)}×` : '');
+    const text = el('span', 'listen-text', `${i + 1}`);
+    li.append(text, replay, loop, count);
+    list.append(li);
+  });
+}
+
+function highlight(i) {
+  document.querySelectorAll('#lines .sentence').forEach((span) => span.classList.toggle('speaking', String(i) !== 'null' && span.dataset.sentence === String(allSentences()[i]?.id)));
+  document.querySelectorAll('#listen-list .listen-row').forEach((row) => row.classList.toggle('speaking', row.dataset.index === String(i)));
+}
+
+function playOne(i, onend) {
+  const s = allSentences()[i];
+  if (!s) return;
+  if (!hasSwedish()) { showVoiceHelp(true); return; }
+  counts.set(i, (counts.get(i) || 0) + 1);
+  renderListenList();
+  highlight(i);
+  speak(s.sv, () => {
+    if (loopId === i) { playOne(i); return; }
+    highlight(null);
+    onend?.();
+  });
+}
+
+function stopListening() {
+  listening = false;
+  loopId = null;
+  cancel();
+  highlight(null);
+}
+
+function reveal() {
+  $('lines').classList.remove('blurred');
+  document.querySelectorAll('#lines .en').forEach((en) => { en.hidden = !showEn; });
+  $('questions-card').hidden = data.questions.length === 0;
+}
+
+function playFrom(i) {
+  if (!listening) return;
+  if (i >= allSentences().length) { listening = false; listenIndex = 0; reveal(); return; }
+  listenIndex = i;
+  playOne(i, () => playFrom(i + 1));
+}
+
+$('listen').addEventListener('click', () => {
+  $('listening-card').hidden = false;
+  $('lines').classList.add('blurred');
+  document.querySelectorAll('#lines .en').forEach((en) => { en.hidden = true; });
+  $('questions-card').hidden = true;
+  $('speed').value = String(getRate());
+  $('speed-value').textContent = `${getRate().toFixed(1)}×`;
+  renderListenList();
+  if (!hasSwedish() && !data.voiceHelpShown) showVoiceHelp(true);
+  $('listening-card').scrollIntoView({ block: 'nearest' });
+});
+$('listen-play').addEventListener('click', () => {
+  if (!hasSwedish()) { showVoiceHelp(true); return; }
+  loopId = null;
+  listening = true;
+  playFrom(listenIndex);
+});
+$('listen-pause').addEventListener('click', () => { listening = false; loopId = null; cancel(); });
+$('listen-show').addEventListener('click', reveal);
+$('lines').addEventListener('click', (event) => {
+  if ($('lines').classList.contains('blurred')) { event.stopPropagation(); event.preventDefault(); reveal(); }
+}, true);
+$('speed').addEventListener('change', async () => {
+  const r = Math.round(Number($('speed').value) * 10) / 10;
+  setRate(r);
+  $('speed-value').textContent = `${r.toFixed(1)}×`;
+  await post('/api/settings', { speechRate: r });
+});
+$('speed').addEventListener('input', () => { $('speed-value').textContent = `${Number($('speed').value).toFixed(1)}×`; });
+$('voice-help-link').addEventListener('click', () => showVoiceHelp(false));
+onVoices((has) => { if (has) $('voice-help').hidden = true; });

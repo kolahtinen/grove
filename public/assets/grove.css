@@ -331,3 +331,16 @@ a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82re
 /* G-06: the starting check */
 .level-buttons button { font-weight: 700; font-size: 1.05rem; }
 .sample-list { list-style: none; margin: 0 0 .6rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .2rem .6rem; }
+
+/* G-05: listening */
+.blurred { filter: blur(6px); cursor: pointer; user-select: none; }
+.listen-tools { margin-bottom: .6rem; }
+.speed { display: flex; align-items: center; gap: .6rem; margin: 0; }
+.speed input { flex: 1; accent-color: var(--accent); }
+.listen-list { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .3rem; }
+.listen-row { display: flex; align-items: center; gap: .4rem; padding: .25rem .4rem; border-radius: 12px; }
+.listen-row.speaking { background: var(--soft); }
+.listen-text { min-width: 1.6rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+#voice-help { background: var(--soft); color: var(--ink); }
+#voice-help ul { margin: .2rem 0 .4rem; padding-left: 1.1rem; }
+@media (prefers-reduced-motion: reduce), (prefers-reduced-transparency: reduce) { .blurred { filter: blur(6px); } }
