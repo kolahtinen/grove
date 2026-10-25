@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** fixing the first-build review ([review](reviews/2026-10-25-first-build.md); question-pages/63): finding 3 fixed ([addendum 001](addenda/001-requirements-without-rq.md)); next, all 9 code findings through the specs and `/regenerate`. Then: G-01 Phase 10 (deploy), G-02 T141 (real AIs), validation against the needs. Deadline 2026-11-01.
+**Next:** owner's first test ([notes](reviews/2026-10-25-owner-test.md); question-pages/64): O-01…O-22 decided. Order: remaining review findings 4–8 and 10 → prompts and meanings → reading page and word menu → Home A, pages, terms, help bubble → starting texts → library (owner's lessons; learner sharing after 1 November) → oak animation. Then deploy, real-AI check, validation. Deadline 2026-11-01; about 7½ days of work for 6, so the last items may slip.
 
 ## Phases
 
@@ -143,3 +143,4 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-25 | all | Fresh-session review of G-01–G-08 (constitution 1.6; question-pages/62): [review](reviews/2026-10-25-first-build.md). Baseline green (220 unit, 86 browser, audit, gitleaks, semgrep, trace). Findings: delete can leave the Firebase account; unreadable Firebase answers count toward the lockout; 10 FRs name no RQ (constitution 1.5, owner decision); 7 low. |
 ## Notes
 | 2026-10-25 | app-wide | First-build review (question-pages/62, 63): addendum 001 adds RQ-380…389; FR-221, 304, 410, 411, 418, 602, 607, 610, 707, 802 now name them. All 9 code findings to be fixed before the deploy. Deadline 2026-11-01. |
+| 2026-10-25 | app-wide | Owner's first test (question-pages/64): notes O-01…O-22 sorted and decided; shared library back in scope with the owner's lessons first (learner sharing after 1 November); review findings 1, 2, 9 fixed. |
