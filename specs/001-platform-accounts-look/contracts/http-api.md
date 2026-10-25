@@ -25,8 +25,8 @@ Served on `127.0.0.1:<PORT>` only; reached by learners through the quick tunnel 
 | Method, path | Body | Responses |
 |---|---|---|
 | `GET /api/csrf` | – | `200 {csrf}` and sets the pre-session CSRF cookie |
-| `POST /api/signin` | `{email: string ≤254, password: string ≤128}` | `200 {result:"signed_in", termsNeeded:true}` + session cookie · `401 wrong_credentials` (wrong password, unknown address, or locked, all identical, FR-020) · `503 signin_unavailable` |
-| `POST /api/reset` | `{email: string ≤254}` | `200 {result:"sent_if_account"}` always for a well-formed address (FR-015) · `503 signin_unavailable` |
+| `POST /api/signin` | `{email: string ≤254, password: string ≤128}` | `200 {result:"signed_in", termsNeeded:true}` + session cookie · `401 wrong_credentials` (wrong password, unknown address, or locked, all identical, FR-020) · `503 signin_unavailable` (Firebase unreachable or its answer unusable; not counted toward the lockout, FR-020) |
+| `POST /api/reset` | `{email: string ≤254}` | `200 {result:"sent_if_account"}` always for a well-formed address (FR-015) · `503 signin_unavailable` (Firebase unreachable or its answer unusable) |
 
 Sign-in and reset responses are held to at least 1.2 s (research R5).
 
