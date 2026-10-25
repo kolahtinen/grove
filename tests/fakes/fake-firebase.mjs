@@ -40,7 +40,7 @@ export async function startFakeFirebase({ projectId = 'grove-test', apiKey = 'te
   };
 
   const users = new Map(); // email -> { uid, email, password }
-  const state = { unreachable: false, delayMs: 0, requests: [], resetEmails: [] };
+  const state = { unreachable: false, oddAnswer: false, delayMs: 0, requests: [], resetEmails: [] };
 
   function signToken(payload, { key = signingKeyPem, headerKid = kid } = {}) {
     const header = base64url(JSON.stringify({ alg: 'RS256', kid: headerKid, typ: 'JWT' }));
@@ -83,6 +83,8 @@ export async function startFakeFirebase({ projectId = 'grove-test', apiKey = 'te
       return;
     }
     if (state.delayMs) await new Promise((r) => setTimeout(r, state.delayMs));
+    // An answer grove can't use, as from a misconfigured project.
+    if (state.oddAnswer) return fail(res, 'SOMETHING_UNEXPECTED');
 
     if (url.pathname === '/certs') {
       return send(res, 200, { [kid]: certificate }, { 'cache-control': 'public, max-age=3600' });

@@ -14,11 +14,11 @@ export function createReset({ seclog, firebase, answerMinMs }) {
       try {
         await firebase.sendPasswordReset(email);
       } catch (error) {
-        if (error instanceof FirebaseError && error.code === 'unavailable') {
-          seclog.security('firebase_unreachable', { email, ip: ctx.ip });
-          status = 503;
-          body = { error: 'signin_unavailable', message: UNAVAILABLE_MESSAGE };
-        }
+        // No reset email went out, so grove doesn't say one did (FR-020).
+        const reason = error instanceof FirebaseError && error.code === 'unavailable' ? 'unavailable' : 'bad_answer';
+        seclog.security('firebase_unreachable', { email, ip: ctx.ip, detail: { reason } });
+        status = 503;
+        body = { error: 'signin_unavailable', message: UNAVAILABLE_MESSAGE };
       }
     }
     if (status === 200) seclog.security('reset_requested', { email, ip: ctx.ip });

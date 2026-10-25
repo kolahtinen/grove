@@ -1,4 +1,4 @@
-// Sign-in, sign-out and "who am I" (FR-009, FR-012, FR-013, FR-014; contracts/http-api.md).
+// Sign-in, sign-out and "who am I" (FR-009, FR-012, FR-013, FR-014, FR-020; contracts/http-api.md).
 import { sendJson, HttpError } from '../web/http.mjs';
 import { FirebaseError } from '../firebase/client.mjs';
 import { holdUntil, normaliseEmail } from './same-answer.mjs';
@@ -30,13 +30,15 @@ export function createSignin({ db, seclog, firebase, sessions, lockout, answerMi
       try {
         ({ uid } = await firebase.signIn(email, ctx.body.password));
       } catch (error) {
-        if (error instanceof FirebaseError && error.code === 'unavailable') {
-          seclog.security('firebase_unreachable', { email, ip: ctx.ip });
-          return answer(503, { error: 'signin_unavailable', message: UNAVAILABLE_MESSAGE });
+        // Only a wrong password counts toward the lockout; anything else is Firebase's fault (FR-020).
+        if (error instanceof FirebaseError && error.code === 'wrong_credentials') {
+          lockout?.recordFailure(email, ctx.ip);
+          seclog.security('signin_failed', { email, ip: ctx.ip, detail: { reason: 'wrong_credentials' } });
+          return answer(401, WRONG);
         }
-        lockout?.recordFailure(email, ctx.ip);
-        seclog.security('signin_failed', { email, ip: ctx.ip, detail: { reason: error?.code || 'error' } });
-        return answer(401, WRONG);
+        const reason = error instanceof FirebaseError && error.code === 'unavailable' ? 'unavailable' : 'bad_answer';
+        seclog.security('firebase_unreachable', { email, ip: ctx.ip, detail: { reason } });
+        return answer(503, { error: 'signin_unavailable', message: UNAVAILABLE_MESSAGE });
       }
       const account = findByUid.get(uid);
       if (!account) {

@@ -62,3 +62,36 @@ test('FR-023 RQ-371: failed sign-ins and the lockout are logged', () => {
   assert.ok(lockouts.some((r) => r.email === 'ghost@example.test'));
   void reviewer;
 });
+
+test('FR-020 RQ-156 RQ-366: an answer from Firebase that grove can’t use is "not possible right now", logged, and never counts toward the lockout', async () => {
+  t.seedAccount({ email: 'odd@example.test' });
+  const logged = t.grove.seclog.list({ event: 'firebase_unreachable' }).length;
+  t.fb.state.tokenOverride = (user) => t.fb.idTokenFor(user, { aud: 'someone-else' });
+  try {
+    for (let i = 0; i < 6; i += 1) {
+      const res = await t.client().signIn('odd@example.test', PASSWORD);
+      assert.equal(res.status, 503);
+      assert.equal(res.body.error, 'signin_unavailable');
+    }
+  } finally {
+    t.fb.state.tokenOverride = null;
+  }
+  t.fb.state.oddAnswer = true;
+  try {
+    const res = await t.client().signIn('odd@example.test', 'Wrong-password-9');
+    assert.equal(res.status, 503);
+    assert.equal(res.body.error, 'signin_unavailable');
+    const c = t.client();
+    await c.prepare();
+    const reset = await c.post('/api/reset', { email: 'odd@example.test' });
+    assert.equal(reset.status, 503);
+    assert.equal(reset.body.error, 'signin_unavailable');
+  } finally {
+    t.fb.state.oddAnswer = false;
+  }
+  const entries = t.grove.seclog.list({ event: 'firebase_unreachable' }).slice(logged);
+  assert.ok(entries.length >= 8);
+  assert.ok(entries.every((r) => JSON.parse(r.detail).reason === 'bad_answer'));
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM failed_signins WHERE email = ?').get('odd@example.test').n, 0, 'nothing counted');
+  assert.equal((await t.client().signIn('odd@example.test', PASSWORD)).status, 200, 'not locked out');
+});
