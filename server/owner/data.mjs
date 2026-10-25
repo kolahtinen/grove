@@ -30,13 +30,15 @@ export function exportAccount({ db, seclog, email }) {
   return { exportedAt: new Date().toISOString(), account, tables };
 }
 
+// Firebase first: if it fails, grove still has the account and the command can be run again;
+// a Firebase user that is already gone counts as deleted (FR-017).
 export async function deleteAccount({ db, seclog, firebase, email }) {
   const account = findAccount(db, email);
+  await firebase.deleteUser(account.firebase_uid);
   transaction(db, () => {
     for (const name of tablesWithAccountId(db)) db.prepare(`DELETE FROM "${name}" WHERE account_id = ?`).run(account.id);
     db.prepare('DELETE FROM accounts WHERE id = ?').run(account.id);
   });
   seclog.security('delete', { accountId: account.id });
-  await firebase.deleteUser(account.firebase_uid);
   return { id: account.id, email: account.email };
 }

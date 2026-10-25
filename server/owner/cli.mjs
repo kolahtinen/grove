@@ -74,7 +74,7 @@ export async function run(command, argv) {
       case 'learner:delete': {
         if (args.yes !== true) throw new Error('This deletes the account and all its data. Add --yes to go ahead.');
         const gone = await deleteAccount({ db, seclog, firebase, email: need(args, 'email') });
-        return `Deleted ${gone.email} from grove and Firebase.`;
+        return `Deleted ${gone.email} from Firebase and grove.`;
       }
       case 'log:show': {
         const hours = args.since === undefined ? 24 * 30 : Number(args.since);

@@ -88,3 +88,32 @@ test('FR-220 FR-319 FR-419 RQ-54 RQ-155: export includes texts, words, flags, re
     assert.equal(t.grove.db.prepare(`SELECT COUNT(*) AS n FROM "${table}" WHERE account_id = ?`).get(id).n, 0, table);
   }
 });
+
+test('FR-017 RQ-229: if Firebase can’t be reached, learner:delete fails with grove’s data untouched, and can be run again', async () => {
+  await createAccount({ ...deps, role: 'reviewer', email: 'retry@example.test', password: 'Forest-walk-42' });
+  const { id } = t.grove.db.prepare('SELECT id FROM accounts WHERE email = ?').get('retry@example.test');
+  const c = t.client();
+  await c.signInAgreed('retry@example.test', 'Forest-walk-42');
+  const deletions = t.grove.seclog.list({ event: 'delete' }).length; // account IDs can be reused, so count
+  t.fb.state.unreachable = true;
+  try {
+    await assert.rejects(deleteAccount({ ...deps, email: 'retry@example.test' }));
+  } finally {
+    t.fb.state.unreachable = false;
+  }
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts WHERE id = ?').get(id).n, 1, 'account kept');
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM sessions WHERE account_id = ?').get(id).n, 1, 'session kept');
+  assert.equal(t.grove.seclog.list({ event: 'delete' }).length, deletions, 'no deletion logged');
+  await deleteAccount({ ...deps, email: 'retry@example.test' });
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts WHERE id = ?').get(id).n, 0);
+  assert.ok(!t.fb.users.has('retry@example.test'));
+});
+
+test('FR-017 RQ-229: learner:delete finishes when Firebase no longer has the account', async () => {
+  await createAccount({ ...deps, role: 'reviewer', email: 'half@example.test', password: 'Forest-walk-42' });
+  const { id } = t.grove.db.prepare('SELECT id FROM accounts WHERE email = ?').get('half@example.test');
+  t.fb.users.delete('half@example.test');
+  await deleteAccount({ ...deps, email: 'half@example.test' });
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts WHERE id = ?').get(id).n, 0);
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM words WHERE account_id = ?').get(id).n, 0);
+});

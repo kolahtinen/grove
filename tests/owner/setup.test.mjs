@@ -27,6 +27,15 @@ test('FR-016 RQ-146 RQ-223: a second owner:setup is refused and no second owner 
   assert.ok(!t.fb.users.has('other@example.test'), 'nothing was made in Firebase either');
 });
 
+test('FR-010 RQ-217 RQ-363: if the demo can’t be stored, reviewer:setup leaves nothing in grove or Firebase and can be run again', async () => {
+  const failingDemo = () => { throw new Error('demo failed'); };
+  await assert.rejects(createAccount({ ...deps, role: 'reviewer', email: 'reviewer@example.test', password: 'Forest-walk-42', demo: failingDemo }));
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts WHERE email = ?').get('reviewer@example.test').n, 0);
+  assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM accounts WHERE is_reviewer = 1').get().n, 0);
+  assert.ok(!t.fb.users.has('reviewer@example.test'), 'the Firebase account was deleted again');
+  assert.ok(!t.grove.seclog.list().some((r) => r.event === 'account_created'), 'nothing logged as created');
+});
+
 test('FR-010 RQ-217 RQ-360 RQ-221: reviewer:setup creates one reviewer account and checks the password rule', async () => {
   for (const weak of ['short1!', 'nodigits-here!', 'NoSymbols123', '12345678!']) {
     await assert.rejects(createAccount({ ...deps, role: 'reviewer', email: 'reviewer@example.test', password: weak }), /password/i, weak);

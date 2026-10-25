@@ -2,6 +2,7 @@
 // No page or route creates accounts (FR-010, FR-016).
 import { FirebaseError } from '../firebase/client.mjs';
 import { normaliseEmail } from '../accounts/same-answer.mjs';
+import { transaction } from '../store/db.mjs';
 import { applyDemo } from '../demo/apply.mjs';
 
 export function passwordProblem(password) {
@@ -13,7 +14,7 @@ export function passwordProblem(password) {
   return null;
 }
 
-export async function createAccount({ db, seclog, firebase, role, email, password, now = () => Date.now() }) {
+export async function createAccount({ db, seclog, firebase, role, email, password, now = () => Date.now(), demo = applyDemo }) {
   if (role !== 'owner' && role !== 'reviewer') throw new Error('role must be owner or reviewer');
   const address = normaliseEmail(email);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address)) throw new Error('That is not an email address.');
@@ -33,10 +34,24 @@ export async function createAccount({ db, seclog, firebase, role, email, passwor
     if (error instanceof FirebaseError && error.code === 'unavailable') throw new Error('Firebase can’t be reached right now.');
     throw new Error('Firebase refused the account.');
   }
-  const info = db.prepare(`INSERT INTO accounts (firebase_uid, email, ${flag}, created_at) VALUES (?, ?, 1, ?)`).run(uid, address, now());
-  const id = Number(info.lastInsertRowid);
+  // All-or-nothing: the row and (G-07) the reviewer's demo are stored together; if that fails,
+  // the Firebase account is deleted again so the command can be run again (FR-010, FR-704, FR-705).
+  let id;
+  try {
+    id = transaction(db, () => {
+      const info = db.prepare(`INSERT INTO accounts (firebase_uid, email, ${flag}, created_at) VALUES (?, ?, 1, ?)`).run(uid, address, now());
+      const accountId = Number(info.lastInsertRowid);
+      if (role === 'reviewer') demo({ db, accountId, now });
+      return accountId;
+    });
+  } catch (error) {
+    try {
+      await firebase.deleteUser(uid);
+    } catch {
+      throw new Error(`The account couldn’t be stored in grove (${error.message}), and removing it from Firebase failed too: delete ${address} in the Firebase console.`);
+    }
+    throw new Error(`The account couldn’t be stored in grove (${error.message}); nothing was kept, so you can run the command again.`);
+  }
   seclog.security(role === 'owner' ? 'owner_setup' : 'account_created', { accountId: id, detail: { role } });
-  // G-07: the reviewer account starts as the demo learner (FR-704, FR-705).
-  if (role === 'reviewer') applyDemo({ db, accountId: id, now });
   return { id, email: address };
 }
