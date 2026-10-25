@@ -5,9 +5,9 @@ Run on the owner's computer as user `grove` (`sudo -u grove npm run <command> --
 | Command | Arguments | Effect |
 |---|---|---|
 | `owner:setup` | `--email <address>` (password asked in the terminal, twice, not echoed) | Creates the owner account in Firebase and grove with the owner and learner roles (FR-016). Refuses if an owner already exists. |
-| `reviewer:setup` | `--email <address the owner controls>` (password asked twice, not echoed; must meet the rule of FR-010) | Creates the one shared reviewer account in Firebase and grove with the reviewer and learner roles (FR-010). Refuses if a reviewer account already exists. Reminds the owner to write the email and password into the README. |
+| `reviewer:setup` | `--email <address the owner controls>` (password asked twice, not echoed; must meet the rule of FR-010) | Creates the one shared reviewer account in Firebase and grove with the reviewer and learner roles (FR-010). All-or-nothing: if grove's row or the demo can't be stored, the Firebase account is deleted again. Refuses if a reviewer account already exists. Reminds the owner to write the email and password into the README. |
 | `learner:export` | `--email <address> [--out <file>]` | Writes all of that account's data as JSON (FR-017). |
-| `learner:delete` | `--email <address> --yes` | Deletes the account, its sessions and all its data in grove, and the Firebase user (FR-017). |
+| `learner:delete` | `--email <address> --yes` | Deletes the Firebase user first (one that no longer exists counts as deleted), then the account, its sessions and all its data in grove (FR-017). If Firebase fails, nothing in grove is deleted and the command can be run again. |
 | `log:show` | `[--since <hours>] [--event <name>]` | Prints the security log. |
 | `availability:show` | `[--days <n>]` | Prints the hourly checks and the share answered per day (SC-004). |
 | `backup:now` | – | Writes and checks a backup immediately (same as the hourly job). |
