@@ -57,7 +57,7 @@ A reviewer signs in to the shared reviewer account for the first time and lands 
 - **FR-704** (RQ-362; N-18): The demo learner history MUST include: the demo ground (the X-03 known words, about 400); the four texts accepted as one finished package of grove's format; ratings on two texts ("most" and "a little") and answers to some of their questions; the texts' new words as leaves, of which six are drilled — one fading, three due, one with a gap of 2.5 days (for Master), one fresh — with both kinds of marks; input minutes on three of the last five days; the welcome not yet dismissed. All dates are relative to when the demo is put in.
 - **FR-705** (RQ-363; N-18): The reviewer account MUST get the demo when it is created, skip the starting level, and have no "Set my starting level again" (G-06 FR-605, FR-606).
 - **FR-706** *Withdrawn* (question-pages/61): an owner command to reset the demo; the demo is put in once, at creation, and reviewers see each other's changes on the shared account.
-- **FR-707** (T-06; N-18; constitution 4.6): Demo content MUST be shown as plain text like any AI text.
+- **FR-707** (RQ-388, T-06; N-18; constitution 4.6): Demo content MUST be shown as plain text like any AI text.
 
 ### Key Entities *(include if feature involves data)*
 

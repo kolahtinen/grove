@@ -175,7 +175,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 **Data and safety**
 
 - **FR-220** (RQ-54, RQ-155; N-16, N-17; constitution 2.3): Texts, sentences, leaves, ratings and prompts MUST belong to one account; no account can read or change another's (as FR-018 of G-01).
-- **FR-221** (T-06; N-43; constitution 4.6): Everything from a pasted answer MUST be shown as plain text only.
+- **FR-221** (RQ-380, T-06; N-43; constitution 4.6): Everything from a pasted answer MUST be shown as plain text only.
 
 ### Key Entities *(include if feature involves data)*
 

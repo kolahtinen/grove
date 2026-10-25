@@ -89,7 +89,7 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 **Level word lists**
 
 - **FR-601** (RQ-117; N-43; C-05; constitution 4.14): **Reduced for the first build:** the Swedish Kelly list MUST be carried as a plain file in the build (not in a shared bank) and imported into grove's level word lists at start-up when missing or changed: each entry's dictionary form, cleaned of notes in brackets, lower-cased, at its CEFR level (1–6 → A1–C2); a form listed more than once is kept once at its lowest level; multi-word forms are phrases. Every imported word keeps its source ("Swedish Kelly list, Språkbanken") and licence ("CC BY-SA 3.0, LGPL 3.0").
-- **FR-602** (C-05; N-43; constitution 4.14): A public **Credits** page MUST name every outside source: the Swedish Kelly list (Språkbanken; CC BY-SA 3.0, LGPL 3.0; link to its page) and the Zen Kaku Gothic New font (SIL Open Font Licence 1.1); it is linked from the terms page and Home.
+- **FR-602** (RQ-385, C-05; N-43; constitution 4.14): A public **Credits** page MUST name every outside source: the Swedish Kelly list (Språkbanken; CC BY-SA 3.0, LGPL 3.0; link to its page) and the Zen Kaku Gothic New font (SIL Open Font Licence 1.1); it is linked from the terms page and Home.
 
 **The starting check**
 
@@ -97,13 +97,13 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 - **FR-604** (RQ-114, RQ-249; N-12): After a level is picked, grove MUST show a sample of 30 of that level's words (spread over the level from most to least common), each tickable as "I don't know this"; confirming puts every word of the levels below and the level's other words in the ground (known). Words ticked as unknown become unmarked leaves, without meanings (question-pages/60).
 - **FR-605** (RQ-248; N-13): A new account other than the reviewer's MUST go straight to the starting check after closing the welcome (G-04 FR-416), until it has made a choice; the reviewer account never does.
 - **FR-606** (RQ-252; N-13): Home MUST show **Set my starting level again** (not for the reviewer account), running the check again. It replaces only what the earlier check added: starting-check words still untouched (never drilled, never met in a text, never fallen from a leaf) are removed, then the new choice is applied; everything else stays (question-pages/60).
-- **FR-607** (R-11; N-13): When 20 or more of the 30 are ticked as unknown, grove MUST suggest the level below (one tap to switch), without forcing it.
+- **FR-607** (RQ-386, R-11; N-13): When 20 or more of the 30 are ticked as unknown, grove MUST suggest the level below (one tap to switch), without forcing it.
 - **FR-608** (RQ-03, RQ-253; N-13): After the check, G-04's level line MUST show the level from the ground (G-04 FR-414), now that level word lists exist.
 
 **Safety and data**
 
 - **FR-609** (RQ-155; N-12; constitution 2.3): The starting check MUST change only the learner's own words; level word lists are shared reference data that no learner can change.
-- **FR-610** (Q-03; N-12; constitution 4.13): New data MUST come with a migration that keeps every learner's data.
+- **FR-610** (RQ-387, Q-03; N-12; constitution 4.13): New data MUST come with a migration that keeps every learner's data.
 
 ### Key Entities *(include if feature involves data)*
 

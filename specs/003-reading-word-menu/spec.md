@@ -144,7 +144,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 - **FR-301** (RQ-10; N-11, N-38, N-02): In texts, and after answering a question, each sentence MUST show its translation under it. A setting turns translations off; while off, no translations show, except a single line's when its English button is tapped. The setting is kept for the learner.
 - **FR-302** (RQ-55, RQ-76; N-11): Each sentence MUST show how many new words it has; each text MUST show its word count, its number of new words and their share, counted as in G-02 FR-213 against the learner's ground now.
 - **FR-303** (RQ-56; N-11): Character and place names MUST be kept in their own list (from the answers' names and the name rule of G-02 FR-213) and never count as new words.
-- **FR-304** (T-06; N-43; constitution 4.6): Every text MUST be shown as plain text.
+- **FR-304** (RQ-381, T-06; N-43; constitution 4.6): Every text MUST be shown as plain text.
 
 **Word menu**
 

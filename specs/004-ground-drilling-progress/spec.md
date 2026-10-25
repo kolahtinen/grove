@@ -163,8 +163,8 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 **Marks, Let it fall, pick up, Leaves**
 
 - **FR-409** (RQ-07; N-11, N-04, N-12): The word menu MUST let the learner switch **To remember** and **To read** on or off for the word; switching one on makes the word a drilled leaf (due now, gap 1 day) if it wasn't; switching both off on a drilled leaf makes it an unmarked leaf again.
-- **FR-410** (question-pages/56; N-12, N-32): The word menu MUST offer **Let it fall** on a leaf: grove asks its meaning once (multiple choice as FR-406); right → it falls to the ground; wrong → it stays; a pattern, or a word with fewer than 2 other meanings available, gets "Are you sure?" instead.
-- **FR-411** (glossary; N-04): The word menu MUST offer **Pick up** on a ground word: it becomes a drilled leaf marked To read, due now, gap 1 day.
+- **FR-410** (RQ-382, question-pages/56; N-12, N-32): The word menu MUST offer **Let it fall** on a leaf: grove asks its meaning once (multiple choice as FR-406); right → it falls to the ground; wrong → it stays; a pattern, or a word with fewer than 2 other meanings available, gets "Are you sure?" instead.
+- **FR-411** (RQ-383, glossary; N-04): The word menu MUST offer **Pick up** on a ground word: it becomes a drilled leaf marked To read, due now, gap 1 day.
 - **FR-412** (RQ-08, RQ-35, RQ-77, RQ-207; N-38, N-11, N-21, N-42, N-12, N-32): A **Leaves** page MUST list drilled leaves grouped To remember / To read (a leaf with both marks in both), each with play, meaning and delete (delete removes the leaf, not to the ground); and an **Unmarked** section (starter words, skipped marking steps) with the To read / To remember switches; and let the learner add a word, phrase or pattern by typing it (≤ 80 characters), which becomes a drilled leaf marked To read; for items without a meaning it offers the meanings prompt (G-03 FR-318).
 
 **Colours**
@@ -180,7 +180,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 
 - **FR-416** (RQ-73; N-25, N-26): On an account's first visit to Home, a welcome card MUST explain leaves, the ground and the three stages in a few lines, until dismissed (kept per account).
 - **FR-417** (RQ-75; N-16; Q-03): Every change MUST be saved on the server when grove confirms it; nothing is kept only in the browser (G-01 FR-002 makes it survive restarts).
-- **FR-418** (Q-03, R-06; N-16; constitution 4.13): The new data MUST come with a migration that keeps every learner's data.
+- **FR-418** (RQ-384, Q-03, R-06; N-16; constitution 4.13): The new data MUST come with a migration that keeps every learner's data.
 
 **Safety**
 

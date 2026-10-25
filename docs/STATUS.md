@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** the first build is complete (G-01…G-08). Open: G-01 Phase 10 (deploy), G-02 T141 (real AIs), a fresh-session review of G-01–G-08 (constitution 1.6), validation against the needs.
+**Next:** fixing the first-build review ([review](reviews/2026-10-25-first-build.md); question-pages/63): finding 3 fixed ([addendum 001](addenda/001-requirements-without-rq.md)); next, all 9 code findings through the specs and `/regenerate`. Then: G-01 Phase 10 (deploy), G-02 T141 (real AIs), validation against the needs. Deadline 2026-11-01.
 
 ## Phases
 
@@ -49,6 +49,8 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 | G-08 | drafted 2026-10-25 ([spec](../specs/008-look-extras-help/spec.md)); no open markers | drafted 2026-10-25 ([plan](../specs/008-look-extras-help/plan.md)) | 7 tasks 2026-10-25 ([tasks](../specs/008-look-extras-help/tasks.md)) | no findings |  | built 2026-10-25 (T701–T707): 220 unit + 86 browser tests pass (all goals); audit, gitleaks, semgrep, trace clean |  |  |
 
 ## Addenda
+
+- [001](addenda/001-requirements-without-rq.md) (2026-10-25; question-pages/63): RQ-380…389 for 10 spec requirements that named no combined requirement (review finding 3). Nothing new built.
 
 ## Changelog
 
@@ -138,4 +140,6 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-25 | G-08 | `/speckit-specify` (no open markers; storyboard and placements from question-pages/56; after agreeing the scene plays in a card on Home rather than a cover, so nothing is blocked), `/speckit-plan` (browser-only; scene with CSS keyframes and step classes; public `/how` page), `/speckit-tasks` T701–T707. |
 | 2026-10-25 | G-08 | `/speckit-implement` T701–T707: leaves-and-ground scene (`grow.mjs`, CSS step classes; four still frames with reduced motion) once on Home after agreeing, on the new public `/how` page with Replay, and on a logo tap; "?" link and the A.5 logo classes on every page; answer feedback (✓ bounce, ✗ shake), menu slide-up with header strip; top bar fits 360 px (the new test caught Sign out overlapping "?"; fixed). A screen slide-in was tried and removed: no spec asked for it and it slowed taps. |
 
+| 2026-10-25 | all | Fresh-session review of G-01–G-08 (constitution 1.6; question-pages/62): [review](reviews/2026-10-25-first-build.md). Baseline green (220 unit, 86 browser, audit, gitleaks, semgrep, trace). Findings: delete can leave the Firebase account; unreadable Firebase answers count toward the lockout; 10 FRs name no RQ (constitution 1.5, owner decision); 7 low. |
 ## Notes
+| 2026-10-25 | app-wide | First-build review (question-pages/62, 63): addendum 001 adds RQ-380…389; FR-221, 304, 410, 411, 418, 602, 607, 610, 707, 802 now name them. All 9 code findings to be fixed before the deploy. Deadline 2026-11-01. |
