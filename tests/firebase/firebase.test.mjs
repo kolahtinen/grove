@@ -79,6 +79,18 @@ test('FR-009 RQ-366: an unexpected answer shape is rejected', async () => {
   await assert.rejects(odd.signUp('x@example.test', 'Forest-walk-42'), (e) => e.code === 'bad_answer');
 });
 
+test('FR-017 RQ-229: deleting a user Firebase no longer has counts as done; an unreachable Firebase still fails', async () => {
+  const { uid } = await firebase.signUp('gone@example.test', 'Forest-walk-42');
+  await firebase.deleteUser(uid);
+  await firebase.deleteUser(uid);
+  fb.state.unreachable = true;
+  try {
+    await assert.rejects(firebase.deleteUser('uid-anything'), (e) => e instanceof FirebaseError && e.code === 'unavailable');
+  } finally {
+    fb.state.unreachable = false;
+  }
+});
+
 test('FR-009 RQ-366: an unreachable Firebase gives unavailable', async () => {
   fb.state.unreachable = true;
   try {

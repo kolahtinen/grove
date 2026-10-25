@@ -88,9 +88,11 @@ export function createFirebase(config, { fetchImpl = globalThis.fetch, timeoutMs
       throw new FirebaseError('bad_answer');
     },
 
+    // A user Firebase no longer has counts as deleted, so a failed deletion can be run again (FR-017).
     async deleteUser(uid) {
-      const { status } = await adminCall('delete', { localId: uid });
-      if (status !== 200) throw new FirebaseError('bad_answer');
+      const { status, body } = await adminCall('delete', { localId: uid });
+      if (status === 200 || errorMessage(body).startsWith('USER_NOT_FOUND')) return;
+      throw new FirebaseError('bad_answer');
     },
 
     async lookupUser(uid) {

@@ -126,7 +126,10 @@ export async function startFakeFirebase({ projectId = 'grove-test', apiKey = 'te
       }
       case `/v1/projects/${projectId}/accounts:delete`: {
         if (!bearerOk) return fail(res, 'UNAUTHENTICATED', 401);
-        for (const [email, user] of users) if (user.uid === body.localId) users.delete(email);
+        // Like the real API, an unknown user is an error, not a quiet success.
+        const found = [...users].find(([, user]) => user.uid === body.localId);
+        if (!found) return fail(res, 'USER_NOT_FOUND');
+        users.delete(found[0]);
         return send(res, 200, { kind: 'identitytoolkit#DeleteAccountResponse' });
       }
       case `/v1/projects/${projectId}/accounts:lookup`: {
