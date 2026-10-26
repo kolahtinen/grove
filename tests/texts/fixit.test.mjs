@@ -192,3 +192,80 @@ test('FR-207 RQ-397 RQ-379: a meanings fix-it answer that names words it didn\'t
   const after = rows();
   for (const was of before) assert.deepEqual(after.find((r) => r.lemma === was.lemma), was, was.lemma);
 });
+
+test('FR-206 RQ-395: only failed answers in a row count: a failed answer, a good one, then a failed one keeps the normal size', async () => {
+  const db = t.grove.db;
+  const row = t.seedAccount({ email: 'in-a-row@example.test' });
+  seedGround(db, row.id, known);
+  const { c, p } = await start('in-a-row@example.test');
+  const first = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('too-many-new.json').replaceAll('TEST-1', p.code) });
+  assert.equal(first.body.result, 'partly_accepted', JSON.stringify(first.body));
+  const ok = JSON.parse(answer('good.json'));
+  ok.part = (await c.get('/api/home')).body.waiting.code;
+  ok.texts = [ok.texts[0]];
+  assert.equal((await c.post('/api/answer', { exchangeId: first.body.next.exchangeId, answer: JSON.stringify(ok) })).body.result, 'accepted');
+  const two = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal(two.part, 2);
+  const bad = JSON.parse(answer('too-many-new.json'));
+  bad.part = two.code;
+  bad.texts.forEach((x, i) => { x.title = `Del två ${i}`; });
+  const second = await c.post('/api/answer', { exchangeId: two.exchangeId, answer: JSON.stringify(bad) });
+  assert.equal(second.body.result, 'partly_accepted', JSON.stringify(second.body));
+  assert.equal(db.prepare("SELECT one_text FROM packages WHERE account_id = ? AND status = 'open'").get(row.id).one_text, 0, 'a good answer in between ends the run');
+  assert.equal((await c.get('/api/home')).body.offer, null);
+});
+
+test('FR-203 RQ-391: grove suggests I\'m in a new chat when an answer can\'t be read or a text is more than 10 points below the target share, and not otherwise', async () => {
+  const db = t.grove.db;
+  const s = t.seedAccount({ email: 'suggest@example.test' });
+  seedGround(db, s.id, known);
+  const { c, p } = await start('suggest@example.test');
+  const cut = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('cut-off.txt').replaceAll('TEST-1', p.code) });
+  assert.equal(cut.body.result, 'needs_fix');
+  assert.equal(cut.body.newChatSuggested, true, 'unreadable');
+  assert.equal((await c.get('/api/home')).body.waiting.newChatSuggested, true);
+
+  // One text 1 point below the target fails the check, but doesn't suggest a new chat.
+  const near = await c.post('/api/answer', { exchangeId: cut.body.fix.exchangeId, answer: answer('too-many-new.json').replaceAll('TEST-1', p.code) });
+  assert.equal(near.body.result, 'partly_accepted', JSON.stringify(near.body));
+  assert.equal(near.body.newChatSuggested, false, '1 point below');
+  assert.equal((await c.get('/api/home')).body.waiting.newChatSuggested, false);
+
+  // The redo answered with a text of made-up words, far below the target.
+  const far = JSON.parse(answer('good.json'));
+  far.part = (await c.get('/api/home')).body.waiting.code;
+  far.texts = [far.texts[0]];
+  far.texts[0].lines = far.texts[0].lines.map((l) => ({ ...l, sv: 'Zorkel blippar snarfen vimpelt.' }));
+  const res = await c.post('/api/answer', { exchangeId: near.body.next.exchangeId, answer: JSON.stringify(far) });
+  assert.equal(res.body.result, 'partly_accepted', JSON.stringify(res.body));
+  assert.equal(res.body.newChatSuggested, true, 'more than 10 points below');
+
+  const fine = t.seedAccount({ email: 'suggest-good@example.test' });
+  seedGround(db, fine.id, known);
+  const g = await start('suggest-good@example.test');
+  const own = await g.c.post('/api/answer', { exchangeId: g.p.exchangeId, answer: answer('good.json').replaceAll('TEST-1', g.p.code) });
+  assert.equal(own.body.result, 'accepted', JSON.stringify(own.body));
+  assert.equal(own.body.newChatSuggested, false, 'a good answer');
+});
+
+test('FR-205 RQ-41 RQ-393: texts of a kind not asked for, or more texts than asked for, are format problems; nothing is stored', async () => {
+  const db = t.grove.db;
+  const kinds = t.seedAccount({ email: 'kinds@example.test' });
+  seedGround(db, kinds.id, known);
+  const { c, p } = await start('kinds@example.test');
+  const texts = () => db.prepare('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?').get(kinds.id).n;
+
+  const wrongKind = JSON.parse(answer('good.json').replaceAll('TEST-1', p.code));
+  wrongKind.texts[2].kind = 'reading';
+  const a = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: JSON.stringify(wrongKind) });
+  assert.equal(a.body.result, 'needs_fix', JSON.stringify(a.body));
+  assert.match(a.body.problems.join(' '), /Text 3 is a reading text/);
+  assert.equal(texts(), 0);
+
+  const tooMany = JSON.parse(answer('good.json').replaceAll('TEST-1', p.code));
+  tooMany.texts.push({ ...structuredClone(tooMany.texts[2]), title: 'En till' });
+  const b = await c.post('/api/answer', { exchangeId: a.body.fix.exchangeId, answer: JSON.stringify(tooMany) });
+  assert.equal(b.body.result, 'needs_fix', JSON.stringify(b.body));
+  assert.match(b.body.problems.join(' '), /Text 4 is a listening text/);
+  assert.equal(texts(), 0);
+});
