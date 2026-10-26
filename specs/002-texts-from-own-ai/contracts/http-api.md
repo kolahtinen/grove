@@ -13,23 +13,26 @@ All rules of G-01's contract apply (headers, 100 KB limit, strict schemas, CSRF,
 
 | Method, path | Body | Responses |
 |---|---|---|
-| `GET /api/home` | – | `200 {topic, package: {id, part, of, status} \| null, waiting: {exchangeId, kind, part, of, prompt} \| null, texts: [{id, title, partNo, state: "new"\|"read"\|"rated", createdAt}]}` |
+| `GET /api/home` | – | `200 {topic, wholePackage: bool, package: {id, part, of, status, oneText} \| null, waiting: {exchangeId, kind, part, of, steps: [string], prompt, newChatSuggested: bool} \| null, texts: [{id, title, kind: "reading"\|"listening", partNo, state: "new"\|"read"\|"rated", createdAt}]}` — `steps` are the setup prompts to copy before `prompt` (the request) |
 | `POST /api/topic` | `{topic: string 1–80}` | `200 {topic}` |
-| `POST /api/prompt` | `{action: "next" \| "new_package"}` | `200 {exchangeId, kind: "part", code, part, of, prompt, carriesSummary}` — `next` returns the waiting prompt if one is open, else the next part (or part 1 of a new package when none is open or the last is finished); `new_package` closes the open package and starts a new one · `409 package_waiting` when `next` is asked while the package's texts are not all rated and all 3 parts are in (message says to rate them or start a new package) |
-| `POST /api/answer` | `{exchangeId: integer, answer: string 1–80000}` (80,000 characters keeps the request under G-01's 100 KB limit with å/ä/ö and JSON escaping; the page warns before sending a longer paste) | `200 {result: "accepted", texts: [{id, title}], newWords: n, meanings: {exchangeId, prompt} \| null}` · `200 {result: "needs_fix", problems: [string], fix: {exchangeId, prompt}}` · `200 {result: "meanings_added", filled: n, missing: n}` (for a meanings exchange) · `409 duplicate` (already added) · `409 wrong_part` (the answer's part code is another part's) · `404 not_found` (no such exchange for this account) |
+| `POST /api/prompt` | `{action: "next" \| "new_package" \| "new_chat"}` | `200 {exchangeId, kind: "part"\|"package"\|"redo", code, part, of, steps: [string], prompt, carriesSummary}` — `next` returns the waiting request if one is open, else the next request (part 1, with the setup, of a new package when none is open or the last is finished; the whole package after the setup when the learner chose it); `new_package` closes the open package and starts a new one; `new_chat` gives the waiting request again with the setup in `steps` (`409 nothing_waiting` without one) · `409 package_waiting` when `next` is asked while the package's texts are not all rated and all 3 parts are in (message says to rate them or start a new package) |
+| `POST /api/answer` | `{exchangeId: integer, answer: string 1–80000}` (80,000 characters keeps the request under G-01's 100 KB limit with å/ä/ö and JSON escaping; the page warns before sending a longer paste) | `200 {result: "accepted" \| "partly_accepted", texts: [{id, title, kind}], newWords: n, problems: [string], next: {exchangeId, kind: "redo"\|"meanings_fix", prompt} \| null, newChatSuggested: bool}` — `partly_accepted` when some texts failed or wait for meanings · `200 {result: "needs_fix", problems: [string], fix: {exchangeId, prompt}, newChatSuggested: bool}` (the answer couldn't be read) · `409 duplicate` (already added) · `409 wrong_part` (the answer's part code is another part's) · `404 not_found` (no such exchange for this account) |
 | `GET /api/text?id=N` | – | `200 {id, title, topic, lines: [{sv, en}], questions: [{q, options}], answered: [{position, option, right}], rating \| null}` · `404 not_found` |
 | `POST /api/question` | `{textId: integer, position: integer 0–5, option: integer 0–2}` | `200 {right: bool, rightOption}` |
+| `POST /api/whole-package` | `{on: boolean}` | `200 {wholePackage}` — used from the next package on |
 | `POST /api/rating` | `{textId: integer, value: "almost_nothing" \| "a_little" \| "about_half" \| "most" \| "everything"}` | `200 {result: "rated", targetShare}` |
 
 Integers in JSON bodies are checked as safe positive integers; the schema module gains an `integer` type (G-01's `checkSchema`, extended).
 
-## The AI answer format (asked for by every part and fix-it prompt)
+## The AI answer format (given in the setup; asked for by every request and fix-it prompt)
 
 ```json
 {
   "part": "K7QM-2",
   "texts": [
     {
+      "kind": "reading",
+      "part": 1,
       "title": "…",
       "lines": [{ "sv": "…", "en": "…" }],
       "questions": [{ "q": "…", "options": ["…", "…"], "answer": 0 }]
@@ -39,10 +42,17 @@ Integers in JSON bodies are checked as safe positive integers; the schema module
   "new_phrases": [{ "sv": "…", "en": "…", "explain_sv": "…" }],
   "inflections": [{ "form": "…", "lemma": "…" }],
   "names": ["…"],
+  "meaning_checks": [{ "form": "…", "lemma": "…", "en": "…", "explain_sv": "…" }],
   "starter_words": [{ "lemma": "…", "en": "…", "explain_sv": "…" }]
 }
 ```
 
-Limits (FR-205): 1–4 texts; 1–60 lines per text; `sv`/`en` ≤ 400 characters; 0–6 questions with 2–3 options and a valid answer index; ≤ 200 entries in each list. Fields the X-03 answers added (`kind`, `series`, `episode`, `speaker`, `nodes`) are dropped; any other unknown field is a problem.
+`part` at the top is the request's code: a part code (`K7QM-2`), or the package code (`K7QM`) for a whole package, whose texts then each name their `part` (1–3). `kind` is `reading` or `listening`.
 
-Meanings answer: `{"meanings": [{"form", "lemma", "en", "explain_sv"}]}`, ≤ 200 entries.
+Limits (FR-205): 1–4 texts (1–12 for a whole package); 1–60 lines per text; `sv`/`en` ≤ 400 characters; 0–6 questions with 2–3 options and a valid answer index; ≤ 200 entries in each list, ≤ 100 meaning checks. Fields the X-03 answers added (`series`, `episode`, `speaker`, `nodes`) are dropped; any other unknown field is a problem.
+
+Meanings fix-it answer: `{"meanings": [{"form", "lemma", "en", "explain_sv"}]}`, ≤ 200 entries; only the forms stored with the fix-it count.
+
+## Settings (environment, FR-202)
+
+`GROVE_PART_READING` (2), `GROVE_PART_LISTENING` (1), `GROVE_TEXT_WORDS` (90), `GROVE_SETUP_CHUNK_WORDS` (500), `GROVE_SETUP_MAX_WORDS` (3000), `GROVE_CHECK_MEANINGS` (20), `GROVE_OWN_PIECE_CHARS` (2500): positive integers in `web.env`, read by `loadConfig` (role `web`); a missing value takes the default, a bad one stops grove at start with the setting's name.

@@ -8,6 +8,8 @@
 
 The copy-paste exchange with the learner's own chat AI: grove builds a prompt (packages of 3 parts; 3 texts of ~130 words per part; the learner's known words, target share, topic and, once per package, a summary of what changed), finds and strictly validates the JSON in the pasted answer, counts new words itself (sentences, Unicode words, names, phrases, regular Swedish inflections and compounds), accepts within the margins or lists the problems with a fix-it prompt, then stores texts, sentences and new leaves, asks for missing meanings, and lets the learner read, answer questions and rate, which tunes the next prompt. No new dependencies. Details: [research.md](research.md).
 
+**Changed 2026-10-26** (owner's first test, addendum 002): setup over several prompts in a new chat per package, sizes as environment settings, reading and listening texts, per-text checking with redo requests, a meaning for every word from a shipped word list (new module `lexicon`), meaning checks instead of the meanings prompt; migration 010 ([data-model.md](data-model.md)); research R9–R11.
+
 ## Technical Context
 
 **Language/Version**: JavaScript (ES modules) on Node.js 22.14+ (as G-01)
@@ -65,6 +67,7 @@ specs/002-texts-from-own-ai/
 
 ```text
 server/
+├── lexicon/             # module lexicon (2026-10-26): sv-en.tsv (built by scripts/build-lexicon.mjs), lexicon.mjs
 ├── words/               # module words: sentences.mjs, tokens.mjs, inflect.mjs, count.mjs, store.mjs (words, forms, ground/leaves)
 ├── texts/               # module texts: schema.mjs (answer format), extract.mjs, prompt.mjs, check.mjs, packages.mjs, accept.mjs, ratings.mjs, routes.mjs
 ├── web/                 # app.mjs registers the texts routes; http.mjs gains the integer schema type

@@ -12,7 +12,8 @@ One row per word or fixed phrase per account (no shared lexicon in the first bui
 | account_id | INTEGER NOT NULL | |
 | lemma | TEXT NOT NULL | dictionary form, lower-case, ≤ 80 chars |
 | kind | TEXT NOT NULL | `word` or `phrase` |
-| en | TEXT NULL | English meaning, ≤ 200 chars; NULL = "meaning missing" |
+| en | TEXT NULL | English meaning, ≤ 200 chars; NULL only for legacy rows the word list lacks (shown as "meaning coming with your next texts" and put first in the next meaning checks) |
+| en_source | TEXT NULL | `ai`, `dictionary` or `learner` (migration 010; FR-207) |
 | explain_sv | TEXT NULL | simple Swedish explanation, ≤ 300 chars |
 | state | TEXT NOT NULL | `leaf` or `ground` (glossary) |
 | uses | INTEGER NOT NULL DEFAULT 0 | times seen in accepted texts (prompt choice, research R4) |
@@ -93,3 +94,25 @@ At most one `open` package per account (partial unique index).
 ## Ground before G-04/G-06
 
 G-02 reads `state = 'ground'` as known. The starting level (G-06) and demo history (G-07) fill the ground; drilling and falling (G-04) move leaves there. Tests seed ground words directly.
+
+## Migration 010 (2026-10-26; addendum 002, FR-202–FR-207, FR-219; G-03 FR-318)
+
+`server/store/migrations/010-setup-and-meanings.sql`:
+
+| Table | Added | Rules |
+|---|---|---|
+| words | `en_source` | as above; existing rows with a meaning get `ai` |
+| packages | `code` TEXT NULL | four random letters, shared by its parts' codes (`K7QM-2`) and the whole-package code (`K7QM`) |
+| packages | `summary` TEXT NULL | the summary its setup sent, resent by **I'm in a new chat** |
+| packages | `one_text` INTEGER NOT NULL DEFAULT 0 | 1 = every later request asks for one text (FR-206) |
+| packages | `fail_streak` INTEGER NOT NULL DEFAULT 0 | answers in a row with a failed text |
+| exchanges | `steps` TEXT NULL | JSON array of prompt strings shown before the request: the setup prompts (empty when the request needs none); `prompt` stays the request itself |
+| exchanges | `asks` TEXT NULL | JSON array of the texts the request asks for: `{part, kind}` |
+| exchanges | `held` TEXT NULL | meanings fix-its: the checked texts waiting for their meanings, as JSON |
+| texts | `kind` TEXT NOT NULL DEFAULT 'reading' | `reading` or `listening` (CHECK) |
+| texts | `ready` INTEGER NOT NULL DEFAULT 1 | own texts: 0 until their AI round is complete (G-03 FR-318) |
+| texts | `copyright_view` TEXT NULL, `copyright_note` TEXT NULL | own texts: the AI's view, `free`, `unsure` or `copyrighted`, and its reason (≤ 300) |
+| texts | `known_share` REAL NULL | own texts: share of known words when added (G-03 FR-318) |
+| learner_settings | `whole_package` INTEGER NOT NULL DEFAULT 0 | the learner's choice (FR-203) |
+
+`exchanges.kind` values become `part`, `package` (whole package), `redo`, `fix`, `meanings_fix`, `own`. Existing waiting `meanings` exchanges become `replaced` (the meanings prompt is gone). A part is accepted when its texts of each kind reach `GROVE_PART_READING` and `GROVE_PART_LISTENING`; `packages.parts_accepted` counts those parts.

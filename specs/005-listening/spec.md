@@ -76,6 +76,7 @@ On a device without a Swedish voice, grove never reads Swedish with another lang
 - **FR-506** (RQ-14; N-37): Each sentence MUST have replay, and show how many times it has been played in this listening session.
 - **FR-507** (RQ-197; N-03): Each sentence MUST be loopable: it repeats until the loop is turned off or another sentence is played.
 - **FR-508** (RQ-270; N-37): After listening, the text's comprehension questions MUST be offered (G-02's questions), making each text a listening passage.
+- **FR-509** (RQ-393; N-37, N-42): A **listening** text (G-02 FR-202) MUST open in listening mode (FR-504, FR-505: audio first, the text blurred until tapped or played through); a reading text opens for reading as before, with Listen still offered. Added 2026-10-26 (addendum 002).
 
 ### Key Entities *(include if feature involves data)*
 

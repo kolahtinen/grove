@@ -57,3 +57,20 @@ Phase 0 of `/speckit-plan`, 2026-10-24. Builds on G-01's stack (Node.js 22, buil
 ## R8. Client
 
 - **Decision:** Home (`public/index.html`, `home.mjs`) gets the topic card, the package card (progress, prompt with Copy prompt, paste box, Add texts, problems and fix-it/meanings prompts) and the text list; a new page `public/text.html` + `text.mjs` (`/text?id=N`) for reading, questions and rating. Copy uses `navigator.clipboard.writeText` with a select-all fallback. All values set with `textContent`.
+
+## R9. Setup and requests (FR-202, FR-203, FR-206; addendum 002, question-pages/66)
+
+- **Decision:** A package's first exchange carries `steps`: setup prompt 1 (the intro, "reply only OK until I ask for texts", the rules, the answer format with `kind`, the summary), then one prompt per `GROVE_SETUP_CHUNK_WORDS` known words ("My known words, message 2 of 4 … reply only OK"). Its `prompt` is the request ("Now please write part K7QM-1: 2 reading texts and 1 listening text, each about 90 words …"). Later requests are short and carry what changed: leaves to reuse, nudges, meaning checks. **I'm in a new chat** rebuilds the setup from the package's stored summary and today's known words and puts it in the waiting exchange's `steps`. The probe test ([page](https://claude.ai/artifact/4C2BN2nSxTghozQ9ZAsEZ7)) uses exactly this shape, so its results carry over.
+- **Per-text checking:** each text is checked on its own (FR-214); passing texts are stored at once; a failed text gets a `redo` exchange (one text of its kind, its problems quoted, same part); `fail_streak` counts answers in a row with a failed text, and at 2 the package sets `one_text`, after which every request asks for one open text. A part's open texts are its kinds minus its stored texts.
+- **Suggesting a new chat:** an unreadable answer, or a text more than 10 points below the target share, sets `newChatSuggested`.
+- **Alternatives:** self-contained prompts every time (today's; long prompts break free ChatGPT, O-09); a fixed table of AI sizes (rejected on question-pages/64, 13).
+
+## R10. The word list (FR-207, FR-222; addendum 002)
+
+- **Decision:** `scripts/build-lexicon.mjs` reads kaikki.org's Swedish extract of the English Wiktionary (`kaikki.org-dictionary-Swedish.jsonl`, pinned SHA-256, downloaded by hand into `data/` as the Kelly XML is) and writes `server/lexicon/sv-en.tsv`: a header with source, date, hash and licence, then `w <headword> <gloss>` rows (first gloss of the first sense that isn't a form-of, notes in brackets dropped, ≤ 120 characters, plain text) and `f <form> <headword>` rows for inflected forms whose headword has a gloss. `server/lexicon/lexicon.mjs` loads it into two Maps on first use and answers `meaning(form)` → `{lemma, en}` or null. Measured: 57,962 headwords with a gloss, 248,673 forms; all 408 demo ground words and 97.1% of the Kelly list's single words.
+- **Licence:** Wiktionary text is CC BY-SA 4.0; the data file keeps its notice and the credits page names it with a link to kaikki.org (C-05).
+- **Alternatives:** Kelly (no English meanings); asking the AI for every meaning (more rounds, and "meaning missing" until then, which O-10 rules out).
+
+## R11. Meanings (FR-207)
+
+- **Decision:** On accepting a text, each new word takes the AI's meaning (`en_source = ai`), else the word list's (`dictionary`). A text with a word that has neither is held: its checked JSON goes into a `meanings_fix` exchange's `held` with the forms in `asked_forms`; the answer's meanings are applied and the held texts stored in one transaction. Requests carry up to `GROVE_CHECK_MEANINGS` dictionary meanings to confirm, each with the sentence it was used in, oldest first; the answer's `meaning_checks` that match the stored forms set `en`, `explain_sv` and `en_source = ai`. The old meanings prompt and its route go.

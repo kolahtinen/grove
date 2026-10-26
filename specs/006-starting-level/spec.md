@@ -89,7 +89,7 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 **Level word lists**
 
 - **FR-601** (RQ-117; N-43; C-05; constitution 4.14): **Reduced for the first build:** the Swedish Kelly list MUST be carried as a plain file in the build (not in a shared bank) and imported into grove's level word lists at start-up when missing or changed: each entry's dictionary form, cleaned of notes in brackets, lower-cased, at its CEFR level (1–6 → A1–C2); a form listed more than once is kept once at its lowest level; multi-word forms are phrases. Every imported word keeps its source ("Swedish Kelly list, Språkbanken") and licence ("CC BY-SA 3.0, LGPL 3.0").
-- **FR-602** (RQ-385, C-05; N-43; constitution 4.14): A public **Credits** page MUST name every outside source: the Swedish Kelly list (Språkbanken; CC BY-SA 3.0, LGPL 3.0; link to its page) and the Zen Kaku Gothic New font (SIL Open Font Licence 1.1); it is linked from the terms page and Home.
+- **FR-602** (RQ-385, C-05; N-43; constitution 4.14): A public **Credits** page MUST name every outside source: the Swedish Kelly list (Språkbanken; CC BY-SA 3.0, LGPL 3.0; link to its page) the Swedish–English word list from Wiktionary through kaikki.org (CC BY-SA 4.0; links to kaikki.org and Wiktionary; G-02 FR-222, added 2026-10-26) and the Zen Kaku Gothic New font (SIL Open Font Licence 1.1); it is linked from the terms page and Home.
 
 **The starting check**
 
@@ -123,7 +123,7 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 
 ## Assumptions
 
-- The Kelly list's English meanings don't exist; ground words from it show "meaning missing" until a meanings prompt (G-03) fills them in.
+- The Kelly list's English meanings don't exist; ground words from it take their meaning from grove's word list (G-02 FR-222; changed 2026-10-26).
 - "The most common words for that level" (RQ-113) is read with X-p1-04: the Kelly words tagged up to that level.
 - The reviewer account's starting ground is G-07's demo history.
 - The shared bank (RQ-117 as written) is second build.

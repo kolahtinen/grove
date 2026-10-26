@@ -81,7 +81,7 @@ From the word menu, the learner marks any word To remember and/or To read (it be
 2. **Given** a leaf, **When** the learner presses Let it fall and answers its meaning right, **Then** it falls to the ground; answered wrong, it stays a leaf; a pattern asks "Are you sure?" instead. (question-pages/56)
 3. **Given** a ground word, **When** the learner picks it up, **Then** it becomes a drilled leaf again, due now. (glossary)
 4. **Given** Leaves, **When** it opens, **Then** it lists drilled leaves grouped To remember / To read (both in both), each with play, meaning and delete; delete removes the leaf without putting it in the ground. (RQ-08)
-5. **Given** Leaves, **When** the learner types a word, phrase or pattern and adds it, **Then** it becomes a drilled leaf, and a meanings prompt is offered for items without a meaning. (RQ-35, RQ-77, RQ-207)
+5. **Given** Leaves, **When** the learner types a word, phrase or pattern and adds it, **Then** it becomes a drilled leaf with its meaning from grove's word list; a word the list doesn't have asks the learner for their own meaning ("your best guess is fine"), which the next request has the AI check. (RQ-35, RQ-77, RQ-207, RQ-396, RQ-398)
 
 ---
 
@@ -165,7 +165,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 - **FR-409** (RQ-07; N-11, N-04, N-12): The word menu MUST let the learner switch **To remember** and **To read** on or off for the word; switching one on makes the word a drilled leaf (due now, gap 1 day) if it wasn't; switching both off on a drilled leaf makes it an unmarked leaf again.
 - **FR-410** (RQ-382, question-pages/56; N-12, N-32): The word menu MUST offer **Let it fall** on a leaf: grove asks its meaning once (multiple choice as FR-406); right → it falls to the ground; wrong → it stays; a pattern, or a word with fewer than 2 other meanings available, gets "Are you sure?" instead.
 - **FR-411** (RQ-383, glossary; N-04): The word menu MUST offer **Pick up** on a ground word: it becomes a drilled leaf marked To read, due now, gap 1 day.
-- **FR-412** (RQ-08, RQ-35, RQ-77, RQ-207; N-38, N-11, N-21, N-42, N-12, N-32): A **Leaves** page MUST list drilled leaves grouped To remember / To read (a leaf with both marks in both), each with play, meaning and delete (delete removes the leaf, not to the ground); and an **Unmarked** section (starter words, skipped marking steps) with the To read / To remember switches; and let the learner add a word, phrase or pattern by typing it (≤ 80 characters), which becomes a drilled leaf marked To read; for items without a meaning it offers the meanings prompt (G-03 FR-318).
+- **FR-412** (RQ-08, RQ-35, RQ-77, RQ-207; N-38, N-11, N-21, N-42, N-12, N-32): A **Leaves** page MUST list drilled leaves grouped To remember / To read (a leaf with both marks in both), each with play, meaning and delete (delete removes the leaf, not to the ground); and an **Unmarked** section (starter words, skipped marking steps) with the To read / To remember switches; and let the learner add a word, phrase or pattern by typing it (≤ 80 characters), which becomes a drilled leaf marked To read, with its meaning from grove's word list (G-02 FR-222); when the list doesn't have it, the learner MUST give a meaning (≤ 200 characters, saved as the learner's, `en_source = learner`), and the next request has the AI confirm or correct it (G-02 FR-207, meaning checks).
 
 **Colours**
 

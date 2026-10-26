@@ -102,14 +102,14 @@ The learner opens **Dictionary**: every word, phrase and grammar pattern they ha
 
 **Acceptance Scenarios**:
 
-1. **Given** texts have been added, **When** the learner opens the dictionary, **Then** it lists every word, phrase and pattern they have met (ground and leaves), each with its translation (or "meaning missing"), status and one example sentence where they met it. (RQ-53, RQ-205, RQ-357)
+1. **Given** texts have been added, **When** the learner opens the dictionary, **Then** it lists every word, phrase and pattern they have met (ground and leaves), each with its translation, status and one example sentence where they met it. (RQ-53, RQ-205, RQ-357)
 2. **Given** names in the texts, **When** the dictionary is shown, **Then** names are in their own list and not among the words. (RQ-56)
 
 ---
 
 ### User Story 6 - Read my own texts (Priority: P3)
 
-The learner pastes a Swedish text of their own (an article, a song) with a title. Grove saves it without English and shows it like other texts: word menu, new-word counts, the text's share of known words. Unknown words show as "new" with a **Save as leaf** button.
+The learner pastes a Swedish text of their own (an article, a song) with a title. Before it can be read, grove gives a prompt (in pieces for a long text) asking the learner's AI for the meaning of every word in it, in context, and whether the text looks copyrighted; the learner pastes the answer back. Then grove shows it like other texts: word menu, new-word counts, the text's share of known words, and the AI's copyright view. Unknown words show as "new" with a **Save as leaf** button.
 
 **Why this priority**: Own texts widen the input (RQ-74); AI texts already cover the learning loop.
 
@@ -117,8 +117,9 @@ The learner pastes a Swedish text of their own (an article, a song) with a title
 
 **Acceptance Scenarios**:
 
-1. **Given** a pasted Swedish text with a title, **When** the learner saves it, **Then** it is stored without English, its sentences are saved, and it appears in the texts list as the learner's own. (RQ-74)
-2. **Given** an own text, **When** a new word is tapped, **Then** its status is "new" and **Save as leaf** adds it to Leaves (meaning missing until a meanings prompt fills it, G-02 FR-207). (RQ-74, RQ-18)
+1. **Given** a pasted Swedish text with a title, **When** the learner saves it, **Then** it is stored without English, its sentences are saved, it appears in the texts list as the learner's own, waiting, and grove gives its AI prompt; it can't be opened yet. (RQ-74, RQ-400)
+2. **Given** the AI's answer gives a meaning for every word, **When** it is pasted, **Then** the text opens, showing its share of known words (e.g. "78% known: harder than your usual texts") and the AI's copyright view; an answer missing some words gets a fix-it prompt for just those, and the text is never refused for being hard. (RQ-400, RQ-401)
+3. **Given** an own text, **When** a new word is tapped, **Then** its status is "new", it shows the AI's meaning, and **Save as leaf** adds it to Leaves with that meaning. (RQ-74, RQ-18, RQ-396)
 
 ---
 
@@ -132,6 +133,7 @@ The learner pastes a Swedish text of their own (an article, a song) with a title
 - An Explain flag on a word that then falls to the ground (G-04): the flag stays until answered.
 - A report on a question already answered: the answer stops counting from then on.
 - An own text over 20,000 characters: refused with a plain message.
+- A long own text: its AI prompt comes in pieces of at most `GROVE_OWN_PIECE_CHARS` characters, split between sentences, each answered on its own; the text opens when every piece is in. (RQ-400, R-18)
 
 ## Requirements *(mandatory)*
 
@@ -149,7 +151,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 **Word menu**
 
 - **FR-305** (RQ-18; N-11, N-45, N-29; Q-05): One tap on a word MUST speak it (with the device's Swedish voice, where there is one) and open its menu within 0.5 s, showing: its meaning here; its dictionary form; its status (new, leaf, ground or name); the phrases and grammar patterns of that sentence it is part of; its explanation, if the AI gave one; and an **Explain** button.
-- **FR-306** (RQ-18; N-45): The meaning here MUST be the AI's meaning for that word in that text where one exists, else the word's stored meaning, else "meaning missing". The dictionary form comes from the word itself, a learned form, the common irregular forms, or the regular endings (G-02 research R2); a form that may belong to several dictionary forms lists each.
+- **FR-306** (RQ-18; N-45): The meaning here MUST be the AI's meaning for that word in that text where one exists, else the word's stored meaning, else its meaning in grove's word list (G-02 FR-222); grove never shows "meaning missing" (RQ-396). The dictionary form comes from the word itself, a learned form, the common irregular forms, or the regular endings (G-02 research R2); a form that may belong to several dictionary forms lists each.
 
 **Grammar patterns**
 
@@ -171,12 +173,12 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 **Dictionary**
 
-- **FR-316** (RQ-53, RQ-205, RQ-357; N-29, N-38): A **Dictionary** page MUST list every word, phrase and pattern the learner has met (ground and leaves), with its translation or "meaning missing", its status and one example sentence where the learner met it (ground words from the starting level without a sentence show none); a search box filters it.
+- **FR-316** (RQ-53, RQ-205, RQ-357; N-29, N-38): A **Dictionary** page MUST list every word, phrase and pattern the learner has met (ground and leaves), with its translation (the stored meaning, else the word list's; G-02 FR-207), its status and one example sentence where the learner met it (ground words from the starting level without a sentence show none); a search box filters it.
 - **FR-317** (RQ-56; N-11): The dictionary MUST show names in their own list.
 
 **Own texts**
 
-- **FR-318** (RQ-74; N-16): The learner MUST be able to paste a Swedish text of their own (title ≤ 120 characters, text ≤ 20,000 characters); it is saved without English, split into sentences and shown like other texts, marked as their own. Unknown words show status "new" with **Save as leaf**, which adds the word to Leaves without a meaning (the meanings prompt of G-02 FR-207 is offered for them).
+- **FR-318** (RQ-74, RQ-400, RQ-401; N-16, N-43, N-13): The learner MUST be able to paste a Swedish text of their own (title ≤ 120 characters, text ≤ 20,000 characters); it is saved without English, split into sentences, marked as their own, and **waiting**: it can't be opened until its AI round is complete. The AI round is one `own` exchange per piece of at most `GROVE_OWN_PIECE_CHARS` characters (split between sentences), each asking for the dictionary form, English meaning in context and a simple Swedish explanation of every word in the piece (names listed as names), and whether the text looks free to use, maybe copyrighted or copyrighted, with a short reason. The answer is checked only for completeness: every word of the piece (except names and numbers) needs a meaning; missing ones get a fix-it prompt listing just them; the text is never refused for being hard. When every piece is in, the text opens like other texts, showing its share of known words ("78% known: harder than your usual texts" when below the learner's target share) and the AI's copyright view ("Your AI thinks this may be copyrighted: …"). Unknown words show status "new" with **Save as leaf**, which adds the word to Leaves with the AI's meaning. There is no separate meanings prompt (G-02 FR-207).
 
 **Safety**
 
