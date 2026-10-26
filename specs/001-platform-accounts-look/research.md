@@ -83,3 +83,13 @@ Phase 0 of `/speckit-plan`, 2026-10-24. Each decision lists what was chosen, why
   - Checks in `npm run check`: `npm audit --audit-level=high` (2.6), `gitleaks` (2.1) and `semgrep --config p/javascript` (2.4), both free tools installed on the owner's computer (gitleaks as its release binary, semgrep with `pipx install semgrep`).
   - Local test servers run on `http://localhost` (not `127.0.0.1`), which Chromium treats as a secure context, so the `__Host-` Secure cookie works without HTTPS in tests; checked early by the session tests.
 - **Alternatives:** Firebase Auth emulator (needs Java and firebase-tools); Jest/Vitest (dependencies for what `node:test` does).
+
+## R14. Start-up loads (FR-032; question-pages/71)
+
+- **Decision:**
+  - A start-up load is `{ name, size, steps }`: `size` is its lines or rows (0 when there is nothing to do), and `steps()` returns an iterator, plain or async, that does the work and yields the lines or rows each step finished (at most 10,000). The word list gives `lexiconLoad(file)` (`server/lexicon/`), the Kelly import `kellyLoad({ db, seclog, file })` (`server/levels/`); `loadLexicon()` and `importKelly()` keep their behaviour by running every step at once, and `meaning()` before the word list has loaded does the same.
+  - `server/startup.mjs` (module web) runs the loads one after another, a `setImmediate` between steps, and reports `{ ready, progress }`, progress being the lines and rows done over the total (1 when the total is 0).
+  - `createGrove(config, { now, fetchImpl, loads })` builds the default loads (the word list always; the Kelly import unless `config.importLevels` is false) when `loads` isn't given. `grove.start()` resolves once the server listens and starts the loads; `grove.ready` is a promise that resolves when they have all finished, and the hourly job starts then.
+  - The start-up gate is the first thing the request handler does. The loading page is `public/starting.html` with `/assets/starting.mjs` (CSP-safe), a `<progress>` with the label "Loading grove", polling `GET /api/starting` every 300 ms and reloading the page once `ready`.
+  - The test harness passes `loads` through and waits for `grove.ready` unless asked not to (`waitReady: false`), so tests start on a ready grove.
+- **Alternatives:** the word list in SQLite (no load at all, but a migration and an import step); a faster file format (still a load on first use); worker threads (the parsed maps would have to be copied back).

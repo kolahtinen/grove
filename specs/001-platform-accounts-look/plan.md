@@ -88,7 +88,8 @@ specs/001-platform-accounts-look/
 
 ```text
 server/
-├── main.mjs             # starts grove: config, store, web, hourly jobs
+├── main.mjs             # starts grove: config, store, web, start-up loads, hourly jobs
+├── startup.mjs          # runs the start-up loads in steps and reports progress (FR-032, research R14)
 ├── config.mjs           # reads environment; no defaults for secrets
 ├── web/                 # module web: router, static files, headers/CSP, body limit, errors, sessions, CSRF, role guard
 ├── accounts/            # module accounts: sign-in/out, terms agreement, reset, lockout, same-answer timing

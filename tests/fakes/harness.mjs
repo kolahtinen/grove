@@ -10,7 +10,8 @@ import { createGrove } from '../../server/main.mjs';
 
 export const PASSWORD = 'Forest-walk-42';
 
-export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0, levels = false } = {}) {
+// `loads` replaces grove's start-up loads (G-01 FR-032); tests start on a ready grove unless `waitReady` is false.
+export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0, levels = false, loads, waitReady = true } = {}) {
   const fb = await startFakeFirebase();
   const gh = await startFakeGithub();
   const dir = mkdtempSync(join(tmpdir(), 'grove-test-'));
@@ -30,8 +31,9 @@ export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1',
     },
     github: { apiUrl: gh.apiUrl, repo: gh.repo, token: gh.token },
   });
-  const grove = createGrove(config, now ? { now } : {});
+  const grove = createGrove(config, { ...(now ? { now } : {}), ...(loads ? { loads } : {}) });
   const boundPort = await grove.start(port);
+  if (waitReady) await grove.ready;
   const base = `http://${host}:${boundPort}`;
 
   // Adds an account straight into Firebase and grove (the owner commands do this from US4 on).
