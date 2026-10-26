@@ -11,6 +11,7 @@ Served on `127.0.0.1:<PORT>` only; reached by learners through the quick tunnel 
 - Signed-out requests to anything but the public pages and public API → pages redirect `303` to `/signin`; API returns `401 signed_out` (FR-019).
 - Order: the CSRF check first, then the access rule; the body is read only for an allowed request. A refused request with a body is answered with `Connection: close` and its body is never read (FR-022).
 - Signed-in requests from a session that hasn't agreed to the terms, to anything but `/terms`, `GET /api/me`, `POST /api/agree` and `POST /api/signout` → pages redirect `303` to `/terms`; API returns `403 terms_needed` (FR-011).
+- While grove is starting (FR-032), before any other rule: page requests get `503` with the loading page and `Retry-After: 1`; `/assets/*` and `/fonts/*` are served; `/health` and every API request except `GET /api/starting` get `503 starting` with `Retry-After: 1` and `Connection: close` when a body was sent (it is never read).
 
 ## Pages (static HTML)
 
@@ -26,6 +27,7 @@ Served on `127.0.0.1:<PORT>` only; reached by learners through the quick tunnel 
 | Method, path | Body | Responses |
 |---|---|---|
 | `GET /api/csrf` | – | `200 {csrf}` and sets the pre-session CSRF cookie |
+| `GET /api/starting` | – | `200 {ready: bool, progress: number 0–1}` at any time, signed in or not (FR-032) |
 | `POST /api/signin` | `{email: string ≤254, password: string ≤128}` | `200 {result:"signed_in", termsNeeded:true}` + session cookie · `401 wrong_credentials` (wrong password, unknown address, or locked, all identical, FR-020) · `503 signin_unavailable` (Firebase unreachable or its answer unusable; not counted toward the lockout, FR-020) |
 | `POST /api/reset` | `{email: string ≤254}` | `200 {result:"sent_if_account"}` always for a well-formed address (FR-015) · `503 signin_unavailable` (Firebase unreachable or its answer unusable) |
 

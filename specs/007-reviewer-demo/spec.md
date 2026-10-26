@@ -70,7 +70,7 @@ A reviewer signs in to the shared reviewer account for the first time and lands 
 
 - **SC-001**: A reviewer's first visit shows something on every page (Home stages, Review, Master, texts, dictionary, Progress) with no AI exchange.
 - **SC-002**: The demo texts pass grove's checks with no fix-it round.
-- **SC-003**: Creating the reviewer account with its demo takes under 2 seconds.
+- **SC-003**: Creating the reviewer account with its demo takes under 2 seconds, once grove's start-up loads have run (G-01 FR-032; question-pages/71).
 
 ## Assumptions
 

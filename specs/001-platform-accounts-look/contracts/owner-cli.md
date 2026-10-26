@@ -1,6 +1,6 @@
 # Contract: owner commands (G-01)
 
-Run on the owner's computer as user `grove` (`sudo -u grove npm run <command> -- …` in grove's folder). Each command writes a security-log entry (FR-023) and exits non-zero with a plain message on failure.
+Run on the owner's computer as user `grove` (`sudo -u grove npm run <command> -- …` in grove's folder). Each command writes a security-log entry (FR-023) and exits non-zero with a plain message on failure. A command that needs a start-up load (FR-032: the word list for `reviewer:setup`'s demo) runs it at once before its own work.
 
 | Command | Arguments | Effect |
 |---|---|---|

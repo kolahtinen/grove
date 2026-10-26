@@ -154,6 +154,7 @@ A learner opens grove and sees the forest look: Night forest on a dark device, P
 - An account is deleted while someone is signed in to it: their next request is treated as signed out. (RQ-229, RQ-155)
 - An older phone where the frosted-glass blur and glows lag: fewer effects when the device asks for reduced transparency or reduced motion. (R-15)
 - A device with no Japanese fonts and the bundled font not yet loaded: text shows in the device's sans-serif until it loads. (RQ-331)
+- A learner opens grove right after a restart: the loading page shows its progress for a second or two, then the page asked for opens by itself. (RQ-408)
 
 ## Requirements *(mandatory)*
 
@@ -170,6 +171,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 - **FR-005** (RQ-38, RQ-23; N-16, N-19, N-05; C-03): Grove MUST run in a current desktop browser and SHOULD work on phones first: a single centred column at most 560 px wide, with no sideways scrolling from 360 px wide up.
 - **FR-006** (RQ-181, RQ-367; N-16, N-19, N-20, N-24; C-01): Grove's server MUST NOT call any AI service, and MUST NOT contact any outside service except Firebase Authentication (and GitHub, from the owner's computer's README updater only).
 - **FR-007** (RQ-178; N-42, N-06): Grove MUST NOT offer a conversation partner in the first version.
+- **FR-032** (RQ-407, RQ-408; N-45, N-34, N-18; Q-05): Grove MUST do its big start-up loads (G-02's word list, FR-222; G-06's Kelly import when the list is new or changed, FR-601) when it starts, never on first use, and its server MUST answer while they run: it listens first, then runs the loads in steps of at most 10,000 lines or rows, letting requests be answered between steps. Until every load has finished: a page request gets `503` with the loading page (grove's logo, "grove is starting — this takes a few seconds.", a progress bar that fills with the share of lines and rows loaded, polled from `GET /api/starting`), which opens the page asked for once grove is ready; `/assets/*` and `/fonts/*` are served as usual; `/health` and every other API request get `503 starting` ("grove is starting. Try again in a moment."), checked before the CSRF check and the access rule, so no body is read. A page already open shows that message like any other error. The hourly job starts once grove is ready. Owner commands run the loads they need at once, before their own work. A lookup made before its load has finished finishes that load at once (question-pages/71).
 
 **Accounts**
 
@@ -233,6 +235,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones, a
 - **SC-005**: After a restart of grove or the owner's computer, 0 changes that grove confirmed as saved are lost; if the database is lost, at most the last hour is lost, and a restore from backup has been tried once by hand before reviewers are invited. (Q-03)
 - **SC-006**: For sign-in and password reset, the answers for an address with an account and one without can't be told apart by text or status. (RQ-372)
 - **SC-007**: 100% of the colours, fonts, radii and widths checked on the G-01 pages match Appendix A in both looks.
+- **SC-008**: On a started grove, the first meaning lookup and the first answer check after a restart take no longer than later ones; the loading page appears within 0.5 s of grove starting to listen. (RQ-407, RQ-408; Q-05)
 
 ## Assumptions
 
