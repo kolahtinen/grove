@@ -1,7 +1,10 @@
 // The web core: a server bound to 127.0.0.1, a small router, a JSON body reader that stops at
 // 100 KB, strict schemas and plain errors (FR-001, FR-022, constitution 2.2, 2.4, 2.5).
 import { createServer } from 'node:http';
+import { readFileSync } from 'node:fs';
 import { setSecurityHeaders } from './headers.mjs';
+
+const STARTING_PAGE = readFileSync(new URL('../../public/starting.html', import.meta.url));
 
 export const MAX_BODY = 100 * 1024;
 const MAX_DISCARD = 10 * 1024 * 1024;
@@ -119,11 +122,24 @@ export function sendJson(res, status, body, headers = {}) {
   res.end(JSON.stringify(body));
 }
 
-// Builds the request handler. Every request gets the security headers; a request with a body is then
-// decided in the order FR-022 sets: the CSRF check first, then the access rule (FR-018, FR-019), and
+// While grove is starting (FR-032), only files, the loading page and /api/starting are served.
+function startingAnswer(res, { path, isApi, hasBody }) {
+  if (path.startsWith('/assets/') || path.startsWith('/fonts/') || path === '/api/starting') return false;
+  const headers = { 'retry-after': '1', ...(hasBody ? { connection: 'close' } : {}) };
+  if (isApi || path === '/health') {
+    sendJson(res, 503, { error: 'starting', message: 'grove is starting. Try again in a moment.' }, headers);
+  } else {
+    res.writeHead(503, { 'content-type': 'text/html; charset=utf-8', ...headers });
+    res.end(STARTING_PAGE);
+  }
+  return true;
+}
+
+// Builds the request handler. Every request gets the security headers. While grove is starting, the
+// start-up gate answers first (FR-032). A request with a body is then decided in the order FR-022 sets: the CSRF check first, then the access rule (FR-018, FR-019), and
 // only an allowed request has its body read. A refused request's body is never read: grove answers
 // with `Connection: close`, so the unread body ends with the connection (FR-022).
-export function createHandler({ router, guard, csrf, log }) {
+export function createHandler({ router, guard, csrf, log, startup = null }) {
   return async function handle(req, res) {
     const started = Date.now();
     const url = new URL(req.url, 'http://grove.local');
@@ -133,6 +149,7 @@ export function createHandler({ router, guard, csrf, log }) {
     let bodyRead = !hasBody;
     setSecurityHeaders(res, { isApi });
     try {
+      if (startup && !startup.ready && startingAnswer(res, { path, isApi, hasBody })) return;
       const route = router.match(req.method, path);
       if (!route) throw new HttpError(404, 'not_found', 'There is nothing here.');
       const ctx = { req, res, url, path, isApi, ip: clientIp(req), cookies: parseCookies(req.headers.cookie), body: null };

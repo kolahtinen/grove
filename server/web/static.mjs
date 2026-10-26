@@ -33,7 +33,7 @@ export const PAGES = [
 ];
 
 // Files under /assets/ that the public pages need; every other asset needs a signed-in session.
-export const PUBLIC_ASSETS = new Set(['grove.css', 'api.mjs', 'page.mjs', 'signin.mjs', 'reset.mjs', 'terms.mjs', 'logo.svg', 'how.mjs', 'grow.mjs', 'topbar.mjs']);
+export const PUBLIC_ASSETS = new Set(['grove.css', 'api.mjs', 'page.mjs', 'signin.mjs', 'reset.mjs', 'terms.mjs', 'logo.svg', 'how.mjs', 'grow.mjs', 'topbar.mjs', 'starting.mjs']);
 
 async function sendFile(ctx, relative) {
   const full = normalize(join(PUBLIC_DIR, relative));
