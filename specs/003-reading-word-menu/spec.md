@@ -173,8 +173,8 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 **Dictionary**
 
-- **FR-316** (RQ-53, RQ-205, RQ-357; N-29, N-38): A **Dictionary** page MUST list every word, phrase and pattern the learner has met (ground and leaves), with its translation (the stored meaning, else the word list's; G-02 FR-207), its status and one example sentence where the learner met it (ground words from the starting level without a sentence show none); a search box filters it.
-- **FR-317** (RQ-56; N-11): The dictionary MUST show names in their own list.
+- **FR-316** (RQ-53, RQ-205, RQ-357, RQ-409, RQ-410; N-29, N-38, N-34): A **Dictionary** page MUST list every word, phrase and pattern the learner has met (ground and leaves), with its translation (the stored meaning, else the word list's; G-02 FR-207), its status and one example sentence where the learner met it (ground words from the starting level without a sentence show none). It has four tabs, **Words**, **Phrases**, **Grammar patterns** and **Names** (FR-317), each showing 100 entries at a time, A to Ö, with a **More** button for the next 100 and a count ("100 of 2,140"). A search box searches on the server 0.3 s after the learner stops typing: the open tab's entries whose form or meaning contains the text, and each tab's number of matches; an answer to an older search is dropped once a newer one is sent. The example is stored, not searched for: when a text's sentences are stored (G-02 accepting an answer, an own text), each of the learner's words, phrases and patterns in them without an example gets the first sentence it appears in; a word added without a sentence (a leaf, the starting level) gets the first earlier sentence it appears in, if any; words met before this rule get theirs once, as a G-01 FR-032 start-up load in steps (question-pages/72). There is no cache of searches.
+- **FR-317** (RQ-56, RQ-409; N-11): The dictionary MUST show names in their own tab (FR-316), paged and searched like the others.
 
 **Own texts**
 
@@ -204,6 +204,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 - **SC-002**: In the G-02 sample answer, every name shows status "name" and none counts as new; every pattern place given word for word is marked. (RQ-56, RQ-12)
 - **SC-003**: A word flagged with Explain gets its explanation into the menu after one exchange.
 - **SC-004**: A reported question never counts in scores or summaries after it is reported.
+- **SC-005**: For a learner with 2,000 words and 5,000 sentences, the server answers a Dictionary page or search within 100 ms, timed by a test on the owner's computer. (RQ-410; question-pages/72)
 
 ## Assumptions
 

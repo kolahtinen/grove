@@ -18,7 +18,7 @@ All G-01 rules apply; every route below is `access: agreed`, the account comes f
 | `POST /api/settings` | `{showTranslations: boolean}` | `200 {showTranslations}` |
 | `POST /api/explain` | `{sentenceId: integer, form: string 1–80, reason: enum, note?: string ≤200}` | `200 {code}` |
 | `POST /api/report` | `{textId: integer, questionPosition?: integer 0–5, linePosition?: integer 0–59, reason: enum, note?: string ≤200}` (exactly one position) | `200 {code}` |
-| `GET /api/dictionary` | – | `200 {items: [{lemma, kind, en, state, example}], names: [string]}` |
+| `GET /api/dictionary?tab=words\|phrases\|patterns\|names&q=text&offset=N` | – (`q` ≤ 80 characters, may be empty; `offset` a multiple of 100, default 0) | `200 {tab, q, offset, total, counts: {words, phrases, patterns, names}, items: [{lemma, kind, en, state, example}]}` — at most 100 items A to Ö; for `names` each item is `{lemma: name}`; `total` and `counts` count the matches for `q` · `400 bad_request` for another tab or a bad offset (FR-316, FR-317) |
 | `POST /api/own-text` | `{title: string 1–120, text: string 1–20000}` | `200 {id, exchangeId, piece, of, prompt}` — the text is waiting; the first piece's prompt (FR-318) |
 | `GET /api/own-text?id=N` | – | `200 {id, title, ready, piece, of, exchangeId, prompt}` (the waiting piece, or `ready: true`) · `404 not_found` |
 | `POST /api/leaf` | `{textId: integer, form: string 1–80}` | `200 {result: "saved"}` |

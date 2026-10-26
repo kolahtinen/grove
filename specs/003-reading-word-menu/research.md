@@ -46,3 +46,13 @@ Phase 0 of `/speckit-plan`, 2026-10-24. Builds on G-01 and G-02 (`specs/002-text
 ## R8. Translations setting (FR-301; question-pages/58)
 
 - **Decision:** `learner_settings.show_translations` (default 1). The reading page shows each line's English under it when on; when off, hides them and keeps a per-line English button. A toggle on the reading page saves the setting (`POST /api/settings`).
+
+## R9. Dictionary pages and stored examples (FR-316, FR-317, SC-005; question-pages/72)
+
+- **Measured** (the demo grown to 5,000 sentences and 2,000 words): the whole dictionary took 73.8 s, nearly all of it testing every word against every sentence for its example; a page of 100 found that way 746 ms (7.3 s at 50,000 sentences); a page of 100 with a stored example 1.8 ms; a search with `LIKE` on the form and the meaning 3.7 ms (31 ms at 20,000 words).
+- **Decision:**
+  - `words.example_sentence_id` (migration 012). The module `words` gives `fillExamples(db, accountId, { sentenceIds?, wordIds? })`: for the given sentences (in id order), each word token (the `\p{L}+` rule of R2) and each listed new item is matched to the learner's words by lemma or stored form (`word_forms`), and phrases by their words in a row; a word without an example gets the first match. Patterns take the line of their first `pattern_places` row. G-02's accept path and own texts call it with the new sentences; adding a word calls it for that word over the learner's sentences.
+  - The fill of words met before migration 012 is a G-01 FR-032 start-up load (research R14 of G-01) in the module `reading`: per account, steps of 10,000 sentences; at the end `settings.examples_filled = 1`, so it runs once.
+  - `/api/dictionary` is one SQL query per request: `kind = ?` and `(lemma LIKE ? OR lower(en) LIKE ?)` with `ORDER BY lemma LIMIT 100 OFFSET ?`, joined to `sentences` for the example; the counts are one grouped query. A word whose stored meaning is empty shows the word list's (G-02 FR-207), looked up for the 100 shown; the search on meaning covers stored meanings only. Names come from `names` the same way.
+  - No cache (question-pages/72, 3): nothing left to save that the network wouldn't swamp.
+- **Alternatives:** a cache of recent searches (saves 2–30 ms, can go stale, empty after a restart); one pass over all sentences per request (84 ms at 5,000 sentences, growing); SQLite FTS5 (not needed at these sizes).

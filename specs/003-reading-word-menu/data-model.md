@@ -26,6 +26,8 @@ Migration `server/store/migrations/005-reading.sql` (runs with foreign keys off,
 | Table | Change |
 |---|---|
 | learner_settings | `show_translations INTEGER NOT NULL DEFAULT 1` |
+| words | migration 012: `example_sentence_id INTEGER NULL REFERENCES sentences (id) ON DELETE SET NULL`; index `words_account_kind_lemma (account_id, kind, lemma)` (FR-316, question-pages/72) |
+| settings | `examples_filled` = `1` once the start-up load has given the words met before migration 012 their examples |
 
 ## Rules carried
 
