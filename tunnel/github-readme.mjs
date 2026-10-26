@@ -1,5 +1,6 @@
 // Replaces the text between two marker comments in the private repo's README through GitHub's
-// contents API. It only ever touches README.md (constitution 4.8, research R10).
+// contents API. It only ever touches README.md (constitution 4.8, research R10). `content` may be a
+// function, read just before the write is sent, so the newest value is the one written (FR-004).
 
 const PATH = 'README.md';
 
@@ -13,7 +14,8 @@ export async function updateReadmeBlock({ apiUrl, repo, token, start, end, conte
   const a = text.indexOf(start);
   const b = text.indexOf(end);
   if (a < 0 || b < a) throw new Error('README markers missing');
-  const updated = `${text.slice(0, a + start.length)}\n${content}\n${text.slice(b)}`;
+  const value = typeof content === 'function' ? content() : content;
+  const updated = `${text.slice(0, a + start.length)}\n${value}\n${text.slice(b)}`;
   if (updated === text) return false;
   const put = await fetchImpl(url, {
     method: 'PUT',

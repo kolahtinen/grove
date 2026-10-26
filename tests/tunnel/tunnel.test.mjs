@@ -33,6 +33,23 @@ test('FR-004 RQ-364: while GitHub fails, the supervisor retries until the link i
   assert.ok(Date.now() - started < 120000);
 });
 
+test('FR-004 RQ-364: when the address changes while GitHub is failing, the older link is never written and the README ends with the newest', async () => {
+  const s = supervisor();
+  t.gh.state.failing = 1000;
+  const writesBefore = t.gh.state.writes.length;
+  const older = s.handleLine('https://older-moss-bank.trycloudflare.com');
+  await new Promise((r) => setTimeout(r, 60));
+  const newer = s.handleLine('https://newer-fern-glade.trycloudflare.com');
+  await new Promise((r) => setTimeout(r, 100));
+  t.gh.state.failing = 0;
+  await Promise.all([older, newer]);
+  await new Promise((r) => setTimeout(r, 100));
+  const writes = t.gh.state.writes.slice(writesBefore);
+  assert.ok(writes.length >= 1);
+  for (const w of writes) assert.doesNotMatch(w.text, /older-moss-bank/);
+  assert.match(t.gh.files.get('README.md'), /newer-fern-glade/);
+});
+
 test('FR-004 RQ-364: the supervisor never writes any path but README.md (constitution 4.8)', async () => {
   const s = supervisor();
   await s.handleLine('https://third-stone-step.trycloudflare.com');

@@ -16,14 +16,20 @@ export function createSupervisor({ config, db, seclog, spawnImpl = spawn, fetchI
   const getSetting = (key) => db.prepare('SELECT value FROM settings WHERE key = ?').get(key)?.value;
   const setSetting = (key, value) => db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run(key, value);
 
-  async function publish(link) {
+  // One update loop at a time, and each attempt writes the link that is current at that moment: an
+  // older link is dropped as soon as a newer one arrives and is never written (FR-004).
+  let publishing = null;
+
+  async function publishLoop() {
     for (;;) {
+      let link = null;
       try {
         await updateReadmeBlock({
           ...config.github, token: config.github.token, fetchImpl,
           start: '<!-- grove-link -->', end: '<!-- /grove-link -->',
-          content: `**grove is at:** ${link}`,
+          content: () => { link = getSetting('tunnel_url'); return `**grove is at:** ${link}`; },
         });
+        if (getSetting('tunnel_url') !== link) continue;
         setSetting('tunnel_url_published_at', String(now()));
         seclog.app('info', 'README link updated', { url: link });
         return;
@@ -35,11 +41,16 @@ export function createSupervisor({ config, db, seclog, spawnImpl = spawn, fetchI
     }
   }
 
+  function publish() {
+    if (!publishing) publishing = publishLoop().finally(() => { publishing = null; });
+    return publishing;
+  }
+
   async function handleLine(line) {
     const link = String(line).match(LINK)?.[0];
     if (!link || link === getSetting('tunnel_url')) return;
     setSetting('tunnel_url', link);
-    await publish(link);
+    await publish();
   }
 
   async function checkAvailability() {
