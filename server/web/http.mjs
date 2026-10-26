@@ -119,42 +119,47 @@ export function sendJson(res, status, body, headers = {}) {
   res.end(JSON.stringify(body));
 }
 
-// Builds the request handler: security headers, body reading, guard, route, plain errors.
+// Builds the request handler: security headers, guard, CSRF, then the body, the route and plain
+// errors. Whether a request is allowed is decided before its body is read; a refused request's body
+// is never read, and its connection is closed (FR-022, FR-018).
 export function createHandler({ router, guard, csrf, log }) {
   return async function handle(req, res) {
     const started = Date.now();
     const url = new URL(req.url, 'http://grove.local');
     const path = url.pathname;
     const isApi = path.startsWith('/api/');
+    const hasBody = req.method !== 'GET' && req.method !== 'HEAD';
+    let bodyRead = !hasBody;
     setSecurityHeaders(res, { isApi });
     try {
       const route = router.match(req.method, path);
       if (!route) throw new HttpError(404, 'not_found', 'There is nothing here.');
       const ctx = { req, res, url, path, isApi, ip: clientIp(req), cookies: parseCookies(req.headers.cookie), body: null };
       await guard.attach(ctx);
-      if (req.method !== 'GET' && req.method !== 'HEAD') {
+      if (hasBody) csrf(ctx);
+      const blocked = guard.check(route.access, ctx);
+      if (blocked) {
+        if (!bodyRead) res.setHeader('connection', 'close');
+        return blocked();
+      }
+      if (hasBody) {
         const raw = await readBody(req);
-        csrf(ctx);
-        // The access rule decides before the body is looked at (G-01 contract).
-        const blocked = guard.check(route.access, ctx);
-        if (blocked) return blocked();
+        bodyRead = true;
         if (route.schema) {
           let parsed;
           try { parsed = JSON.parse(raw || 'null'); } catch { throw new HttpError(400, 'bad_request', 'The request was not understood.'); }
           ctx.body = checkSchema(parsed, route.schema);
         }
-      } else {
-        const blocked = guard.check(route.access, ctx);
-        if (blocked) return blocked();
       }
       await route.handler(ctx);
     } catch (error) {
       if (res.headersSent) { res.end(); return; }
+      const close = !bodyRead || (error instanceof HttpError && error.status === 413) ? { connection: 'close' } : {};
       if (error instanceof HttpError) {
-        sendJson(res, error.status, { error: error.code, message: error.message }, error.status === 413 ? { connection: 'close' } : {});
+        sendJson(res, error.status, { error: error.code, message: error.message }, close);
       } else {
         log?.('error', 'unhandled error', { method: req.method, path, code: error?.code || error?.name || 'Error' });
-        sendJson(res, 500, { error: 'server_error', message: 'Something went wrong. Please try again.' });
+        sendJson(res, 500, { error: 'server_error', message: 'Something went wrong. Please try again.' }, close);
       }
     } finally {
       log?.('info', 'request', { method: req.method, path, status: res.statusCode, ms: Date.now() - started });

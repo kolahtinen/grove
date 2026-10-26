@@ -1,4 +1,5 @@
 import { test, before, after } from 'node:test';
+import { connect } from 'node:net';
 import assert from 'node:assert/strict';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { CSP } from '../../server/web/headers.mjs';
@@ -42,6 +43,53 @@ test('FR-022 RQ-161 RQ-231: a body over 100 KB gets 413 too_large and the server
   assert.equal(res.status, 413);
   assert.equal(res.body.error, 'too_large');
   assert.match(res.body.message, /100 KB/);
+  assert.equal((await t.client().get('/health')).status, 200);
+});
+
+// Sends the headers and only the first bytes of a body that claims to be 50 KB, then waits for an answer.
+function partialPost(base, path, headers) {
+  const { hostname, port } = new URL(base);
+  return new Promise((resolve, reject) => {
+    const socket = connect(Number(port), hostname);
+    let data = '';
+    const timer = setTimeout(() => { socket.destroy(); reject(new Error('no answer: the server waited for the body')); }, 3000);
+    socket.on('connect', () => {
+      const lines = [`POST ${path} HTTP/1.1`, `host: ${new URL(base).host}`, 'content-type: application/json', 'content-length: 50000',
+        ...Object.entries(headers).map(([k, v]) => `${k}: ${v}`)];
+      socket.write(lines.join('\r\n') + '\r\n\r\n' + '{"lines":"');
+    });
+    socket.on('data', (chunk) => { data += chunk; });
+    socket.on('error', () => {});
+    socket.on('close', () => { clearTimeout(timer); resolve(data); });
+  });
+}
+
+test('FR-022 FR-018 RQ-231 RQ-155: a refused request is answered before its body is read, and the connection is closed', async () => {
+  const visitor = t.client();
+  await visitor.prepare();
+  const pre = visitor.jar.get('__Host-grove_csrf');
+  const preToken = (await visitor.get('/api/csrf')).body.csrf;
+  const cookie = [...visitor.jar].map(([k, v]) => `${k}=${v}`).join('; ');
+  assert.ok(pre && preToken);
+
+  const signedOut = await partialPost(t.base, '/api/answer', { origin: t.base, cookie, 'x-csrf-token': preToken });
+  assert.match(signedOut, /^HTTP\/1\.1 401/);
+  assert.match(signedOut, /signed_out/);
+  assert.match(signedOut, /connection: close/i);
+
+  const noCsrf = await partialPost(t.base, '/api/answer', { origin: t.base, cookie });
+  assert.match(noCsrf, /^HTTP\/1\.1 403/);
+  assert.match(noCsrf, /"csrf"/);
+
+  t.seedAccount({ email: 'early@example.test' });
+  const learner = t.client();
+  assert.equal((await learner.signIn('early@example.test')).status, 200);
+  const me = await learner.get('/api/me');
+  const learnerCookie = [...learner.jar].map(([k, v]) => `${k}=${v}`).join('; ');
+  const notAgreed = await partialPost(t.base, '/api/answer', { origin: t.base, cookie: learnerCookie, 'x-csrf-token': me.body.csrf });
+  assert.match(notAgreed, /^HTTP\/1\.1 403/);
+  assert.match(notAgreed, /terms_needed/);
+
   assert.equal((await t.client().get('/health')).status, 200);
 });
 
