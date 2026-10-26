@@ -30,3 +30,29 @@ test('FR-004 RQ-364: the tunnel config asks only for its own settings and never 
 test('FR-004 RQ-364: a config must name its role', () => {
   assert.throws(() => loadConfig(ALL), /role/);
 });
+
+test('FR-004 RQ-364: an unknown role is refused', () => {
+  assert.throws(() => loadConfig(ALL, { role: 'owner' }), /role/);
+});
+
+// Runs an entry point with only the tunnel's settings: a process using the web role must ask for Firebase.
+async function startWithTunnelSettings(file, args = []) {
+  const { spawnSync } = await import('node:child_process');
+  const { mkdtempSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const dir = mkdtempSync(join(tmpdir(), 'grove-role-'));
+  try {
+    const env = { GROVE_PORT: '0', GROVE_DATA_DIR: dir, GITHUB_REPO: 'owner/grove', GITHUB_TOKEN: 'gh-token-secret' };
+    return spawnSync(process.execPath, [new URL(`../../${file}`, import.meta.url).pathname, ...args], { env, encoding: 'utf8', timeout: 10000 });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}
+
+test('FR-004 RQ-364: grove\'s server loads the web settings (it asks for Firebase, never for GitHub)', async () => {
+  const run = await startWithTunnelSettings('server/main.mjs');
+  assert.notEqual(run.status, 0);
+  assert.match(run.stderr, /missing settings: .*FIREBASE_API_KEY/);
+  assert.doesNotMatch(run.stderr, /GITHUB_/);
+});

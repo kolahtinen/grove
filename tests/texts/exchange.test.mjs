@@ -145,3 +145,43 @@ test('FR-220 RQ-54 RQ-155: another account cannot answer, read or list this acco
   assert.equal((await other.get(`/api/text?id=${textId}`)).status, 404);
   assert.equal((await other.get('/api/home')).body.texts.length, 0);
 });
+
+test('FR-216 RQ-54 RQ-64: a crash while making the meanings prompt leaves nothing stored (no texts, leaves, learned forms, hash or count); pasting again stores it all once', async () => {
+  const db = t.grove.db;
+  const crash = t.seedAccount({ email: 'crash-meanings@example.test' });
+  seedGround(db, crash.id, known);
+  const c = t.client();
+  await c.signInAgreed('crash-meanings@example.test');
+  const p = await c.post('/api/prompt', { action: 'next' });
+  const pasted = withCode(answer('unlisted-new.json'), p.body.code);
+  const count = (sql) => db.prepare(sql).get(crash.id).n;
+  const snapshot = () => ({
+    texts: count('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?'),
+    sentences: count('SELECT COUNT(*) AS n FROM sentences WHERE account_id = ?'),
+    leaves: count("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'leaf'"),
+    forms: count('SELECT COUNT(*) AS n FROM word_forms WHERE account_id = ?'),
+    meanings: count("SELECT COUNT(*) AS n FROM exchanges WHERE account_id = ? AND kind = 'meanings'"),
+    accepted: count('SELECT COALESCE(SUM(parts_accepted), 0) AS n FROM packages WHERE account_id = ?'),
+  });
+  const before = snapshot();
+  db.exec(`CREATE TEMP TRIGGER crash_on_meanings BEFORE INSERT ON exchanges WHEN NEW.kind = 'meanings'
+    BEGIN SELECT RAISE(ABORT, 'simulated crash'); END`);
+  try {
+    assert.equal((await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: pasted })).status, 500);
+  } finally {
+    db.exec('DROP TRIGGER crash_on_meanings');
+  }
+  assert.deepEqual(snapshot(), before);
+  const ex = db.prepare('SELECT status, answer_hash FROM exchanges WHERE id = ?').get(p.body.exchangeId);
+  assert.deepEqual({ ...ex }, { status: 'waiting', answer_hash: null });
+
+  const again = await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: pasted });
+  assert.equal(again.body.result, 'accepted', JSON.stringify(again.body));
+  assert.ok(again.body.meanings, 'the meanings prompt is made');
+  const after = snapshot();
+  assert.equal(after.texts, before.texts + again.body.texts.length);
+  assert.ok(after.forms > before.forms, 'the listed inflections are learned');
+  assert.equal(after.meanings, before.meanings + 1);
+  assert.equal(after.accepted, before.accepted + 1);
+  assert.match(db.prepare('SELECT answer_hash FROM exchanges WHERE id = ?').get(p.body.exchangeId).answer_hash, /^[0-9a-f]{64}$/);
+});

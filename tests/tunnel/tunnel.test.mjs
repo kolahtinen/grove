@@ -101,3 +101,70 @@ test('FR-004 RQ-364: each service loads its own environment file and cannot open
   assert.match(setup, /tunnel\.env/);
   assert.doesNotMatch(setup, /grove\.env\b/);
 });
+
+// Holds the next GitHub request with this method open until the returned release() is called.
+function holdNext(method) {
+  let release;
+  t.gh.state.gate = { method, promise: new Promise((r) => { release = r; }) };
+  return () => release();
+}
+async function until(cond) {
+  for (let i = 0; i < 200 && !cond(); i += 1) await new Promise((r) => setTimeout(r, 10));
+  assert.ok(cond(), 'timed out');
+}
+
+test('FR-004 RQ-364: an address that changes after the README was read is the one sent; the older link is never sent', async () => {
+  const s = supervisor();
+  const writesBefore = t.gh.state.writes.length;
+  const requestsBefore = t.gh.state.requests.length;
+  const release = holdNext('GET');
+  const older = s.handleLine('https://held-read-older.trycloudflare.com');
+  await until(() => t.gh.state.requests.slice(requestsBefore).some((r) => r.method === 'GET'));
+  const newer = s.handleLine('https://held-read-newer.trycloudflare.com');
+  release();
+  await Promise.all([older, newer]);
+  await new Promise((r) => setTimeout(r, 100));
+  const writes = t.gh.state.writes.slice(writesBefore);
+  assert.ok(writes.length >= 1);
+  for (const w of writes) assert.doesNotMatch(w.text, /held-read-older/);
+  assert.match(t.gh.files.get('README.md'), /held-read-newer/);
+});
+
+test('FR-004 RQ-364: an address that changes while a write is being sent is written next, so the README ends with the newest', async () => {
+  const s = supervisor();
+  const requestsBefore = t.gh.state.requests.length;
+  const release = holdNext('PUT');
+  const older = s.handleLine('https://held-write-older.trycloudflare.com');
+  await until(() => t.gh.state.requests.slice(requestsBefore).some((r) => r.method === 'PUT'));
+  const newer = s.handleLine('https://held-write-newer.trycloudflare.com');
+  release();
+  await Promise.all([older, newer]);
+  await new Promise((r) => setTimeout(r, 100));
+  assert.match(t.gh.files.get('README.md'), /held-write-newer/);
+});
+
+test('FR-004 RQ-364: each service unit loads exactly one environment file, and each example holds its own secrets (constitution 2.1, 4.8)', () => {
+  const read = (name) => readFileSync(new URL(`../../deploy/${name}`, import.meta.url), 'utf8');
+  const envFiles = (text) => [...text.matchAll(/^EnvironmentFile=-?(.*)$/gm)].map((m) => m[1].trim());
+  assert.deepEqual(envFiles(read('grove.service')), ['/etc/grove/web.env']);
+  assert.deepEqual(envFiles(read('grove-tunnel.service')), ['/etc/grove/tunnel.env']);
+  for (const key of ['FIREBASE_PROJECT_ID', 'FIREBASE_API_KEY', 'FIREBASE_SERVICE_ACCOUNT_FILE']) assert.match(read('web.env.example'), new RegExp(`^${key}=`, 'm'), key);
+  for (const key of ['GITHUB_REPO', 'GITHUB_TOKEN']) assert.match(read('tunnel.env.example'), new RegExp(`^${key}=`, 'm'), key);
+});
+
+test('FR-004 RQ-364: the tunnel process loads the tunnel settings (it asks for GitHub, never for Firebase)', async () => {
+  const { spawnSync } = await import('node:child_process');
+  const { mkdtempSync, rmSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const dir = mkdtempSync(join(tmpdir(), 'grove-role-'));
+  try {
+    const env = { GROVE_DATA_DIR: dir, FIREBASE_PROJECT_ID: 'p', FIREBASE_API_KEY: 'k', FIREBASE_SERVICE_ACCOUNT_FILE: '/nowhere.json', GROVE_BACKUP_DIR: dir };
+    const run = spawnSync(process.execPath, [new URL('../../tunnel/supervisor.mjs', import.meta.url).pathname], { env, encoding: 'utf8', timeout: 10000 });
+    assert.notEqual(run.status, 0);
+    assert.match(run.stderr, /missing settings: .*GITHUB_TOKEN/);
+    assert.doesNotMatch(run.stderr, /FIREBASE_/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

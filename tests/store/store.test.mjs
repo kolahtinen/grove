@@ -268,3 +268,20 @@ test('FR-207 RQ-379: migration 009 adds asked_forms and fills it for existing me
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-207 RQ-379: migration 009 reads the asked forms from a prompt grove itself made, in lower case', async () => {
+  const { buildMeaningsPrompt } = await import('../../server/texts/fixit.mjs');
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 8 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at) VALUES (1, 'meanings', 'MEANINGS', ?, 'accepted', 1)")
+      .run(buildMeaningsPrompt(['Tolv', 'pensionär', 'Paraply']));
+    migrate(db);
+    assert.deepEqual(JSON.parse(db.prepare('SELECT asked_forms FROM exchanges').get().asked_forms), ['tolv', 'pensionär', 'paraply']);
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

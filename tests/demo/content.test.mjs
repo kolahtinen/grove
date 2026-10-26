@@ -48,3 +48,15 @@ test('FR-704 RQ-362: the demo ground is built into server/demo/, and nothing gro
     assert.doesNotMatch(readFileSync(file, 'utf8'), /['"`/]docs\//, file);
   }
 });
+
+test('FR-704 RQ-362: no code grove runs names docs/, however the path is written', async () => {
+  const { readdirSync } = await import('node:fs');
+  const files = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? files(`${dir}/${e.name}`) : [`${dir}/${e.name}`]));
+  const root = new URL('../../', import.meta.url).pathname;
+  const code = [...files(`${root}server`), ...files(`${root}tunnel`)].filter((f) => /\.(mjs|js|cjs)$/.test(f));
+  assert.ok(code.length > 10);
+  for (const file of code) {
+    // 'docs/…', "docs", `docs` or join(…, 'docs', …).
+    assert.doesNotMatch(readFileSync(file, 'utf8'), /['"`/]docs(['"`/\\]|$)/m, file);
+  }
+});

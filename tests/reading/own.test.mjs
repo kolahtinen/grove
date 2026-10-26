@@ -62,3 +62,15 @@ test('FR-319 RQ-155: another account cannot read the own text or save leaves fro
   assert.equal((await other.get(`/api/reading?id=${id}`)).status, 404);
   assert.equal((await other.post('/api/leaf', { textId: id, form: 'kanelbulle' })).status, 404);
 });
+
+test('FR-318 FR-207 RQ-74 RQ-379: the answer to a Get meanings prompt fills the leaf it asked about', async () => {
+  assert.deepEqual((await c.post('/api/leaf', { textId: id, form: 'Prinsesstårta' })).body, { result: 'saved' });
+  const m = await c.post('/api/meanings-prompt', {});
+  assert.equal(m.status, 200);
+  const filled = await c.post('/api/answer', { exchangeId: m.body.exchangeId, answer: JSON.stringify({ meanings: [{ form: 'prinsesstårta', lemma: 'prinsesstårta', en: 'princess cake', explain_sv: 'En grön tårta.' }] }) });
+  assert.equal(filled.body.result, 'meanings_added');
+  assert.equal(filled.body.filled, 1);
+  assert.equal(filled.body.missing, 0);
+  const leaf = t.grove.db.prepare("SELECT en, explain_sv FROM words WHERE account_id = ? AND lemma = 'prinsesstårta'").get(learner.id);
+  assert.deepEqual({ ...leaf }, { en: 'princess cake', explain_sv: 'En grön tårta.' });
+});

@@ -106,3 +106,29 @@ test('FR-207 RQ-379: a meanings answer is matched against the forms stored with 
   assert.equal(filled.body.filled, 1);
   assert.equal(filled.body.missing, asked.length - 1);
 });
+
+test('FR-207 RQ-379: a meanings prompt stores exactly the new words it asks about, and its answer fills only those', async () => {
+  const db = t.grove.db;
+  const only = t.seedAccount({ email: 'only-asked@example.test' });
+  seedGround(db, only.id, known);
+  const { c, p } = await start('only-asked@example.test');
+  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) });
+  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
+  const id = res.body.meanings.exchangeId;
+  const missing = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND state = 'leaf' AND en IS NULL").all(only.id).map((r) => r.lemma);
+  const asked = JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(id).asked_forms);
+  assert.deepEqual([...asked].sort(), [...missing].sort());
+  assert.ok(asked.includes('tolv') && asked.includes('paraply'));
+  // paraply is still a leaf without a meaning, but this prompt no longer asks about it.
+  db.prepare('UPDATE exchanges SET asked_forms = ? WHERE id = ?').run(JSON.stringify(asked.filter((f) => f !== 'paraply')), id);
+  const meanings = { meanings: [
+    { form: 'tolv', lemma: 'tolv', en: 'twelve', explain_sv: 'Tio och två.' },
+    { form: 'paraply', lemma: 'paraply', en: 'umbrella', explain_sv: 'Man har den när det regnar.' },
+  ] };
+  const filled = await c.post('/api/answer', { exchangeId: id, answer: JSON.stringify(meanings) });
+  assert.equal(filled.body.result, 'meanings_added', JSON.stringify(filled.body));
+  assert.equal(filled.body.filled, 1);
+  const en = (lemma) => db.prepare('SELECT en FROM words WHERE account_id = ? AND lemma = ?').get(only.id, lemma).en;
+  assert.equal(en('tolv'), 'twelve');
+  assert.equal(en('paraply'), null);
+});
