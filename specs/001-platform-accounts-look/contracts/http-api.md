@@ -9,6 +9,7 @@ Served on `127.0.0.1:<PORT>` only; reached by learners through the quick tunnel 
 - Request bodies over 100 KB → `413 too_large` (FR-022). JSON only, strict schemas; unknown fields → `400 bad_request`.
 - Non-GET requests need a matching CSRF token in `X-CSRF-Token` and a same-origin `Origin`, else `403 csrf`.
 - Signed-out requests to anything but the public pages and public API → pages redirect `303` to `/signin`; API returns `401 signed_out` (FR-019).
+- Order: the CSRF check and the access rule come first; the body is read only for an allowed request. A refused request with a body is answered with `Connection: close` and its body is never read (FR-022).
 - Signed-in requests from a session that hasn't agreed to the terms, to anything but `/terms`, `GET /api/me`, `POST /api/agree` and `POST /api/signout` → pages redirect `303` to `/terms`; API returns `403 terms_needed` (FR-011).
 
 ## Pages (static HTML)
