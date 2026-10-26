@@ -176,3 +176,8 @@ The asked forms are now built in three places with three slightly different rule
 - `server/store/migrations/009-asked-forms.sql`: `lower()`, split on `', '`
 
 Today's inputs make them agree. If FR-207 needs one rule ("lower-case forms, trimmed"), naming it in the data model would let one test cover all three.
+
+## Status (2026-10-26, after question-pages/68)
+
+- **Done:** new tests for findings 2, 3, 4, 5, 6, 7, 8 and the `docs/` scan of 10 (`e3389bb`); each was checked in a scratch copy to fail on the broken variant it targets. Finding 1: FR-022 names the order (`3e03d10`), new test, regen(web) (`86efa2c`). Finding 9: accepted as a one-off (question-pages/67).
+- **On hold:** the asked-words rule (question-pages/68, question 3) and the demo build test (finding 10, question 2). Another session is rewriting `specs/002-texts-from-own-ai` (addendum 002: no separate meanings prompt, FR-222), and `/regenerate` needs a committed tree.
