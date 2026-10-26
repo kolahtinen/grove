@@ -113,3 +113,14 @@ test('FR-208 RQ-28: with an empty ground the setup asks for beginner texts built
   assert.match(steps[0], /complete beginner/);
   assert.doesNotMatch(steps[0], /Use my known words/);
 });
+
+test('FR-203 RQ-404: for one long prompt, the setup is one block without the "OK" instructions, to go in front of the request', () => {
+  const known = Array.from({ length: 1200 }, (_, i) => `ord${i}`);
+  const steps = buildSetup({ ...setupBase, known, chunkWords: 500, single: true });
+  assert.equal(steps.length, 1);
+  assert.doesNotMatch(steps[0], /"OK"/);
+  assert.match(steps[0], /ord0, ord1/);
+  assert.match(steps[0], /ord1199/);
+  assert.match(steps[0], /"meaning_checks"/);
+});
+

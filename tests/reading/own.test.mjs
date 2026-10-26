@@ -94,3 +94,9 @@ test('FR-319 RQ-155: another account cannot read the own text, its AI round, or 
   assert.equal((await other.get(`/api/own-text?id=${id}`)).status, 404);
   assert.equal((await other.post('/api/leaf', { textId: id, form: 'kanelbulle' })).status, 404);
 });
+
+test('FR-224 RQ-406: an own text is marked beta', async () => {
+  const home = (await c.get('/api/home')).body;
+  assert.equal(home.texts.find((x) => x.id === id).beta, true);
+  assert.equal((await c.get(`/api/reading?id=${id}`)).body.beta, true);
+});

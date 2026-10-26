@@ -72,3 +72,12 @@ test('FR-704 FR-702 RQ-399 RQ-361: the demo ground words have their checked mean
   assert.deepEqual(q('SELECT title, kind FROM texts WHERE account_id = ? ORDER BY position', id).map((r) => r.kind), ['reading', 'reading', 'listening', 'reading']);
   assert.equal(q("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND en IS NULL AND kind = 'word'", id)[0].n, 0, 'no demo word without a meaning');
 });
+
+test('FR-224 RQ-406: the demo\'s prepared texts carry no beta badge', async () => {
+  const c = t.client();
+  await c.signInAgreed('reviewer@example.test', 'Forest-walk-42');
+  const texts = (await c.get('/api/home')).body.texts;
+  assert.equal(texts.length, 4);
+  assert.ok(texts.every((x) => x.beta === false));
+  assert.equal((await c.get(`/api/reading?id=${texts[0].id}`)).body.beta, false);
+});

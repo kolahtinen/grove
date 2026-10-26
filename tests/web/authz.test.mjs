@@ -18,7 +18,7 @@ const BODIES = {
   '/api/reset': { email: 'nobody@example.test' },
   '/api/topic': { topic: 'a small café' },
   '/api/prompt': { action: 'next' },
-  '/api/whole-package': { on: false },
+  '/api/plan': { family: 'other', product: 'free' },
   '/api/answer': { exchangeId: 999999, answer: 'x' },
   '/api/question': { textId: 999999, position: 0, option: 0 },
   '/api/rating': { textId: 999999, value: 'most' },

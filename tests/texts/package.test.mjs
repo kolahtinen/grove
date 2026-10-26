@@ -122,13 +122,14 @@ test('FR-203 RQ-391: I\'m in a new chat gives the setup again, with the summary 
   assert.equal(none.body.error, 'nothing_waiting');
 });
 
-test('FR-203 FR-202 RQ-394 RQ-393: with the whole-package choice, one request after the setup asks for all 3 parts; its answer fills the package', async () => {
+test('FR-203 FR-202 FR-223 RQ-394 RQ-393 RQ-404: with the whole-package tactic, one request after the setup asks for all 3 parts; its answer fills the package', async () => {
   const whole = t.seedAccount({ email: 'whole@example.test' });
   seedGround(t.grove.db, whole.id, known);
   const c = t.client();
   await c.signInAgreed('whole@example.test');
-  assert.deepEqual((await c.post('/api/whole-package', { on: true })).body, { wholePackage: true });
-  assert.equal((await c.get('/api/home')).body.wholePackage, true);
+  const plan = await c.post('/api/plan', { family: 'chatgpt', product: 'plus' });
+  assert.deepEqual(plan.body, { family: 'chatgpt', product: 'plus', tactic: 'whole', recommended: 'whole' });
+  assert.equal((await c.get('/api/home')).body.plan.tactic, 'whole');
   const p = (await c.post('/api/prompt', { action: 'next' })).body;
   assert.equal(p.kind, 'package');
   assert.match(p.code, /^[A-Z]{4}$/);
@@ -144,4 +145,47 @@ test('FR-203 FR-202 RQ-394 RQ-393: with the whole-package choice, one request af
   assert.equal(pkg.parts_accepted, 3);
   const kinds = t.grove.db.prepare('SELECT part_no, kind, COUNT(*) AS n FROM texts WHERE account_id = ? GROUP BY part_no, kind ORDER BY part_no, kind').all(whole.id).map((r) => `${r.part_no}${r.kind[0]}${r.n}`);
   assert.deepEqual(kinds, ['1l1', '1r2', '2l1', '2r2', '3l1', '3r2']);
+});
+
+test('FR-203 FR-223 RQ-404: with one long prompt, every request carries the rules, the format and the known words itself, with no setup steps; the first also the summary', async () => {
+  const long = t.seedAccount({ email: 'long@example.test' });
+  seedGround(t.grove.db, long.id, known);
+  const c = t.client();
+  await c.signInAgreed('long@example.test');
+  assert.deepEqual((await c.post('/api/plan', { family: 'lechat', product: 'free' })).body, { family: 'lechat', product: 'free', tactic: 'long', recommended: 'long' });
+  const one = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.deepEqual(one.steps, []);
+  assert.match(one.prompt, /at most ONE new word/);
+  assert.match(one.prompt, /"meaning_checks"/, 'the answer format is in the request');
+  assert.ok(one.prompt.includes(known[0]) && one.prompt.includes(known.at(-1)), 'the known words are in the request');
+  assert.doesNotMatch(one.prompt, /reply only with "OK"/i);
+  const res = await c.post('/api/answer', { exchangeId: one.exchangeId, answer: answerFor(one.code, 40) });
+  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
+  const two = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal(two.part, 2);
+  assert.deepEqual(two.steps, []);
+  assert.ok(two.prompt.includes(known[0]), 'a later request carries the known words too');
+  assert.deepEqual((await c.post('/api/prompt', { action: 'new_chat' })).body.steps, [], 'nothing to resend');
+});
+
+test('FR-223 RQ-403: a chosen tactic other than the recommended one is kept; a product of another AI is refused; Home lists the menus', async () => {
+  const pick = t.seedAccount({ email: 'pick@example.test' });
+  seedGround(t.grove.db, pick.id, known);
+  const c = t.client();
+  await c.signInAgreed('pick@example.test');
+  const home = (await c.get('/api/home')).body;
+  assert.deepEqual([home.plan.family, home.plan.product, home.plan.tactic], [null, null, 'steps']);
+  assert.ok(home.plan.families.find((f) => f.id === 'gemini').products.length >= 2);
+  assert.deepEqual((await c.post('/api/plan', { family: 'gemini', product: 'free', tactic: 'steps' })).body, { family: 'gemini', product: 'free', tactic: 'steps', recommended: 'long' });
+  assert.equal((await c.post('/api/plan', { family: 'gemini', product: 'plus' })).status, 400);
+  assert.equal((await c.get('/api/home')).body.plan.tactic, 'steps');
+});
+
+
+test('FR-224 RQ-406: texts from the learner\'s own AI are marked beta on Home and on the reading page', async () => {
+  const c = await client();
+  const home = (await c.get('/api/home')).body;
+  assert.ok(home.texts.length > 0);
+  assert.ok(home.texts.every((x) => x.beta === true));
+  assert.equal((await c.get(`/api/reading?id=${home.texts[0].id}`)).body.beta, true);
 });

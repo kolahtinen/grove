@@ -69,6 +69,7 @@ test('FR-206 RQ-395: after two answers in a row with a failed text, every later 
   const second = await c.post('/api/answer', { exchangeId: first.body.next.exchangeId, answer: JSON.stringify(bad) });
   assert.equal(second.body.result, 'partly_accepted', JSON.stringify(second.body));
   assert.equal(db.prepare("SELECT one_text FROM packages WHERE account_id = ? AND status = 'open'").get(two.id).one_text, 1);
+  assert.equal((await c.get('/api/home')).body.offer, 'long', 'RQ-405: one long prompt is offered from step by step');
   const redo = (await c.get('/api/home')).body.waiting;
   assert.match(redo.prompt, /one new reading text/);
   const ok = JSON.parse(answer('good.json'));

@@ -317,3 +317,22 @@ test('FR-202 FR-207 FR-318 RQ-393 RQ-396 RQ-400: migration 010 keeps every row a
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-223 RQ-404: migration 011 adds the AI, product and tactic, and a whole-package learner gets the whole-package tactic', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 10 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1), (2, 'u2', 'b@example.test', 1)").run();
+    db.prepare('INSERT INTO learner_settings (account_id, whole_package) VALUES (1, 1), (2, 0)').run();
+    migrate(db);
+    assert.deepEqual(db.prepare('SELECT account_id, ai_family, ai_product, tactic FROM learner_settings ORDER BY account_id').all().map((r) => ({ ...r })),
+      [{ account_id: 1, ai_family: null, ai_product: null, tactic: 'whole' }, { account_id: 2, ai_family: null, ai_product: null, tactic: 'steps' }]);
+    assert.throws(() => db.prepare("UPDATE learner_settings SET tactic = 'chat' WHERE account_id = 1").run());
+    assert.equal(db.prepare('SELECT tactic FROM packages').all().length, 0);
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
