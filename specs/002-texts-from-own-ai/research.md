@@ -27,6 +27,8 @@ Phase 0 of `/speckit-plan`, 2026-10-24. Builds on G-01's stack (Node.js 22, buil
 - **Decision:** Candidates in order: every fenced block (```` ```json ```` or ```` ``` ````), then the text from the first `{` to the last `}`. The first candidate that parses and has a `texts` array is used. If no candidate parses and the text has an opening `{` with fewer closing braces (or ends inside a string), the problem is **cut off**; otherwise **not valid JSON**, with the parser's position turned into a line number.
 - **Validation:** a hand-written nested schema check (as G-01's `checkSchema`, extended to arrays and objects) with the limits of FR-205; unknown fields are refused, except that the fields the X-03 answers added harmlessly (`kind`, `series`, `episode`, `speaker`, `nodes`) are dropped silently, as the AIs add them.
 
+- **Escaped copies (2026-10-26, question-pages/69):** a paste that yields no readable block is read again after undoing a markdown-escaped copy: `&#x20;`, `&#32;` and `&nbsp;` become spaces, a backslash before a line break goes, and a backslash before markdown punctuation (`` ` * _ [ ] # > ~ - ``) goes unless it is itself escaped. None of these is a valid JSON escape, so a readable paste is never changed. Seen in the probe test on ChatGPT's answers.
+
 ## R4. The prompt (FR-201, FR-203, FR-204, FR-208…FR-212; R-04)
 
 - **Decision:** One template in `server/texts/prompt.mjs`, based on the X-03 prompt (which worked in all three free chats), with:
