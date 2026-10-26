@@ -71,6 +71,7 @@ At most one `open` package per account (partial unique index).
 | prompt | TEXT NOT NULL | |
 | status | TEXT NOT NULL | `waiting`, `needs_fix`, `accepted`, `replaced` |
 | answer_hash | TEXT NULL | SHA-256 of the accepted JSON |
+| asked_forms | TEXT NULL | meanings exchanges: JSON array of the lower-case forms the prompt asks about (FR-207; migration 009, which fills it for existing meanings exchanges from their prompts once) |
 | created_at, answered_at | INTEGER | |
 
 ## texts, text_lines, questions, sentences (spec: Text, Sentence)

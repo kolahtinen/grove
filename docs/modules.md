@@ -9,7 +9,7 @@ Read by `/regenerate`. Built from the Spec Kit plans (first from `specs/001-plat
 
 | Module | Code folders | Test folders | Test command | Built from (spec files) | Depended on by |
 |---|---|---|---|---|---|
-| store | `server/store/` | `tests/store/` | `node --test "tests/store/*.test.mjs"` | specs/001-platform-accounts-look (FR-002, FR-003; data-model); specs/003-reading-word-menu (migration 005, foreign-keys-off marker); specs/004-ground-drilling-progress (migration 006); specs/006-starting-level (migration 007); specs/005-listening (migration 008) | seclog, firebase, accounts, web, owner, tunnel, words, texts, reading, drill, levels |
+| store | `server/store/` | `tests/store/` | `node --test "tests/store/*.test.mjs"` | specs/001-platform-accounts-look (FR-002, FR-003; data-model); specs/003-reading-word-menu (migration 005, foreign-keys-off marker); specs/004-ground-drilling-progress (migration 006); specs/006-starting-level (migration 007); specs/005-listening (migration 008); specs/002-texts-from-own-ai (migration 009: exchanges.asked_forms) | seclog, firebase, accounts, web, owner, tunnel, words, texts, reading, drill, levels |
 | seclog | `server/seclog/` | `tests/seclog/` | `node --test "tests/seclog/*.test.mjs"` | specs/001-platform-accounts-look (FR-023) | accounts, web, owner, tunnel |
 | firebase | `server/firebase/` | `tests/firebase/` | `node --test "tests/firebase/*.test.mjs"` | specs/001-platform-accounts-look (FR-006, FR-009, FR-017: a missing user counts as deleted) | accounts, owner |
 | accounts | `server/accounts/` | `tests/accounts/` | `node --test "tests/accounts/*.test.mjs"` | specs/001-platform-accounts-look (FR-009, FR-011…FR-015, FR-020) | web |
