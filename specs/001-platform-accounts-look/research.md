@@ -68,6 +68,7 @@ Phase 0 of `/speckit-plan`, 2026-10-24. Each decision lists what was chosen, why
 ## R11. Secrets (constitution 2.1)
 
 - **Decision:** Secrets (Firebase Web API key, service-account JSON, GitHub token) live in `/etc/grove/` readable only by user `grove`, loaded by systemd `EnvironmentFile=` and a path to the service-account file. Never sent to the browser; logs redact by allow-listing fields.
+- **Split per service (FR-004; first-build review, finding 8):** `/etc/grove/web.env` (port, data and backup folders, Firebase settings; read by `grove.service` and, loaded by hand, the owner commands) and `/etc/grove/tunnel.env` (port, data folder, GitHub repo and token; read by `grove-tunnel.service`). systemd reads `EnvironmentFile=` as root before the sandbox starts, so each unit also lists the other's secrets in `InaccessiblePaths=`: `grove.service` can't open `tunnel.env`; `grove-tunnel.service` can't open `web.env` or `service-account.json`. `loadConfig(env, { role })` asks for and keeps only its role's settings: `web` never holds a GitHub token, `tunnel` never holds Firebase settings.
 
 ## R12. Logs (FR-023; constitution 3.6)
 
