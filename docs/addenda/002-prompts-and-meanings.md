@@ -52,6 +52,17 @@ Outside services and legal: the prompt sizes depend on free AI chats whose limit
 ## Probe test
 [grove AI probe](https://claude.ai/artifact/4C2BN2nSxTghozQ9ZAsEZ7) (private to the owner): per AI, round A (today's prompt, 1,500 known words, 3 texts), round B (setup, the words in 3 messages of about 500, then 2 reading + 1 listening of about 90 words, a second part for memory, one small text), optional round D (3,000 words in 6 messages). The answers are saved on the page and run through grove's own checks; the results set RQ-392's values.
 
+### Results so far (2026-10-26, checked with grove's own code)
+
+| AI (free) | Round A: today's prompt (1,500 known words, 3 texts ~130 words) | Round B: setup in 3 messages of 500 words, then 2 reading + 1 listening of ~90 words |
+|---|---|---|
+| ChatGPT | answered; 2 of 3 texts pass; ~160 words each | setup replied OK; parts 1 and 2: 3 of 3 pass each; one text: passes. Its answers arrived markdown-escaped (question-pages/69) and are read since then |
+| Copilot | answered; 3 of 3 pass; ~80 words | setup OK; 2 of 3 pass in each part; one text: passes |
+| Gemini | answered; 1 of 3 passes (too many new words) | setup OK; 1 of 3 pass in each part, ~60 words; two words without a meaning |
+| Le Chat | answered; 3 of 3 pass | setup under way |
+
+No AI broke on the long prompt or on the setup in pieces, and part 2 showed no forgetting. The defaults (2 reading + 1 listening, 90 words, 500 words per setup message) hold; the per-text redo (RQ-395) covers Gemini's weaker texts. Still to try: Claude, Le Chat's requests, round D (3,000 known words).
+
 ## STRIDE (new components or connections)
 | ID | Component | STRIDE | Threat | Mitigation | Goes to |
 |---|---|---|---|---|---|

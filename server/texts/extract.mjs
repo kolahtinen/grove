@@ -41,7 +41,27 @@ function lineOf(source, error, before = '') {
   return at < 0 ? null : shift + source.slice(0, at).split('\n').length;
 }
 
-export function extractJson(pasted, { requireField = 'texts' } = {}) {
+// A markdown-escaped copy of the rendered chat message (question-pages/69): HTML space codes, a
+// backslash before a line break, and a backslash before markdown punctuation. Used only when the
+// paste can't be read as it is, so a readable paste is never changed.
+export function unescapeCopy(text) {
+  return String(text)
+    .replace(/&#x20;|&#32;|&nbsp;/g, ' ')
+    .replace(/\\\r?\n/g, '\n')
+    .replace(/(?<!\\)\\([`*_[\]#>~-])/g, '$1');
+}
+
+// Reads the paste as it is, and only if that fails, once more with the escapes undone (FR-205).
+export function extractJson(pasted, options = {}) {
+  const first = extractOnce(pasted, options);
+  if (first.ok) return first;
+  const cleaned = unescapeCopy(pasted);
+  if (cleaned === String(pasted)) return first;
+  const second = extractOnce(cleaned, options);
+  return second.ok ? second : first;
+}
+
+function extractOnce(pasted, { requireField = 'texts' } = {}) {
   const text = String(pasted);
   let firstError = null;
   for (const { source: candidate, offset } of candidates(text)) {

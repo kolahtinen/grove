@@ -31,3 +31,27 @@ test('FR-205 RQ-41: prose without JSON is reported as not valid JSON; broken JSO
   assert.equal(broken.problem, 'not_json');
   assert.equal(broken.line, 4);
 });
+
+// The shape of ChatGPT's answers in the probe test (question-pages/69): the rendered message copied
+// as markdown, with escaped backticks, a backslash at every line end and &#x20; for indentation.
+function escapedCopy(value) {
+  const body = JSON.stringify(value, null, 2).split('\n').map((l) => l.replace(/^( +)/, (sp) => `&#x20;${sp.slice(1)}`));
+  return ['\\`\\`\\`json', ...body, '\\`\\`\\`'].join('\\\n');
+}
+
+test('FR-205 RQ-41: a markdown-escaped copy of the answer (escaped fence, backslashes at line ends, &#x20;) is read', () => {
+  const good = JSON.parse(load('good.json'));
+  const pasted = `Here you go:\n\n${escapedCopy(good)}`;
+  assert.match(pasted, /\\`\\`\\`json\\\n\{\\\n&#x20; "part"/);
+  const r = extractJson(pasted);
+  assert.equal(r.ok, true, JSON.stringify(r));
+  assert.deepEqual(r.value, good);
+});
+
+test('FR-205 RQ-41: a readable paste is never changed by the escape undoing, even with a backslash or "&#x20;" in its text', () => {
+  const good = JSON.parse(load('good.json'));
+  good.texts[0].lines[0].en = 'A back\\slash, \\_ and &#x20; stay as written.';
+  const r = extractJson(JSON.stringify(good));
+  assert.equal(r.ok, true);
+  assert.equal(r.value.texts[0].lines[0].en, 'A back\\slash, \\_ and &#x20; stay as written.');
+});
