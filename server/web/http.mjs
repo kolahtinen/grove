@@ -119,9 +119,10 @@ export function sendJson(res, status, body, headers = {}) {
   res.end(JSON.stringify(body));
 }
 
-// Builds the request handler: security headers, guard, CSRF, then the body, the route and plain
-// errors. Whether a request is allowed is decided before its body is read; a refused request's body
-// is never read, and its connection is closed (FR-022, FR-018).
+// Builds the request handler. Every request gets the security headers; a request with a body is then
+// decided in the order FR-022 sets: the CSRF check first, then the access rule (FR-018, FR-019), and
+// only an allowed request has its body read. A refused request's body is never read: grove answers
+// with `Connection: close`, so the unread body ends with the connection (FR-022).
 export function createHandler({ router, guard, csrf, log }) {
   return async function handle(req, res) {
     const started = Date.now();
@@ -136,6 +137,7 @@ export function createHandler({ router, guard, csrf, log }) {
       if (!route) throw new HttpError(404, 'not_found', 'There is nothing here.');
       const ctx = { req, res, url, path, isApi, ip: clientIp(req), cookies: parseCookies(req.headers.cookie), body: null };
       await guard.attach(ctx);
+      // 1. CSRF check (throws 403 csrf), 2. access rule, 3. body.
       if (hasBody) csrf(ctx);
       const blocked = guard.check(route.access, ctx);
       if (blocked) {
@@ -154,7 +156,8 @@ export function createHandler({ router, guard, csrf, log }) {
       await route.handler(ctx);
     } catch (error) {
       if (res.headersSent) { res.end(); return; }
-      const close = !bodyRead || (error instanceof HttpError && error.status === 413) ? { connection: 'close' } : {};
+      const tooLarge = error instanceof HttpError && error.status === 413;
+      const close = !bodyRead || tooLarge ? { connection: 'close' } : {};
       if (error instanceof HttpError) {
         sendJson(res, error.status, { error: error.code, message: error.message }, close);
       } else {

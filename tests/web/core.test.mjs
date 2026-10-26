@@ -93,6 +93,21 @@ test('FR-022 FR-018 RQ-231 RQ-155: a refused request is answered before its body
   assert.equal((await t.client().get('/health')).status, 200);
 });
 
+test('FR-022 FR-019 FR-018 RQ-231 RQ-155: a signed-in learner whose request has a bad CSRF token is refused by the CSRF check before the body is read, and the connection is closed', async () => {
+  t.seedAccount({ email: 'csrf-first@example.test' });
+  const learner = t.client();
+  await learner.signInAgreed('csrf-first@example.test');
+  const cookie = [...learner.jar].map(([k, v]) => `${k}=${v}`).join('; ');
+  const missing = await partialPost(t.base, '/api/answer', { origin: t.base, cookie });
+  assert.match(missing, /^HTTP\/1\.1 403/);
+  assert.match(missing, /"csrf"/);
+  assert.match(missing, /connection: close/i);
+  const wrong = await partialPost(t.base, '/api/answer', { origin: t.base, cookie, 'x-csrf-token': 'not-the-token' });
+  assert.match(wrong, /^HTTP\/1\.1 403/);
+  assert.match(wrong, /"csrf"/);
+  assert.equal((await learner.get('/api/me')).status, 200, 'the session still works');
+});
+
 test('FR-022 RQ-231: malformed JSON and unknown fields get 400 bad_request with no internal detail (constitution 2.5)', async () => {
   const c = t.client();
   await c.prepare();
