@@ -1,5 +1,6 @@
-// Home (FR-201, FR-206, FR-207, FR-219): the topic, the package card with the prompt, paste box and
-// problems, the meanings card, and the texts list. Everything is set with textContent.
+// Home (FR-201, FR-203, FR-206, FR-219): the topic, the package card with the prompt steps (setup
+// first, each with Copy prompt), the paste box, I'm in a new chat, the whole-package choice and the
+// problems, and the texts list. Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { playGrow } from './grow.mjs';
@@ -7,15 +8,61 @@ import { playGrow } from './grow.mjs';
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
 let waiting = null;
-let meanings = null;
 
-async function copyFrom(textarea) {
+// Copy prompt: "Copied to clipboard"; only when copying fails is the prompt shown, selected (FR-201).
+async function copyStep(text, item) {
+  const note = item.querySelector('.copied');
+  const box = item.querySelector('textarea');
   try {
-    await navigator.clipboard.writeText(textarea.value);
+    await navigator.clipboard.writeText(text);
+    box.hidden = true;
+    note.textContent = 'Copied to clipboard';
   } catch {
-    textarea.select();
-    document.execCommand('copy');
+    box.hidden = false;
+    box.focus();
+    box.select();
+    note.textContent = 'Copying was blocked: the prompt is selected below, copy it by hand.';
   }
+  note.hidden = false;
+}
+
+function stepItem(label, text) {
+  const li = document.createElement('li');
+  li.className = 'prompt-step';
+  const head = document.createElement('span');
+  head.className = 'step-label';
+  head.textContent = label;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'copy';
+  button.textContent = 'Copy prompt';
+  const note = document.createElement('span');
+  note.className = 'copied';
+  note.setAttribute('role', 'status');
+  note.hidden = true;
+  const box = document.createElement('textarea');
+  box.readOnly = true;
+  box.rows = 6;
+  box.value = text;
+  box.hidden = true;
+  box.setAttribute('aria-label', label);
+  button.addEventListener('click', () => copyStep(text, li));
+  li.append(head, button, note, box);
+  return li;
+}
+
+const HEADINGS = { part: 'Prompt', package: 'Prompt for the whole package', redo: 'Ask again for one text', fix: 'Fix-it prompt', meanings_fix: 'Meanings prompt' };
+
+function renderSteps(w) {
+  const list = $('prompt-steps');
+  list.replaceChildren();
+  const total = w.steps.length + 1;
+  w.steps.forEach((step, i) => list.append(stepItem(`${i + 1} of ${total}: setup (your AI replies "OK")`, step)));
+  list.append(stepItem(total > 1 ? `${total} of ${total}: the request; paste its answer below` : 'Copy this into the same chat; paste its answer below', w.prompt));
+  $('new-chat-note').hidden = !(w.steps.length || w.newChatSuggested);
+  $('new-chat-note').textContent = w.steps.length
+    ? 'Open a new chat in your AI first, then send these prompts in order.'
+    : 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
 }
 
 function render(home) {
@@ -25,16 +72,15 @@ function render(home) {
   waiting = home.waiting;
   $('prompt-area').hidden = !waiting;
   if (waiting) {
-    $('prompt-heading').textContent = waiting.kind === 'fix' ? `Fix-it prompt (part ${waiting.part} of ${waiting.of})` : `Prompt (part ${waiting.part} of ${waiting.of})`;
-    $('prompt').value = waiting.prompt;
+    const heading = HEADINGS[waiting.kind] ?? 'Prompt';
+    $('prompt-heading').textContent = waiting.kind === 'package' ? heading : `${heading} (part ${waiting.part} of ${waiting.of})`;
+    renderSteps(waiting);
   }
+  $('whole-package').checked = !!home.wholePackage;
   const getButton = $('get-texts');
   getButton.hidden = !!waiting;
   getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
   $('new-package').hidden = !pkg;
-  meanings = home.meanings;
-  $('meanings-card').hidden = !meanings;
-  if (meanings) $('meanings-prompt').value = meanings.prompt;
 
   const list = $('texts');
   list.replaceChildren();
@@ -48,7 +94,7 @@ function render(home) {
     title.textContent = t.title;
     const state = document.createElement('span');
     state.className = `text-state ${t.state}`;
-    state.textContent = t.own ? `own · ${t.state}` : t.state;
+    state.textContent = t.own ? `own · ${t.ready ? t.state : 'waiting for your AI'}` : `${t.kind} · ${t.state}`;
     a.append(title, state);
     li.append(a);
     list.append(li);
@@ -80,7 +126,7 @@ async function requestPrompt(action) {
   }
   showMessage($('package-message'), '');
   await load();
-  $('prompt').scrollIntoView({ block: 'nearest' });
+  $('prompt-area').scrollIntoView({ block: 'nearest' });
 }
 
 await showAccount();
@@ -104,9 +150,11 @@ $('topic-form').addEventListener('submit', async (event) => {
 
 $('get-texts').addEventListener('click', () => requestPrompt('next'));
 $('new-package').addEventListener('click', () => requestPrompt('new_package'));
-for (const button of document.querySelectorAll('button.copy')) {
-  button.addEventListener('click', () => copyFrom(button.previousElementSibling));
-}
+$('new-chat').addEventListener('click', () => requestPrompt('new_chat'));
+$('whole-package').addEventListener('change', async (event) => {
+  const result = await post('/api/whole-package', { on: event.target.checked });
+  showMessage($('package-message'), result.ok ? (event.target.checked ? 'From the next package on, grove asks for the whole package at once.' : 'From the next package on, grove asks for one part at a time.') : result.message, result.ok ? 'ok' : undefined);
+});
 
 $('answer').addEventListener('input', () => {
   const n = $('answer').value.length;
@@ -126,30 +174,26 @@ $('add-texts').addEventListener('click', async () => {
     return;
   }
   $('answer').value = '';
-  if (result.data.result === 'accepted') {
+  const r = result.data;
+  const added = `${r.texts.length} ${r.texts.length === 1 ? 'text' : 'texts'} added.`;
+  if (r.result === 'accepted') {
     showProblems([]);
-    showMessage($('package-message'), `${result.data.texts.length} texts added.`, 'ok');
-  } else if (result.data.result === 'needs_fix') {
-    showProblems(result.data.problems);
-    showMessage($('package-message'), 'grove found problems. Copy the fix-it prompt into the same chat and paste the new answer.');
+    showMessage($('package-message'), added, 'ok');
+  } else if (r.result === 'partly_accepted') {
+    showProblems(r.problems);
+    showMessage($('package-message'), `${added} Copy the next prompt into the same chat for the rest.`, 'ok');
+  } else if (r.result === 'needs_fix') {
+    showProblems(r.problems);
+    showMessage($('package-message'), 'grove couldn\'t use that answer. Copy the fix-it prompt into the same chat and paste the new answer.');
   }
   await load();
-});
-
-$('add-meanings').addEventListener('click', async () => {
-  const answer = $('meanings-answer').value.trim();
-  if (!answer || !meanings) return;
-  const result = await post('/api/answer', { exchangeId: meanings.exchangeId, answer });
-  if (!result.ok) {
-    showMessage($('meanings-message'), result.message);
-    return;
+  if (waiting && r.newChatSuggested) {
+    $('new-chat-note').hidden = false;
+    $('new-chat-note').textContent = 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
   }
-  $('meanings-answer').value = '';
-  showMessage($('package-message'), `Meanings added for ${result.data.filled} words.`, 'ok');
-  await load();
 });
 
-// Own texts and meanings for leaves without one (G-03 FR-318).
+// Own texts (G-03 FR-318): saved, then their AI round on the reading page.
 $('own-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.target;
@@ -160,12 +204,6 @@ $('own-form').addEventListener('submit', async (event) => {
   if (!result.ok) { showMessage($('own-message'), result.message); return; }
   form.reset();
   window.location.assign(`/text?id=${result.data.id}`);
-});
-$('get-meanings').addEventListener('click', async () => {
-  const result = await post('/api/meanings-prompt', {});
-  if (!result.ok) { showMessage($('own-message'), result.message); return; }
-  await load();
-  $('meanings-card').scrollIntoView({ block: 'nearest' });
 });
 
 // G-04: the three stages, level, today's minutes and the welcome card (FR-407, FR-414…FR-416).

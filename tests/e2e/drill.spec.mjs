@@ -37,8 +37,8 @@ async function addSample(page) {
   // Known words the tests drill must be back in the ground, or the sample has too many new words.
   for (const w of ['tårta']) await setState(page, w, { ground: true });
   const tag = Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5);
-  let p = await api(page, '/api/prompt', { action: 'next' });
-  if (p.status === 409) p = await api(page, '/api/prompt', { action: 'new_package' });
+  // A new package gives a fresh part: \"next\" may give a waiting redo since G-02 FR-206 changed (2026-10-26).
+  const p = await api(page, '/api/prompt', { action: 'new_package' });
   const answer = JSON.parse(SAMPLE.replaceAll('TEST-1', p.body.code));
   answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
   const r = await api(page, '/api/answer', { exchangeId: p.body.exchangeId, answer: JSON.stringify(answer) });
@@ -100,6 +100,8 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08: menu switches, Let it fall, Pick 
   const ids = await addSample(page);
   await setState(page, 'tolv', { read: true });
   await page.goto(`/text?id=${ids['En kall morgon']}`);
+  // "En kall morgon" is the sample's listening text and opens in listening mode (G-05 FR-509): show it.
+  await page.getByRole('button', { name: 'Show the text' }).click();
   await page.locator('button.w', { hasText: /^tårta$/ }).first().click();
   await expect(page.locator('#menu-pickup')).toBeVisible();
   await page.locator('#menu-remember').click();
@@ -118,7 +120,13 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08: menu switches, Let it fall, Pick 
   await page.goto('/leaves');
   await page.getByLabel('Add a word, phrase or pattern').fill(word);
   await page.getByRole('button', { name: 'Add' }).click();
+  // A made-up word isn't in grove's word list, so it asks for the learner's own meaning (FR-412, 2026-10-26).
+  await expect(page.locator('#leaves-message')).toContainText('What does it mean?');
+  await page.getByLabel('Its meaning').fill('a made-up cinnamon thing');
+  await page.getByRole('button', { name: 'Add' }).click();
+  await expect(page.locator('#leaves-message')).toContainText('Added with your meaning');
   await expect(page.locator('#leaves-read')).toContainText(word);
+  await expect(page.locator('#leaves-read li', { hasText: word })).toContainText('a made-up cinnamon thing');
   await page.locator('#leaves-read li', { hasText: word }).getByRole('button', { name: 'Delete' }).click();
   await expect(page.locator('#leaves-read')).not.toContainText(word);
   await page.locator('#leaves-unmarked li', { hasText: 'servitör' }).getByRole('button', { name: 'To read' }).click();

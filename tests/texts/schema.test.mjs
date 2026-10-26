@@ -15,7 +15,8 @@ test('FR-205 RQ-41 RQ-184: a good answer passes the format', () => {
 test('FR-205 RQ-41: the harmless fields the AIs add are dropped silently; any other unknown field is refused', () => {
   const harmless = validateAnswer(load('extra-fields-harmless.json'));
   assert.equal(harmless.ok, true, JSON.stringify(harmless.problems));
-  assert.equal(harmless.value.texts[0].kind, undefined);
+  assert.equal(harmless.value.texts[0].series, undefined);
+  assert.equal(harmless.value.texts[0].kind, 'reading', 'kind is a real field now (FR-204)');
   assert.equal(harmless.value.texts[0].lines[0].speaker, undefined);
   const unknown = validateAnswer(load('extra-fields.json'));
   assert.equal(unknown.ok, false);
@@ -41,6 +42,22 @@ test('FR-205 RQ-41 RQ-184: answers beyond the limits are refused with a named pr
     assert.equal(result.ok, false, name);
     assert.ok(result.problems.length > 0 && result.problems.every((p) => typeof p === 'string' && p.length < 300), name);
   }
+});
+
+test('FR-204 FR-205 RQ-393 RQ-394 RQ-398: each text has a kind, reading or listening; a whole package takes up to 12 texts naming their part; meaning checks pass within their limits', () => {
+  const good = load('good.json');
+  const without = structuredClone(good);
+  delete without.texts[0].kind;
+  assert.equal(validateAnswer(without).ok, false);
+  assert.equal(validateAnswer({ ...good, texts: [{ ...good.texts[0], kind: 'song' }] }).ok, false);
+  const nine = [1, 2, 3].flatMap((part) => good.texts.map((x) => ({ ...x, part })));
+  assert.equal(validateAnswer({ ...good, texts: nine }, { whole: true }).ok, true);
+  assert.equal(validateAnswer({ ...good, texts: nine }).ok, false, 'a part takes at most 4');
+  assert.equal(validateAnswer({ ...good, texts: [...nine, ...nine] }, { whole: true }).ok, false);
+  assert.equal(validateAnswer({ ...good, texts: [{ ...good.texts[0], part: 4 }] }, { whole: true }).ok, false);
+  const check = { form: 'var', lemma: 'var', en: 'where', explain_sv: 'Vilken plats.' };
+  assert.equal(validateAnswer({ ...good, meaning_checks: [check] }).ok, true);
+  assert.equal(validateAnswer({ ...good, meaning_checks: Array(101).fill(check) }).ok, false);
 });
 
 test('FR-207 RQ-379: the meanings answer has its own small format', () => {

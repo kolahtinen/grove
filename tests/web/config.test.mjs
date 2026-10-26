@@ -56,3 +56,17 @@ test('FR-004 RQ-364: grove\'s server loads the web settings (it asks for Firebas
   assert.match(run.stderr, /missing settings: .*FIREBASE_API_KEY/);
   assert.doesNotMatch(run.stderr, /GITHUB_/);
 });
+
+test('FR-202 RQ-392: the prompt sizes come from the environment, with defaults, and a bad value stops grove at start with its name', () => {
+  const web = without(['GITHUB_']);
+  assert.deepEqual(loadConfig(web, { role: 'web' }).sizes, {
+    partReading: 2, partListening: 1, textWords: 90, setupChunkWords: 500, setupMaxWords: 3000, checkMeanings: 20, ownPieceChars: 2500,
+  });
+  const tuned = loadConfig({ ...web, GROVE_PART_READING: '1', GROVE_SETUP_CHUNK_WORDS: '300', GROVE_TEXT_WORDS: '70' }, { role: 'web' }).sizes;
+  assert.equal(tuned.partReading, 1);
+  assert.equal(tuned.setupChunkWords, 300);
+  assert.equal(tuned.textWords, 70);
+  for (const bad of ['0', '-3', 'many', '2.5']) {
+    assert.throws(() => loadConfig({ ...web, GROVE_SETUP_MAX_WORDS: bad }, { role: 'web' }), /GROVE_SETUP_MAX_WORDS/);
+  }
+});

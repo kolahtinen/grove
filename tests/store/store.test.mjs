@@ -270,7 +270,13 @@ test('FR-207 RQ-379: migration 009 adds asked_forms and fills it for existing me
 });
 
 test('FR-207 RQ-379: migration 009 reads the asked forms from a prompt grove itself made, in lower case', async () => {
-  const { buildMeaningsPrompt } = await import('../../server/texts/fixit.mjs');
+  // The meanings prompt as grove made it before G-02 FR-207 removed it (2026-10-26), frozen here.
+  const buildMeaningsPrompt = (forms) => [
+    "I'm learning Swedish with grove. Please give the meaning of each of these Swedish words as they were used in the texts you just wrote:",
+    forms.join(', '),
+    'For each word give its dictionary form, a short English meaning and a simple Swedish explanation using very common words.',
+    'Reply with ONLY one ```json code block in this format, and no other text:\n```json\n{ "meanings": [ { "form": "as written", "lemma": "dictionary form", "en": "short English meaning", "explain_sv": "enkel förklaring" } ] }\n```',
+  ].join('\n\n');
   const dir = tempDir();
   try {
     const db = openDb(join(dir, 'grove.db'));
@@ -280,6 +286,32 @@ test('FR-207 RQ-379: migration 009 reads the asked forms from a prompt grove its
       .run(buildMeaningsPrompt(['Tolv', 'pensionär', 'Paraply']));
     migrate(db);
     assert.deepEqual(JSON.parse(db.prepare('SELECT asked_forms FROM exchanges').get().asked_forms), ['tolv', 'pensionär', 'paraply']);
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('FR-202 FR-207 FR-318 RQ-393 RQ-396 RQ-400: migration 010 keeps every row and id, marks existing meanings as the AI\'s, replaces waiting meanings prompts, and adds the new columns', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 9 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO packages (id, account_id, status, created_at) VALUES (5, 1, 'open', 1)").run();
+    db.prepare("INSERT INTO exchanges (id, account_id, package_id, part_no, kind, code, prompt, status, created_at) VALUES (7, 1, 5, 1, 'part', 'ABCD-1', 'p', 'accepted', 1)").run();
+    db.prepare("INSERT INTO exchanges (id, account_id, package_id, part_no, kind, code, prompt, status, created_at, asked_forms) VALUES (8, 1, 5, 1, 'meanings', 'ABCD-1', 'm', 'waiting', 1, '[\"tolv\"]')").run();
+    db.prepare("INSERT INTO texts (id, account_id, exchange_id, package_id, part_no, position, title, topic, created_at) VALUES (3, 1, 7, 5, 1, 1, 'T', 'kafé', 1)").run();
+    db.prepare("INSERT INTO words (account_id, lemma, kind, en, state, added_at) VALUES (1, 'kopp', 'word', 'cup', 'leaf', 1)").run();
+    db.prepare("INSERT INTO words (account_id, lemma, kind, state, added_at) VALUES (1, 'tolv', 'word', 'leaf', 1)").run();
+    migrate(db);
+    assert.equal(db.prepare('PRAGMA foreign_key_check').all().length, 0);
+    assert.deepEqual(db.prepare('SELECT lemma, en_source FROM words ORDER BY lemma').all().map((r) => ({ ...r })), [{ lemma: 'kopp', en_source: 'ai' }, { lemma: 'tolv', en_source: null }]);
+    assert.deepEqual(db.prepare('SELECT id, status, asked_forms FROM exchanges ORDER BY id').all().map((r) => ({ ...r })), [{ id: 7, status: 'accepted', asked_forms: null }, { id: 8, status: 'replaced', asked_forms: '["tolv"]' }]);
+    assert.deepEqual({ ...db.prepare('SELECT id, exchange_id, kind, ready, known_share FROM texts').get() }, { id: 3, exchange_id: 7, kind: 'reading', ready: 1, known_share: null });
+    assert.deepEqual({ ...db.prepare('SELECT one_text, fail_streak, code FROM packages').get() }, { one_text: 0, fail_streak: 0, code: null });
+    db.prepare("INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at, text_id, steps) VALUES (1, 'own', 'OWN-1', 'p', 'waiting', 2, 3, '[]')").run();
+    assert.throws(() => db.prepare("INSERT INTO texts (account_id, position, title, topic, created_at, kind) VALUES (1, 1, 'x', 'y', 1, 'song')").run());
     db.close();
   } finally {
     rmSync(dir, { recursive: true, force: true });

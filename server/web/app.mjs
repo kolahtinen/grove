@@ -21,8 +21,8 @@ export function createApp({ config, db, seclog, firebase, now = () => Date.now()
     handler: (ctx) => { ctx.res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' }); ctx.res.end('ok'); },
   });
   registerAccountRoutes(router, { config, db, seclog, firebase, sessions, now });
-  registerTextRoutes(router, { db, now });
-  registerReadingRoutes(router, { db, now });
+  registerTextRoutes(router, { db, sizes: config.sizes, now });
+  registerReadingRoutes(router, { db, sizes: config.sizes, now });
   registerDrillRoutes(router, { db, now });
   registerLevelRoutes(router, { db, now });
   registerStaticRoutes(router);

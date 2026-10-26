@@ -18,9 +18,21 @@
 </div>
 </header>
 <main>
+<section class="card" id="own-round" hidden>
+<h2 id="own-title"></h2>
+<p class="small muted">Before you read it, your AI gives the meaning of every word in this text and says whether it looks copyrighted. Copy the prompt into your AI chat and paste its whole answer below.</p>
+<p class="small" id="own-piece"></p>
+<div class="row"><button type="button" class="copy main" id="own-copy">Copy prompt</button><span class="copied small" id="own-copied" role="status" hidden></span></div>
+<textarea id="own-prompt" readonly rows="6" aria-label="The prompt for this text" hidden></textarea>
+<label>Paste the AI's answer here<textarea id="own-answer" rows="6"></textarea></label>
+<ul class="problems" id="own-problems" hidden></ul>
+<p class="message" id="own-message" role="status" hidden></p>
+<button type="button" class="main" id="own-add">Add the meanings</button>
+</section>
 <section class="card" id="reading-card">
 <h2 id="title"></h2>
 <p class="small muted" id="stats"></p>
+<p class="message small" id="copyright" role="note" hidden></p>
 <div class="row reading-tools">
 <button type="button" id="toggle-en" aria-pressed="true">English: on</button>
 <button type="button" id="listen">Listen</button>

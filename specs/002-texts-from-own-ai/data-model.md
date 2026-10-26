@@ -72,7 +72,7 @@ At most one `open` package per account (partial unique index).
 | prompt | TEXT NOT NULL | |
 | status | TEXT NOT NULL | `waiting`, `needs_fix`, `accepted`, `replaced` |
 | answer_hash | TEXT NULL | SHA-256 of the accepted JSON |
-| asked_forms | TEXT NULL | meanings exchanges: JSON array of the lower-case forms the prompt asks about (FR-207; migration 009, which fills it for existing meanings exchanges from their prompts once) |
+| asked_forms | TEXT NULL | JSON array of the forms the prompt asks about (meanings fix-its, meaning checks, own-text pieces): trimmed, lower case, no repeats, in the order first asked, always made by `askedForms` in `server/words/asked.mjs` (FR-207; question-pages/68, 3); migration 009 filled it once for old meanings exchanges from their prompts |
 | created_at, answered_at | INTEGER | |
 
 ## texts, text_lines, questions, sentences (spec: Text, Sentence)
@@ -109,10 +109,13 @@ G-02 reads `state = 'ground'` as known. The starting level (G-06) and demo histo
 | exchanges | `steps` TEXT NULL | JSON array of prompt strings shown before the request: the setup prompts (empty when the request needs none); `prompt` stays the request itself |
 | exchanges | `asks` TEXT NULL | JSON array of the texts the request asks for: `{part, kind}` |
 | exchanges | `held` TEXT NULL | meanings fix-its: the checked texts waiting for their meanings, as JSON |
+| exchanges | `text_id` INTEGER NULL → texts.id ON DELETE CASCADE | own exchanges: the own text the piece belongs to |
 | texts | `kind` TEXT NOT NULL DEFAULT 'reading' | `reading` or `listening` (CHECK) |
 | texts | `ready` INTEGER NOT NULL DEFAULT 1 | own texts: 0 until their AI round is complete (G-03 FR-318) |
 | texts | `copyright_view` TEXT NULL, `copyright_note` TEXT NULL | own texts: the AI's view, `free`, `unsure` or `copyrighted`, and its reason (≤ 300) |
 | texts | `known_share` REAL NULL | own texts: share of known words when added (G-03 FR-318) |
 | learner_settings | `whole_package` INTEGER NOT NULL DEFAULT 0 | the learner's choice (FR-203) |
 
-`exchanges.kind` values become `part`, `package` (whole package), `redo`, `fix`, `meanings_fix`, `own`. Existing waiting `meanings` exchanges become `replaced` (the meanings prompt is gone). A part is accepted when its texts of each kind reach `GROVE_PART_READING` and `GROVE_PART_LISTENING`; `packages.parts_accepted` counts those parts.
+New table `text_meanings` (G-03 FR-318): account_id, text_id → texts ON DELETE CASCADE, form, lemma, en (≤ 200), explain_sv (≤ 300) NULL; PRIMARY KEY (text_id, form). The AI's meaning of every word of an own text, in context.
+
+`exchanges.kind` values become `part`, `package` (whole package), `redo`, `fix`, `meanings_fix`, `own` (and `meanings` for old rows); the table is rebuilt for the new CHECK, keeping its ids. Existing waiting `meanings` exchanges become `replaced` (the meanings prompt is gone). A part is accepted when its texts of each kind reach `GROVE_PART_READING` and `GROVE_PART_LISTENING`; `packages.parts_accepted` counts those parts.

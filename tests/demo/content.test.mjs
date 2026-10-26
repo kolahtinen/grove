@@ -16,6 +16,7 @@ test('FR-702 RQ-361: the demo has the four texts with questions, new words with 
   assert.deepEqual(a.new_phrases.map((p) => p.sv), ['hur mår du', 'det gör inget']);
   assert.ok(a.names.includes('Elsa'));
   assert.ok(a.texts[2].lines.every((l) => /^[A-ZÅÄÖ][a-zåäö]+: /.test(l.sv)), 'dialogue lines start with a speaker');
+  assert.deepEqual(a.texts.map((x) => x.kind), ['reading', 'reading', 'listening', 'reading'], 'the dialogue is the listening text (2026-10-26)');
   for (const slip of ['har glömt min väska här igår', 'Den borta nyckeln', 'Vem heter Olle']) assert.ok(!raw.includes(slip), slip);
 });
 
@@ -60,3 +61,15 @@ test('FR-704 RQ-362: no code grove runs names docs/, however the path is written
     assert.doesNotMatch(readFileSync(file, 'utf8'), /['"`/]docs(['"`/\\]|$)/m, file);
   }
 });
+
+test('FR-704 RQ-399: every demo word, ground words included, has an English meaning and a simple Swedish explanation, built into server/demo/', () => {
+  const ground = readFileSync(new URL('../../server/demo/demo-ground.txt', import.meta.url), 'utf8').split(/\s+/).filter(Boolean);
+  const meanings = JSON.parse(readFileSync(new URL('../../server/demo/demo-ground-meanings.json', import.meta.url), 'utf8'));
+  const lacking = ground.filter((w) => !meanings[w]?.en || !meanings[w]?.explain_sv);
+  assert.deepEqual(lacking, []);
+  assert.equal(meanings.efter.en, 'after', 'the word list\'s first sense is corrected where it is wrong');
+  const a = JSON.parse(raw);
+  assert.ok(a.new_words.every((w) => w.en && w.explain_sv));
+  assert.doesNotMatch(JSON.stringify(meanings), /<[a-z!/]/i);
+});
+

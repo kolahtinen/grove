@@ -10,7 +10,8 @@ before(async () => {
   ({ t, learner } = await readingGrove());
   c = await signedIn(t);
   const { prompt, res } = await addPart(c);
-  firstPrompt = prompt.prompt;
+  // The rules and format are in the setup since G-02 FR-203 changed (2026-10-26).
+  firstPrompt = [...prompt.steps, prompt.prompt].join('\n\n');
   assert.equal(res.result, 'accepted', JSON.stringify(res));
 });
 after(() => t.close());

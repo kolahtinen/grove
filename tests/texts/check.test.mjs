@@ -73,3 +73,15 @@ test('FR-214 RQ-28: the good sample answer is accepted at the default target', (
   const result = check(load('good.json'));
   assert.equal(result.ok, true, JSON.stringify(result.problems));
 });
+
+test('FR-214 FR-206 RQ-395: each text is judged on its own: a failing text has its own problems, the others pass', () => {
+  const a = textWith([[], ['zebrafink', 'kolibri', 'pelikan'], []]);
+  a.texts.push({ ...textWith([[], []]).texts[0], title: 'U' });
+  const r = check(a);
+  assert.equal(r.ok, false);
+  assert.equal(r.texts[0].ok, false);
+  assert.ok(r.texts[0].problems.length > 0);
+  assert.equal(r.texts[1].ok, true);
+  assert.deepEqual(r.texts[1].problems, []);
+  assert.ok(r.texts[0].newItems.some((i) => i.text === 'kolibri'));
+});

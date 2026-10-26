@@ -26,6 +26,19 @@ const fix = (text) => FIXES.reduce((t, [a, b]) => t.split(a).join(b), text);
 
 // Meanings for the words grove finds new against the X-03 known words (the X-03 answer listed none).
 export const MEANINGS = JSON.parse(readFileSync(join(root, 'scripts/demo-meanings.json'), 'utf8'));
+// The ground words' meanings (FR-704, RQ-399): grove's word list first, then checked against the demo
+// texts, corrected where its first sense is wrong, and given a simple Swedish explanation.
+export const GROUND_MEANINGS = JSON.parse(readFileSync(join(root, 'scripts/demo-ground-meanings.json'), 'utf8'));
+
+export async function groundMeanings() {
+  const { meaning } = await import('../server/lexicon/lexicon.mjs');
+  const out = {};
+  for (const w of DEMO_GROUND) {
+    const checked = GROUND_MEANINGS[w] || {};
+    out[w] = { en: checked.en ?? meaning(w)?.en ?? null, explain_sv: checked.explain_sv ?? null };
+  }
+  return out;
+}
 
 export function buildTexts() {
   const texts = [];
@@ -37,7 +50,9 @@ export function buildTexts() {
     } else {
       lines = t.lines.map((l) => (l.speaker ? { sv: `${l.speaker}: ${l.sv}`, en: `${l.speaker}: ${l.en}` } : { sv: l.sv, en: l.en }));
     }
+    // The dialogue is written to be heard: the listening text (G-02 FR-202, G-07 FR-702).
     texts.push({
+      kind: t.title.startsWith('Lördag på torget') ? 'listening' : 'reading',
       title: fix(t.title),
       lines: lines.map((l) => ({ sv: fix(l.sv), en: l.en })),
       questions: (t.questions || []).map((q) => ({ q: fix(q.q), options: q.options.map(fix), answer: q.answer })),
@@ -78,5 +93,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   };
   writeFileSync(join(root, 'server/demo/demo-answer.json'), `${JSON.stringify(answer, null, 1)}\n`);
   writeFileSync(join(root, 'server/demo/demo-ground.txt'), `${DEMO_GROUND.join('\n')}\n`);
+  const ground = await groundMeanings();
+  const lacking = Object.entries(ground).filter(([, m]) => !m.en || !m.explain_sv).map(([w]) => w);
+  if (lacking.length) {
+    console.log(`build-demo: ground words without a checked meaning and explanation: ${lacking.join(', ')}`);
+    process.exit(1);
+  }
+  writeFileSync(join(root, 'server/demo/demo-ground-meanings.json'), `${JSON.stringify(ground, null, 1)}\n`);
   console.log(`build-demo: ${texts.length} texts, ${answer.new_words.length} new words written to server/demo/demo-answer.json; ${DEMO_GROUND.length} ground words to server/demo/demo-ground.txt`);
 }

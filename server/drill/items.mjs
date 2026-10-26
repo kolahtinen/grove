@@ -1,6 +1,7 @@
 // Items by account, dictionary form and kind; marks, falling and picking up (data-model.md states).
 import { HttpError } from '../web/http.mjs';
 import { START_GAP } from './schedule.mjs';
+import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
 
 export const KINDS = ['word', 'phrase', 'pattern'];
 
@@ -8,11 +9,14 @@ export function createItems({ db, now = () => Date.now() }) {
   const find = (accountId, lemma, kind = 'word') =>
     db.prepare('SELECT * FROM words WHERE account_id = ? AND lemma = ? AND kind = ?').get(accountId, String(lemma).trim().toLowerCase(), kind);
 
-  function findOrCreate(accountId, lemma, kind = 'word', sourceTextId = null) {
+  function findOrCreate(accountId, lemma, kind = 'word', sourceTextId = null, meaning = null) {
     const existing = find(accountId, lemma, kind);
     if (existing) return existing;
-    db.prepare("INSERT INTO words (account_id, lemma, kind, state, added_at, source_text_id) VALUES (?, ?, ?, 'leaf', ?, ?)")
-      .run(accountId, String(lemma).trim().toLowerCase(), kind, now(), sourceTextId);
+    // A new item takes the word list's meaning, or the one given (G-02 FR-207, FR-412).
+    const key = String(lemma).trim().toLowerCase();
+    const found = meaning ? null : dictionaryMeaning(key);
+    db.prepare("INSERT INTO words (account_id, lemma, kind, en, en_source, state, added_at, source_text_id) VALUES (?, ?, ?, ?, ?, 'leaf', ?, ?)")
+      .run(accountId, key, kind, meaning ?? found?.en ?? null, meaning ? 'learner' : found ? 'dictionary' : null, now(), sourceTextId);
     return find(accountId, lemma, kind);
   }
 

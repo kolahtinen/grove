@@ -36,17 +36,22 @@ async function acceptPart(c, n) {
   return { prompt: p.body, texts: res.body.texts };
 }
 
-test('FR-203 RQ-01 RQ-02 RQ-186 RQ-188: part 1 of the first package carries no summary yet; parts 2 and 3 are self-contained, with a continue hint and no summary', async () => {
+test('FR-203 RQ-01 RQ-02 RQ-186 RQ-188 RQ-390: part 1 of the first package comes after the setup (known words, no summary yet); parts 2 and 3 are short requests in the same chat', async () => {
   const c = await client();
   const one = await acceptPart(c, 1);
   assert.equal(one.prompt.part, 1);
   assert.equal(one.prompt.carriesSummary, false, 'nothing done yet, so nothing to summarise');
+  assert.ok(one.prompt.steps.length >= 2, 'rules and format, then the known words');
+  assert.match(one.prompt.steps[0], /new chat|Until I ask for texts/);
+  assert.match(one.prompt.steps.slice(1).join(' '), /My known words/);
+  assert.match(one.prompt.prompt, /"[A-Z]{4}-1"/);
   const two = await acceptPart(c, 2);
   assert.equal(two.prompt.part, 2);
+  assert.deepEqual(two.prompt.steps, [], 'no setup in the same chat');
   assert.equal(two.prompt.carriesSummary, false);
-  assert.match(two.prompt.prompt, /continue their story and characters/);
-  assert.match(two.prompt.prompt, /Use my known words/);
-  assert.match(two.prompt.prompt, /"part": "[A-Z]{4}-2"/);
+  assert.match(two.prompt.prompt, /continue the story and characters/i);
+  assert.doesNotMatch(two.prompt.prompt, /My known words/);
+  assert.match(two.prompt.prompt, /"[A-Z]{4}-2"/);
   const three = await acceptPart(c, 3);
   assert.equal(three.prompt.part, 3);
 });
@@ -69,10 +74,11 @@ test('FR-203 RQ-01 RQ-02 RQ-11: when the package is finished, part 1 of the next
   assert.equal(next.status, 200);
   assert.equal(next.body.part, 1);
   assert.equal(next.body.carriesSummary, true);
-  assert.match(next.body.prompt, /What I did since my last package:/);
-  assert.match(next.body.prompt, new RegExp(`"${texts[0].title}": understood most; questions right 1 of 2`));
-  for (const x of texts) assert.ok(next.body.prompt.includes(`"${x.title}"`), x.title);
-  assert.doesNotMatch(next.body.prompt, /reviewer@|learner@|password/i, 'only what changed, no learner data');
+  const setup = next.body.steps[0];
+  assert.match(setup, /What I did since my last package:/);
+  assert.match(setup, new RegExp(`"${texts[0].title}": understood most; questions right 1 of 2`));
+  for (const x of texts) assert.ok(setup.includes(`"${x.title}"`), x.title);
+  assert.doesNotMatch(next.body.steps.join('\n') + next.body.prompt, /reviewer@|learner@|password/i, 'only what changed, no learner data');
 });
 
 test('FR-203 RQ-01: a new package asked for early closes the open one, and its summary lists only what changed since', async () => {
@@ -84,8 +90,8 @@ test('FR-203 RQ-01: a new package asked for early closes the open one, and its s
   assert.equal(res.body.part, 1);
   assert.equal(t.grove.db.prepare('SELECT status FROM packages WHERE id = ?').get(open.id).status, 'closed');
   assert.equal(res.body.carriesSummary, true);
-  assert.match(res.body.prompt, new RegExp(`"${first.title}": understood about half`));
-  const summaryLines = res.body.prompt.split('What I did since my last package:\n')[1].split('\n\n')[0].split('\n');
+  assert.match(res.body.steps[0], new RegExp(`"${first.title}": understood about half`));
+  const summaryLines = res.body.steps[0].split('What I did since my last package:\n')[1].split('\n\n')[0].split('\n');
   assert.equal(summaryLines.length, 1, 'only the text rated since the last summary');
 });
 
@@ -93,4 +99,49 @@ test('FR-203 RQ-188: two requests at once open one package only', async () => {
   const c = await client();
   await Promise.all([c.post('/api/prompt', { action: 'next' }), c.post('/api/prompt', { action: 'next' })]);
   assert.equal(t.grove.db.prepare("SELECT COUNT(*) AS n FROM packages WHERE account_id = ? AND status = 'open'").get(learner.id).n, 1);
+});
+
+test('FR-203 RQ-391: I\'m in a new chat gives the setup again, with the summary already sent, before the same request; without a waiting request it says so', async () => {
+  const c = await client();
+  const p = (await c.post('/api/prompt', { action: 'next' })).body;
+  const again = await c.post('/api/prompt', { action: 'new_chat' });
+  assert.equal(again.status, 200);
+  assert.equal(again.body.exchangeId, p.exchangeId);
+  assert.equal(again.body.prompt, p.prompt);
+  assert.ok(again.body.steps.length >= 2);
+  assert.equal(again.body.steps[0], p.steps[0], 'the same setup, with the summary already sent');
+  const home = await c.get('/api/home');
+  assert.deepEqual(home.body.waiting.steps, again.body.steps);
+
+  const other = t.seedAccount({ email: 'nothing-waiting@example.test' });
+  seedGround(t.grove.db, other.id, known);
+  const o = t.client();
+  await o.signInAgreed('nothing-waiting@example.test');
+  const none = await o.post('/api/prompt', { action: 'new_chat' });
+  assert.equal(none.status, 409);
+  assert.equal(none.body.error, 'nothing_waiting');
+});
+
+test('FR-203 FR-202 RQ-394 RQ-393: with the whole-package choice, one request after the setup asks for all 3 parts; its answer fills the package', async () => {
+  const whole = t.seedAccount({ email: 'whole@example.test' });
+  seedGround(t.grove.db, whole.id, known);
+  const c = t.client();
+  await c.signInAgreed('whole@example.test');
+  assert.deepEqual((await c.post('/api/whole-package', { on: true })).body, { wholePackage: true });
+  assert.equal((await c.get('/api/home')).body.wholePackage, true);
+  const p = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal(p.kind, 'package');
+  assert.match(p.code, /^[A-Z]{4}$/);
+  assert.ok(p.steps.length >= 2);
+  assert.match(p.prompt, /all 3 parts/);
+  const a = structuredClone(good);
+  a.part = p.code;
+  a.texts = [1, 2, 3].flatMap((part) => good.texts.map((x, i) => ({ ...structuredClone(x), part, title: `${x.title} ${part}.${i}` })));
+  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: JSON.stringify(a) });
+  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
+  assert.equal(res.body.texts.length, 9);
+  const pkg = t.grove.db.prepare("SELECT parts_accepted FROM packages WHERE account_id = ? AND status = 'open'").get(whole.id);
+  assert.equal(pkg.parts_accepted, 3);
+  const kinds = t.grove.db.prepare('SELECT part_no, kind, COUNT(*) AS n FROM texts WHERE account_id = ? GROUP BY part_no, kind ORDER BY part_no, kind').all(whole.id).map((r) => `${r.part_no}${r.kind[0]}${r.n}`);
+  assert.deepEqual(kinds, ['1l1', '1r2', '2l1', '2r2', '3l1', '3r2']);
 });

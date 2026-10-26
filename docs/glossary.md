@@ -14,3 +14,6 @@ The words grove uses for its ideas, in the app and in every spec from G-02 on. T
 | **Let it fall** | A button on any leaf: answer its meaning once (a grammar pattern: confirm), and if right, it falls. | question-pages/56 |
 | **Pick up** | Taking a word back from the ground to drill it again. | RQ-16 |
 | **Drill** | Practising leaves with spaced reviews until they fall. | RQ-60 and G-04 |
+| **Setup** | The first prompts of a package, sent in a new chat: the rules, the answer format, the summary and your known words; your AI only replies "OK". Later prompts in the same chat just ask for the next texts. | RQ-390, RQ-391 (addendum 002) |
+| **Reading text** / **Listening text** | The two kinds of text in a part: a reading text is for reading; a listening text is written to be heard and opens in listening mode. | RQ-393 (addendum 002) |
+| **Meaning check** | grove gives every word a meaning at once, from its word list or from you; your AI then checks it in the sentence where you met it. | RQ-396, RQ-398 (addendum 002) |

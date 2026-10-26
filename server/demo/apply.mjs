@@ -14,6 +14,8 @@ import { HISTORY } from './history.mjs';
 const here = dirname(fileURLToPath(import.meta.url));
 export const DEMO_ANSWER = JSON.parse(readFileSync(join(here, 'demo-answer.json'), 'utf8'));
 export const DEMO_GROUND = readFileSync(join(here, 'demo-ground.txt'), 'utf8').split(/\s+/).filter(Boolean);
+// Each ground word's checked meaning and Swedish explanation (FR-704, RQ-399).
+export const GROUND_MEANINGS = JSON.parse(readFileSync(join(here, 'demo-ground-meanings.json'), 'utf8'));
 const DAY = 24 * 60 * 60 * 1000;
 const iso = (ms) => new Date(ms).toISOString().slice(0, 10);
 
@@ -22,8 +24,8 @@ export function applyDemo({ db, accountId, now = () => Date.now() }) {
   const words = createWordStore({ db, now: () => t });
   const answer = validateAnswer(DEMO_ANSWER).value;
   transaction(db, () => {
-    const add = db.prepare("INSERT OR IGNORE INTO words (account_id, lemma, kind, state, added_at) VALUES (?, ?, 'word', 'ground', ?)");
-    for (const w of DEMO_GROUND) add.run(accountId, w, t - 7 * DAY);
+    const add = db.prepare("INSERT OR IGNORE INTO words (account_id, lemma, kind, en, en_source, explain_sv, state, added_at) VALUES (?, ?, 'word', ?, 'ai', ?, 'ground', ?)");
+    for (const w of DEMO_GROUND) add.run(accountId, w, GROUND_MEANINGS[w].en, GROUND_MEANINGS[w].explain_sv, t - 7 * DAY);
     db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(accountId);
     db.prepare('UPDATE learner_settings SET topic = ?, topics_used = ?, last_summary_at = ? WHERE account_id = ?')
       .run(HISTORY.topic, JSON.stringify([HISTORY.topic]), t - HISTORY.summaryAgo, accountId);

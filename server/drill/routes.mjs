@@ -67,7 +67,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
     handler: (ctx) => sendJson(ctx.res, 200, review.answer(ctx.account.id, ctx.body)),
   });
   router.add({ method: 'GET', path: '/api/leaves', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, leaves.list(ctx.account.id)) });
-  router.add({ method: 'POST', path: '/api/leaves', access: 'agreed', schema: { text: lemma, kind }, handler: (ctx) => sendJson(ctx.res, 200, leaves.add(ctx.account.id, ctx.body)) });
+  router.add({ method: 'POST', path: '/api/leaves', access: 'agreed', schema: { text: lemma, kind, en: { type: 'string', min: 1, max: 200, optional: true } }, handler: (ctx) => sendJson(ctx.res, 200, leaves.add(ctx.account.id, ctx.body)) });
   router.add({ method: 'POST', path: '/api/leaf-delete', access: 'agreed', schema: { lemma, kind }, handler: (ctx) => sendJson(ctx.res, 200, leaves.remove(ctx.account.id, ctx.body)) });
   router.add({ method: 'GET', path: '/api/progress', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, progress.progress(ctx.account.id)) });
   router.add({

@@ -4,11 +4,13 @@ import { buildReading } from './view.mjs';
 import { buildPractice } from './practice.mjs';
 import { createFlag, createReport, EXPLAIN_REASONS, REPORT_REASONS } from './flags.mjs';
 import { buildDictionary } from './dictionary.mjs';
-import { addOwnText, saveLeaf, meaningsPrompt } from './own.mjs';
+import { addOwnText, saveLeaf, ownStatus } from './own.mjs';
+import { ownText } from './view.mjs';
+import { DEFAULT_SIZES } from '../config.mjs';
 
 const note = { type: 'string', min: 0, max: 200, optional: true };
 
-export function registerReadingRoutes(router, { db, now = () => Date.now() }) {
+export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now = () => Date.now() }) {
   router.add({ method: 'GET', path: '/api/reading', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildReading(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/practice', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildPractice(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/dictionary', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildDictionary(db, ctx.account.id)) });
@@ -56,7 +58,15 @@ export function registerReadingRoutes(router, { db, now = () => Date.now() }) {
   router.add({
     method: 'POST', path: '/api/own-text', access: 'agreed',
     schema: { title: { type: 'string', min: 1, max: 120 }, text: { type: 'string', min: 1, max: 20000 } },
-    handler: (ctx) => sendJson(ctx.res, 200, { id: addOwnText(db, ctx.account.id, ctx.body, now()) }),
+    handler: (ctx) => sendJson(ctx.res, 200, addOwnText(db, ctx.account.id, ctx.body, now(), sizes)),
+  });
+
+  router.add({
+    method: 'GET', path: '/api/own-text', access: 'agreed',
+    handler: (ctx) => {
+      const text = ownText(db, ctx.account.id, ctx.url.searchParams.get('id'));
+      sendJson(ctx.res, 200, { id: text.id, title: text.title, ...ownStatus(db, ctx.account.id, text.id) });
+    },
   });
 
   router.add({
@@ -65,8 +75,4 @@ export function registerReadingRoutes(router, { db, now = () => Date.now() }) {
     handler: (ctx) => { saveLeaf(db, ctx.account.id, ctx.body, now()); sendJson(ctx.res, 200, { result: 'saved' }); },
   });
 
-  router.add({
-    method: 'POST', path: '/api/meanings-prompt', access: 'agreed', schema: {},
-    handler: (ctx) => sendJson(ctx.res, 200, meaningsPrompt(db, ctx.account.id, now())),
-  });
 }

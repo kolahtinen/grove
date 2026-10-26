@@ -30,8 +30,10 @@ test('FR-401 RQ-52 RQ-203 RQ-204: the marking step lists the text\'s unmarked le
 });
 
 test('FR-402 RQ-34 RQ-204: fallen words count as known in the next prompt and the reading counts; unmarked leaves still count as new', async () => {
-  const p = await c.post('/api/prompt', { action: 'next' });
-  const knownLine = p.body.prompt.split('\n').find((l) => l.startsWith('- Use my known words'));
+  // The known words travel in the setup since G-02 FR-203 changed (2026-10-26): ask for it again.
+  await c.post('/api/prompt', { action: 'next' });
+  const p = await c.post('/api/prompt', { action: 'new_chat' });
+  const knownLine = p.body.steps.slice(1).map((step) => step.split('\n\n').at(-1)).join(', ');
   assert.ok(knownLine.includes('gärna'), 'a fallen word is known');
   assert.ok(!/\bkopp\b/.test(knownLine), 'a drilled leaf is not known');
   assert.ok(!/\btolv\b/.test(knownLine), 'an unmarked leaf is not known');

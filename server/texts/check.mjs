@@ -1,5 +1,5 @@
-// Checks an answer's texts against the margins (FR-213, FR-214, FR-212): per sentence, per text,
-// and whether there were clearly too few new words.
+// Checks an answer's texts against the margins (FR-213, FR-214, FR-212): per sentence and per text,
+// each text judged on its own (FR-206), and whether there were clearly too few new words.
 import { splitSentences } from '../words/sentences.mjs';
 
 // Starting values, to be tuned after trying real answers (RQ-127, RQ-216).
@@ -14,6 +14,9 @@ export function checkAnswer(answer, counter, targetShare, margins = MARGINS) {
 
   answer.texts.forEach((text, ti) => {
     const sentences = [];
+    const own = [];
+    const ownItems = [];
+    const ownSeen = new Set();
     let total = 0;
     let known = 0;
     text.lines.forEach((line, li) => {
@@ -22,23 +25,27 @@ export function checkAnswer(answer, counter, targetShare, margins = MARGINS) {
         total += r.total;
         known += r.known;
         sentences.push({ line: li, position: si, sv, items: r.items });
-        for (const item of r.items) if (!seen.has(item.text)) { seen.add(item.text); newItems.push(item); }
+        for (const item of r.items) {
+          if (!seen.has(item.text)) { seen.add(item.text); newItems.push(item); }
+          if (!ownSeen.has(item.text)) { ownSeen.add(item.text); ownItems.push(item); }
+        }
       });
     });
     const share = total ? (known / total) * 100 : 100;
     const doubles = sentences.filter((s) => s.items.length === 2);
     const allowedDoubles = Math.ceil(sentences.length * margins.shareOfSentencesWithTwo);
     for (const s of sentences.filter((x) => x.items.length > margins.maxPerSentence)) {
-      problems.push({ kind: 'too_many_in_sentence', text: ti + 1, sentence: s.sv, items: s.items.map((i) => i.text) });
+      own.push({ kind: 'too_many_in_sentence', text: ti + 1, sentence: s.sv, items: s.items.map((i) => i.text) });
     }
     if (doubles.length > allowedDoubles) {
-      problems.push({ kind: 'too_many_doubles', text: ti + 1, count: doubles.length, allowed: allowedDoubles, sentences: doubles.map((s) => ({ sentence: s.sv, items: s.items.map((i) => i.text) })) });
+      own.push({ kind: 'too_many_doubles', text: ti + 1, count: doubles.length, allowed: allowedDoubles, sentences: doubles.map((s) => ({ sentence: s.sv, items: s.items.map((i) => i.text) })) });
     }
     if (share < targetShare - margins.shareBelowTarget) {
-      problems.push({ kind: 'share', text: ti + 1, share: Math.round(share * 10) / 10, target: targetShare });
+      own.push({ kind: 'share', text: ti + 1, share: Math.round(share * 10) / 10, target: targetShare });
     }
     if (share > targetShare + margins.tooFewAboveTarget) tooFew = true;
-    texts.push({ share, sentences });
+    problems.push(...own);
+    texts.push({ share, sentences, problems: own, ok: own.length === 0, newItems: ownItems });
   });
 
   return { ok: problems.length === 0, problems, texts, newItems, tooFew };

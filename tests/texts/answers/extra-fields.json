@@ -2,6 +2,7 @@
  "part": "TEST-1",
  "texts": [
   {
+   "kind": "reading",
    "title": "En kall morgon",
    "lines": [
     {
@@ -101,11 +102,11 @@
      "answer": 1
     }
    ],
-   "kind": "episode",
    "series": "Kafé Björk",
    "episode": 1
   },
   {
+   "kind": "reading",
    "title": "Olles väska",
    "lines": [
     {
@@ -206,6 +207,7 @@
    ]
   },
   {
+   "kind": "listening",
    "title": "En bra dag",
    "lines": [
     {

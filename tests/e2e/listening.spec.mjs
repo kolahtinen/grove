@@ -42,8 +42,12 @@ async function api(page, path, body) {
 }
 
 // A short text of our own (3 sentences) so listening finishes fast.
+// Own texts open after their AI round since G-03 FR-318 changed (2026-10-26), so the round is answered here.
 async function shortText(page) {
   const r = await api(page, '/api/own-text', { title: `Lyssna ${Math.random().toString(36).slice(2, 6)}`, text: 'Det är en kall morgon. Elsa öppnar dörren.\nHon dricker kaffe.' });
+  const code = r.body.prompt.match(/"own": "([^"]+)"/)[1];
+  const words = ['det', 'är', 'en', 'kall', 'morgon', 'öppnar', 'dörren', 'hon', 'dricker', 'kaffe'].map((form) => ({ form, lemma: form, en: form, explain_sv: form }));
+  await api(page, '/api/answer', { exchangeId: r.body.exchangeId, answer: JSON.stringify({ own: code, copyright: 'free', words, names: ['Elsa'] }) });
   return r.body.id;
 }
 
@@ -131,3 +135,28 @@ test('FR-501 RQ-20: voices arriving late are used, and sv_SE counts as Swedish',
   await page2.locator('button.w').first().click();
   await expect.poll(async () => page2.evaluate(() => window.__spoken.length)).toBe(1);
 });
+
+test('FR-509 FR-505 RQ-393: a listening text from the AI opens in listening mode, blurred with Play; a reading text opens for reading', async ({ page }) => {
+  await fakeSpeech(page, 'sv');
+  await signIn(page);
+  const ids = await page.evaluate(async ({ sample }) => {
+    const me = await (await fetch('/api/me')).json();
+    const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
+    const p = await (await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) })).json();
+    const answer = JSON.parse(sample.replaceAll('TEST-1', p.code));
+    const tag = Math.random().toString(36).slice(2, 7);
+    answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
+    const r = await (await fetch('/api/answer', { method: 'POST', headers: h, body: JSON.stringify({ exchangeId: p.exchangeId, answer: JSON.stringify(answer) }) })).json();
+    return r.texts;
+  }, { sample: readFileSync(new URL('../texts/answers/good.json', import.meta.url), 'utf8') });
+  const listening = ids.find((x) => x.kind === 'listening');
+  const reading = ids.find((x) => x.kind === 'reading');
+  await page.goto(`/text?id=${listening.id}`);
+  await expect(page.locator('#listening-card')).toBeVisible();
+  await expect(page.locator('#lines')).toHaveClass(/blurred/);
+  await expect(page.locator('#listen-play')).toBeVisible();
+  await page.goto(`/text?id=${reading.id}`);
+  await expect(page.locator('#listening-card')).toBeHidden();
+  await expect(page.locator('#lines')).not.toHaveClass(/blurred/);
+});
+

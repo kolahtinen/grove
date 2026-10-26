@@ -1,5 +1,6 @@
 // The dictionary (FR-316, FR-317): every word, phrase and pattern met, with translation, state and an
-// example sentence; names apart.
+// example sentence; names apart. A word without a stored meaning shows the word list's (FR-316, G-02 FR-207).
+import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
 
 export function buildDictionary(db, accountId) {
   const sentences = db.prepare('SELECT sv, new_items FROM sentences WHERE account_id = ? ORDER BY id').all(accountId)
@@ -20,7 +21,8 @@ export function buildDictionary(db, accountId) {
       const hit = sentences.find((s) => s.items.includes(w.lemma) || candidates.some((c) => wordIn(s.lower, c)));
       example = hit ? hit.sv : null;
     }
-    return { lemma: w.lemma, kind: w.kind, en: w.en, state: w.state, example };
+    const en = w.en ?? (w.kind === 'word' ? dictionaryMeaning(w.lemma)?.en ?? null : null);
+    return { lemma: w.lemma, kind: w.kind, en, state: w.state, example };
   });
   const names = db.prepare('SELECT name FROM names WHERE account_id = ? ORDER BY lower').all(accountId).map((r) => r.name);
   return { items, names };

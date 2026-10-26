@@ -1,7 +1,8 @@
-// The AI answer format and its limits (FR-205, contracts/http-api.md). Strict: unknown fields are
-// problems, except the harmless ones the X-03 answers added, which are dropped (research R3).
+// The AI answer format and its limits (FR-204, FR-205, contracts/http-api.md). Strict: unknown fields
+// are problems, except the harmless ones the X-03 answers added, which are dropped (research R3).
 
-const HARMLESS = new Set(['kind', 'series', 'episode', 'speaker', 'nodes']);
+const HARMLESS = new Set(['series', 'episode', 'speaker', 'nodes']);
+export const KINDS = ['reading', 'listening'];
 
 function checker() {
   const problems = [];
@@ -42,10 +43,12 @@ function checker() {
   return { problems, str, obj, arr, note };
 }
 
-export function validateAnswer(input) {
+export function validateAnswer(input, { whole = false } = {}) {
   const c = checker();
   const text = (t, where) => {
     const v = c.obj(t, where, {
+      kind: { check: (x, w) => (KINDS.includes(x) ? x : (c.note(w, 'should be "reading" or "listening"'), null)) },
+      part: { optional: true, check: (x, w) => int(x, w, 1, 3) },
       title: { check: (x, w) => c.str(x, w, 120) },
       lines: { check: (x, w) => c.arr(x, w, { min: 1, max: 60 }, (line, lw) => c.obj(line, lw, {
         sv: { check: (y, yw) => c.str(y, yw, 400) },
@@ -63,24 +66,26 @@ export function validateAnswer(input) {
         return out;
       }) },
     });
+    if (whole && v && v.part === undefined) c.note(where, 'is missing "part"');
     return v;
   };
   const entry = (fields) => (x, w) => c.arr(x, w, { max: 200 }, (e, ew) => c.obj(e, ew, fields));
   const s80 = { check: (y, yw) => c.str(y, yw, 80) };
   const value = c.obj(input, 'The answer', {
     part: { check: (x, w) => c.str(x, w, 20) },
-    texts: { check: (x, w) => c.arr(x, w, { min: 1, max: 4 }, text) },
+    texts: { check: (x, w) => c.arr(x, w, { min: 1, max: whole ? 12 : 4 }, text) },
     new_words: { optional: true, default: [], check: entry({ form: s80, lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) } }) },
     new_phrases: { optional: true, default: [], check: entry({ sv: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) } }) },
     inflections: { optional: true, default: [], check: entry({ form: s80, lemma: s80 }) },
     names: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 200 }, (n, nw) => c.str(n, nw, 80)) },
+    meaning_checks: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 100 }, (e, ew) => c.obj(e, ew, { form: s80, lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) } })) },
     starter_words: { optional: true, default: [], check: entry({ lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) } }) },
     // G-03 (FR-307, FR-313, FR-315): patterns, explanations for Explain flags, fixes for reports.
     patterns: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 20 }, (p, pw) => c.obj(p, pw, {
       name: s80,
       explain_en: { check: (y, yw) => c.str(y, yw, 300) },
       places: { optional: true, default: [], check: (y, yw) => c.arr(y, yw, { max: 20 }, (pl, plw) => c.obj(pl, plw, {
-        text: { check: (z, zw) => int(z, zw, 1, 4) },
+        text: { check: (z, zw) => int(z, zw, 1, whole ? 12 : 4) },
         line: { check: (z, zw) => int(z, zw, 1, 60) },
         words: s80,
       })) },
@@ -122,6 +127,23 @@ export function validateMeanings(input) {
     meanings: { check: (x, w) => c.arr(x, w, { min: 1, max: 200 }, (e, ew) => c.obj(e, ew, {
       form: s80, lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) },
     })) },
+  });
+  return c.problems.length ? { ok: false, problems: c.problems } : { ok: true, value };
+}
+
+// An own text's AI answer (G-03 FR-318, contracts of specs/003-reading-word-menu).
+export const COPYRIGHT = ['free', 'unsure', 'copyrighted'];
+export function validateOwn(input) {
+  const c = checker();
+  const s80 = { check: (y, yw) => c.str(y, yw, 80) };
+  const value = c.obj(input, 'The answer', {
+    own: { check: (x, w) => c.str(x, w, 30) },
+    copyright: { check: (x, w) => (COPYRIGHT.includes(x) ? x : (c.note(w, 'should be "free", "unsure" or "copyrighted"'), null)) },
+    copyright_note: { optional: true, check: (x, w) => c.str(x, w, 300) },
+    words: { check: (x, w) => c.arr(x, w, { min: 1, max: 1000 }, (e, ew) => c.obj(e, ew, {
+      form: s80, lemma: s80, en: { check: (y, yw) => c.str(y, yw, 200) }, explain_sv: { optional: true, check: (y, yw) => c.str(y, yw, 300) },
+    })) },
+    names: { optional: true, default: [], check: (x, w) => c.arr(x, w, { max: 200 }, (n, nw) => c.str(n, nw, 80)) },
   });
   return c.problems.length ? { ok: false, problems: c.problems } : { ok: true, value };
 }

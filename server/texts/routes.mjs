@@ -4,12 +4,13 @@ import { sendJson, HttpError } from '../web/http.mjs';
 import { createWordStore } from '../words/store.mjs';
 import { createPackages } from './packages.mjs';
 import { applyRating, RATINGS } from './ratings.mjs';
+import { DEFAULT_SIZES } from '../config.mjs';
 
 export const MAX_ANSWER = 80000;
 
-export function registerTextRoutes(router, { db, now = () => Date.now() }) {
+export function registerTextRoutes(router, { db, sizes = DEFAULT_SIZES, now = () => Date.now() }) {
   const words = createWordStore({ db, now });
-  const packages = createPackages({ db, words, now });
+  const packages = createPackages({ db, words, sizes, now });
 
   function ownText(accountId, raw) {
     const id = Number(raw);
@@ -35,8 +36,14 @@ export function registerTextRoutes(router, { db, now = () => Date.now() }) {
 
   router.add({
     method: 'POST', path: '/api/prompt', access: 'agreed',
-    schema: { action: { type: 'enum', values: ['next', 'new_package'] } },
+    schema: { action: { type: 'enum', values: ['next', 'new_package', 'new_chat'] } },
     handler: (ctx) => sendJson(ctx.res, 200, packages.requestPrompt(ctx.account.id, ctx.body.action)),
+  });
+
+  router.add({
+    method: 'POST', path: '/api/whole-package', access: 'agreed',
+    schema: { on: { type: 'boolean' } },
+    handler: (ctx) => sendJson(ctx.res, 200, packages.setWholePackage(ctx.account.id, ctx.body.on)),
   });
 
   router.add({
@@ -56,7 +63,7 @@ export function registerTextRoutes(router, { db, now = () => Date.now() }) {
       const answered = db.prepare('SELECT position, option, right FROM question_answers WHERE text_id = ? ORDER BY position').all(text.id)
         .map((a) => ({ position: a.position, option: a.option, right: !!a.right }));
       const rating = db.prepare('SELECT value FROM ratings WHERE text_id = ?').get(text.id)?.value ?? null;
-      sendJson(ctx.res, 200, { id: text.id, title: text.title, topic: text.topic, lines, questions, answered, rating });
+      sendJson(ctx.res, 200, { id: text.id, title: text.title, kind: text.kind, topic: text.topic, lines, questions, answered, rating });
     },
   });
 

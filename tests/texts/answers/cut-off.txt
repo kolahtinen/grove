@@ -3,6 +3,7 @@
   "part": "TEST-1",
   "texts": [
     {
+      "kind": "reading",
       "title": "En kall morgon",
       "lines": [
         {
@@ -103,6 +104,7 @@
       ]
     },
     {
+      "kind": "reading",
       "title": "Olles väska",
       "lines": [
         {
@@ -203,6 +205,7 @@
       ]
     },
     {
+      "kind": "listening",
       "title": "En bra dag",
       "lines": [
         {

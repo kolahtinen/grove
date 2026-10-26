@@ -1,4 +1,7 @@
-// The Leaves page (FR-412): drilled leaves by mark, unmarked leaves apart; add and delete.
+// The Leaves page (FR-412): drilled leaves by mark, unmarked leaves apart; add and delete. A typed
+// item takes the word list's meaning; without one the learner gives theirs (G-02 FR-207).
+import { HttpError } from '../web/http.mjs';
+import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
 import { strength, isDue } from './schedule.mjs';
 import { createItems } from './items.mjs';
 
@@ -15,8 +18,12 @@ export function createLeaves({ db, now = () => Date.now() }) {
         unmarked: leaves.filter((i) => !i.drilled && i.kind !== 'pattern').map((i) => view(i, t)),
       };
     },
-    add(accountId, { text, kind = 'word' }) {
-      const item = items.findOrCreate(accountId, text, kind);
+    add(accountId, { text, kind = 'word', en }) {
+      const own = en?.trim() || null;
+      if (!items.find(accountId, text, kind) && !own && (kind === 'pattern' || !dictionaryMeaning(text))) {
+        throw new HttpError(400, 'needs_meaning', 'grove has no meaning for this. What does it mean? (Your best guess is fine.)');
+      }
+      const item = items.findOrCreate(accountId, text, kind, null, own);
       items.setMarks(item, { read: true, remember: !!item.to_remember });
       return { result: 'added' };
     },

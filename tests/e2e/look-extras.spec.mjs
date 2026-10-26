@@ -29,8 +29,8 @@ async function addSample(page) {
   return page.evaluate(async ({ sample, tag }) => {
     const me = await (await fetch('/api/me')).json();
     const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
-    let p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'next' }) });
-    if (p.status === 409) p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
+    // A new package gives a fresh part: \"next\" may give a waiting redo since G-02 FR-206 changed (2026-10-26).
+    const p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
     const prompt = await p.json();
     const answer = JSON.parse(sample.replaceAll('TEST-1', prompt.code));
     answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });

@@ -421,3 +421,11 @@ button.option.wrong::after { content: "✗"; }
   .sheet:not([hidden]), .grow-pop, button.option.right, button.option.wrong { animation: fade-in .15s ease !important; }
   button.option.right::after, button.option.wrong::after { animation: none !important; }
 }
+
+/* G-02 FR-201, FR-203: the prompt steps, each with its own Copy prompt; the text shows only when copying fails. */
+.prompt-steps { list-style: none; margin: 0 0 .8rem; padding: 0; display: grid; gap: .6rem; }
+.prompt-step { display: grid; gap: .35rem; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 16px; }
+.prompt-step .step-label { font-size: .88rem; }
+.prompt-step .copied { color: var(--ok); font-size: .85rem; }
+.prompt-step textarea { font-size: .8rem; }
+label.check { display: flex; gap: .5rem; align-items: center; margin-top: .6rem; }

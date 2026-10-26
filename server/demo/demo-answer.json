@@ -2,6 +2,7 @@
  "part": "DEMO-1",
  "texts": [
   {
+   "kind": "reading",
    "title": "En kall morgon",
    "lines": [
     {
@@ -158,6 +159,7 @@
    ]
   },
   {
+   "kind": "reading",
    "title": "Brevet i väskan",
    "lines": [
     {
@@ -312,6 +314,7 @@
    ]
   },
   {
+   "kind": "listening",
    "title": "Lördag på torget",
    "lines": [
     {
@@ -408,6 +411,7 @@
    ]
   },
   {
+   "kind": "reading",
    "title": "Den borttappade nyckeln",
    "lines": [
     {

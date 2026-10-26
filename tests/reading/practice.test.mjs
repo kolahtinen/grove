@@ -35,10 +35,12 @@ test('FR-310 RQ-274 RQ-278 RQ-58: practice asks, in text order, what a leaf mean
 
 test('FR-310 RQ-278: never more than 8 questions, and a word without enough other meanings is skipped', async () => {
   const db = t.grove.db;
-  db.prepare("UPDATE words SET en = NULL WHERE account_id = ? AND lemma NOT IN ('kopp', 'räkna')").run(learner.id);
-  db.prepare("DELETE FROM word_meanings WHERE account_id = ? AND word_id NOT IN (SELECT id FROM words WHERE lemma IN ('kopp', 'räkna'))").run(learner.id);
+  // Every leaf has a meaning now (the word list's at least, G-03 FR-306), so leave the learner one
+  // other word's meaning: no question can have 3 options.
+  db.prepare("UPDATE words SET en = NULL WHERE account_id = ? AND lemma NOT IN ('kopp')").run(learner.id);
+  db.prepare("DELETE FROM word_meanings WHERE account_id = ? AND word_id NOT IN (SELECT id FROM words WHERE lemma IN ('kopp'))").run(learner.id);
   const res = await c.get(`/api/practice?id=${textId(t, learner.id, 'En bra dag')}`);
-  assert.equal(res.body.questions.length, 0, 'with only 2 meanings known, no question can have 3 options');
+  assert.equal(res.body.questions.length, 0, 'with only 1 other meaning known, no question can have 3 options');
 });
 
 test('FR-319 RQ-155: another account gets 404 for practice on this text', async () => {

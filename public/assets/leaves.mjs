@@ -14,7 +14,7 @@ async function load() {
     for (const item of data[key]) {
       const li = el('li', 'leaf-row');
       const head = el('p');
-      head.append(el('strong', '', item.lemma), document.createTextNode(` — ${item.en || 'meaning missing'}`));
+      head.append(el('strong', '', item.lemma), document.createTextNode(item.en ? ` — ${item.en}` : ''));
       const row = el('div', 'row small-row');
       const play = el('button', 'bar-button', 'Play');
       play.type = 'button';
@@ -48,11 +48,19 @@ if (stagesRes.ok) setRate((await stagesRes.json()).speechRate);
 await load();
 $('add-form').addEventListener('submit', async (event) => {
   event.preventDefault();
-  const text = event.target.elements.text.value.trim();
+  const form = event.target;
+  const text = form.elements.text.value.trim();
+  const en = form.elements.en.value.trim();
   if (!text) return;
-  const r = await post('/api/leaves', { text, kind: text.includes(' ') ? 'phrase' : 'word' });
-  if (!r.ok) { showMessage($('leaves-message'), r.message); return; }
-  event.target.reset();
-  showMessage($('leaves-message'), 'Added. Use “Get meanings” on Home for its meaning.', 'ok');
+  // A word grove's word list doesn't have needs the learner's own meaning (FR-412, G-02 FR-207).
+  const r = await post('/api/leaves', { text, kind: text.includes(' ') ? 'phrase' : 'word', ...(en ? { en } : {}) });
+  if (!r.ok) {
+    if (r.data.error === 'needs_meaning') { form.elements.en.hidden = false; form.elements.en.focus(); }
+    showMessage($('leaves-message'), r.message);
+    return;
+  }
+  form.reset();
+  form.elements.en.hidden = true;
+  showMessage($('leaves-message'), en ? 'Added with your meaning. Your AI will check it in your next texts.' : 'Added.', 'ok');
   await load();
 });

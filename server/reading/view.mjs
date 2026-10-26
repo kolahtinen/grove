@@ -5,6 +5,7 @@ import { tokenize } from '../words/tokens.mjs';
 import { createResolver } from '../words/resolve.mjs';
 import { createWordStore } from '../words/store.mjs';
 import { unmarkedOf } from '../drill/marking.mjs';
+import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
 
 const WORD = /\p{L}+(?:[-’']\p{L}+)*/gu;
 
@@ -35,7 +36,8 @@ export function reportedQuestions(db, textId) {
 
 export function buildReading(db, accountId, textId) {
   const text = ownText(db, accountId, textId);
-  const settings = db.prepare('SELECT show_translations, speech_rate, voice_help_shown FROM learner_settings WHERE account_id = ?').get(accountId);
+  if (!text.ready) throw new HttpError(409, 'not_ready', 'Paste your AI\'s answer for this text first.');
+  const settings = db.prepare('SELECT show_translations, speech_rate, voice_help_shown, target_share FROM learner_settings WHERE account_id = ?').get(accountId);
   const resolver = createResolver(db, accountId);
   const words = createWordStore({ db });
   const names = db.prepare('SELECT name FROM names WHERE account_id = ?').all(accountId).map((r) => r.name);
@@ -51,6 +53,8 @@ export function buildReading(db, accountId, textId) {
   const formMeaning = new Map();
   for (const r of db.prepare(`SELECT f.form, m.en FROM word_forms f JOIN word_meanings m ON m.word_id = f.word_id
       WHERE f.account_id = ? AND m.text_id = ?`).all(accountId, text.id)) formMeaning.set(r.form, r.en);
+  // An own text's AI meanings, word by word (FR-318).
+  const textMeaning = new Map(db.prepare('SELECT form, en FROM text_meanings WHERE text_id = ?').all(text.id).map((r) => [r.form, r.en]));
   const explanations = db.prepare('SELECT form, lemma, explain_en FROM explanations WHERE account_id = ? ORDER BY id').all(accountId);
   const patterns = db.prepare(`SELECT DISTINCT w.id, w.lemma AS name, w.en AS explain FROM pattern_places p JOIN words w ON w.id = p.word_id
     WHERE p.text_id = ? ORDER BY w.id`).all(text.id);
@@ -76,7 +80,8 @@ export function buildReading(db, accountId, textId) {
         tok.lemmas = r.lemmas;
         if (r.status !== 'name') {
           tok.meaning = formMeaning.get(tok.word) ?? r.lemmas.map((l) => meaningHere.get(l)).find(Boolean)
-            ?? meaningHere.get(tok.word) ?? r.lemmas.map((l) => meaningOf.get(l)).find(Boolean) ?? null;
+            ?? meaningHere.get(tok.word) ?? textMeaning.get(tok.word) ?? r.lemmas.map((l) => meaningOf.get(l)).find(Boolean)
+            ?? dictionaryMeaning(tok.word)?.en ?? r.lemmas.map((l) => dictionaryMeaning(l)?.en).find(Boolean) ?? null;
           const ex = explanations.filter((e) => e.form === tok.word || (e.lemma && r.lemmas.includes(e.lemma)) || r.lemmas.includes(e.form)).at(-1);
           if (ex) tok.explanation = ex.explain_en;
         }
@@ -126,6 +131,10 @@ export function buildReading(db, accountId, textId) {
     id: text.id,
     title: text.title,
     own: !!text.own,
+    kind: text.kind,
+    knownShare: text.own ? text.known_share : null,
+    targetShare: settings?.target_share ?? 95,
+    copyright: text.own && text.copyright_view ? { view: text.copyright_view, note: text.copyright_note } : null,
     showTranslations: settings ? !!settings.show_translations : true,
     speechRate: settings?.speech_rate ?? 1,
     voiceHelpShown: !!settings?.voice_help_shown,

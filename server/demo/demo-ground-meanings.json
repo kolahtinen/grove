@@ -1,0 +1,1614 @@
+{
+ "jag": {
+  "en": "I",
+  "explain_sv": "Den som talar."
+ },
+ "du": {
+  "en": "you",
+  "explain_sv": "Den som jag talar med."
+ },
+ "han": {
+  "en": "he",
+  "explain_sv": "En man eller pojke som vi talar om."
+ },
+ "hon": {
+  "en": "she",
+  "explain_sv": "En kvinna eller flicka som vi talar om."
+ },
+ "den": {
+  "en": "it (en-word)",
+  "explain_sv": "Används om en sak, till exempel en bil."
+ },
+ "det": {
+  "en": "it; there",
+  "explain_sv": "Används om en sak, till exempel ett hus. Också i \"det regnar\"."
+ },
+ "vi": {
+  "en": "we",
+  "explain_sv": "Jag och andra personer."
+ },
+ "ni": {
+  "en": "you (plural)",
+  "explain_sv": "Du och andra personer."
+ },
+ "de": {
+  "en": "they",
+  "explain_sv": "Andra personer eller saker."
+ },
+ "man": {
+  "en": "one, you (people in general); man",
+  "explain_sv": "Alla eller vem som helst. Också: en vuxen pojke."
+ },
+ "mig": {
+  "en": "me",
+  "explain_sv": "Jag, efter till exempel \"ser\" eller \"till\"."
+ },
+ "dig": {
+  "en": "you (object)",
+  "explain_sv": "Du, efter till exempel \"ser\" eller \"till\"."
+ },
+ "honom": {
+  "en": "him",
+  "explain_sv": "Han, efter till exempel \"ser\" eller \"till\"."
+ },
+ "henne": {
+  "en": "her",
+  "explain_sv": "Hon, efter till exempel \"ser\" eller \"till\"."
+ },
+ "oss": {
+  "en": "us",
+  "explain_sv": "Vi, efter till exempel \"ser\" eller \"till\"."
+ },
+ "er": {
+  "en": "you (plural object); your",
+  "explain_sv": "Ni, efter till exempel \"ser\". Också: som tillhör er."
+ },
+ "dem": {
+  "en": "them",
+  "explain_sv": "De, efter till exempel \"ser\" eller \"till\"."
+ },
+ "min": {
+  "en": "my, mine",
+  "explain_sv": "Som tillhör mig."
+ },
+ "din": {
+  "en": "your, yours",
+  "explain_sv": "Som tillhör dig."
+ },
+ "hans": {
+  "en": "his",
+  "explain_sv": "Som tillhör honom."
+ },
+ "hennes": {
+  "en": "her, hers",
+  "explain_sv": "Som tillhör henne."
+ },
+ "vår": {
+  "en": "our, ours; spring",
+  "explain_sv": "Som tillhör oss. Också: tiden före sommaren."
+ },
+ "deras": {
+  "en": "their, theirs",
+  "explain_sv": "Som tillhör dem."
+ },
+ "sin": {
+  "en": "his/her/their own",
+  "explain_sv": "Som tillhör personen själv: \"Hon tar sin väska.\""
+ },
+ "sitt": {
+  "en": "his/her/their own (ett-word)",
+  "explain_sv": "Som sin, med ett-ord: \"Han tar sitt kaffe.\""
+ },
+ "sina": {
+  "en": "his/her/their own (plural)",
+  "explain_sv": "Som sin, med många saker: \"Hon tar sina böcker.\""
+ },
+ "en": {
+  "en": "a, an; one",
+  "explain_sv": "Ett ord före en-ord: en bil, en dag. Också talet 1."
+ },
+ "ett": {
+  "en": "a, an; one",
+  "explain_sv": "Ett ord före ett-ord: ett hus, ett år."
+ },
+ "och": {
+  "en": "and",
+  "explain_sv": "Binder ihop ord: kaffe och te."
+ },
+ "eller": {
+  "en": "or",
+  "explain_sv": "Ett av två: kaffe eller te?"
+ },
+ "men": {
+  "en": "but",
+  "explain_sv": "Visar att något är annorlunda: Jag är trött, men glad."
+ },
+ "att": {
+  "en": "to; that",
+  "explain_sv": "Före ett verb: att äta. Också: Jag vet att du är här."
+ },
+ "som": {
+  "en": "who, which, that; like, as",
+  "explain_sv": "Han som bor här. Också: lika som."
+ },
+ "om": {
+  "en": "if; about",
+  "explain_sv": "Om det regnar stannar jag hemma. Också: en bok om katter."
+ },
+ "för": {
+  "en": "for; too; because",
+  "explain_sv": "Till någon: en present för dig. Också: för stor."
+ },
+ "så": {
+  "en": "so; then",
+  "explain_sv": "På det sättet. Också: mycket, som i \"så fint\"."
+ },
+ "inte": {
+  "en": "not",
+  "explain_sv": "Säger nej till något: Jag är inte trött."
+ },
+ "också": {
+  "en": "also, too",
+  "explain_sv": "Med: Jag vill också ha kaffe."
+ },
+ "bara": {
+  "en": "only, just",
+  "explain_sv": "Inget mer än det."
+ },
+ "redan": {
+  "en": "already",
+  "explain_sv": "Tidigare än man tror."
+ },
+ "nog": {
+  "en": "probably; enough",
+  "explain_sv": "Kanske, troligen. Också: tillräckligt."
+ },
+ "kanske": {
+  "en": "maybe, perhaps",
+  "explain_sv": "Det är inte säkert."
+ },
+ "alltid": {
+  "en": "always",
+  "explain_sv": "Varje gång."
+ },
+ "aldrig": {
+  "en": "never",
+  "explain_sv": "Inte en enda gång."
+ },
+ "ofta": {
+  "en": "often",
+  "explain_sv": "Många gånger."
+ },
+ "ibland": {
+  "en": "sometimes",
+  "explain_sv": "Några gånger, inte alltid."
+ },
+ "igen": {
+  "en": "again",
+  "explain_sv": "En gång till."
+ },
+ "sedan": {
+  "en": "then, afterwards; since",
+  "explain_sv": "Efter det."
+ },
+ "då": {
+  "en": "then; when",
+  "explain_sv": "Vid den tiden."
+ },
+ "nu": {
+  "en": "now",
+  "explain_sv": "Just den här tiden."
+ },
+ "snart": {
+  "en": "soon",
+  "explain_sv": "Om en kort tid."
+ },
+ "sent": {
+  "en": "late",
+  "explain_sv": "Efter den vanliga tiden."
+ },
+ "tidigt": {
+  "en": "early",
+  "explain_sv": "Före den vanliga tiden."
+ },
+ "idag": {
+  "en": "today",
+  "explain_sv": "Den här dagen."
+ },
+ "igår": {
+  "en": "yesterday",
+  "explain_sv": "Dagen före idag."
+ },
+ "imorgon": {
+  "en": "tomorrow",
+  "explain_sv": "Dagen efter idag."
+ },
+ "ikväll": {
+  "en": "this evening, tonight",
+  "explain_sv": "Den här kvällen."
+ },
+ "här": {
+  "en": "here",
+  "explain_sv": "På den här platsen."
+ },
+ "där": {
+  "en": "there",
+  "explain_sv": "På den platsen."
+ },
+ "hit": {
+  "en": "here (to here)",
+  "explain_sv": "Till den här platsen."
+ },
+ "dit": {
+  "en": "there (to there)",
+  "explain_sv": "Till den platsen."
+ },
+ "hem": {
+  "en": "home (to home)",
+  "explain_sv": "Till huset där man bor."
+ },
+ "hemma": {
+  "en": "at home",
+  "explain_sv": "I huset där man bor."
+ },
+ "borta": {
+  "en": "away, gone",
+  "explain_sv": "Inte här."
+ },
+ "ute": {
+  "en": "outside, out",
+  "explain_sv": "Inte i huset."
+ },
+ "inne": {
+  "en": "inside, in",
+  "explain_sv": "I huset eller i rummet."
+ },
+ "upp": {
+  "en": "up",
+  "explain_sv": "Mot himlen."
+ },
+ "ner": {
+  "en": "down",
+  "explain_sv": "Mot golvet eller marken."
+ },
+ "bort": {
+  "en": "away",
+  "explain_sv": "Från en plats."
+ },
+ "fram": {
+  "en": "forward, out",
+  "explain_sv": "Framåt, mot något."
+ },
+ "tillbaka": {
+  "en": "back",
+  "explain_sv": "Till platsen där man var förut."
+ },
+ "i": {
+  "en": "in",
+  "explain_sv": "Inne i något: i huset."
+ },
+ "på": {
+  "en": "on; at",
+  "explain_sv": "Ovanpå något: på bordet."
+ },
+ "till": {
+  "en": "to",
+  "explain_sv": "Mot en plats eller person: till skolan."
+ },
+ "från": {
+  "en": "from",
+  "explain_sv": "Där något börjar: från Stockholm."
+ },
+ "med": {
+  "en": "with",
+  "explain_sv": "Tillsammans: kaffe med mjölk."
+ },
+ "utan": {
+  "en": "without",
+  "explain_sv": "Inte med: kaffe utan socker."
+ },
+ "av": {
+  "en": "of; by; off",
+  "explain_sv": "En kopp av glas. En bok av Astrid Lindgren."
+ },
+ "under": {
+  "en": "under; during",
+  "explain_sv": "Nedanför något. Också: medan något händer."
+ },
+ "över": {
+  "en": "over, above",
+  "explain_sv": "Ovanför något."
+ },
+ "efter": {
+  "en": "after",
+  "explain_sv": "Senare än något."
+ },
+ "före": {
+  "en": "before",
+  "explain_sv": "Tidigare än något."
+ },
+ "vid": {
+  "en": "by, at, next to",
+  "explain_sv": "Nära något: vid bordet."
+ },
+ "hos": {
+  "en": "at (someone's place)",
+  "explain_sv": "I någons hem: hos mormor."
+ },
+ "mellan": {
+  "en": "between",
+  "explain_sv": "I mitten av två saker."
+ },
+ "bakom": {
+  "en": "behind",
+  "explain_sv": "På andra sidan av något."
+ },
+ "framför": {
+  "en": "in front of",
+  "explain_sv": "Före något, så att man ser det."
+ },
+ "runt": {
+  "en": "around",
+  "explain_sv": "Runt omkring något."
+ },
+ "genom": {
+  "en": "through",
+  "explain_sv": "In på ena sidan och ut på den andra."
+ },
+ "mot": {
+  "en": "towards; against",
+  "explain_sv": "I riktning till något."
+ },
+ "vara": {
+  "en": "to be",
+  "explain_sv": "Finnas, till exempel: Jag är glad."
+ },
+ "ha": {
+  "en": "to have",
+  "explain_sv": "Äga något."
+ },
+ "göra": {
+  "en": "to do, to make",
+  "explain_sv": "Arbeta med något så att det blir klart."
+ },
+ "gå": {
+  "en": "to walk, to go",
+  "explain_sv": "Röra sig med fötterna."
+ },
+ "komma": {
+  "en": "to come",
+  "explain_sv": "Gå eller åka hit."
+ },
+ "åka": {
+  "en": "to go, to travel (by vehicle)",
+  "explain_sv": "Resa med bil, buss eller tåg."
+ },
+ "se": {
+  "en": "to see",
+  "explain_sv": "Använda ögonen."
+ },
+ "titta": {
+  "en": "to look",
+  "explain_sv": "Använda ögonen för att se något."
+ },
+ "höra": {
+  "en": "to hear",
+  "explain_sv": "Använda öronen."
+ },
+ "säga": {
+  "en": "to say",
+  "explain_sv": "Tala ord."
+ },
+ "fråga": {
+  "en": "to ask; a question",
+  "explain_sv": "Säga något för att få ett svar."
+ },
+ "svara": {
+  "en": "to answer",
+  "explain_sv": "Säga något efter en fråga."
+ },
+ "veta": {
+  "en": "to know",
+  "explain_sv": "Ha kunskap om något."
+ },
+ "tro": {
+  "en": "to think, to believe",
+  "explain_sv": "Tänka att något är sant."
+ },
+ "tycka": {
+  "en": "to think (have an opinion)",
+  "explain_sv": "Ha en åsikt: Jag tycker om kaffe."
+ },
+ "tänka": {
+  "en": "to think",
+  "explain_sv": "Använda huvudet."
+ },
+ "vilja": {
+  "en": "to want",
+  "explain_sv": "Önska något."
+ },
+ "kunna": {
+  "en": "can, to be able to",
+  "explain_sv": "Ha förmåga att göra något."
+ },
+ "måste": {
+  "en": "must, have to",
+  "explain_sv": "Det är nödvändigt."
+ },
+ "ska": {
+  "en": "will, shall, be going to",
+  "explain_sv": "Säger vad som händer senare."
+ },
+ "få": {
+  "en": "to get; may; few",
+  "explain_sv": "Ta emot något. Också: inte många."
+ },
+ "ta": {
+  "en": "to take",
+  "explain_sv": "Hämta något med handen."
+ },
+ "ge": {
+  "en": "to give",
+  "explain_sv": "Låta någon få något."
+ },
+ "sätta": {
+  "en": "to put, to place",
+  "explain_sv": "Lägga eller ställa något någonstans."
+ },
+ "ligga": {
+  "en": "to lie",
+  "explain_sv": "Vara ner på en säng eller ett golv."
+ },
+ "sitta": {
+  "en": "to sit",
+  "explain_sv": "Vara på en stol."
+ },
+ "stå": {
+  "en": "to stand",
+  "explain_sv": "Vara uppe på fötterna."
+ },
+ "bo": {
+  "en": "to live (somewhere)",
+  "explain_sv": "Ha sitt hem någonstans."
+ },
+ "heta": {
+  "en": "to be called",
+  "explain_sv": "Ha ett namn: Jag heter Elsa."
+ },
+ "leva": {
+  "en": "to live, to be alive",
+  "explain_sv": "Vara vid liv."
+ },
+ "jobba": {
+  "en": "to work",
+  "explain_sv": "Arbeta."
+ },
+ "arbeta": {
+  "en": "to work",
+  "explain_sv": "Göra sitt jobb."
+ },
+ "läsa": {
+  "en": "to read",
+  "explain_sv": "Titta på ord och förstå dem."
+ },
+ "skriva": {
+  "en": "to write",
+  "explain_sv": "Göra ord med en penna eller en dator."
+ },
+ "lära": {
+  "en": "to teach; to learn",
+  "explain_sv": "Hjälpa någon att kunna något."
+ },
+ "förstå": {
+  "en": "to understand",
+  "explain_sv": "Veta vad något betyder."
+ },
+ "prata": {
+  "en": "to talk",
+  "explain_sv": "Säga saker till någon."
+ },
+ "tala": {
+  "en": "to speak",
+  "explain_sv": "Prata."
+ },
+ "ringa": {
+  "en": "to call, to phone; to ring",
+  "explain_sv": "Prata med någon i telefon."
+ },
+ "köpa": {
+  "en": "to buy",
+  "explain_sv": "Betala för att få något."
+ },
+ "betala": {
+  "en": "to pay",
+  "explain_sv": "Ge pengar för något."
+ },
+ "kosta": {
+  "en": "to cost",
+  "explain_sv": "Ha ett pris."
+ },
+ "äta": {
+  "en": "to eat",
+  "explain_sv": "Ta mat in i munnen."
+ },
+ "dricka": {
+  "en": "to drink",
+  "explain_sv": "Ta vatten, kaffe eller te in i munnen."
+ },
+ "laga": {
+  "en": "to cook; to repair",
+  "explain_sv": "Göra mat. Också: göra något helt igen."
+ },
+ "sova": {
+  "en": "to sleep",
+  "explain_sv": "Vila med stängda ögon på natten."
+ },
+ "vakna": {
+  "en": "to wake up",
+  "explain_sv": "Sluta sova."
+ },
+ "duscha": {
+  "en": "to shower",
+  "explain_sv": "Tvätta sig med vatten som kommer uppifrån."
+ },
+ "klä": {
+  "en": "to dress",
+  "explain_sv": "Sätta på kläder."
+ },
+ "öppna": {
+  "en": "to open",
+  "explain_sv": "Göra så att något inte är stängt."
+ },
+ "stänga": {
+  "en": "to close",
+  "explain_sv": "Göra så att något inte är öppet."
+ },
+ "börja": {
+  "en": "to begin, to start",
+  "explain_sv": "Göra något för första gången, från början."
+ },
+ "sluta": {
+  "en": "to stop, to end",
+  "explain_sv": "Inte göra något mer."
+ },
+ "vänta": {
+  "en": "to wait",
+  "explain_sv": "Stanna tills något händer."
+ },
+ "hjälpa": {
+  "en": "to help",
+  "explain_sv": "Göra något för någon."
+ },
+ "leta": {
+  "en": "to look for, to search",
+  "explain_sv": "Försöka hitta något."
+ },
+ "hitta": {
+  "en": "to find",
+  "explain_sv": "Se något som man har letat efter."
+ },
+ "minnas": {
+  "en": "to remember",
+  "explain_sv": "Ha något kvar i huvudet."
+ },
+ "gilla": {
+  "en": "to like",
+  "explain_sv": "Tycka om."
+ },
+ "älska": {
+  "en": "to love",
+  "explain_sv": "Tycka mycket, mycket om."
+ },
+ "behöva": {
+  "en": "to need",
+  "explain_sv": "Inte kunna vara utan."
+ },
+ "använda": {
+  "en": "to use",
+  "explain_sv": "Göra något med en sak."
+ },
+ "spela": {
+  "en": "to play",
+  "explain_sv": "Göra musik eller en lek."
+ },
+ "springa": {
+  "en": "to run",
+  "explain_sv": "Gå mycket fort."
+ },
+ "simma": {
+  "en": "to swim",
+  "explain_sv": "Röra sig i vatten."
+ },
+ "cykla": {
+  "en": "to cycle, to ride a bike",
+  "explain_sv": "Åka cykel."
+ },
+ "köra": {
+  "en": "to drive",
+  "explain_sv": "Styra en bil."
+ },
+ "flyga": {
+  "en": "to fly",
+  "explain_sv": "Röra sig i luften."
+ },
+ "resa": {
+  "en": "to travel; a trip",
+  "explain_sv": "Åka till en annan plats."
+ },
+ "träffa": {
+  "en": "to meet",
+  "explain_sv": "Se och prata med någon."
+ },
+ "visa": {
+  "en": "to show",
+  "explain_sv": "Låta någon se något."
+ },
+ "bli": {
+  "en": "to become",
+  "explain_sv": "Börja vara något."
+ },
+ "hända": {
+  "en": "to happen",
+  "explain_sv": "Något sker."
+ },
+ "stanna": {
+  "en": "to stay; to stop",
+  "explain_sv": "Inte gå vidare."
+ },
+ "lämna": {
+  "en": "to leave",
+  "explain_sv": "Gå från en plats eller låta något vara kvar."
+ },
+ "bära": {
+  "en": "to carry",
+  "explain_sv": "Hålla något och gå med det."
+ },
+ "tvätta": {
+  "en": "to wash",
+  "explain_sv": "Göra rent med vatten."
+ },
+ "städa": {
+  "en": "to clean, to tidy",
+  "explain_sv": "Göra rent i huset."
+ },
+ "handla": {
+  "en": "to shop",
+  "explain_sv": "Köpa saker i en affär."
+ },
+ "välja": {
+  "en": "to choose",
+  "explain_sv": "Ta ett av flera."
+ },
+ "hoppas": {
+  "en": "to hope",
+  "explain_sv": "Vilja att något ska hända."
+ },
+ "skratta": {
+  "en": "to laugh",
+  "explain_sv": "Låta glad när något är roligt."
+ },
+ "gråta": {
+  "en": "to cry",
+  "explain_sv": "Tårar kommer när man är ledsen."
+ },
+ "le": {
+  "en": "to smile",
+  "explain_sv": "Visa glädje med munnen."
+ },
+ "dag": {
+  "en": "day",
+  "explain_sv": "Tiden när det är ljust."
+ },
+ "natt": {
+  "en": "night",
+  "explain_sv": "Tiden när det är mörkt och man sover."
+ },
+ "morgon": {
+  "en": "morning",
+  "explain_sv": "Början av dagen."
+ },
+ "kväll": {
+  "en": "evening",
+  "explain_sv": "Slutet av dagen."
+ },
+ "vecka": {
+  "en": "week",
+  "explain_sv": "Sju dagar."
+ },
+ "månad": {
+  "en": "month",
+  "explain_sv": "Ungefär fyra veckor."
+ },
+ "år": {
+  "en": "year",
+  "explain_sv": "Tolv månader."
+ },
+ "timme": {
+  "en": "hour",
+  "explain_sv": "Sextio minuter."
+ },
+ "minut": {
+  "en": "minute",
+  "explain_sv": "Sextio sekunder."
+ },
+ "klocka": {
+  "en": "clock, watch",
+  "explain_sv": "En sak som visar tiden."
+ },
+ "tid": {
+  "en": "time",
+  "explain_sv": "Timmar och minuter."
+ },
+ "gång": {
+  "en": "time (occasion)",
+  "explain_sv": "En gång, två gånger: hur ofta något händer."
+ },
+ "måndag": {
+  "en": "Monday",
+  "explain_sv": "Första dagen i veckan."
+ },
+ "tisdag": {
+  "en": "Tuesday",
+  "explain_sv": "Dagen efter måndag."
+ },
+ "onsdag": {
+  "en": "Wednesday",
+  "explain_sv": "Dagen i mitten av veckan."
+ },
+ "torsdag": {
+  "en": "Thursday",
+  "explain_sv": "Dagen före fredag."
+ },
+ "fredag": {
+  "en": "Friday",
+  "explain_sv": "Sista dagen före helgen."
+ },
+ "lördag": {
+  "en": "Saturday",
+  "explain_sv": "Första dagen i helgen."
+ },
+ "söndag": {
+  "en": "Sunday",
+  "explain_sv": "Sista dagen i veckan."
+ },
+ "mamma": {
+  "en": "mum, mother",
+  "explain_sv": "En kvinna som har barn."
+ },
+ "pappa": {
+  "en": "dad, father",
+  "explain_sv": "En man som har barn."
+ },
+ "barn": {
+  "en": "child",
+  "explain_sv": "En liten person, inte vuxen."
+ },
+ "son": {
+  "en": "son",
+  "explain_sv": "En pojke i en familj."
+ },
+ "dotter": {
+  "en": "daughter",
+  "explain_sv": "En flicka i en familj."
+ },
+ "bror": {
+  "en": "brother",
+  "explain_sv": "En pojke som har samma föräldrar som du."
+ },
+ "syster": {
+  "en": "sister",
+  "explain_sv": "En flicka som har samma föräldrar som du."
+ },
+ "familj": {
+  "en": "family",
+  "explain_sv": "Föräldrar och barn."
+ },
+ "vän": {
+  "en": "friend",
+  "explain_sv": "En person som man tycker om och träffar."
+ },
+ "kompis": {
+  "en": "friend, mate",
+  "explain_sv": "En vän."
+ },
+ "kvinna": {
+  "en": "woman",
+  "explain_sv": "En vuxen flicka."
+ },
+ "pojke": {
+  "en": "boy",
+  "explain_sv": "Ett barn som är man."
+ },
+ "flicka": {
+  "en": "girl",
+  "explain_sv": "Ett barn som är kvinna."
+ },
+ "person": {
+  "en": "person",
+  "explain_sv": "En människa."
+ },
+ "människa": {
+  "en": "human being, person",
+  "explain_sv": "En person."
+ },
+ "lärare": {
+  "en": "teacher",
+  "explain_sv": "En person som lär barn i skolan."
+ },
+ "läkare": {
+  "en": "doctor",
+  "explain_sv": "En person som hjälper sjuka."
+ },
+ "hus": {
+  "en": "house",
+  "explain_sv": "Ett hem med väggar och tak."
+ },
+ "lägenhet": {
+  "en": "flat, apartment",
+  "explain_sv": "Ett hem i ett stort hus."
+ },
+ "rum": {
+  "en": "room",
+  "explain_sv": "En del av ett hus."
+ },
+ "kök": {
+  "en": "kitchen",
+  "explain_sv": "Rummet där man lagar mat."
+ },
+ "badrum": {
+  "en": "bathroom",
+  "explain_sv": "Rummet där man duschar."
+ },
+ "sovrum": {
+  "en": "bedroom",
+  "explain_sv": "Rummet där man sover."
+ },
+ "dörr": {
+  "en": "door",
+  "explain_sv": "Man öppnar den för att gå in."
+ },
+ "fönster": {
+  "en": "window",
+  "explain_sv": "Man tittar ut genom det."
+ },
+ "bord": {
+  "en": "table",
+  "explain_sv": "Man äter vid det."
+ },
+ "stol": {
+  "en": "chair",
+  "explain_sv": "Man sitter på den."
+ },
+ "säng": {
+  "en": "bed",
+  "explain_sv": "Man sover i den."
+ },
+ "soffa": {
+  "en": "sofa",
+  "explain_sv": "En stor, mjuk stol för flera personer."
+ },
+ "lampa": {
+  "en": "lamp",
+  "explain_sv": "Den ger ljus."
+ },
+ "golv": {
+  "en": "floor",
+  "explain_sv": "Man går på det inne."
+ },
+ "vägg": {
+  "en": "wall",
+  "explain_sv": "Huset har fyra av dem."
+ },
+ "trädgård": {
+  "en": "garden",
+  "explain_sv": "Gräs och blommor vid ett hus."
+ },
+ "mat": {
+  "en": "food",
+  "explain_sv": "Det man äter."
+ },
+ "frukost": {
+  "en": "breakfast",
+  "explain_sv": "Maten på morgonen."
+ },
+ "lunch": {
+  "en": "lunch",
+  "explain_sv": "Maten mitt på dagen."
+ },
+ "middag": {
+  "en": "dinner",
+  "explain_sv": "Maten på kvällen."
+ },
+ "kaffe": {
+  "en": "coffee",
+  "explain_sv": "En varm, brun dryck."
+ },
+ "te": {
+  "en": "tea",
+  "explain_sv": "En varm dryck av blad."
+ },
+ "vatten": {
+  "en": "water",
+  "explain_sv": "Man dricker det. Det finns i sjön."
+ },
+ "mjölk": {
+  "en": "milk",
+  "explain_sv": "En vit dryck från kon."
+ },
+ "juice": {
+  "en": "juice",
+  "explain_sv": "En dryck av frukt."
+ },
+ "bröd": {
+  "en": "bread",
+  "explain_sv": "Man äter det med smör."
+ },
+ "smör": {
+  "en": "butter",
+  "explain_sv": "Man har det på brödet."
+ },
+ "ost": {
+  "en": "cheese",
+  "explain_sv": "Man gör den av mjölk."
+ },
+ "ägg": {
+  "en": "egg",
+  "explain_sv": "Hönan lägger det."
+ },
+ "kött": {
+  "en": "meat",
+  "explain_sv": "Mat från djur."
+ },
+ "fisk": {
+  "en": "fish",
+  "explain_sv": "Ett djur som simmar i vatten."
+ },
+ "kyckling": {
+  "en": "chicken",
+  "explain_sv": "En liten höna. Också maten."
+ },
+ "potatis": {
+  "en": "potato",
+  "explain_sv": "Den växer i jorden. Man kokar den."
+ },
+ "ris": {
+  "en": "rice",
+  "explain_sv": "Små vita korn som man kokar."
+ },
+ "pasta": {
+  "en": "pasta",
+  "explain_sv": "Mat från Italien, till exempel spaghetti."
+ },
+ "soppa": {
+  "en": "soup",
+  "explain_sv": "Varm mat som man äter med sked."
+ },
+ "sallad": {
+  "en": "salad",
+  "explain_sv": "Gröna blad och grönsaker."
+ },
+ "grönsak": {
+  "en": "vegetable",
+  "explain_sv": "Till exempel morot eller gurka."
+ },
+ "frukt": {
+  "en": "fruit",
+  "explain_sv": "Till exempel äpple eller banan."
+ },
+ "äpple": {
+  "en": "apple",
+  "explain_sv": "En rund röd eller grön frukt."
+ },
+ "banan": {
+  "en": "banana",
+  "explain_sv": "En lång gul frukt."
+ },
+ "tårta": {
+  "en": "cake",
+  "explain_sv": "En stor kaka för en fest."
+ },
+ "kaka": {
+  "en": "cake, biscuit",
+  "explain_sv": "Något sött som man bakar."
+ },
+ "socker": {
+  "en": "sugar",
+  "explain_sv": "Det gör mat och dryck söt."
+ },
+ "salt": {
+  "en": "salt",
+  "explain_sv": "Det vita man har i maten."
+ },
+ "stad": {
+  "en": "town, city",
+  "explain_sv": "En plats med många hus och människor."
+ },
+ "by": {
+  "en": "village",
+  "explain_sv": "En liten plats med få hus."
+ },
+ "land": {
+  "en": "country",
+  "explain_sv": "Till exempel Sverige."
+ },
+ "gata": {
+  "en": "street",
+  "explain_sv": "En väg i en stad."
+ },
+ "väg": {
+  "en": "road, way",
+  "explain_sv": "Man går eller åker på den."
+ },
+ "affär": {
+  "en": "shop",
+  "explain_sv": "Där man köper saker."
+ },
+ "butik": {
+  "en": "shop",
+  "explain_sv": "En affär."
+ },
+ "restaurang": {
+  "en": "restaurant",
+  "explain_sv": "Där man köper och äter mat."
+ },
+ "kafé": {
+  "en": "café",
+  "explain_sv": "Där man dricker kaffe och äter kakor."
+ },
+ "skola": {
+  "en": "school",
+  "explain_sv": "Där barn lär sig saker."
+ },
+ "sjukhus": {
+  "en": "hospital",
+  "explain_sv": "Där läkare hjälper sjuka."
+ },
+ "station": {
+  "en": "station",
+  "explain_sv": "Där tåget eller bussen stannar."
+ },
+ "tåg": {
+  "en": "train",
+  "explain_sv": "Det åker på räls."
+ },
+ "buss": {
+  "en": "bus",
+  "explain_sv": "En stor bil för många personer."
+ },
+ "bil": {
+  "en": "car",
+  "explain_sv": "Man kör den på vägen."
+ },
+ "cykel": {
+  "en": "bicycle, bike",
+  "explain_sv": "Den har två hjul."
+ },
+ "flygplats": {
+  "en": "airport",
+  "explain_sv": "Där flygplanen är."
+ },
+ "hotell": {
+  "en": "hotel",
+  "explain_sv": "Där man sover när man reser."
+ },
+ "park": {
+  "en": "park",
+  "explain_sv": "Gräs och träd i en stad."
+ },
+ "torg": {
+  "en": "square, market place",
+  "explain_sv": "En öppen plats i en stad."
+ },
+ "bibliotek": {
+  "en": "library",
+  "explain_sv": "Där man lånar böcker."
+ },
+ "kyrka": {
+  "en": "church",
+  "explain_sv": "Ett hus för gudstjänst."
+ },
+ "bank": {
+  "en": "bank",
+  "explain_sv": "Där man har sina pengar."
+ },
+ "skog": {
+  "en": "forest, wood",
+  "explain_sv": "Många träd."
+ },
+ "sjö": {
+  "en": "lake",
+  "explain_sv": "Vatten med land runt omkring."
+ },
+ "hav": {
+  "en": "sea",
+  "explain_sv": "Mycket stort vatten."
+ },
+ "strand": {
+  "en": "beach",
+  "explain_sv": "Sand vid vattnet."
+ },
+ "berg": {
+  "en": "mountain",
+  "explain_sv": "Mycket hög mark."
+ },
+ "träd": {
+  "en": "tree",
+  "explain_sv": "En stor växt."
+ },
+ "blomma": {
+  "en": "flower",
+  "explain_sv": "En fin växt med färg."
+ },
+ "gräs": {
+  "en": "grass",
+  "explain_sv": "Det gröna i parken."
+ },
+ "fågel": {
+  "en": "bird",
+  "explain_sv": "Ett djur som flyger."
+ },
+ "hund": {
+  "en": "dog",
+  "explain_sv": "Ett djur som säger \"voff\"."
+ },
+ "katt": {
+  "en": "cat",
+  "explain_sv": "Ett djur som säger \"mjau\"."
+ },
+ "häst": {
+  "en": "horse",
+  "explain_sv": "Ett stort djur som man kan rida på."
+ },
+ "sol": {
+  "en": "sun",
+  "explain_sv": "Den ger ljus och värme på dagen."
+ },
+ "regn": {
+  "en": "rain",
+  "explain_sv": "Vatten som kommer från himlen."
+ },
+ "snö": {
+  "en": "snow",
+  "explain_sv": "Kallt och vitt, det kommer på vintern."
+ },
+ "vind": {
+  "en": "wind",
+  "explain_sv": "Luften rör sig."
+ },
+ "väder": {
+  "en": "weather",
+  "explain_sv": "Sol, regn eller snö."
+ },
+ "himmel": {
+  "en": "sky",
+  "explain_sv": "Den är blå på dagen."
+ },
+ "stjärna": {
+  "en": "star",
+  "explain_sv": "Den lyser på himlen på natten."
+ },
+ "pengar": {
+  "en": "money",
+  "explain_sv": "Det man betalar med."
+ },
+ "kronor": {
+  "en": "crowns (Swedish money)",
+  "explain_sv": "Pengar i Sverige."
+ },
+ "bok": {
+  "en": "book",
+  "explain_sv": "Man läser den."
+ },
+ "tidning": {
+  "en": "newspaper",
+  "explain_sv": "Man läser nyheter i den."
+ },
+ "dator": {
+  "en": "computer",
+  "explain_sv": "Man skriver och läser på den."
+ },
+ "telefon": {
+  "en": "phone",
+  "explain_sv": "Man ringer med den."
+ },
+ "film": {
+  "en": "film, movie",
+  "explain_sv": "Man tittar på den."
+ },
+ "musik": {
+  "en": "music",
+  "explain_sv": "Man lyssnar på den."
+ },
+ "bild": {
+  "en": "picture",
+  "explain_sv": "En målning eller ett foto."
+ },
+ "brev": {
+  "en": "letter",
+  "explain_sv": "Man skriver det och skickar det."
+ },
+ "nyckel": {
+  "en": "key",
+  "explain_sv": "Man öppnar en dörr med den."
+ },
+ "väska": {
+  "en": "bag",
+  "explain_sv": "Man bär saker i den."
+ },
+ "jacka": {
+  "en": "jacket",
+  "explain_sv": "Man har den på sig när det är kallt."
+ },
+ "tröja": {
+  "en": "sweater, top",
+  "explain_sv": "Man har den på överkroppen."
+ },
+ "skor": {
+  "en": "shoes",
+  "explain_sv": "Man har dem på fötterna."
+ },
+ "byxor": {
+  "en": "trousers",
+  "explain_sv": "Man har dem på benen."
+ },
+ "bra": {
+  "en": "good",
+  "explain_sv": "Inte dålig."
+ },
+ "dålig": {
+  "en": "bad",
+  "explain_sv": "Inte bra."
+ },
+ "stor": {
+  "en": "big, large",
+  "explain_sv": "Inte liten."
+ },
+ "liten": {
+  "en": "small, little",
+  "explain_sv": "Inte stor."
+ },
+ "lång": {
+  "en": "long; tall",
+  "explain_sv": "Inte kort."
+ },
+ "kort": {
+  "en": "short; card",
+  "explain_sv": "Inte lång."
+ },
+ "ny": {
+  "en": "new",
+  "explain_sv": "Inte gammal."
+ },
+ "gammal": {
+  "en": "old",
+  "explain_sv": "Inte ny eller ung."
+ },
+ "ung": {
+  "en": "young",
+  "explain_sv": "Inte gammal."
+ },
+ "varm": {
+  "en": "warm",
+  "explain_sv": "Inte kall."
+ },
+ "kall": {
+  "en": "cold",
+  "explain_sv": "Inte varm."
+ },
+ "god": {
+  "en": "good, tasty",
+  "explain_sv": "Bra, särskilt om mat."
+ },
+ "snäll": {
+  "en": "kind, nice",
+  "explain_sv": "Någon som är god mot andra."
+ },
+ "glad": {
+  "en": "happy",
+  "explain_sv": "Inte ledsen."
+ },
+ "ledsen": {
+  "en": "sad; sorry",
+  "explain_sv": "Inte glad."
+ },
+ "trött": {
+  "en": "tired",
+  "explain_sv": "Man vill sova."
+ },
+ "arg": {
+  "en": "angry",
+  "explain_sv": "Man tycker mycket illa om något."
+ },
+ "rädd": {
+  "en": "afraid",
+  "explain_sv": "Man tror att något farligt händer."
+ },
+ "sjuk": {
+  "en": "ill, sick",
+  "explain_sv": "Inte frisk."
+ },
+ "frisk": {
+  "en": "healthy, well",
+  "explain_sv": "Inte sjuk."
+ },
+ "fin": {
+  "en": "nice, fine",
+  "explain_sv": "Vacker eller bra."
+ },
+ "vacker": {
+  "en": "beautiful",
+  "explain_sv": "Mycket fin att se på."
+ },
+ "ful": {
+  "en": "ugly",
+  "explain_sv": "Inte vacker."
+ },
+ "lätt": {
+  "en": "easy; light",
+  "explain_sv": "Inte svår. Också: inte tung."
+ },
+ "svår": {
+  "en": "difficult, hard",
+  "explain_sv": "Inte lätt."
+ },
+ "enkel": {
+  "en": "simple, easy",
+  "explain_sv": "Lätt att förstå."
+ },
+ "billig": {
+  "en": "cheap",
+  "explain_sv": "Den kostar lite."
+ },
+ "dyr": {
+  "en": "expensive",
+  "explain_sv": "Den kostar mycket."
+ },
+ "snabb": {
+  "en": "fast",
+  "explain_sv": "Den går fort."
+ },
+ "långsam": {
+  "en": "slow",
+  "explain_sv": "Den går inte fort."
+ },
+ "tidig": {
+  "en": "early",
+  "explain_sv": "Före den vanliga tiden."
+ },
+ "sen": {
+  "en": "late",
+  "explain_sv": "Efter den vanliga tiden."
+ },
+ "full": {
+  "en": "full",
+  "explain_sv": "Det finns inte plats för mer."
+ },
+ "tom": {
+  "en": "empty",
+  "explain_sv": "Det finns inget i den."
+ },
+ "öppen": {
+  "en": "open",
+  "explain_sv": "Inte stängd."
+ },
+ "stängd": {
+  "en": "closed",
+  "explain_sv": "Inte öppen."
+ },
+ "rolig": {
+  "en": "fun, funny",
+  "explain_sv": "Man skrattar."
+ },
+ "tråkig": {
+  "en": "boring",
+  "explain_sv": "Inte rolig."
+ },
+ "viktig": {
+  "en": "important",
+  "explain_sv": "Det betyder mycket."
+ },
+ "vanlig": {
+  "en": "usual, ordinary",
+  "explain_sv": "Som det brukar vara."
+ },
+ "egen": {
+  "en": "own",
+  "explain_sv": "Som tillhör en själv."
+ },
+ "hel": {
+  "en": "whole",
+  "explain_sv": "Inte trasig, inte en del."
+ },
+ "röd": {
+  "en": "red",
+  "explain_sv": "Färgen på blod."
+ },
+ "blå": {
+  "en": "blue",
+  "explain_sv": "Färgen på himlen."
+ },
+ "grön": {
+  "en": "green",
+  "explain_sv": "Färgen på gräs."
+ },
+ "gul": {
+  "en": "yellow",
+  "explain_sv": "Färgen på solen."
+ },
+ "svart": {
+  "en": "black",
+  "explain_sv": "Färgen på natten."
+ },
+ "vit": {
+  "en": "white",
+  "explain_sv": "Färgen på snö."
+ },
+ "brun": {
+  "en": "brown",
+  "explain_sv": "Färgen på kaffe."
+ },
+ "grå": {
+  "en": "grey",
+  "explain_sv": "Mellan svart och vit."
+ },
+ "två": {
+  "en": "two",
+  "explain_sv": "Talet 2."
+ },
+ "tre": {
+  "en": "three",
+  "explain_sv": "Talet 3."
+ },
+ "fyra": {
+  "en": "four",
+  "explain_sv": "Talet 4."
+ },
+ "fem": {
+  "en": "five",
+  "explain_sv": "Talet 5."
+ },
+ "sex": {
+  "en": "six",
+  "explain_sv": "Talet 6."
+ },
+ "sju": {
+  "en": "seven",
+  "explain_sv": "Talet 7."
+ },
+ "åtta": {
+  "en": "eight",
+  "explain_sv": "Talet 8."
+ },
+ "nio": {
+  "en": "nine",
+  "explain_sv": "Talet 9."
+ },
+ "tio": {
+  "en": "ten",
+  "explain_sv": "Talet 10."
+ },
+ "tjugo": {
+  "en": "twenty",
+  "explain_sv": "Talet 20."
+ },
+ "hundra": {
+  "en": "hundred",
+  "explain_sv": "Talet 100."
+ },
+ "första": {
+  "en": "first",
+  "explain_sv": "Nummer ett."
+ },
+ "andra": {
+  "en": "second; other",
+  "explain_sv": "Nummer två. Också: inte de här."
+ },
+ "vad": {
+  "en": "what",
+  "explain_sv": "Man frågar om en sak."
+ },
+ "vem": {
+  "en": "who",
+  "explain_sv": "Man frågar om en person."
+ },
+ "var": {
+  "en": "where; was",
+  "explain_sv": "Man frågar om en plats. Också: från \"vara\", som i \"det var kallt\"."
+ },
+ "vart": {
+  "en": "where (to)",
+  "explain_sv": "Man frågar om vägen till en plats."
+ },
+ "när": {
+  "en": "when",
+  "explain_sv": "Man frågar om tiden."
+ },
+ "hur": {
+  "en": "how",
+  "explain_sv": "Man frågar om sättet."
+ },
+ "varför": {
+  "en": "why",
+  "explain_sv": "Man frågar om orsaken."
+ },
+ "vilken": {
+  "en": "which",
+  "explain_sv": "Man frågar om en av flera."
+ },
+ "vilket": {
+  "en": "which (ett-word)",
+  "explain_sv": "Som vilken, med ett-ord."
+ },
+ "mycket": {
+  "en": "much, a lot; very",
+  "explain_sv": "En stor mängd."
+ },
+ "många": {
+  "en": "many",
+  "explain_sv": "Ett stort antal."
+ },
+ "lite": {
+  "en": "a little, a bit",
+  "explain_sv": "En liten mängd."
+ },
+ "alla": {
+  "en": "all, everyone",
+  "explain_sv": "Varje person."
+ },
+ "ingen": {
+  "en": "no, nobody",
+  "explain_sv": "Inte en enda person."
+ },
+ "inget": {
+  "en": "nothing, no (ett-word)",
+  "explain_sv": "Inte en enda sak."
+ },
+ "något": {
+  "en": "something, some",
+  "explain_sv": "En sak som man inte vet namnet på."
+ },
+ "någon": {
+  "en": "someone, some",
+  "explain_sv": "En person som man inte vet namnet på."
+ },
+ "varje": {
+  "en": "every, each",
+  "explain_sv": "Alla, en i taget."
+ },
+ "annan": {
+  "en": "other, another",
+  "explain_sv": "Inte den här."
+ },
+ "samma": {
+  "en": "same",
+  "explain_sv": "Inte annan."
+ },
+ "ja": {
+  "en": "yes",
+  "explain_sv": "Man säger det när man håller med."
+ },
+ "nej": {
+  "en": "no",
+  "explain_sv": "Man säger det när man inte håller med."
+ },
+ "hej": {
+  "en": "hi, hello",
+  "explain_sv": "Man säger det när man träffas."
+ },
+ "tack": {
+  "en": "thank you",
+  "explain_sv": "Man säger det när man får något."
+ },
+ "förlåt": {
+  "en": "sorry",
+  "explain_sv": "Man säger det när man har gjort fel."
+ },
+ "ursäkta": {
+  "en": "excuse me",
+  "explain_sv": "Man säger det för att få någons uppmärksamhet."
+ },
+ "snälla": {
+  "en": "please",
+  "explain_sv": "Man säger det när man ber om något."
+ }
+}

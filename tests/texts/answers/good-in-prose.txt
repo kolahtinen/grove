@@ -5,6 +5,7 @@ Here are your texts! I hope you enjoy the café story.
   "part": "TEST-1",
   "texts": [
     {
+      "kind": "reading",
       "title": "En kall morgon",
       "lines": [
         {
@@ -105,6 +106,7 @@ Here are your texts! I hope you enjoy the café story.
       ]
     },
     {
+      "kind": "reading",
       "title": "Olles väska",
       "lines": [
         {
@@ -205,6 +207,7 @@ Here are your texts! I hope you enjoy the café story.
       ]
     },
     {
+      "kind": "listening",
       "title": "En bra dag",
       "lines": [
         {

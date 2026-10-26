@@ -52,8 +52,9 @@ test('FR-705 FR-704 RQ-363 RQ-362: the reviewer skips the starting check, has no
   const p = (await c.post('/api/prompt', { action: 'next' })).body;
   assert.equal(p.part, 1);
   assert.equal(p.carriesSummary, true);
-  assert.match(p.prompt, /"En kall morgon": understood most/);
-  assert.match(p.prompt, /"Lördag på torget": understood a little/);
+  // The summary is in the setup since G-02 FR-203 changed (2026-10-26).
+  assert.match(p.steps[0], /"En kall morgon": understood most/);
+  assert.match(p.steps[0], /"Lördag på torget": understood a little/);
   const days = (await c.get('/api/progress')).body.days.filter((d) => d.minutes > 0);
   assert.equal(days.length, 3);
 });
@@ -61,4 +62,13 @@ test('FR-705 FR-704 RQ-363 RQ-362: the reviewer skips the starting check, has no
 test('FR-704 RQ-362: another account is untouched by the demo', () => {
   assert.equal(q('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?', other.id)[0].n, 0);
   assert.equal(q('SELECT COUNT(*) AS n FROM words WHERE account_id = ?', other.id)[0].n, 0);
+});
+
+test('FR-704 FR-702 RQ-399 RQ-361: the demo ground words have their checked meanings and Swedish explanations, and the dialogue is a listening text', () => {
+  const id = reviewer.id;
+  const lacking = q("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'ground' AND (en IS NULL OR explain_sv IS NULL)", id)[0].n;
+  assert.equal(lacking, 0);
+  assert.deepEqual(q("SELECT en, en_source FROM words WHERE account_id = ? AND lemma = 'efter'", id).map((r) => ({ ...r })), [{ en: 'after', en_source: 'ai' }]);
+  assert.deepEqual(q('SELECT title, kind FROM texts WHERE account_id = ? ORDER BY position', id).map((r) => r.kind), ['reading', 'reading', 'listening', 'reading']);
+  assert.equal(q("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND en IS NULL AND kind = 'word'", id)[0].n, 0, 'no demo word without a meaning');
 });

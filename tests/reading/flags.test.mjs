@@ -28,7 +28,7 @@ test('FR-313 RQ-297: Explain stores a flag with a code, reason and note, and the
 
 test('FR-314 RQ-298: an answer\'s explanation is stored, shown in the menu for that word, and closes its flag; an unanswered flag stays open', async () => {
   const { res } = await addPart(c, undefined, (a) => {
-    a.texts = a.texts.slice(0, 1); a.texts[0].title = 'Förklarat';
+    a.texts = a.texts.filter((x) => x.kind === 'reading').slice(0, 1); a.texts[0].title = 'Förklarat';
     a.explanations = [{ code: 'E1', explain_en: 'koppar + na: the plural definite form, "the cups".' }];
     return a;
   });
@@ -51,7 +51,7 @@ test('FR-315 RQ-301: a reported question stops counting, the next prompt lists i
   assert.match(prompt, /R1: text "Olles väska", question 2 \("Var hittar Elsa väskan\?"\) — reason: wrong answer — note: the sofa/);
   assert.match(prompt, /"fixes"/);
   const { res } = await addPart(c, undefined, (a) => {
-    a.texts = a.texts.slice(0, 1); a.texts[0].title = 'Fixat';
+    a.texts = a.texts.filter((x) => x.kind === 'reading').slice(0, 1); a.texts[0].title = 'Fixat';
     a.fixes = [{ code: 'R1', q: 'Var hittar Elsa väskan?', options: ['Bakom en soffa', 'Under ett bord'], answer: 0 }];
     return a;
   });
@@ -68,7 +68,8 @@ test('FR-315 RQ-301: a reported question\'s answers never count in the summary',
   await c.post('/api/rating', { textId: id, value: 'most' });
   t.grove.db.prepare('UPDATE learner_settings SET last_summary_at = 0').run();
   const res = await c.post('/api/prompt', { action: 'new_package' });
-  assert.match(res.body.prompt, /"Olles väska": understood most; questions right 1 of 1/);
+  // The summary is in the setup since G-02 FR-203 changed (2026-10-26).
+  assert.match(res.body.steps[0], /"Olles väska": understood most; questions right 1 of 1/);
 });
 
 test('FR-315 RQ-301: a reported sentence is fixed by replacing its line; a report needs exactly one position', async () => {
@@ -78,7 +79,7 @@ test('FR-315 RQ-301: a reported sentence is fixed by replacing its line; a repor
   assert.equal((await c.post('/api/report', { textId: id, reason: 'other' })).status, 400);
   assert.equal((await c.post('/api/report', { textId: id, linePosition: 0, questionPosition: 0, reason: 'other' })).status, 400);
   const { res } = await addPart(c, undefined, (a) => {
-    a.texts = a.texts.slice(0, 1); a.texts[0].title = 'Rad fixad';
+    a.texts = a.texts.filter((x) => x.kind === 'reading').slice(0, 1); a.texts[0].title = 'Rad fixad';
     a.fixes = [{ code, sv: 'Det är en mycket kall morgon i Stockholm.', en: 'It is a very cold morning in Stockholm.' }];
     return a;
   });

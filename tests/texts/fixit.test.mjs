@@ -28,24 +28,59 @@ async function start(email = 'learner@example.test') {
 
 const textCount = () => t.grove.db.prepare('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?').get(learner.id).n;
 
-test('FR-206 RQ-185 RQ-63: too many new words lists the problems and a fix-it prompt quoting the sentence and its words', async () => {
+test('FR-206 FR-214 RQ-185 RQ-63 RQ-395: a text with too many new words is asked for again on its own, quoting the sentence and its words; the other texts are kept', async () => {
   const { c, p } = await start();
   const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('too-many-new.json').replaceAll('TEST-1', p.code) });
-  assert.equal(res.body.result, 'needs_fix');
+  assert.equal(res.body.result, 'partly_accepted', JSON.stringify(res.body));
+  assert.equal(res.body.texts.length, 2, 'the two passing texts are kept');
   assert.ok(res.body.problems.some((x) => x.includes('Hon säljer stora bullar med kanel.')), JSON.stringify(res.body.problems));
-  assert.match(res.body.fix.prompt, /Hon säljer stora bullar med kanel\./);
-  assert.match(res.body.fix.prompt, /säljer, bullar, kanel/);
-  assert.match(res.body.fix.prompt, /whole corrected JSON block/);
-  assert.match(res.body.fix.prompt, new RegExp(p.code));
-  assert.equal(textCount(), 0, 'FR-205: nothing from a refused answer is stored');
+  assert.equal(res.body.next.kind, 'redo');
+  assert.match(res.body.next.prompt, /Hon säljer stora bullar med kanel\./);
+  assert.match(res.body.next.prompt, /säljer, bullar, kanel/);
+  assert.match(res.body.next.prompt, /one new reading text/);
+  assert.equal(textCount(), 2);
 
-  // The corrected answer goes into the fix-it exchange and is accepted once.
-  const fixed = await c.post('/api/answer', { exchangeId: res.body.fix.exchangeId, answer: answer('good.json').replaceAll('TEST-1', p.code) });
+  // The redo answer is one text of the failed kind, under the redo's code.
+  const redo = await c.get('/api/home');
+  assert.equal(redo.body.waiting.kind, 'redo');
+  const one = JSON.parse(answer('good.json'));
+  one.part = redo.body.waiting.code;
+  one.texts = [one.texts[0]];
+  const fixed = await c.post('/api/answer', { exchangeId: res.body.next.exchangeId, answer: JSON.stringify(one) });
   assert.equal(fixed.body.result, 'accepted', JSON.stringify(fixed.body));
   assert.equal(textCount(), 3);
-  const again = await c.post('/api/answer', { exchangeId: res.body.fix.exchangeId, answer: answer('good.json').replaceAll('TEST-1', p.code) });
+  const pkg = t.grove.db.prepare("SELECT parts_accepted FROM packages WHERE account_id = ? AND status = 'open'").get(learner.id);
+  assert.equal(pkg.parts_accepted, 1, 'the part is complete with all its texts');
+  const again = await c.post('/api/answer', { exchangeId: res.body.next.exchangeId, answer: JSON.stringify(one) });
   assert.equal(again.status, 409);
   assert.equal(textCount(), 3);
+});
+
+test('FR-206 RQ-395: after two answers in a row with a failed text, every later request in the package asks for one text; a new package starts at the normal size', async () => {
+  const db = t.grove.db;
+  const two = t.seedAccount({ email: 'two-fails@example.test' });
+  seedGround(db, two.id, known);
+  const { c, p } = await start('two-fails@example.test');
+  const first = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('too-many-new.json').replaceAll('TEST-1', p.code) });
+  assert.equal(first.body.result, 'partly_accepted');
+  const bad = JSON.parse(answer('too-many-new.json'));
+  bad.part = (await c.get('/api/home')).body.waiting.code;
+  bad.texts = [bad.texts[0]];
+  const second = await c.post('/api/answer', { exchangeId: first.body.next.exchangeId, answer: JSON.stringify(bad) });
+  assert.equal(second.body.result, 'partly_accepted', JSON.stringify(second.body));
+  assert.equal(db.prepare("SELECT one_text FROM packages WHERE account_id = ? AND status = 'open'").get(two.id).one_text, 1);
+  const redo = (await c.get('/api/home')).body.waiting;
+  assert.match(redo.prompt, /one new reading text/);
+  const ok = JSON.parse(answer('good.json'));
+  ok.part = redo.code;
+  ok.texts = [ok.texts[0]];
+  assert.equal((await c.post('/api/answer', { exchangeId: redo.exchangeId, answer: JSON.stringify(ok) })).body.result, 'accepted');
+  const next = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal(next.part, 2);
+  assert.match(next.prompt, /1 reading text, about/);
+  assert.doesNotMatch(next.prompt, /and 1 listening text/);
+  const fresh = (await c.post('/api/prompt', { action: 'new_package' })).body;
+  assert.match(fresh.prompt, /2 reading texts and 1 listening text/);
 });
 
 test('FR-206 RQ-185 RQ-41: a cut-off answer and a non-JSON answer get a fix-it prompt asking for the whole block again', async () => {
@@ -69,66 +104,67 @@ test('FR-205 RQ-41: an answer with an unknown field is refused and stores nothin
   assert.match(res.body.problems.join(' '), /admin/);
 });
 
-test('FR-207 RQ-379: unlisted new words get one meanings prompt; its answer fills meanings, ignores others, leaves the rest missing', async () => {
-  // A learner who hasn't met these words yet.
-  const learner = fresh;
+test('FR-207 RQ-379 RQ-396: unlisted new words found in grove\'s word list are accepted at once with the dictionary meaning, marked as such', async () => {
   const { c, p } = await start('fresh@example.test');
   const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) });
   assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
-  assert.ok(res.body.meanings, 'a meanings prompt is given');
-  for (const w of ['tolv', 'pensionär', 'paraply']) assert.match(res.body.meanings.prompt, new RegExp(w));
-  assert.doesNotMatch(res.body.meanings.prompt, /\bkopp\b/, 'words with a meaning are not asked about');
+  assert.equal(res.body.next, null, 'no prompt for meanings');
+  const db = t.grove.db;
+  const word = (lemma) => ({ ...db.prepare('SELECT en, en_source FROM words WHERE account_id = ? AND lemma = ?').get(fresh.id, lemma) });
+  assert.deepEqual(word('tolv'), { en: 'twelve', en_source: 'dictionary' });
+  assert.equal(word('paraply').en_source, 'dictionary');
+  assert.equal(word('kopp').en_source, 'ai');
+  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'leaf' AND en IS NULL").get(fresh.id).n, 0, 'no leaf without a meaning');
+});
+
+test('FR-207 RQ-397 RQ-379: a new word in neither the answer nor the word list holds its text back; a fix-it asks for just that meaning, and its answer releases the text', async () => {
+  const db = t.grove.db;
+  const held = t.seedAccount({ email: 'held@example.test' });
+  seedGround(db, held.id, known);
+  const { c, p } = await start('held@example.test');
+  const pasted = answer('unlisted-new.json').replaceAll('TEST-1', p.code).replace('ett paraply', 'ett snurrpelleplu');
+  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: pasted });
+  assert.equal(res.body.result, 'partly_accepted', JSON.stringify(res.body));
+  assert.equal(res.body.texts.length, 2, 'the text with the unknown word waits');
+  assert.equal(res.body.next.kind, 'meanings_fix');
+  assert.match(res.body.next.prompt, /snurrpelleplu/);
+  assert.doesNotMatch(res.body.next.prompt, /\btolv\b/, 'words with a dictionary meaning are not asked about');
+  assert.deepEqual(JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(res.body.next.exchangeId).asked_forms), ['snurrpelleplu']);
   const meanings = { meanings: [
-    { form: 'tolv', lemma: 'tolv', en: 'twelve', explain_sv: 'Tio och två.' },
-    { form: 'paraply', lemma: 'paraply', en: 'umbrella', explain_sv: 'Man har det när det regnar.' },
+    { form: 'snurrpelleplu', lemma: 'snurrpelleplu', en: 'a spinning umbrella', explain_sv: 'Ett paraply som snurrar.' },
     { form: 'banan', lemma: 'okänd', en: 'not asked', explain_sv: 'x' },
   ] };
-  const filled = await c.post('/api/answer', { exchangeId: res.body.meanings.exchangeId, answer: `\`\`\`json\n${JSON.stringify(meanings)}\n\`\`\`` });
-  assert.equal(filled.body.result, 'meanings_added', JSON.stringify(filled.body));
-  assert.equal(filled.body.filled, 2);
-  const db = t.grove.db;
-  assert.equal(db.prepare("SELECT en FROM words WHERE account_id = ? AND lemma = 'tolv'").get(learner.id).en, 'twelve');
-  assert.equal(db.prepare("SELECT en FROM words WHERE account_id = ? AND lemma = 'pensionär'").get(learner.id).en, null);
-  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND lemma = 'okänd'").get(learner.id).n, 0);
+  const filled = await c.post('/api/answer', { exchangeId: res.body.next.exchangeId, answer: `\`\`\`json\n${JSON.stringify(meanings)}\n\`\`\`` });
+  assert.equal(filled.body.result, 'accepted', JSON.stringify(filled.body));
+  assert.equal(filled.body.texts.length, 1);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?').get(held.id).n, 3);
+  assert.deepEqual({ ...db.prepare("SELECT en, en_source FROM words WHERE account_id = ? AND lemma = 'snurrpelleplu'").get(held.id) }, { en: 'a spinning umbrella', en_source: 'ai' });
+  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND lemma = 'okänd'").get(held.id).n, 0);
+  assert.equal(db.prepare("SELECT parts_accepted FROM packages WHERE account_id = ? AND status = 'open'").get(held.id).parts_accepted, 1);
 });
 
-test('FR-207 RQ-379: a meanings answer is matched against the forms stored with its prompt, not the prompt\'s wording', async () => {
-  const { c, p } = await start('reworded@example.test');
-  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) });
-  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
+test('FR-207 RQ-398: the next request asks the AI to check dictionary meanings in their sentences; its checks replace them, and checks for words it didn\'t ask about are ignored', async () => {
   const db = t.grove.db;
-  const asked = JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(res.body.meanings.exchangeId).asked_forms);
-  for (const w of ['tolv', 'pensionär', 'paraply']) assert.ok(asked.includes(w), w);
-  db.prepare("UPDATE exchanges SET prompt = 'A reworded prompt with no word list in it.' WHERE id = ?").run(res.body.meanings.exchangeId);
-  const meanings = { meanings: [{ form: 'tolv', lemma: 'tolv', en: 'twelve', explain_sv: 'Tio och två.' }] };
-  const filled = await c.post('/api/answer', { exchangeId: res.body.meanings.exchangeId, answer: JSON.stringify(meanings) });
-  assert.equal(filled.body.result, 'meanings_added', JSON.stringify(filled.body));
-  assert.equal(filled.body.filled, 1);
-  assert.equal(filled.body.missing, asked.length - 1);
-});
-
-test('FR-207 RQ-379: a meanings prompt stores exactly the new words it asks about, and its answer fills only those', async () => {
-  const db = t.grove.db;
-  const only = t.seedAccount({ email: 'only-asked@example.test' });
-  seedGround(db, only.id, known);
-  const { c, p } = await start('only-asked@example.test');
-  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) });
-  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
-  const id = res.body.meanings.exchangeId;
-  const missing = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND state = 'leaf' AND en IS NULL").all(only.id).map((r) => r.lemma);
-  const asked = JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(id).asked_forms);
-  assert.deepEqual([...asked].sort(), [...missing].sort());
+  const checks = t.seedAccount({ email: 'checks@example.test' });
+  seedGround(db, checks.id, known);
+  const { c, p } = await start('checks@example.test');
+  assert.equal((await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) })).body.result, 'accepted');
+  const next = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.match(next.prompt, /tolv — "Klockan är tolv\." — dictionary: twelve/);
+  const asked = JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(next.exchangeId).asked_forms);
   assert.ok(asked.includes('tolv') && asked.includes('paraply'));
-  // paraply is still a leaf without a meaning, but this prompt no longer asks about it.
-  db.prepare('UPDATE exchanges SET asked_forms = ? WHERE id = ?').run(JSON.stringify(asked.filter((f) => f !== 'paraply')), id);
-  const meanings = { meanings: [
-    { form: 'tolv', lemma: 'tolv', en: 'twelve', explain_sv: 'Tio och två.' },
-    { form: 'paraply', lemma: 'paraply', en: 'umbrella', explain_sv: 'Man har den när det regnar.' },
-  ] };
-  const filled = await c.post('/api/answer', { exchangeId: id, answer: JSON.stringify(meanings) });
-  assert.equal(filled.body.result, 'meanings_added', JSON.stringify(filled.body));
-  assert.equal(filled.body.filled, 1);
-  const en = (lemma) => db.prepare('SELECT en FROM words WHERE account_id = ? AND lemma = ?').get(only.id, lemma).en;
-  assert.equal(en('tolv'), 'twelve');
-  assert.equal(en('paraply'), null);
+  const a = JSON.parse(answer('good.json'));
+  a.part = next.code;
+  a.texts.forEach((x, i) => { x.title = `Andra ${i}`; });
+  // Leave tolv and paraply to the checks alone: this answer gives no meaning of its own for them.
+  a.new_words = a.new_words.filter((w) => !['tolv', 'paraply'].includes(w.lemma));
+  a.meaning_checks = [
+    { form: 'tolv', lemma: 'tolv', en: 'twelve (o\'clock)', explain_sv: 'Talet efter elva.' },
+    { form: 'kaffe', lemma: 'kaffe', en: 'not asked', explain_sv: 'x' },
+  ];
+  assert.equal((await c.post('/api/answer', { exchangeId: next.exchangeId, answer: JSON.stringify(a) })).body.result, 'accepted');
+  const word = (lemma) => ({ ...db.prepare('SELECT en, explain_sv, en_source FROM words WHERE account_id = ? AND lemma = ?').get(checks.id, lemma) });
+  assert.deepEqual(word('tolv'), { en: "twelve (o'clock)", explain_sv: 'Talet efter elva.', en_source: 'ai' });
+  assert.equal(word('paraply').en_source, 'dictionary', 'not checked in this answer, so still the dictionary\'s');
+  assert.notEqual(word('kaffe').en, 'not asked');
 });

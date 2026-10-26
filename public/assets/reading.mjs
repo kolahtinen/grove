@@ -259,7 +259,11 @@ async function practise() {
 await showAccount();
 await getMe();
 const res = await fetch(`/api/reading?id=${id}`, { credentials: 'same-origin' });
-if (!res.ok) {
+if (res.status === 409) {
+  // G-03 FR-318: an own text waits for its AI round, piece by piece.
+  $('reading-card').hidden = true;
+  await showOwnRound();
+} else if (!res.ok) {
   $('title').textContent = 'This text was not found.';
 } else {
   data = await res.json();
@@ -267,7 +271,13 @@ if (!res.ok) {
   setRate(data.speechRate);
   $('title').textContent = data.title;
   document.title = `${data.title} · grove`;
-  $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}`;
+  $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}${data.kind === 'listening' ? ' · a listening text' : ''}`;
+  // G-03 FR-318: an own text shows how hard it is for this learner and the AI's copyright view.
+  if (data.own && data.knownShare !== null && data.knownShare < data.targetShare) $('stats').textContent += ` · ${data.knownShare}% known: harder than your usual texts`;
+  if (data.copyright && data.copyright.view !== 'free') {
+    $('copyright').hidden = false;
+    $('copyright').textContent = `Your AI thinks this ${data.copyright.view === 'copyrighted' ? 'is' : 'may be'} copyrighted${data.copyright.note ? `: ${data.copyright.note}` : '.'}`;
+  }
   $('toggle-en').textContent = `English: ${showEn ? 'on' : 'off'}`;
   $('toggle-en').setAttribute('aria-pressed', String(showEn));
   renderLines($('lines'));
@@ -568,3 +578,49 @@ $('speed').addEventListener('change', async () => {
 $('speed').addEventListener('input', () => { $('speed-value').textContent = `${Number($('speed').value).toFixed(1)}×`; });
 $('voice-help-link').addEventListener('click', () => showVoiceHelp(false));
 onVoices((has) => { if (has) $('voice-help').hidden = true; });
+
+// G-05 FR-509: a listening text opens in listening mode.
+if (data && data.kind === 'listening') $('listen').click();
+
+// G-03 FR-318: the own-text AI round. Copy prompt says "Copied to clipboard"; only when copying fails
+// is the prompt shown, selected (G-02 FR-201).
+async function showOwnRound() {
+  const r = await fetch(`/api/own-text?id=${id}`, { credentials: 'same-origin' });
+  if (!r.ok) { $('title').textContent = 'This text was not found.'; $('reading-card').hidden = false; return; }
+  const own = await r.json();
+  if (own.ready) { window.location.reload(); return; }
+  $('own-round').hidden = false;
+  $('own-title').textContent = own.title;
+  document.title = `${own.title} · grove`;
+  $('own-piece').textContent = own.of > 1 ? `Piece ${own.piece} of ${own.of}` : '';
+  $('own-prompt').value = own.prompt;
+  $('own-prompt').hidden = true;
+  $('own-copied').hidden = true;
+  $('own-round').dataset.exchange = String(own.exchangeId);
+}
+$('own-copy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText($('own-prompt').value);
+    $('own-copied').textContent = 'Copied to clipboard';
+  } catch {
+    $('own-prompt').hidden = false;
+    $('own-prompt').focus();
+    $('own-prompt').select();
+    $('own-copied').textContent = 'Copying was blocked: the prompt is selected below, copy it by hand.';
+  }
+  $('own-copied').hidden = false;
+});
+$('own-add').addEventListener('click', async () => {
+  const answer = $('own-answer').value.trim();
+  if (!answer) return;
+  const r = await post('/api/answer', { exchangeId: Number($('own-round').dataset.exchange), answer });
+  if (!r.ok) { showMessage($('own-message'), r.message); return; }
+  $('own-answer').value = '';
+  const problems = $('own-problems');
+  problems.replaceChildren();
+  for (const p of r.data.problems || []) { const li = document.createElement('li'); li.textContent = p; problems.append(li); }
+  problems.hidden = !(r.data.problems || []).length;
+  if (r.data.result === 'needs_fix') showMessage($('own-message'), 'Some words have no meaning yet. Copy the new prompt into the same chat.');
+  else if (r.data.ready) { window.location.reload(); return; } else showMessage($('own-message'), `Piece ${r.data.piece} added. Now the next piece.`, 'ok');
+  await showOwnRound();
+});

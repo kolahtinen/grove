@@ -36,8 +36,8 @@ async function addSample(page) {
     const me = await (await fetch('/api/me')).json();
     const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
     await fetch('/api/settings', { method: 'POST', headers: h, body: JSON.stringify({ showTranslations: true }) });
-    let p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'next' }) });
-    if (p.status === 409) p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
+    // A new package gives a fresh part: \"next\" may give a waiting redo since G-02 FR-206 changed (2026-10-26).
+    const p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
     const prompt = await p.json();
     const answer = JSON.parse(sample.replaceAll('TEST-1', prompt.code));
     answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
@@ -142,21 +142,41 @@ test('FR-316 FR-317 RQ-53 RQ-56: the dictionary lists words with meaning and exa
   await expect(page.locator('#names')).toContainText('Elsa');
 });
 
-test('FR-318 FR-304 RQ-74: an own text is saved without English, HTML in it shows as text, and a new word can be saved as a leaf', async ({ page }) => {
+test('FR-318 FR-304 RQ-74 RQ-400 RQ-401: an own text waits for its AI round (missing words asked again), then opens with its share of known words and the AI\'s copyright view; HTML in it shows as text; a new word is saved with the AI\'s meaning', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await signIn(page);
   // A made-up word, new on every run (the reviewer account is shared between test runs).
   const newWord = `kanelbulle${Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5)}`;
   await page.locator('#own-form input[name="title"]').fill('<b>Min</b> dag');
   await page.locator('#own-form textarea[name="text"]').fill(`Idag dricker jag kaffe och äter en ${newWord}.\n<i>Det</i> är gott!`);
   await page.getByRole('button', { name: 'Save text' }).click();
-  await page.waitForURL(/\/text\?id=\d+$/);
+  await page.waitForURL(/\/text\?id=(\d+)$/);
+  const id = Number(new URL(page.url()).searchParams.get('id'));
+  await expect(page.locator('#own-round')).toBeVisible();
+  await expect(page.locator('#reading-card')).toBeHidden();
+  await expect(page.locator('#own-title')).toHaveText('<b>Min</b> dag');
+  await page.locator('#own-copy').click();
+  await expect(page.locator('#own-copied')).toHaveText('Copied to clipboard');
+  await expect(page.locator('#own-prompt')).toBeHidden();
+  const code = (await page.evaluate(() => navigator.clipboard.readText())).match(/"own": "([^"]+)"/)[1];
+  const word = (form) => ({ form, lemma: form, en: form === newWord ? 'a made-up bun' : `meaning of ${form}`, explain_sv: 'enkel förklaring' });
+  const forms = ['idag', 'dricker', 'jag', 'kaffe', 'och', 'äter', 'en', 'i', 'det', 'är', 'gott'];
+  await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify({ own: code, copyright: 'unsure', copyright_note: 'It reads like a magazine.', words: forms.map(word) }));
+  await page.locator('#own-add').click();
+  await expect(page.locator('#own-problems')).toContainText(newWord);
+  await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify({ own: code, copyright: 'unsure', words: [word(newWord)] }));
+  await page.locator('#own-add').click();
+  await page.waitForURL(new RegExp(`/text\\?id=${id}$`));
   await expect(page.locator('#title')).toHaveText('<b>Min</b> dag');
   await expect(page.locator('#title b')).toHaveCount(0);
   await expect(page.locator('#lines')).toContainText('<i>Det</i>');
   await expect(page.locator('#lines i')).toHaveCount(0);
   await expect(page.locator('#stats')).toContainText('your own text');
+  await expect(page.locator('#stats')).toContainText('harder than your usual texts');
+  await expect(page.locator('#copyright')).toHaveText('Your AI thinks this may be copyrighted: It reads like a magazine.');
   await expect(page.locator('#lines .en')).toHaveCount(0);
   await page.locator('button.w', { hasText: newWord }).click();
+  await expect(page.locator('#menu')).toContainText('a made-up bun');
   await page.locator('#menu-save').click();
   await expect(page.locator('#menu-message')).toHaveText('Saved as a leaf.');
 });
