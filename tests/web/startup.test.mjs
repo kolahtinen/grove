@@ -1,5 +1,7 @@
-import { test } from 'node:test';
+import { test, mock } from 'node:test';
 import assert from 'node:assert/strict';
+import { connect } from 'node:net';
+import { existsSync, readdirSync } from 'node:fs';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { meaning } from '../../server/lexicon/lexicon.mjs';
 
@@ -102,6 +104,59 @@ test('FR-032 FR-222 RQ-407 SC-008: a started grove has its word list loaded, so 
     assert.equal(meaning('läsa').en, 'to read');
     assert.ok(performance.now() - started < 50, 'the first lookup did not load the list');
   } finally {
+    await t.close();
+  }
+});
+
+// Sends the headers and the first bytes of a 50 KB body, then waits: resolves with the answer once the
+// server closes the connection (as FR-022's test does).
+function partialPost(base, path) {
+  const { hostname, port, host } = new URL(base);
+  return new Promise((resolve, reject) => {
+    const socket = connect(Number(port), hostname);
+    let data = '';
+    const timer = setTimeout(() => { socket.destroy(); reject(new Error('no answer: the server waited for the body')); }, 3000);
+    socket.on('connect', () => socket.write(`POST ${path} HTTP/1.1\r\nhost: ${host}\r\ncontent-type: application/json\r\ncontent-length: 50000\r\n\r\n{"email":"`));
+    socket.on('data', (chunk) => { data += chunk; });
+    socket.on('error', () => {});
+    socket.on('close', () => { clearTimeout(timer); resolve(data); });
+  });
+}
+
+test('FR-032 RQ-408: while grove is starting, fonts are served, and an API request with a body is answered and closed before its body is read', async () => {
+  const held = heldLoad(100, 40);
+  const t = await startTestGrove({ loads: [held.load], waitReady: false });
+  try {
+    const c = t.client();
+    assert.equal((await c.get('/fonts/fonts.css')).status, 200);
+    assert.equal((await c.get('/fonts/files/zen-kaku-gothic-new-100-400-normal.woff2')).status, 200);
+    const raw = await partialPost(t.base, '/api/signin');
+    assert.match(raw, /^HTTP\/1\.1 503/);
+    assert.match(raw, /"starting"/);
+  } finally {
+    held.open();
+    await t.grove.ready;
+    await t.close();
+  }
+});
+
+test('FR-032 RQ-408: the hourly job starts only once grove is ready', async () => {
+  mock.timers.enable({ apis: ['setInterval'] });
+  const held = heldLoad(100, 40);
+  const t = await startTestGrove({ loads: [held.load], waitReady: false });
+  const backups = () => (existsSync(t.config.backupDir) ? readdirSync(t.config.backupDir).length : 0);
+  try {
+    await until(async () => (await t.client().get('/api/starting')).body.progress > 0);
+    mock.timers.tick(2 * 3600000);
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    assert.equal(backups(), 0, 'no hourly job while starting');
+    held.open();
+    await t.grove.ready;
+    mock.timers.tick(3600000);
+    await until(() => backups() > 0);
+  } finally {
+    held.open();
+    mock.timers.reset();
     await t.close();
   }
 });

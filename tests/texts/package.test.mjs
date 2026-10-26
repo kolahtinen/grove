@@ -207,3 +207,36 @@ test('FR-223 RQ-405: switching to one long prompt takes effect in the open packa
   assert.deepEqual(three.steps, []);
   assert.ok(three.prompt.includes(known[0]), 'one long prompt again, in the same package');
 });
+
+test('FR-223 RQ-404: the whole package applies from the next package, not the open one', async () => {
+  const later = t.seedAccount({ email: 'whole-later@example.test' });
+  seedGround(t.grove.db, later.id, known);
+  const c = t.client();
+  await c.signInAgreed('whole-later@example.test');
+  await c.post('/api/plan', { family: 'chatgpt', product: 'free' });
+  const one = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal((await c.post('/api/answer', { exchangeId: one.exchangeId, answer: answerFor(one.code, 60) })).body.result, 'accepted');
+  assert.equal((await c.post('/api/plan', { family: 'chatgpt', product: 'plus' })).body.tactic, 'whole');
+  const two = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.deepEqual([two.kind, two.part], ['part', 2], 'the open package keeps its shape');
+  const fresh = (await c.post('/api/prompt', { action: 'new_package' })).body;
+  assert.equal(fresh.kind, 'package');
+  assert.match(fresh.prompt, /all 3 parts/);
+});
+
+test('FR-223 FR-206 RQ-405: after two failed answers in a row with one long prompt, Home offers step by step', async () => {
+  const off = t.seedAccount({ email: 'offer-steps@example.test' });
+  seedGround(t.grove.db, off.id, known);
+  const c = t.client();
+  await c.signInAgreed('offer-steps@example.test');
+  await c.post('/api/plan', { family: 'lechat', product: 'free' });
+  const tooMany = JSON.parse(readFileSync(new URL('./answers/too-many-new.json', import.meta.url), 'utf8'));
+  const p = (await c.post('/api/prompt', { action: 'next' })).body;
+  const first = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: JSON.stringify({ ...tooMany, part: p.code }) });
+  assert.equal(first.body.result, 'partly_accepted', JSON.stringify(first.body));
+  assert.equal((await c.get('/api/home')).body.offer, null, 'not after one');
+  const redo = (await c.get('/api/home')).body.waiting;
+  const second = await c.post('/api/answer', { exchangeId: redo.exchangeId, answer: JSON.stringify({ ...tooMany, part: redo.code, texts: [tooMany.texts[0]] }) });
+  assert.equal(second.body.result, 'partly_accepted', JSON.stringify(second.body));
+  assert.equal((await c.get('/api/home')).body.offer, 'steps');
+});

@@ -19,3 +19,13 @@ test('FR-602 C-05: the public credits page names every source with its licence, 
   assert.match(res.text, /Zen Kaku Gothic New/);
   assert.match(res.text, /SIL Open Font Licence/);
 });
+
+test('FR-602 FR-222 C-05: the credits name the Swedish–English word list from Wiktionary through kaikki.org, with its licence and links', async () => {
+  const res = await t.client().get('/credits');
+  assert.equal(res.status, 200);
+  assert.match(res.text, /Wiktionary/);
+  assert.match(res.text, /kaikki\.org/);
+  assert.match(res.text, /CC BY-SA 4\.0/);
+  assert.match(res.text, /href="https:\/\/kaikki\.org\/dictionary\/Swedish\/?"/);
+  assert.match(res.text, /href="https:\/\/www\.wiktionary\.org\/?"/);
+});
