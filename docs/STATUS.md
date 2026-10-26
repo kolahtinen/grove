@@ -51,6 +51,7 @@ The per-app checklist from the prototype-to-spec process. Each command updates i
 ## Addenda
 
 - [001](addenda/001-requirements-without-rq.md) (2026-10-25; question-pages/63): RQ-380…389 for 10 spec requirements that named no combined requirement (review finding 3). Nothing new built.
+- [002](addenda/002-prompts-and-meanings.md) (2026-10-26; question-pages/66): RQ-390…402 for the owner's-test group "prompts and meanings": setup over several prompts in a new chat per package, sizes as settings from a probe test, reading and listening texts, a meaning for every word (Wiktionary list), the own-text AI round; RQ-379's meanings prompt withdrawn. Sizes wait for the owner's [probe test](https://claude.ai/artifact/4C2BN2nSxTghozQ9ZAsEZ7).
 
 ## Changelog
 
@@ -151,3 +152,4 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-26 | G-01 | Review finding 7 fixed: FR-004 now says only the current tunnel link is written to the README; one update loop, each write takes the link current as it is sent. regen(tunnel); 231 unit, check clean. |
 | 2026-10-26 | G-01 | Review finding 8 fixed: FR-004 and research R11 now give each service its own environment file (`web.env`, `tunnel.env`), blocked from the other's secrets; `loadConfig` takes a role. regen(web), regen(tunnel); 235 unit, 86 e2e, check clean. On deploy, follow the new env steps in `deploy/SETUP.md`. |
 | 2026-10-26 | G-07 | Review finding 10 fixed: FR-704 now says the demo ground is built into `server/demo/demo-ground.txt`; nothing grove runs reads `docs/`. regen(demo); 236 unit, 86 e2e, check clean. All 10 first-build review findings are now fixed or decided. |
+| 2026-10-26 | G-02, G-03 | Prompts and meanings decided (question-pages/66, 11 questions); addendum 002 (RQ-390…402, R-18…23, T-21, T-22); Wiktionary checked (all 408 demo ground words, 97.1% of Kelly's single words); probe test page published for the owner. Next: G-02/G-03 spec changes for everything but the sizes. |

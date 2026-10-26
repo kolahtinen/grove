@@ -386,7 +386,7 @@ Phase 2 (`/pre.combine`, 2026-10-20). The requirements of p0 and p1 (neither rej
 | RQ-376 | The terms of use say that a learner's own texts get only automatic checks, and may contain mistakes. | PR-p1-301 | yes (new, question-pages/51) | N-25, N-43 | F-364: easy | should | active |
 | RQ-377 | An easy read is accepted with at most 1 new word; with 2 or more, grove gives a fix-it prompt. | PR-p1-302 | yes (new, question-pages/52) | N-34, N-15 | F-365: easy | should | active |
 | RQ-378 | A text with clearly fewer new words than the target is still accepted; grove's next prompt asks more firmly for new words. | PR-p1-303 | yes (new, question-pages/52) | N-15, N-11 | F-366: easy | should | active |
-| RQ-379 | Grove finds new words in an AI answer itself; new words the AI didn't list are not a reason to reject it, and grove gives one short prompt for the meanings of those not in its dictionary. | PR-p1-304 | yes (new, question-pages/52) | N-15, N-12 | F-367: easy | must | active |
+| RQ-379 | Grove finds new words in an AI answer itself; new words the AI didn't list are not a reason to reject it, and grove gives one short prompt for the meanings of those not in its dictionary. | PR-p1-304 | yes (new, question-pages/52) | N-15, N-12 | F-367: easy | must | active; changed 2026-10-26 (question-pages/66, addendum 002): the meanings prompt is withdrawn, replaced by RQ-396–398 and RQ-400 |
 
 ## Open: implicit requirements still undecided
 
