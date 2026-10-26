@@ -144,3 +144,4 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 ## Notes
 | 2026-10-25 | app-wide | First-build review (question-pages/62, 63): addendum 001 adds RQ-380…389; FR-221, 304, 410, 411, 418, 602, 607, 610, 707, 802 now name them. All 9 code findings to be fixed before the deploy. Deadline 2026-11-01. |
 | 2026-10-25 | app-wide | Owner's first test (question-pages/64): notes O-01…O-22 sorted and decided; shared library back in scope with the owner's lessons first (learner sharing after 1 November); review findings 1, 2, 9 fixed. |
+| 2026-10-26 | G-08 | Oak animation (question-pages/65): eight frames, about 16 s, from the storyboard; three captions; ends on the lone oak, which becomes grove's logo everywhere (RQ-310, RQ-311, A.5 to change in an addendum). Built last, after the library. |
