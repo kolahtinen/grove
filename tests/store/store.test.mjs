@@ -248,3 +248,23 @@ test('FR-503 RQ-13: migration 008 keeps every row and adds speech_rate (1) and v
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-207 RQ-379: migration 009 adds asked_forms and fills it for existing meanings exchanges from their prompts', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 8 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    const prompt = 'Intro line:\n\ntolv, pensionär, paraply\n\nFor each word give its dictionary form.';
+    db.prepare("INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at) VALUES (1, 'meanings', 'MEANINGS', ?, 'waiting', 1)").run(prompt);
+    db.prepare("INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at) VALUES (1, 'part', 'ABCD-1', 'a part prompt', 'waiting', 1)").run();
+    migrate(db);
+    const rows = db.prepare('SELECT kind, prompt, asked_forms FROM exchanges ORDER BY id').all();
+    assert.deepEqual(JSON.parse(rows[0].asked_forms), ['tolv', 'pensionär', 'paraply']);
+    assert.equal(rows[0].prompt, prompt);
+    assert.equal(rows[1].asked_forms, null);
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

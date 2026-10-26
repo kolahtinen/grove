@@ -47,6 +47,16 @@ test('FR-318 RQ-74: Save as leaf adds a new word without a meaning; Get meanings
   assert.equal((await c.post('/api/meanings-prompt', {})).status, 409);
 });
 
+test('FR-318 FR-207 RQ-74 RQ-379: Get meanings stores the forms it asks about with its exchange', async () => {
+  assert.deepEqual((await c.post('/api/leaf', { textId: id, form: 'Semla' })).body, { result: 'saved' });
+  const m = await c.post('/api/meanings-prompt', {});
+  assert.equal(m.status, 200);
+  const asked = JSON.parse(t.grove.db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(m.body.exchangeId).asked_forms);
+  assert.deepEqual(asked, ['semla']);
+  const filled = await c.post('/api/answer', { exchangeId: m.body.exchangeId, answer: JSON.stringify({ meanings: [{ form: 'semla', lemma: 'semla', en: 'cream bun', explain_sv: 'En bulle med grädde.' }] }) });
+  assert.equal(filled.body.result, 'meanings_added');
+});
+
 test('FR-319 RQ-155: another account cannot read the own text or save leaves from it', async () => {
   const other = await signedIn(t, 'other@example.test');
   assert.equal((await other.get(`/api/reading?id=${id}`)).status, 404);

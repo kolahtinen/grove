@@ -93,6 +93,11 @@ export function createPackages({ db, words, now = () => Date.now() }) {
     return { result: 'needs_fix', problems: problems.map(describeProblem), fix: { exchangeId: Number(info.lastInsertRowid), prompt } };
   }
 
+  // The forms a meanings prompt asks about, stored with its exchange (FR-207).
+  function askedForms(forms) {
+    return JSON.stringify([...new Set(forms.map((f) => f.trim().toLowerCase()))]);
+  }
+
   function answerMeanings(accountId, exchange, pasted) {
     const extracted = extractJson(pasted, { requireField: 'meanings' });
     const checked = extracted.ok ? validateMeanings(extracted.value) : null;
@@ -100,7 +105,7 @@ export function createPackages({ db, words, now = () => Date.now() }) {
       const problem = !extracted.ok ? describeProblem({ kind: extracted.problem, line: extracted.line }) : checked.problems.join('; ');
       throw new HttpError(400, 'bad_answer', `grove couldn't read that answer: ${problem} Copy the meanings prompt into your AI again.`);
     }
-    const asked = new Set(exchange.prompt.split('\n\n')[1].split(', ').map((x) => x.trim()));
+    const asked = new Set(JSON.parse(exchange.asked_forms || '[]'));
     let filled = 0;
     transaction(db, () => {
       for (const m of checked.value.meanings) {
@@ -218,8 +223,8 @@ export function createPackages({ db, words, now = () => Date.now() }) {
         let meanings = null;
         if (missing.length) {
           const prompt = buildMeaningsPrompt(missing);
-          const info = db.prepare(`INSERT INTO exchanges (account_id, package_id, part_no, kind, code, prompt, status, created_at)
-            VALUES (?, ?, ?, 'meanings', ?, ?, 'waiting', ?)`).run(accountId, exchange.package_id, exchange.part_no, exchange.code, prompt, now());
+          const info = db.prepare(`INSERT INTO exchanges (account_id, package_id, part_no, kind, code, prompt, asked_forms, status, created_at)
+            VALUES (?, ?, ?, 'meanings', ?, ?, ?, 'waiting', ?)`).run(accountId, exchange.package_id, exchange.part_no, exchange.code, prompt, askedForms(missing), now());
           meanings = { exchangeId: Number(info.lastInsertRowid), prompt };
         }
         return { stored, meanings };

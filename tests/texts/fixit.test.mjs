@@ -15,6 +15,7 @@ before(async () => {
   seedGround(t.grove.db, learner.id, known);
   fresh = t.seedAccount({ email: 'fresh@example.test' });
   seedGround(t.grove.db, fresh.id, known);
+  seedGround(t.grove.db, t.seedAccount({ email: 'reworded@example.test' }).id, known);
 });
 after(() => t.close());
 
@@ -89,4 +90,19 @@ test('FR-207 RQ-379: unlisted new words get one meanings prompt; its answer fill
   assert.equal(db.prepare("SELECT en FROM words WHERE account_id = ? AND lemma = 'tolv'").get(learner.id).en, 'twelve');
   assert.equal(db.prepare("SELECT en FROM words WHERE account_id = ? AND lemma = 'pensionär'").get(learner.id).en, null);
   assert.equal(db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND lemma = 'okänd'").get(learner.id).n, 0);
+});
+
+test('FR-207 RQ-379: a meanings answer is matched against the forms stored with its prompt, not the prompt\'s wording', async () => {
+  const { c, p } = await start('reworded@example.test');
+  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('unlisted-new.json').replaceAll('TEST-1', p.code) });
+  assert.equal(res.body.result, 'accepted', JSON.stringify(res.body));
+  const db = t.grove.db;
+  const asked = JSON.parse(db.prepare('SELECT asked_forms FROM exchanges WHERE id = ?').get(res.body.meanings.exchangeId).asked_forms);
+  for (const w of ['tolv', 'pensionär', 'paraply']) assert.ok(asked.includes(w), w);
+  db.prepare("UPDATE exchanges SET prompt = 'A reworded prompt with no word list in it.' WHERE id = ?").run(res.body.meanings.exchangeId);
+  const meanings = { meanings: [{ form: 'tolv', lemma: 'tolv', en: 'twelve', explain_sv: 'Tio och två.' }] };
+  const filled = await c.post('/api/answer', { exchangeId: res.body.meanings.exchangeId, answer: JSON.stringify(meanings) });
+  assert.equal(filled.body.result, 'meanings_added', JSON.stringify(filled.body));
+  assert.equal(filled.body.filled, 1);
+  assert.equal(filled.body.missing, asked.length - 1);
 });

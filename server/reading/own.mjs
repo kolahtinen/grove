@@ -36,7 +36,9 @@ export function meaningsPrompt(db, accountId, now = Date.now()) {
   const missing = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND state = 'leaf' AND kind = 'word' AND en IS NULL ORDER BY added_at, id LIMIT 200").all(accountId).map((r) => r.lemma);
   if (!missing.length) throw new HttpError(409, 'nothing_missing', 'Every leaf already has a meaning.');
   const prompt = buildMeaningsPrompt(missing);
-  const info = db.prepare(`INSERT INTO exchanges (account_id, kind, code, prompt, status, created_at)
-    VALUES (?, 'meanings', 'MEANINGS', ?, 'waiting', ?)`).run(accountId, prompt, now);
+  // The asked forms are stored with the exchange; its answer is matched against them (G-02 FR-207).
+  const asked = JSON.stringify([...new Set(missing.map((f) => f.toLowerCase()))]);
+  const info = db.prepare(`INSERT INTO exchanges (account_id, kind, code, prompt, asked_forms, status, created_at)
+    VALUES (?, 'meanings', 'MEANINGS', ?, ?, 'waiting', ?)`).run(accountId, prompt, asked, now);
   return { exchangeId: Number(info.lastInsertRowid), prompt };
 }
