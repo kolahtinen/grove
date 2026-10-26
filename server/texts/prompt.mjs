@@ -52,19 +52,23 @@ export function describeKinds(kinds) {
 }
 
 // The setup: the first prompt has the rules, the format and the summary; the rest carry the known
-// words, at most `chunkWords` per prompt. Every setup prompt is answered with "OK" only.
-export function buildSetup({ targetShare, summary, known, chunkWords }) {
+// words, at most `chunkWords` per prompt. Every setup prompt is answered with "OK" only. With
+// `single` (the one-long-prompt tactic, FR-203) it is one block, without the "OK" instructions, to go
+// in front of a request.
+export function buildSetup({ targetShare, summary, known, chunkWords, single = false }) {
   const beginner = known.length === 0;
   const chunks = [];
   for (let i = 0; i < known.length; i += chunkWords) chunks.push(known.slice(i, i + chunkWords));
   const first = [];
-  first.push(`I'm learning Swedish (my own language is English) with an app called grove. It gives me comprehensible input: texts where I know almost every word. In this new chat I'll first send you the rules and the answer format${chunks.length ? `, then my known words in ${plural(chunks.length, 'message')}` : ''}, then ask you for texts. Until I ask for texts, reply only with "OK".`);
+  if (single) {
+    first.push("I'm learning Swedish (my own language is English) with an app called grove. It gives me comprehensible input: texts where I know almost every word.");
+  } else first.push(`I'm learning Swedish (my own language is English) with an app called grove. It gives me comprehensible input: texts where I know almost every word. In this new chat I'll first send you the rules and the answer format${chunks.length ? `, then my known words in ${plural(chunks.length, 'message')}` : ''}, then ask you for texts. Until I ask for texts, reply only with "OK".`);
   if (summary) first.push(`What I did since my last package:\n${summary}`);
   const rules = ['Language rules for ALL Swedish text you write in this chat, including questions and options:'];
   if (beginner) {
     rules.push("- I'm a complete beginner: build the texts from the starter words and the most common Swedish words, with very short sentences.");
   } else {
-    rules.push('- Use my known words (I will send them next; any inflection is fine).');
+    rules.push(single ? '- Use my known words, listed below (any inflection is fine).' : '- Use my known words (I will send them next; any inflection is fine).');
     rules.push(`- About ${targetShare}% of the words in each text must be known: at most ONE new word or new fixed phrase per sentence.`);
   }
   rules.push('- Names of people and places are fine; list them in "names".');
@@ -75,6 +79,11 @@ export function buildSetup({ targetShare, summary, known, chunkWords }) {
   rules.push('- List the grammar patterns the texts use in "patterns": a short name, a short English explanation, and the places used (text number, line number, and the exact words).');
   rules.push('- When I ask you to check meanings, give each word\'s meaning in the sentence I quote in "meaning_checks".');
   first.push(rules.join('\n'));
+  if (single) {
+    if (!beginner) first.push(`My known words (dictionary forms):\n${known.join(', ')}`);
+    first.push(`Reply with ONLY exactly one \`\`\`json code block in this format, and no other text. Copy the code I give into "part" exactly. Give each text its "kind"; give "part" on each text only when I ask for several parts at once. Leave out "meaning_checks", "starter_words", "explanations" and "fixes" when I don't ask for them:\n${FORMAT}`);
+    return [first.join('\n\n')];
+  }
   first.push(`When I ask for texts, reply with ONLY exactly one \`\`\`json code block in this format, and no other text. Copy the code I give into "part" exactly. Give each text its "kind"; give "part" on each text only when I ask for several parts at once. Leave out "meaning_checks", "starter_words", "explanations" and "fixes" when I don't ask for them:\n${FORMAT}`);
   first.push('Reply only with "OK" now.');
   const steps = [first.join('\n\n')];

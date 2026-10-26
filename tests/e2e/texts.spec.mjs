@@ -29,6 +29,13 @@ async function signIn(page) {
 // earlier run would otherwise answer "next"; G-02 FR-206 changed on 2026-10-26).
 async function freshPrompt(page) {
   await expect(page.locator('#progress')).not.toBeEmpty();
+  // FR-223: the AI is chosen first; the shared reviewer account uses free ChatGPT, step by step.
+  await page.evaluate(async () => {
+    const me = await (await fetch('/api/me')).json();
+    await fetch('/api/plan', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ family: 'chatgpt', product: 'free' }) });
+  });
+  await page.reload();
+  await expect(page.locator('#progress')).not.toBeEmpty();
   if (await page.locator('#new-package').isVisible()) await page.locator('#new-package').click();
   else await page.locator('#get-texts').click();
   await expect(page.locator('#prompt-area')).toBeVisible();
@@ -96,10 +103,9 @@ test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked
   await expect(line.locator('script, b')).toHaveCount(0);
 });
 
-test('FR-203 FR-219 RQ-391 RQ-394: I\'m in a new chat gives the setup again before the same request; the whole-package choice is kept', async ({ page }) => {
+test('FR-223 RQ-403 RQ-404 RQ-391: the AI and version menus recommend a tactic in tabs; another can be chosen; I\'m in a new chat gives the setup again', async ({ page }) => {
   await signIn(page);
   const waiting = await freshPrompt(page);
-  await page.getByRole('button', { name: 'Add texts' }).waitFor();
   const answer = answerFor('good.json', waiting.code);
   await page.getByLabel("Paste the AI's answer here").fill(answer.text);
   await page.getByRole('button', { name: 'Add texts' }).click();
@@ -108,13 +114,32 @@ test('FR-203 FR-219 RQ-391 RQ-394: I\'m in a new chat gives the setup again befo
   await expect(page.locator('#prompt-steps .prompt-step')).toHaveCount(1);
   await page.getByRole('button', { name: "I'm in a new chat" }).click();
   await expect(page.locator('#prompt-steps .prompt-step').first()).toContainText('setup');
-  await expect(page.locator('#new-chat-note')).toContainText('Open a new chat');
-  await page.locator('#whole-package').check();
-  await expect(page.locator('#package-message')).toContainText('whole package');
+
+  await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('lechat');
+  await expect(page.getByRole('combobox', { name: 'Version' })).toHaveValue('free');
+  const tabs = page.locator('#tactic-tabs [role="tab"]');
+  await expect(tabs).toHaveText([/Step by step/, /One long prompt.*Recommended/, /Whole package/]);
+  await expect(page.locator('#tactic-panel')).toContainText('carries the rules and your known words');
+  await expect(tabs.nth(1)).toContainText('In use');
+  await tabs.nth(2).click();
+  await expect(page.locator('#tactic-panel')).toContainText('all three parts');
+  await page.getByRole('button', { name: 'Use this way' }).click();
+  await expect(page.locator('#plan-message')).toContainText('whole package, from your next package on');
   await page.reload();
-  await expect(page.locator('#whole-package')).toBeChecked();
-  await page.locator('#whole-package').uncheck();
-  await expect(page.locator('#package-message')).toContainText('one part at a time');
+  await expect(page.locator('#tactic-tabs [role="tab"]').nth(2)).toContainText('In use');
+  await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
+  await expect(page.locator('#tactic-tabs [role="tab"]').nth(0)).toContainText('Recommended · In use');
+});
+
+test('FR-224 RQ-406: texts from the AI and own texts carry a Beta badge, on Home and the reading page', async ({ page }) => {
+  await signIn(page);
+  await expect(page.locator('#package-card h2 .beta')).toHaveText('Beta');
+  await expect(page.locator('#own-card h2 .beta')).toHaveText('Beta');
+  const item = page.locator('#texts a', { hasText: 'reading ·' }).first();
+  await expect(item.locator('.beta')).toHaveText('Beta');
+  await item.click();
+  await expect(page.locator('#beta')).toBeVisible();
+  await expect(page.locator('#beta-note')).toHaveText('This part of grove is new and still being tested.');
 });
 
 test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a question, rate it, and see it rated on Home', async ({ page }) => {

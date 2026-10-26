@@ -189,3 +189,21 @@ test('FR-224 RQ-406: texts from the learner\'s own AI are marked beta on Home an
   assert.ok(home.texts.every((x) => x.beta === true));
   assert.equal((await c.get(`/api/reading?id=${home.texts[0].id}`)).body.beta, true);
 });
+
+test('FR-223 RQ-405: switching to one long prompt takes effect in the open package; switching back gives the setup first', async () => {
+  const sw = t.seedAccount({ email: 'switch@example.test' });
+  seedGround(t.grove.db, sw.id, known);
+  const c = t.client();
+  await c.signInAgreed('switch@example.test');
+  await c.post('/api/plan', { family: 'lechat', product: 'free', tactic: 'long' });
+  const one = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.equal((await c.post('/api/answer', { exchangeId: one.exchangeId, answer: answerFor(one.code, 50) })).body.result, 'accepted');
+  await c.post('/api/plan', { family: 'lechat', product: 'free', tactic: 'steps' });
+  const two = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.ok(two.steps.length >= 2, 'step by step starts with the setup this chat never had');
+  assert.equal((await c.post('/api/answer', { exchangeId: two.exchangeId, answer: answerFor(two.code, 51) })).body.result, 'accepted');
+  await c.post('/api/plan', { family: 'lechat', product: 'free', tactic: 'long' });
+  const three = (await c.post('/api/prompt', { action: 'next' })).body;
+  assert.deepEqual(three.steps, []);
+  assert.ok(three.prompt.includes(known[0]), 'one long prompt again, in the same package');
+});

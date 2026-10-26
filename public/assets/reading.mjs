@@ -271,6 +271,9 @@ if (res.status === 409) {
   setRate(data.speechRate);
   $('title').textContent = data.title;
   document.title = `${data.title} · grove`;
+  // G-02 FR-224: texts from the learner's AI and own texts are beta.
+  $('beta').hidden = !data.beta;
+  $('beta-note').hidden = !data.beta;
   $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}${data.kind === 'listening' ? ' · a listening text' : ''}`;
   // G-03 FR-318: an own text shows how hard it is for this learner and the AI's copyright view.
   if (data.own && data.knownShare !== null && data.knownShare < data.targetShare) $('stats').textContent += ` · ${data.knownShare}% known: harder than your usual texts`;
@@ -518,7 +521,10 @@ function playOne(i, onend) {
   if (!s) return;
   if (!hasSwedish()) { showVoiceHelp(true); return; }
   counts.set(i, (counts.get(i) || 0) + 1);
-  renderListenList();
+  // Only the count changes, so the row's buttons stay put while a sentence loops (FR-506, FR-507).
+  const count = $('listen-list').querySelector(`.listen-row[data-index="${i}"] .play-count`);
+  if (count) count.textContent = `played ${counts.get(i)}×`;
+  else renderListenList();
   highlight(i);
   speak(s.sv, () => {
     if (loopId === i) { playOne(i); return; }

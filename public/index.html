@@ -45,8 +45,21 @@
 </form>
 </section>
 <section class="card" id="package-card">
-<h2>Texts from your AI</h2>
+<h2>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
 <p class="muted small" id="progress"></p>
+<div class="plan" id="plan">
+<h3 class="small">Your AI</h3>
+<div class="row">
+<label>AI<select id="plan-family"><option value="">Choose…</option></select></label>
+<label>Version<select id="plan-product" disabled></select></label>
+</div>
+<div class="tactics" id="tactics" hidden>
+<div class="tab-list" role="tablist" aria-label="How grove asks your AI" id="tactic-tabs"></div>
+<div class="tab-panel" role="tabpanel" id="tactic-panel"><p id="tactic-text"></p><p class="small muted" id="tactic-reason"></p><button type="button" id="tactic-use">Use this way</button></div>
+</div>
+<p class="message" id="plan-message" role="status" hidden></p>
+</div>
+<p class="message" id="offer" role="status" hidden></p>
 <p class="message" id="package-message" role="status" hidden></p>
 <ul class="problems" id="problems" hidden></ul>
 <div id="prompt-area" hidden>
@@ -65,10 +78,9 @@
 <button type="button" class="main" id="get-texts">Get texts</button>
 <button type="button" id="new-package" hidden>New package</button>
 </div>
-<label class="check small"><input type="checkbox" id="whole-package"> Ask for the whole package at once (for AIs that can take long answers)</label>
 </section>
 <section class="card" id="own-card">
-<h2>Read your own text</h2>
+<h2>Read your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
 <p class="small muted">Paste a Swedish text you want to read (an article, a song). It stays private to you.</p>
 <form id="own-form">
 <label>Title<input type="text" name="title" maxlength="120" required></label>

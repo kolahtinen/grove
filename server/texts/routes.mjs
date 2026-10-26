@@ -5,6 +5,7 @@ import { createWordStore } from '../words/store.mjs';
 import { createPackages } from './packages.mjs';
 import { applyRating, RATINGS } from './ratings.mjs';
 import { DEFAULT_SIZES } from '../config.mjs';
+import { FAMILIES, TACTICS } from './plans.mjs';
 
 export const MAX_ANSWER = 80000;
 
@@ -41,9 +42,13 @@ export function registerTextRoutes(router, { db, sizes = DEFAULT_SIZES, now = ()
   });
 
   router.add({
-    method: 'POST', path: '/api/whole-package', access: 'agreed',
-    schema: { on: { type: 'boolean' } },
-    handler: (ctx) => sendJson(ctx.res, 200, packages.setWholePackage(ctx.account.id, ctx.body.on)),
+    method: 'POST', path: '/api/plan', access: 'agreed',
+    schema: {
+      family: { type: 'enum', values: FAMILIES.map((f) => f.id) },
+      product: { type: 'string', min: 1, max: 30 },
+      tactic: { type: 'enum', values: TACTICS, optional: true },
+    },
+    handler: (ctx) => sendJson(ctx.res, 200, packages.setPlan(ctx.account.id, ctx.body)),
   });
 
   router.add({

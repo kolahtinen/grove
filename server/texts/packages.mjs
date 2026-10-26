@@ -13,6 +13,7 @@ import { buildSetup, buildRequest, chooseKnown, describeKinds } from './prompt.m
 import { buildFixPrompt, buildRedoPrompt, buildMeaningsFixPrompt } from './fixit.mjs';
 import { acceptAnswer, missingMeanings } from './accept.mjs';
 import { LABELS } from './ratings.mjs';
+import { FAMILIES, TACTICS, recommend, productOf } from './plans.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { askedForms } from '../words/asked.mjs';
 import { openRequests } from '../reading/flags.mjs';
@@ -97,11 +98,11 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     return found.sort((a, b) => rank(a) - rank(b)).slice(0, sizes.checkMeanings);
   }
 
-  function setupFor(accountId, pkg) {
+  function setupFor(accountId, pkg, { single = false } = {}) {
     const s = settings(accountId);
     const topic = s.topic || DEFAULT_TOPIC;
     return buildSetup({
-      targetShare: s.target_share, summary: pkg.summary, chunkWords: sizes.setupChunkWords,
+      targetShare: s.target_share, summary: pkg.summary, chunkWords: sizes.setupChunkWords, single,
       known: chooseKnown(words.groundLemmas(accountId), tokenize(topic).map((t) => t.word), sizes.setupMaxWords),
     });
   }
@@ -122,13 +123,16 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
       reuse: reuseList(accountId), firmNew: !!s.firm_new, shorter: !!s.shorter, checks,
       continueHint: !whole && stored > 0, whole, ...openRequests(db, accountId),
     });
-    const steps = withSetup ? setupFor(accountId, pkg) : [];
+    // One long prompt (FR-203): the setup goes in front of every request, as one message.
+    const long = (pkg.tactic ?? s.tactic) === 'long';
+    const steps = withSetup && !long ? setupFor(accountId, pkg) : [];
+    const message = long ? `${setupFor(accountId, pkg, { single: true })[0]}\n\n${prompt}` : prompt;
     // The nudges are asked for once (FR-212).
     db.prepare('UPDATE learner_settings SET shorter = 0, firm_new = 0 WHERE account_id = ?').run(accountId);
     const first = !db.prepare('SELECT 1 FROM exchanges WHERE package_id = ?').get(pkg.id);
     const info = db.prepare(`INSERT INTO exchanges (account_id, package_id, part_no, kind, code, carries_summary, prompt, steps, asks, asked_forms, status, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'waiting', ?)`).run(accountId, pkg.id, whole ? 1 : partNo, kind, code,
-      first && pkg.summary ? 1 : 0, prompt, JSON.stringify(steps), JSON.stringify(asks), JSON.stringify(askedForms(checks.map((c) => c.form))), now());
+      first && pkg.summary ? 1 : 0, message, JSON.stringify(steps), JSON.stringify(asks), JSON.stringify(askedForms(checks.map((c) => c.form))), now());
     return exchangeById(Number(info.lastInsertRowid));
   }
 
@@ -137,9 +141,10 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     const sum = summary(accountId, s.last_summary_at);
     if (sum) db.prepare('UPDATE learner_settings SET last_summary_at = ? WHERE account_id = ?').run(now(), accountId);
     const code = Array.from({ length: 4 }, () => LETTERS[randomInt(LETTERS.length)]).join('');
-    const info = db.prepare("INSERT INTO packages (account_id, status, created_at, code, summary) VALUES (?, 'open', ?, ?, ?)").run(accountId, now(), code, sum);
+    // The package keeps the tactic it starts with (FR-223).
+    const info = db.prepare("INSERT INTO packages (account_id, status, created_at, code, summary, tactic) VALUES (?, 'open', ?, ?, ?, ?)").run(accountId, now(), code, sum, s.tactic);
     const pkg = db.prepare('SELECT * FROM packages WHERE id = ?').get(Number(info.lastInsertRowid));
-    if (s.whole_package) {
+    if (s.tactic === 'whole') {
       return makeRequest(accountId, pkg, { kind: 'package', partNo: 1, asks: [1, 2, 3].flatMap((p) => openAsks(pkg, p)), withSetup: true });
     }
     return makeRequest(accountId, pkg, { kind: 'part', partNo: 1, asks: openAsks(pkg, 1), withSetup: true });
@@ -150,7 +155,9 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     const partNo = currentPart(pkg);
     if (!partNo) return null;
     const asks = openAsks(pkg, partNo);
-    return makeRequest(accountId, pkg, { kind: 'part', partNo, asks: pkg.one_text ? asks.slice(0, 1) : asks, withSetup: false });
+    // Step by step after one long prompt: this chat hasn't had the setup yet (FR-223).
+    const hadSetup = db.prepare("SELECT 1 FROM exchanges WHERE package_id = ? AND steps IS NOT NULL AND steps != '[]'").get(pkg.id);
+    return makeRequest(accountId, pkg, { kind: 'part', partNo, asks: pkg.one_text ? asks.slice(0, 1) : asks, withSetup: pkg.tactic !== 'long' && !hadSetup });
   }
 
   function closePackage(accountId, pkg, status) {
@@ -334,16 +341,21 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
       const s = settings(accountId);
       const pkg = openPackage(accountId);
       const waiting = pkg ? waitingOf(accountId, pkg.id) : null;
-      const texts = db.prepare(`SELECT t.id, t.title, t.kind, t.part_no, t.created_at, t.read_at, t.own, t.ready, r.value FROM texts t
-        LEFT JOIN ratings r ON r.text_id = t.id WHERE t.account_id = ? ORDER BY t.created_at DESC, t.id DESC`).all(accountId);
+      // Beta (FR-224): own texts and texts from the learner's AI; the demo's prepared texts aren't.
+      const texts = db.prepare(`SELECT t.id, t.title, t.kind, t.part_no, t.created_at, t.read_at, t.own, t.ready, r.value,
+          (t.own = 1 OR e.code NOT LIKE 'DEMO-%') AS beta FROM texts t
+        LEFT JOIN ratings r ON r.text_id = t.id LEFT JOIN exchanges e ON e.id = t.exchange_id
+        WHERE t.account_id = ? ORDER BY t.created_at DESC, t.id DESC`).all(accountId);
       return {
         topic: s.topic || DEFAULT_TOPIC,
         targetShare: s.target_share,
-        wholePackage: !!s.whole_package,
+        plan: { family: s.ai_family, product: s.ai_product, tactic: s.tactic, ...(s.ai_family ? { recommended: recommend(s.ai_family, s.ai_product).tactic, reason: recommend(s.ai_family, s.ai_product).reason } : { recommended: null, reason: null }), families: FAMILIES },
+        // After two answers in a row with a failed text, the other main tactic (RQ-405).
+        offer: pkg && pkg.one_text ? ((pkg.tactic ?? s.tactic) === 'steps' ? 'long' : 'steps') : null,
         package: pkg ? { id: pkg.id, partsAccepted: pkg.parts_accepted, of: pkg.parts_total, status: pkg.status, oneText: !!pkg.one_text, unrated: unratedIn(accountId, pkg.id) } : null,
         waiting: waiting ? { ...view(waiting), newChatSuggested: waiting.kind === 'fix' } : null,
         texts: texts.map((t) => ({
-          id: t.id, title: t.title, kind: t.kind, partNo: t.part_no, own: !!t.own, ready: !!t.ready, createdAt: t.created_at,
+          id: t.id, title: t.title, kind: t.kind, partNo: t.part_no, own: !!t.own, ready: !!t.ready, beta: !!t.beta, createdAt: t.created_at,
           state: t.value ? 'rated' : t.read_at ? 'read' : 'new',
         })),
       };
@@ -357,7 +369,10 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
         if (action === 'new_chat') {
           const waiting = pkg ? waitingOf(accountId, pkg.id) : null;
           if (!waiting) throw new HttpError(409, 'nothing_waiting', 'There is no prompt waiting. Ask for texts first.');
-          db.prepare('UPDATE exchanges SET steps = ? WHERE id = ?').run(JSON.stringify(setupFor(accountId, pkg)), waiting.id);
+          // One long prompt needs no setup: every request already carries it.
+          if ((pkg.tactic ?? settings(accountId).tactic) !== 'long') {
+            db.prepare('UPDATE exchanges SET steps = ? WHERE id = ?').run(JSON.stringify(setupFor(accountId, pkg)), waiting.id);
+          }
           return view(exchangeById(waiting.id));
         }
         if (action === 'new_package' && pkg) { closePackage(accountId, pkg, 'closed'); pkg = null; }
@@ -377,10 +392,16 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
       });
     },
 
-    setWholePackage(accountId, on) {
+    // The learner's AI and product, and the tactic: the recommended one unless another is chosen (FR-223).
+    setPlan(accountId, { family, product, tactic }) {
+      if (!productOf(family, product)) throw new HttpError(400, 'bad_request', 'Please pick a product of that AI.');
+      const recommended = recommend(family, product).tactic;
+      const chosen = tactic ?? recommended;
       settings(accountId);
-      db.prepare('UPDATE learner_settings SET whole_package = ? WHERE account_id = ?').run(on ? 1 : 0, accountId);
-      return { wholePackage: !!on };
+      db.prepare('UPDATE learner_settings SET ai_family = ?, ai_product = ?, tactic = ? WHERE account_id = ?').run(family, product, chosen, accountId);
+      // Step by step and one long prompt take effect in the open package too; the whole package waits.
+      if (chosen !== 'whole') db.prepare("UPDATE packages SET tactic = ? WHERE account_id = ? AND status = 'open' AND tactic != 'whole'").run(chosen, accountId);
+      return { family, product, tactic: chosen, recommended };
     },
 
     answer(accountId, exchangeId, pasted) {

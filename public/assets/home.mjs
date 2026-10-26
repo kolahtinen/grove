@@ -8,6 +8,81 @@ import { playGrow } from './grow.mjs';
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
 let waiting = null;
+let plan = { family: null, product: null, tactic: 'steps', recommended: null, families: [] };
+let shownTactic = 'steps';
+
+// FR-223: the learner's AI and version, and the three tactics as tabs.
+const TACTIC_NAMES = { steps: 'Step by step', long: 'One long prompt', whole: 'Whole package' };
+const TACTIC_TEXT = {
+  steps: 'grove sends the setup once, in a few messages your AI answers with "OK", then asks for one part at a time in the same chat. Short prompts, so it suits free AIs.',
+  long: 'Every prompt carries the rules and your known words itself, one part at a time. Longer prompts, but your AI never has to remember the setup.',
+  whole: 'grove sends the setup once, then asks for all three parts in one go. Long answers, so it suits paid versions.',
+};
+
+function fillProducts(family) {
+  const select = $('plan-product');
+  select.replaceChildren();
+  select.disabled = !family;
+  for (const p of family?.products ?? []) {
+    const o = document.createElement('option');
+    o.value = p.id;
+    o.textContent = p.name;
+    select.append(o);
+  }
+}
+
+function showTab(tactic) {
+  shownTactic = tactic;
+  for (const tab of $('tactic-tabs').children) tab.setAttribute('aria-selected', String(tab.dataset.tactic === tactic));
+  $('tactic-text').textContent = TACTIC_TEXT[tactic];
+  $('tactic-reason').textContent = tactic === plan.recommended && plan.reason ? plan.reason : '';
+  $('tactic-use').hidden = tactic === plan.tactic;
+}
+
+function renderPlan(p) {
+  plan = { ...plan, ...p };
+  const family = $('plan-family');
+  if (family.options.length <= 1) {
+    for (const f of plan.families) {
+      const o = document.createElement('option');
+      o.value = f.id;
+      o.textContent = f.name;
+      family.append(o);
+    }
+  }
+  family.value = plan.family ?? '';
+  fillProducts(plan.families.find((f) => f.id === plan.family));
+  if (plan.product) $('plan-product').value = plan.product;
+  $('tactics').hidden = !plan.family;
+  const tabs = $('tactic-tabs');
+  tabs.replaceChildren();
+  for (const t of ['steps', 'long', 'whole']) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.dataset.tactic = t;
+    b.textContent = TACTIC_NAMES[t];
+    const tags = [t === plan.recommended && 'Recommended', t === plan.tactic && 'In use'].filter(Boolean);
+    if (tags.length) {
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = tags.join(' · ');
+      b.append(tag);
+    }
+    b.addEventListener('click', () => showTab(t));
+    tabs.append(b);
+  }
+  showTab(plan.recommended ?? plan.tactic);
+}
+
+async function savePlan(tactic) {
+  const body = { family: $('plan-family').value, product: $('plan-product').value };
+  if (tactic) body.tactic = tactic;
+  const result = await post('/api/plan', body);
+  if (!result.ok) { showMessage($('plan-message'), result.message); return; }
+  showMessage($('plan-message'), `grove will ask your AI: ${TACTIC_NAMES[result.data.tactic].toLowerCase()}${result.data.tactic === 'whole' ? ', from your next package on' : ''}.`, 'ok');
+  await load();
+}
 
 // Copy prompt: "Copied to clipboard"; only when copying fails is the prompt shown, selected (FR-201).
 async function copyStep(text, item) {
@@ -76,7 +151,18 @@ function render(home) {
     $('prompt-heading').textContent = waiting.kind === 'package' ? heading : `${heading} (part ${waiting.part} of ${waiting.of})`;
     renderSteps(waiting);
   }
-  $('whole-package').checked = !!home.wholePackage;
+  renderPlan(home.plan);
+  const offer = home.offer && home.offer !== home.plan.tactic ? home.offer : null;
+  $('offer').hidden = !offer;
+  if (offer) {
+    $('offer').replaceChildren(document.createTextNode(`Texts keep failing. ${offer === 'long' ? 'Your AI may keep to your words better with everything in one long prompt.' : 'Your AI may do better with the setup sent once, step by step.'} `));
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'bar-button';
+    b.textContent = `Try ${TACTIC_NAMES[offer].toLowerCase()}`;
+    b.addEventListener('click', () => savePlan(offer));
+    $('offer').append(b);
+  }
   const getButton = $('get-texts');
   getButton.hidden = !!waiting;
   getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
@@ -96,6 +182,12 @@ function render(home) {
     state.className = `text-state ${t.state}`;
     state.textContent = t.own ? `own · ${t.ready ? t.state : 'waiting for your AI'}` : `${t.kind} · ${t.state}`;
     a.append(title, state);
+    if (t.beta) {
+      const badge = document.createElement('span');
+      badge.className = 'beta';
+      badge.textContent = 'Beta';
+      a.append(badge);
+    }
     li.append(a);
     list.append(li);
   }
@@ -148,13 +240,24 @@ $('topic-form').addEventListener('submit', async (event) => {
   }
 });
 
-$('get-texts').addEventListener('click', () => requestPrompt('next'));
+$('get-texts').addEventListener('click', () => {
+  // FR-223: grove asks for the learner's AI before the first texts.
+  if (!plan.family) {
+    showMessage($('plan-message'), 'First choose your AI and its version, so grove can ask it the best way.');
+    $('plan-family').focus();
+    return;
+  }
+  requestPrompt('next');
+});
 $('new-package').addEventListener('click', () => requestPrompt('new_package'));
 $('new-chat').addEventListener('click', () => requestPrompt('new_chat'));
-$('whole-package').addEventListener('change', async (event) => {
-  const result = await post('/api/whole-package', { on: event.target.checked });
-  showMessage($('package-message'), result.ok ? (event.target.checked ? 'From the next package on, grove asks for the whole package at once.' : 'From the next package on, grove asks for one part at a time.') : result.message, result.ok ? 'ok' : undefined);
+$('plan-family').addEventListener('change', () => {
+  const family = plan.families.find((f) => f.id === $('plan-family').value);
+  fillProducts(family);
+  if (family) savePlan();
 });
+$('plan-product').addEventListener('change', () => savePlan());
+$('tactic-use').addEventListener('click', () => savePlan(shownTactic));
 
 $('answer').addEventListener('input', () => {
   const n = $('answer').value.length;
