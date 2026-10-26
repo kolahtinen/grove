@@ -81,7 +81,23 @@ test('FR-002 RQ-125: the service units restart grove and the tunnel, run as grov
     assert.match(text, /^Restart=always$/m, unit);
     assert.match(text, /^User=grove$/m, unit);
     assert.match(text, /^WantedBy=multi-user\.target$/m, unit);
-    assert.match(text, /^EnvironmentFile=\/etc\/grove\/grove\.env$/m, unit);
   }
   assert.match(readFileSync(new URL('../../deploy/journald-grove.conf', import.meta.url), 'utf8'), /^MaxRetentionSec=30day$/m);
+});
+
+test('FR-004 RQ-364: each service loads its own environment file and cannot open the other service\'s secrets (constitution 2.1, 4.8)', () => {
+  const read = (name) => readFileSync(new URL(`../../deploy/${name}`, import.meta.url), 'utf8');
+  const blocked = (text) => (text.match(/^InaccessiblePaths=(.*)$/m)?.[1] || '').split(/\s+/);
+  const web = read('grove.service');
+  assert.match(web, /^EnvironmentFile=\/etc\/grove\/web\.env$/m);
+  assert.ok(blocked(web).includes('/etc/grove/tunnel.env'));
+  const tunnel = read('grove-tunnel.service');
+  assert.match(tunnel, /^EnvironmentFile=\/etc\/grove\/tunnel\.env$/m);
+  for (const path of ['/etc/grove/web.env', '/etc/grove/service-account.json']) assert.ok(blocked(tunnel).includes(path), path);
+  assert.doesNotMatch(read('web.env.example'), /GITHUB_/);
+  assert.doesNotMatch(read('tunnel.env.example'), /FIREBASE_/);
+  const setup = read('SETUP.md');
+  assert.match(setup, /web\.env/);
+  assert.match(setup, /tunnel\.env/);
+  assert.doesNotMatch(setup, /grove\.env\b/);
 });

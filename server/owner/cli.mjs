@@ -44,7 +44,7 @@ function need(args, name) {
 
 export async function run(command, argv) {
   const args = parseArgs(argv);
-  const config = loadConfig();
+  const config = loadConfig(process.env, { role: 'web' });
   if (command === 'backup:restore') {
     if (args.yes !== true) throw new Error('This replaces grove’s database. Add --yes to go ahead.');
     restoreBackup({ dataDir: config.dataDir, file: need(args, 'file') });

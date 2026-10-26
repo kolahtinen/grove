@@ -8,7 +8,7 @@ Type=simple
 User=grove
 Group=grove
 WorkingDirectory=/opt/grove
-EnvironmentFile=/etc/grove/grove.env
+EnvironmentFile=/etc/grove/tunnel.env
 ExecStart=/usr/bin/node tunnel/supervisor.mjs
 Restart=always
 RestartSec=5
@@ -16,6 +16,8 @@ NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
 PrivateTmp=true
+# systemd reads EnvironmentFile as root first; the process itself can't open the other's secrets (FR-004).
+InaccessiblePaths=/etc/grove/web.env /etc/grove/service-account.json
 ReadWritePaths=/var/lib/grove
 
 [Install]

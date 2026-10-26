@@ -51,7 +51,7 @@ export function createGrove(config, { now = () => Date.now(), fetchImpl } = {}) 
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const grove = createGrove(loadConfig());
+  const grove = createGrove(loadConfig(process.env, { role: 'web' }));
   const port = await grove.start(undefined, { pidFile: true });
   grove.seclog.app('info', 'grove started', { url: `http://127.0.0.1:${port}` });
   const shutdown = async () => { await grove.stop(); process.exit(0); };

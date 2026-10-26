@@ -103,7 +103,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const { loadConfig } = await import('../server/config.mjs');
   const { openStore } = await import('../server/main.mjs');
   const { createSeclog } = await import('../server/seclog/seclog.mjs');
-  const config = loadConfig(process.env, { needGithub: true });
+  const config = loadConfig(process.env, { role: 'tunnel' });
   const db = openStore(config);
   const seclog = createSeclog({ db, logDir: join(config.dataDir, 'logs') });
   const supervisor = createSupervisor({ config, db, seclog });

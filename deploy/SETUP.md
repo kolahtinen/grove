@@ -33,7 +33,8 @@ sudo useradd --system --create-home --home-dir /var/lib/grove grove
 sudo mkdir -p /opt/grove /etc/grove /mnt/grove-backup
 sudo chown grove:grove /var/lib/grove /mnt/grove-backup
 sudo git clone <repo> /opt/grove && cd /opt/grove && sudo npm ci --omit=dev
-sudo cp deploy/grove.env.example /etc/grove/grove.env   # then fill it in
+sudo cp deploy/web.env.example /etc/grove/web.env         # then fill it in: Firebase settings
+sudo cp deploy/tunnel.env.example /etc/grove/tunnel.env   # then fill it in: GitHub repo and token
 sudo cp <downloaded service-account.json> /etc/grove/service-account.json
 sudo chown -R grove:grove /etc/grove && sudo chmod 600 /etc/grove/*
 ```
@@ -60,7 +61,7 @@ sudo -u grove --preserve-env npm run owner:setup -- --email you@example.com
 sudo -u grove --preserve-env npm run reviewer:setup -- --email you+grove-reviewer@example.com
 ```
 
-(Load the environment first, e.g. `set -a; . /etc/grove/grove.env; set +a` in a root shell.)
+(Load the server's environment first, e.g. `set -a; . /etc/grove/web.env; set +a` in a root shell. The owner commands never need `tunnel.env`.)
 
 ## Check tools for development
 
