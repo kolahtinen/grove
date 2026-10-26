@@ -119,3 +119,8 @@ G-02 reads `state = 'ground'` as known. The starting level (G-06) and demo histo
 New table `text_meanings` (G-03 FR-318): account_id, text_id → texts ON DELETE CASCADE, form, lemma, en (≤ 200), explain_sv (≤ 300) NULL; PRIMARY KEY (text_id, form). The AI's meaning of every word of an own text, in context.
 
 `exchanges.kind` values become `part`, `package` (whole package), `redo`, `fix`, `meanings_fix`, `own` (and `meanings` for old rows); the table is rebuilt for the new CHECK, keeping its ids. Existing waiting `meanings` exchanges become `replaced` (the meanings prompt is gone). A part is accepted when its texts of each kind reach `GROVE_PART_READING` and `GROVE_PART_LISTENING`; `packages.parts_accepted` counts those parts.
+
+## Migration 011 (2026-10-26; FR-223, question-pages/70)
+
+`server/store/migrations/011-tactics.sql`: `learner_settings` gains `ai_family` TEXT NULL (`chatgpt`, `gemini`, `claude`, `copilot`, `lechat`, `other`), `ai_product` TEXT NULL (an id from the table in `server/texts/plans.mjs`) and `tactic` TEXT NOT NULL DEFAULT 'steps' (`steps`, `long`, `whole`; CHECK); a learner with `whole_package = 1` gets `tactic = 'whole'`. `whole_package` stays unused. `packages` gains `tactic` TEXT NULL: the tactic its first request used, so a started package keeps its shape.
+

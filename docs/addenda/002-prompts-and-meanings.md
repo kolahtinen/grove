@@ -23,6 +23,9 @@ Same columns as [requirements.md](../requirements.md).
 | RQ-400 | Adding an own text gives an AI prompt that must be answered before the text can be read: each word's meaning in context, and whether the text looks copyrighted; a long text goes to the AI in pieces sized like other prompts. | question-pages/66 (6, 7, 10) | no | N-43, N-16 | easy | must | active |
 | RQ-401 | An own text's AI answer is checked only for completeness (every word has a meaning), never for difficulty; the text shows its share of known words. | question-pages/66 (10) | no | N-13, N-16 | easy | should | active |
 | RQ-402 | After copying a prompt, the button says "Copied to clipboard"; the prompt text itself is shown only when copying fails. | question-pages/64 (O-07, O-11), 66 | no | N-15 | easy | should | active |
+| RQ-403 | The learner picks their AI and its product or plan from two menus; grove recommends a tactic for it from a table in grove, shown as tabs with the recommended one marked, and the learner may choose another. | question-pages/70 | yes (reverses question-pages/64, 13: a table of AIs) | N-15, N-42 | easy (the table's paid rows untested) | should | active |
+| RQ-404 | There are three tactics: step by step (the setup in pieces, one part per request), one long prompt (every request carries the rules and known words itself) and whole package (the setup in pieces, then all parts at once). | question-pages/70 | yes (RQ-390 and RQ-394 become two of the tactics) | N-15, N-42 | easy | must | active |
+| RQ-405 | After two answers in a row with a failed text, grove offers the other main tactic (one long prompt from step by step, step by step from the others). | question-pages/70 | no | N-15, N-11 | easy | should | active |
 
 **Changed:** RQ-379's "one short prompt for the meanings of those not in its dictionary" is withdrawn (question-pages/66, 3): the meanings prompt and own texts' Get meanings go, replaced by RQ-396–398 and RQ-400. The rest of RQ-379 stands.
 
@@ -59,9 +62,11 @@ Outside services and legal: the prompt sizes depend on free AI chats whose limit
 | ChatGPT | answered; 2 of 3 texts pass; ~160 words each | setup replied OK; parts 1 and 2: 3 of 3 pass each; one text: passes. Its answers arrived markdown-escaped (question-pages/69) and are read since then |
 | Copilot | answered; 3 of 3 pass; ~80 words | setup OK; 2 of 3 pass in each part; one text: passes |
 | Gemini | answered; 1 of 3 passes (too many new words) | setup OK; 1 of 3 pass in each part, ~60 words; two words without a meaning |
-| Le Chat | answered; 3 of 3 pass | setup under way |
+| Le Chat | answered; 3 of 3 pass | setup OK; 0 of 3 pass in each part; one text: fails |
 
-No AI broke on the long prompt or on the setup in pieces, and part 2 showed no forgetting. The defaults (2 reading + 1 listening, 90 words, 500 words per setup message) hold; the per-text redo (RQ-395) covers Gemini's weaker texts. Still to try: Claude, Le Chat's requests, round D (3,000 known words).
+Le Chat (later the same day): one long prompt 3 of 3 pass; setup in pieces 0 of 3 in each part and 0 of 1 for one text: it ignored the word list sent in earlier messages (in part 2, 25 words outside it, 10 listed as new). So the best tactic depends on the AI (question-pages/70; RQ-403–405).
+
+No AI broke on the long prompt or on the setup in pieces, and part 2 showed no forgetting for ChatGPT, Copilot and Gemini. The defaults (2 reading + 1 listening, 90 words, 500 words per setup message) hold; the per-text redo (RQ-395) covers Gemini's weaker texts. Still to try: Claude, Le Chat's requests, round D (3,000 known words).
 
 ## STRIDE (new components or connections)
 | ID | Component | STRIDE | Threat | Mitigation | Goes to |
