@@ -35,3 +35,16 @@ test('FR-703 RQ-361: the demo passes grove\'s schema and answer checks against t
 test('FR-707 RQ-361: nothing in the demo is HTML', () => {
   assert.doesNotMatch(raw, /<[a-z!/]/i);
 });
+
+test('FR-704 RQ-362: the demo ground is built into server/demo/, and nothing grove runs reads a file in docs/', async () => {
+  const { readdirSync } = await import('node:fs');
+  const built = readFileSync(new URL('../../server/demo/demo-ground.txt', import.meta.url), 'utf8').split(/\s+/).filter(Boolean);
+  const known = readFileSync(new URL('../../docs/middle/ai-test/known.txt', import.meta.url), 'utf8').split(/\s+/).filter(Boolean);
+  assert.deepEqual(built, known.filter((w) => !['glömma', 'granne', 'biljett'].includes(w)));
+  assert.deepEqual(DEMO_GROUND, built);
+  const files = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? files(`${dir}/${e.name}`) : [`${dir}/${e.name}`]));
+  const root = new URL('../../', import.meta.url).pathname;
+  for (const file of [...files(`${root}server`), ...files(`${root}tunnel`)].filter((f) => f.endsWith('.mjs'))) {
+    assert.doesNotMatch(readFileSync(file, 'utf8'), /['"`/]docs\//, file);
+  }
+});

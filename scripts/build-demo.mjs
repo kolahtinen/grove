@@ -1,5 +1,5 @@
-// Builds server/demo/demo-answer.json from the X-03 Claude answer (G-07 FR-702; plan R1 of
-// specs/007-reviewer-demo). Usage: node scripts/build-demo.mjs
+// Builds server/demo/demo-answer.json and server/demo/demo-ground.txt from the X-03 Claude answer and
+// known words (G-07 FR-702, FR-704; plan R1 of specs/007-reviewer-demo); grove never reads docs/ itself. Usage: node scripts/build-demo.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -77,5 +77,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     names: source.names,
   };
   writeFileSync(join(root, 'server/demo/demo-answer.json'), `${JSON.stringify(answer, null, 1)}\n`);
-  console.log(`build-demo: ${texts.length} texts, ${answer.new_words.length} new words written to server/demo/demo-answer.json`);
+  writeFileSync(join(root, 'server/demo/demo-ground.txt'), `${DEMO_GROUND.join('\n')}\n`);
+  console.log(`build-demo: ${texts.length} texts, ${answer.new_words.length} new words written to server/demo/demo-answer.json; ${DEMO_GROUND.length} ground words to server/demo/demo-ground.txt`);
 }

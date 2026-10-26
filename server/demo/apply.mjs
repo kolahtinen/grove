@@ -10,11 +10,10 @@ import { acceptAnswer } from '../texts/accept.mjs';
 import { createWordStore } from '../words/store.mjs';
 import { HISTORY } from './history.mjs';
 
+// Both files are built by scripts/build-demo.mjs; nothing here reads docs/ (FR-704).
 const here = dirname(fileURLToPath(import.meta.url));
-const root = join(here, '..', '..');
 export const DEMO_ANSWER = JSON.parse(readFileSync(join(here, 'demo-answer.json'), 'utf8'));
-const PRACTISING = ['glömma', 'granne', 'biljett'];
-export const DEMO_GROUND = readFileSync(join(root, 'docs/middle/ai-test/known.txt'), 'utf8').split(/\s+/).filter(Boolean).filter((w) => !PRACTISING.includes(w));
+export const DEMO_GROUND = readFileSync(join(here, 'demo-ground.txt'), 'utf8').split(/\s+/).filter(Boolean);
 const DAY = 24 * 60 * 60 * 1000;
 const iso = (ms) => new Date(ms).toISOString().slice(0, 10);
 

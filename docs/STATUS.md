@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** owner's first test ([notes](reviews/2026-10-25-owner-test.md); question-pages/64): O-01…O-22 decided. Order: remaining review finding 10 → prompts and meanings → reading page and word menu → Home A, pages, terms, help bubble → starting texts → library (owner's lessons; learner sharing after 1 November) → oak animation. Then deploy, real-AI check, validation. Deadline 2026-11-01; about 7½ days of work for 6, so the last items may slip.
+**Next:** owner's first test ([notes](reviews/2026-10-25-owner-test.md); question-pages/64): O-01…O-22 decided. Review findings all fixed (2026-10-26; a fresh session should review the tests they added). Order: prompts and meanings → reading page and word menu → Home A, pages, terms, help bubble → starting texts → library (owner's lessons; learner sharing after 1 November) → oak animation. Then deploy, real-AI check, validation. Deadline 2026-11-01; about 7½ days of work for 6, so the last items may slip.
 
 ## Phases
 
@@ -150,3 +150,4 @@ One line per round or step: what was added, changed or withdrawn, with IDs.
 | 2026-10-26 | G-02, G-03 | Review finding 6 fixed: FR-207 now says every meanings prompt stores the forms it asks about (migration 009, exchanges.asked_forms, filled once for existing ones) and its answer is matched against them. regen(store), regen(texts), regen(reading); 230 unit, 86 e2e, check clean. |
 | 2026-10-26 | G-01 | Review finding 7 fixed: FR-004 now says only the current tunnel link is written to the README; one update loop, each write takes the link current as it is sent. regen(tunnel); 231 unit, check clean. |
 | 2026-10-26 | G-01 | Review finding 8 fixed: FR-004 and research R11 now give each service its own environment file (`web.env`, `tunnel.env`), blocked from the other's secrets; `loadConfig` takes a role. regen(web), regen(tunnel); 235 unit, 86 e2e, check clean. On deploy, follow the new env steps in `deploy/SETUP.md`. |
+| 2026-10-26 | G-07 | Review finding 10 fixed: FR-704 now says the demo ground is built into `server/demo/demo-ground.txt`; nothing grove runs reads `docs/`. regen(demo); 236 unit, 86 e2e, check clean. All 10 first-build review findings are now fixed or decided. |
