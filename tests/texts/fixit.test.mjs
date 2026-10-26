@@ -169,3 +169,26 @@ test('FR-207 RQ-398: the next request asks the AI to check dictionary meanings i
   assert.equal(word('paraply').en_source, 'dictionary', 'not checked in this answer, so still the dictionary\'s');
   assert.notEqual(word('kaffe').en, 'not asked');
 });
+
+test('FR-207 RQ-397 RQ-379: a meanings fix-it answer that names words it didn\'t ask about, a ground word and a leaf, leaves their meanings unchanged', async () => {
+  const db = t.grove.db;
+  const other = t.seedAccount({ email: 'unasked@example.test' });
+  seedGround(db, other.id, known);
+  const { c, p } = await start('unasked@example.test');
+  const pasted = answer('unlisted-new.json').replaceAll('TEST-1', p.code).replace('ett paraply', 'ett snurrpelleplu');
+  const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: pasted });
+  assert.equal(res.body.next.kind, 'meanings_fix', JSON.stringify(res.body));
+  const rows = () => db.prepare('SELECT lemma, en, explain_sv, en_source FROM words WHERE account_id = ? ORDER BY lemma').all(other.id).map((r) => ({ ...r }));
+  const before = rows();
+  assert.ok(before.some((r) => r.lemma === 'kopp'), 'kopp is a leaf from an accepted text');
+  assert.ok(before.some((r) => r.lemma === 'banan'), 'banan is a ground word');
+  const meanings = { meanings: [
+    { form: 'snurrpelleplu', lemma: 'snurrpelleplu', en: 'a spinning umbrella', explain_sv: 'Ett paraply som snurrar.' },
+    { form: 'banan', lemma: 'banan', en: 'not asked', explain_sv: 'Inte frågad.' },
+    { form: 'kopp', lemma: 'kopp', en: 'not asked either', explain_sv: 'Inte frågad.' },
+  ] };
+  const filled = await c.post('/api/answer', { exchangeId: res.body.next.exchangeId, answer: JSON.stringify(meanings) });
+  assert.equal(filled.body.result, 'accepted', JSON.stringify(filled.body));
+  const after = rows();
+  for (const was of before) assert.deepEqual(after.find((r) => r.lemma === was.lemma), was, was.lemma);
+});

@@ -11,7 +11,8 @@ import { createGrove } from '../../server/main.mjs';
 export const PASSWORD = 'Forest-walk-42';
 
 // `loads` replaces grove's start-up loads (G-01 FR-032); tests start on a ready grove unless `waitReady` is false.
-export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0, levels = false, loads, waitReady = true } = {}) {
+// `sizes` overrides prompt sizes as the environment settings would (G-02 FR-202).
+export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1', port = 0, levels = false, loads, waitReady = true, sizes } = {}) {
   const fb = await startFakeFirebase();
   const gh = await startFakeGithub();
   const dir = mkdtempSync(join(tmpdir(), 'grove-test-'));
@@ -21,6 +22,7 @@ export async function startTestGrove({ answerMinMs = 0, now, host = '127.0.0.1',
     backupDir: join(dir, 'backup'),
     answerMinMs,
     importLevels: levels,
+    ...(sizes ? { sizes } : {}),
     firebase: {
       projectId: fb.projectId,
       apiKey: fb.apiKey,
