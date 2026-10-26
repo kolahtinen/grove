@@ -97,6 +97,35 @@ test('FR-205 RQ-41: the same answer again gives 409 duplicate, another part code
   assert.equal((await c.get('/api/home')).body.texts.length, textsBefore);
 });
 
+test('FR-216 RQ-54: a crash while marking the prompt answered leaves nothing stored, and pasting again stores the texts once', async () => {
+  const db = t.grove.db;
+  const crash = t.seedAccount({ email: 'crash@example.test' });
+  seedGround(db, crash.id, known);
+  const c = t.client();
+  await c.signInAgreed('crash@example.test');
+  const p = await c.post('/api/prompt', { action: 'next' });
+  const pasted = withCode(answer('good-in-prose.txt'), p.body.code);
+  const count = (table) => db.prepare(`SELECT COUNT(*) AS n FROM ${table} WHERE account_id = ?`).get(crash.id).n;
+  const leavesBefore = db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'leaf'").get(crash.id).n;
+  db.exec(`CREATE TEMP TRIGGER crash_on_accept BEFORE UPDATE OF status ON exchanges WHEN NEW.status = 'accepted'
+    BEGIN SELECT RAISE(ABORT, 'simulated crash'); END`);
+  try {
+    const failed = await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: pasted });
+    assert.equal(failed.status, 500);
+  } finally {
+    db.exec('DROP TRIGGER crash_on_accept');
+  }
+  assert.equal(count('texts'), 0);
+  assert.equal(count('sentences'), 0);
+  assert.equal(db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'leaf'").get(crash.id).n, leavesBefore);
+  assert.equal(db.prepare('SELECT status FROM exchanges WHERE id = ?').get(p.body.exchangeId).status, 'waiting');
+
+  const again = await c.post('/api/answer', { exchangeId: p.body.exchangeId, answer: pasted });
+  assert.equal(again.body.result, 'accepted', JSON.stringify(again.body));
+  assert.equal(count('texts'), 3);
+  assert.equal(db.prepare('SELECT parts_accepted FROM packages WHERE account_id = ?').get(crash.id).parts_accepted, 1);
+});
+
 test('FR-205 RQ-231: an answer over 80,000 characters is refused with a plain message', async () => {
   const c = await reviewerClient();
   const p = await c.post('/api/prompt', { action: 'next' });

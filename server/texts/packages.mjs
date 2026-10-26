@@ -202,25 +202,28 @@ export function createPackages({ db, words, now = () => Date.now() }) {
       const result = checkAnswer(answer, counter, s.target_share);
       if (!result.ok) return refuse(exchange, result.problems);
 
+      // The texts, the prompt marked answered, the package's count and the meanings prompt are one
+      // transaction: after a crash all of it is stored or none of it (FR-216).
       const topic = s.topic || DEFAULT_TOPIC;
-      const stored = acceptAnswer({ db, words, accountId, exchange, answer, check: result, topic, now, counter });
-      transaction(db, () => {
+      const { stored, meanings } = transaction(db, () => {
+        const stored = acceptAnswer({ db, words, accountId, exchange, answer, check: result, topic, now, counter });
         db.prepare("UPDATE exchanges SET status = 'accepted', answer_hash = ?, answered_at = ? WHERE id = ?").run(hash, now(), exchange.id);
         db.prepare("UPDATE exchanges SET status = 'replaced' WHERE account_id = ? AND code = ? AND id != ? AND status IN ('waiting', 'needs_fix')").run(accountId, exchange.code, exchange.id);
         db.prepare('UPDATE packages SET parts_accepted = MIN(parts_total, parts_accepted + 1) WHERE id = ?').run(exchange.package_id);
         const used = JSON.parse(s.topics_used);
         if (answer.starter_words.length && !used.includes(topic.toLowerCase())) used.push(topic.toLowerCase());
         db.prepare('UPDATE learner_settings SET firm_new = ?, topics_used = ? WHERE account_id = ?').run(result.tooFew ? 1 : 0, JSON.stringify(used), accountId);
-      });
 
-      const missing = words.missingMeanings(accountId, stored.added);
-      let meanings = null;
-      if (missing.length) {
-        const prompt = buildMeaningsPrompt(missing);
-        const info = db.prepare(`INSERT INTO exchanges (account_id, package_id, part_no, kind, code, prompt, status, created_at)
-          VALUES (?, ?, ?, 'meanings', ?, ?, 'waiting', ?)`).run(accountId, exchange.package_id, exchange.part_no, exchange.code, prompt, now());
-        meanings = { exchangeId: Number(info.lastInsertRowid), prompt };
-      }
+        const missing = words.missingMeanings(accountId, stored.added);
+        let meanings = null;
+        if (missing.length) {
+          const prompt = buildMeaningsPrompt(missing);
+          const info = db.prepare(`INSERT INTO exchanges (account_id, package_id, part_no, kind, code, prompt, status, created_at)
+            VALUES (?, ?, ?, 'meanings', ?, ?, 'waiting', ?)`).run(accountId, exchange.package_id, exchange.part_no, exchange.code, prompt, now());
+          meanings = { exchangeId: Number(info.lastInsertRowid), prompt };
+        }
+        return { stored, meanings };
+      });
       return { result: 'accepted', texts: stored.texts, newWords: stored.added.length, meanings };
     },
   };
