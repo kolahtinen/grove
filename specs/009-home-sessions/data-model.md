@@ -1,6 +1,6 @@
 # Data model: G-09 additions
 
-Migration `013-sessions.sql` (or the next free number when built; see the plan). Adds one table; changes no rows.
+Migration `014-sessions.sql` (012 and 013 were taken by the Dictionary and addendum 003). Adds one table; changes no rows.
 
 ## sessions
 

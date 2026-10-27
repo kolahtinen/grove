@@ -2,7 +2,7 @@
 
 The per-app checklist from the prototype-to-spec process. Each command updates its item, links its output and adds a changelog line.
 
-**Next:** order decided on question-pages/74 (17): the Dictionary in pages (question-pages/72) and addendum 003 (question-pages/73), both specified, build waiting for the other session's test work → the new Home (question-pages/74: tile grid, palette 14, ☰ menu, Account; Practise for X min; Texts by topic; By skill), first as addendum 004 and a Spec Kit feature → deploy and the real-AI check → starting texts, the owner's lessons, the oak animation. The probe-test sizes wait for the owner's Claude and round D runs. Deadline 2026-11-01; the last items will slip.
+**Next:** order decided on question-pages/74 (17): the Dictionary in pages and addendum 003 built 2026-10-27 (in a separate worktree; the other session's `texts.spec.mjs` work kept) → the new Home (question-pages/74: tile grid, palette 14, ☰ menu, Account; Practise for X min; Texts by topic; By skill), first as addendum 004 and a Spec Kit feature → deploy and the real-AI check → starting texts, the owner's lessons, the oak animation. The probe-test sizes wait for the owner's Claude and round D runs. Deadline 2026-11-01; the last items will slip.
 
 **To confirm with the owner:** [provisional decisions](provisional-decisions.md) (PD-01…28, 2026-10-27; PD-28 found while drafting G-09's plan): made on the owner's behalf with research while they were away; nothing in the specs until confirmed.
 

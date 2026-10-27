@@ -165,6 +165,18 @@ Prepared 2026-10-27 while the owner was away; asked one at a time in Claude Code
 
 **Answer:**
 
+### 25. The demo's six drilled words were "with both kinds of marks" (G-07 FR-704); with To read gone (RQ-415, which you confirmed on question-pages/73) they are now all To remember, and FR-704 says so. OK? (built 2026-10-27 with addendum 003)
+
+- **Yes (Recommended)** · Keep some demo words marked To read (would contradict RQ-415)
+
+**Answer:**
+
+### 26. My own texts "always reachable from the top bar" (FR-321) doesn't fit at 360 px next to Dictionary, Sign out and ? (G-08 FR-807). For now the top-bar link shows only above 400 px; on phones it's on Home. OK until G-09's ☰ menu? (built 2026-10-27)
+
+- **Yes, until the ☰ menu (Recommended)** · Drop the tagline on phones to make room · Replace Dictionary in the bar with Own texts
+
+**Answer:**
+
 ## Applied
 
 (filled in after the session: which specs and addenda changed)

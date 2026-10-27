@@ -16,7 +16,7 @@ Home becomes a grid of icon tiles that open in place (a disclosure pattern), wit
 
 **Primary Dependencies**: none new
 
-**Storage**: migration `013-sessions.sql` (table `sessions`; the next free number when built: 013 if G-03's 012 for the Dictionary is in by then, otherwise 012 and the Dictionary takes 013) ([data-model.md](data-model.md))
+**Storage**: migration `014-sessions.sql` (table `sessions`; 012 is the Dictionary's and 013 addendum 003's, both built 2026-10-27) ([data-model.md](data-model.md))
 
 **Testing**: `node --test` (new `tests/sessions/`: the planner as a pure function with fixed inventories, the store, the routes; an injectable clock); Playwright for the tile grid, menu, help bubble, sessions, Texts, By skill, Just one mode, terms screens and contrast in both looks
 
@@ -42,7 +42,7 @@ Home becomes a grid of icon tiles that open in place (a disclosure pattern), wit
 | 3.2, 3.3 export/delete | `sessions` has `account_id`, so `owner data` exports and deletes it like every per-account table | owner data test lists `sessions` |
 | 4.4 no outside hosts | Icons inline SVG; help bubble loads grove's own `/how` | request-recording browser test covers the new pages |
 | 4.6 plain text | Text titles, topics and sentences in the session page via `textContent` | the HTML-paste test extended to Texts and the session card |
-| 4.13 migrations | 013 adds a table; keeps every row | migration test covers 12 → 13 |
+| 4.13 migrations | 014 adds a table; keeps every row | migration test covers 13 → 14 |
 
 No violations.
 
@@ -50,7 +50,7 @@ No violations.
 
 ```text
 server/
-├── store/migrations/013-sessions.sql
+├── store/migrations/014-sessions.sql
 ├── sessions/                    # module sessions: durations.mjs (FR-905's numbers, pending PD-02),
 │                                #   inventory.mjs (what the learner has: due/fading/master leaves, texts with
 │                                #   word counts and known share now), plan.mjs (pure planner: time, topic,
