@@ -1,0 +1,38 @@
+.tiles { display: grid; gap: 12px; }
+.tile { display: block; text-decoration: none; color: inherit; }
+.tile h3 { margin: 0 0 .25rem; font-size: 1.05rem; }
+.tile p { margin: 0; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: .6rem; }
+.chip { border: 1px solid var(--line); border-radius: 999px; padding: .25rem .7rem; font-size: .85rem; background: var(--card2); }
+.chip.on { border-color: var(--accent); box-shadow: var(--glow); }
+.hamb { margin-left: auto; width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--line); background: var(--card2); display: grid; place-items: center; font-size: 1.2rem; color: var(--ink); }
+.resume { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.mode { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); background: var(--card); margin-bottom: 12px; }
+.mode header { padding: .45rem 1rem; font-weight: 700; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: #0C160A; display: flex; justify-content: space-between; }
+.mode .body { padding: .9rem 1rem 1rem; }
+.discover header { background: #7FA866; }
+.review header { background: #7CB4FF; }
+.master header { background: #D9A55B; }
+.timebar { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; margin: .4rem 0 1rem; }
+.timebar span { display: block; height: 100%; width: 35%; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.menu { position: absolute; right: 16px; top: 64px; width: 220px; padding: .4rem; border-radius: 16px; background: var(--pbg); border: 1px solid var(--line); box-shadow: var(--shadow); z-index: 5; }
+.menu a, .menu span { display: block; padding: .55rem .8rem; border-radius: 10px; color: var(--ink); text-decoration: none; }
+.menu .sep { border-top: 1px solid var(--line); margin: .3rem 0; padding: 0; }
+.menu .small { color: var(--muted); font-size: .8rem; }
+.label { font-size: .75rem; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; margin: 1.2rem 0 .5rem; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.sq { aspect-ratio: 1; border-radius: 20px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); display: grid; place-items: center; }
+.sq svg { width: 42%; height: 42%; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sq.dim { opacity: .35; }
+.open { grid-column: 1 / -1; border-radius: 20px; background: var(--card); border: 1px solid var(--accent); box-shadow: var(--glow); padding: 1rem 1.1rem 1.1rem; }
+.open .head { display: flex; align-items: center; gap: .8rem; }
+.open .head svg { width: 40px; height: 40px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.open h3 { margin: 0; font-size: 1.15rem; }
+.open p { margin: .6rem 0 .9rem; }
+.open .x { margin-left: auto; color: var(--muted); font-size: 1.3rem; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); backdrop-filter: blur(3px); z-index: 4; }
+.popcard { position: fixed; left: 16px; right: 16px; top: 90px; z-index: 5; border-radius: 26px; background: var(--pbg); border: 1px solid var(--line); box-shadow: var(--shadow); padding: 1.4rem 1.3rem; }
+.popcard .big { width: 64px; height: 64px; stroke: var(--accent); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.popcard h2 { margin: .6rem 0 .3rem; }
+.popcard .x { position: absolute; right: 18px; top: 14px; font-size: 1.4rem; color: var(--muted); }

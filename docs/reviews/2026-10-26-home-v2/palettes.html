@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>@import url("../../../public/fonts/zen-kaku-gothic-new-latin-400-normal.woff2");</style>
+<style>
+body { margin: 0; padding: 14px; background: #fff; font-family: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", system-ui, sans-serif; color: #222; }
+.p { margin-bottom: 26px; }
+.p > h2 { font-size: 17px; margin: 0 0 2px; }
+.p > p { margin: 0 0 8px; font-size: 13px; color: #666; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.scr { border-radius: 16px; padding: 10px; border: 1px solid rgba(0,0,0,.12); }
+.bar { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+.bar i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; }
+.tile { aspect-ratio: 1; border-radius: 10px; display: grid; place-items: center; font-size: 18px; }
+.btn { border-radius: 10px; text-align: center; padding: 7px; font-weight: 700; font-size: 12px; margin-bottom: 8px; }
+.m { border-radius: 9px; overflow: hidden; margin-bottom: 5px; }
+.m header { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; padding: 4px 7px; }
+.m div { font-size: 11px; padding: 5px 7px 6px; }
+.muted { font-size: 11px; margin: 0 0 6px; }
+.sw { display: flex; gap: 3px; margin-top: 6px; }
+.sw span { flex: 1; height: 14px; border-radius: 3px; }
+</style></head><body>
+<div id="out"></div>
+<script>
+// [name, note, light{bg,card,ink,muted,accent,accent2,d,r,m}, dark{...}]
+const P = [
+ ['11 · Spruce and bark', 'Exactly 10’s greens with 9’s paper and modes.',
+  { bg:'#ECE5DA', card:'#F8F4EE', ink:'#2A2420', muted:'#7A6F66', accent:'#3F6B4F', accent2:'#6E9A73', d:'#C08552', r:'#8C5A3C', m:'#4B2E2B' },
+  { bg:'#12100E', card:'#1E1A17', ink:'#EEE6DD', muted:'#A2978C', accent:'#7FB08C', accent2:'#A6CDAE', d:'#E3A46E', r:'#C27A52', m:'#9C5745' }],
+ ['12 · Sadder paper', 'As 11, on a warmer, more yellow beige; cards a shade apart.',
+  { bg:'#E9DFCF', card:'#F5EDE0', ink:'#2A2420', muted:'#7C7064', accent:'#3F6B4F', accent2:'#6E9A73', d:'#C08552', r:'#8C5A3C', m:'#4B2E2B' },
+  { bg:'#15110D', card:'#221C16', ink:'#EFE5D6', muted:'#A6988A', accent:'#7FB08C', accent2:'#A6CDAE', d:'#E3A46E', r:'#C27A52', m:'#9C5745' }],
+ ['13 · With ember', 'As 11, modes leaning red: caramel → copper → oxblood.',
+  { bg:'#ECE5DA', card:'#F8F4EE', ink:'#2A2420', muted:'#7A6F66', accent:'#3F6B4F', accent2:'#6E9A73', d:'#C08552', r:'#A35A3E', m:'#683531' },
+  { bg:'#12100E', card:'#1E1A17', ink:'#EEE6DD', muted:'#A2978C', accent:'#7FB08C', accent2:'#A6CDAE', d:'#E3A46E', r:'#D47C5C', m:'#B4574A' }],
+ ['14 · Deep woods', 'As 11 with deeper greens and moss-tinted tiles.',
+  { bg:'#ECE5DA', card:'#EEEEE2', ink:'#26241F', muted:'#74706A', accent:'#2F5A40', accent2:'#5E8A66', d:'#C08552', r:'#8C5A3C', m:'#4B2E2B' },
+  { bg:'#0F110E', card:'#1A1F1A', ink:'#E9EBE3', muted:'#9AA095', accent:'#6FA27E', accent2:'#97C3A2', d:'#E3A46E', r:'#C27A52', m:'#9C5745' }],
+];
+const lum = (h) => { const [r,g,b] = [1,3,5].map(i => parseInt(h.slice(i,i+2),16)/255).map(c => c <= .03928 ? c/12.92 : ((c+.055)/1.055)**2.4); return .2126*r+.7152*g+.0722*b; };
+const on = (h) => lum(h) > .35 ? '#14140F' : '#FFFFFF';
+function screen(c, dark) {
+  const mode = (n, col, t) => `<section class="m" style="background:${c.card}"><header style="background:${col};color:${on(col)}">${n}</header><div style="color:${c.ink}">${t}</div></section>`;
+  return `<div class="scr" style="background:${c.bg};color:${c.ink}">
+    <div class="bar"><i style="background:${c.accent}"></i>grove <span style="margin-left:auto;font-weight:400;color:${c.muted}">${dark ? 'dark' : 'light'}</span></div>
+    <div class="tiles">${['◷','▤','◎'].map(x => `<div class="tile" style="background:${c.card};color:${c.accent}">${x}</div>`).join('')}</div>
+    <div class="btn" style="background:linear-gradient(135deg,${c.accent},${c.accent2});color:${on(c.accent)}">Start 10 minutes</div>
+    <p class="muted" style="color:${c.muted}">10-minute session · 3 of 8</p>
+    ${mode('DISCOVER', c.d, 'Lördag på torget')}${mode('REVIEW', c.r, 'What does “kopp” mean?')}${mode('MASTER', c.m, 'Fill in the word.')}
+    <div class="sw">${[c.bg,c.card,c.ink,c.accent,c.d,c.r,c.m].map(x => `<span style="background:${x}"></span>`).join('')}</div>
+  </div>`;
+}
+out.innerHTML = P.map(([n, note, l, d]) => `<div class="p"><h2>${n}</h2><p>${note}</p><div class="pair">${screen(l,false)}${screen(d,true)}</div></div>`).join('');
+</script></body></html>

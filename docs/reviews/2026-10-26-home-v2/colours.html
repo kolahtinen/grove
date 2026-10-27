@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../../../public/assets/grove.css">
+<style>
+body { margin: 0; font-family: var(--font); }
+.cols { display: grid; grid-template-columns: 1fr 1fr; }
+.side { padding: 14px; }
+.light { background: #F3F0E8; color: #1F2A22; }
+.dark { background: #0A110E; color: #E8F0E9; }
+h2 { font-size: 15px; margin: 18px 0 8px; }
+h2:first-child { margin-top: 0; }
+.m { border-radius: 14px; overflow: hidden; margin-bottom: 8px; border: 1px solid rgba(128,128,128,.25); }
+.m header { padding: 6px 10px; font-weight: 700; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+.m div { padding: 8px 10px 10px; font-size: 13px; }
+.light .m div { background: #FBFAF6; }
+.dark .m div { background: rgba(255,255,255,.05); }
+.band header { background: transparent; border-left: 5px solid; }
+</style></head><body>
+<div class="cols">
+<div class="side light" id="L"></div><div class="side dark" id="D"></div>
+</div>
+<script>
+const opts = [
+ ['A · Forest: moss, sky, bark', { light: { Discover: ['#4E7A3A','#fff'], Review: ['#3E6E86','#fff'], Master: ['#8A5A2B','#fff'] }, dark: { Discover: ['#8DBB72','#0C160A'], Review: ['#86B8CF','#0C160A'], Master: ['#D3A06A','#1A1006'] } }],
+ ['B · Seasons: spring, summer, autumn', { light: { Discover: ['#5E9A3E','#fff'], Review: ['#B8860B','#fff'], Master: ['#B0472B','#fff'] }, dark: { Discover: ['#9BD07A','#0C160A'], Review: ['#E7C25A','#1A1406'], Master: ['#E68A6A','#1A0A06'] } }],
+ ['C · Quiet: coloured text and stripe, no fill', { light: { Discover: ['#3F7A2E',''], Review: ['#2F6B8A',''], Master: ['#8A4F7A',''] }, dark: { Discover: ['#9BD07A',''], Review: ['#8CC4E0',''], Master: ['#D9A0C8',''] } }],
+];
+for (const [mode, el] of [['light', L], ['dark', D]]) {
+  for (const [name, o] of opts) {
+    el.insertAdjacentHTML('beforeend', `<h2>${name}</h2>`);
+    for (const [m, [bg, fg]] of Object.entries(o[mode])) {
+      const band = !fg;
+      el.insertAdjacentHTML('beforeend', `<section class="m ${band ? 'band' : ''}"><header style="${band ? `color:${bg};border-color:${bg}` : `background:${bg};color:${fg}`}">${m}</header><div>${m === 'Review' ? 'What does “kopp” mean here?' : m === 'Discover' ? 'Lördag på torget · 4 min' : 'Fill in the Swedish word.'}</div></section>`);
+    }
+  }
+  el.insertAdjacentHTML('afterbegin', `<h2 style="opacity:.6">${mode === 'light' ? 'Pale birch (light)' : 'Night forest (dark)'}</h2>`);
+}
+</script></body></html>
