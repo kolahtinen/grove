@@ -80,6 +80,23 @@ tests/
 
 Palette and contrast → grid, menu, Account, Settings, help bubble, terms screens → Practise for X min (sessions module, session page) → Texts with topics and sessions by topic → By skill → Just one mode. Each part is regenerated and tested on its own.
 
+## Tests whose spec rules change
+
+Found by searching `tests/e2e/` (2026-10-27). Each changes only because the rule it names is replaced (constitution 1.3); the tasks list them per part.
+
+| Test (file: rule) | Replaced by | Change |
+|---|---|---|
+| The sign-in steps in 9 files (privacy, demo, levels, drill, listening, reading, texts, look-extras, and signin itself) tick "I agree to the terms" and the age box | FR-911 | the setup steps go through the terms screens; what each test checks is unchanged. Proposed: one shared `signInAndAgree` helper in `tests/e2e/`, so the next change to the terms touches one file |
+| signin: FR-011 FR-014 | FR-911, FR-902 | the terms screens; Sign out from ☰ |
+| look: FR-005 FR-030 (top bar contents), FR-026 (tokens), FR-029 (accent gradient values) | FR-902, FR-913 | logo + ☰; palette 14's values (pending PD-12) |
+| look-extras: FR-801 FR-802 (logo tap plays the scene; `#stages-card`), FR-807 (Sign out on one line at 360 px) | FR-902, FR-901 | the scene from Help's Replay; Home's grid; the ☰ button at 360 px |
+| look-extras: FR-805 (right/wrong colours) | FR-913 | only if PD-14 is confirmed |
+| privacy: FR-024 (email with HTML shown as text in the header) | FR-902, FR-910 | the email is on the Account page; same check there |
+| demo: FR-704 FR-705, levels: FR-606 (`#stages-card` on Home) | FR-901, FR-908 | Home's grid; Review and Master under Just one mode |
+| drill: FR-407 (three stages on Home), FR-414 FR-415 (level and minutes on Home) | FR-908, FR-910 | Just one mode; Progress |
+| drill: FR-413 (word colours) | FR-913 | only if PD-13 is confirmed |
+| texts: FR-201 FR-203 FR-219, FR-223 (3 tests), FR-224 (`#package-card` on Home), FR-218 ("rated on Home") | FR-909 | the same steps on `/texts`. **`texts.spec.mjs` has uncommitted work from another session**; change it only after that is committed |
+
 ## Complexity Tracking
 
 None.
