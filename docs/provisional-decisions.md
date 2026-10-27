@@ -194,7 +194,7 @@ Darkening only the failing ones would make Discover and Review almost the same b
 | 20 min | 4.3 ✗ | 16.6 ✓ |
 | 30 min | 4.3 ✗ | 18.0 (short, says so) |
 
-**Recommendation:** after Master, fill with the next unread texts that fit, then **re-reading** texts already read (oldest first, no marking step), then **listening again** to texts already read; stop between 80% and 120% of the length. Re-reading easy, familiar text is what extensive-reading research recommends for fluency (PD-04's "Long" reasoning [6]). These count as Discover in the banner. *Alternatives:* a shorter session that says "only 4 minutes of practice today" (honest, but the 10-minute tile would rarely give 10 minutes); or reviewing words that aren't due yet (changes G-04's schedule, which sessions shouldn't touch). **Changes:** G-09 FR-905 (and SC-001 stays as it is).
+**Recommendation:** after Master, fill with the next unread texts that fit, then **re-reading** texts already read (oldest first, no marking step), then **listening again** to texts already read; stop between 80% and 120% of the length. Re-reading easy, familiar text is what extensive-reading research recommends for fluency (PD-04's "Long" reasoning [6]). These count as Discover in the banner. G-09's own edge case already plans "older texts to re-read" when nothing is new; this extends it to any session that runs short. *Alternatives:* a shorter session that says "only 4 minutes of practice today" (honest, but the 10-minute tile would rarely give 10 minutes); or reviewing words that aren't due yet (changes G-04's schedule, which sessions shouldn't touch). **Changes:** G-09 FR-905 (and SC-001 stays as it is).
 
 ---
 
