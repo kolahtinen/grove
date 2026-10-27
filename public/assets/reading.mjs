@@ -632,6 +632,8 @@ $('voice-help-link').addEventListener('click', () => showVoiceHelp(false));
 onVoices((has) => { if (has) $('voice-help').hidden = true; });
 
 // G-05 FR-509: a listening text opens in listening mode.
+// Listen works once its handler is attached, after the text has loaded (it starts disabled).
+$('listen').disabled = !data;
 if (data && data.kind === 'listening') $('listen').click();
 
 // G-03 FR-318: the own-text AI round. Copy prompt says "Copied to clipboard"; only when copying fails
