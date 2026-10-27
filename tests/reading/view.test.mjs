@@ -44,15 +44,36 @@ test('FR-302 RQ-55 RQ-76: each sentence has its new count and the text its word 
   assert.ok(r.stats.share > 90 && r.stats.share < 100);
 });
 
-test('FR-301 RQ-10: each line carries its English and showTranslations follows the setting', async () => {
+test('FR-301 RQ-10 RQ-411: each line carries its English for Show translation; the translations setting is withdrawn', async () => {
   const c = await signedIn(t);
   const id = textId(t, learner.id, 'En bra dag');
   const r = (await c.get(`/api/reading?id=${id}`)).body;
-  assert.equal(r.showTranslations, true);
+  assert.equal('showTranslations' in r, false);
   assert.equal(r.lines[0].en, 'In the evening the café is empty.');
-  assert.deepEqual((await c.post('/api/settings', { showTranslations: false })).body, { showTranslations: false });
-  assert.equal((await c.get(`/api/reading?id=${id}`)).body.showTranslations, false);
-  await c.post('/api/settings', { showTranslations: true });
+  assert.equal((await c.post('/api/settings', { showTranslations: false })).status, 400);
+});
+
+test('FR-305 RQ-18 RQ-412: Speak words is on by default and kept for the learner when switched', async () => {
+  const c = await signedIn(t);
+  const id = textId(t, learner.id, 'En bra dag');
+  assert.equal((await c.get(`/api/reading?id=${id}`)).body.speakWords, true);
+  const r = await c.post('/api/settings', { speakWords: false });
+  assert.equal(r.body.speakWords, false);
+  assert.equal((await c.get(`/api/reading?id=${id}`)).body.speakWords, false);
+  await c.post('/api/settings', { speakWords: true });
+});
+
+test('FR-306 RQ-413 RQ-396: a form of more than one dictionary word lists each with its meaning; every word token has a meaning', async () => {
+  const words = new Set(t.grove.db.prepare("SELECT lemma FROM words WHERE account_id = ? AND kind = 'word'").all(learner.id).map((w) => w.lemma));
+  for (const w of ['var', 'vara']) if (!words.has(w)) t.grove.db.prepare("INSERT INTO words (account_id, lemma, kind, state, added_at) VALUES (?, ?, 'word', 'ground', 1)").run(learner.id, w);
+  const r = (await reading('En bra dag')).body;
+  const several = tokensOf(r).filter((x) => x.lemmas?.length > 1);
+  assert.ok(several.length > 0, 'the sample has a form of more than one word (var: vara, var)');
+  for (const x of several) {
+    assert.deepEqual(x.senses.map((s) => s.lemma), x.lemmas, x.t);
+    assert.ok(x.senses.every((s) => s.en), `${x.t}: each with its meaning`);
+  }
+  assert.ok(tokensOf(r).filter((x) => x.word && x.status !== 'name').every((x) => x.meaning), 'never "meaning missing"');
 });
 
 test('FR-303 RQ-56: the answer\'s names are stored and never count as new', async () => {
@@ -66,6 +87,6 @@ test('FR-319 RQ-155: another account gets 404 for the text and the settings chan
   const other = await reading('En bra dag', 'other@example.test');
   assert.equal(other.status, 404);
   const c = await signedIn(t, 'other@example.test');
-  await c.post('/api/settings', { showTranslations: false });
-  assert.equal((await reading('En bra dag')).body.showTranslations, true);
+  await c.post('/api/settings', { speakWords: false });
+  assert.equal((await reading('En bra dag')).body.speakWords, true);
 });

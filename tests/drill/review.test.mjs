@@ -10,16 +10,16 @@ let texts;
 before(async () => {
   ({ t, learner, c, clock, texts } = await drillGrove());
   const db = t.grove.db;
-  // Drilled leaves of different ages: kopp fading, räkna due, mörk not due; tolv To remember and due.
-  const set = db.prepare('UPDATE words SET drilled = 1, to_read = ?, to_remember = ?, gap_days = ?, last_review_at = ? WHERE account_id = ? AND lemma = ?');
-  set.run(1, 0, 1, clock.now - 3 * DAY, learner.id, 'kopp');
-  set.run(1, 0, 1, clock.now - 1.2 * DAY, learner.id, 'räkna');
-  set.run(1, 0, 2.5, clock.now - DAY, learner.id, 'mörk');
-  set.run(0, 1, 1, clock.now - 1.5 * DAY, learner.id, 'tolv');
+  // Drilled leaves To remember of different ages: kopp fading, räkna and tolv due, mörk not due.
+  const set = db.prepare('UPDATE words SET drilled = 1, to_remember = 1, gap_days = ?, last_review_at = ? WHERE account_id = ? AND lemma = ?');
+  set.run(1, clock.now - 3 * DAY, learner.id, 'kopp');
+  set.run(1, clock.now - 1.2 * DAY, learner.id, 'räkna');
+  set.run(2.5, clock.now - DAY, learner.id, 'mörk');
+  set.run(1, clock.now - 1.5 * DAY, learner.id, 'tolv');
 });
 after(() => t.close());
 
-test('FR-404 FR-406 RQ-80 RQ-32 RQ-07: Review lists fading leaves first, then due ones, each in a sentence the learner read', async () => {
+test('FR-404 FR-406 RQ-80 RQ-32 RQ-07 RQ-415: Review lists fading leaves first, then due ones, each shown in a sentence the learner read', async () => {
   const res = await c.get('/api/review?mode=review');
   assert.equal(res.status, 200);
   const lemmas = res.body.items.map((i) => i.lemma);
@@ -27,12 +27,12 @@ test('FR-404 FR-406 RQ-80 RQ-32 RQ-07: Review lists fading leaves first, then du
   assert.ok(lemmas.includes('räkna') && lemmas.includes('tolv'));
   assert.ok(!lemmas.includes('mörk'), 'not due yet');
   const kopp = res.body.items[0];
-  assert.equal(kopp.mode, 'read');
+  assert.equal(kopp.mode, 'remember');
   assert.match(kopp.sentence, /kopp/i);
   assert.equal(kopp.options[kopp.right], 'the cups');
   assert.ok(kopp.options.length >= 3 && kopp.options.length <= 4);
   assert.ok(!kopp.options.some((o, i) => i !== kopp.right && o === 'cup'), 'never the item\'s own other meaning as a wrong option');
-  assert.equal(res.body.items.find((i) => i.lemma === 'tolv').mode, 'remember');
+  assert.ok(res.body.items.every((i) => i.mode === 'remember' && i.sentence), 'every leaf in a sentence, To remember (no To read)');
 });
 
 test('FR-406 RQ-32: an item without a sentence is a recall card', async () => {
@@ -43,16 +43,16 @@ test('FR-406 RQ-32: an item without a sentence is a recall card', async () => {
 });
 
 test('FR-405 RQ-60 RQ-200: answers update the gap, and the third right answer on schedule falls', async () => {
-  let r = await c.post('/api/review', { lemma: 'räkna', mode: 'read', right: true });
+  let r = await c.post('/api/review', { lemma: 'räkna', mode: 'remember', right: true });
   assert.deepEqual(r.body, { gap: 2.5, fell: false });
   clock.now += 2.5 * DAY;
-  r = await c.post('/api/review', { lemma: 'räkna', mode: 'read', right: true });
+  r = await c.post('/api/review', { lemma: 'räkna', mode: 'remember', right: true });
   assert.deepEqual(r.body, { gap: 6.25, fell: false });
   clock.now += 6.25 * DAY;
-  r = await c.post('/api/review', { lemma: 'räkna', mode: 'read', right: true });
+  r = await c.post('/api/review', { lemma: 'räkna', mode: 'remember', right: true });
   assert.equal(r.body.fell, true);
   assert.equal(word(t, learner.id, 'räkna').state, 'ground');
-  r = await c.post('/api/review', { lemma: 'kopp', mode: 'read', right: false });
+  r = await c.post('/api/review', { lemma: 'kopp', mode: 'remember', right: false });
   assert.deepEqual(r.body, { gap: 0.5, fell: false });
   assert.ok(t.grove.db.prepare('SELECT COUNT(*) AS n FROM review_answers WHERE account_id = ?').get(learner.id).n >= 4);
 });
@@ -93,6 +93,6 @@ test('FR-419 RQ-155: review answers for another account\'s items are refused', a
   clock.now = Date.now(); // earlier tests moved the clock; a fresh sign-in token must not look expired
   const other = t.client();
   await other.signInAgreed('other@example.test');
-  assert.equal((await other.post('/api/review', { lemma: 'kopp', mode: 'read', right: true })).status, 404);
+  assert.equal((await other.post('/api/review', { lemma: 'kopp', mode: 'remember', right: true })).status, 404);
   assert.deepEqual((await other.get('/api/review?mode=review')).body.items, []);
 });

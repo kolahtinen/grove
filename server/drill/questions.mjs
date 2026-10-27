@@ -52,8 +52,8 @@ export function createQuestions(db) {
 
   return {
     sentenceFor,
-    // A meaning question in a sentence: 'read' or 'remember' (spoken, hidden until answered).
-    meaningQuestion(accountId, item, mode = 'read') {
+    // A meaning question in a sentence, shown with Play (FR-406; addendum 003, RQ-415).
+    meaningQuestion(accountId, item, mode = 'remember') {
       const s = sentenceFor(accountId, item);
       const right = s ? meaningHere(item, s.textId) : item.en;
       const others = otherMeanings(accountId, item, right);
@@ -64,7 +64,7 @@ export function createQuestions(db) {
     // Master: the sentence with the form blanked, the English meaning, and Swedish forms to choose from.
     masterQuestion(accountId, item) {
       const s = sentenceFor(accountId, item);
-      if (!s || item.kind !== 'word') return this.meaningQuestion(accountId, item, 'read');
+      if (!s || item.kind !== 'word') return this.meaningQuestion(accountId, item);
       const meaning = meaningHere(item, s.textId);
       const others = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND id != ? AND kind = 'word'").all(accountId, item.id)
         .map((r) => r.lemma).filter((l) => l !== s.form.toLowerCase())

@@ -12,7 +12,6 @@ const id = Number(new URLSearchParams(window.location.search).get('id'));
 const STATUS = { new: 'New word', leaf: 'Leaf — a word you are learning', ground: 'In your ground — you know it', name: 'Name — never counts as new' };
 let data = null;
 let current = null; // { token, sentence, line }
-let showEn = true;
 let playing = false;
 
 function el(tag, className, text) {
@@ -22,15 +21,30 @@ function el(tag, className, text) {
   return node;
 }
 
-// Colour classes (FR-413): To read / To remember / both, fallen from each, another reading.
+// Colour classes (FR-413): To remember, and the marks a word had when it fell (To read and both only
+// for words that fell before addendum 003). No mark for a form of more than one word (FR-306).
 function markClass(tok) {
-  let c = '';
-  if (tok.marks?.read && tok.marks?.remember) c += ' m-both';
-  else if (tok.marks?.remember) c += ' m-remember';
-  else if (tok.marks?.read) c += ' m-read';
-  else if (tok.fell) c += ` f-${tok.fell}`;
-  if ((tok.lemmas?.length || 0) > 1) c += ' other-reading';
-  return c;
+  if (tok.marks?.remember) return ' m-remember';
+  if (tok.fell) return ` f-${tok.fell}`;
+  return '';
+}
+
+// One Show translation button under a text, showing the whole text's English below it (FR-301).
+function translationBlock() {
+  const wrap = el('div', 'translation');
+  const button = el('button', 'bar-button', 'Show translation');
+  button.type = 'button';
+  button.setAttribute('aria-expanded', 'false');
+  const english = el('div', 'translation-text');
+  english.hidden = true;
+  for (const line of data.lines) if (line.en) english.append(el('p', 'en', line.en));
+  button.addEventListener('click', () => {
+    english.hidden = !english.hidden;
+    button.textContent = english.hidden ? 'Show translation' : 'Hide translation';
+    button.setAttribute('aria-expanded', String(!english.hidden));
+  });
+  wrap.append(button, english);
+  return wrap;
 }
 
 // Renders lines into a list; with `practice`, words aren't buttons and sentences can be highlighted.
@@ -42,42 +56,66 @@ function renderLines(list, { tappable = true } = {}) {
     for (const s of line.sentences) {
       const span = el('span', 'sentence');
       span.dataset.sentence = s.id;
-      for (const tok of s.tokens) {
-        if (!tok.word) { span.append(document.createTextNode(tok.t)); continue; }
+      // A word keeps the punctuation right before and after it on its line (FR-320): opening marks
+      // without a space after them and closing marks without a space before them go in one unbreakable group.
+      let group = null;
+      let lead = '';
+      s.tokens.forEach((tok, k) => {
+        if (!tok.word) {
+          const next = s.tokens[k + 1];
+          if (group && !/^\s/.test(tok.t)) {
+            const [stuck, rest] = splitTrailing(tok.t);
+            group.append(document.createTextNode(stuck));
+            if (rest) { span.append(document.createTextNode(rest)); group = null; }
+          } else if (next?.word && !/\s$/.test(tok.t)) {
+            const m = tok.t.match(/^(.*\s)?(\S*)$/s);
+            if (m[1]) span.append(document.createTextNode(m[1]));
+            lead = m[2];
+            group = null;
+          } else {
+            span.append(document.createTextNode(tok.t));
+            group = null;
+          }
+          return;
+        }
         const w = el(tappable ? 'button' : 'span', `w ${tok.status}${tok.patterns?.length ? ' pattern' : ''}${markClass(tok)}`, tok.t);
         if (tappable) {
           w.type = 'button';
           w.addEventListener('click', () => openMenu(tok, s, line));
         }
-        span.append(w);
-      }
+        group = el('span', 'nb');
+        if (lead) { group.append(document.createTextNode(lead)); lead = ''; }
+        group.append(w);
+        span.append(group);
+      });
       if (s.newCount > 0) span.append(el('span', 'new-count', `${s.newCount} new`));
       sv.append(span, document.createTextNode(' '));
     }
     li.append(sv);
-    if (line.en) {
-      const en = el('p', 'en', line.en);
-      en.hidden = !showEn;
-      li.append(en);
-      if (!showEn) {
-        const peek = el('button', 'bar-button en-toggle', 'English');
-        peek.type = 'button';
-        peek.addEventListener('click', () => { en.hidden = !en.hidden; });
-        li.append(peek);
-      }
-    }
     list.append(li);
   }
 }
 
+// Punctuation stuck to the word before it, up to the first space; the rest.
+function splitTrailing(text) {
+  const at = text.search(/\s/);
+  return at === -1 ? [text, ''] : [text.slice(0, at), text.slice(at)];
+}
+
 function openMenu(token, sentence, line) {
   current = { token, sentence, line };
-  speak(token.t);
+  if (data.speakWords) speak(token.t);
+  setSwitch($('menu-speak'), !!data.speakWords);
   $('menu-word').textContent = token.t;
   $('menu-status').textContent = STATUS[token.status] || '';
   $('menu-status').className = `menu-status ${token.status}`;
+  // A form of more than one dictionary word lists each with its meaning (FR-306).
   $('menu-lemma').textContent = token.lemmas?.length ? token.lemmas.join(' / ') : token.status === 'name' ? '—' : token.word;
-  $('menu-meaning').textContent = token.status === 'name' ? '—' : token.meaning || 'meaning missing';
+  if (token.senses?.length > 1) {
+    $('menu-meaning').replaceChildren(...token.senses.map((x) => el('span', 'sense', `${x.lemma}: ${x.en}`)));
+  } else {
+    $('menu-meaning').textContent = token.status === 'name' ? '—' : token.meaning || '';
+  }
   $('menu-explanation').hidden = !token.explanation;
   $('menu-explanation').textContent = token.explanation || '';
   const phrases = token.phrases || [];
@@ -87,14 +125,29 @@ function openMenu(token, sentence, line) {
   $('menu-patterns').hidden = pats.length === 0;
   $('menu-pattern-list').replaceChildren(...pats.map((p) => {
     const li = el('li');
-    li.append(el('strong', '', p.name), document.createTextNode(` — ${p.explain || ''}`));
+    li.append(el('strong', '', p.name), document.createTextNode(` — ${p.explain || ''} `));
+    // Pick up a pattern of the sentence too (FR-411; addendum 003, O-16).
+    if (!p.drilled) {
+      const pick = el('button', 'bar-button', 'Pick up');
+      pick.type = 'button';
+      pick.addEventListener('click', async () => {
+        const r = p.state === 'ground'
+          ? await post('/api/pick-up', { lemma: p.name, kind: 'pattern' })
+          : await post('/api/marks', { lemma: p.name, kind: 'pattern', remember: true });
+        if (!r.ok) { showMessage($('menu-message'), r.message); return; }
+        p.state = 'leaf';
+        p.drilled = 1;
+        pick.remove();
+        showMessage($('menu-message'), `Picked up “${p.name}” — it is due for review now.`, 'ok');
+      });
+      li.append(pick);
+    }
     return li;
   }));
   $('menu-save').hidden = !(data.own && token.status === 'new');
-  // G-04: times met, the two switches, Let it fall, Pick up (FR-408…FR-411).
+  // G-04: times met, the To remember switch, Let it fall, Pick up (FR-408…FR-411).
   $('menu-met').textContent = token.met ? `Met ${token.met} time${token.met === 1 ? '' : 's'}` : '';
   $('menu-marks').hidden = token.status === 'name';
-  setSwitch($('menu-read'), !!token.marks?.read);
   setSwitch($('menu-remember'), !!token.marks?.remember);
   $('menu-fall').hidden = token.status !== 'leaf';
   $('menu-pickup').hidden = token.status !== 'ground';
@@ -189,7 +242,7 @@ async function practise() {
       b.addEventListener('click', () => {
         fieldset.querySelectorAll('button.option').forEach((x, k) => { x.disabled = true; x.classList.toggle('right', k === q.right); x.classList.toggle('wrong', k === index && index !== q.right); });
         feedback.textContent = index === q.right ? 'Right!' : 'Not quite — the right answer is marked.';
-        if (line?.en && showEn) box.append(el('p', 'en practice-en', line.en));
+        if (line?.en) box.append(el('p', 'en practice-en', line.en));
         const next = el('button', 'main', 'Next');
         next.type = 'button';
         next.addEventListener('click', () => { i += 1; wordQuestion(); });
@@ -228,6 +281,7 @@ async function practise() {
     list.id = 'practice-lines';
     box.append(tools, list);
     renderLines(list, { tappable: false });
+    box.append(translationBlock());
     play.addEventListener('click', () => {
       const spans = [...list.querySelectorAll('.sentence')];
       if (!hasSwedish()) { play.textContent = 'No Swedish voice on this device'; return; }
@@ -267,7 +321,6 @@ if (res.status === 409) {
   $('title').textContent = 'This text was not found.';
 } else {
   data = await res.json();
-  showEn = data.showTranslations;
   setRate(data.speechRate);
   $('title').textContent = data.title;
   document.title = `${data.title} · grove`;
@@ -281,9 +334,8 @@ if (res.status === 409) {
     $('copyright').hidden = false;
     $('copyright').textContent = `Your AI thinks this ${data.copyright.view === 'copyrighted' ? 'is' : 'may be'} copyrighted${data.copyright.note ? `: ${data.copyright.note}` : '.'}`;
   }
-  $('toggle-en').textContent = `English: ${showEn ? 'on' : 'off'}`;
-  $('toggle-en').setAttribute('aria-pressed', String(showEn));
   renderLines($('lines'));
+  $('translation').replaceChildren(translationBlock());
   $('questions-card').hidden = data.questions.length === 0;
   renderQuestions($('questions'));
 
@@ -297,13 +349,6 @@ if (res.status === 409) {
     });
   }
 
-  $('toggle-en').addEventListener('click', async () => {
-    showEn = !showEn;
-    await post('/api/settings', { showTranslations: showEn });
-    $('toggle-en').textContent = `English: ${showEn ? 'on' : 'off'}`;
-    $('toggle-en').setAttribute('aria-pressed', String(showEn));
-    renderLines($('lines'));
-  });
   $('practise').addEventListener('click', practise);
 }
 
@@ -354,24 +399,28 @@ function setSwitch(button, on) {
   button.setAttribute('aria-pressed', String(on));
 }
 const itemOf = (token) => ({ lemma: token.lemmas?.[0] || token.word, kind: 'word' });
-async function toggleMark(which) {
+async function toggleRemember() {
   const token = current.token;
-  const marks = { read: !!token.marks?.read, remember: !!token.marks?.remember };
-  marks[which] = !marks[which];
-  const result = await post('/api/marks', { ...itemOf(token), ...marks });
+  const result = await post('/api/marks', { ...itemOf(token), remember: !token.marks?.remember });
   if (!result.ok) { showMessage($('menu-message'), result.message); return; }
-  token.marks = { read: result.data.read, remember: result.data.remember };
+  token.marks = { remember: result.data.remember };
   token.status = result.data.state === 'ground' ? 'ground' : 'leaf';
   if (!token.lemmas?.length) token.lemmas = [itemOf(token).lemma];
-  setSwitch($('menu-read'), token.marks.read);
   setSwitch($('menu-remember'), token.marks.remember);
   $('menu-status').textContent = STATUS[token.status];
   $('menu-fall').hidden = token.status !== 'leaf';
   $('menu-pickup').hidden = token.status !== 'ground';
   renderLines($('lines'));
 }
-$('menu-read').addEventListener('click', () => toggleMark('read'));
-$('menu-remember').addEventListener('click', () => toggleMark('remember'));
+$('menu-remember').addEventListener('click', toggleRemember);
+// Speak words (FR-305; addendum 003): kept for the learner on the server.
+$('menu-speak').addEventListener('click', async () => {
+  const on = !data.speakWords;
+  const r = await post('/api/settings', { speakWords: on });
+  if (!r.ok) { showMessage($('menu-message'), r.message); return; }
+  data.speakWords = on;
+  setSwitch($('menu-speak'), on);
+});
 
 $('menu-fall').addEventListener('click', async () => {
   const item = itemOf(current.token);
@@ -384,8 +433,8 @@ $('menu-fall').addEventListener('click', async () => {
     const r = await post('/api/let-it-fall', { ...item, ...payload });
     if (r.ok && r.data.fell) {
       current.token.status = 'ground';
-      current.token.fell = current.token.marks?.read && current.token.marks?.remember ? 'both' : current.token.marks?.remember ? 'remember' : current.token.marks?.read ? 'read' : null;
-      current.token.marks = { read: false, remember: false };
+      current.token.fell = current.token.marks?.remember ? 'remember' : null;
+      current.token.marks = { remember: false };
       showMessage($('menu-message'), 'It fell to your ground.', 'ok');
       renderLines($('lines'));
     } else showMessage($('menu-message'), 'Not quite — it stays a leaf for now.');
@@ -413,9 +462,9 @@ $('menu-pickup').addEventListener('click', async () => {
   const r = await post('/api/pick-up', itemOf(current.token));
   if (!r.ok) { showMessage($('menu-message'), r.message); return; }
   current.token.status = 'leaf';
-  current.token.marks = { read: true, remember: false };
+  current.token.marks = { remember: true };
   current.token.fell = null;
-  setSwitch($('menu-read'), true);
+  setSwitch($('menu-remember'), true);
   $('menu-status').textContent = STATUS.leaf;
   $('menu-pickup').hidden = true;
   showMessage($('menu-message'), 'Picked up — it is due for review now.', 'ok');
@@ -437,14 +486,12 @@ async function offerMarking() {
     const label = el('span', 'mark-word');
     label.append(el('strong', '', w.lemma), document.createTextNode(` — ${w.en || 'meaning missing'}`));
     li.append(label);
-    for (const [key, text] of [['read', 'To read'], ['remember', 'To remember']]) {
-      const b = el('button', 'switch bar-button', text);
-      b.type = 'button';
-      b.dataset.mark = key;
-      b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
-      li.append(b);
-    }
+    const b = el('button', 'switch bar-button', 'To remember');
+    b.type = 'button';
+    b.dataset.mark = 'remember';
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
+    li.append(b);
     list.append(li);
   }
   $('marking-card').hidden = false;
@@ -455,7 +502,6 @@ $('marking-done').addEventListener('click', async () => {
   const marks = [...$('marking-list').querySelectorAll('li')].map((li) => ({
     lemma: li.dataset.lemma,
     kind: li.dataset.kind,
-    read: li.querySelector('[data-mark="read"]').getAttribute('aria-pressed') === 'true',
     remember: li.querySelector('[data-mark="remember"]').getAttribute('aria-pressed') === 'true',
   }));
   const r = await post('/api/marking', { textId: id, marks });
@@ -542,7 +588,7 @@ function stopListening() {
 
 function reveal() {
   $('lines').classList.remove('blurred');
-  document.querySelectorAll('#lines .en').forEach((en) => { en.hidden = !showEn; });
+  $('translation').hidden = false;
   $('questions-card').hidden = data.questions.length === 0;
 }
 
@@ -556,7 +602,7 @@ function playFrom(i) {
 $('listen').addEventListener('click', () => {
   $('listening-card').hidden = false;
   $('lines').classList.add('blurred');
-  document.querySelectorAll('#lines .en').forEach((en) => { en.hidden = true; });
+  $('translation').hidden = true;
   $('questions-card').hidden = true;
   $('speed').value = String(getRate());
   $('speed-value').textContent = `${getRate().toFixed(1)}×`;

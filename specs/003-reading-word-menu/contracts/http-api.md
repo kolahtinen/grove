@@ -6,16 +6,18 @@ All G-01 rules apply; every route below is `access: agreed`, the account comes f
 
 | Path | Notes |
 |---|---|
-| `/text?id=N` | rebuilt: sentences with tokens, translations per setting, pattern marks, word menu, Explain, Report, Practise |
+| `/text?id=N` | rebuilt: sentences with tokens, pattern marks, word menu, Explain, Report, Practise; one **Show translation** button under the text (addendum 003, FR-301) |
+| `/own` | **My own texts**: the paste form and the learner's own texts, waiting or ready (addendum 003, FR-321) |
 | `/dictionary` | words, phrases and patterns met; names |
 
 ## API
 
 | Method, path | Body | Responses |
 |---|---|---|
-| `GET /api/reading?id=N` | – | `200 {id, title, own, showTranslations, stats: {words, newWords, share}, lines: [{position, en, sentences: [{id, sv, newCount, tokens: [{t, word?, status?: "new"\|"leaf"\|"ground"\|"name", lemmas?: [string], meaning?, explanation?, phrases?: [string], patterns?: [id]}]}], reported: bool}], patterns: [{id, name, explain}], questions: [{position, q, options, reported}], answered, rating}` · `404` — `t` is the token's text; tokens without `word` are spaces and punctuation |
+| `GET /api/reading?id=N` | – | `200 {id, title, own, speakWords, stats: {words, newWords, share}, lines: [{position, en, sentences: [{id, sv, newCount, tokens: [{t, word?, status?: "new"\|"leaf"\|"ground"\|"name", lemmas?: [string], meaning?, senses?: [{lemma, en}] (a form of more than one dictionary word: each with its meaning, FR-306), explanation?, phrases?: [string], patterns?: [id]}]}], reported: bool}], patterns: [{id, name, explain, state, drilled}] (state and drilled for the menu's Pick up, FR-411), questions: [{position, q, options, reported}], answered, rating}` · `404` — `t` is the token's text; tokens without `word` are spaces and punctuation |
 | `GET /api/practice?id=N` | – | `200 {questions: [{sentence, word, options: [string], right: index}]}` (≤ 8) |
-| `POST /api/settings` | `{showTranslations: boolean}` | `200 {showTranslations}` |
+| `POST /api/settings` | `{speakWords?: boolean, speechRate?: number, voiceHelpShown?: boolean}` (at least one) | `200` with the settings sent — `showTranslations` is withdrawn (addendum 003, FR-301) and refused as an unknown field |
+| `GET /api/own-texts` | – | `200 {texts: [{id, title, ready, state}]}` newest first (FR-321) |
 | `POST /api/explain` | `{sentenceId: integer, form: string 1–80, reason: enum, note?: string ≤200}` | `200 {code}` |
 | `POST /api/report` | `{textId: integer, questionPosition?: integer 0–5, linePosition?: integer 0–59, reason: enum, note?: string ≤200}` (exactly one position) | `200 {code}` |
 | `GET /api/dictionary?tab=words\|phrases\|patterns\|names&q=text&offset=N` | – (`q` ≤ 80 characters, may be empty; `offset` a multiple of 100, default 0) | `200 {tab, q, offset, total, counts: {words, phrases, patterns, names}, items: [{lemma, kind, en, state, example}]}` — at most 100 items A to Ö; for `names` each item is `{lemma: name}`; `total` and `counts` count the matches for `q` · `400 bad_request` for another tab or a bad offset (FR-316, FR-317) |

@@ -9,21 +9,22 @@ let texts;
 before(async () => { ({ t, learner, c, texts } = await drillGrove()); });
 after(() => t.close());
 
-test('FR-401 RQ-52 RQ-203 RQ-204: the marking step lists the text\'s unmarked leaves; marked ones are drilled, the rest fall', async () => {
+test('FR-401 RQ-52 RQ-203 RQ-204 RQ-415: the marking step lists the text\'s unmarked leaves; ones marked To remember are drilled, the rest fall', async () => {
   const id = texts['En bra dag'];
   const list = await c.get(`/api/marking?textId=${id}`);
   assert.equal(list.status, 200);
   const lemmas = list.body.words.map((w) => w.lemma).sort();
   for (const l of ['kopp', 'räkna', 'mörk', 'gärna', 'släcka', 'chef']) assert.ok(lemmas.includes(l), l);
   assert.equal(list.body.words.find((w) => w.lemma === 'räkna').en, 'counts');
-  const marks = list.body.words.map((w) => ({ lemma: w.lemma, kind: w.kind, read: ['kopp', 'räkna'].includes(w.lemma), remember: w.lemma === 'räkna' }));
-  marks.push({ lemma: 'tolv', read: true, remember: false });
+  const marks = list.body.words.map((w) => ({ lemma: w.lemma, kind: w.kind, remember: ['kopp', 'räkna'].includes(w.lemma) }));
+  marks.push({ lemma: 'tolv', remember: true });
+  assert.equal((await c.post('/api/marking', { textId: id, marks: [{ lemma: 'kopp', read: true, remember: false }] })).status, 400, 'To read is gone (RQ-415)');
   const res = await c.post('/api/marking', { textId: id, marks });
   assert.deepEqual(res.body, { drilled: 2, fell: list.body.words.length - 2 });
   const kopp = word(t, learner.id, 'kopp');
-  assert.deepEqual([kopp.state, kopp.drilled, kopp.to_read, kopp.to_remember, kopp.gap_days], ['leaf', 1, 1, 0, 1]);
+  assert.deepEqual([kopp.state, kopp.drilled, kopp.to_read, kopp.to_remember, kopp.gap_days], ['leaf', 1, 0, 1, 1]);
   const rakna = word(t, learner.id, 'räkna');
-  assert.deepEqual([rakna.to_read, rakna.to_remember], [1, 1]);
+  assert.deepEqual([rakna.to_read, rakna.to_remember], [0, 1]);
   assert.equal(word(t, learner.id, 'gärna').state, 'ground');
   assert.equal(word(t, learner.id, 'tolv').drilled, 0, 'a word not among this text\'s unmarked leaves is ignored');
   assert.deepEqual((await c.get(`/api/marking?textId=${id}`)).body.words, []);

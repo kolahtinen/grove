@@ -44,7 +44,7 @@ test('FR-415 RQ-48 RQ-71: input seconds add up per day, within limits; a day mor
 });
 
 test('FR-415 RQ-71: Progress gives 14 days of minutes, the ground size and the drilled count', async () => {
-  await c.post('/api/marks', { lemma: 'kopp', read: true, remember: false });
+  await c.post('/api/marks', { lemma: 'kopp', remember: true });
   const p = (await c.get('/api/progress')).body;
   assert.equal(p.days.length, 14);
   assert.equal(p.days.at(-1).day, today());

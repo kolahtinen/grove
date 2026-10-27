@@ -1,5 +1,5 @@
 // The marking step after a text (FR-401, FR-402; question-pages/59): the text's unmarked leaves; marked
-// ones are drilled (To read and/or To remember), the rest fall to the ground.
+// ones are drilled (To remember; To read is gone for Swedish, addendum 003), the rest fall to the ground.
 import { HttpError } from '../web/http.mjs';
 import { transaction } from '../store/db.mjs';
 import { createItems } from './items.mjs';
@@ -34,7 +34,7 @@ export function createMarking({ db, now = () => Date.now() }) {
           const item = unmarked.get(`${m.kind || 'word'}:${m.lemma.toLowerCase()}`);
           if (!item) continue;
           const full = db.prepare('SELECT * FROM words WHERE id = ?').get(item.id);
-          if (m.read || m.remember) { items.setMarks(full, m); drilled += 1; } else { items.fall(full); fell += 1; }
+          if (m.remember) { items.setMarks(full, m); drilled += 1; } else { items.fall(full); fell += 1; }
         }
       });
       return { drilled, fell };

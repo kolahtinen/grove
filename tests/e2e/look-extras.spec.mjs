@@ -151,7 +151,7 @@ test('FR-807 RQ-309 RQ-341: at 360 px nothing in the top bar overlaps and Sign o
         expect(overlap, `${path}: ${a.name} overlaps ${b.name}`).toBe(false);
       }
     }
-    const [signout, dictionary] = await Promise.all([page.locator('.signout').boundingBox(), page.locator('.account .nav').boundingBox()]);
+    const [signout, dictionary] = await Promise.all([page.locator('.signout').boundingBox(), page.locator('.account .nav[href="/dictionary"]').boundingBox()]);
     expect(Math.abs(signout.height - dictionary.height)).toBeLessThan(2);
     expect(await page.evaluate(() => { const r = document.querySelector('.topbar-inner'); return r.scrollWidth <= r.clientWidth; })).toBe(true);
     await expect(page.locator('.tagline')).toBeVisible();

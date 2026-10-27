@@ -100,3 +100,17 @@ test('FR-224 RQ-406: an own text is marked beta', async () => {
   assert.equal(home.texts.find((x) => x.id === id).beta, true);
   assert.equal((await c.get(`/api/reading?id=${id}`)).body.beta, true);
 });
+
+test('FR-321 RQ-418: My own texts lists the learner\'s own texts, newest first, waiting or ready, and only theirs', async () => {
+  const list = (await c.get('/api/own-texts')).body.texts;
+  assert.ok(list.length >= 2);
+  assert.ok(list.every((x) => typeof x.title === 'string' && typeof x.ready === 'boolean' && ['waiting', 'new', 'read'].includes(x.state)));
+  assert.deepEqual(list.map((x) => x.id), [...list.map((x) => x.id)].sort((a, b) => b - a), 'newest first');
+  const mine = list.find((x) => x.id === id);
+  assert.equal(mine.title, 'Min dag');
+  assert.equal(mine.ready, true);
+  const notOwn = t.grove.db.prepare('SELECT id FROM texts WHERE account_id = ? AND own = 0').all(learner.id).map((r) => r.id);
+  assert.ok(!list.some((x) => notOwn.includes(x.id)), 'texts from the AI are not listed');
+  const other = await signedIn(t, 'other@example.test');
+  assert.deepEqual((await other.get('/api/own-texts')).body.texts, []);
+});

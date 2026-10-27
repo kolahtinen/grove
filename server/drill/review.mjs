@@ -33,9 +33,8 @@ export function createReview({ db, now = () => Date.now() }) {
       }
       const list = chosen.map((item) => {
         if (mode === 'master') return questions.masterQuestion(accountId, item);
-        // To remember alone → spoken; both marks → alternate by the number of reviews.
-        const spoken = item.to_remember && (!item.to_read || item.reviews % 2 === 1);
-        return questions.meaningQuestion(accountId, item, spoken ? 'remember' : 'read');
+        // Shown in its sentence with Play (FR-406; addendum 003, RQ-415).
+        return questions.meaningQuestion(accountId, item);
       });
       const upcoming = all.filter((i) => !isDue(i, t)).map(dueAt).sort((a, b) => a - b);
       return { items: list, nextDue: upcoming[0] ?? null };

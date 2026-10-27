@@ -19,21 +19,21 @@ All G-01 rules apply; every route is `access: agreed`; the account comes from th
 | `GET /api/stages` | – | `200 {level: "A2" \| "below A1" \| null, todayMinutes, review: {fading, due}, master, nextDue: ms \| null, welcome: bool}` |
 | `POST /api/welcome` | `{}` | `200 {result: "dismissed"}` |
 | `GET /api/marking?textId=N` | – | `200 {words: [{lemma, kind, en}]}` (the text's unmarked leaves) |
-| `POST /api/marking` | `{textId: integer, marks: [{lemma: string ≤80, kind?: enum, read: boolean, remember: boolean}] ≤ 60}` | `200 {drilled: n, fell: n}` — listed words with a mark are drilled; listed words without fall; only the text's unmarked leaves count |
-| `POST /api/marks` | `{lemma: string ≤80, kind?: enum, read: boolean, remember: boolean}` | `200 {state, drilled, read, remember}` — creates a leaf for a word grove hasn't got |
+| `POST /api/marking` | `{textId: integer, marks: [{lemma: string ≤80, kind?: enum, remember: boolean}] ≤ 60}` | `200 {drilled: n, fell: n}` — listed words marked To remember are drilled; listed words without fall; only the text's unmarked leaves count |
+| `POST /api/marks` | `{lemma: string ≤80, kind?: enum, remember: boolean}` | `200 {state, drilled, remember}` — creates a leaf for a word grove hasn't got |
 | `GET /api/fall-check?lemma=…&kind=…` | – | `200 {question: {sentence, word, options, right} \| null}` (null → "Are you sure?") |
 | `POST /api/let-it-fall` | `{lemma, kind?, right?: boolean, confirmed?: boolean}` | `200 {fell: bool}` |
 | `POST /api/pick-up` | `{lemma, kind?}` | `200 {result: "picked_up"}` · `409 not_ground` |
-| `GET /api/review?mode=review\|master` | – | `200 {items: [{lemma, kind, mode: "read"\|"remember"\|"master"\|"recall", sentence?, word?, meaning?, options?, right?}] (≤ 10), nextDue}` |
+| `GET /api/review?mode=review\|master` | – | `200 {items: [{lemma, kind, mode: "remember"\|"master"\|"recall", sentence?, word?, meaning?, options?, right?}] (≤ 10), nextDue}` |
 | `POST /api/review` | `{lemma, kind?, mode: enum, right: boolean}` | `200 {gap, fell: bool}` |
-| `GET /api/leaves` | – | `200 {remember: [item], read: [item], unmarked: [item]}`, item = `{lemma, kind, en, gap, strength, due: bool}` |
+| `GET /api/leaves` | – | `200 {remember: [item], unmarked: [item]}`, item = `{lemma, kind, en, gap, strength, due: bool}` |
 | `POST /api/leaves` | `{text: string 1–80, kind?: enum}` | `200 {result: "added"}` |
 | `POST /api/leaf-delete` | `{lemma, kind?}` | `200 {result: "deleted"}` |
 | `GET /api/progress` | – | `200 {level, days: [{day, minutes}] (14), ground, drilled}` |
 | `POST /api/input` | `{seconds: integer 1–60, day: "YYYY-MM-DD"}` | `200 {todayMinutes}` · `400` if day is more than a day off |
 
-`kind` enum: `word | phrase | pattern`. Review/Master `mode` in answers: `read | remember | master | recall`.
+`kind` enum: `word | phrase | pattern`. Review/Master `mode` in answers: `remember | master | recall`. **Addendum 003 (RQ-415):** To read is gone for Swedish: no `read` fields; a Review item shows its sentence with Play (FR-406); Pick up (`POST /api/pick-up`, also for a pattern, which is added as a leaf if missing) gives To remember (FR-411).
 
 ## Reading payload additions (G-03 `GET /api/reading`)
 
-Word tokens gain `marks: {read, remember}`, `fell: "read"|"remember"|"both"|null`, `met` (times met), and the payload gains `marking: n` (unmarked leaves in this text).
+Word tokens gain `marks: {remember}`, `fell: "read"|"remember"|"both"|null`, `met` (times met), and the payload gains `marking: n` (unmarked leaves in this text).

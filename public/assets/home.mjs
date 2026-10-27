@@ -167,6 +167,8 @@ function render(home) {
   getButton.hidden = !!waiting;
   getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
   $('new-package').hidden = !pkg;
+  // After a finished package, Home suggests My own texts (G-03 FR-321; addendum 003).
+  $('own-suggest').hidden = !(pkg && pkg.partsAccepted >= pkg.of);
 
   const list = $('texts');
   list.replaceChildren();
@@ -294,19 +296,6 @@ $('add-texts').addEventListener('click', async () => {
     $('new-chat-note').hidden = false;
     $('new-chat-note').textContent = 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
   }
-});
-
-// Own texts (G-03 FR-318): saved, then their AI round on the reading page.
-$('own-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const title = form.elements.title.value.trim();
-  const text = form.elements.text.value.trim();
-  if (!title || !text) return;
-  const result = await post('/api/own-text', { title, text });
-  if (!result.ok) { showMessage($('own-message'), result.message); return; }
-  form.reset();
-  window.location.assign(`/text?id=${result.data.id}`);
 });
 
 // G-04: the three stages, level, today's minutes and the welcome card (FR-407, FR-414…FR-416).

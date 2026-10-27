@@ -353,3 +353,28 @@ test('FR-316 RQ-410: migration 012 keeps every word and adds an empty example_se
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-418 RQ-415 RQ-412 RQ-411: migration 013 turns every To read mark into To remember with its schedule, keeps fell marks, adds Speak words (on) and drops the translations setting', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 12 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare('INSERT INTO learner_settings (account_id, show_translations) VALUES (1, 0)').run();
+    db.prepare(`INSERT INTO words (id, account_id, lemma, kind, state, added_at, drilled, to_read, to_remember, gap_days, last_review_at, reviews, fell_marks) VALUES
+      (1, 1, 'kopp', 'word', 'leaf', 1, 1, 1, 0, 2.5, 100, 3, NULL),
+      (2, 1, 'mörk', 'word', 'leaf', 1, 1, 1, 1, 1, 200, 1, NULL),
+      (3, 1, 'gärna', 'word', 'ground', 1, 0, 0, 0, NULL, NULL, 2, 'read')`).run();
+    migrate(db);
+    assert.deepEqual(db.prepare('SELECT id, drilled, to_read, to_remember, gap_days, last_review_at, reviews, fell_marks FROM words ORDER BY id').all().map((r) => ({ ...r })), [
+      { id: 1, drilled: 1, to_read: 0, to_remember: 1, gap_days: 2.5, last_review_at: 100, reviews: 3, fell_marks: null },
+      { id: 2, drilled: 1, to_read: 0, to_remember: 1, gap_days: 1, last_review_at: 200, reviews: 1, fell_marks: null },
+      { id: 3, drilled: 0, to_read: 0, to_remember: 0, gap_days: null, last_review_at: null, reviews: 2, fell_marks: 'read' },
+    ]);
+    assert.equal(db.prepare('SELECT speak_words FROM learner_settings WHERE account_id = 1').get().speak_words, 1);
+    assert.ok(!db.prepare('PRAGMA table_info(learner_settings)').all().some((c) => c.name === 'show_translations'));
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

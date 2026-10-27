@@ -18,13 +18,13 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
   router.add({
     method: 'POST', path: '/api/settings', access: 'agreed',
     schema: {
-      showTranslations: { type: 'boolean', optional: true },
+      speakWords: { type: 'boolean', optional: true },
       speechRate: { type: 'number', min: 0.5, max: 1.5, optional: true },
       voiceHelpShown: { type: 'boolean', optional: true },
     },
     handler: (ctx) => {
-      // Saves only the settings sent, and answers with them (G-03 FR-301, G-05 FR-502, FR-503).
-      const columns = { showTranslations: 'show_translations', speechRate: 'speech_rate', voiceHelpShown: 'voice_help_shown' };
+      // Saves only the settings sent, and answers with them (G-03 FR-305, G-05 FR-502, FR-503).
+      const columns = { speakWords: 'speak_words', speechRate: 'speech_rate', voiceHelpShown: 'voice_help_shown' };
       db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(ctx.account.id);
       const sent = {};
       for (const [key, column] of Object.entries(columns)) {
@@ -66,6 +66,16 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
     handler: (ctx) => {
       const text = ownText(db, ctx.account.id, ctx.url.searchParams.get('id'));
       sendJson(ctx.res, 200, { id: text.id, title: text.title, ...ownStatus(db, ctx.account.id, text.id) });
+    },
+  });
+
+  // My own texts (FR-321; addendum 003): newest first, waiting for their AI round or ready.
+  router.add({
+    method: 'GET', path: '/api/own-texts', access: 'agreed',
+    handler: (ctx) => {
+      const texts = db.prepare('SELECT id, title, ready, read_at FROM texts WHERE account_id = ? AND own = 1 ORDER BY id DESC').all(ctx.account.id)
+        .map((x) => ({ id: x.id, title: x.title, ready: !!x.ready, state: !x.ready ? 'waiting' : x.read_at ? 'read' : 'new' }));
+      sendJson(ctx.res, 200, { texts });
     },
   });
 

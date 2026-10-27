@@ -312,13 +312,18 @@ a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82re
 .marking-list li { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .35rem 0; border-top: 1px solid var(--line); }
 .marking-list .mark-word { flex: 1 1 8rem; }
 .switch[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--accent2); }
-.w.m-read { color: var(--rlc); }
 .w.m-remember { color: var(--cw); }
-.w.m-both { color: var(--cb); }
 .w.f-read { color: var(--rr); }
 .w.f-remember { color: var(--rw); }
 .w.f-both { color: var(--rb); }
-.w.other-reading::after { content: ''; display: inline-block; width: .35em; height: .35em; margin-left: .1em; border-radius: 50%; background: var(--amber); vertical-align: super; }
+/* A word and the punctuation around it never break apart (FR-320): a flex box doesn't wrap, where an
+   inline button followed by text may break even with nowrap. */
+.nb { display: inline-flex; align-items: baseline; white-space: nowrap; }
+.translation { margin-top: .6rem; }
+/* My own texts in the top bar only where it fits (G-03 FR-321 against G-08 FR-807's 360 px); on phones, from Home. */
+@media (max-width: 400px) { .topbar .account .nav.nav-wide { display: none; } }
+.translation-text .en { margin: .3rem 0; }
+.sense { display: block; }
 .menu-marks { margin: .2rem 0 .6rem; }
 .review-sentence { margin-bottom: .6rem; }
 .small-row { margin-top: .2rem; }

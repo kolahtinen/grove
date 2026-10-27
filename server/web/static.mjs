@@ -24,6 +24,7 @@ export const PAGES = [
   { path: '/terms', file: 'terms.html', access: 'public' },
   { path: '/text', file: 'text.html', access: 'agreed' },
   { path: '/dictionary', file: 'dictionary.html', access: 'agreed' },
+  { path: '/own', file: 'own.html', access: 'agreed' },
   { path: '/review', file: 'review.html', access: 'agreed' },
   { path: '/leaves', file: 'leaves.html', access: 'agreed' },
   { path: '/progress', file: 'progress.html', access: 'agreed' },

@@ -98,9 +98,10 @@ test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked
   await expect(item).toContainText('<b>x</b> rubrik');
   await expect(item.locator('b')).toHaveCount(0);
   await item.click();
-  const line = page.locator('#lines li').first();
-  await expect(line.locator('.en')).toHaveText('<script>alert(1)</script> <b>x</b>');
-  await expect(line.locator('script, b')).toHaveCount(0);
+  // G-03 FR-301 (addendum 003): the English shows under the text with Show translation.
+  await page.getByRole('button', { name: 'Show translation' }).click();
+  await expect(page.locator('#translation .en').first()).toHaveText('<script>alert(1)</script> <b>x</b>');
+  await expect(page.locator('#translation script, #translation b')).toHaveCount(0);
 });
 
 test('FR-223 RQ-403 RQ-404 RQ-391: the AI and version menus recommend a tactic in tabs; another can be chosen; I\'m in a new chat gives the setup again', async ({ page }) => {
@@ -151,9 +152,10 @@ test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a 
   await first.click();
   await page.waitForURL(/\/text\?id=\d+$/);
   await expect(page.locator('#title')).toHaveText(title);
-  // G-02 FR-218 now follows G-03 FR-301: English shows under each line by default.
-  const line = page.locator('#lines li').first();
-  await expect(line.locator('.en')).toBeVisible();
+  // G-02 FR-218 follows G-03 FR-301 (addendum 003): no English under the lines; Show translation shows it.
+  await expect(page.locator('#lines .en')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Show translation' }).click();
+  await expect(page.locator('#translation .en').first()).toBeVisible();
   const question = page.locator('#questions fieldset').first();
   await question.getByRole('button').first().click();
   await expect(question.locator('.feedback')).toHaveText(/Right|Not quite/);

@@ -29,3 +29,9 @@ States: **unmarked leaf** (state leaf, drilled 0) → marked → **drilled leaf*
 | Column | Type | Rules |
 |---|---|---|
 | welcome_dismissed | INTEGER NOT NULL DEFAULT 0 | |
+
+## Addendum 003: migration 013 (FR-418, RQ-415, RQ-412, RQ-411)
+
+`server/store/migrations/013-to-remember.sql`:
+- `words`: every `to_read = 1` becomes `to_remember = 1`, `to_read = 0`, keeping `drilled`, `gap_days`, `last_review_at` and `reviews`; `fell_marks` is kept as it was (colours of words that fell before, FR-413). The `to_read` column stays (always 0 for Swedish; kept for languages with their own writing system).
+- `learner_settings`: `speak_words INTEGER NOT NULL DEFAULT 1 CHECK (speak_words IN (0, 1))` added; `show_translations` dropped.

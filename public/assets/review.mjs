@@ -1,4 +1,4 @@
-// Review and Master (FR-404…FR-407): a sentence (shown, or spoken and hidden for To remember), or a
+// Review and Master (FR-404…FR-407): a sentence shown with Play (addendum 003), or a
 // gapped sentence with the English meaning (Master), or a recall card. All text via textContent.
 import { getMe, post } from './api.mjs';
 import { showAccount } from './page.mjs';
@@ -62,15 +62,15 @@ function show() {
     box.append(reveal);
     return;
   }
+  // The sentence is shown, with Play to hear it (FR-406; addendum 003, question-pages/73, 2).
   const sentence = el('p', 'passage review-sentence', item.sentence);
-  if (item.mode === 'remember' && speak(item.sentence)) {
-    sentence.hidden = true;
-    const again = el('button', 'bar-button', 'Play again');
-    again.type = 'button';
-    again.addEventListener('click', () => speak(item.sentence));
-    box.append(el('p', 'small muted', 'Listen to the sentence.'), again);
-  }
   box.append(sentence);
+  if (item.mode !== 'master') {
+    const play = el('button', 'bar-button', 'Play');
+    play.type = 'button';
+    play.addEventListener('click', () => speak(item.sentence));
+    box.append(play);
+  }
   const fieldset = el('fieldset');
   fieldset.append(el('legend', '', item.mode === 'master' ? `Which word means “${item.meaning}” here?` : `What does “${item.word}” mean here?`));
   const feedback = el('p', 'feedback');

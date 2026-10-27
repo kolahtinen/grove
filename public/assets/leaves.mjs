@@ -1,4 +1,5 @@
-// Leaves (FR-412): drilled leaves by mark with play, meaning and delete; unmarked leaves with switches; add.
+// Leaves (FR-412): drilled leaves (To remember) with play, meaning and delete; unmarked leaves with the
+// To remember switch; add. To read is gone for Swedish (addendum 003, RQ-415).
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { speak, setRate } from './speech.mjs';
@@ -8,8 +9,8 @@ const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls)
 
 async function load() {
   const res = await fetch('/api/leaves', { credentials: 'same-origin' });
-  const data = res.ok ? await res.json() : { remember: [], read: [], unmarked: [] };
-  for (const [key, list] of [['remember', $('leaves-remember')], ['read', $('leaves-read')], ['unmarked', $('leaves-unmarked')]]) {
+  const data = res.ok ? await res.json() : { remember: [], unmarked: [] };
+  for (const [key, list] of [['remember', $('leaves-remember')], ['unmarked', $('leaves-unmarked')]]) {
     list.replaceChildren();
     for (const item of data[key]) {
       const li = el('li', 'leaf-row');
@@ -21,12 +22,10 @@ async function load() {
       play.addEventListener('click', () => speak(item.lemma));
       row.append(play);
       if (key === 'unmarked') {
-        for (const [label, marks] of [['To read', { read: true, remember: false }], ['To remember', { read: false, remember: true }]]) {
-          const b = el('button', 'bar-button', label);
-          b.type = 'button';
-          b.addEventListener('click', async () => { await post('/api/marks', { lemma: item.lemma, kind: item.kind, ...marks }); await load(); });
-          row.append(b);
-        }
+        const b = el('button', 'bar-button', 'To remember');
+        b.type = 'button';
+        b.addEventListener('click', async () => { await post('/api/marks', { lemma: item.lemma, kind: item.kind, remember: true }); await load(); });
+        row.append(b);
       } else {
         if (item.due) head.append(el('span', 'text-state new', ' due'));
         const del = el('button', 'bar-button', 'Delete');

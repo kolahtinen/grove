@@ -13,7 +13,7 @@
 <header class="topbar">
 <div class="topbar-inner">
 <a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
-<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><a class="bar-button nav nav-wide" href="/own">Own texts</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
 <a class="bar-button nav help-link" href="/how" aria-label="How grove works" title="How grove works">?</a>
 </div>
 </header>
@@ -80,14 +80,10 @@
 </div>
 </section>
 <section class="card" id="own-card">
-<h2>Read your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="small muted">Paste a Swedish text you want to read (an article, a song). It stays private to you.</p>
-<form id="own-form">
-<label>Title<input type="text" name="title" maxlength="120" required></label>
-<label>Swedish text<textarea name="text" rows="5" maxlength="20000" required></textarea></label>
-<p class="message" id="own-message" role="status" hidden></p>
-<button type="submit" class="main">Save text</button>
-</form>
+<h2>Your own texts <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
+<p class="small" id="own-suggest" hidden>Your package is finished. Why not read a text of your own next?</p>
+<p class="small muted">Read a Swedish text you choose (an article, a song). It stays private to you.</p>
+<a class="bar-button" href="/own" id="own-link">My own texts</a>
 </section>
 <section class="card">
 <h2>Your texts</h2>

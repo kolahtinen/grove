@@ -42,12 +42,12 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
   router.add({ method: 'GET', path: '/api/marking', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, marking.list(ctx.account.id, ctx.url.searchParams.get('textId'))) });
   router.add({
     method: 'POST', path: '/api/marking', access: 'agreed',
-    schema: { textId: { type: 'integer', min: 1 }, marks: { type: 'array', max: 60, of: { lemma, kind, read: { type: 'boolean' }, remember: { type: 'boolean' } } } },
+    schema: { textId: { type: 'integer', min: 1 }, marks: { type: 'array', max: 60, of: { lemma, kind, remember: { type: 'boolean' } } } },
     handler: (ctx) => sendJson(ctx.res, 200, marking.apply(ctx.account.id, ctx.body.textId, ctx.body.marks)),
   });
   router.add({
     method: 'POST', path: '/api/marks', access: 'agreed',
-    schema: { lemma, kind, read: { type: 'boolean' }, remember: { type: 'boolean' } },
+    schema: { lemma, kind, remember: { type: 'boolean' } },
     handler: (ctx) => sendJson(ctx.res, 200, marks.setMarks(ctx.account.id, ctx.body)),
   });
   router.add({ method: 'GET', path: '/api/fall-check', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, marks.fallCheck(ctx.account.id, query(ctx))) });
@@ -63,7 +63,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
   });
   router.add({
     method: 'POST', path: '/api/review', access: 'agreed',
-    schema: { lemma, kind, mode: { type: 'enum', values: ['read', 'remember', 'master', 'recall'] }, right: { type: 'boolean' } },
+    schema: { lemma, kind, mode: { type: 'enum', values: ['remember', 'master', 'recall'] }, right: { type: 'boolean' } },
     handler: (ctx) => sendJson(ctx.res, 200, review.answer(ctx.account.id, ctx.body)),
   });
   router.add({ method: 'GET', path: '/api/leaves', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, leaves.list(ctx.account.id)) });

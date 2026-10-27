@@ -35,7 +35,6 @@ async function addSample(page) {
   return page.evaluate(async ({ sample, tag }) => {
     const me = await (await fetch('/api/me')).json();
     const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
-    await fetch('/api/settings', { method: 'POST', headers: h, body: JSON.stringify({ showTranslations: true }) });
     // A new package gives a fresh part: \"next\" may give a waiting redo since G-02 FR-206 changed (2026-10-26).
     const p = await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
     const prompt = await p.json();
@@ -46,11 +45,16 @@ async function addSample(page) {
   }, { sample: SAMPLE, tag });
 }
 
-test('FR-305 FR-301 FR-304 RQ-18 RQ-10: English under each line; a tap speaks the word and opens its menu fast; translations can be turned off and peeked at', async ({ page }) => {
+test('FR-305 FR-301 FR-304 RQ-18 RQ-10 RQ-411 RQ-412: no English under the lines but one Show translation; a tap speaks the word and opens its menu fast; Speak words can be switched off and stays off', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
   await page.goto(`/text?id=${ids['En bra dag']}`);
-  await expect(page.locator('#lines li').first().locator('.en')).toBeVisible();
+  await expect(page.locator('#lines .en')).toHaveCount(0);
+  await expect(page.locator('#translation .en').first()).toBeHidden();
+  await page.getByRole('button', { name: 'Show translation' }).click();
+  await expect(page.locator('#translation .en').first()).toBeVisible();
+  await page.getByRole('button', { name: 'Hide translation' }).click();
+  await expect(page.locator('#translation .en').first()).toBeHidden();
   await expect(page.locator('#stats')).toContainText('words');
   const word = page.locator('button.w', { hasText: 'kopparna' });
   const started = Date.now();
@@ -61,14 +65,65 @@ test('FR-305 FR-301 FR-304 RQ-18 RQ-10: English under each line; a tap speaks th
   await expect(page.locator('#menu-meaning')).toHaveText('the cups');
   await expect(page.locator('#menu-status')).toContainText('Leaf');
   expect(await page.evaluate(() => window.__spoken)).toContain('kopparna');
+  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('#menu-speak').click();
+  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'false');
   await page.locator('#menu-close').click();
-  await page.locator('#toggle-en').click();
   await page.reload();
-  const line = page.locator('#lines li').first();
-  await expect(line.locator('.en')).toBeHidden();
-  await line.getByRole('button', { name: 'English' }).click();
-  await expect(line.locator('.en')).toBeVisible();
-  await page.locator('#toggle-en').click();
+  await page.locator('button.w', { hasText: 'kopparna' }).click();
+  await expect(page.locator('#menu')).toBeVisible();
+  expect(await page.evaluate(() => window.__spoken)).not.toContain('kopparna');
+  await page.locator('#menu-speak').click();
+  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'true');
+});
+
+test('FR-320 RQ-417: a word never breaks from the punctuation around it, so a name never stands alone before its full stop', async ({ page }) => {
+  await signIn(page);
+  const ids = await addSample(page);
+  await page.goto(`/text?id=${ids['Olles väska']}`);
+  const groups = page.locator('#lines .nb');
+  await expect(groups.filter({ hasText: /^Olle[.!?]?$/ }).first()).toBeVisible();
+  const texts = await groups.allTextContents();
+  expect(texts.some((x) => /\p{L}[.,!?…”]+$/u.test(x)), 'a word with its punctuation in one group').toBe(true);
+  expect(await groups.first().evaluate((n) => getComputedStyle(n).whiteSpace)).toBe('nowrap');
+  // No line of the text starts with punctuation at a phone's width.
+  const starts = await page.locator('#lines .sv').evaluateAll((ps) => ps.flatMap((p) => {
+    const r = document.createRange();
+    const out = [];
+    const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+    let prevTop = null;
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+      for (let i = 0; i < n.data.length; i += 1) {
+        if (/\s/.test(n.data[i])) continue;
+        r.setStart(n, i); r.setEnd(n, i + 1);
+        const top = Math.round(r.getBoundingClientRect().top);
+        if (prevTop !== null && top > prevTop + 4) out.push(n.data[i]);
+        prevTop = top;
+      }
+    }
+    return out;
+  }));
+  expect(starts.filter((c) => /[.,!?…:;]/.test(c))).toEqual([]);
+});
+
+test('FR-321 RQ-418: My own texts has its own page, linked from the top bar and from Home, which suggests it after a finished package', async ({ page }) => {
+  await signIn(page);
+  await expect(page.locator('#own-link')).toBeVisible();
+  // The shared account's latest package may be open or finished, depending on earlier tests.
+  const pkg = await page.evaluate(async () => (await (await fetch('/api/home')).json()).package);
+  const finished = !!pkg && pkg.partsAccepted >= pkg.of;
+  if (finished) await expect(page.locator('#own-suggest')).toBeVisible(); else await expect(page.locator('#own-suggest')).toBeHidden();
+  // In the top bar where it fits; at phone width (G-08 FR-807's 360 px) only from Home.
+  const topLink = page.locator('.topbar').getByRole('link', { name: 'Own texts' });
+  if (page.viewportSize().width > 400) await topLink.click(); else { await expect(topLink).toBeHidden(); await page.locator('#own-link').click(); }
+  await page.waitForURL(/\/own$/);
+  await expect(page.locator('#own-form')).toBeVisible();
+  await page.locator('#own-form input[name="title"]').fill('Listan');
+  await page.locator('#own-form textarea[name="text"]').fill('Jag läser en bok.');
+  await page.getByRole('button', { name: 'Save text' }).click();
+  await page.waitForURL(/\/text\?id=\d+$/);
+  await page.goto('/own');
+  await expect(page.locator('#own-list a', { hasText: 'Listan' }).first()).toContainText('waiting for your AI');
 });
 
 test('FR-308 RQ-12: the pattern\'s words are coloured, and the menu shows the pattern\'s name and explanation', async ({ page }) => {
@@ -168,6 +223,8 @@ test('FR-318 FR-304 RQ-74 RQ-400 RQ-401: an own text waits for its AI round (mis
   await signIn(page);
   // A made-up word, new on every run (the reviewer account is shared between test runs).
   const newWord = `kanelbulle${Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5)}`;
+  // The paste form is on My own texts since G-03 FR-321 (addendum 003).
+  await page.goto('/own');
   await page.locator('#own-form input[name="title"]').fill('<b>Min</b> dag');
   await page.locator('#own-form textarea[name="text"]').fill(`Idag dricker jag kaffe och äter en ${newWord}.\n<i>Det</i> är gott!`);
   await page.getByRole('button', { name: 'Save text' }).click();

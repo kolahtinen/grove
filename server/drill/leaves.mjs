@@ -13,8 +13,7 @@ export function createLeaves({ db, now = () => Date.now() }) {
       const t = now();
       const leaves = db.prepare("SELECT * FROM words WHERE account_id = ? AND state = 'leaf' ORDER BY lemma").all(accountId);
       return {
-        remember: leaves.filter((i) => i.drilled && i.to_remember).map((i) => view(i, t)),
-        read: leaves.filter((i) => i.drilled && i.to_read).map((i) => view(i, t)),
+        remember: leaves.filter((i) => i.drilled).map((i) => view(i, t)),
         unmarked: leaves.filter((i) => !i.drilled && i.kind !== 'pattern').map((i) => view(i, t)),
       };
     },
@@ -24,7 +23,7 @@ export function createLeaves({ db, now = () => Date.now() }) {
         throw new HttpError(400, 'needs_meaning', 'grove has no meaning for this. What does it mean? (Your best guess is fine.)');
       }
       const item = items.findOrCreate(accountId, text, kind, null, own);
-      items.setMarks(item, { read: true, remember: !!item.to_remember });
+      items.setMarks(item, { remember: true });
       return { result: 'added' };
     },
     remove(accountId, { lemma, kind = 'word' }) {

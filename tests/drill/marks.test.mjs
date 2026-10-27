@@ -8,37 +8,43 @@ let c;
 before(async () => { ({ t, learner, c } = await drillGrove()); });
 after(() => t.close());
 
-test('FR-409 RQ-07: the menu switches mark a ground word, create a leaf for a word grove hasn\'t got, and both off unmarks', async () => {
-  let r = await c.post('/api/marks', { lemma: 'kaffe', read: false, remember: true });
-  assert.deepEqual(r.body, { state: 'leaf', drilled: true, read: false, remember: true });
-  assert.equal(word(t, learner.id, 'kaffe').gap_days, 1);
-  r = await c.post('/api/marks', { lemma: 'kanelbulle', read: true, remember: false });
+test('FR-409 RQ-07 RQ-415: the To remember switch marks a ground word, creates a leaf for a word grove hasn\'t got, and off unmarks; there is no To read', async () => {
+  let r = await c.post('/api/marks', { lemma: 'kaffe', remember: true });
+  assert.deepEqual(r.body, { state: 'leaf', drilled: true, remember: true });
+  const kaffe = word(t, learner.id, 'kaffe');
+  assert.deepEqual([kaffe.gap_days, kaffe.to_read, kaffe.to_remember], [1, 0, 1]);
+  r = await c.post('/api/marks', { lemma: 'kanelbulle', remember: true });
   assert.equal(r.body.drilled, true);
   assert.equal(word(t, learner.id, 'kanelbulle').state, 'leaf');
-  r = await c.post('/api/marks', { lemma: 'kanelbulle', read: false, remember: false });
-  assert.deepEqual(r.body, { state: 'leaf', drilled: false, read: false, remember: false });
+  r = await c.post('/api/marks', { lemma: 'kanelbulle', remember: false });
+  assert.deepEqual(r.body, { state: 'leaf', drilled: false, remember: false });
+  assert.equal((await c.post('/api/marks', { lemma: 'kanelbulle', read: true, remember: false })).status, 400);
 });
 
 test('FR-410 (question-pages/56): Let it fall asks a meaning question; right falls (keeping its marks), wrong stays; a pattern just confirms', async () => {
   const q = await c.get('/api/fall-check?lemma=kopp');
   assert.ok(q.body.question);
   assert.ok(['cup', 'the cups'].includes(q.body.question.options[q.body.question.right]), 'the right option is kopp\'s meaning');
-  await c.post('/api/marks', { lemma: 'kopp', read: true, remember: true });
+  await c.post('/api/marks', { lemma: 'kopp', remember: true });
   assert.deepEqual((await c.post('/api/let-it-fall', { lemma: 'kopp', right: false })).body, { fell: false });
   assert.equal(word(t, learner.id, 'kopp').state, 'leaf');
   assert.deepEqual((await c.post('/api/let-it-fall', { lemma: 'kopp', right: true })).body, { fell: true });
   const kopp = word(t, learner.id, 'kopp');
-  assert.deepEqual([kopp.state, kopp.fell_marks, kopp.drilled], ['ground', 'both', 0]);
+  assert.deepEqual([kopp.state, kopp.fell_marks, kopp.drilled], ['ground', 'remember', 0]);
   const p = await c.get(`/api/fall-check?lemma=${encodeURIComponent('har + supine')}&kind=pattern`);
   assert.equal(p.body.question, null);
   assert.deepEqual((await c.post('/api/let-it-fall', { lemma: 'har + supine', kind: 'pattern', confirmed: true })).body, { fell: true });
   assert.equal(word(t, learner.id, 'har + supine', 'pattern').state, 'ground');
 });
 
-test('FR-411 (glossary): Pick up drills a ground word To read, due now; a leaf can\'t be picked up', async () => {
+test('FR-411 RQ-383 RQ-414 RQ-415: Pick up drills a ground word or pattern To remember, due now; a leaf can\'t be picked up', async () => {
   assert.deepEqual((await c.post('/api/pick-up', { lemma: 'hund' })).body, { result: 'picked_up' });
   const hund = word(t, learner.id, 'hund');
-  assert.deepEqual([hund.state, hund.drilled, hund.to_read, hund.gap_days], ['leaf', 1, 1, 1]);
+  assert.deepEqual([hund.state, hund.drilled, hund.to_read, hund.to_remember, hund.gap_days], ['leaf', 1, 0, 1, 1]);
+  assert.equal(word(t, learner.id, 'har + supine', 'pattern').state, 'ground', 'the pattern fell in FR-410\'s test');
+  assert.deepEqual((await c.post('/api/pick-up', { lemma: 'har + supine', kind: 'pattern' })).body, { result: 'picked_up' });
+  const pattern = word(t, learner.id, 'har + supine', 'pattern');
+  assert.deepEqual([pattern.state, pattern.drilled, pattern.to_remember], ['leaf', 1, 1]);
   const due = (await c.get('/api/review?mode=review')).body.items.map((i) => i.lemma);
   assert.ok(due.includes('hund'), 'due now');
   assert.equal((await c.post('/api/pick-up', { lemma: 'tolv' })).status, 409);
@@ -47,8 +53,8 @@ test('FR-411 (glossary): Pick up drills a ground word To read, due now; a leaf c
 test('FR-419 RQ-155: marks, Let it fall and Pick up act only on the learner\'s own items', async () => {
   const other = t.client();
   await other.signInAgreed('other@example.test');
-  await other.post('/api/marks', { lemma: 'hund', read: true, remember: false });
-  assert.equal(word(t, learner.id, 'hund').to_remember, 0);
+  await other.post('/api/marks', { lemma: 'kanelbulle', remember: true });
+  assert.equal(word(t, learner.id, 'kanelbulle').to_remember, 0);
   assert.equal((await other.post('/api/let-it-fall', { lemma: 'tolv', right: true })).status, 404);
   assert.equal(word(t, learner.id, 'tolv').state, 'leaf');
 });

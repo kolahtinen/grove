@@ -75,8 +75,8 @@ test('FR-220 FR-319 FR-419 RQ-54 RQ-155: export includes texts, words, flags, re
   await c.post('/api/report', { textId: texts[0].id, questionPosition: 0, reason: 'other' });
   await c.post('/api/own-text', { title: 'Egen', text: 'Hej på dig.' });
   // G-04 data: a mark with a review answer, and input minutes.
-  await c.post('/api/marks', { lemma: 'kopp', read: true, remember: false });
-  await c.post('/api/review', { lemma: 'kopp', mode: 'read', right: true });
+  await c.post('/api/marks', { lemma: 'kopp', remember: true });
+  await c.post('/api/review', { lemma: 'kopp', mode: 'remember', right: true });
   await c.post('/api/input', { seconds: 30, day: new Date().toISOString().slice(0, 10) });
 
   const data = exportAccount({ ...deps, email: 'texts@example.test' });

@@ -45,20 +45,20 @@ async function addSample(page) {
   return Object.fromEntries(r.body.texts.map((x) => [x.title.replace(` ${tag}`, ''), x.id]));
 }
 
-// Puts a word in a known state: unmarked leaf → (marks), or ground.
-async function setState(page, lemma, { read = false, remember = false, ground = false } = {}) {
-  await api(page, '/api/marks', { lemma, read: false, remember: false });
-  if (ground) { await api(page, '/api/let-it-fall', { lemma, confirmed: true }); return; }
-  if (read || remember) await api(page, '/api/marks', { lemma, read, remember });
+// Puts a word in a known state: unmarked leaf → (To remember), or ground. To read is gone (addendum 003).
+async function setState(page, lemma, { remember = false, ground = false, kind = 'word' } = {}) {
+  await api(page, '/api/marks', { lemma, kind, remember: false });
+  if (ground) { await api(page, '/api/let-it-fall', { lemma, kind, confirmed: true }); return; }
+  if (remember) await api(page, '/api/marks', { lemma, kind, remember });
 }
 
-test('FR-401 RQ-52: after rating, the marking step lists the new words with two switches; Done drills some and grounds the rest', async ({ page }) => {
+test('FR-401 RQ-52 RQ-415: after rating, the marking step lists the new words with a To remember switch; Done drills some and grounds the rest', async ({ page }) => {
   await signIn(page);
   // Make the text's new words unmarked leaves again before the sample arrives (the account is shared between runs).
   for (const w of ['kopp', 'räkna', 'mörk', 'gärna', 'släcka', 'chef']) {
-    await api(page, '/api/marks', { lemma: w, read: false, remember: false });
+    await api(page, '/api/marks', { lemma: w, remember: false });
     await api(page, '/api/pick-up', { lemma: w });
-    await api(page, '/api/marks', { lemma: w, read: false, remember: false });
+    await api(page, '/api/marks', { lemma: w, remember: false });
   }
   const ids = await addSample(page);
   await page.goto(`/text?id=${ids['En bra dag']}`);
@@ -67,7 +67,8 @@ test('FR-401 RQ-52: after rating, the marking step lists the new words with two 
   const rows = page.locator('#marking-list li');
   const n = await rows.count();
   expect(n).toBeGreaterThanOrEqual(4);
-  await rows.nth(0).getByRole('button', { name: 'To read' }).click();
+  await expect(rows.nth(0).getByRole('button', { name: 'To read' })).toHaveCount(0);
+  await rows.nth(0).getByRole('button', { name: 'To remember' }).click();
   await rows.nth(1).getByRole('button', { name: 'To remember' }).click();
   await page.locator('#marking-done').click();
   await expect(page.locator('#marking-message')).toHaveText(`2 to drill, ${n - 2} to your ground.`);
@@ -75,7 +76,7 @@ test('FR-401 RQ-52: after rating, the marking step lists the new words with two 
   await expect(page.locator('#marking-card')).toBeHidden();
 });
 
-test('FR-407 FR-406 RQ-06: Home shows the three stages; Review shows a due leaf in a sentence and finishes with All done', async ({ page }) => {
+test('FR-407 FR-406 RQ-06 RQ-415: Home shows the three stages; Review shows a due leaf in its sentence with Play and finishes with All done', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await setState(page, 'gärna', { ground: true });
@@ -85,6 +86,8 @@ test('FR-407 FR-406 RQ-06: Home shows the three stages; Review shows a due leaf 
   await expect(page.locator('#review-count')).toContainText('due');
   await page.locator('#review-link').click();
   await expect(page.locator('#review-heading')).toHaveText('Review');
+  // The sentence is shown, with Play (addendum 003, question-pages/73, 2).
+  if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#review-box').getByRole('button', { name: 'Play' })).toBeVisible();
   for (let i = 0; i < 12; i += 1) {
     if (await page.locator('.message.ok', { hasText: 'All done' }).isVisible()) break;
     const option = page.locator('#review-box button.option:not([disabled])').first();
@@ -95,10 +98,10 @@ test('FR-407 FR-406 RQ-06: Home shows the three stages; Review shows a due leaf 
   await expect(page.locator('.message.ok', { hasText: 'All done' })).toBeVisible();
 });
 
-test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08: menu switches, Let it fall, Pick up, and the Leaves page', async ({ page }) => {
+test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember switch, Let it fall, Pick up for words and patterns, and the Leaves page', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
-  await setState(page, 'tolv', { read: true });
+  await setState(page, 'tolv', { remember: true });
   await page.goto(`/text?id=${ids['En kall morgon']}`);
   // "En kall morgon" is the sample's listening text and opens in listening mode (G-05 FR-509): show it.
   await page.getByRole('button', { name: 'Show the text' }).click();
@@ -108,7 +111,13 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08: menu switches, Let it fall, Pick 
   await expect(page.locator('#menu-remember')).toHaveAttribute('aria-pressed', 'true');
   await page.locator('#menu-close').click();
   await setState(page, 'tårta', { ground: true });
+  // Pick up a grammar pattern of the sentence from the word menu (FR-411, RQ-414).
+  await setState(page, 'har + supine', { kind: 'pattern' });
   await page.goto(`/text?id=${ids['Olles väska']}`);
+  await page.locator('button.w.pattern', { hasText: /^glömt$/ }).first().click();
+  await page.locator('#menu-pattern-list li', { hasText: 'har + supine' }).getByRole('button', { name: 'Pick up' }).click();
+  await expect(page.locator('#menu-message')).toContainText('Picked up “har + supine”');
+  await page.locator('#menu-close').click();
   await page.locator('button.w', { hasText: /^tolv$/ }).click();
   await page.locator('#menu-fall').click();
   await expect(page.locator('#fall-check')).toBeVisible();
@@ -125,27 +134,24 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08: menu switches, Let it fall, Pick 
   await page.getByLabel('Its meaning').fill('a made-up cinnamon thing');
   await page.getByRole('button', { name: 'Add' }).click();
   await expect(page.locator('#leaves-message')).toContainText('Added with your meaning');
-  await expect(page.locator('#leaves-read')).toContainText(word);
-  await expect(page.locator('#leaves-read li', { hasText: word })).toContainText('a made-up cinnamon thing');
-  await page.locator('#leaves-read li', { hasText: word }).getByRole('button', { name: 'Delete' }).click();
-  await expect(page.locator('#leaves-read')).not.toContainText(word);
-  await page.locator('#leaves-unmarked li', { hasText: 'servitör' }).getByRole('button', { name: 'To read' }).click();
-  await expect(page.locator('#leaves-read')).toContainText('servitör');
+  await expect(page.locator('#leaves-remember')).toContainText(word);
+  await expect(page.locator('#leaves-remember li', { hasText: word })).toContainText('a made-up cinnamon thing');
+  await page.locator('#leaves-remember li', { hasText: word }).getByRole('button', { name: 'Delete' }).click();
+  await expect(page.locator('#leaves-remember')).not.toContainText(word);
+  await page.locator('#leaves-unmarked li', { hasText: 'servitör' }).getByRole('button', { name: 'To remember' }).click();
+  await expect(page.locator('#leaves-remember')).toContainText('servitör');
 });
 
-test('FR-413 RQ-294: words are coloured by their marks and by the marks they had when they fell', async ({ page }) => {
+test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mark they had when they fell; a form of more than one word has no mark', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
-  await setState(page, 'kopp', { read: true });
   await setState(page, 'räkna', { remember: true });
-  await setState(page, 'mörk', { read: true, remember: true });
-  await setState(page, 'gärna', { read: true });
+  await setState(page, 'gärna', { remember: true });
   await api(page, '/api/let-it-fall', { lemma: 'gärna', confirmed: true });
   await page.goto(`/text?id=${ids['En bra dag']}`);
-  await expect(page.locator('button.w', { hasText: /^kopparna$/ })).toHaveClass(/m-read/);
   await expect(page.locator('button.w', { hasText: /^räknar$/ })).toHaveClass(/m-remember/);
-  await expect(page.locator('button.w', { hasText: /^mörkt$/ })).toHaveClass(/m-both/);
-  await expect(page.locator('button.w', { hasText: /^gärna$/ })).toHaveClass(/f-read/);
+  await expect(page.locator('button.w', { hasText: /^gärna$/ })).toHaveClass(/f-remember/);
+  await expect(page.locator('button.w.other-reading')).toHaveCount(0);
 });
 
 test('FR-414 FR-415 RQ-03 RQ-71: Home shows the level line and today\'s minutes; Progress shows 14 day bars', async ({ page }) => {

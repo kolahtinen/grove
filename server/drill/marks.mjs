@@ -1,4 +1,5 @@
-// The word menu's switches, Let it fall and Pick up (FR-409…FR-411; question-pages/56).
+// The word menu's To remember switch, Let it fall and Pick up (FR-409…FR-411; question-pages/56;
+// addendum 003: To read is gone for Swedish, RQ-415).
 import { transaction } from '../store/db.mjs';
 import { createItems } from './items.mjs';
 import { createQuestions } from './questions.mjs';
@@ -7,15 +8,15 @@ export function createMarks({ db, now = () => Date.now() }) {
   const items = createItems({ db, now });
   const questions = createQuestions(db);
   return {
-    setMarks(accountId, { lemma, kind = 'word', read, remember }) {
+    setMarks(accountId, { lemma, kind = 'word', remember }) {
       const item = items.findOrCreate(accountId, lemma, kind);
-      const after = items.setMarks(item, { read, remember });
-      return { state: after.state, drilled: !!after.drilled, read: !!after.to_read, remember: !!after.to_remember };
+      const after = items.setMarks(item, { remember });
+      return { state: after.state, drilled: !!after.drilled, remember: !!after.to_remember };
     },
     fallCheck(accountId, { lemma, kind = 'word' }) {
       const item = items.mustFind(accountId, lemma, kind);
       if (item.kind === 'pattern') return { question: null };
-      const q = questions.meaningQuestion(accountId, item, 'read');
+      const q = questions.meaningQuestion(accountId, item);
       return { question: q.mode === 'recall' ? null : { sentence: q.sentence, word: q.word, options: q.options, right: q.right } };
     },
     letItFall(accountId, { lemma, kind = 'word', right, confirmed }) {
@@ -27,8 +28,12 @@ export function createMarks({ db, now = () => Date.now() }) {
       });
       return { fell: ok && item.state === 'leaf' };
     },
+    // A pattern of the sentence that isn't an item yet is added as one (FR-411, RQ-414).
     pickUp(accountId, { lemma, kind = 'word' }) {
-      items.pickUp(items.mustFind(accountId, lemma, kind));
+      const item = kind === 'pattern' && !items.find(accountId, lemma, kind)
+        ? items.groundFor(items.findOrCreate(accountId, lemma, kind))
+        : items.mustFind(accountId, lemma, kind);
+      items.pickUp(item);
       return { result: 'picked_up' };
     },
   };

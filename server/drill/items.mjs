@@ -34,14 +34,14 @@ export function createItems({ db, now = () => Date.now() }) {
       if (!item) throw new HttpError(404, 'not_found', 'There is no such word.');
       return item;
     },
-    // Marks on: a drilled leaf (due tomorrow if newly drilled); both off: an unmarked leaf again.
-    setMarks(item, { read, remember }) {
-      const any = read || remember;
-      if (any && !item.drilled) {
-        db.prepare("UPDATE words SET to_read = ?, to_remember = ?, drilled = 1, state = 'leaf', gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
-          .run(read ? 1 : 0, remember ? 1 : 0, START_GAP, now(), item.id);
-      } else if (any) {
-        db.prepare('UPDATE words SET to_read = ?, to_remember = ? WHERE id = ?').run(read ? 1 : 0, remember ? 1 : 0, item.id);
+    // To remember on: a drilled leaf (due tomorrow if newly drilled); off: an unmarked leaf again. To read
+    // is gone for Swedish (addendum 003, RQ-415), so it is never set.
+    setMarks(item, { remember }) {
+      if (remember && !item.drilled) {
+        db.prepare("UPDATE words SET to_read = 0, to_remember = 1, drilled = 1, state = 'leaf', gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
+          .run(START_GAP, now(), item.id);
+      } else if (remember) {
+        db.prepare('UPDATE words SET to_read = 0, to_remember = 1 WHERE id = ?').run(item.id);
       } else {
         db.prepare("UPDATE words SET to_read = 0, to_remember = 0, drilled = 0, gap_days = NULL, last_review_at = NULL, state = CASE WHEN state = 'ground' THEN 'ground' ELSE 'leaf' END WHERE id = ?").run(item.id);
       }
@@ -51,9 +51,15 @@ export function createItems({ db, now = () => Date.now() }) {
       db.prepare("UPDATE words SET state = 'ground', drilled = 0, gap_days = NULL, fallen_at = ?, fell_marks = ? WHERE id = ?")
         .run(now(), marksOf(item), item.id);
     },
+    // A new item for Pick up starts in the ground, so it can be picked up like any other.
+    groundFor(item) {
+      db.prepare("UPDATE words SET state = 'ground' WHERE id = ?").run(item.id);
+      return db.prepare('SELECT * FROM words WHERE id = ?').get(item.id);
+    },
+    // Picked up: a drilled leaf To remember, due now (FR-411).
     pickUp(item) {
       if (item.state !== 'ground') throw new HttpError(409, 'not_ground', 'Only words in your ground can be picked up.');
-      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = 1, to_remember = 0, gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
+      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = 0, to_remember = 1, gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
         .run(START_GAP, now() - START_GAP * 24 * 60 * 60 * 1000, item.id);
     },
   };

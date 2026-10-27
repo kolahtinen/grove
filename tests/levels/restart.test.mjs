@@ -25,7 +25,7 @@ test('FR-606 RQ-252: a higher level adds words; a lower one removes only untouch
   const db = t.grove.db;
   db.prepare('UPDATE words SET uses = 2 WHERE account_id = ? AND lemma = ?').run(learner.id, met);
   await c.post('/api/pick-up', { lemma: drilled });
-  await c.post('/api/marks', { lemma: fallen, read: true, remember: false });
+  await c.post('/api/marks', { lemma: fallen, remember: true });
   await c.post('/api/let-it-fall', { lemma: fallen, confirmed: true });
   db.prepare("INSERT INTO words (account_id, lemma, kind, state, added_at) VALUES (?, 'kanelbulle', 'word', 'ground', 1)").run(learner.id);
 

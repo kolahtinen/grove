@@ -7,19 +7,16 @@ let learner;
 let c;
 before(async () => {
   ({ t, learner, c } = await drillGrove());
-  await c.post('/api/marks', { lemma: 'kopp', read: true, remember: true });
-  await c.post('/api/marks', { lemma: 'räkna', read: true, remember: false });
-  await c.post('/api/marks', { lemma: 'tolv', read: false, remember: true });
+  await c.post('/api/marks', { lemma: 'kopp', remember: true });
+  await c.post('/api/marks', { lemma: 'räkna', remember: true });
 });
 after(() => t.close());
 
-test('FR-412 RQ-08: Leaves groups drilled leaves To remember / To read (both in both) and lists unmarked leaves apart', async () => {
+test('FR-412 RQ-08 RQ-415: Leaves lists the drilled leaves (To remember) and the unmarked leaves apart; there is no To read list', async () => {
   const res = await c.get('/api/leaves');
-  const remember = res.body.remember.map((i) => i.lemma).sort();
-  const read = res.body.read.map((i) => i.lemma).sort();
-  assert.deepEqual(remember, ['kopp', 'tolv']);
-  assert.deepEqual(read, ['kopp', 'räkna']);
-  const kopp = res.body.read.find((i) => i.lemma === 'kopp');
+  assert.deepEqual(res.body.remember.map((i) => i.lemma).sort(), ['kopp', 'räkna']);
+  assert.equal(res.body.read, undefined);
+  const kopp = res.body.remember.find((i) => i.lemma === 'kopp');
   assert.equal(kopp.en, 'cup');
   assert.equal(kopp.gap, 1);
   assert.ok(kopp.strength > 0.9);
@@ -29,10 +26,10 @@ test('FR-412 RQ-08: Leaves groups drilled leaves To remember / To read (both in 
   assert.ok(!unmarked.includes('kopp'));
 });
 
-test('FR-412 RQ-35 RQ-77 RQ-207 RQ-396 RQ-398: a typed word or phrase becomes a drilled leaf To read with the word list\'s meaning; one the list lacks needs the learner\'s own, which the next request asks the AI to check; delete removes it', async () => {
+test('FR-412 RQ-35 RQ-77 RQ-207 RQ-396 RQ-398 RQ-415: a typed word or phrase becomes a drilled leaf To remember with the word list\'s meaning; one the list lacks needs the learner\'s own, which the next request asks the AI to check; delete removes it', async () => {
   assert.deepEqual((await c.post('/api/leaves', { text: 'Kanelbulle' })).body, { result: 'added' });
   const k = word(t, learner.id, 'kanelbulle');
-  assert.deepEqual([k.state, k.drilled, k.to_read, k.en_source], ['leaf', 1, 1, 'dictionary']);
+  assert.deepEqual([k.state, k.drilled, k.to_read, k.to_remember, k.en_source], ['leaf', 1, 0, 1, 'dictionary']);
   assert.ok(k.en);
   const missing = await c.post('/api/leaves', { text: 'så klart', kind: 'phrase' });
   if (missing.status === 400) {

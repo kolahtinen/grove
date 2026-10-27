@@ -31,7 +31,7 @@ test('FR-704 FR-701 RQ-362 RQ-360: reviewer:setup puts in the demo history: grou
   assert.ok(q('SELECT COUNT(*) AS n FROM question_answers WHERE account_id = ?', id)[0].n >= 2);
   const drilled = q('SELECT lemma, to_read, to_remember, gap_days FROM words WHERE account_id = ? AND drilled = 1', id);
   assert.equal(drilled.length, 6);
-  assert.ok(drilled.some((d) => d.to_remember) && drilled.some((d) => d.to_read));
+  assert.ok(drilled.every((d) => d.to_remember && !d.to_read), 'all To remember (RQ-415)');
   assert.ok(drilled.some((d) => d.gap_days === 2.5));
   const days = q('SELECT day FROM input_days WHERE account_id = ?', id);
   assert.equal(days.length, 3);
