@@ -177,6 +177,12 @@ Prepared 2026-10-27 while the owner was away; asked one at a time in Claude Code
 
 **Answer:**
 
+### 27. The G-09 work built on branch `g09-sessions` (not in main): the sessions server and planner as FR-905 says now, the session page with the mode banner, Settings and Account pages. Bring it into main once 1 (PD-28), 5 (PD-02) and 12 (PD-12) are answered and applied?
+
+- **Yes, after those answers (Recommended)** · Look at it first (a dev server from the branch) · Start G-09 again from the confirmed decisions
+
+**Answer:**
+
 ## Applied
 
 (filled in after the session: which specs and addenda changed)
