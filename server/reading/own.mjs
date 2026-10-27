@@ -9,6 +9,7 @@ import { splitSentences } from '../words/sentences.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { askedForms } from '../words/asked.mjs';
 import { createWordStore } from '../words/store.mjs';
+import { fillExamples } from '../words/examples.mjs';
 import { extractJson } from '../texts/extract.mjs';
 import { validateOwn, COPYRIGHT } from '../texts/schema.mjs';
 import { describeProblem } from '../texts/check.mjs';
@@ -58,15 +59,18 @@ export function addOwnText(db, accountId, { title, text }, now = Date.now(), siz
     const info = db.prepare("INSERT INTO texts (account_id, position, title, topic, created_at, own, ready) VALUES (?, 1, ?, '', ?, 1, 0)").run(accountId, title.trim(), now);
     const id = Number(info.lastInsertRowid);
     const all = [];
+    const sentenceIds = [];
     lines.forEach((line, li) => {
       db.prepare("INSERT INTO text_lines (account_id, text_id, position, sv, en) VALUES (?, ?, ?, ?, '')").run(accountId, id, li, line);
       splitSentences(line).forEach((sv, si) => {
         all.push(sv);
         const items = counter.countSentence(sv).items.map((x) => x.text);
-        db.prepare('INSERT INTO sentences (account_id, text_id, line_position, position, sv, new_items) VALUES (?, ?, ?, ?, ?, ?)')
-          .run(accountId, id, li, si, sv, JSON.stringify(items));
+        sentenceIds.push(Number(db.prepare('INSERT INTO sentences (account_id, text_id, line_position, position, sv, new_items) VALUES (?, ?, ?, ?, ?, ?)')
+          .run(accountId, id, li, si, sv, JSON.stringify(items)).lastInsertRowid));
       });
     });
+    // G-03 FR-316: the learner's words without an example take theirs from this text.
+    fillExamples(db, accountId, { sentenceIds });
     const letters = Array.from({ length: 4 }, () => LETTERS[randomInt(LETTERS.length)]).join('');
     const pieces = splitPieces(all, sizes.ownPieceChars);
     pieces.forEach((piece, i) => {

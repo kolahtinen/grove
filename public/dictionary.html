@@ -20,17 +20,21 @@
 <main>
 <section class="card">
 <h2>Dictionary</h2>
-<p class="small muted">Every word, phrase and grammar pattern you have met.</p>
-<label>Search<input type="text" id="search" autocomplete="off"></label>
-<p class="small muted" id="count"></p>
-<h3 class="small">Words</h3><ul class="dict" id="dict-words"></ul>
-<h3 class="small">Phrases</h3><ul class="dict" id="dict-phrases"></ul>
-<h3 class="small">Grammar patterns</h3><ul class="dict" id="dict-patterns"></ul>
-</section>
-<section class="card">
-<h2>Names</h2>
-<p class="small muted">People and places in your texts. They never count as new words.</p>
-<ul class="names" id="names"></ul>
+<p class="small muted">Every word, phrase, grammar pattern and name you have met.</p>
+<label>Search<input type="text" id="search" autocomplete="off" maxlength="80"></label>
+<div class="tab-list" role="tablist" aria-label="Kinds" id="dict-tabs">
+<button type="button" role="tab" id="tab-words" data-tab="words" aria-controls="dict-panel" aria-selected="true">Words<span class="tag"></span></button>
+<button type="button" role="tab" id="tab-phrases" data-tab="phrases" aria-controls="dict-panel" aria-selected="false">Phrases<span class="tag"></span></button>
+<button type="button" role="tab" id="tab-patterns" data-tab="patterns" aria-controls="dict-panel" aria-selected="false">Grammar patterns<span class="tag"></span></button>
+<button type="button" role="tab" id="tab-names" data-tab="names" aria-controls="dict-panel" aria-selected="false">Names<span class="tag"></span></button>
+</div>
+<div class="tab-panel" role="tabpanel" id="dict-panel" aria-labelledby="tab-words">
+<p class="small muted" id="names-note" hidden>People and places in your texts. They never count as new words.</p>
+<p class="small muted" id="count" aria-live="polite"></p>
+<ul class="dict" id="dict-list"></ul>
+<p class="message bad" id="dict-message" hidden></p>
+<button type="button" id="more" hidden>More</button>
+</div>
 </section>
 </main>
 </body>

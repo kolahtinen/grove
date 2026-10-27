@@ -130,16 +130,37 @@ test('FR-313 FR-315 RQ-297 RQ-301: Explain from the menu and Report on a questio
   await expect(question.locator('.feedback')).toHaveText(/Reported/);
 });
 
-test('FR-316 FR-317 RQ-53 RQ-56: the dictionary lists words with meaning and example, filters by search, and shows names apart', async ({ page }) => {
+test('FR-316 FR-317 RQ-53 RQ-56 RQ-409 RQ-416: the dictionary has four tabs of 100 entries with More, searches on the server as you type, and offers Pick up on ground words', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await page.goto('/dictionary');
-  const kopp = page.locator('#dict-words li', { has: page.locator('strong', { hasText: /^kopp$/ }) });
+  await expect(page.getByRole('tab', { name: /^Words/ })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('#dict-list > li')).toHaveCount(100);
+  await expect(page.locator('#count')).toHaveText(/^100 of [\d,]+$/);
+  await page.getByRole('button', { name: 'More' }).click();
+  await expect(page.locator('#dict-list > li')).toHaveCount(200);
+
+  await page.locator('#search').fill('kopp');
+  const kopp = page.locator('#dict-list > li', { has: page.locator('strong', { hasText: /^kopp$/ }) });
   await expect(kopp).toContainText('cup');
   await expect(kopp.locator('.example')).toContainText(/kopp/i);
+  await expect(kopp.getByRole('button', { name: 'Pick up' })).toHaveCount(0);
   await page.locator('#search').fill('umbrella');
-  await expect(page.locator('#dict-words li')).toHaveCount(1);
-  await expect(page.locator('#names')).toContainText('Elsa');
+  await expect(page.locator('#dict-list > li')).toHaveCount(1);
+  await expect(page.locator('#count')).toHaveText('1 of 1');
+
+  await page.locator('#search').fill('');
+  await page.getByRole('tab', { name: /^Names/ }).click();
+  await expect(page.locator('#dict-list')).toContainText('Elsa');
+  await page.getByRole('tab', { name: /^Phrases/ }).click();
+  await expect(page.locator('#dict-list')).toContainText('hur mår du');
+
+  await page.getByRole('tab', { name: /^Words/ }).click();
+  const ground = page.locator('#dict-list > li', { has: page.locator('.text-state.ground') }).first();
+  const lemma = await ground.locator('strong').textContent();
+  await ground.getByRole('button', { name: 'Pick up' }).click();
+  const picked = page.locator('#dict-list > li', { has: page.locator('strong', { hasText: new RegExp(`^${lemma}$`) }) });
+  await expect(picked.locator('.text-state')).toHaveText('leaf');
 });
 
 test('FR-318 FR-304 RQ-74 RQ-400 RQ-401: an own text waits for its AI round (missing words asked again), then opens with its share of known words and the AI\'s copyright view; HTML in it shows as text; a new word is saved with the AI\'s meaning', async ({ page, context }) => {

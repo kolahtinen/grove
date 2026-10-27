@@ -5,6 +5,7 @@ import { transaction } from '../store/db.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { applyExplanations, applyFixes } from '../reading/flags.mjs';
 import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
+import { fillExamples } from '../words/examples.mjs';
 
 // The new words of one checked text that have neither the AI's meaning nor a dictionary one (RQ-397).
 export function missingMeanings(answer, checkedText) {
@@ -20,6 +21,7 @@ export function acceptAnswer({ db, words, accountId, exchange, answer, check, to
   const keep = indexes ?? answer.texts.map((_, i) => i);
   return transaction(db, () => {
     const at = now();
+    const lastSentence = db.prepare('SELECT COALESCE(MAX(id), 0) AS id FROM sentences').get().id;
     const stored = [];
     const idOfIndex = new Map();
     const ground = new Set(words.groundLemmas(accountId).map((r) => r.lemma));
@@ -106,6 +108,9 @@ export function acceptAnswer({ db, words, accountId, exchange, answer, check, to
     }
     applyExplanations(db, accountId, answer.explanations || [], at);
     if (counter) applyFixes(db, accountId, answer.fixes || [], counter, at);
+    // G-03 FR-316: the learner's words without an example take theirs from the sentences stored here.
+    const newSentences = db.prepare('SELECT id FROM sentences WHERE account_id = ? AND id > ?').all(accountId, lastSentence).map((r) => r.id);
+    fillExamples(db, accountId, { sentenceIds: newSentences });
 
     return { texts: stored, added: [...new Set(added)] };
   });

@@ -3,7 +3,7 @@ import { sendJson } from '../web/http.mjs';
 import { buildReading } from './view.mjs';
 import { buildPractice } from './practice.mjs';
 import { createFlag, createReport, EXPLAIN_REASONS, REPORT_REASONS } from './flags.mjs';
-import { buildDictionary } from './dictionary.mjs';
+import { dictionaryPage, readQuery } from './dictionary.mjs';
 import { addOwnText, saveLeaf, ownStatus } from './own.mjs';
 import { ownText } from './view.mjs';
 import { DEFAULT_SIZES } from '../config.mjs';
@@ -13,7 +13,7 @@ const note = { type: 'string', min: 0, max: 200, optional: true };
 export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now = () => Date.now() }) {
   router.add({ method: 'GET', path: '/api/reading', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildReading(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/practice', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildPractice(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
-  router.add({ method: 'GET', path: '/api/dictionary', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildDictionary(db, ctx.account.id)) });
+  router.add({ method: 'GET', path: '/api/dictionary', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, dictionaryPage(db, ctx.account.id, readQuery(ctx.url.searchParams))) });
 
   router.add({
     method: 'POST', path: '/api/settings', access: 'agreed',

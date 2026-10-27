@@ -2,6 +2,7 @@
 import { HttpError } from '../web/http.mjs';
 import { START_GAP } from './schedule.mjs';
 import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
+import { fillExamples } from '../words/examples.mjs';
 
 export const KINDS = ['word', 'phrase', 'pattern'];
 
@@ -15,8 +16,10 @@ export function createItems({ db, now = () => Date.now() }) {
     // A new item takes the word list's meaning, or the one given (G-02 FR-207, FR-412).
     const key = String(lemma).trim().toLowerCase();
     const found = meaning ? null : dictionaryMeaning(key);
-    db.prepare("INSERT INTO words (account_id, lemma, kind, en, en_source, state, added_at, source_text_id) VALUES (?, ?, ?, ?, ?, 'leaf', ?, ?)")
+    const info = db.prepare("INSERT INTO words (account_id, lemma, kind, en, en_source, state, added_at, source_text_id) VALUES (?, ?, ?, ?, ?, 'leaf', ?, ?)")
       .run(accountId, key, kind, meaning ?? found?.en ?? null, meaning ? 'learner' : found ? 'dictionary' : null, now(), sourceTextId);
+    // G-03 FR-316: a word added without a sentence takes the first earlier one it appears in.
+    fillExamples(db, accountId, { wordIds: [Number(info.lastInsertRowid)] });
     return find(accountId, lemma, kind);
   }
 

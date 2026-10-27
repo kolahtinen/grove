@@ -336,3 +336,20 @@ test('FR-223 RQ-404: migration 011 adds the AI, product and tactic, and a whole-
   }
 });
 
+
+test('FR-316 RQ-410: migration 012 keeps every word and adds an empty example_sentence_id and the dictionary index', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 11 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO words (id, account_id, lemma, kind, state, added_at) VALUES (5, 1, 'kopp', 'word', 'leaf', 1), (6, 1, 'kaffe', 'word', 'ground', 1)").run();
+    migrate(db);
+    assert.deepEqual(db.prepare('SELECT id, lemma, example_sentence_id FROM words ORDER BY id').all().map((r) => ({ ...r })),
+      [{ id: 5, lemma: 'kopp', example_sentence_id: null }, { id: 6, lemma: 'kaffe', example_sentence_id: null }]);
+    assert.ok(db.prepare("SELECT name FROM sqlite_master WHERE type = 'index' AND name = 'words_account_kind_lemma'").get());
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

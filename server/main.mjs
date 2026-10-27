@@ -12,6 +12,7 @@ import { listen } from './web/http.mjs';
 import { hourlyJob } from './jobs.mjs';
 import { kellyLoad } from './levels/import.mjs';
 import { lexiconLoad } from './lexicon/lexicon.mjs';
+import { examplesLoad } from './reading/dictionary.mjs';
 import { createStartup } from './startup.mjs';
 
 const HOUR = 60 * 60 * 1000;
@@ -26,9 +27,10 @@ export function openStore(config) {
 export function createGrove(config, { now = () => Date.now(), fetchImpl, loads } = {}) {
   const db = openStore(config);
   const seclog = createSeclog({ db, logDir: join(config.dataDir, 'logs'), now });
-  // The word list always; the Kelly import unless a test server skips it (config.importLevels false).
+  // The word list always; the Kelly import unless a test server skips it (config.importLevels false);
+  // the examples of words met before migration 012, once (G-03 FR-316).
   const startup = createStartup({
-    loads: loads ?? [lexiconLoad(), ...(config.importLevels !== false ? [kellyLoad({ db, seclog })] : [])],
+    loads: loads ?? [lexiconLoad(), ...(config.importLevels !== false ? [kellyLoad({ db, seclog })] : []), examplesLoad({ db })],
     log: seclog.app,
   });
   const firebase = createFirebase(config.firebase, { now, ...(fetchImpl ? { fetchImpl } : {}) });

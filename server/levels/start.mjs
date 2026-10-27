@@ -3,6 +3,7 @@
 // removes untouched starting-check words.
 import { HttpError } from '../web/http.mjs';
 import { transaction } from '../store/db.mjs';
+import { fillExamples } from '../words/examples.mjs';
 
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 export const SAMPLE = 30;
@@ -49,6 +50,8 @@ export function createStart({ db, now = () => Date.now() }) {
         }
         db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(accountId);
         db.prepare('UPDATE learner_settings SET start_level = ?, start_done = 1, start_at = ? WHERE account_id = ?').run(level, now(), accountId);
+        // G-03 FR-316: the new words take the first sentence they appear in, if the learner has read any.
+        fillExamples(db, accountId);
       });
       return { ground, leaves, suggestLower: level !== 'beginner' && level !== 'A1' && ticked.length >= 20 };
     },
