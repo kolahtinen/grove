@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/session.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><a class="bar-button nav nav-wide" href="/own">Own texts</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+<a class="bar-button nav help-link" href="/how" aria-label="How grove works" title="How grove works">?</a>
+</div>
+</header>
+<main>
+<section class="card session-head">
+<p class="session-line" id="session-line"></p>
+<progress id="session-bar" max="1" value="0" aria-label="Session progress"></progress>
+</section>
+<section class="card mode-card" id="exercise" hidden>
+<header class="mode-banner" id="exercise-banner"></header>
+<div class="mode-body" id="exercise-box"></div>
+</section>
+<section class="card" id="session-end" hidden>
+<h2>Well done</h2>
+<ul class="summary" id="summary"></ul>
+<p><a href="/">Back to Home</a></p>
+</section>
+<p class="message" id="session-message" role="status" hidden></p>
+<p class="small"><a href="/">Leave for now</a> <span class="muted">— you can carry on later.</span></p>
+</main>
+</body>
+</html>

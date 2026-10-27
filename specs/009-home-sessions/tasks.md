@@ -8,6 +8,8 @@ description: "Tasks for G-09: Home, sessions and the new look"
 
 **Draft** (2026-10-27, written while the owner was away). Tasks that use a value still to confirm name it as **(PD-nn)** ([provisional decisions](../../docs/provisional-decisions.md); question-pages/76). Don't start a task whose PD is unconfirmed; update this file after the confirming session.
 
+**Built so far** (2026-10-27, on branch `g09-sessions`, not in main): T818–T828: migration 014 (table `practice_sessions`, since `sessions` is G-01's sign-in table), the `sessions` module (planner as FR-905 says now; SC-001 is a to-do until PD-28), the routes (plus `GET /api/session?id=N`), Texts' topic data (T833's server part), the session page with the mode banner (FR-912 in FR-913's current mode colours), the shared question card, the reading page's session bar. Not yet: Home's tiles (T814, T829), so a session is started through the API in its browser test.
+
 **Tests**: Required (constitution 1.3, 1.4). Names start with the FR ID (FR-901…FR-914) and list RQ IDs. Tests first in each story. A test of an earlier goal changes only where plan.md's "Tests whose spec rules change" says its rule is replaced, and in the same task as the rule's replacement.
 
 **Order** (PD-27): the look (US6's colours) → Home and menu (US1) with Settings, Account and the terms screens → Practise (US2) → Texts (US3) → By skill (US4) → Just one mode (US5). Each phase ends with every test passing, so whatever is left on 1 November is whole phases.

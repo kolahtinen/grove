@@ -28,7 +28,16 @@ export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
       sendJson(ctx.res, 200, { session: sessions.start(ctx.account.id, ctx.body) });
     },
   });
-  router.add({ method: 'GET', path: '/api/session', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, { session: sessions.current(ctx.account.id) }) });
+  router.add({
+    method: 'GET', path: '/api/session', access: 'agreed',
+    handler: (ctx) => {
+      const raw = ctx.url.searchParams.get('id');
+      if (raw === null) { sendJson(ctx.res, 200, { session: sessions.current(ctx.account.id) }); return; }
+      const id = Number(raw);
+      if (!Number.isSafeInteger(id) || id < 1) throw new HttpError(404, 'not_found', 'There is no such session.');
+      sendJson(ctx.res, 200, { session: sessions.byId(ctx.account.id, id) });
+    },
+  });
   router.add({
     method: 'POST', path: '/api/session/next', access: 'agreed',
     schema: { sessionId: { type: 'integer', min: 1 }, index: { type: 'integer', min: 0, max: 200 } },

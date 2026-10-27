@@ -70,6 +70,12 @@ export function createSessions({ db, now = () => Date.now() }) {
     current(accountId) {
       return view(accountId, going(accountId));
     },
+    // One of the learner's sessions by id (the session page after a text that ended it shows its summary).
+    byId(accountId, id) {
+      const row = db.prepare('SELECT * FROM practice_sessions WHERE id = ? AND account_id = ?').get(id, accountId);
+      if (!row) throw new HttpError(404, 'not_found', 'There is no such session.');
+      return view(accountId, row);
+    },
     next(accountId, { sessionId, index }) {
       const row = db.prepare('SELECT * FROM practice_sessions WHERE id = ? AND account_id = ?').get(sessionId, accountId);
       if (!row) throw new HttpError(404, 'not_found', 'There is no such session.');

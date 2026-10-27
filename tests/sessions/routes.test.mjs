@@ -53,6 +53,7 @@ test('FR-904 RQ-421: Next moves on once per exercise; a repeated index answers t
   assert.equal(s.exercise, null);
   for (const key of ['minutes', 'textsRead', 'wordsReviewed', 'wordsFell']) assert.equal(typeof s.summary[key], 'number', key);
   assert.equal((await c.get('/api/session')).body.session, null, 'no Resume once finished');
+  assert.equal((await c.get(`/api/session?id=${s.id}`)).body.session.summary.minutes, s.summary.minutes, 'by id it still shows its summary');
   assert.equal((await c.post('/api/session/next', { sessionId: s.id, index: 5000 })).status, 400);
 });
 
@@ -95,6 +96,7 @@ test('FR-914 RQ-155: another account can\'t see, move or list this learner\'s se
   await other.signInAgreed('other@example.test');
   assert.equal((await other.get('/api/session')).body.session, null);
   assert.equal((await other.post('/api/session/next', { sessionId: mine.id, index: 0 })).status, 404);
+  assert.equal((await other.get(`/api/session?id=${mine.id}`)).status, 404);
   assert.deepEqual((await other.get('/api/topics')).body.topics, []);
 });
 
