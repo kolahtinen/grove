@@ -15,6 +15,15 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
   router.add({ method: 'GET', path: '/api/practice', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildPractice(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/dictionary', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, dictionaryPage(db, ctx.account.id, readQuery(ctx.url.searchParams))) });
 
+  // The Settings page's values (G-09 FR-910).
+  router.add({
+    method: 'GET', path: '/api/settings', access: 'agreed',
+    handler: (ctx) => {
+      const s = db.prepare('SELECT speak_words, speech_rate FROM learner_settings WHERE account_id = ?').get(ctx.account.id);
+      sendJson(ctx.res, 200, { speakWords: s ? !!s.speak_words : true, speechRate: s?.speech_rate ?? 1 });
+    },
+  });
+
   router.add({
     method: 'POST', path: '/api/settings', access: 'agreed',
     schema: {

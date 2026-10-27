@@ -1,4 +1,5 @@
-// Progress (FR-414, FR-415): level, minutes per day for 14 days, ground and drilled counts.
+// Progress (FR-414, FR-415; G-09 FR-910): level and today's minutes, minutes per day for 14 days,
+// ground and drilled counts.
 import { getMe } from './api.mjs';
 import { showAccount } from './page.mjs';
 
@@ -7,7 +8,8 @@ await showAccount();
 await getMe();
 const res = await fetch('/api/progress', { credentials: 'same-origin' });
 const p = res.ok ? await res.json() : { level: null, days: [], ground: 0, drilled: 0 };
-$('progress-level').textContent = p.level === null ? 'Set your starting level to see your level.' : `Your level: ${p.level}`;
+const today = p.days.at(-1)?.minutes ?? 0;
+$('progress-level').textContent = `${p.level === null ? 'Set your starting level to see your level.' : `Your level: ${p.level}`} · ${today} min of input today`;
 const max = Math.max(10, ...p.days.map((d) => d.minutes));
 for (const d of p.days) {
   const bar = document.createElement('div');

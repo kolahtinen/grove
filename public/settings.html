@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/settings.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><a class="bar-button nav nav-wide" href="/own">Own texts</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
+<a class="bar-button nav help-link" href="/how" aria-label="How grove works" title="How grove works">?</a>
+</div>
+</header>
+<main>
+<section class="card">
+<h2>Settings</h2>
+<h3 class="small">Speech</h3>
+<label class="speed">Speech speed <span id="speed-value">1.0×</span>
+<input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1"></label>
+<p class="small muted">How well the speed works depends on your device's voice.</p>
+<button type="button" class="switch" id="speak-words" aria-pressed="true">Speak words when I tap them</button>
+<p class="message" id="settings-message" role="status" hidden></p>
+<details class="voice-help"><summary>No Swedish voice?</summary>
+<div class="message" id="voice-help" role="status">
+<p><strong>This device has no Swedish voice</strong>, so grove stays silent rather than read Swedish with another language's voice.</p>
+<p class="small">To add one:</p>
+<ul class="small">
+<li>iPhone, iPad, Mac: Settings → Accessibility → Spoken Content → Voices → Swedish.</li>
+<li>Android: Settings → Text-to-speech → your speech engine's language data → Swedish.</li>
+<li>Windows: Settings → Time &amp; language → Speech → add Swedish.</li>
+<li>On a computer, Chrome and Microsoft Edge often have Swedish voices while online.</li>
+</ul>
+<p class="small">Then reload grove.</p>
+</div>
+</details>
+<h3 class="small">Starting level</h3>
+<p><a href="/start" id="restart">Start the starting level again</a></p>
+<p class="small muted" id="no-restart" hidden>The reviewer account starts with its demo history.</p>
+</section>
+</main>
+</body>
+</html>
