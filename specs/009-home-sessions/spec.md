@@ -16,6 +16,15 @@
 
 **Changes to other goals** (each FR below names the rule it replaces): G-01 FR-011 (the terms' boxes), FR-014 (email and Sign out in the top bar), FR-026's colours (Appendix A.1); G-02 FR-201, FR-203, FR-223 (where the prompting lives on Home); G-03 FR-321 (the own-texts page joins Texts); G-04 FR-407 (Home's three stages), FR-414, FR-415 (level and minutes on Home); G-08 FR-802 (logo tap), FR-804 (the help page).
 
+## Clarifications
+
+### Session 2026-10-27
+
+- Q: How long should grove count each kind of exercise for, when it plans a session? → A: The first guess (reading 100 words a minute, listening 80, a Review item 20 s, a Master item 25 s, a marking step 30 s); learning each learner's own times is for a later version.
+- Q: How should grove fill a session's minutes with the three modes? → A: Review of the due and fading words first (fading first, at most 40% of the length), then one new or unfinished text that fits, then Master to fill (FR-905 as written).
+- Q: A session left part-way — how long can it be resumed? → A: Until it is finished or another session is started; no time limit (FR-904).
+- Q: Which session lengths should grove offer? → A: Practise: 3, 5, 10, 20 and 30 minutes, or a typed 3–60; By skill: Short 5, Medium 10, Long 20 minutes.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Find my way from a calm Home (Priority: P1)
@@ -42,11 +51,11 @@ The learner opens **Practise for X min**, picks 10 minutes and starts. grove pla
 
 **Why this priority**: The owner's main way in (question-pages/74, 5, 6); a fixed length makes daily practice easy to fit in (N-19, N-39, N-32).
 
-**Independent Test**: On the demo account, start 5, 10 and 20 minutes: each plan's minutes add up to within 20% of the length; exercises show one at a time in grove's order; leaving and pressing Resume returns to the same exercise; at the end a summary shows.
+**Independent Test**: On the demo account, start 3, 5, 10 and 20 minutes: each plan's minutes add up to within 20% of the length; exercises show one at a time in grove's order; leaving and pressing Resume returns to the same exercise; at the end a summary shows.
 
 **Acceptance Scenarios**:
 
-1. **Given** the Practise tile open, **When** the learner picks 5, 10, 20 or 30 minutes (or types 5–60) and presses Start, **Then** grove plans a session whose exercises' durations add up to within 20% of the length (or 2 minutes, whichever is more), mixing the modes, and shows the first exercise. (RQ-421)
+1. **Given** the Practise tile open, **When** the learner picks 3, 5, 10, 20 or 30 minutes (or types 3–60) and presses Start, **Then** grove plans a session whose exercises' durations add up to within 20% of the length (or 2 minutes, whichever is more), mixing the modes, and shows the first exercise. (RQ-421)
 2. **Given** a session, **When** it shows an exercise, **Then** only that exercise shows, in a card with the mode banner (FR-912), under "N-minute session · i of n · about m min left" and a progress bar; the learner can't reorder or skip ahead, only go on (Next, or the exercise's own end) or leave. (RQ-421; question-pages/74, 11)
 3. **Given** a session left part-way, **When** the learner opens Home, **Then** a Resume tile is first in the grid; it opens the exercise they were on. Starting another session replaces it. (RQ-421)
 4. **Given** the last exercise done, **When** the session ends, **Then** a short summary shows (minutes, texts read, words reviewed, words that fell) and the Resume tile goes. (RQ-421, N-29)
@@ -131,8 +140,8 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 **Sessions**
 
-- **FR-903** (RQ-421; N-19, N-39, N-32, N-42): **Practise for X min** MUST offer 5, 10, 20 and 30 minutes and a typed length of 5–60, and start a session planned by grove (FR-905) for that length.
-- **FR-904** (RQ-421; N-19, N-32): A session MUST show one exercise at a time in grove's order, each in a card with its mode banner (FR-912), under "N-minute session · i of n · about m min left" and a progress bar of minutes done; the learner can only go on or leave. A session is kept for the learner on the server; while one is going, Home's first tile is **Resume**, opening the exercise they were on. Finishing shows a summary (minutes, texts, words reviewed, words that fell); starting another session replaces the one going.
+- **FR-903** (RQ-421; N-19, N-39, N-32, N-42): **Practise for X min** MUST offer 3, 5, 10, 20 and 30 minutes and a typed length of 3–60, and start a session planned by grove (FR-905) for that length.
+- **FR-904** (RQ-421; N-19, N-32): A session MUST show one exercise at a time in grove's order, each in a card with its mode banner (FR-912), under "N-minute session · i of n · about m min left" and a progress bar of minutes done; the learner can only go on or leave. A session is kept for the learner on the server, with no time limit; while one is going, Home's first tile is **Resume**, opening the exercise they were on, until the session is finished or another is started (an old plan keeps its exercises; a Review word that is no longer due is still asked). Finishing shows a summary (minutes, texts, words reviewed, words that fell); starting another session replaces the one going.
 - **FR-905** (RQ-421, RQ-422, RQ-423; N-39, N-42, N-12): grove MUST plan a session from exercises with known durations: a reading text its words ÷ 100 per minute, a listening text its words ÷ 80 per minute (time for replays), a Review item 20 s, a Master item 25 s, a marking step 30 s. The default plan for a length L: Review of the due and fading leaves first (at most 40% of L), then one Discover text that fits what is left (new or unfinished; reading or listening, whichever the learner did less of in the last 7 days), then Master items to fill; the planned minutes are within 20% of L or 2 minutes, whichever is more. An exercise is never longer than the session; with nothing to fill, the plan is shorter and says so.
 - **FR-906** (RQ-423; N-37, N-13, N-44): **By skill** MUST offer Reading, Listening, Words and phrases, and Grammar, each Short (5 min), Medium (10 min) or Long (20 min). Discover then takes, among the learner's unread texts of the skill's kind (Grammar: texts with the most pattern places; Words and phrases: the shortest text), the one with the lowest share of known words for Short, the highest for Long and the one nearest the learner's target share (G-02) for Medium. The rest of the plan leans to the skill: Listening reviews play their sentence first; Words and phrases fills with Review and Master (phrases included); Grammar reviews the learner's pattern leaves first; Reading reviews show sentences (G-04 FR-406).
 - **FR-907** (RQ-422; N-41, N-42): A session **by topic** (from Texts, FR-909) MUST take Discover from that topic's unread texts and Review and Master from leaves met in that topic's texts, planned as FR-905 for a chosen length.
@@ -162,7 +171,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 ### Measurable Outcomes
 
-- **SC-001**: On the demo account, sessions of 5, 10 and 20 minutes are planned within 20% of their length (or 2 minutes), checked by a test. (RQ-421; R-24)
+- **SC-001**: On the demo account, sessions of 3, 5, 10 and 20 minutes are planned within 20% of their length (or 2 minutes), checked by a test. (RQ-421; R-24)
 - **SC-002**: From Home, any part of grove is reached in at most two taps after the tile opens (tile, then its way in). (RQ-419)
 - **SC-003**: Every text colour in both looks meets WCAG AA against its background, checked by a test on every page. (RQ-426; R-26)
 - **SC-004**: A timed 10-minute session on a phone takes 8–12 minutes for the owner (by hand, before the deploy). (RQ-421; R-24)
@@ -170,8 +179,8 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 ## Assumptions
 
-- Durations (FR-905) are first guesses until timed (SC-004): reading 100 words a minute and listening 80 (an A2 learner reading Swedish with help, listening with replays), 20 s a Review item, 25 s a Master item, 30 s a marking step. To be confirmed in clarify.
-- The minute choices (5, 10, 20, 30, typed 5–60) and the skill forms' lengths (Short 5, Medium 10, Long 20) are defaults to confirm in clarify.
+- Durations (FR-905) are fixed first guesses, confirmed in clarify, adjusted only if the timed session (SC-004) runs over or under: reading 100 words a minute and listening 80 (an A2 learner reading Swedish with help, listening with replays), 20 s a Review item, 25 s a Master item, 30 s a marking step. Learning each learner's own times is for a later version.
+- The minute choices (3, 5, 10, 20, 30, typed 3–60) and the skill forms' lengths (Short 5, Medium 10, Long 20) were confirmed in clarify.
 - The library (shared texts, question-pages/64, 7–8) isn't built yet; FR-909 leaves room for it per topic.
 - G-04's Review and Master logic (schedules, falls) is unchanged; sessions only choose and order exercises.
 - The help bubble reuses How grove works' content; the `/how` page stays public.
