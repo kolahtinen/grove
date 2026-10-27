@@ -39,6 +39,7 @@ Each one says what it would change (spec, requirement) if confirmed. Sources are
 | PD-25 | Flaky browser tests: each test gets its own learner | Needs you |
 | PD-26 | Probe sizes: keep the defaults unless Claude or round D disagree | Provisional |
 | PD-27 | Order of work inside the new Home | Provisional |
+| PD-28 | Sessions fill their time with more texts, re-reading and listening again | Needs you |
 
 ---
 
@@ -180,6 +181,20 @@ Darkening only the failing ones would make Discover and Review almost the same b
 ### PD-27 · Order inside the new Home — *Provisional*
 
 **Decision** (within question-pages/74, 17): palette and contrast first (it touches every page and every look test), then the grid, menu and Account, then Practise for X min, then Texts with topics, then By skill, then Just one mode. Each part is regenerated and tested on its own, so whatever is left on 1 November is a whole part, not half of several. **Changes:** G-09 tasks.
+
+### PD-28 · How a session fills its minutes — *Needs you*
+
+**Found while planning G-09 (second hour):** FR-905 as written plans Review, *one* text, then Master. On the demo account (2 unread texts, 4 due words, 1 Master word) that fills only 4.3 minutes, so 10- and 20-minute sessions fail SC-001 (within 20%). Any learner early on, or one who has just done their reviews, hits the same. **Measured** with throwaway code on the demo data:
+
+| Length | FR-905 as written | With the fill rule |
+|---|---|---|
+| 3 min | 2.6 ✓ | 2.6 ✓ |
+| 5 min | 4.3 ✓ | 4.3 ✓ |
+| 10 min | 4.3 ✗ | 8.0 ✓ |
+| 20 min | 4.3 ✗ | 16.6 ✓ |
+| 30 min | 4.3 ✗ | 18.0 (short, says so) |
+
+**Recommendation:** after Master, fill with the next unread texts that fit, then **re-reading** texts already read (oldest first, no marking step), then **listening again** to texts already read; stop between 80% and 120% of the length. Re-reading easy, familiar text is what extensive-reading research recommends for fluency (PD-04's "Long" reasoning [6]). These count as Discover in the banner. *Alternatives:* a shorter session that says "only 4 minutes of practice today" (honest, but the 10-minute tile would rarely give 10 minutes); or reviewing words that aren't due yet (changes G-04's schedule, which sessions shouldn't touch). **Changes:** G-09 FR-905 (and SC-001 stays as it is).
 
 ---
 
