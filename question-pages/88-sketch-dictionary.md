@@ -22,3 +22,7 @@ Said done 2026-10-29.
 
 RQ-449 (requirements from sketches); G-09 FR-926 (the one-sided button, version B; state labels; the toast with Undo), FR-927 (Undo puts the word back, 15 s, server memory); G-04 FR-410 (Keep it or Let it fall anyway after a wrong answer), FR-411 (Pick up in both dictionaries, also a word not yet the learner's). Built 2026-10-29: regen(drill, client).
 
+## Sketch and build side by side (docs/sketching.md, 6)
+
+Screenshots: `prototypes/sketches/2026-10-29-dictionary-toggle/picked.png` (version B, made-up words) and `built.png` (the dev server's demo learner, 390 px). The rows match: word, meaning, state label, example under it, and one button at the right, filled green "↑ Pick up" or outlined "↓ Let it fall". Small differences: the page is titled "Dictionary" (sketch: "Your dictionary", with "Leaves can fall; words in your ground can be picked up" in its line); the build puts "—" between word and meaning and shows examples upright in quotes (sketch: no dash, examples in italics); the build's buttons are pills, the sketch's rounded rectangles.
+
