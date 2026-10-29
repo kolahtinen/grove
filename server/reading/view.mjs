@@ -138,7 +138,8 @@ export function buildReading(db, accountId, textId) {
     own: !!text.own,
     kind: text.kind,
     // FR-224: own texts and texts from the learner's AI are beta; the demo's prepared texts aren't.
-    beta: !!text.own || !/^DEMO-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
+    beta: !!text.own || !/^(DEMO|LIB)-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
+    grove: /^LIB-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
     knownShare: text.own ? text.known_share : null,
     targetShare: settings?.target_share ?? 95,
     copyright: text.own && text.copyright_view ? { view: text.copyright_view, note: text.copyright_note } : null,

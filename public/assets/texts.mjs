@@ -18,6 +18,13 @@ function textItem(t) {
   state.className = `text-state ${t.state}`;
   state.textContent = t.own ? `own · ${t.ready ? t.state : 'waiting for your AI'}` : `${t.kind} · ${t.state}`;
   a.append(title, state);
+  // G-09 FR-916: a text from the common library is marked "grove text" (never Beta).
+  if (t.grove) {
+    const mark = document.createElement('span');
+    mark.className = 'grove-mark';
+    mark.textContent = 'grove text';
+    a.append(mark);
+  }
   if (t.beta) {
     const badge = document.createElement('span');
     badge.className = 'beta';

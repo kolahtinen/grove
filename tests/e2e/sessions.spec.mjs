@@ -115,9 +115,12 @@ test('FR-915 FR-907 RQ-430 RQ-422: Your library lists the texts by topic, unread
   await expect(page.locator('#session-line')).toContainText('5-minute session');
 });
 
-test('FR-918 RQ-435: Add a text shows the two ways side by side, each with its explainer, each leading to its own page', async ({ page }) => {
+test('FR-918 RQ-435 RQ-439: Add a text shows the three ways side by side, each with its explainer, each leading to its own page', async ({ page }) => {
   await signIn(page);
   await page.goto('/add');
+  const library = page.locator('.add-way', { has: page.getByRole('heading', { name: 'From the common library' }) });
+  await expect(library).toContainText('level');
+  await expect(library.getByRole('link')).toHaveAttribute('href', '/library');
   const ai = page.locator('.add-way', { has: page.getByRole('heading', { name: /Texts from your AI/ }) });
   const own = page.locator('.add-way', { has: page.getByRole('heading', { name: /Your own text/ }) });
   await expect(ai).toContainText('free AI chat');

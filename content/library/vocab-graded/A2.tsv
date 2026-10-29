@@ -1,0 +1,907 @@
+# grove library vocabulary (graded), level A2. Words and levels from SweLLex (Volodina, Pilán, Llozhi, Degryse & François 2016; Språkbanken Text, https://doi.org/10.23695/6h3v-zw25), CC BY 4.0: the first CEFR level whose learner essays use the word; misspellings left out. SweLLex_v1.tsv sha256 3491b1a51c004b58b0bd6ddd72909f42ad7bcf13f400212e0584606387ae5980. Meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-graded.mjs.
+sv	pos	level	en	flags	suc
+a	noun-ett	A2	The first letter of the Swedish alphabet, called a and written in the Latin script.	long	NN_NEU
+accent	noun-en	A2	an accent, an emphasis, a stress		NN_UTR
+action	noun-en	A2	action		NN_UTR
+affär	noun-en	A2	a shop, a store		NN_UTR
+aktuell	adverb	A2	currently of interest or valid; current, topical, up-to-date, timely, etc.		JJ,AB
+al	noun-en	A2	alder		NN_UTR
+allihop	pronoun	A2	everybody, everyone, all people		PN
+alls	adverb	A2	at all		AB
+alltid	adverb	A2	always		AB
+allting	pronoun	A2	everything		PN
+alltså	adverb	A2	therefore, thus, consequently		AB
+aln	noun-en	A2	an ell, a cubit, a historic measure of length = 2 feet = 24 inches = 1/3 fathom		NN_UTR
+alzheimers	noun-en	A2		none	NN_UTR
+amerikansk	adjective	A2	American; of or pertaining to the Americas.		JJ
+andra	adjective	A2	second		JJ
+anlända	verb	A2	to arrive		VB
+antibiotikum	noun-ett	A2	an antibiotic		NN_NEU
+använda	verb	A2	to use		VB
+arabisk	adjective	A2	Arabic		JJ
+arbete	noun-ett	A2	work, job		NN_NEU
+arm	noun-en	A2	arm; the body part		NN_UTR
+arton	numeral	A2	eighteen		RG
+artonde	participle	A2	eighteenth		PC
+assyrisk	adjective	A2		none	JJ
+augusti	noun-en	A2	August		NN_UTR
+av	prep	A2	from		PP,PL,AB
+backa	noun-en	A2	to reverse, to move or drive a vehicle backwards	pos	NN_UTR,VB
+bajs	noun-ett	A2	poop, poo		NN_NEU
+bakom	prep	A2	slow		PP
+balett	noun-en	A2	ballet		NN_UTR
+basketboll	noun-en	A2	basketball		NN_UTR
+be	verb	A2	to ask for, request someone else to do something		VB
+bebis	noun-en	A2	a baby		NN_UTR
+behornad	participle	A2	horned		PC
+behöva	verb	A2	to need		VB
+berg	noun-ett	A2	a mountain		NN_NEU
+beskriva	verb	A2	to describe		VB
+best	noun-en	A2	beast		NN_UTR
+beställa	verb	A2	to order		VB
+bestämma	verb	A2	to decide		VB
+besöka	verb	A2	to visit		VB
+betala	verb	A2	to pay; to give money in exchange for goods or services		VB
+bil	noun-en	A2	a car		NN_UTR,NN
+biljett	noun-en	A2	ticket; an entitling pass		NN_UTR
+bio	noun-en	A2	cinema, movie theater, the movies		NN_UTR
+bjuda	verb	A2	to offer, to give as a gift		VB
+bland	prep	A2	among		PP
+blanda	verb	A2	to mix		VB
+block	noun-ett	A2	a block, a boulder, a cuboid		NN_NEU
+blod	noun-ett	A2	blood		NN_NEU
+blyg	adjective	A2	shy, timid		JJ
+blå	adjective	A2	blue		JJ
+blåsa	verb	A2	a bleb, a bubble	pos	VB
+blöda	verb	A2	to bleed		VB
+boende	noun-en	A2	living, resident, dwelling		NN_UTR,NN_NEU
+boj	noun-en	A2	buoy; a moored float		NN_UTR
+boll	noun-en	A2	a ball; a more or less spherical object which is not hard or unyielding		NN_UTR
+bord	noun-ett	A2	a table		NN_NEU
+bort	particle	A2	away, off		PL,AB
+borta	adverb	A2	away, gone, lost		AB,PL
+boudoir	noun-en	A2		none	NN_UTR
+boxning	noun-en	A2	boxing		NN_UTR
+brasved	noun-en	A2	firewood		NN_UTR
+bredvid	prep	A2	next to, beside		PP
+bro	noun-en	A2	a bridge		NN_UTR
+broder	noun-en	A2	a brother		NN_UTR
+bruka	verb	A2	to use to; to be in the habit of		VB
+brun	adjective	A2	brown		JJ
+bråka	verb	A2	to argue, to fight, to brawl, to make trouble		VB
+bräde	noun-ett	A2	the board of a board game		NN_NEU
+bröd	noun-ett	A2	bread		NN_NEU
+budskap	noun-ett	A2	a message		NN_NEU
+bus	noun-ett	A2	mischief, pranking		NN_NEU
+buse	noun-en	A2	someone uncivil and antisocial; a ruffian		NN_UTR
+busstation	noun-en	A2	bus station		NN_UTR
+byta	verb	A2	to switch; to exchange		VB
+byxa	noun-en	A2	pants, trousers		NN_UTR
+båda	pronoun	A2	both; either, each of two		PN
+bår	noun-en	A2	a barrow, a litter		NN_UTR
+bänk	noun-en	A2	bench, a long sofa without bolster		NN_UTR
+bära	verb	A2	to carry; to lift and transport anywhere else		VB
+bästis	noun-en	A2	bestie, best friend		NN_UTR
+börja	verb	A2	to begin; to start		VB
+cafeteria	noun-en	A2	a cafeteria	via-form	NN_UTR
+cape	noun-en	A2	cape		NN_UTR
+cell	noun-en	A2	cell; a room in a prison.		NN_UTR
+center	noun-ett	A2	a centre; a place where some function or activity occurs		NN_NEU
+central	adjective	A2	central, centralized, situated at the centre		NN_UTR,JJ
+centrum	noun-ett	A2	centre; the middle of something		NN_NEU
+chatt	noun-en	A2	chat, instant messaging		NN_UTR
+chatta	verb	A2	to chat		VB
+chaufför	noun-en	A2	a driver; a chauffeur		NN_UTR
+chef	noun-en	A2	A boss, manager; person in charge, person who directly oversees the work being done	long	NN_UTR
+chilipeppar	noun-en	A2	chili pepper		NN_UTR
+chips	noun-ett	A2	a chip, a crisp		NN_NEU
+chockterapi	noun-en	A2		none	NN_UTR
+cigg	noun-en	A2	a cigarette, a cig		NN_UTR
+cirka	adverb	A2	circa, roughly, about, approximately		AB
+cola	noun-en	A2		none	NN_UTR
+comeback	noun-en	A2	a comeback		NN_UTR
+cool	adjective	A2	cool		JJ
+couscous	noun-en	A2		none	NN_UTR
+cup	noun-en	A2	cup		NN_UTR
+cykla	verb	A2	to cycle, to ride a bike		VB
+dager	noun-en	A2	daylight		NN_UTR
+dagis	noun-ett	A2	daycare centre, kindergarten, preschool		NN_NEU
+damastduk	noun-en	A2		none	NN_UTR
+dans	noun-en	A2	dance		NN_UTR
+data	noun-en	A2	information, especially encoded information that can be processed by computers		NN_UTR,NN_NEU
+dato	noun-en	A2	only used in till dags dato		NN_UTR
+december	noun-en	A2	December		NN_UTR
+deg	noun-en	A2	dough; a thick mix of flour and water		NN_UTR
+dega	verb	A2	to loaf around, to be idle		VB
+dekoration	noun-en	A2	a decoration		NN_UTR
+demokrati	noun-en	A2	democracy; a nation which is ruled by a democratically elected government		NN_UTR
+direkt	adjective	A2	direct		JJ,AB
+disko	noun-ett	A2	a disco, a discotheque	via-form	NN_NEU
+dit	adverb	A2	to there, thither, there		AB
+djur	noun-ett	A2	animal		NN_NEU
+docka	noun-en	A2	a doll, a puppet		NN_UTR
+doktor	noun-en	A2	doctor; physician		NN_UTR
+dotera	verb	A2		none	VB
+dotter	noun-en	A2	a daughter		NN_UTR
+dra	verb	A2	to pull		VB
+driva	verb	A2	a drift	pos	VB
+drottning	noun-en	A2	a queen		NN_UTR
+dröm	noun-en	A2	a dream		NN_UTR
+drömma	verb	A2	to dream; to see imaginary events in one's mind while sleeping		VB
+dus	noun-en	A2		none	NN_UTR
+dyr	adjective	A2	expensive		JJ
+då	adverb	A2	then; at that time		AB,HA
+därefter	adverb	A2	thereafter		AB
+därför	adverb	A2	therefore		AB,HA
+däri	adverb	A2	therein		AB
+dö	verb	A2	to die		VB
+döda	verb	A2	to kill		VB
+dörr	noun-en	A2	a door		NN_UTR
+e	noun-ett	A2	The fifth letter of the Swedish alphabet, called e and written in the Latin script.	long	NN_NEU
+eftermiddag	noun-en	A2	afternoon		NN_UTR
+efternamn	noun-ett	A2	surname, family name		NN_NEU
+eftersom	subj	A2	because, since, as		SN
+eker	noun-en	A2	a spoke		NN_UTR
+engelska	noun-en	A2	English		NN_UTR
+envis	adjective	A2	stubborn, persistent		JJ
+eritreansk	adjective	A2	Eritrean		JJ
+estetisk	adjective	A2	aesthetic, esthetic		JJ
+etc	adverb	A2		none	AB
+europeisk	adjective	A2	European		JJ
+ex	noun	A2	ex; ex-partner		NN
+exakt	adjective	A2	exact		JJ
+exempel	noun-ett	A2	an example		NN_NEU
+exemplar	noun-ett	A2	a copy, a specimen		NN_NEU
+fabrik	noun-en	A2	a factory, a plant		NN_UTR
+faktisk	adjective	A2	actual, real		JJ
+falla	verb	A2	to fall		VB
+fan	interj	A2	the devil, Satan		IN
+fantastik	noun-en	A2		none	NN_UTR
+far	noun-en	A2	father		NN_UTR
+farbror	noun-en	A2	a paternal uncle		NN_UTR
+farfar	noun-en	A2	a father's father; a paternal grandfather		NN_UTR
+farlig	adjective	A2	dangerous		JJ
+faster	noun-en	A2	paternal aunt		NN_UTR
+fastighetsskötare	noun-en	A2		none	NN_UTR
+fatta	verb	A2	to grasp, take; the concrete meaning of grasp		VB
+fattig	adjective	A2	poor		AB,JJ
+fel	noun-ett	A2	wrong, incorrect, erroneous		JJ,NN_NEU
+femma	noun-en	A2	a five; the digit "5"		NN_UTR
+fender	noun-en	A2		none	NN_UTR
+fest	noun-en	A2	a party		NN_UTR
+fight	noun-en	A2	a fight		NN_UTR
+fighter	noun-en	A2	a fight	via-form	NN_UTR
+fika	verb	A2	having coffee, tea, saft, or the like, usually with cookies, pastries, or other snacks, usually with others, as a…	pos,long	NN_NEU,VB
+film	noun-en	A2	film; a thin layer		NN_UTR
+final	noun-en	A2	a finale		NN_UTR
+fisa	verb	A2	to fart		VB
+fisk	noun-en	A2	a fish		NN_UTR
+fiska	verb	A2	to fish		VB
+fixa	verb	A2	to fix, to organize, to solve		VB
+fjorton	numeral	A2	fourteen		RG
+flamingo	noun-en	A2	flamingo		NN_UTR
+flera	pronoun	A2	multiple, many, several		PN
+flicka	noun-en	A2	a girl		NN_UTR
+fluga	noun-en	A2	a fly		NN_UTR
+fly	verb	A2	to flee, to run away, to escape		VB
+flygplan	noun-ett	A2	airplane, aeroplane		NN_NEU
+flygplats	noun-en	A2	airport		NN_UTR
+flytta	verb	A2	to move; to relocate something		VB
+folk	noun-ett	A2	people		NN_NEU
+fort	adverb	A2	quickly/quick, fast		AB
+fortfarande	adverb	A2	continuing, continuous, ongoing		AB
+fortsätta	verb	A2	to continue, to proceed		VB
+fot	noun-en	A2	a foot		NN_UTR
+fram	adverb	A2	forth, forward, out		AB,PL
+framför	prep	A2	in front of		PP
+framsteg	noun-ett	A2	progress, improvement		NN_NEU
+framtid	noun-en	A2	future		NN_UTR
+fred	noun-en	A2	peace		NN_UTR
+fredag	noun-en	A2	Friday		NN_UTR
+frisk	adjective	A2	healthy; not sick		JJ
+fritid	noun-en	A2	free time		NN_UTR
+from	adjective	A2	religious in a quiet and serious way, pious		JJ
+frukt	noun-en	A2	fruit		NN_UTR
+frånta	verb	A2	to deprive, to take something away from someone		VB
+frö	noun-ett	A2	a seed		NN_NEU
+fuktning	noun-en	A2	moistening		NN_UTR
+ful	adjective	A2	ugly		JJ
+full	adjective	A2	full		JJ
+fysik	noun-en	A2	physics		NN_UTR
+fåra	noun-en	A2	a furrow		NN_UTR,PC
+färg	noun-en	A2	colour; the spectral composition of visible light		NN_UTR
+färja	noun-en	A2	a ferry		NN_UTR
+föda	verb	A2	food; sustenance	pos	VB
+födelse	noun-en	A2	birth		NN_UTR
+födelsedag	noun-en	A2	a birthday		NN_UTR
+följa	verb	A2	to follow; to go after		VB
+fönster	noun-ett	A2	a window		NN_NEU
+föra	verb	A2	to move something or someone; to bring, to take		VB
+förbi	prep	A2	past, over		PP
+författare	noun-en	A2	an author, a writer		NN_UTR
+förlora	verb	A2	to lose		VB
+förlåta	verb	A2	to forgive		VB
+förmiddag	noun-en	A2	forenoon		NN_UTR
+förr	adverb	A2	before; in the past		AB
+förra	adjective	A2	former, last, previous		JJ
+försent	adverb	A2	too late		AB
+försiktig	adjective	A2	careful, cautious, gentle, prudent, etc.		JJ
+först	adverb	A2	first, firstly; having no predecessor		AB
+förstagången	numeral	A2		none	RO
+förstås	adverb	A2	of course, naturally		AB
+förstöra	verb	A2	to break, to demolish; to make something cease working		VB
+försök	noun-ett	A2	attempt, try, go		NN_NEU
+försöka	verb	A2	to attempt, to try		VB
+förta	verb	A2	to take away from		VB
+förälder	noun-en	A2	a parent		NN_UTR
+gam	noun-en	A2	a vulture or condor; scavenging birds living in Africa, Europe, Asia and America		NN_UTR
+gambisk	adjective	A2		none	JJ
+game	noun-ett	A2	game		NN_NEU
+gammal	adjective	A2	old		JJ
+ganska	adverb	A2	pretty, quite, rather		AB
+gata	noun-en	A2	a street		NN_UTR
+gen	noun-en	A2	gain; short, direct		NN_UTR
+generation	noun-en	A2	a generation		NN_UTR
+generös	adjective	A2	generous		JJ
+genom	prep	A2	through		PP
+gips	noun-ett	A2	gypsum		NN_NEU
+gissa	verb	A2	to guess		VB
+glad	adjective	A2	happy, glad		JJ
+glas	noun-ett	A2	glass		NN_NEU
+glädje	noun-en	A2	joy, happiness		NN_UTR
+glömma	verb	A2	to forget		VB
+god	adjective	A2	good, morally commendable		JJ
+godis	noun-ett	A2	candy, sweets		NN_NEU,NN_UTR
+golv	noun-ett	A2	a floor		NN_NEU
+gradera	participle	A2	to grade, to rank		PC
+grattis	interj	A2	congratulations; congrats		IN
+grav	noun-en	A2	a grave		NN_UTR,AB
+gravid	adjective	A2	pregnant		JJ
+groda	noun-en	A2	a frog		NN_UTR
+grupp	noun-en	A2	group		NN_UTR
+grus	noun-ett	A2	gravel		NN_NEU
+gruva	noun-en	A2	mine		NN_UTR
+gråta	verb	A2	to cry, to weep		VB
+grön	adjective	A2	green		JJ
+grönsak	noun-en	A2	a vegetable		NN_UTR
+gröt	noun-en	A2	porridge		NN_UTR
+gymnasist	noun-en	A2	A gymnasiast; student at a gymnasium		NN_UTR
+gymnasium	noun-ett	A2	gymnasium; upper secondary school: either theoretical or vocational, most commonly three years long	long	NN_NEU
+gång	noun-en	A2	walking		NN_UTR
+gåva	noun-en	A2	gift		NN_UTR
+gälla	verb	A2	to be valid; to be correct or proper, to apply		VB
+gärna	adverb	A2	gladly, happily, with keenness, willingly/readily		AB
+gäst	noun-en	A2	a guest		NN_UTR
+haattgörax	IE	A2		none	IE
+hacka	verb	A2	a pick, pickaxe; a tool used to hack	pos	VB
+hall	noun-en	A2	a small room just inside the front door of a residential building, where shoes and outerwear are put on or taken off…	long	NN_UTR
+hamn	noun-en	A2	a port		NN_UTR
+hamna	verb	A2	to land, to end up, to be placed		VB
+handla	verb	A2	to shop, buy		VB
+hands	noun-en	A2	a hand	via-form	NN_UTR
+hangar	noun-en	A2	hangar, a garage-like building for aircraft.		NN_UTR
+hanne	noun-en	A2	a male		NN_UTR
+has	noun-en	A2	hindleg, back leg of an animal		NN_UTR
+hata	verb	A2	to hate		VB
+hav	noun-ett	A2	sea, ocean		NN_NEU
+hed	noun-en	A2	A moor; an extensive waste land.		NN_UTR
+hednatid	noun-en	A2		none	NN_UTR
+hej	interj	A2	hi, hello		IN
+hejdå	interj	A2	bye, goodbye	via-form	IN
+hel	adjective	A2	whole		JJ
+helg	noun-en	A2	holiday		NN_UTR
+helighet	noun-en	A2	holiness		NN_UTR
+hemsk	adjective	A2	ghastly, frightful, horrifying, evil, dark, terrible		JJ
+hetär	noun-en	A2	hetaera		NN_UTR
+himmel	noun-en	A2	sky		NN_UTR
+hindi	noun-ett	A2		none	NN_NEU
+hinna	verb	A2	to have time, to have the time, to make it		VB
+historia	noun-en	A2	history		NN_UTR
+hjälp	noun-en	A2	help		NN_UTR
+hjälpe	verb	A2	to help; give aid or assistance to	via-form	VB
+hjälpsam	adjective	A2	helpful		JJ
+hjärta	noun-ett	A2	heart		NN_NEU
+hobby	noun-en	A2	hobby		NN_UTR
+honorar	noun-ett	A2		none	NN_NEU
+hoppa	verb	A2	to jump		VB
+hora	noun-en	A2	a whore		NN_UTR
+hos	prep	A2	at someone's place or building, usually their home or workplace. Same as Icelandic hjá.	long	PP
+hund	noun-en	A2	a dog, a hound		NN_UTR
+hungra	verb	A2	to hunger		VB
+huvud	noun-ett	A2	head		NN_NEU
+huvudperson	noun-en	A2	a main character		NN_UTR
+huvudstad	noun-en	A2	capital city		NN_UTR
+hy	noun-en	A2	skin, complexion		NN_UTR
+håll	noun-ett	A2	a direction		NN_NEU
+hålla	verb	A2	to hold		VB
+hållplats	noun-en	A2	a stop, a station		NN_UTR
+hår	noun-ett	A2	hair		NN_NEU
+hård	adjective	A2	hard; inflexible; rigid; unbending		JJ
+hälla	verb	A2	to pour		VB
+hälsa	verb	A2	health	pos	NN_UTR,VB
+hänga	verb	A2	to hang		VB
+här	adverb	A2	here; at this time or at this place		AB
+hö	noun-ett	A2	hay		NN_NEU
+höger	noun-en	A2	right		JJ,NN_UTR
+höra	verb	A2	to hear		VB
+höstsol	noun-en	A2	fall sun, sunshine typical of autumn		NN_UTR
+ibland	adverb	A2	sometimes		AB
+ide	noun-ett	A2	a den for hibernation		NN_NEU
+ifrån	prep	A2	from		PP
+igen	adverb	A2	again		AB,PL
+illa	adverb	A2	badly		AB
+ingång	noun-en	A2	entrance, way in		NN_UTR
+inne	adverb	A2	inside, indoors		AB,PL
+innebära	verb	A2	to imply, to mean		VB
+intresse	noun-ett	A2	interest		NN_NEU
+intressera	verb	A2	to interest		VB
+invånare	noun-en	A2	an inhabitant		NN_UTR
+istället	adverb	A2	instead		AB
+italiensk	adjective	A2	Italian		JJ
+jacka	noun-en	A2	a jacket, a doublet, a jerkin		NN_UTR
+jade	noun-en	A2		none	NN_UTR
+jeans	noun-en	A2	jeans		NN_UTR
+jet	noun-en	A2		none	NN_UTR
+jo	interj	A2	yes; used as a disagreement to a negative statement or a negatively phrased question	long	IN
+jobb	noun-ett	A2	job; a task		NN_NEU
+jobbig	adjective	A2	onerous, arduous, difficult, tiring, requiring or using a lot of energy or strength	long	JJ
+jordbruk	noun-ett	A2	agriculture; the art or science of cultivating the ground		NN_NEU
+juice	noun-en	A2	juice		NN_UTR
+jul	noun-en	A2	Christmas, Yule		NN_UTR
+julgran	noun-en	A2	a Christmas tree		NN_UTR
+juli	noun-en	A2	July		NN_UTR
+jullov	noun-ett	A2	winter break		NN_NEU
+juni	noun-en	A2	June		NN_UTR
+jättebra	adjective	A2	very good, fantastic, excellent		JJ,AB
+jätteglad	adjective	A2	very happy		JJ
+jätteledsen	adjective	A2		none	JJ
+jättemycket	adverb	A2		none	AB
+jätterolig	adjective	A2		none	JJ
+jättesnygg	adjective	A2		none	JJ
+jättestor	adjective	A2	huge, gigantic		JJ
+kaffemoster	noun-en	A2		none	NN_UTR
+kal	adjective	A2	lacking its natural covering; bare, without hair or vegetation or leaves or the like	long	JJ
+kall	adjective	A2	cold; having a low temperature.		JJ
+kalla	verb	A2	to call, denote, refer to; to give as a name		VB
+kam	noun-en	A2	a comb for grooming hair		NN_UTR
+kamma	verb	A2	to comb		VB
+kanna	noun-en	A2	a vessel with a handle and spout; a jug, a pot		NN_UTR
+kanske	adverb	A2	maybe, perhaps, possibly		AB
+karaktär	noun-en	A2	a character		NN_UTR
+kart	noun-en	A2	an unripe fruit or berry		NN_UTR
+kategorisk	adjective	A2	categorical		JJ
+keps	noun-en	A2	a cap with a bill or peak		NN_UTR
+kika	verb	A2	to look		VB
+killa	verb	A2	to itch; to cause a desire to scratch		VB
+kille	noun-en	A2	a boy		NN_UTR
+kinesisk	adjective	A2	Chinese		JJ
+klipp	noun-ett	A2	a cut with scissors, shears, or the like		NN_NEU
+klä	verb	A2	to clothe, to dress, to wear		VB
+kläder	noun-en	A2	clothes, garments, items of clothing		NN_UTR
+knacka	verb	A2	to knock; to rap one's knuckles against something, e.g. against a door		VB
+kniv	noun-en	A2	a knife		NN_UTR
+knä	noun-ett	A2	a knee		NN_NEU
+kolla	verb	A2	to look, to watch		VB
+kompa	verb	A2	to accompany, to comp		VB
+kondition	noun-en	A2	ability to run long distances or perform other cardio; endurance, aerobic fitness	long	NN_UTR
+konsert	noun-en	A2	a concert		NN_UTR
+korda	noun-en	A2		none	NN_UTR
+kort	adverb	A2	short		AB,JJ
+kortbyxa	noun-en	A2	short pants, short trousers	via-form	NN_UTR
+kortdistans	noun-en	A2	sprint		NN_UTR
+krama	verb	A2	to hug		VB
+krig	noun-ett	A2	war		NN_NEU
+kropp	noun-en	A2	a body		NN_UTR
+krossa	verb	A2	to crush; to press or bruise between two hard bodies until the point of breaking		VB
+kräva	verb	A2	crop, craw	pos	VB
+kul	adjective	A2	fun		JJ
+kulhål	noun-ett	A2	bullet hole		NN_NEU
+kulle	noun-en	A2	a hill		NN_UTR
+kult	noun-en	A2	cult		NN_UTR
+kultur	noun-en	A2	culture		NN_UTR
+kung	noun-en	A2	a king		NN_UTR
+kupp	noun-en	A2	a coup, a revolt		NN_UTR
+kurdisk	adjective	A2	Kurdish		JJ
+kusin	noun-en	A2	a cousin		NN_UTR
+kvart	noun-en	A2	a quarter		NN_UTR
+kvinna	noun-en	A2	a woman		NN_UTR
+kväll	noun-en	A2	evening		NN_UTR
+kyrka	noun-en	A2	a church		NN_UTR
+källa	noun-en	A2	a source		NN_UTR
+kämpa	verb	A2	to fight		VB
+känslig	adjective	A2	sensitive		JJ
+kär	adjective	A2	[with i] in love, enamored		JJ
+kö	noun-en	A2	a queue		NN_UTR
+köpa	verb	A2	to buy, to purchase		VB
+körkort	noun-ett	A2	a driver's license		NN_NEU
+lampa	noun-en	A2	lamp		NN_UTR
+landa	participle	A2	to land		PC
+langa	verb	A2	to toss, to sling		VB
+larm	noun-ett	A2	alarm; a warning sound		NN_NEU
+lastrum	noun-ett	A2	cargo space		NN_NEU
+lat	adjective	A2	lazy		JJ
+lax	noun-en	A2	salmon		NN_UTR
+le	verb	A2	to smile		VB
+leasa	verb	A2		none	VB
+ledig	adjective	A2	free, available, not occupied		JJ
+ledsen	adjective	A2	sad		JJ
+leka	verb	A2	to play		VB
+lettisk	adjective	A2	Latvian		JJ
+leva	verb	A2	to live, to be alive		VB,NN_UTR
+leve	noun-ett	A2	a cheer		NN_NEU
+likna	verb	A2	to resemble, to be similar to		VB
+lila	adjective	A2	purple, violet		JJ
+liv	noun-ett	A2	life		NN_NEU
+ljuga	verb	A2	to lie, to tell an untruth		VB
+ljus	adjective	A2	light, bright		NN_NEU,JJ
+ljusstake	noun-en	A2	a holder for one or more candles; a candlestick, a candelabrum		NN_UTR
+lotto	noun-ett	A2		none	NN_NEU
+lov	noun-ett	A2	permission		NN_NEU
+lugn	adjective	A2	calm, tranquil		JJ,NN_NEU
+lukta	verb	A2	to smell; to use one’s nose		VB
+lust	noun-en	A2	desire to do something		NN_UTR
+lyckad	adjective	A2	successful		JJ
+lycklig	adjective	A2	happy, joyous, enjoying peace, comfort, etc.; contented		JJ
+låna	verb	A2	to loan, to borrow		VB
+lång	adjective	A2	long		JJ
+lår	noun-ett	A2	a thigh		NN_NEU
+låsa	verb	A2	to lock		VB
+läge	noun-ett	A2	a position; a location, a site		NN_NEU
+lägenhet	noun-en	A2	apartment, flat		NN_UTR
+läger	noun-ett	A2	a camp		NN_NEU
+läka	verb	A2	to heal; to become better		VB
+lämna	verb	A2	to leave; to not take away with oneself but leave as available for others; to deposit	long	VB
+längd	noun-en	A2	length		NN_UTR
+längta	verb	A2	long	pos	VB
+länk	noun-en	A2	a link		NN_UTR
+läppstift	noun-ett	A2	lipstick		NN_NEU
+lära	verb	A2	teachings	pos	VB
+lärd	adjective	A2	learned, scholarly, educated		JJ
+läsare	noun-en	A2	a reader		NN_UTR
+lätt	adjective	A2	light; of low weight		JJ
+läxa	noun-en	A2	homework		NN_UTR
+lön	noun-en	A2	reward, something given to someone for a deed or achievement		NN_UTR
+löpa	verb	A2	to run along, stretch		VB
+mage	noun-en	A2	stomach		NN_UTR
+magisk	adjective	A2	magic, magical		JJ
+make	noun-en	A2	a spouse, a husband, a married man		NN_UTR
+mandolin	noun-en	A2		none	NN_UTR
+maniker	noun-en	A2		none	NN_UTR
+mardröm	noun-en	A2	a nightmare		NN_UTR
+mask	noun-en	A2	a worm		NN_UTR
+match	noun-en	A2	match		NN_UTR
+matematisk	adjective	A2	mathematical; having to do with mathematics		JJ
+matsal	noun-en	A2	a dining room		NN_UTR
+matta	noun-en	A2	a carpet, rug		NN_UTR
+mc	noun-en	A2	motorcycle; abbreviation of motorcykel		NN_UTR
+medan	subj	A2	while; during the same time that		SN
+meddelande	noun-ett	A2	a message		NN_NEU
+medel	noun-ett	A2	a means		NN_NEU
+medellängd	noun-en	A2		none	NN_UTR
+medicin	noun-en	A2	medicine		NN_UTR
+mellan	prep	A2	between		PP
+mena	verb	A2	to mean; to convey, or to want to convey		VB
+mening	noun-en	A2	a purpose, a point		NN_UTR
+mer	adverb	A2	much, a lot	via-form	AB
+middag	noun-en	A2	midday, noon		NN_UTR
+mil	noun-en	A2	A Scandinavian mile.		NN_UTR
+mild	adjective	A2	mild		JJ
+milj	noun	A2		none	NN
+miljö	noun-en	A2	environment		NN_UTR
+min	noun	A2	min; minute		NN,NN_UTR
+minne	noun-ett	A2	memory; component used in computers etc. store information		NN_NEU
+miocen	noun-ett	A2		none	NN_NEU
+missa	verb	A2	to miss; to fail to hit		VB
+mista	verb	A2	to lose		VB
+mitt	adverb	A2	in the middle, right		NN_UTR,AB
+mm	adverb	A2		none	NN,AB
+mobil	adjective	A2	mobile; capable of being moved		JJ,NN_UTR
+mod	noun-ett	A2	courage		NN_NEU
+modell	noun-en	A2	a model, a miniature, a simplified or smaller depiction		NN_UTR
+modersmål	noun-ett	A2	mother tongue, first language, native language		NN_NEU
+modig	adjective	A2	brave, courageous		JJ
+mogen	adjective	A2	mature		JJ
+monarki	noun-en	A2	a monarchy		NN_UTR
+mor	noun-en	A2	mother		NN_UTR
+morfar	noun-en	A2	a mother's father; a maternal grandfather		NN_UTR
+morgon	noun-en	A2	morning		NN_UTR
+mormor	noun-en	A2	a maternal grandmother		NN_UTR
+morot	noun-en	A2	carrot		NN_UTR
+mot	prep	A2	A point where two or more objects meet.		PP
+mumie	noun-en	A2	a mummy		NN_UTR
+muslim	noun-en	A2	a Muslim		NN_UTR
+mustig	adjective	A2	richly savory		JJ
+må	verb	A2	may	pos	VB
+mål	noun-ett	A2	language; dialect		NN_NEU
+måla	verb	A2	to paint		VB
+måne	noun-en	A2	a moon		NN_UTR
+mås	noun-en	A2	a seagull, a gull, especially a common gull, Larus canus		NN_UTR
+människa	noun-en	A2	a human, a human being		NN_UTR
+människosyn	noun-en	A2	a view of people; an attitude towards people; a set of general ideas and beliefs about humans; a worldview as it…	long	NN_UTR
+människovän	noun-en	A2	a humanitarian		NN_UTR
+märka	verb	A2	to notice		VB
+märke	noun-ett	A2	a mark		NN_NEU
+mörk	adjective	A2	dark		JJ
+nagel	noun-en	A2	a nail		NN_UTR
+nation	noun-en	A2	nation, country, state		NN_UTR
+natta	verb	A2	to put to bed		VB
+natur	noun-en	A2	nature		NN_UTR
+nej	interj	A2	no; a negative answer		IN
+nepalesisk	adjective	A2	Nepalese, Nepali; of or pertaining to Nepal.		JJ
+nervös	adjective	A2	nervous		JJ
+netto	noun-ett	A2		none	NN_NEU
+ni	pronoun	A2	you		PN
+nordöstra	adjective	A2	northeastern; synonym to nordöstlig/nordostlig, this form is used in definite form and in proper nouns	long	JJ
+normal	adjective	A2	normal		JJ
+norra	adjective	A2	northern; synonym to nordlig, this form is used in definite form and in proper nouns	long	JJ
+november	noun-en	A2	November		NN_UTR
+nummer	noun-ett	A2	a number		NN_NEU
+ny	adjective	A2	new		JJ
+nyck	noun-en	A2	fancy, whim		NN_UTR
+nyckel	noun-en	A2	a key		NN_UTR
+nys	noun-ett	A2	nonsense		NN_NEU
+någon	det	A2	any		DT,PN
+någonting	pronoun	A2	something, anything		PN
+nära	adverb	A2	near, close		AB,JJ
+näsa	noun-en	A2	nose of a human or other primate		NN_UTR
+nästan	adverb	A2	almost		AB
+nät	noun-ett	A2	net; a mesh of string, cord, or rope.		NN_NEU
+nätt	adverb	A2	small and pretty, dainty		AB
+o	conj	A2	The fifteenth letter of the Swedish alphabet, called o and written in the Latin script.	long	KN,IN,NN_NEU
+ock	adverb	A2	too, also, as well as		AB
+odla	verb	A2	to grow, to cultivate, to plant		VB
+odling	noun-en	A2	cultivation, growing		NN_UTR
+ofta	adverb	A2	often		AB
+ogift	adjective	A2	unmarried		JJ
+ojämn	adjective	A2	uneven		JJ
+okej	interj	A2	okay, all right		IN,JJ
+olle	noun-en	A2	a diminutive of the male given names Olof and Olov		NN_UTR
+ond	adjective	A2	evil, wicked		JJ
+onsdag	noun-en	A2	Wednesday		NN_UTR
+ont	noun-ett	A2	pain		NN_NEU
+orange	adjective	A2	orange		JJ
+ord	noun-ett	A2	a word		NN_NEU
+order	noun-en	A2	an order		NN_UTR
+oro	noun-en	A2	unrest		NN_UTR
+orolig	adjective	A2	anxious, worried		JJ,AB
+ost	noun-en	A2	cheese		NN_UTR
+osv	adverb	A2		none	AB
+packa	verb	A2	a bag; an unpleasant older woman	pos	VB
+par	noun-ett	A2	a pair, a couple		NN_NEU
+para	verb	A2	to pair, match into pairs		VB
+park	noun-en	A2	a park		NN_UTR
+passa	verb	A2	fit, suit; be suitable	pos	VB
+peng	noun-en	A2	a coin		NN_UTR
+personal	noun-en	A2	staff		NN_UTR
+personlig	adjective	A2	personal		JJ
+personlighet	noun-en	A2	personality		NN_UTR
+picknick	noun-en	A2	a picnic		NN_UTR
+piga	noun-en	A2	a maid, a female servant; female employee on a farm, as in a milkmaid.		NN_UTR
+pigg	adjective	A2	alert, fresh		JJ
+pingis	noun-en	A2	table tennis, ping-pong		NN_UTR
+pistong	noun-en	A2	a piston		NN_UTR
+pizza	noun-en	A2	pizza		NN_UTR
+pizzeria	noun-en	A2	a pizzeria		NN_UTR
+placera	verb	A2	to place		VB
+plan	noun-en	A2	plane		NN_UTR,NN_NEU
+planera	verb	A2	to plan		VB
+plats	noun-en	A2	place; any geographical position a little larger than just a point, such as a village, city or just a "nowhere"	long	NN_UTR
+poet	noun-en	A2	a poet		NN_UTR
+pojke	noun-en	A2	a boy		NN_UTR
+politik	noun-en	A2	politics		NN_UTR
+pop	noun-en	A2	pop		NN_UTR
+positiv	adjective	A2	positive		JJ
+potatis	noun-en	A2	a potato		NN_UTR
+poäng	noun-en	A2	a point, a score		NN_UTR
+praktik	noun-en	A2	practice, actual operation		NN_UTR
+pratsam	adjective	A2	talkative		JJ
+present	noun-en	A2	gift, present		NN_UTR
+prinsessa	noun-en	A2	a princess		NN_UTR
+problem	noun-ett	A2	a problem, an issue		NN_NEU
+program	noun-ett	A2	a program		NN_NEU
+prutta	verb	A2	to fart		VB
+pung	noun-en	A2	a pouch, a purse		NN_UTR
+pussa	verb	A2	to kiss, to peck		VB
+radio	noun-en	A2	radio		NN_UTR
+ram	noun-en	A2	frame		NN_UTR
+rama	verb	A2	to frame		VB
+ramla	verb	A2	to fall		VB
+rangera	participle	A2		none	PC
+redo	adjective	A2	ready; prepared to face whatever is coming one's way		JJ
+regn	noun-ett	A2	rain		NN_NEU
+regna	verb	A2	to rain		VB
+rektor	noun-en	A2	headmaster or headmistress; headteacher		NN_UTR
+respekt	noun-en	A2	respect		NN_UTR
+respektera	verb	A2	to respect		VB
+respektfull	adjective	A2	respectful		JJ
+restaurang	noun-en	A2	a restaurant		NN_UTR
+restera	verb	A2	to remain		VB
+rida	verb	A2	to ride		VB
+rik	adjective	A2	rich, wealthy		JJ
+ring	noun-en	A2	ring; a circular piece of material		NN_UTR
+rinna	verb	A2	to run, to flow		VB
+rita	verb	A2	a female given name	pos	VB
+ritning	noun-en	A2	drawing		NN_UTR
+ro	verb	A2	to row; to transport oneself in a small boat, with help of oars		VB,NN_UTR
+roman	noun-en	A2	A novel		NN_UTR
+runt	particle	A2	around; aimlessly		PL,PP
+rysk	adjective	A2	Russian; of or pertaining to Russia or the Russian language		JJ
+rädd	adjective	A2	afraid, scared		JJ
+rätt	noun-en	A2	right, correct		JJ,NN_UTR,PL,AB
+rättvis	adjective	A2	just, fair		JJ
+röd	adjective	A2	red		JJ
+röka	verb	A2	to smoke		VB
+saga	noun-en	A2	a fairy tale		NN_UTR
+sak	noun-en	A2	a thing		NN_UTR
+sallad	noun-en	A2	salad		NN_UTR
+salong	noun-en	A2	a salon		NN_UTR
+saloon	noun-en	A2	a saloon		NN_UTR
+samhälle	noun-ett	A2	a society; a long-standing group of people sharing cultural aspects		NN_NEU
+samman	particle	A2	together		AB,PL
+sats	noun-en	A2	theorem, proposition		NN_UTR
+sedesam	adjective	A2	modest, demure, decent		JJ
+seger	noun-en	A2	victory		NN_UTR
+serie	noun-en	A2	a sequence of things or events.		NN_UTR
+sexton	numeral	A2	sixteen		RG
+shoppa	verb	A2		none	VB
+sida	noun-en	A2	side; a bounding straight edge or surface		NN_UTR
+simhall	noun-en	A2	swimming pool		NN_UTR
+sina	verb	A2	to dry up; to cease containing any water		VB
+sist	adverb	A2	last		AB
+sista	adjective	A2	last		JJ
+sjal	noun-en	A2	a shawl		NN_UTR
+sjuk	adjective	A2	sick, ill		JJ
+sjuksköterska	noun-en	A2	a nurse		NN_UTR
+sjunga	verb	A2	to sing		VB
+sjutton	numeral	A2	seventeen		RG
+själv	adjective	A2	oneself, myself, yourself, himself, herself, itself		JJ
+själva	det	A2	itself, herself, himself		DT
+sjö	noun-en	A2	a lake		NN_UTR
+skapa	verb	A2	to create; to make, to manufacture; to put into existence, chiefly by a creative act	long	VB
+skatta	verb	A2	to make an estimate based on present statistics concerning something		VB
+ske	verb	A2	to happen; in particular what happens during some extended period of time		VB
+skede	noun-ett	A2	a stage, a phase		NN_NEU
+skicka	verb	A2	send	pos	VB
+skild	adjective	A2	to separate; to cause to be separate	via-form	JJ
+skilja	verb	A2	to separate; to cause to be separate		VB
+skina	verb	A2	to shine		VB
+skinka	noun-en	A2	ham		NN_UTR
+skjutsa	verb	A2	to give a ride to, to drive		VB
+sko	noun-en	A2	a shoe		NN_UTR
+skog	noun-en	A2	forest, wood		NN_UTR
+skoja	verb	A2	to travel around in freedom without a plan or profession, to run around in a playful manner, to fool around	long	VB
+skrika	verb	A2	to scream, to yell, to shout		VB
+skurk	noun-en	A2	a crook		NN_UTR
+skydda	verb	A2	protect	pos	VB
+skära	verb	A2	to cut; to perform an incision		VB
+skör	adjective	A2	brittle, fragile		JJ
+slalom	noun-en	A2	slalom		NN_UTR
+slarvig	adjective	A2	sloppy, careless		JJ
+slut	noun-ett	A2	over, finished; which has come to an end		NN_NEU,JJ
+slå	verb	A2	to hit, punch or beat; to give a blow.		VB
+släkting	noun-en	A2	a relative		NN_UTR
+smal	adjective	A2	not wide, narrow		JJ
+sminka	verb	A2	to put on makeup		VB
+sms	noun-ett	A2	text message, an SMS message		NN_NEU,NN_UTR
+smutsig	adjective	A2	dirty		JJ
+smycke	noun-ett	A2	a piece of jewelry		NN_NEU
+snacka	verb	A2	to talk		VB
+snar	adjective	A2	near-term, immediate, ready		JJ
+snowboard	noun-en	A2	a snowboard		NN_UTR
+snygg	adjective	A2	good-looking; handsome		JJ
+snål	adjective	A2	unwilling to spend or give money; cheap, stingy		JJ
+snäll	adjective	A2	kind, nice		JJ
+snö	noun-en	A2	snow; frozen, crystalline water falling as precipitation		NN_UTR
+snöa	verb	A2	to snow; said about weather when snow is falling		VB
+so	noun-en	A2	sow		NN_UTR
+social	adjective	A2	social, pertaining to living conditions and society		JJ
+socken	noun-en	A2	a parish, a municipality; the geographic area of a state church parish, an administrative unit before the Swedish…	long	NN_UTR
+sol	noun-en	A2	sun		NN_UTR
+son	noun-en	A2	a son		NN_UTR
+sorg	noun-en	A2	sorrow, sadness		NN_UTR
+sovrum	noun-ett	A2	bedroom		NN_NEU
+spansk	adjective	A2	Spanish; of or pertaining to Spain or the Spanish language		JJ
+spara	verb	A2	to save, to store for future use		VB
+speciell	adjective	A2	special		JJ
+spel	noun-ett	A2	a play, a game; a person's or animal's happy, joyous movement or entertainment; activity for amusement only; a pursuit…	long	NN_NEU
+spelare	noun-en	A2	a player		NN_UTR
+sport	noun-en	A2	sports		NN_UTR
+spreta	verb	A2	to spread out and apart stiffly, to sprawl, to splay		VB
+spridning	noun-en	A2	spread, distribution		NN_UTR
+språk	noun-ett	A2	language		NN_NEU
+spår	noun-ett	A2	a trail or trace; a mark left by something that has passed along or happened, also figuratively	long	NN_NEU
+spännande	adjective	A2	exciting		JJ
+spöke	noun-ett	A2	a ghost		NN_NEU
+stad	noun-en	A2	a city, a town		NN_UTR
+stark	adjective	A2	strong		AB,JJ
+starta	verb	A2	to begin, to start; to get something going; as in, to start an engine, to start a trip, to start a race; to start a…	long	VB
+staty	noun-en	A2	a statue		NN_UTR
+sten	noun-en	A2	a stone; a rock		NN_UTR
+stiga	verb	A2	to step; to move the foot in walking		VB
+stilig	adjective	A2	handsome, elegant, stylish		JJ
+stjäla	verb	A2	to steal		VB
+stop	noun-ett	A2	a beer mug, a stein, a tankard, especially of metal		NN_NEU
+strejka	verb	A2	to go or be on strike, to strike		VB
+stressad	adjective	A2	to hurry under heavy stress; to move quickly or do things quickly because of being pressured to do so	via-form,long	JJ,AB
+studerande	noun-en	A2	a student c		NN_UTR
+studie	noun-en	A2	A study, an investigation, a report.		NN_UTR
+studiebesök	noun-ett	A2	a visit to someplace to study aspects of it, a field trip		NN_NEU
+studio	noun-en	A2	studio		NN_UTR
+styvmamma	noun-en	A2	synonym of styvmor		NN_UTR
+städ	noun-ett	A2	an anvil		NN_NEU
+städa	verb	A2	to clean, to tidy		VB
+städdag	noun-en	A2		none	NN_UTR
+ställa	verb	A2	to place upright somewhere, to place in a standing position		VB
+stämma	verb	A2	a voice	pos	VB
+stänga	verb	A2	to close, to shut		VB
+stöd	noun-ett	A2	support		NN_NEU
+stödja	verb	A2	to support		VB
+suga	verb	A2	carpet bugle, plants in the genus Ajuga	pos	VB
+sur	adjective	A2	sour		JJ
+svar	noun-ett	A2	answer, response, reply		NN_NEU
+svart	adjective	A2	black		AB,JJ
+svåger	noun-en	A2	a brother-in-law; a brother of someone's spouse		NN_UTR
+svält	noun-en	A2	starvation; conditions of severe suffering due to malnutrition		NN_UTR
+svära	verb	A2	to swear, to curse; to use offensive language		VB
+synas	verb	A2	to be visible		VB
+syra	noun-en	A2	acid		NN_UTR
+system	noun-ett	A2	a system, a way or method of organizing items and knowledge		NN_NEU
+så	conj	A2	so, like that, in such a way		KN,IN,AB
+sång	noun-en	A2	singing, song		NN_UTR
+sås	noun-en	A2	sauce		NN_UTR
+säker	adjective	A2	safe		JJ
+sälja	verb	A2	to sell		VB
+sällan	adverb	A2	seldom, rarely		AB
+sätt	noun-ett	A2	a manner		NN_NEU
+sätta	verb	A2	to sit; to move oneself into a sitting position		VB
+söder	noun-en	A2	south of		NN_UTR
+sönder	particle	A2	broken, out of order		PL
+söt	adjective	A2	sweet		JJ
+söva	verb	A2	send to sleep, cause someone to fall asleep	pos	VB
+t	noun-ett	A2	The twentieth letter of the Swedish alphabet, written in the Latin script.		NN_NEU
+t-shirt	noun-en	A2	a T-shirt		NN_UTR
+tablett	noun-en	A2	a tablet or pill		NN_UTR
+tack	interj	A2	thanks, thank you		IN,NN_NEU
+tag	noun-ett	A2	a grip, a hold		NN_NEU
+tajt	adjective	A2	tight		JJ
+tal	noun-ett	A2	number		NN_NEU
+tank	noun-en	A2	tank		NN_UTR
+tanka	verb	A2	thought	pos	VB
+tanke	noun-en	A2	a thought		NN_UTR
+tanker	noun-en	A2	tanker		NN_UTR
+tavla	noun-en	A2	a framed picture		NN_UTR
+text	noun-en	A2	text		NN_UTR
+thaiboxning	noun-en	A2	Thai boxing		NN_UTR
+thailändsk	adjective	A2	Thai		JJ
+tia	noun-en	A2	a number 10		NN_UTR
+tid	noun-en	A2	time		NN_UTR
+tidig	adjective	A2	early		JJ
+tidning	noun-en	A2	a newspaper		NN_UTR
+tiga	verb	A2	to refrain from saying anything, to keep silent, to stay silent		VB
+tillhöra	verb	A2	to belong to		VB
+tillsamman	adverb	A2		none	AB
+tillsammans	adverb	A2	together		AB,PL
+timma	noun-en	A2	an hour	via-form	NN_UTR
+timme	noun-en	A2	an hour		NN_UTR
+timmer	noun-ett	A2	timber, log to be used in construction		NN_NEU
+titt	noun-en	A2	look, gander		NN_UTR
+tjej	noun-en	A2	a girl		NN_UTR
+tjock	adjective	A2	thick		JJ
+tjugo	numeral	A2	twenty		RG
+tjugotvå	numeral	A2	twenty-two		RG
+tjäna	verb	A2	to earn		VB
+tjänarinna	noun-en	A2	hey, yo	via-form	NN_UTR
+toa	noun-en	A2	synonym of toalett		NN_UTR
+torg	noun-ett	A2	city square, market, plaza		NN_NEU
+torsdag	noun-en	A2	Thursday		NN_UTR
+traktor	noun-en	A2	a tractor		NN_UTR
+trana	noun-en	A2	common crane, Grus grus		NN_UTR
+tredelad	participle	A2		none	PC
+trevlig	adjective	A2	nice and pleasant towards others, personable		JJ
+trivas	verb	A2	To feel a durable sense of comfort and satisfaction.		VB
+tro	verb	A2	belief	pos	VB,NN_UTR
+tråd	noun-en	A2	wire		NN_UTR
+tråkig	adjective	A2	unpleasant, unfortunate		JJ
+träd	noun-ett	A2	a tree		NN_NEU
+träna	verb	A2	to exercise, to practice; to perform activities to develop skills		VB
+tränare	noun-en	A2	a trainer, a coach		NN_UTR
+träning	noun-en	A2	training, exercise		NN_UTR
+tröja	noun-en	A2	an upper-body garment, excluding outerwear like jackets, especially one worn for warmth and usually not for example a…	long	NN_UTR
+tröst	noun-en	A2	comfort, consolation		NN_UTR
+tung	adjective	A2	heavy		JJ
+turk	noun-en	A2	a Turk; person from Turkey		NN_UTR
+turkisk	adjective	A2	Turkish		JJ
+tv-program	noun-ett	A2	a television program		NN_NEU
+tvilling	noun-en	A2	twin		NN_UTR
+tvinga	verb	A2	to force		VB
+tvärstup	noun-ett	A2	a sheer drop-off, a sheer precipice		NN_NEU
+tvätta	verb	A2	to wash, to clean		VB
+tycke	noun-ett	A2	taste, opinion		NN_NEU
+tyska	noun-en	A2	German		NN_UTR
+tyvärr	adverb	A2	unfortunately		AB
+tåg	noun-ett	A2	a train		NN_NEU
+tårta	noun-en	A2	a cake, a torte, a layered cake		NN_UTR
+tät	adjective	A2	dense, thick or crowded		JJ
+under	prep	A2	under; below; beneath		PP
+underbar	adjective	A2	wonderful, marvelous		JJ
+ung	adjective	A2	young		JJ
+ungdom	noun-en	A2	youth; young person; teenager, youngster		NN_UTR
+ungefär	adverb	A2	about, approximately		AB
+universitet	noun-ett	A2	university		NN_NEU
+uppvuxen	adjective	A2	to grow up	via-form	JJ
+uran	noun-en	A2	uranium		NN_UTR
+utanför	prep	A2	outside		PP
+va	interj	A2	water supply and sewage; abbreviation of vatten och avlopp		IN
+vaccination	noun-en	A2	vaccination		NN_UTR
+vacker	adjective	A2	beautiful		JJ
+val	noun-en	A2	a whale		NN_UTR,NN_NEU
+vanlig	adjective	A2	common, usual		JJ
+var	adverb	A2	where; at which place		DT,HA
+varandra	pronoun	A2	each other, one another		PN
+varav	adverb	A2	whereof, of which		HA
+vardag	noun-en	A2	weekday		NN_UTR
+vardagsrum	noun-ett	A2	living room		NN_NEU
+varje	det	A2	each; every		DT
+varm	adjective	A2	warm, hot		JJ
+vatten	noun-ett	A2	water		NN_NEU
+veckodag	noun-en	A2	weekday		NN_UTR
+verb	noun-ett	A2	verb		NN_NEU
+verklig	adjective	A2	actual, real; existing in act or reality		JJ
+veta	verb	A2	to know; to be certain about, to have knowledge or information about		VB
+vete	noun-ett	A2	wheat		NN_NEU
+vid	adjective	A2	wide		JJ,PP
+video	noun-en	A2	video		NN_UTR
+vietnamesisk	adjective	A2	Vietnamese; of or pertaining to Vietnam		JJ
+viktig	adjective	A2	important		JJ
+viktoriansk	adjective	A2	Victorian		JJ
+vila	verb	A2	rest; relief from work, activity or exertion	pos	NN_UTR,VB
+villa	noun-en	A2	a villa, a house		NN_UTR
+vinna	verb	A2	to win, to defeat, to beat		VB
+vinter	noun-en	A2	winter		NN_UTR
+viraom	participle	A2		none	PC
+visa	verb	A2	a song, a tune, particularly one with a simple melody, where the primary focus is the lyrics	pos,long	VB
+vit	adjective	A2	white		JJ
+vodka	noun-en	A2	vodka		NN_UTR
+volley	noun-en	A2		none	NN_UTR
+volleyboll	noun-en	A2	volleyball		NN_UTR
+volym	noun-en	A2	volume - any of		NN_UTR
+vuxen	adjective	A2	adult		JJ
+våga	verb	A2	to dare, to have enough courage		VB
+våldta	verb	A2	to rape		VB
+vår	noun-en	A2	our; belonging to us		NN_UTR
+våt	adjective	A2	wet		JJ
+väckning	noun-en	A2		none	NN_UTR
+vädra	verb	A2	to ventilate, to air, to let the wind blow, to expose for fresh and open air		VB
+väg	noun-en	A2	a road		NN_UTR
+väldig	adjective	A2	huge; of a very large size		JJ
+välja	verb	A2	to choose		VB
+vän	noun-en	A2	fair, beautiful		NN_UTR
+vända	verb	A2	to turn		VB
+vänlig	adjective	A2	friendly, kind		JJ
+väntrum	noun-ett	A2	waiting room		NN_NEU
+värme	noun-en	A2	heat, warmth c		NN_UTR
+väska	noun-en	A2	a bag		NN_UTR
+väster	noun-en	A2	west; one of the four major compass points		NN_UTR
+växa	verb	A2	grow; increase in size	pos	VB
+x-tal	noun-ett	A2		none	NN_NEU
+zoo	noun-ett	A2	a zoo		NN_NEU
+zoom	noun-en	A2		none	NN_UTR
+åker	noun-en	A2	field; a wide, open space that is used to grow crops		NN_UTR
+åsikt	noun-en	A2	an opinion, a view		NN_UTR
+åt	prep	A2	for		PP
+äcklig	adjective	A2	disgusting, gross		JJ
+älska	verb	A2	to love		VB
+ämna	verb	A2	to intend to, to purpose		VB
+ämne	noun-ett	A2	a substance		NN_NEU
+ändå	adverb	A2	still, yet		AB
+ännu	adverb	A2	another, else		AB
+ära	noun-en	A2	honor, glory; an objectification of praiseworthiness		NN_UTR,VB
+ärlig	adjective	A2	honest; scrupulous		JJ
+äska	verb	A2	request	pos	VB
+ätt	noun-en	A2	a family, a house		NN_UTR
+även	adverb	A2	also		AB
+ö	noun-en	A2	The last letter of the Swedish alphabet, pronounced /øː/ when long, /œ/ when short, [œ̞ː] when long and before r, and…	long	NN_UTR
+öga	noun-ett	A2	eye		NN_NEU
+önska	verb	A2	to wish		VB
+öppen	adjective	A2	open		JJ
+överallt	adverb	A2	everywhere		AB

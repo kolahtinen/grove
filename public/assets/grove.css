@@ -560,3 +560,8 @@ fieldset.tactics { border: 1px solid var(--line); border-radius: 16px; padding: 
 .tactic-text { display: flex; flex-wrap: wrap; gap: .1rem .45rem; align-items: baseline; }
 .tactic-text .tag { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); }
 .tactic-text .tactic-line { flex-basis: 100%; }
+/* G-09 FR-916: the common library's texts; the "grove text" mark. */
+.library-item { display: flex; align-items: center; gap: .5rem; padding: .5rem .1rem; }
+.library-item .text-title { flex: 1; }
+.grove-mark { display: inline-block; vertical-align: middle; margin-left: .4rem; padding: .05rem .5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--link); font-size: .7rem; font-weight: 600; }
+@media (min-width: 520px) { .add-ways { grid-template-columns: 1fr 1fr 1fr; } }

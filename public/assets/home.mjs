@@ -45,8 +45,8 @@ async function start(body, message) {
   window.location.assign('/session');
 }
 
-// The choice before a session (FR-920): Add a text, or go on (filling the time). The common library's
-// choice comes when the library has texts.
+// The choice before a session (FR-920): Pick from the common library, Add a text, or go on (filling the
+// time).
 function offer(body, message, text, name, goLabel) {
   const box = el('div', 'no-texts-offer');
   box.setAttribute('role', 'group');
@@ -54,7 +54,7 @@ function offer(body, message, text, name, goLabel) {
   const go = button(goLabel);
   go.addEventListener('click', () => start({ ...body, fill: true }, message));
   const row = el('div', 'row');
-  row.append(link('/add', 'Add a text', 'button-link main'), go);
+  row.append(link('/library', 'Pick from the common library', 'button-link main'), link('/add', 'Add a text', 'button-link'), go);
   box.append(el('p', '', text), row);
   $('tile-way').querySelector('.no-texts-offer')?.remove();
   showMessage(message, '');

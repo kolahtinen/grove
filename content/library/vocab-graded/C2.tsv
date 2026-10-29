@@ -1,0 +1,7 @@
+# grove library vocabulary (graded), level C2. Words and levels from SweLLex (Volodina, Pilán, Llozhi, Degryse & François 2016; Språkbanken Text, https://doi.org/10.23695/6h3v-zw25), CC BY 4.0: the first CEFR level whose learner essays use the word; misspellings left out. SweLLex_v1.tsv sha256 3491b1a51c004b58b0bd6ddd72909f42ad7bcf13f400212e0584606387ae5980. Meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-graded.mjs.
+sv	pos	level	en	flags	suc
+inkräkta	verb	C2	encroach; to intrude unlawfully	pos	VB
+inskränka	participle	C2	restrict, narrow, confine		PC
+missförstånd	noun-ett	C2	misunderstanding		NN_NEU
+provokation	noun-en	C2	provocation		NN_UTR
+ömsesidig	adjective	C2	mutual		JJ

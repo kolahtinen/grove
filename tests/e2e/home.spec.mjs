@@ -156,12 +156,38 @@ test('FR-906 FR-908 RQ-423 RQ-424: By skill offers four skills in three forms an
   await expect(page.locator('#session-line')).toContainText('Discover');
 });
 
-test('FR-916 FR-917 RQ-431 RQ-432: the Common library says its texts are coming and searches the common dictionary as you type, with meanings and levels; a word can be added as a leaf', async ({ page }) => {
+test('FR-916 RQ-431 RQ-438: the Common library lists grove texts by topic with their levels, filtered up to the chosen level (the learner\'s first); one added is a grove text in Your library, never Beta', async ({ page }) => {
   await signIn(page);
   await page.getByRole('button', { name: 'Common library' }).click();
   await page.locator('#tile-panel').getByRole('link', { name: 'Open the common library' }).click();
   await page.waitForURL(/\/library$/);
-  await expect(page.locator('#library-coming')).toContainText('coming');
+  const level = await page.evaluate(async () => (await (await fetch('/api/library')).json()).level);
+  await expect(page.getByLabel('Show levels up to')).toHaveValue(level);
+  const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  const shown = async () => page.locator('#library-texts .level-badge').allTextContents();
+  await page.getByLabel('Show levels up to').selectOption('A1');
+  expect(new Set(await shown())).toEqual(new Set(['A1']));
+  await page.getByLabel('Show levels up to').selectOption('B1');
+  const upToB1 = await shown();
+  expect(upToB1.every((l) => levels.indexOf(l) <= 2)).toBe(true);
+  expect(new Set(upToB1)).toEqual(new Set(['A1', 'A2', 'B1']));
+  await expect(page.locator('#library-texts .topic-group h3').first()).not.toBeEmpty();
+  const item = page.locator('#library-texts .library-item', { has: page.getByRole('button', { name: /^Add .* to your library$/ }) }).first();
+  const title = (await item.locator('.text-title').textContent()).trim();
+  await item.getByRole('button', { name: /to your library$/ }).click();
+  await expect(page.locator('#library-status')).toContainText(title);
+  await expect(page.getByRole('link', { name: `Open ${title}` })).toBeVisible();
+  await page.goto('/texts');
+  const mine = page.locator('#texts a', { hasText: title }).first();
+  await expect(mine.locator('.grove-mark')).toHaveText('grove text');
+  await expect(mine.locator('.beta')).toHaveCount(0);
+  await mine.click();
+  await expect(page.locator('#beta')).toBeHidden();
+});
+
+test('FR-917 RQ-432: the common dictionary searches grove\'s whole word list as you type, with meanings and levels; a word can be added as a leaf', async ({ page }) => {
+  await signIn(page);
+  await page.goto('/library');
   await page.getByLabel('Search').fill('p');
   await expect(page.locator('#lexicon-results li')).toHaveCount(0);
   const word = 'pingvin';
@@ -178,7 +204,7 @@ test('FR-916 FR-917 RQ-431 RQ-432: the Common library says its texts are coming 
   }
 });
 
-test('FR-920 RQ-434: with no unread text, Practise first says so and offers Add a text or practising without a text', async ({ page }) => {
+test('FR-920 RQ-434: with no unread text, Practise first says so and offers the common library, Add a text or practising without a text', async ({ page }) => {
   const t = await startTestGrove({ host: 'localhost' });
   try {
     const learner = t.seedAccount({ email: 'no-texts@example.test' });
@@ -195,6 +221,7 @@ test('FR-920 RQ-434: with no unread text, Practise first says so and offers Add 
     await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
     const offer = page.getByRole('group', { name: 'You have no new texts' });
     await expect(offer).toBeVisible();
+    await expect(offer.getByRole('link', { name: 'Pick from the common library' })).toHaveAttribute('href', '/library');
     await expect(offer.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
     await offer.getByRole('button', { name: 'Practise without a text' }).click();
     // Nothing at all to practise for this learner: the panel says so (FR-905).

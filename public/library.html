@@ -19,7 +19,11 @@
 <main>
 <section class="card">
 <h2>Common library</h2>
-<p class="muted" id="library-coming">grove's shared texts, by topic and level, are coming soon: the owner's lessons and grove's own texts once they have been read through.</p>
+<p class="small muted">grove's own texts by topic, each with its level. Add one to your library to read it.</p>
+<label>Show levels up to<select id="level-filter"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+<p class="muted" id="library-none" hidden>No texts up to this level yet.</p>
+<p class="small" id="library-status" role="status"></p>
+<div class="topics" id="library-texts"></div>
 </section>
 <section class="card">
 <h2>Common dictionary</h2>

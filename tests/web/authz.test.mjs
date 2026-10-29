@@ -39,6 +39,7 @@ const BODIES = {
   '/api/start': { level: 'beginner', unknown: [] },
   '/api/sessions': { kind: 'time', minutes: 5, voice: true },
   '/api/session/next': { sessionId: 999999, index: 0 },
+  '/api/library/add': { id: 'Z9-99' },
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);
 

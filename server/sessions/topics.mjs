@@ -1,6 +1,7 @@
 // The Texts page's data (G-09 FR-909; research R11): the learner's texts by topic, unread first; own
 // texts under "My own texts".
-const BETA = (code) => !/^DEMO-/.test(code ?? '');
+// Not Beta: the demo's texts and grove texts from the common library (FR-916, marked "grove text").
+const BETA = (code) => !/^(DEMO|LIB)-/.test(code ?? '');
 
 export function listTopics(db, accountId) {
   const rows = db.prepare(`SELECT t.id, t.title, t.topic, t.kind, t.own, t.read_at, t.ready, e.code FROM texts t
@@ -9,7 +10,7 @@ export function listTopics(db, accountId) {
   for (const r of rows) {
     const topic = r.own ? '' : r.topic;
     if (!topics.has(topic)) topics.set(topic, { topic, label: topic || 'My own texts', texts: [] });
-    topics.get(topic).texts.push({ id: r.id, title: r.title, kind: r.kind, read: !!r.read_at, ready: !!r.ready, own: !!r.own, beta: !!r.own || BETA(r.code) });
+    topics.get(topic).texts.push({ id: r.id, title: r.title, kind: r.kind, read: !!r.read_at, ready: !!r.ready, own: !!r.own, beta: !!r.own || BETA(r.code), grove: /^LIB-/.test(r.code ?? '') });
   }
   const list = [...topics.values()];
   for (const t of list) t.texts.sort((a, b) => (a.read - b.read) || (b.id - a.id));
