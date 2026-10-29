@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { readFileSync } from 'node:fs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 
@@ -23,9 +24,7 @@ async function signIn(page) {
   await page.getByLabel('Password').fill(REVIEWER.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(/\/$/);
 }
 
@@ -106,16 +105,16 @@ test('FR-320 RQ-417: a word never breaks from the punctuation around it, so a na
   expect(starts.filter((c) => /[.,!?…:;]/.test(c))).toEqual([]);
 });
 
-test('FR-321 RQ-418: My own texts has its own page, linked from the top bar and from Home, which suggests it after a finished package', async ({ page }) => {
+test('FR-321 FR-909 RQ-418 RQ-422: My own texts has its own page, linked from Texts, which suggests it after a finished package', async ({ page }) => {
   await signIn(page);
+  // G-09 FR-909: own texts are part of Texts (the top-bar link went with the ☰ menu, FR-902).
+  await page.goto('/texts');
   await expect(page.locator('#own-link')).toBeVisible();
   // The shared account's latest package may be open or finished, depending on earlier tests.
   const pkg = await page.evaluate(async () => (await (await fetch('/api/home')).json()).package);
   const finished = !!pkg && pkg.partsAccepted >= pkg.of;
   if (finished) await expect(page.locator('#own-suggest')).toBeVisible(); else await expect(page.locator('#own-suggest')).toBeHidden();
-  // In the top bar where it fits; at phone width (G-08 FR-807's 360 px) only from Home.
-  const topLink = page.locator('.topbar').getByRole('link', { name: 'Own texts' });
-  if (page.viewportSize().width > 400) await topLink.click(); else { await expect(topLink).toBeHidden(); await page.locator('#own-link').click(); }
+  await page.locator('#own-link').click();
   await page.waitForURL(/\/own$/);
   await expect(page.locator('#own-form')).toBeVisible();
   await page.locator('#own-form input[name="title"]').fill('Listan');

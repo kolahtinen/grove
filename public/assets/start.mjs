@@ -1,4 +1,5 @@
-// The starting check (FR-603…FR-607): pick a level or beginner; tick unknown words; confirm.
+// The starting level (G-06 FR-603…FR-607, addendum 005): pick a level (each with a one-line description)
+// or beginner; then Use this level, or Check my level: tick unknown words and confirm.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 
@@ -38,7 +39,24 @@ async function showSample(chosen) {
   $('sample-card').scrollIntoView({ block: 'nearest' });
 }
 
-for (const b of $('levels').querySelectorAll('button')) b.addEventListener('click', () => showSample(b.dataset.level));
+// FR-603: after picking, use the level as it is or check it.
+for (const b of $('levels').querySelectorAll('button')) {
+  b.addEventListener('click', () => {
+    level = b.dataset.level;
+    $('how-heading').textContent = `Level ${level}`;
+    $('how-card').hidden = false;
+    $('sample-card').hidden = true;
+    showMessage($('use-message'), '');
+    $('use-level').focus();
+  });
+}
+$('check-level').addEventListener('click', () => showSample(level));
+$('use-level').addEventListener('click', async () => {
+  const r = await post('/api/start', { level, unknown: [] });
+  if (!r.ok) { showMessage($('use-message'), r.message); return; }
+  showMessage($('use-message'), `Done: your level is ${level}; ${r.data.ground} words joined your ground.`, 'ok');
+  window.location.assign('/');
+});
 
 $('beginner').addEventListener('click', async () => {
   const r = await post('/api/start', { level: 'beginner', unknown: [] });

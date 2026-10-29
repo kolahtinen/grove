@@ -26,6 +26,7 @@ export function createSessions({ db, now = () => Date.now() }) {
         .run(hash(value), accountId, csrf, at, at + SESSION_MS);
       return {
         csrf,
+        idHash: hash(value),
         cookie: `${SESSION_COOKIE}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${SESSION_MS / 1000}`,
       };
     },
@@ -40,9 +41,10 @@ export function createSessions({ db, now = () => Date.now() }) {
       return row;
     },
 
-    agree(idHash) {
+    // Marks a sign-in agreed, naming the agreement it rests on (G-01 FR-011, constitution 3.1).
+    agree(idHash, agreementId = null) {
       const at = now();
-      db.prepare('UPDATE sessions SET terms_agreed_at = ?, age_confirmed_at = ? WHERE id_hash = ?').run(at, at, idHash);
+      db.prepare('UPDATE sessions SET terms_agreed_at = ?, age_confirmed_at = ?, terms_agreement_id = ? WHERE id_hash = ?').run(at, at, agreementId, idHash);
     },
 
     destroy(idHash) {

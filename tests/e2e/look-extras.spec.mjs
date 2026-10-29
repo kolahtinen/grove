@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { readFileSync } from 'node:fs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 
@@ -18,9 +19,7 @@ async function signIn(page) {
   await page.getByLabel('Password').fill(REVIEWER.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(/\/$/);
 }
 
@@ -46,30 +45,32 @@ test('FR-801 FR-802 RQ-311 RQ-310: after agreeing, Home plays the scene once in 
   await expect(card).toBeVisible();
   await expect(card.locator('.grow-svg')).toBeVisible();
   await expect(card.locator('.grow-svg .g-ground')).toHaveCount(1);
-  await expect(page.locator('#stages-card')).toBeVisible();
+  await expect(page.locator('#tiles')).toBeVisible();
   for (const caption of CAPTIONS) await expect(card.locator('.grow-caption')).toHaveText(caption, { timeout: 4000 });
   await expect(card).toHaveCount(0, { timeout: 4000 });
   await page.reload();
-  await expect(page.locator('#stages-card')).toBeVisible();
+  await expect(page.locator('#tiles')).toBeVisible();
   await expect(page.locator('#grow-card')).toHaveCount(0);
 });
 
-test('FR-801 FR-802 RQ-311: Skip ends the scene at once; the help page Replays it; a logo tap plays it in a pop-up', async ({ page }) => {
+test('FR-801 FR-802 FR-902 RQ-311 RQ-420: Skip ends the scene at once; the help page Replays it; Help in the ☰ menu Replays it in a bubble', async ({ page }) => {
   await signIn(page);
   await expect(page.locator('#grow-card')).toBeVisible();
   const started = Date.now();
   await page.locator('#grow-card').getByRole('button', { name: 'Skip' }).click();
   await expect(page.locator('#grow-card')).toHaveCount(0);
   expect(Date.now() - started).toBeLessThan(1000);
-  await page.locator('.brand .logo').click();
-  await expect(page).toHaveURL(/\/$/);
-  const pop = page.locator('.grow-pop');
-  await expect(pop).toBeVisible();
+  // G-09 FR-902 replaces the logo tap: the logo links Home, and Help in ☰ has the Replay.
+  await expect(page.locator('.brand')).toHaveAttribute('href', '/');
+  await page.getByRole('button', { name: 'Menu' }).click();
+  await page.getByRole('button', { name: 'Help' }).click();
+  const pop = page.locator('#help');
+  await pop.getByRole('button', { name: 'Replay' }).click();
   await expect(pop.locator('.grow-caption')).toHaveText(CAPTIONS[0], { timeout: 4000 });
-  await pop.getByRole('button', { name: 'Skip' }).click();
+  await pop.getByRole('button', { name: 'Stop' }).click();
+  await pop.getByRole('button', { name: 'Close' }).click();
   await expect(pop).toHaveCount(0);
-  await page.locator('.help-link').click();
-  await expect(page).toHaveURL(/\/how$/);
+  await page.goto('/how');
   await expect(page.locator('#grow-host .grow')).toBeVisible();
   await expect(page.locator('#replay')).toBeDisabled();
   await page.locator('#grow-host').getByRole('button', { name: 'Stop' }).click();
@@ -133,7 +134,7 @@ test('FR-806 RQ-322: the word menu slides up with a header strip in the pop-up b
   await expect(page.locator('#sheet-backdrop')).toHaveCSS('backdrop-filter', 'blur(12px)');
 });
 
-test('FR-807 RQ-309 RQ-341: at 360 px nothing in the top bar overlaps and Sign out stays on one line', async ({ page }) => {
+test('FR-807 FR-902 RQ-309 RQ-341 RQ-420: at 360 px nothing in the top bar overlaps and ☰ keeps its 44 px', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 740 });
   await signIn(page);
   const ids = await addSample(page);
@@ -151,8 +152,8 @@ test('FR-807 RQ-309 RQ-341: at 360 px nothing in the top bar overlaps and Sign o
         expect(overlap, `${path}: ${a.name} overlaps ${b.name}`).toBe(false);
       }
     }
-    const [signout, dictionary] = await Promise.all([page.locator('.signout').boundingBox(), page.locator('.account .nav[href="/dictionary"]').boundingBox()]);
-    expect(Math.abs(signout.height - dictionary.height)).toBeLessThan(2);
+    const menu = await page.getByRole('button', { name: 'Menu' }).boundingBox();
+    expect(Math.min(menu.width, menu.height)).toBeGreaterThanOrEqual(44);
     expect(await page.evaluate(() => { const r = document.querySelector('.topbar-inner'); return r.scrollWidth <= r.clientWidth; })).toBe(true);
     await expect(page.locator('.tagline')).toBeVisible();
   }

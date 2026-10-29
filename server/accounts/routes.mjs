@@ -3,13 +3,15 @@ import { createSignin } from './signin.mjs';
 import { createAgree } from './agree.mjs';
 import { createReset } from './reset.mjs';
 import { createLockout } from './lockout.mjs';
+import { createTermsAgreements } from './terms.mjs';
 
 const AGREEMENT_MISSING = { missingCode: 'agreement_needed', missingMessage: 'Please tick both boxes to continue.' };
 
 export function registerAccountRoutes(router, { config, db, seclog, firebase, sessions, now }) {
   const lockout = createLockout({ db, seclog, now });
-  const signin = createSignin({ db, seclog, firebase, sessions, lockout, answerMinMs: config.answerMinMs, now });
-  const agree = createAgree({ seclog, sessions });
+  const terms = createTermsAgreements({ db, now });
+  const signin = createSignin({ db, seclog, firebase, sessions, lockout, terms, answerMinMs: config.answerMinMs, now });
+  const agree = createAgree({ seclog, sessions, terms });
   const reset = createReset({ seclog, firebase, answerMinMs: config.answerMinMs });
 
   router.add({ method: 'GET', path: '/api/csrf', access: 'public', handler: signin.csrf });

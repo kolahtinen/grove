@@ -78,13 +78,15 @@ test('FR-220 FR-319 FR-419 RQ-54 RQ-155: export includes texts, words, flags, re
   await c.post('/api/marks', { lemma: 'kopp', remember: true });
   await c.post('/api/review', { lemma: 'kopp', mode: 'remember', right: true });
   await c.post('/api/input', { seconds: 30, day: new Date().toISOString().slice(0, 10) });
+  // G-09 data: a practice session.
+  assert.equal((await c.post('/api/sessions', { kind: 'time', minutes: 5, voice: true })).status, 200);
 
   const data = exportAccount({ ...deps, email: 'texts@example.test' });
-  for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'explain_flags', 'reports', 'review_answers', 'input_days']) {
+  for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'explain_flags', 'reports', 'review_answers', 'input_days', 'practice_sessions']) {
     assert.ok(data.tables[table]?.length > 0, `export has ${table}`);
   }
   await deleteAccount({ ...deps, email: 'texts@example.test' });
-  for (const table of ['words', 'word_forms', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'pattern_places', 'explain_flags', 'explanations', 'reports', 'review_answers', 'input_days']) {
+  for (const table of ['words', 'word_forms', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'question_answers', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'pattern_places', 'explain_flags', 'explanations', 'reports', 'review_answers', 'input_days', 'practice_sessions']) {
     assert.equal(t.grove.db.prepare(`SELECT COUNT(*) AS n FROM "${table}" WHERE account_id = ?`).get(id).n, 0, table);
   }
 });

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Common library · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/library.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
+</div>
+</header>
+<main>
+<section class="card">
+<h2>Common library</h2>
+<p class="small muted">grove's own texts by topic, each with its level. Add one to your library to read it.</p>
+<label>Show levels up to<select id="level-filter"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
+<p class="muted" id="library-none" hidden>No texts up to this level yet.</p>
+<p class="small" id="library-status" role="status"></p>
+<div class="topics" id="library-texts"></div>
+</section>
+<section class="card">
+<h2>Common dictionary</h2>
+<p class="small muted">Every Swedish word in grove's word list, with its English meaning and level. Add one as a leaf to practise it.</p>
+<label>Search<input type="search" id="lexicon-search" autocomplete="off" spellcheck="false" placeholder="at least 2 letters"></label>
+<p class="small muted" id="lexicon-status" role="status"></p>
+<ul class="text-list lexicon-list" id="lexicon-results"></ul>
+<p class="small muted">Word list: Wiktionary via kaikki.org (CC BY-SA 4.0); levels: the Swedish Kelly list. <a href="/credits">Credits</a></p>
+</section>
+</main>
+</body>
+</html>

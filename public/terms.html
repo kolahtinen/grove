@@ -18,19 +18,21 @@
 </div>
 </header>
 <main>
-<section class="card" id="agreement" hidden>
-<h2>Before you start</h2>
-<p>Please read the terms of use and privacy notice below, then tick both boxes.</p>
+<section class="card" id="agreement" hidden aria-labelledby="step-title">
+<p class="small muted" id="step-count"></p>
+<h2 id="step-title" tabindex="-1"></h2>
+<div id="step-body"></div>
 <p class="message bad" role="alert" hidden></p>
-<form id="agree">
-<label class="check"><input type="checkbox" name="agreeTerms"><span>I agree to the terms of use and privacy notice</span></label>
-<label class="check"><input type="checkbox" name="confirmAge13"><span>I am 13 or over</span></label>
-<button type="submit" class="main" disabled>Agree</button>
-</form>
+<div class="row step-buttons">
+<button type="button" id="step-back">Back</button>
+<button type="button" class="main" id="step-next" disabled>Next</button>
+<button type="button" class="main" id="step-agree" hidden>I am 13 or over and agree to the terms</button>
+</div>
+<p class="small" id="step-whole" hidden><a href="/terms?whole=1" target="_blank" rel="noopener">Read the whole terms on one page</a></p>
 </section>
-<section class="card terms">
+<section class="card terms" id="whole-terms">
 <h2>Terms of use and privacy notice</h2>
-<p class="small muted">Draft for the owner to review. Last changed 24 October 2026.</p>
+<p class="small muted">Draft for the owner to review. Last changed 29 October 2026.</p>
 <h2>Who grove is for</h2>
 <p>Grove is a language-learning app run by one person (the owner) on their own computer in Finland. Right now it is open only to the owner and a few invited course reviewers. <strong>You must be 13 or over to use grove.</strong></p>
 <p>The reviewer account is shared: every reviewer signs in to the same account, so reviewers see and can change each other’s activity on it.</p>
@@ -42,7 +44,7 @@
 <li><strong>Your email address</strong>: to sign you in and to send password-reset emails.</li>
 <li><strong>Your password</strong>: kept only by Firebase, scrambled (hashed); grove never stores it.</li>
 <li><strong>Your learning history and progress</strong> (in later versions): so grove can give you material at your level.</li>
-<li><strong>Each sign-in’s agreement to these terms</strong>, with its time: to show you agreed.</li>
+<li><strong>Each agreement to these terms</strong>, with its time, the version of the terms and the device it was made on (a random value kept in a cookie on that device): to show you agreed, and so you agree again only on a new device or when the terms change.</li>
 <li><strong>A security log</strong> of sign-ins, failed sign-ins, lockouts and password-reset requests, with the internet address used: to protect accounts. It is deleted after 30 days.</li>
 </ul>
 <p>Grove keeps nothing else and loads nothing from other websites while you use it.</p>

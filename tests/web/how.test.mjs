@@ -20,12 +20,13 @@ test('FR-804 RQ-370: "How grove works" is served without signing in and explains
   for (const asset of ['/assets/how.mjs', '/assets/grow.mjs', '/assets/topbar.mjs']) assert.equal((await c.get(asset)).status, 200, asset);
 });
 
-test('FR-807 FR-804 RQ-346 RQ-310 RQ-370: every page has the A.5 logo and a "?" link to /how in its top bar', () => {
+test('FR-807 FR-804 FR-902 RQ-346 RQ-310 RQ-370 RQ-420: every page has the A.5 logo, and a "?" link to /how or (signed in) the ☰ menu with Help in its top bar', () => {
   const dir = new URL('../../public/', import.meta.url);
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.html'))) {
     const html = readFileSync(new URL(file, dir), 'utf8');
     assert.ok(html.includes('<path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g>'), `${file}: A.5 logo`);
-    assert.match(html, /<a class="bar-button nav help-link" href="\/how"/, `${file}: ? link`);
+    // G-09 FR-902 replaces FR-804's page link on signed-in pages with Help in the ☰ menu.
+    assert.ok(/<a class="bar-button nav help-link" href="\/how"/.test(html) || html.includes('class="bar-button menu-button" aria-label="Menu"'), `${file}: ? link or ☰`);
     assert.ok(html.includes('/assets/topbar.mjs'), `${file}: topbar.mjs`);
   }
 });

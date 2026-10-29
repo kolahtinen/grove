@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { readFileSync } from 'node:fs';
 import { REVIEWER, OWNER } from '../fakes/dev-accounts.mjs';
 
@@ -18,9 +19,7 @@ async function signIn(page, account = REVIEWER) {
   await page.getByLabel('Password').fill(account.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(/\/$/);
 }
 
@@ -76,26 +75,30 @@ test('FR-401 RQ-52 RQ-415: after rating, the marking step lists the new words wi
   await expect(page.locator('#marking-card')).toBeHidden();
 });
 
-test('FR-407 FR-406 RQ-06 RQ-415: Home shows the three stages; Review shows a due leaf in its sentence with Play and finishes with All done', async ({ page }) => {
+test('FR-908 FR-406 RQ-424 RQ-415: Just one mode → Review shows a due leaf in its sentence with Play, one card at a time', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await setState(page, 'gärna', { ground: true });
   await api(page, '/api/pick-up', { lemma: 'gärna' });
+  // G-09 FR-908 replaces Home's three stages: Review on its own is a session of the due leaves.
   await page.goto('/');
-  for (const name of ['Discover', 'Review', 'Master']) await expect(page.locator('.stage-name', { hasText: name })).toBeVisible();
-  await expect(page.locator('#review-count')).toContainText('due');
-  await page.locator('#review-link').click();
-  await expect(page.locator('#review-heading')).toHaveText('Review');
+  await page.getByRole('button', { name: 'One mode' }).click();
+  await page.locator('#tile-panel').getByRole('button', { name: 'Review' }).click();
+  await page.waitForURL(/\/session$/);
+  await expect(page.locator('#session-line')).toContainText('Review');
+  await expect(page.locator('#exercise-banner .chip.review').first()).toContainText('Review');
   // The sentence is shown, with Play (addendum 003, question-pages/73, 2).
-  if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#review-box').getByRole('button', { name: 'Play' })).toBeVisible();
+  if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#exercise-box').getByRole('button', { name: 'Play' })).toBeVisible();
   for (let i = 0; i < 12; i += 1) {
-    if (await page.locator('.message.ok', { hasText: 'All done' }).isVisible()) break;
-    const option = page.locator('#review-box button.option:not([disabled])').first();
+    // Wait for the next card (or the end) before answering it.
+    await expect(page.locator('#session-end, #exercise-box button.option:not([disabled]), #exercise-box button:text-is("Show")').first()).toBeVisible();
+    if (await page.locator('#session-end').isVisible()) break;
+    const option = page.locator('#exercise-box button.option:not([disabled])').first();
     if (await option.isVisible()) { await option.click(); await page.getByRole('button', { name: 'Next' }).click(); continue; }
     const show = page.getByRole('button', { name: 'Show' });
     if (await show.isVisible()) { await show.click(); await page.getByRole('button', { name: 'I knew it' }).click(); }
   }
-  await expect(page.locator('.message.ok', { hasText: 'All done' })).toBeVisible();
+  await expect(page.locator('#session-end')).toBeVisible();
 });
 
 test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember switch, Let it fall, Pick up for words and patterns, and the Leaves page', async ({ page }) => {
@@ -142,7 +145,7 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember swi
   await expect(page.locator('#leaves-remember')).toContainText('servitör');
 });
 
-test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mark they had when they fell; a form of more than one word has no mark', async ({ page }) => {
+test('FR-413 RQ-294 RQ-413 RQ-415 RQ-426: To remember words are teal-green with a dotted underline; fallen words look like known words; a form of more than one word has no mark', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
   await setState(page, 'räkna', { remember: true });
@@ -150,16 +153,20 @@ test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mar
   await api(page, '/api/let-it-fall', { lemma: 'gärna', confirmed: true });
   await page.goto(`/text?id=${ids['En bra dag']}`);
   await expect(page.locator('button.w', { hasText: /^räknar$/ })).toHaveClass(/m-remember/);
-  await expect(page.locator('button.w', { hasText: /^gärna$/ })).toHaveClass(/f-remember/);
+  const remember = page.locator('button.w', { hasText: /^räknar$/ });
+  await expect(remember).toHaveCSS('border-bottom-style', 'dotted');
+  // PD-13 (question-pages/76, 13): a fallen word has the text's own colour, like any known word.
+  const [fallen, text] = await page.evaluate(() => [getComputedStyle([...document.querySelectorAll('button.w')].find((b) => b.textContent === 'gärna')).color, getComputedStyle(document.body).color]);
+  expect(fallen).toBe(text);
   await expect(page.locator('button.w.other-reading')).toHaveCount(0);
 });
 
-test('FR-414 FR-415 RQ-03 RQ-71: Home shows the level line and today\'s minutes; Progress shows 14 day bars', async ({ page }) => {
+test('FR-414 FR-415 FR-910 RQ-03 RQ-71 RQ-427: Progress shows the level line, today\'s minutes and 14 day bars', async ({ page }) => {
   await signIn(page);
   // With level word lists present (G-06), the line shows the level; without them, "Set your starting level" (FR-414, FR-608).
-  await expect(page.locator('#level-line')).toContainText(/Level: |Set your starting level/);
-  await expect(page.locator('#level-line')).toContainText('min of input today');
   await page.goto('/progress');
+  await expect(page.locator('#progress-level')).toContainText(/Your level: |Set your starting level/);
+  await expect(page.locator('#progress-level')).toContainText('min of input today');
   await expect(page.locator('#bars .bar')).toHaveCount(14);
   await expect(page.locator('#progress-counts')).toContainText('words in your ground');
 });

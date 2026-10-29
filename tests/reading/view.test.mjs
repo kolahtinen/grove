@@ -90,3 +90,13 @@ test('FR-319 RQ-155: another account gets 404 for the text and the settings chan
   await c.post('/api/settings', { speakWords: false });
   assert.equal((await reading('En bra dag')).body.speakWords, true);
 });
+
+test('FR-910 RQ-427: Settings reads Speak words and the speech speed the learner saved, and only theirs', async () => {
+  const c = await signedIn(t);
+  const other = await signedIn(t, 'other@example.test');
+  const others = (await other.get('/api/settings')).body;
+  await c.post('/api/settings', { speakWords: false, speechRate: 0.8 });
+  assert.deepEqual((await c.get('/api/settings')).body, { speakWords: false, speechRate: 0.8 });
+  assert.deepEqual((await other.get('/api/settings')).body, others, 'another learner\'s settings are untouched');
+  await c.post('/api/settings', { speakWords: true, speechRate: 1 });
+});

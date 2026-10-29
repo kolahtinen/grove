@@ -13,8 +13,7 @@
 <header class="topbar">
 <div class="topbar-inner">
 <a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
-<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><a class="bar-button nav nav-wide" href="/own">Own texts</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
-<a class="bar-button nav help-link" href="/how" aria-label="How grove works" title="How grove works">?</a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
 </div>
 </header>
 <main>
@@ -25,71 +24,8 @@
 <p>Practice comes in three stages: <strong>Discover</strong> new texts, <strong>Review</strong> your leaves when they're due, and <strong>Master</strong> your strongest ones.</p>
 <button type="button" class="main" id="welcome-close">Got it</button>
 </section>
-<section class="card" id="stages-card">
-<h2>Today</h2>
-<p class="small muted" id="level-line"></p>
-<div class="grid-3 stages">
-<a class="stage" href="#package-card"><span class="stage-name">Discover</span><span class="stage-count" id="discover-count"></span></a>
-<a class="stage" href="/review?mode=review" id="review-link"><span class="stage-name">Review</span><span class="stage-count" id="review-count"></span></a>
-<a class="stage" href="/review?mode=master" id="master-link"><span class="stage-name">Master</span><span class="stage-count" id="master-count"></span></a>
-</div>
-<p class="links"><a href="/leaves">Leaves</a><a href="/dictionary">Dictionary</a><a href="/progress">Progress</a></p>
-<p class="small links"><a href="/start" id="restart" hidden>Set my starting level again</a><a href="/credits">Credits</a></p>
-</section>
-<section class="card" id="topic-card">
-<h2>Topic</h2>
-<p class="topic-line"><span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>
-<form id="topic-form" hidden>
-<label>Your topic<input type="text" name="topic" maxlength="80" required></label>
-<button type="submit" class="main">Save topic</button>
-</form>
-</section>
-<section class="card" id="package-card">
-<h2>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="muted small" id="progress"></p>
-<div class="plan" id="plan">
-<h3 class="small">Your AI</h3>
-<div class="row">
-<label>AI<select id="plan-family"><option value="">Choose…</option></select></label>
-<label>Version<select id="plan-product" disabled></select></label>
-</div>
-<div class="tactics" id="tactics" hidden>
-<div class="tab-list" role="tablist" aria-label="How grove asks your AI" id="tactic-tabs"></div>
-<div class="tab-panel" role="tabpanel" id="tactic-panel"><p id="tactic-text"></p><p class="small muted" id="tactic-reason"></p><button type="button" id="tactic-use">Use this way</button></div>
-</div>
-<p class="message" id="plan-message" role="status" hidden></p>
-</div>
-<p class="message" id="offer" role="status" hidden></p>
-<p class="message" id="package-message" role="status" hidden></p>
-<ul class="problems" id="problems" hidden></ul>
-<div id="prompt-area" hidden>
-<h3 class="small" id="prompt-heading">Prompt</h3>
-<p class="small muted" id="prompt-help">Copy each prompt into your own AI chat (ChatGPT, Claude, Gemini or another), in order, then paste its whole answer below.</p>
-<p class="message" id="new-chat-note" role="status" hidden></p>
-<ol class="prompt-steps" id="prompt-steps"></ol>
-<label>Paste the AI's answer here<textarea id="answer" rows="6"></textarea></label>
-<p class="small muted" id="answer-size"></p>
-<div class="row">
-<button type="button" class="main" id="add-texts">Add texts</button>
-<button type="button" id="new-chat">I'm in a new chat</button>
-</div>
-</div>
-<div class="row">
-<button type="button" class="main" id="get-texts">Get texts</button>
-<button type="button" id="new-package" hidden>New package</button>
-</div>
-</section>
-<section class="card" id="own-card">
-<h2>Your own texts <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="small" id="own-suggest" hidden>Your package is finished. Why not read a text of your own next?</p>
-<p class="small muted">Read a Swedish text you choose (an article, a song). It stays private to you.</p>
-<a class="bar-button" href="/own" id="own-link">My own texts</a>
-</section>
-<section class="card">
-<h2>Your texts</h2>
-<p class="muted" id="no-texts">No texts yet. Get some from your AI above.</p>
-<ul class="text-list" id="texts"></ul>
-</section>
+<div class="tile-groups" id="tiles"></div>
+<p class="small links"><a href="/credits">Credits</a></p>
 </main>
 </body>
 </html>

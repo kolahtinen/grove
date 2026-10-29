@@ -1,333 +1,266 @@
-// Home (FR-201, FR-203, FR-206, FR-219): the topic, the package card with the prompt steps (setup
-// first, each with Copy prompt), the paste box, I'm in a new chat, the whole-package choice and the
-// problems, and the texts list. Everything is set with textContent.
+// Home (G-09 FR-901, addendum 005): square tiles with an icon and a one-word label, in three headed
+// groups, Learning, Library and Progress; tapping one opens it in place below its row, with its title, a
+// one-line explanation and its way in (research R7: a disclosure button per tile, one panel moved after
+// the row, focus to the panel's title, Esc / ✕ / the tile again closes it and focus returns to the
+// tile). Resume shows first while a session is going (FR-904). With no unread text, Practise and By
+// skill first offer Add a text or practising without one (FR-920). The welcome card (G-04 FR-416) shows
+// above the groups until closed. Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { playGrow } from './grow.mjs';
+import { hasSwedish } from './speech.mjs';
+import { icon } from './icons.mjs';
 
-const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
-let waiting = null;
-let plan = { family: null, product: null, tactic: 'steps', recommended: null, families: [] };
-let shownTactic = 'steps';
+const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
+const link = (href, text, cls = 'button-link') => { const a = el('a', cls, text); a.href = href; return a; };
+const button = (text, cls = '') => { const b = el('button', cls, text); b.type = 'button'; return b; };
 
-// FR-223: the learner's AI and version, and the three tactics as tabs.
-const TACTIC_NAMES = { steps: 'Step by step', long: 'One long prompt', whole: 'Whole package' };
-const TACTIC_TEXT = {
-  steps: 'grove sends the setup once, in a few messages your AI answers with "OK", then asks for one part at a time in the same chat. Short prompts, so it suits free AIs.',
-  long: 'Every prompt carries the rules and your known words itself, one part at a time. Longer prompts, but your AI never has to remember the setup.',
-  whole: 'grove sends the setup once, then asks for all three parts in one go. Long answers, so it suits paid versions.',
-};
+const MINUTES = [3, 5, 10, 20, 30];
+const SKILLS = [['reading', 'Reading'], ['listening', 'Listening'], ['words', 'Words and phrases'], ['grammar', 'Grammar']];
+const FORMS = [['short', 'Short', 5], ['medium', 'Medium', 10], ['long', 'Long', 20]];
 
-function fillProducts(family) {
-  const select = $('plan-product');
-  select.replaceChildren();
-  select.disabled = !family;
-  for (const p of family?.products ?? []) {
-    const o = document.createElement('option');
-    o.value = p.id;
-    o.textContent = p.name;
-    select.append(o);
-  }
+const TILES = [
+  { id: 'resume', group: 'learning', label: 'Resume', name: 'Resume', line: 'Carry on with your session where you left off.', body: resumeBody },
+  { id: 'practise', group: 'learning', label: 'Practise', name: 'Practise for X min', line: 'grove plans Discover, Review and Master for the time you have.', body: practiseBody },
+  { id: 'skill', group: 'learning', label: 'By skill', name: 'By skill', line: 'Practise one skill: reading, listening, words and phrases, or grammar.', body: skillBody },
+  { id: 'mode', group: 'learning', label: 'One mode', name: 'Just one mode', line: 'Only Discover, only Review or only Master, one exercise at a time.', body: modeBody },
+  { id: 'common', group: 'library', label: 'Common library', name: 'Common library', line: 'grove’s shared texts by topic, and the dictionary of every Swedish word.', body: () => [link('/library', 'Open the common library', 'button-link main')] },
+  { id: 'yours', group: 'library', label: 'Your library', name: 'Your library', line: 'Your texts by topic, Add a text, your dictionary and your leaves.', body: yoursBody },
+  { id: 'progress', group: 'progress', label: 'Progress', name: 'Progress', line: 'Your level, today’s minutes and the last 14 days.', body: () => [link('/progress', 'Open Progress', 'button-link main')] },
+];
+const GROUPS = [['learning', 'Learning'], ['library', 'Library'], ['progress', 'Progress']];
+
+
+let going = null;
+let openId = null;
+let unread = 0;
+
+// Starts a session and opens it. A session that would run short first offers a new text or filling the
+// time (FR-905, FR-920); another refusal (nothing to do, no voice) is shown in the panel.
+async function start(body, message) {
+  const result = await post('/api/sessions', { ...body, voice: hasSwedish() });
+  if (!result.ok && result.data.error === 'short') { offer(body, message, result.message, 'This session would be short', 'Fill the time'); return; }
+  if (!result.ok) { showMessage(message, result.message); return; }
+  window.location.assign('/session');
 }
 
-function showTab(tactic) {
-  shownTactic = tactic;
-  for (const tab of $('tactic-tabs').children) tab.setAttribute('aria-selected', String(tab.dataset.tactic === tactic));
-  $('tactic-text').textContent = TACTIC_TEXT[tactic];
-  $('tactic-reason').textContent = tactic === plan.recommended && plan.reason ? plan.reason : '';
-  $('tactic-use').hidden = tactic === plan.tactic;
+// The choice before a session (FR-920): Pick from the common library, Add a text, or go on (filling the
+// time).
+function offer(body, message, text, name, goLabel) {
+  const box = el('div', 'no-texts-offer');
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', name);
+  const go = button(goLabel);
+  go.addEventListener('click', () => start({ ...body, fill: true }, message));
+  const row = el('div', 'row');
+  row.append(link('/library', 'Pick from the common library', 'button-link main'), link('/add', 'Add a text', 'button-link'), go);
+  box.append(el('p', '', text), row);
+  $('tile-way').querySelector('.no-texts-offer')?.remove();
+  showMessage(message, '');
+  message.before(box);
+  box.querySelector('a').focus();
 }
 
-function renderPlan(p) {
-  plan = { ...plan, ...p };
-  const family = $('plan-family');
-  if (family.options.length <= 1) {
-    for (const f of plan.families) {
-      const o = document.createElement('option');
-      o.value = f.id;
-      o.textContent = f.name;
-      family.append(o);
+function yoursBody() {
+  const more = el('p', 'links small');
+  more.append(link('/add', 'Add a text', ''), link('/dictionary', 'Your dictionary', ''), link('/leaves', 'Your leaves', ''));
+  return [link('/texts', 'Open your library', 'button-link main'), more];
+}
+
+// FR-920: with no unread text, first say so and offer Add a text or practising without a text. (The
+// common library's choice comes when the library has texts.)
+function startOrOffer(body, message) {
+  if (unread > 0) { start(body, message); return; }
+  offer(body, message, 'You have no new texts.', 'You have no new texts', 'Practise without a text');
+}
+
+function resumeBody() {
+  return [el('p', 'small muted', going ? going.label : ''), link('/session', 'Resume', 'button-link main')];
+}
+
+function practiseBody() {
+  const message = el('p', 'message');
+  message.setAttribute('role', 'status');
+  message.hidden = true;
+  const group = el('div', 'minute-choices');
+  group.setAttribute('role', 'radiogroup');
+  group.setAttribute('aria-label', 'Minutes');
+  let chosen = 10;
+  const typed = el('input', 'minutes-typed');
+  typed.type = 'number';
+  typed.min = '3';
+  typed.max = '60';
+  typed.inputMode = 'numeric';
+  typed.placeholder = '3–60';
+  typed.setAttribute('aria-label', 'Other length in minutes');
+  const choices = MINUTES.map((m) => {
+    const b = button(`${m} min`, 'chip-choice');
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', String(m === chosen));
+    b.addEventListener('click', () => {
+      chosen = m;
+      typed.value = '';
+      for (const c of choices) c.setAttribute('aria-checked', String(c === b));
+    });
+    return b;
+  });
+  typed.addEventListener('input', () => { for (const c of choices) c.setAttribute('aria-checked', 'false'); });
+  group.append(...choices, typed);
+  const go = button('Start', 'main');
+  go.addEventListener('click', () => {
+    const minutes = typed.value === '' ? chosen : Number(typed.value);
+    if (!Number.isInteger(minutes) || minutes < 3 || minutes > 60) { showMessage(message, 'Choose a length from 3 to 60 minutes.'); return; }
+    startOrOffer({ kind: 'time', minutes }, message);
+  });
+  return [group, go, message];
+}
+
+function skillBody() {
+  const message = el('p', 'message');
+  message.setAttribute('role', 'status');
+  message.hidden = true;
+  const rows = SKILLS.map(([skill, name]) => {
+    const row = el('div', 'skill-row');
+    row.append(el('span', 'skill-name', name));
+    for (const [form, label, minutes] of FORMS) {
+      const b = button(label, 'chip-choice');
+      b.setAttribute('aria-label', `${name}, ${label.toLowerCase()} (${minutes} min)`);
+      b.addEventListener('click', () => startOrOffer({ kind: 'skill', skill, form }, message));
+      row.append(b);
     }
+    return row;
+  });
+  return [...rows, message];
+}
+
+function modeBody() {
+  const message = el('p', 'message');
+  message.setAttribute('role', 'status');
+  message.hidden = true;
+  const row = el('div', 'row');
+  for (const [mode, name] of [['discover', 'Discover'], ['review', 'Review'], ['master', 'Master']]) {
+    const b = button(name, `mode-choice ${mode}`);
+    b.prepend(icon(mode));
+    b.addEventListener('click', () => start({ kind: 'mode', mode }, message));
+    row.append(b);
   }
-  family.value = plan.family ?? '';
-  fillProducts(plan.families.find((f) => f.id === plan.family));
-  if (plan.product) $('plan-product').value = plan.product;
-  $('tactics').hidden = !plan.family;
-  const tabs = $('tactic-tabs');
-  tabs.replaceChildren();
-  for (const t of ['steps', 'long', 'whole']) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('role', 'tab');
-    b.dataset.tactic = t;
-    b.textContent = TACTIC_NAMES[t];
-    const tags = [t === plan.recommended && 'Recommended', t === plan.tactic && 'In use'].filter(Boolean);
-    if (tags.length) {
-      const tag = document.createElement('span');
-      tag.className = 'tag';
-      tag.textContent = tags.join(' · ');
-      b.append(tag);
+  return [row, message];
+}
+
+function columns(grid) {
+  return getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 3;
+}
+
+function close({ focus = true } = {}) {
+  const panel = $('tile-panel');
+  if (!panel || !openId) return;
+  const tile = $(`tile-${openId}`);
+  tile.setAttribute('aria-expanded', 'false');
+  panel.hidden = true;
+  openId = null;
+  if (focus) tile.focus();
+}
+
+function open(tile) {
+  const grid = tile.closest('.tiles');
+  const panel = $('tile-panel');
+  close({ focus: false });
+  const tiles = [...grid.querySelectorAll('.tile')];
+  const i = tiles.indexOf(tile);
+  const n = columns(grid);
+  const rowEnd = tiles[Math.min(Math.ceil((i + 1) / n) * n, tiles.length) - 1];
+  rowEnd.after(panel);
+  const def = TILES.find((t) => `tile-${t.id}` === tile.id);
+  $('tile-title').textContent = def.name;
+  $('tile-line').textContent = def.line;
+  $('tile-way').replaceChildren(...def.body());
+  panel.hidden = false;
+  tile.setAttribute('aria-expanded', 'true');
+  openId = def.id;
+  $('tile-title').focus();
+}
+
+function renderTiles() {
+  const box = $('tiles');
+  box.replaceChildren();
+  for (const [group, heading] of GROUPS) {
+    const section = el('section', 'tile-group');
+    section.setAttribute('aria-labelledby', `group-${group}`);
+    const h = el('h2', 'group-title', heading);
+    h.id = `group-${group}`;
+    const grid = el('div', 'tiles');
+    for (const def of TILES.filter((t) => t.group === group)) {
+      if (def.id === 'resume' && !going) continue;
+      const tile = button('', `tile tile-is-${def.id}`);
+      tile.id = `tile-${def.id}`;
+      tile.setAttribute('aria-expanded', 'false');
+      tile.setAttribute('aria-controls', 'tile-panel');
+      tile.append(icon(def.id), el('span', 'tile-label', def.label));
+      tile.addEventListener('click', () => (openId === def.id ? close() : open(tile)));
+      grid.append(tile);
     }
-    b.addEventListener('click', () => showTab(t));
-    tabs.append(b);
+    section.append(h, grid);
+    box.append(section);
   }
-  showTab(plan.recommended ?? plan.tactic);
+  const panel = el('section', 'card tile-panel');
+  panel.id = 'tile-panel';
+  panel.hidden = true;
+  panel.setAttribute('aria-labelledby', 'tile-title');
+  const head = el('div', 'tile-head');
+  const title = el('h2', '', '');
+  title.id = 'tile-title';
+  title.tabIndex = -1;
+  const x = button('', 'bar-button tile-close');
+  x.setAttribute('aria-label', 'Close');
+  x.append(icon('close'));
+  x.addEventListener('click', () => close());
+  head.append(title, x);
+  const line = el('p', 'muted', '');
+  line.id = 'tile-line';
+  const way = el('div', 'tile-way');
+  way.id = 'tile-way';
+  panel.append(head, line, way);
+  panel.hidden = true;
+  box.append(panel);
 }
 
-async function savePlan(tactic) {
-  const body = { family: $('plan-family').value, product: $('plan-product').value };
-  if (tactic) body.tactic = tactic;
-  const result = await post('/api/plan', body);
-  if (!result.ok) { showMessage($('plan-message'), result.message); return; }
-  showMessage($('plan-message'), `grove will ask your AI: ${TACTIC_NAMES[result.data.tactic].toLowerCase()}${result.data.tactic === 'whole' ? ', from your next package on' : ''}.`, 'ok');
-  await load();
-}
-
-// Copy prompt: "Copied to clipboard"; only when copying fails is the prompt shown, selected (FR-201).
-async function copyStep(text, item) {
-  const note = item.querySelector('.copied');
-  const box = item.querySelector('textarea');
-  try {
-    await navigator.clipboard.writeText(text);
-    box.hidden = true;
-    note.textContent = 'Copied to clipboard';
-  } catch {
-    box.hidden = false;
-    box.focus();
-    box.select();
-    note.textContent = 'Copying was blocked: the prompt is selected below, copy it by hand.';
-  }
-  note.hidden = false;
-}
-
-function stepItem(label, text) {
-  const li = document.createElement('li');
-  li.className = 'prompt-step';
-  const head = document.createElement('span');
-  head.className = 'step-label';
-  head.textContent = label;
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'copy';
-  button.textContent = 'Copy prompt';
-  const note = document.createElement('span');
-  note.className = 'copied';
-  note.setAttribute('role', 'status');
-  note.hidden = true;
-  const box = document.createElement('textarea');
-  box.readOnly = true;
-  box.rows = 6;
-  box.value = text;
-  box.hidden = true;
-  box.setAttribute('aria-label', label);
-  button.addEventListener('click', () => copyStep(text, li));
-  li.append(head, button, note, box);
-  return li;
-}
-
-const HEADINGS = { part: 'Prompt', package: 'Prompt for the whole package', redo: 'Ask again for one text', fix: 'Fix-it prompt', meanings_fix: 'Meanings prompt' };
-
-function renderSteps(w) {
-  const list = $('prompt-steps');
-  list.replaceChildren();
-  const total = w.steps.length + 1;
-  w.steps.forEach((step, i) => list.append(stepItem(`${i + 1} of ${total}: setup (your AI replies "OK")`, step)));
-  list.append(stepItem(total > 1 ? `${total} of ${total}: the request; paste its answer below` : 'Copy this into the same chat; paste its answer below', w.prompt));
-  $('new-chat-note').hidden = !(w.steps.length || w.newChatSuggested);
-  $('new-chat-note').textContent = w.steps.length
-    ? 'Open a new chat in your AI first, then send these prompts in order.'
-    : 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
-}
-
-function render(home) {
-  $('topic-text').textContent = home.topic;
-  const pkg = home.package;
-  $('progress').textContent = pkg ? `Package: ${pkg.partsAccepted} of ${pkg.of} parts in` : 'No package yet.';
-  waiting = home.waiting;
-  $('prompt-area').hidden = !waiting;
-  if (waiting) {
-    const heading = HEADINGS[waiting.kind] ?? 'Prompt';
-    $('prompt-heading').textContent = waiting.kind === 'package' ? heading : `${heading} (part ${waiting.part} of ${waiting.of})`;
-    renderSteps(waiting);
-  }
-  renderPlan(home.plan);
-  const offer = home.offer && home.offer !== home.plan.tactic ? home.offer : null;
-  $('offer').hidden = !offer;
-  if (offer) {
-    $('offer').replaceChildren(document.createTextNode(`Texts keep failing. ${offer === 'long' ? 'Your AI may keep to your words better with everything in one long prompt.' : 'Your AI may do better with the setup sent once, step by step.'} `));
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'bar-button';
-    b.textContent = `Try ${TACTIC_NAMES[offer].toLowerCase()}`;
-    b.addEventListener('click', () => savePlan(offer));
-    $('offer').append(b);
-  }
-  const getButton = $('get-texts');
-  getButton.hidden = !!waiting;
-  getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
-  $('new-package').hidden = !pkg;
-  // After a finished package, Home suggests My own texts (G-03 FR-321; addendum 003).
-  $('own-suggest').hidden = !(pkg && pkg.partsAccepted >= pkg.of);
-
-  const list = $('texts');
-  list.replaceChildren();
-  $('no-texts').hidden = home.texts.length > 0;
-  for (const t of home.texts) {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `/text?id=${t.id}`;
-    const title = document.createElement('span');
-    title.className = 'text-title';
-    title.textContent = t.title;
-    const state = document.createElement('span');
-    state.className = `text-state ${t.state}`;
-    state.textContent = t.own ? `own · ${t.ready ? t.state : 'waiting for your AI'}` : `${t.kind} · ${t.state}`;
-    a.append(title, state);
-    if (t.beta) {
-      const badge = document.createElement('span');
-      badge.className = 'beta';
-      badge.textContent = 'Beta';
-      a.append(badge);
-    }
-    li.append(a);
-    list.append(li);
-  }
-}
-
-async function load() {
-  const res = await fetch('/api/home', { credentials: 'same-origin' });
-  if (res.ok) render(await res.json());
-}
-
-function showProblems(problems) {
-  const ul = $('problems');
-  ul.replaceChildren();
-  for (const p of problems || []) {
-    const li = document.createElement('li');
-    li.textContent = p;
-    ul.append(li);
-  }
-  ul.hidden = !problems || problems.length === 0;
-}
-
-async function requestPrompt(action) {
-  showProblems([]);
-  const result = await post('/api/prompt', { action });
-  if (!result.ok) {
-    showMessage($('package-message'), result.message);
-    return;
-  }
-  showMessage($('package-message'), '');
-  await load();
-  $('prompt-area').scrollIntoView({ block: 'nearest' });
-}
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && openId && !document.getElementById('help')) close();
+});
 
 await showAccount();
 await getMe();
-await load();
-
-$('topic-edit').addEventListener('click', () => {
-  $('topic-form').hidden = false;
-  $('topic-form').elements.topic.value = $('topic-text').textContent;
-});
-$('topic-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const topic = event.target.elements.topic.value.trim();
-  if (!topic) return;
-  const result = await post('/api/topic', { topic });
-  if (result.ok) {
-    event.target.hidden = true;
-    await load();
-  }
-});
-
-$('get-texts').addEventListener('click', () => {
-  // FR-223: grove asks for the learner's AI before the first texts.
-  if (!plan.family) {
-    showMessage($('plan-message'), 'First choose your AI and its version, so grove can ask it the best way.');
-    $('plan-family').focus();
-    return;
-  }
-  requestPrompt('next');
-});
-$('new-package').addEventListener('click', () => requestPrompt('new_package'));
-$('new-chat').addEventListener('click', () => requestPrompt('new_chat'));
-$('plan-family').addEventListener('change', () => {
-  const family = plan.families.find((f) => f.id === $('plan-family').value);
-  fillProducts(family);
-  if (family) savePlan();
-});
-$('plan-product').addEventListener('change', () => savePlan());
-$('tactic-use').addEventListener('click', () => savePlan(shownTactic));
-
-$('answer').addEventListener('input', () => {
-  const n = $('answer').value.length;
-  $('answer-size').textContent = n > MAX_ANSWER ? `This paste is ${n.toLocaleString()} characters; grove takes at most 80,000. Paste only the answer.` : '';
-});
-
-$('add-texts').addEventListener('click', async () => {
-  const answer = $('answer').value.trim();
-  if (!answer || !waiting) return;
-  if (answer.length > MAX_ANSWER) return;
-  const button = $('add-texts');
-  button.disabled = true;
-  const result = await post('/api/answer', { exchangeId: waiting.exchangeId, answer });
-  button.disabled = false;
-  if (!result.ok) {
-    showMessage($('package-message'), result.message);
-    return;
-  }
-  $('answer').value = '';
-  const r = result.data;
-  const added = `${r.texts.length} ${r.texts.length === 1 ? 'text' : 'texts'} added.`;
-  if (r.result === 'accepted') {
-    showProblems([]);
-    showMessage($('package-message'), added, 'ok');
-  } else if (r.result === 'partly_accepted') {
-    showProblems(r.problems);
-    showMessage($('package-message'), `${added} Copy the next prompt into the same chat for the rest.`, 'ok');
-  } else if (r.result === 'needs_fix') {
-    showProblems(r.problems);
-    showMessage($('package-message'), 'grove couldn\'t use that answer. Copy the fix-it prompt into the same chat and paste the new answer.');
-  }
-  await load();
-  if (waiting && r.newChatSuggested) {
-    $('new-chat-note').hidden = false;
-    $('new-chat-note').textContent = 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
-  }
-});
-
-// G-04: the three stages, level, today's minutes and the welcome card (FR-407, FR-414…FR-416).
+// G-04 FR-416 and G-06 FR-605: the welcome card; a new account goes to the starting check once the
+// welcome is closed.
 async function loadStages() {
   const res = await fetch('/api/stages', { credentials: 'same-origin' });
-  if (!res.ok) return;
+  if (!res.ok) return null;
   const s = await res.json();
   $('welcome').hidden = !s.welcome;
-  $('restart').hidden = !s.canRestart;
-  // G-06: a new account goes to the starting check once the welcome is closed (FR-605).
   if (s.needsStart && !s.welcome) { window.location.assign('/start'); return 'start'; }
-  const level = s.level === null ? 'Set your starting level' : s.level === 'below A1' ? 'Level: below A1' : `Level: ${s.level}`;
-  $('level-line').textContent = `${level} · ${s.todayMinutes} min of input today`;
-  const unread = document.querySelectorAll('#texts .text-state.new').length;
-  $('discover-count').textContent = unread ? `${unread} new` : 'get texts';
-  const due = s.review.fading + s.review.due;
-  $('review-count').textContent = due ? `${due} due${s.review.fading ? ` (${s.review.fading} fading)` : ''}` : 'nothing due';
-  $('master-count').textContent = s.master ? `${s.master} ready` : 'none yet';
+  return null;
 }
-const going = await loadStages();
+const away = await loadStages();
 $('welcome-close').addEventListener('click', async () => {
   await post('/api/welcome', {});
   $('welcome').hidden = true;
   await loadStages();
 });
 
+const sessionRes = await fetch('/api/session', { credentials: 'same-origin' });
+if (sessionRes.ok) going = (await sessionRes.json()).session;
+if (going && going.status !== 'going') going = null;
+const topicsRes = await fetch('/api/topics', { credentials: 'same-origin' });
+if (topicsRes.ok) unread = (await topicsRes.json()).topics.reduce((n, t) => n + t.texts.filter((x) => !x.read && x.ready).length, 0);
+renderTiles();
+
 // G-08 FR-802: once after agreeing to the terms, the leaves-and-ground scene in a card at the top of
 // Home (kept until Home is reached, so a learner sent to the starting check first still sees it).
 function growDue() {
   try { return sessionStorage.getItem('grove-grow-due') === '1'; } catch { return false; }
 }
-if (going !== 'start' && growDue()) {
+if (away !== 'start' && growDue()) {
   try { sessionStorage.removeItem('grove-grow-due'); } catch { /* nothing kept */ }
   const card = document.createElement('section');
   card.className = 'card grow-card';

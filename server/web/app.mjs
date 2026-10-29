@@ -8,6 +8,8 @@ import { registerTextRoutes } from '../texts/routes.mjs';
 import { registerReadingRoutes } from '../reading/routes.mjs';
 import { registerDrillRoutes } from '../drill/routes.mjs';
 import { registerLevelRoutes } from '../levels/routes.mjs';
+import { registerSessionRoutes } from '../sessions/routes.mjs';
+import { registerLibraryRoutes } from '../library/routes.mjs';
 
 export function createApp({ config, db, seclog, firebase, now = () => Date.now(), startup = null }) {
   const router = createRouter();
@@ -32,6 +34,8 @@ export function createApp({ config, db, seclog, firebase, now = () => Date.now()
   registerReadingRoutes(router, { db, sizes: config.sizes, now });
   registerDrillRoutes(router, { db, now });
   registerLevelRoutes(router, { db, now });
+  registerSessionRoutes(router, { db, now });
+  registerLibraryRoutes(router, { db, now });
   registerStaticRoutes(router);
 
   const handler = createHandler({ router, guard, csrf: checkCsrf, log: seclog.app, startup });

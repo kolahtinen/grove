@@ -1,8 +1,8 @@
 # Data model: G-09 additions
 
-Migration `014-sessions.sql` (012 and 013 were taken by the Dictionary and addendum 003). Adds one table; changes no rows.
+Migration `014-sessions.sql` (012 and 013 were taken by the Dictionary and addendum 003). Adds one table, `practice_sessions` (`sessions` is G-01's sign-in sessions); changes no rows.
 
-## sessions
+## practice_sessions
 
 | Column | Type | Notes |
 |---|---|---|
