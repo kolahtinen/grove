@@ -1111,6 +1111,655 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "C1-11",
+      "level": "C1",
+      "topic": "Daily life",
+      "form": "prose",
+      "kind": "listening",
+      "title": "När mörkret kommer",
+      "names": [
+        "Stockholm"
+      ],
+      "above_level": [
+        "vintertid",
+        "mörkertid",
+        "nedstämdhet",
+        "advent",
+        "vintersolstånd"
+      ],
+      "lines": [
+        {
+          "sv": "I november händer något med Sverige.",
+          "en": "In November something happens to Sweden."
+        },
+        {
+          "sv": "Klockan har ställts om till vintertid, och plötsligt är det mörkt redan när man går hem från jobbet.",
+          "en": "The clocks have been put back to winter time, and suddenly it's already dark when you go home from work."
+        },
+        {
+          "sv": "Längst i norr går solen inte upp alls under några veckor runt jul. Det kallas mörkertid.",
+          "en": "In the far north the sun doesn't rise at all for a few weeks around Christmas. It's called the polar night."
+        },
+        {
+          "sv": "Även i Stockholm är dagarna korta. I december är det ljust i ungefär sex timmar.",
+          "en": "Even in Stockholm the days are short. In December it's light for about six hours."
+        },
+        {
+          "sv": "För många påverkar det humöret.",
+          "en": "For many people it affects their mood."
+        },
+        {
+          "sv": "Man blir trött, sover mer och har svårare att komma igång på morgonen.",
+          "en": "You get tired, sleep more and find it harder to get going in the morning."
+        },
+        {
+          "sv": "En del drabbas av vinterdepression, men de flesta upplever bara en mildare nedstämdhet.",
+          "en": "Some suffer from winter depression, but most only experience a milder low mood."
+        },
+        {
+          "sv": "Hur hanterar svenskarna mörkret?",
+          "en": "How do Swedes deal with the darkness?"
+        },
+        {
+          "sv": "Ett svar syns i nästan varje fönster.",
+          "en": "One answer can be seen in almost every window."
+        },
+        {
+          "sv": "I början av advent tänds stjärnor och ljusstakar, och de får ofta lysa ända till februari.",
+          "en": "At the start of Advent, stars and candlesticks are lit, and they are often left shining until February."
+        },
+        {
+          "sv": "Levande ljus är också vanligt, både hemma och på kaféer.",
+          "en": "Real candles are also common, both at home and in cafés."
+        },
+        {
+          "sv": "Svenskarna hör till dem i Europa som tänder flest ljus, och varje vinter påminner räddningstjänsten om att man aldrig ska lämna dem utan uppsikt.",
+          "en": "Swedes are among the people in Europe who light the most candles, and every winter the fire service reminds people never to leave them unattended."
+        },
+        {
+          "sv": "Läkare ger dessutom några enkla råd.",
+          "en": "Doctors also give some simple advice."
+        },
+        {
+          "sv": "Det viktigaste är att gå ut mitt på dagen, när det är som ljusast, även om himlen är grå.",
+          "en": "The most important thing is to go out in the middle of the day, when it's at its lightest, even if the sky is grey."
+        },
+        {
+          "sv": "Dagsljus utomhus är nämligen mycket starkare än lampor inomhus.",
+          "en": "Daylight outdoors is in fact much stronger than lamps indoors."
+        },
+        {
+          "sv": "Motion hjälper också, liksom regelbundna tider för sömn och måltider.",
+          "en": "Exercise also helps, as do regular times for sleep and meals."
+        },
+        {
+          "sv": "Många nämner också gemenskapen.",
+          "en": "Many also mention being together."
+        },
+        {
+          "sv": "Att träffa vänner, äta något gott och tända ljus tillsammans gör de mörka kvällarna mysigare.",
+          "en": "Meeting friends, eating something nice and lighting candles together make the dark evenings cosier."
+        },
+        {
+          "sv": "Och så finns det något att se fram emot.",
+          "en": "And then there is something to look forward to."
+        },
+        {
+          "sv": "Efter vintersolståndet blir dagarna längre igen, först med några minuter, sedan allt snabbare.",
+          "en": "After the winter solstice the days get longer again, first by a few minutes, then faster and faster."
+        },
+        {
+          "sv": "I mars märker alla skillnaden.",
+          "en": "In March everyone notices the difference."
+        },
+        {
+          "sv": "Då sitter folk på trappor och bänkar med slutna ögon och vänder ansiktet mot solen, som om de laddade batterierna.",
+          "en": "Then people sit on steps and benches with their eyes closed and turn their faces to the sun, as if they were charging their batteries."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad är mörkertid?",
+          "options": [
+            "När solen inte går upp alls på några veckor",
+            "När det är ljust hela natten",
+            "Den längsta natten i Stockholm"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vilket är läkarnas viktigaste råd?",
+          "options": [
+            "Att sova mer",
+            "Att gå ut mitt på dagen",
+            "Att tända levande ljus"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör folk i mars, enligt texten?",
+          "options": [
+            "De reser söderut",
+            "De sitter ute och vänder ansiktet mot solen",
+            "De tar ner stjärnorna i fönstren"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-12",
+      "level": "C1",
+      "topic": "Food and drink",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Innan Systemet stänger",
+      "names": [
+        "Karin",
+        "Systembolaget",
+        "Systemet"
+      ],
+      "above_level": [
+        "omständlig",
+        "legitimation",
+        "opraktisk",
+        "utlämningsställe"
+      ],
+      "lines": [
+        {
+          "sv": "– Karin, jag behöver köpa en flaska vin till middagen hos dina föräldrar. Finns det någon vinbutik i närheten?",
+          "en": "– Karin, I need to buy a bottle of wine for dinner at your parents'. Is there a wine shop nearby?"
+        },
+        {
+          "sv": "– Det finns bara en sorts vinbutik i Sverige: Systembolaget. Och den stänger klockan tre på lördagar, så vi får skynda oss.",
+          "en": "– There's only one kind of wine shop in Sweden: Systembolaget. And it closes at three on Saturdays, so we'd better hurry."
+        },
+        {
+          "sv": "– Klockan tre? Du skojar.",
+          "en": "– Three o'clock? You're joking."
+        },
+        {
+          "sv": "– Inte alls. Och på söndagar har den stängt.",
+          "en": "– Not at all. And on Sundays it's closed."
+        },
+        {
+          "sv": "– Men kan jag inte bara köpa vin i matbutiken?",
+          "en": "– But can't I just buy wine at the supermarket?"
+        },
+        {
+          "sv": "– Nej, vanliga matbutiker får bara sälja öl och drycker med låg alkoholhalt. Allt starkare säljs på Systemet.",
+          "en": "– No, ordinary food shops may only sell beer and drinks with a low alcohol content. Anything stronger is sold at Systemet."
+        },
+        {
+          "sv": "– Varför då? Det låter ju väldigt omständligt.",
+          "en": "– Why? It sounds really cumbersome."
+        },
+        {
+          "sv": "– Det är meningen. Staten har monopol för att begränsa hur mycket folk dricker. Om ingen tjänar pengar på att sälja mer, finns det ingen anledning att locka kunder.",
+          "en": "– That's the idea. The state has a monopoly to limit how much people drink. If nobody makes money from selling more, there's no reason to attract customers."
+        },
+        {
+          "sv": "– Så de vill inte att man köper något?",
+          "en": "– So they don't want you to buy anything?"
+        },
+        {
+          "sv": "– Ungefär. De gör ingen reklam, de har inga extrapriser, och personalen ska fråga efter legitimation om man ser ut att vara under 25.",
+          "en": "– More or less. They don't advertise, they have no special offers, and the staff are to ask for ID if you look under 25."
+        },
+        {
+          "sv": "– Det låter som ett märkligt sätt att driva en affär.",
+          "en": "– That sounds like a strange way to run a shop."
+        },
+        {
+          "sv": "– Kanske. Men det är faktiskt ganska populärt. De flesta svenskar vill behålla det, enligt undersökningarna.",
+          "en": "– Maybe. But it's actually quite popular. Most Swedes want to keep it, according to the surveys."
+        },
+        {
+          "sv": "– Hur kommer det sig?",
+          "en": "– How come?"
+        },
+        {
+          "sv": "– Men är det inte opraktiskt för dem som bor på landet?",
+          "en": "– But isn't it impractical for people who live in the countryside?"
+        },
+        {
+          "sv": "– Lite, men man kan beställa varor till ett utlämningsställe, ofta i den närmaste mataffären. Det fungerar bättre än man tror.",
+          "en": "– A bit, but you can order goods to a pick-up point, often in the nearest food shop. It works better than you might think."
+        },
+        {
+          "sv": "– Okej. Men varför är det populärt?",
+          "en": "– Okay. But why is it popular?"
+        },
+        {
+          "sv": "– Utbudet är stort, och personalen är kunnig. Om du berättar vad mina föräldrar ska laga kan de föreslå ett vin som passar. Och priserna är desamma i hela landet.",
+          "en": "– The range is large and the staff know their stuff. If you tell them what my parents are cooking, they can suggest a wine that goes with it. And the prices are the same all over the country."
+        },
+        {
+          "sv": "– Vad ska de laga, förresten?",
+          "en": "– What are they cooking, by the way?"
+        },
+        {
+          "sv": "– Älg, tror jag. Pappa var ute och jagade i höstas.",
+          "en": "– Elk, I think. Dad was out hunting this autumn."
+        },
+        {
+          "sv": "– Då hoppas jag att de har något rött som passar till vilt.",
+          "en": "– Then I hope they've got something red that goes with game."
+        },
+        {
+          "sv": "– Det har de säkert. Men först måste vi hinna dit. Klockan är kvart i tre.",
+          "en": "– I'm sure they have. But first we have to get there in time. It's a quarter to three."
+        },
+        {
+          "sv": "– Då springer vi!",
+          "en": "– Then let's run!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför kan man inte köpa vin i en vanlig matbutik?",
+          "options": [
+            "Det är för dyrt",
+            "Bara Systembolaget får sälja starkare drycker",
+            "Matbutikerna har stängt på lördagar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför har staten monopol, enligt Karin?",
+          "options": [
+            "För att begränsa hur mycket folk dricker",
+            "För att tjäna mer pengar",
+            "För att hålla priserna låga"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad ska Karins föräldrar laga?",
+          "options": [
+            "Fisk",
+            "Älg",
+            "Kyckling"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-13",
+      "level": "C1",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Pengar till hälsan",
+      "names": [
+        "Skatteverket",
+        "Skatteverkets"
+      ],
+      "above_level": [
+        "skattefri",
+        "fysioterapeut",
+        "mirakelkur",
+        "knuff"
+      ],
+      "lines": [
+        {
+          "sv": "De flesta svenska arbetsgivare erbjuder sina anställda ett så kallat friskvårdsbidrag.",
+          "en": "Most Swedish employers offer their employees a so-called wellness allowance."
+        },
+        {
+          "sv": "Det är en summa pengar, ofta mellan två och fem tusen kronor om året, som man kan använda till aktiviteter som främjar hälsan, till exempel gymkort, simhall eller yoga.",
+          "en": "It is a sum of money, often between two and five thousand kronor a year, which you can use for activities that promote health, for example a gym card, the swimming pool or yoga."
+        },
+        {
+          "sv": "Bidraget är skattefritt för den anställde, förutsatt att aktiviteten finns med på Skatteverkets lista.",
+          "en": "The allowance is tax-free for the employee, provided that the activity is on the Tax Agency's list."
+        },
+        {
+          "sv": "Tanken är enkel: friska medarbetare är mindre sjukskrivna, presterar bättre och trivs längre på jobbet.",
+          "en": "The idea is simple: healthy employees are on sick leave less, perform better and stay happy in their jobs longer."
+        },
+        {
+          "sv": "Ändå visar undersökningar att ungefär hälften av dem som har rätt till bidraget aldrig använder det.",
+          "en": "Yet surveys show that about half of those entitled to the allowance never use it."
+        },
+        {
+          "sv": "Dessutom upplever många att listan över godkända aktiviteter är svår att överblicka.",
+          "en": "In addition, many find the list of approved activities hard to get an overview of."
+        },
+        {
+          "sv": "Varför?",
+          "en": "Why?"
+        },
+        {
+          "sv": "Ett skäl är att många helt enkelt glömmer bort det eller inte vet hur man gör.",
+          "en": "One reason is that many simply forget about it or don't know how to go about it."
+        },
+        {
+          "sv": "Ofta måste man först betala själv och sedan lämna in kvittot, och det är ett steg som lätt blir liggande.",
+          "en": "Often you have to pay yourself first and then hand in the receipt, and that is a step that easily gets put off."
+        },
+        {
+          "sv": "Ett annat skäl är att bidraget främst lockar dem som redan tränar.",
+          "en": "Another reason is that the allowance mainly attracts those who already exercise."
+        },
+        {
+          "sv": "Den som springer tre gånger i veckan har inga problem att använda pengarna. Men den som inte har rört sig på flera år börjar sällan bara för att det finns ett bidrag.",
+          "en": "Someone who runs three times a week has no trouble using the money. But someone who hasn't exercised for years rarely starts just because there is an allowance."
+        },
+        {
+          "sv": "Därmed riskerar bidraget att gynna de friska snarare än dem som skulle ha mest nytta av det.",
+          "en": "The allowance thus risks benefiting the healthy rather than those who would gain most from it."
+        },
+        {
+          "sv": "Vissa arbetsplatser har därför valt en annan väg.",
+          "en": "Some workplaces have therefore chosen a different path."
+        },
+        {
+          "sv": "I stället för att bara dela ut pengar ordnar de gemensamma promenader på lunchen.",
+          "en": "Instead of just handing out money, they organise group walks at lunchtime."
+        },
+        {
+          "sv": "Andra låter de anställda träna en timme i veckan på arbetstid eller bjuder in en fysioterapeut som ger råd om hur man sitter vid skrivbordet.",
+          "en": "Others let employees exercise for an hour a week during working hours, or invite a physiotherapist who gives advice on how to sit at your desk."
+        },
+        {
+          "sv": "Erfarenheterna är hittills goda, enligt arbetsgivarna själva.",
+          "en": "So far the experience has been good, according to the employers themselves."
+        },
+        {
+          "sv": "När aktiviteten är en del av arbetsdagen deltar betydligt fler, även de som annars aldrig skulle ha satt sin fot på ett gym.",
+          "en": "When the activity is part of the working day, considerably more people take part, even those who would otherwise never have set foot in a gym."
+        },
+        {
+          "sv": "Friskvårdsbidraget är alltså ingen mirakelkur.",
+          "en": "So the wellness allowance is no miracle cure."
+        },
+        {
+          "sv": "Men rätt använt kan det vara en liten knuff i rätt riktning, och för många räcker det långt.",
+          "en": "But used properly, it can be a little nudge in the right direction, and for many that goes a long way."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur många av dem som har rätt till bidraget använder det aldrig?",
+          "options": [
+            "Ungefär en tiondel",
+            "Ungefär hälften",
+            "Nästan alla"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vilket problem med bidraget beskriver texten?",
+          "options": [
+            "Det är för litet",
+            "Det lockar främst dem som redan tränar",
+            "Det är skattepliktigt"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad har gett goda erfarenheter på vissa arbetsplatser?",
+          "options": [
+            "Högre bidrag",
+            "Aktiviteter som är en del av arbetsdagen",
+            "Gratis gymkort till chefer"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-14",
+      "level": "C1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Mobilfri skola?",
+      "names": [
+        "Maria",
+        "Jonas"
+      ],
+      "above_level": [
+        "skoldag",
+        "högstadieskola"
+      ],
+      "lines": [
+        {
+          "sv": "– God morgon och välkommen. Snart kan mobiltelefoner bli förbjudna under hela skoldagen i grundskolan.",
+          "en": "– Good morning and welcome. Soon mobile phones may be banned for the whole school day in compulsory school."
+        },
+        {
+          "sv": "– I studion har vi Maria, som är lärare på en högstadieskola, och Jonas, som är förälder och skeptisk till förslaget. Maria, varför behövs ett förbud?",
+          "en": "– In the studio we have Maria, a teacher at a lower secondary school, and Jonas, a parent who is sceptical of the proposal. Maria, why is a ban needed?"
+        },
+        {
+          "sv": "– För att mobilen tar fokus från undervisningen. Eleverna får notiser hela tiden, och även när de inte tittar på telefonen tänker de på den.",
+          "en": "– Because the phone takes the focus away from teaching. Pupils get notifications all the time, and even when they aren't looking at the phone they're thinking about it."
+        },
+        {
+          "sv": "– Det finns studier som visar att bara det att mobilen ligger på bordet försämrar koncentrationen.",
+          "en": "– There are studies showing that just having the phone on the desk impairs concentration."
+        },
+        {
+          "sv": "– Jonas, du håller inte med?",
+          "en": "– Jonas, you don't agree?"
+        },
+        {
+          "sv": "– Jag håller med om att mobilen kan störa på lektionerna. Men ett förbud under hela dagen, även på rasterna, går för långt.",
+          "en": "– I agree that the phone can be disruptive in lessons. But a ban for the whole day, even during breaks, goes too far."
+        },
+        {
+          "sv": "– Mobilen är ju ett verktyg som eleverna kommer att använda resten av livet. Skolan borde lära dem att hantera den, inte gömma undan den.",
+          "en": "– The phone is a tool that pupils will use for the rest of their lives. School should teach them to handle it, not hide it away."
+        },
+        {
+          "sv": "– Men barn har svårt att hantera något som är byggt för att fånga deras uppmärksamhet. Det är ingen jämn kamp. Vuxna klarar det knappt själva.",
+          "en": "– But children find it hard to handle something that's built to capture their attention. It's not a fair fight. Adults barely manage it themselves."
+        },
+        {
+          "sv": "– Där har du en poäng. Men vem ska bestämma, staten eller skolan? Varje rektor känner sina elever bäst.",
+          "en": "– You have a point there. But who should decide, the state or the school? Every head teacher knows their pupils best."
+        },
+        {
+          "sv": "– Problemet är att när det är upp till varje skola blir det olika regler överallt, och lärarna får ta diskussionen varje dag. Ett nationellt förbud gör det tydligt.",
+          "en": "– The problem is that when it's up to each school, the rules differ everywhere, and teachers have to have the argument every day. A national ban makes it clear."
+        },
+        {
+          "sv": "– Maria, hur har det fungerat på din skola? Ni har redan infört mobilfria dagar, eller hur?",
+          "en": "– Maria, how has it worked at your school? You've already introduced phone-free days, haven't you?"
+        },
+        {
+          "sv": "– Ja, sedan ett år tillbaka lämnar eleverna in telefonerna på morgonen. I början protesterade många, men nu märker vi att de pratar mer med varandra på rasterna. Några har till och med börjat spela kort.",
+          "en": "– Yes, for a year now pupils have handed in their phones in the morning. At first many protested, but now we notice they talk more to each other at break. Some have even started playing cards."
+        },
+        {
+          "sv": "– Lärarna slipper dessutom tjata hela tiden, och de elever som tidigare satt ensamma med sina skärmar har fått lättare att hitta någon att umgås med.",
+          "en": "– Teachers also no longer have to nag all the time, and the pupils who used to sit alone with their screens have found it easier to find someone to spend time with."
+        },
+        {
+          "sv": "– Och föräldrarna, Jonas? Många vill ju kunna nå sina barn.",
+          "en": "– And the parents, Jonas? Many want to be able to reach their children."
+        },
+        {
+          "sv": "– Precis, det är min största oro. Om något händer vill jag kunna få tag i mitt barn direkt.",
+          "en": "– Exactly, that's my biggest worry. If something happens, I want to be able to get hold of my child straight away."
+        },
+        {
+          "sv": "– Då kan man ringa skolan, precis som man gjorde förr.",
+          "en": "– Then you can call the school, just as people used to."
+        },
+        {
+          "sv": "– Vi får se hur det blir. Tack båda två för att ni kom hit.",
+          "en": "– We will see how it turns out. Thank you both for coming in."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad tycker Jonas om ett förbud under lektionerna?",
+          "options": [
+            "Han håller med om att mobilen kan störa där",
+            "Han tycker att mobilen alltid hjälper",
+            "Han vill förbjuda mobiler även hemma"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad har hänt på Marias skola sedan eleverna började lämna in telefonerna?",
+          "options": [
+            "Eleverna har slutat komma i tid",
+            "Eleverna pratar mer med varandra på rasterna",
+            "Föräldrarna har bytt skola"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är Jonas största oro?",
+          "options": [
+            "Att eleverna blir uttråkade",
+            "Att han inte kan nå sitt barn om något händer",
+            "Att lärarna får mer arbete"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-15",
+      "level": "C1",
+      "topic": "Free time and culture",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Hela landet tycker till",
+      "names": [
+        "Melodifestivalen",
+        "Melodifestivalens",
+        "Eurovision",
+        "Abba"
+      ],
+      "above_level": [
+        "dipp",
+        "schlager",
+        "rap"
+      ],
+      "lines": [
+        {
+          "sv": "Varje lördag i februari och början av mars händer något som är svårt att förklara för den som inte har bott i Sverige.",
+          "en": "Every Saturday in February and early March, something happens that is hard to explain to anyone who hasn't lived in Sweden."
+        },
+        {
+          "sv": "Miljontals människor sätter sig i soffan för att titta på Melodifestivalen, tävlingen där Sverige väljer sitt bidrag till Eurovision.",
+          "en": "Millions of people settle on the sofa to watch Melodifestivalen, the contest in which Sweden chooses its entry for Eurovision."
+        },
+        {
+          "sv": "Under finalen tittar ungefär var tredje svensk, vilket gör programmet till ett av årets mest sedda.",
+          "en": "During the final, about one Swede in three watches, which makes the programme one of the most watched of the year."
+        },
+        {
+          "sv": "Tävlingen har funnits sedan 1959, men i sin nuvarande form, med deltävlingar som turnerar runt i landet, startade den 2002.",
+          "en": "The contest has existed since 1959, but in its present form, with heats that tour around the country, it started in 2002."
+        },
+        {
+          "sv": "Sedan dess har den vuxit till ett slags folkfest.",
+          "en": "Since then it has grown into a kind of national celebration."
+        },
+        {
+          "sv": "I varje deltävling röstar tittarna via telefon eller en app fram vilka bidrag som går vidare. I finalen avgör tittarna tillsammans med internationella jurygrupper vem som vinner.",
+          "en": "In each heat, viewers vote by phone or an app for which entries go through. In the final, viewers together with international juries decide who wins."
+        },
+        {
+          "sv": "Familjer samlas med chips och dipp, vänner ordnar fester där alla delar ut poäng, och dagen efter diskuteras resultaten på jobbet och i skolan.",
+          "en": "Families gather with crisps and dip, friends throw parties where everyone gives out points, and the next day the results are discussed at work and at school."
+        },
+        {
+          "sv": "Under några veckor är låtarna dessutom svåra att undvika, eftersom de spelas överallt.",
+          "en": "For a few weeks the songs are also hard to avoid, since they are played everywhere."
+        },
+        {
+          "sv": "Varför är just Melodifestivalen så populär?",
+          "en": "Why is Melodifestivalen in particular so popular?"
+        },
+        {
+          "sv": "En förklaring är att Sverige har haft stora framgångar i Eurovision.",
+          "en": "One explanation is that Sweden has had great success in Eurovision."
+        },
+        {
+          "sv": "Ända sedan Abba vann 1974 har landet vunnit flera gånger, och tävlingen förknippas med en sorts nationell stolthet över svensk popmusik.",
+          "en": "Ever since ABBA won in 1974, the country has won several times, and the contest is associated with a kind of national pride in Swedish pop music."
+        },
+        {
+          "sv": "En annan förklaring är att programmet erbjuder något för alla.",
+          "en": "Another explanation is that the programme offers something for everyone."
+        },
+        {
+          "sv": "Där finns allt från schlager och ballader till rock och rap, ibland med uppträdanden som är medvetet överdrivna.",
+          "en": "There is everything from schlager and ballads to rock and rap, sometimes with performances that are deliberately over the top."
+        },
+        {
+          "sv": "Man behöver inte gilla alla bidrag för att ha roligt; tvärtom är det en del av nöjet att håna de låtar man tycker sämst om.",
+          "en": "You don't have to like every entry to have fun; on the contrary, mocking the songs you like least is part of the pleasure."
+        },
+        {
+          "sv": "Kritikerna menar att tävlingen belönar en ganska förutsägbar sorts musik, och att det är formeln snarare än kreativiteten som vinner.",
+          "en": "Critics argue that the contest rewards a rather predictable kind of music, and that it is the formula rather than creativity that wins."
+        },
+        {
+          "sv": "Andra påpekar att den har gett många artister en chans att nå en bred publik som de annars aldrig hade nått.",
+          "en": "Others point out that it has given many artists a chance to reach a broad audience they would otherwise never have reached."
+        },
+        {
+          "sv": "Flera av dem har sedan gjort stora karriärer, både i Sverige och utomlands.",
+          "en": "Several of them have since gone on to have big careers, both in Sweden and abroad."
+        },
+        {
+          "sv": "Men kanske handlar fenomenet egentligen inte så mycket om musik.",
+          "en": "But perhaps the phenomenon isn't really so much about music."
+        },
+        {
+          "sv": "Mitt i den mörka vintern, när vardagen känns lång, ger Melodifestivalen människor en anledning att samlas kring något gemensamt.",
+          "en": "In the middle of the dark winter, when everyday life feels long, Melodifestivalen gives people a reason to gather around something shared."
+        },
+        {
+          "sv": "I ett land där människor ofta beskrivs som reserverade blir lördagskvällen ett tillfälle då alla får tycka till, högt och utan att skämmas.",
+          "en": "In a country where people are often described as reserved, Saturday evening becomes an occasion when everyone gets to have their say, loudly and without embarrassment."
+        },
+        {
+          "sv": "Och när vinnaren står klar i mars har halva landet en åsikt om saken.",
+          "en": "And when the winner is decided in March, half the country has an opinion on the matter."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad är Melodifestivalen?",
+          "options": [
+            "En musikfestival på sommaren",
+            "Tävlingen där Sverige väljer sitt bidrag till Eurovision",
+            "Ett tv-program om svensk historia"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad menar kritikerna?",
+          "options": [
+            "Att tävlingen belönar förutsägbar musik",
+            "Att programmet är för kort",
+            "Att för få människor tittar"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad handlar fenomenet kanske egentligen om, enligt texten?",
+          "options": [
+            "Om pengar",
+            "Om att samlas kring något gemensamt mitt i vintern",
+            "Om att lära sig sjunga"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }

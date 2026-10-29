@@ -1667,6 +1667,528 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "B1-18",
+      "level": "B1",
+      "topic": "Travel and transport",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Vid incheckningen",
+      "names": [
+        "London"
+      ],
+      "above_level": [
+        "check",
+        "kilo"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej, jag ska flyga till London klockan elva.",
+          "en": "– Hi, I'm flying to London at eleven."
+        },
+        {
+          "sv": "– Får jag se ditt pass och din biljett?",
+          "en": "– May I see your passport and your ticket?"
+        },
+        {
+          "sv": "– Varsågod. Biljetten finns i mobilen.",
+          "en": "– Here you are. The ticket is on my phone."
+        },
+        {
+          "sv": "– Tack. Vill du checka in väskan?",
+          "en": "– Thanks. Do you want to check in your bag?"
+        },
+        {
+          "sv": "– Ja, den stora. Den lilla tar jag med mig på planet.",
+          "en": "– Yes, the big one. I'll take the small one with me on the plane."
+        },
+        {
+          "sv": "– Ställ den här, är du snäll. Oj, den väger 25 kilo. Din biljett gäller bara för 23 kilo.",
+          "en": "– Put it here, please. Oh, it weighs 25 kilos. Your ticket only covers 23 kilos."
+        },
+        {
+          "sv": "– Vad händer om den är för tung?",
+          "en": "– What happens if it is too heavy?"
+        },
+        {
+          "sv": "– Då kostar det 600 kronor extra.",
+          "en": "– Then it costs 600 kronor extra."
+        },
+        {
+          "sv": "– Det var dyrt. Kan jag flytta några saker till den lilla väskan?",
+          "en": "– That's expensive. Can I move some things to the small bag?"
+        },
+        {
+          "sv": "– Visst, men skynda dig lite.",
+          "en": "– Sure, but hurry a little."
+        },
+        {
+          "sv": "– Jag tar ut ett par skor och en tröja. Nu då?",
+          "en": "– I'll take out a pair of shoes and a jumper. How about now?"
+        },
+        {
+          "sv": "– Precis 23 kilo. Bra jobbat!",
+          "en": "– Exactly 23 kilos. Well done!"
+        },
+        {
+          "sv": "– Skönt. Vart ska jag gå nu?",
+          "en": "– Great. Where do I go now?"
+        },
+        {
+          "sv": "– Säkerhetskontrollen ligger till vänster. Planet går från gate 12, så var där senast tjugo minuter före avgång.",
+          "en": "– Security is on the left. The plane leaves from gate 12, so be there at least twenty minutes before departure."
+        },
+        {
+          "sv": "– Tack för hjälpen!",
+          "en": "– Thanks for your help!"
+        },
+        {
+          "sv": "– Trevlig resa!",
+          "en": "– Have a nice trip!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur mycket vägde väskan först?",
+          "options": [
+            "23 kilo",
+            "25 kilo",
+            "600 kilo"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gjorde resenären för att slippa betala extra?",
+          "options": [
+            "Lämnade väskan hemma",
+            "Flyttade saker till den lilla väskan",
+            "Köpte en ny biljett"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var ligger säkerhetskontrollen?",
+          "options": [
+            "Till vänster",
+            "Till höger",
+            "Vid gate 12"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B1-19",
+      "level": "B1",
+      "topic": "Food and drink",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Middag för sex",
+      "names": [
+        "Johanna",
+        "Peter"
+      ],
+      "above_level": [
+        "ugn",
+        "vegetarian",
+        "allergisk",
+        "nöt",
+        "gryta"
+      ],
+      "lines": [
+        {
+          "sv": "– Vi har bjudit sex personer på lördag. Vad ska vi laga?",
+          "en": "– We've invited six people on Saturday. What shall we cook?"
+        },
+        {
+          "sv": "– Jag tänkte lax i ugnen med potatis och en god sås.",
+          "en": "– I was thinking salmon in the oven with potatoes and a nice sauce."
+        },
+        {
+          "sv": "– Bra idé, men Johanna äter inte fisk. Hon är vegetarian.",
+          "en": "– Good idea, but Johanna doesn't eat fish. She's a vegetarian."
+        },
+        {
+          "sv": "– Det hade jag glömt. Och Peter är allergisk mot nötter, eller hur?",
+          "en": "– I'd forgotten that. And Peter is allergic to nuts, isn't he?"
+        },
+        {
+          "sv": "– Ja, så vi får vara försiktiga med efterrätten.",
+          "en": "– Yes, so we have to be careful with the dessert."
+        },
+        {
+          "sv": "– Vad sägs om en stor gryta med bönor och grönsaker? Den passar alla.",
+          "en": "– How about a big stew with beans and vegetables? It suits everyone."
+        },
+        {
+          "sv": "– Det låter gott. Vi kan servera ris och en grön sallad till.",
+          "en": "– That sounds good. We can serve rice and a green salad with it."
+        },
+        {
+          "sv": "– Och bröd. Jag kan baka på fredag kväll.",
+          "en": "– And bread. I can bake on Friday evening."
+        },
+        {
+          "sv": "– Har du tid med det? Du jobbar ju sent på fredag.",
+          "en": "– Do you have time for that? You're working late on Friday, after all."
+        },
+        {
+          "sv": "– Du har rätt. Vi köper bröd på bageriet i stället.",
+          "en": "– You're right. We'll buy bread at the bakery instead."
+        },
+        {
+          "sv": "– Och till efterrätt?",
+          "en": "– And for dessert?"
+        },
+        {
+          "sv": "– Glass och färska bär. Det är enkelt och utan nötter.",
+          "en": "– Ice cream and fresh berries. It's simple and has no nuts."
+        },
+        {
+          "sv": "– Perfekt. Då skriver jag en lista. Kan du handla på lördag morgon?",
+          "en": "– Perfect. Then I'll write a list. Can you do the shopping on Saturday morning?"
+        },
+        {
+          "sv": "– Javisst, om du städar under tiden.",
+          "en": "– Sure, if you clean in the meantime."
+        },
+        {
+          "sv": "– Okej, då gör vi så.",
+          "en": "– Okay, let's do that."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför blir det ingen lax?",
+          "options": [
+            "Peter tycker inte om fisk",
+            "Johanna äter inte fisk",
+            "Laxen är för dyr"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför bakar de inte bröd själva?",
+          "options": [
+            "De har ingen ugn",
+            "Den ena jobbar sent på fredag",
+            "Ingen kan baka"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad blir det till efterrätt?",
+          "options": [
+            "Glass och färska bär",
+            "Kaka med nötter",
+            "Äppelpaj"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B1-20",
+      "level": "B1",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Farfar på skärmen",
+      "names": [
+        "Norrland",
+        "Malmö"
+      ],
+      "above_level": [
+        "surfplatta"
+      ],
+      "lines": [
+        {
+          "sv": "Min farfar är 82 år och bor ensam i ett litet hus i Norrland.",
+          "en": "My grandfather is 82 and lives alone in a small house in Norrland."
+        },
+        {
+          "sv": "Vi bor i Malmö, så vi träffas bara några gånger om året.",
+          "en": "We live in Malmö, so we only see each other a few times a year."
+        },
+        {
+          "sv": "Förut ringde vi honom varje söndag, men han hörde inte alltid vad vi sa.",
+          "en": "We used to call him every Sunday, but he didn't always hear what we said."
+        },
+        {
+          "sv": "I julas fick han en surfplatta av oss.",
+          "en": "Last Christmas we gave him a tablet."
+        },
+        {
+          "sv": "Först var han tveksam. Han sa att sådana saker var för unga människor.",
+          "en": "At first he was doubtful. He said things like that were for young people."
+        },
+        {
+          "sv": "Men min dotter, som är tolv, visade honom hur den fungerar.",
+          "en": "But my daughter, who is twelve, showed him how it works."
+        },
+        {
+          "sv": "Hon skrev en lapp med stora bokstäver: Tryck på den gröna knappen när det ringer.",
+          "en": "She wrote a note in big letters: Press the green button when it rings."
+        },
+        {
+          "sv": "Det tog några veckor, men nu ringer farfar själv.",
+          "en": "It took a few weeks, but now grandad calls by himself."
+        },
+        {
+          "sv": "Varje söndag ser vi hans ansikte på skärmen, ofta lite för nära.",
+          "en": "Every Sunday we see his face on the screen, often a little too close."
+        },
+        {
+          "sv": "Han visar oss fåglarna utanför fönstret och snön i trädgården.",
+          "en": "He shows us the birds outside the window and the snow in the garden."
+        },
+        {
+          "sv": "Barnen visar honom sina teckningar och berättar om skolan.",
+          "en": "The children show him their drawings and tell him about school."
+        },
+        {
+          "sv": "Förra veckan skickade han sin första bild. Det var en bild på hans fötter.",
+          "en": "Last week he sent his first picture. It was a picture of his feet."
+        },
+        {
+          "sv": "Vi skrattade mycket, och det gjorde han också.",
+          "en": "We laughed a lot, and so did he."
+        },
+        {
+          "sv": "Det är inte samma sak som att träffas, men det känns mycket närmare än förut.",
+          "en": "It isn't the same as meeting, but it feels much closer than before."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför var det svårt att prata i telefon med farfar?",
+          "options": [
+            "Han hörde inte alltid vad de sa",
+            "Han hade ingen telefon",
+            "Han svarade aldrig"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem lärde farfar att använda surfplattan?",
+          "options": [
+            "Hans son",
+            "Hans barnbarn som är tolv",
+            "En granne"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad var det på farfars första bild?",
+          "options": [
+            "Fåglar",
+            "Snö",
+            "Hans fötter"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "B1-21",
+      "level": "B1",
+      "topic": "Daily life",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Ett år utan nya saker",
+      "names": [],
+      "above_level": [
+        "tandkräm",
+        "schampo",
+        "begagnad",
+        "dammsugare"
+      ],
+      "lines": [
+        {
+          "sv": "Förra januari bestämde jag mig för att inte köpa några nya saker på ett helt år.",
+          "en": "Last January I decided not to buy any new things for a whole year."
+        },
+        {
+          "sv": "Mat, medicin, tandkräm och schampo räknades inte, men allt annat skulle vara begagnat eller lånat.",
+          "en": "Food, medicine, toothpaste and shampoo didn't count, but everything else had to be second-hand or borrowed."
+        },
+        {
+          "sv": "Anledningen var enkel: mina skåp var fulla, men jag kände mig aldrig nöjd.",
+          "en": "The reason was simple: my cupboards were full, but I never felt satisfied."
+        },
+        {
+          "sv": "De första månaderna var svåra.",
+          "en": "The first months were hard."
+        },
+        {
+          "sv": "När jag såg en snygg jacka i ett skyltfönster var det svårt att gå förbi.",
+          "en": "When I saw a nice jacket in a shop window, it was hard to walk past."
+        },
+        {
+          "sv": "I stället började jag handla i butiker med begagnade kläder.",
+          "en": "Instead I started shopping in second-hand clothes shops."
+        },
+        {
+          "sv": "Där hittade jag många fina saker till mycket lägre priser.",
+          "en": "There I found lots of nice things at much lower prices."
+        },
+        {
+          "sv": "När min dammsugare gick sönder lånade jag grannens i två veckor, tills jag hittade en begagnad på nätet.",
+          "en": "When my vacuum cleaner broke, I borrowed my neighbour's for two weeks, until I found a used one online."
+        },
+        {
+          "sv": "Jag lärde mig också att laga saker själv, till exempel att sy i knappar.",
+          "en": "I also learned to repair things myself, for example sewing on buttons."
+        },
+        {
+          "sv": "Efter ett år hade jag sparat nästan 20 000 kronor.",
+          "en": "After a year I had saved almost 20,000 kronor."
+        },
+        {
+          "sv": "Men det viktigaste var något annat.",
+          "en": "But the most important thing was something else."
+        },
+        {
+          "sv": "Nu tänker jag mer innan jag köper något, och jag frågar mig själv om jag verkligen behöver det.",
+          "en": "Now I think more before I buy something, and I ask myself whether I really need it."
+        },
+        {
+          "sv": "Oftast är svaret nej.",
+          "en": "Usually the answer is no."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad fick man köpa nytt under året?",
+          "options": [
+            "Kläder",
+            "Mat och medicin",
+            "Möbler"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gjorde jag när dammsugaren gick sönder?",
+          "options": [
+            "Köpte en ny i affären",
+            "Lånade grannens och köpte sedan en begagnad",
+            "Lagade den själv"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad var det viktigaste resultatet?",
+          "options": [
+            "Att jag sparade pengar",
+            "Att jag lärde mig sy",
+            "Att jag tänker mer innan jag köper något"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "B1-22",
+      "level": "B1",
+      "topic": "Work and study",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Nattskiftet",
+      "names": [
+        "Sara"
+      ],
+      "above_level": [
+        "undersköterska",
+        "arbetspass"
+      ],
+      "lines": [
+        {
+          "sv": "Sara är undersköterska och har jobbat natt på ett sjukhus i fem år.",
+          "en": "Sara is an assistant nurse and has worked nights at a hospital for five years."
+        },
+        {
+          "sv": "Hennes arbetspass börjar klockan nio på kvällen och slutar klockan sju på morgonen.",
+          "en": "Her shift starts at nine in the evening and ends at seven in the morning."
+        },
+        {
+          "sv": "När hon kommer till jobbet får hon först information från kollegorna som har jobbat på kvällen.",
+          "en": "When she arrives at work, she first gets information from the colleagues who have worked the evening."
+        },
+        {
+          "sv": "Sedan går hon runt till patienterna.",
+          "en": "Then she goes round to the patients."
+        },
+        {
+          "sv": "Vissa sover, andra ligger vakna och vill prata en stund.",
+          "en": "Some are sleeping, others lie awake and want to talk for a while."
+        },
+        {
+          "sv": "– På natten är patienterna ofta mer oroliga, säger Sara. Då är det viktigt att ta sig tid och lyssna.",
+          "en": "– At night the patients are often more anxious, says Sara. Then it is important to take time and listen."
+        },
+        {
+          "sv": "Mellan två och fyra är det oftast lugnast.",
+          "en": "Between two and four it is usually calmest."
+        },
+        {
+          "sv": "Då dricker hon kaffe, skriver rapporter och äter sin matlåda.",
+          "en": "Then she drinks coffee, writes reports and eats her packed meal."
+        },
+        {
+          "sv": "Men ibland händer det mycket på kort tid, och då måste hon fatta beslut snabbt.",
+          "en": "But sometimes a lot happens in a short time, and then she has to make decisions quickly."
+        },
+        {
+          "sv": "Att jobba natt har både fördelar och nackdelar.",
+          "en": "Working nights has both advantages and disadvantages."
+        },
+        {
+          "sv": "Lönen är lite högre, och hon är ledig flera dagar i rad.",
+          "en": "The pay is a bit higher, and she has several days off in a row."
+        },
+        {
+          "sv": "Hon har också mer tid med sina barn på eftermiddagarna.",
+          "en": "She also has more time with her children in the afternoons."
+        },
+        {
+          "sv": "Samtidigt är det svårt att sova på dagen, särskilt på sommaren när det är ljust och barnen leker ute.",
+          "en": "At the same time it's hard to sleep during the day, especially in summer when it's light and the children play outside."
+        },
+        {
+          "sv": "– Kroppen vänjer sig aldrig helt, säger hon. Men jag tycker om lugnet på natten och känslan av att jag behövs.",
+          "en": "– The body never gets fully used to it, she says. But I like the calm at night and the feeling that I am needed."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur länge har Sara jobbat natt?",
+          "options": [
+            "Ett år",
+            "Fem år",
+            "Tio år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När är det oftast lugnast?",
+          "options": [
+            "Mellan nio och elva",
+            "Mellan två och fyra",
+            "Mellan fem och sju"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är svårt med att jobba natt, enligt texten?",
+          "options": [
+            "Att sova på dagen",
+            "Att lönen är låg",
+            "Att träffa barnen"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 Written by `node scripts/check-library.mjs`: each text counted with grove's own word counting against the words at its level and below: the core list (`core-a1a2.tsv`) first, otherwise the lower of SweLLex (`vocab-graded/`) and Kelly (inflections, compounds and fixed phrases included). "Above" lists the words above the text's level with the level they first count at (— = in no list; * = in no list and not in the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.
 
-## A1 (24 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
+## A1 (29 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -30,8 +30,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A1-22 | En ny tröja | reading, dialogue | 71 | 7 | tröja (A2), blå (A2), storlek (A2), **rea** (B2) | 2 → 1 (tröja no longer far) | passes |
 | A1-23 | Tåget till Göteborg | listening | 76 | 10 | tåg (A2), fönster (A2), bredvid (A2), sjö (A2), **bistro** (C2), **kanelbulle** (—), **perrong** (—), kram (A2) | 4 → 3 (kram no longer far) | passes |
 | A1-24 | Läraren Karin | reading | 68 | 8 | träd (A2) | 0 → 0 | passes |
+| A1-25 | Frukost | listening | 52 | 7 | bröd (A2), **yoghurt** (C2) | 3 → 1 (mjölk, äpple no longer far) | passes |
+| A1-26 | Var är nycklarna? | reading, dialogue | 57 | 6 | nyckel (A2), hall (A2), bord (A2), väska (A2), jacka (A2), blå (A2), sovrum (A2) | 4 → 0 (hall, väska, jacka, sovrum no longer far) | passes |
+| A1-27 | Hos tandläkaren | listening, dialogue | 68 | 7 | **bak** (B2), hål (A2) | 1 → 1 (none no longer far) | passes |
+| A1-28 | Den första snön | reading | 73 | 10 | fönster (A2), snöa (A2), **minus** (C1), jacka (A2), mössa (A2), gård (A2), snö (A2), park (A2), tyst (A2), träd (A2), sjö (A2), vinter (A2) | 4 → 1 (jacka, mössa, choklad no longer far) | passes |
+| A1-29 | En söndag på museet | listening | 79 | 9 | museum (A2), centrum (A2) | 3 → 0 (station, kafé, kaka no longer far) | passes |
 
-## A2 (24 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
+## A2 (29 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -59,8 +64,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-22 | Sommarjobbet | reading | 106 | 14 | **cappuccino** (—), turist (B1), **bulle** (C1) | 6 → 2 (kafé, nervös, skina, bak no longer far) | passes |
 | A2-23 | Läxorna | listening, dialogue | 94 | 11 | **rabatt** (B2), **popcorn** (—) | 3 → 2 (läxa no longer far) | passes |
 | A2-24 | Ett rum i kollektivet | reading | 109 | 13 | baksida (B1), **schema** (B2), **städning** (C1), **disk** (B2), bråk (B1) | 6 → 3 (badrum, kylskåp, tomat no longer far) | passes |
+| A2-25 | Mormors bröd | reading | 83 | 9 | **jäst** (—), **kokbok** (—), **skål** (B2), **ugn** (C1), mjuk (B1) | 7 → 4 (baka, mjöl, deg no longer far) | passes |
+| A2-26 | Is på gatan | listening | 94 | 10 | **halka** (B2) | 2 → 1 (gips no longer far) | passes |
+| A2-27 | Min bror i Oslo | reading, dialogue | 100 | 9 | köttbulle (B1) | 1 → 0 (köttbulle no longer far) | passes |
+| A2-28 | Språkcaféet | listening, dialogue | 106 | 10 | **språkcafé** (—*) | 1 → 1 (none no longer far) | passes |
+| A2-29 | En natt i tält | reading | 117 | 13 | tält (B1), **till slut** (C1), bada (B1) | 2 → 1 (korv no longer far) | passes |
 
-## B1 (17 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
+## B1 (22 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -81,8 +91,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B1-15 | Praktik på redaktionen | reading | 150 | 18 | **korrektur** (—*), termin (B2) | 1 → 1 (none no longer far) | passes |
 | B1-16 | Mötet i föreningen | listening, dialogue | 145 | 18 | **gunga** (C2), arbetsdag (B2), **trappuppgång** (—) | 2 → 2 (none no longer far) | passes |
 | B1-17 | Våren och pollen | reading | 169 | 19 | **allergisk** (C2), **björkpollen** (—*), **björk** (—), **klia** (C1), **pollenallergi** (—), **pollenprognos** (—*), app (B2), halt (B2), pol (B2), symtom (B2) | 9 → 6 (app, tablett, symtom no longer far) | passes |
+| B1-18 | Vid incheckningen | listening, dialogue | 124 | 12 | check (B2), kilo (B2) | 2 → 0 (varsågod, kilo no longer far) | passes |
+| B1-19 | Middag för sex | reading, dialogue | 140 | 11 | **ugn** (C1), **vegetarian** (—), **allergisk** (C2), **nöt** (C2), **gryta** (C1) | 7 → 5 (sallad, bageri no longer far) | passes |
+| B1-20 | Farfar på skärmen | listening | 159 | 15 | **surfplatta** (—) | 1 → 1 (none no longer far) | passes |
+| B1-21 | Ett år utan nya saker | reading | 150 | 18 | **tandkräm** (C2), **schampo** (—), **begagnad** (C1), dammsugare (B2) | 3 → 3 (none no longer far) | passes |
+| B1-22 | Nattskiftet | reading | 177 | 19 | **undersköterska** (—), **arbetspass** (—) | 2 → 2 (none no longer far) | passes |
 
-## B2 (15 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
+## B2 (20 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -101,8 +116,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B2-13 | Andrahandskontraktet | reading | 181 | 25 | **förstahandskontrakt** (—), till slut (C1), hyresvärd (C1) | 1 → 1 (none no longer far) | passes |
 | B2-14 | Promenadens kraft | listening | 185 | 20 | maraton (C1), **rask** (—), **hjärt** (—*), **två-diabetes** (—*) | 4 → 3 (maraton no longer far) | passes |
 | B2-15 | Allemansrätten till information | reading | 204 | 23 | urholka (C1), **skyndsamt** (—) | 1 → 1 (none no longer far) | passes |
+| B2-16 | Ett land som sjunger | listening | 184 | 19 | **kyrkokör** (—), **repetition** (C2) | 2 → 2 (none no longer far) | passes |
+| B2-17 | Ska vi skaffa hund? | reading, dialogue | 218 | 13 | veterinär (C1), uppoffring (C1) | 1 → 0 (regnig no longer far) | passes |
+| B2-18 | Cykel året runt | reading | 193 | 16 | **såld** (—), **dubbdäck** (—), **plogas** (—), minusgrad (C1), parkering (C1), **isig** (—) | 5 → 4 (riskabel no longer far) | passes |
+| B2-19 | Bin på taket | listening, dialogue | 233 | 17 | **bi** (C2), **bikupa** (—), honung (C1), **kupa** (—), **tam** (C2), **humla** (—) | 7 → 5 (kilo, bry no longer far) | passes |
+| B2-20 | Att våga starta eget | reading | 248 | 22 | ugn (C1), bokföring (C1), **bakning** (—), **kardemummabull** (—*) | 3 → 2 (bageri no longer far) | passes |
 
-## C1 (10 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
+## C1 (15 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -116,8 +136,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C1-08 | När kroppen säger ifrån | listening | 274 | 27 | **pinkod** (—), **bulta** (—), **diffus** (—) | 7 → 3 (arbetsbelastning, utvilad, deltid, arbetsmängd no longer far) | passes |
 | C1-09 | Skogen – resurs eller livsmiljö? | reading | 268 | 27 | infekterad (C2), **likåldrig** (—*), **lav** (—), **bärplockning** (—), **hyggesfri** (—*), **friluftsliv** (—) | 6 → 5 (kalhuggs no longer far) | passes |
 | C1-10 | Litar vi fortfarande på varandra? | reading, dialogue | 266 | 28 | **otrygghet** (—), **naturlag** (—) | 2 → 2 (none no longer far) | passes |
+| C1-11 | När mörkret kommer | listening | 252 | 24 | **vintertid** (—), **mörkertid** (—*), **nedstämdhet** (—), **advent** (—), **vintersolstånd** (—) | 5 → 5 (none no longer far) | passes |
+| C1-12 | Innan Systemet stänger | reading, dialogue | 277 | 21 | **omständlig** (—), legitimation (C2), **opraktisk** (—), **utlämningsställe** (—*) | 3 → 3 (none no longer far) | passes |
+| C1-13 | Pengar till hälsan | reading | 289 | 29 | **skattefri** (—), **fysioterapeut** (—*), **mirakelkur** (—*), **knuff** (—) | 6 → 4 (friskvårdsbidrag, yoga no longer far) | passes |
+| C1-14 | Mobilfri skola? | listening, dialogue | 315 | 25 | **skoldag** (—*), **högstadieskola** (—) | 2 → 2 (none no longer far) | passes |
+| C1-15 | Hela landet tycker till | reading | 347 | 25 | **dipp** (—), **schlager** (—), **rap** (—) | 5 → 3 (app, håna no longer far) | passes |
 
-## C2 (10 texts; 300–400 words, sentences ≤ 35 words, ≤ 15 far words)
+## C2 (15 texts; 300–400 words, sentences ≤ 35 words, ≤ 15 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -131,5 +156,10 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C2-08 | Ingen penicillin den här gången | listening, dialogue | 305 | 23 | **penicillin** (—), **streptokock** (—), **magbesvär** (—*), **resistent** (—), **resistens** (—), **febernedsättande** (—*) | 8 → 6 (antibiotika, snopen no longer far) | passes |
 | C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
 | C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
+| C2-11 | Vad ska vi heta? | reading | 315 | 31 | **given** (—), **kännas** (—), **klinga** (—), **opraktisk** (—) | 5 → 4 (arbetssökande no longer far) | passes |
+| C2-12 | Tjugo år i kö | listening | 332 | 31 | **innerstad** (—), **bostadskö** (—), **kötid** (—), **hyreshöjning** (—), **nyinflyttad** (—), **andrahandskontrakt** (—), **hyressättning** (—*), **misstroendeomröstning** (—) | 10 → 8 (eftertraktad, nybyggda no longer far) | passes |
+| C2-13 | En resa, fem veckor | reading, dialogue | 348 | 31 | **varukorg** (—), **pandemi** (—), **utrikesflyg** (—*), **weekendresa** (—*) | 4 → 4 (none no longer far) | passes |
+| C2-14 | Det som inte sägs | listening, dialogue | 384 | 26 | **podd** (—), **konsenskultur** (—*), **sabotera** (—) | 4 → 3 (frustrerande no longer far) | passes |
+| C2-15 | När trädgränsen flyttar | reading | 396 | 29 | **karg** (—), **fjällbjörk** (—*), **lav** (—), **björkskog** (—*), **arktis** (—), **vegetation** (—), **stödutfodring** (—*), **lya** (—), **tö** (—), **utfodra** (—), **renskötare** (—), **mätseri** (—*), **beredd** (—) | 16 → 13 (kalfjäll, orörd, alltmer no longer far) | passes |
 
-100 of 100 texts pass.
+130 of 130 texts pass.

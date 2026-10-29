@@ -2350,6 +2350,478 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A1-25",
+      "level": "A1",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Frukost",
+      "names": [],
+      "above_level": [
+        "bröd",
+        "yoghurt"
+      ],
+      "lines": [
+        {
+          "sv": "Jag äter frukost klockan sju.",
+          "en": "I eat breakfast at seven."
+        },
+        {
+          "sv": "Jag äter bröd med ost.",
+          "en": "I eat bread with cheese."
+        },
+        {
+          "sv": "Jag dricker te med mjölk.",
+          "en": "I drink tea with milk."
+        },
+        {
+          "sv": "Min man dricker kaffe.",
+          "en": "My husband drinks coffee."
+        },
+        {
+          "sv": "Han äter ett ägg och en banan.",
+          "en": "He eats an egg and a banana."
+        },
+        {
+          "sv": "Barnen äter yoghurt med äpple.",
+          "en": "The children eat yoghurt with apple."
+        },
+        {
+          "sv": "På lördag har vi tid.",
+          "en": "On Saturday we have time."
+        },
+        {
+          "sv": "Då äter vi frukost tillsammans.",
+          "en": "Then we eat breakfast together."
+        },
+        {
+          "sv": "Vi pratar och skrattar.",
+          "en": "We talk and laugh."
+        },
+        {
+          "sv": "Det är min bästa stund i veckan.",
+          "en": "It is my best moment of the week."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad dricker jag?",
+          "options": [
+            "Kaffe",
+            "Te med mjölk",
+            "Juice"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad äter barnen?",
+          "options": [
+            "Yoghurt med äpple",
+            "Bröd med ost",
+            "Ett ägg"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När äter familjen frukost tillsammans?",
+          "options": [
+            "På måndag",
+            "På onsdag",
+            "På lördag"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "A1-26",
+      "level": "A1",
+      "topic": "Home",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Var är nycklarna?",
+      "names": [
+        "Leo",
+        "Sara"
+      ],
+      "above_level": [
+        "nyckel",
+        "hall",
+        "bord",
+        "väska",
+        "jacka",
+        "blå",
+        "sovrum"
+      ],
+      "lines": [
+        {
+          "sv": "– Leo, var är mina nycklar?",
+          "en": "– Leo, where are my keys?"
+        },
+        {
+          "sv": "– Jag vet inte. Är de i köket?",
+          "en": "– I don't know. Are they in the kitchen?"
+        },
+        {
+          "sv": "– Nej, inte i köket.",
+          "en": "– No, not in the kitchen."
+        },
+        {
+          "sv": "– I hallen, då? På bordet?",
+          "en": "– In the hall, then? On the table?"
+        },
+        {
+          "sv": "– Nej. Och inte i väskan.",
+          "en": "– No. And not in my bag."
+        },
+        {
+          "sv": "– Titta i jackan.",
+          "en": "– Look in your jacket."
+        },
+        {
+          "sv": "– Vilken jacka?",
+          "en": "– Which jacket?"
+        },
+        {
+          "sv": "– Den blå jackan i sovrummet.",
+          "en": "– The blue jacket in the bedroom."
+        },
+        {
+          "sv": "– Ja! Här är de. Tack!",
+          "en": "– Yes! Here they are. Thanks!"
+        },
+        {
+          "sv": "– Bra. Nu går vi. Bussen kommer snart.",
+          "en": "– Good. Now let's go. The bus is coming soon."
+        },
+        {
+          "sv": "– Vänta! Var är min telefon?",
+          "en": "– Wait! Where is my phone?"
+        },
+        {
+          "sv": "– Sara, den är i din hand.",
+          "en": "– Sara, it's in your hand."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad letar Sara efter först?",
+          "options": [
+            "Sin telefon",
+            "Sina nycklar",
+            "Sin väska"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var är nycklarna?",
+          "options": [
+            "I köket",
+            "I hallen",
+            "I den blå jackan"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Var är telefonen?",
+          "options": [
+            "I Saras hand",
+            "På bordet",
+            "I bussen"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A1-27",
+      "level": "A1",
+      "topic": "Health",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Hos tandläkaren",
+      "names": [
+        "Omar"
+      ],
+      "above_level": [
+        "bak",
+        "hål"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej, jag heter Omar. Jag har en tid klockan tio.",
+          "en": "– Hi, my name is Omar. I have an appointment at ten."
+        },
+        {
+          "sv": "– Välkommen. Sätt dig här. Vad är problemet?",
+          "en": "– Welcome. Sit down here. What's the problem?"
+        },
+        {
+          "sv": "– Jag har ont i en tand.",
+          "en": "– I have a toothache."
+        },
+        {
+          "sv": "– Vilken tand?",
+          "en": "– Which tooth?"
+        },
+        {
+          "sv": "– Den här, längst bak.",
+          "en": "– This one, at the very back."
+        },
+        {
+          "sv": "– Gör det ont när du äter?",
+          "en": "– Does it hurt when you eat?"
+        },
+        {
+          "sv": "– Ja, och när jag dricker kallt vatten.",
+          "en": "– Yes, and when I drink cold water."
+        },
+        {
+          "sv": "– Öppna munnen, tack. Ja, jag ser ett litet hål.",
+          "en": "– Open your mouth, please. Yes, I see a small hole."
+        },
+        {
+          "sv": "– Är det farligt?",
+          "en": "– Is it dangerous?"
+        },
+        {
+          "sv": "– Nej, inte alls. Jag lagar det nu.",
+          "en": "– No, not at all. I'll fix it now."
+        },
+        {
+          "sv": "– Tar det lång tid?",
+          "en": "– Does it take long?"
+        },
+        {
+          "sv": "– Nej, bara tjugo minuter.",
+          "en": "– No, only twenty minutes."
+        }
+      ],
+      "questions": [
+        {
+          "q": "När har Omar en tid?",
+          "options": [
+            "Klockan nio",
+            "Klockan tio",
+            "Klockan elva"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När gör det ont?",
+          "options": [
+            "När han sover",
+            "När han äter och dricker kallt vatten",
+            "När han går"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur lång tid tar det?",
+          "options": [
+            "Tio minuter",
+            "Tjugo minuter",
+            "En timme"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-28",
+      "level": "A1",
+      "topic": "Nature and environment",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Den första snön",
+      "names": [],
+      "above_level": [
+        "fönster",
+        "snöa",
+        "minus",
+        "jacka",
+        "mössa",
+        "gård",
+        "snö",
+        "park",
+        "tyst",
+        "träd",
+        "sjö",
+        "vinter"
+      ],
+      "lines": [
+        {
+          "sv": "I dag är det första december.",
+          "en": "Today is the first of December."
+        },
+        {
+          "sv": "Jag tittar ut genom fönstret.",
+          "en": "I look out of the window."
+        },
+        {
+          "sv": "Allt är vitt! Det snöar.",
+          "en": "Everything is white! It's snowing."
+        },
+        {
+          "sv": "Det är minus fem grader.",
+          "en": "It's minus five degrees."
+        },
+        {
+          "sv": "Jag tar på mig en varm jacka och en mössa.",
+          "en": "I put on a warm jacket and a hat."
+        },
+        {
+          "sv": "Barnen på gården leker i snön.",
+          "en": "The children in the yard play in the snow."
+        },
+        {
+          "sv": "Jag går till parken. Där är det tyst och vackert.",
+          "en": "I walk to the park. It's quiet and beautiful there."
+        },
+        {
+          "sv": "Träden är vita, och det finns is på sjön.",
+          "en": "The trees are white, and there is ice on the lake."
+        },
+        {
+          "sv": "Efter en timme går jag hem.",
+          "en": "After an hour I go home."
+        },
+        {
+          "sv": "Jag dricker varm choklad i köket.",
+          "en": "I drink hot chocolate in the kitchen."
+        },
+        {
+          "sv": "Jag tycker mycket om vintern.",
+          "en": "I like winter very much."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur kallt är det?",
+          "options": [
+            "Minus två grader",
+            "Minus fem grader",
+            "Minus tio grader"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör barnen på gården?",
+          "options": [
+            "De leker i snön",
+            "De äter",
+            "De sover"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad dricker jag när jag kommer hem?",
+          "options": [
+            "Kaffe",
+            "Te",
+            "Varm choklad"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "A1-29",
+      "level": "A1",
+      "topic": "Free time and culture",
+      "form": "prose",
+      "kind": "listening",
+      "title": "En söndag på museet",
+      "names": [],
+      "above_level": [
+        "museum",
+        "centrum"
+      ],
+      "lines": [
+        {
+          "sv": "I dag är det söndag.",
+          "en": "Today is Sunday."
+        },
+        {
+          "sv": "Jag och min syster går till ett museum.",
+          "en": "My sister and I are going to a museum."
+        },
+        {
+          "sv": "Museet ligger i centrum, nära stationen.",
+          "en": "The museum is in the centre, near the station."
+        },
+        {
+          "sv": "På söndagar är det gratis.",
+          "en": "On Sundays it's free."
+        },
+        {
+          "sv": "Först tittar vi på gamla bilder.",
+          "en": "First we look at old pictures."
+        },
+        {
+          "sv": "Det är bilder av staden för hundra år sedan.",
+          "en": "They are pictures of the city a hundred years ago."
+        },
+        {
+          "sv": "Min syster tycker om konst.",
+          "en": "My sister likes art."
+        },
+        {
+          "sv": "Hon står länge vid varje bild.",
+          "en": "She stands for a long time at every picture."
+        },
+        {
+          "sv": "Jag tycker mer om historia.",
+          "en": "I like history more."
+        },
+        {
+          "sv": "Sedan går vi till ett rum med gamla båtar.",
+          "en": "Then we go to a room with old boats."
+        },
+        {
+          "sv": "Museet har ett kafé.",
+          "en": "The museum has a café."
+        },
+        {
+          "sv": "Där köper vi kaffe och kakor.",
+          "en": "There we buy coffee and biscuits."
+        },
+        {
+          "sv": "Klockan fyra går vi hem.",
+          "en": "At four o'clock we go home."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vem går till museet?",
+          "options": [
+            "Jag och min bror",
+            "Jag och min syster",
+            "Jag och min mamma"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad kostar museet på söndagar?",
+          "options": [
+            "Ingenting",
+            "Tio kronor",
+            "Hundra kronor"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad tycker jag mest om?",
+          "options": [
+            "Konst",
+            "Historia",
+            "Musik"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }

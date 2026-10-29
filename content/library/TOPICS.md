@@ -4,19 +4,19 @@ The shared topics the library is browsed by (question-pages/77), with the number
 
 | Topic | A1 | A2 | B1 | B2 | C1 | C2 | All |
 |---|---|---|---|---|---|---|---|
-| People and family | 3 | 2 | 1 | 2 | 1 | 1 | 10 |
-| Daily life | 3 | 2 | 2 | 1 | 1 | 1 | 10 |
-| Food and drink | 2 | 2 | 1 | 2 | 1 | 1 | 9 |
-| Home | 2 | 3 | 2 | 2 | 1 | 1 | 11 |
-| Work and study | 3 | 3 | 2 | 1 | 1 | 1 | 11 |
-| Travel and transport | 3 | 3 | 1 | 1 | 1 | 1 | 10 |
-| Free time and culture | 2 | 3 | 2 | 1 | 1 | 1 | 10 |
-| Health | 2 | 2 | 2 | 2 | 1 | 1 | 10 |
-| Nature and environment | 2 | 2 | 2 | 1 | 1 | 1 | 9 |
-| Society | 2 | 2 | 2 | 2 | 1 | 1 | 10 |
-| **All** | 24 | 24 | 17 | 15 | 10 | 10 | 100 |
+| People and family | 3 | 3 | 2 | 2 | 1 | 2 | 13 |
+| Daily life | 3 | 2 | 3 | 2 | 2 | 1 | 13 |
+| Food and drink | 3 | 3 | 2 | 2 | 2 | 1 | 13 |
+| Home | 3 | 3 | 2 | 2 | 1 | 2 | 13 |
+| Work and study | 3 | 3 | 3 | 2 | 1 | 2 | 14 |
+| Travel and transport | 3 | 3 | 2 | 2 | 1 | 2 | 13 |
+| Free time and culture | 3 | 3 | 2 | 2 | 2 | 1 | 13 |
+| Health | 3 | 3 | 2 | 2 | 2 | 1 | 13 |
+| Nature and environment | 3 | 3 | 2 | 2 | 1 | 2 | 13 |
+| Society | 2 | 3 | 2 | 2 | 2 | 1 | 12 |
+| **All** | 29 | 29 | 22 | 20 | 15 | 15 | 130 |
 
 | | A1 | A2 | B1 | B2 | C1 | C2 |
 |---|---|---|---|---|---|---|
-| Listening texts | 10 | 10 | 6 | 6 | 3 | 3 |
-| Dialogues | 12 | 8 | 5 | 4 | 3 | 3 |
+| Listening texts | 13 | 12 | 8 | 8 | 5 | 5 |
+| Dialogues | 14 | 10 | 7 | 6 | 5 | 5 |

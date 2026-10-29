@@ -2311,6 +2311,500 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A2-25",
+      "level": "A2",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Mormors bröd",
+      "names": [],
+      "above_level": [
+        "jäst",
+        "kokbok",
+        "skål",
+        "ugn",
+        "mjuk"
+      ],
+      "lines": [
+        {
+          "sv": "I söndags var jag hos min mormor.",
+          "en": "Last Sunday I was at my grandmother's."
+        },
+        {
+          "sv": "Hon ville lära mig att baka bröd.",
+          "en": "She wanted to teach me to bake bread."
+        },
+        {
+          "sv": "Först tog vi fram mjöl, vatten, salt och jäst.",
+          "en": "First we got out flour, water, salt and yeast."
+        },
+        {
+          "sv": "Mormor använde ingen kokbok, för hon kunde allt utantill.",
+          "en": "Grandma used no cookbook, because she knew everything by heart."
+        },
+        {
+          "sv": "Vi blandade allt i en stor skål.",
+          "en": "We mixed everything in a big bowl."
+        },
+        {
+          "sv": "Sedan fick degen vila i en timme.",
+          "en": "Then the dough got to rest for an hour."
+        },
+        {
+          "sv": "Under tiden drack vi kaffe och pratade.",
+          "en": "Meanwhile we drank coffee and talked."
+        },
+        {
+          "sv": "Efter det bakade vi tre bröd i ugnen.",
+          "en": "After that we baked three loaves in the oven."
+        },
+        {
+          "sv": "Hela köket luktade gott.",
+          "en": "The whole kitchen smelled good."
+        },
+        {
+          "sv": "Brödet var varmt och mjukt.",
+          "en": "The bread was warm and soft."
+        },
+        {
+          "sv": "Jag tog med mig ett bröd hem.",
+          "en": "I took a loaf home with me."
+        },
+        {
+          "sv": "Nästa gång ska jag baka själv.",
+          "en": "Next time I'm going to bake on my own."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vem lärde mig att baka bröd?",
+          "options": [
+            "Min mamma",
+            "Min mormor",
+            "Min kompis"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur länge fick degen vila?",
+          "options": [
+            "En kvart",
+            "En timme",
+            "Tre timmar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur många bröd tog jag med mig hem?",
+          "options": [
+            "Ett",
+            "Två",
+            "Tre"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A2-26",
+      "level": "A2",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Is på gatan",
+      "names": [],
+      "above_level": [
+        "halka"
+      ],
+      "lines": [
+        {
+          "sv": "Förra veckan var det väldigt kallt.",
+          "en": "Last week it was very cold."
+        },
+        {
+          "sv": "Jag gick till jobbet som vanligt.",
+          "en": "I walked to work as usual."
+        },
+        {
+          "sv": "Det var is på gatan, men jag såg den inte.",
+          "en": "There was ice on the street, but I didn't see it."
+        },
+        {
+          "sv": "Plötsligt halkade jag och föll.",
+          "en": "Suddenly I slipped and fell."
+        },
+        {
+          "sv": "Jag fick ont i handen. Mycket ont.",
+          "en": "My hand started to hurt. A lot."
+        },
+        {
+          "sv": "En kvinna stannade och hjälpte mig upp.",
+          "en": "A woman stopped and helped me up."
+        },
+        {
+          "sv": "Hon ringde efter en taxi åt mig.",
+          "en": "She called a taxi for me."
+        },
+        {
+          "sv": "Jag åkte till sjukhuset.",
+          "en": "I went to the hospital."
+        },
+        {
+          "sv": "Där fick jag vänta i tre timmar.",
+          "en": "There I had to wait for three hours."
+        },
+        {
+          "sv": "Sedan tittade en läkare på handen.",
+          "en": "Then a doctor looked at my hand."
+        },
+        {
+          "sv": "Den var bruten.",
+          "en": "It was broken."
+        },
+        {
+          "sv": "Nu har jag gips i sex veckor.",
+          "en": "Now I have a cast for six weeks."
+        },
+        {
+          "sv": "Jag kan inte skriva eller laga mat.",
+          "en": "I can't write or cook."
+        },
+        {
+          "sv": "Min man hjälper mig med allt.",
+          "en": "My husband helps me with everything."
+        },
+        {
+          "sv": "Nästa vinter ska jag köpa bättre skor.",
+          "en": "Next winter I'm going to buy better shoes."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför föll jag?",
+          "options": [
+            "Det var is på gatan",
+            "Jag sprang",
+            "En bil körde på mig"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur länge väntade jag på sjukhuset?",
+          "options": [
+            "En timme",
+            "Tre timmar",
+            "Sex timmar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur länge ska jag ha gips?",
+          "options": [
+            "Tre veckor",
+            "Sex veckor",
+            "Tre månader"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-27",
+      "level": "A2",
+      "topic": "People and family",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Min bror i Oslo",
+      "names": [
+        "Erik",
+        "Lina",
+        "Oslo"
+      ],
+      "above_level": [
+        "köttbulle"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej, Erik! Hur är det i Oslo?",
+          "en": "– Hi, Erik! How are things in Oslo?"
+        },
+        {
+          "sv": "– Hej, Lina! Det är bra. Jag har bott här i tre månader nu.",
+          "en": "– Hi, Lina! It's good. I've lived here for three months now."
+        },
+        {
+          "sv": "– Tycker du om ditt nya jobb?",
+          "en": "– Do you like your new job?"
+        },
+        {
+          "sv": "– Ja, mycket. Mina kollegor är trevliga, och jag lär mig mycket.",
+          "en": "– Yes, a lot. My colleagues are nice, and I'm learning a lot."
+        },
+        {
+          "sv": "– Har du lärt dig norska?",
+          "en": "– Have you learned Norwegian?"
+        },
+        {
+          "sv": "– Lite. Det liknar svenska, men vissa ord är helt annorlunda.",
+          "en": "– A little. It's like Swedish, but some words are completely different."
+        },
+        {
+          "sv": "– Vad saknar du mest hemifrån?",
+          "en": "– What do you miss most from home?"
+        },
+        {
+          "sv": "– Er, så klart. Och mammas köttbullar.",
+          "en": "– You all, of course. And mum's meatballs."
+        },
+        {
+          "sv": "– Mamma undrar om du kommer hem till jul.",
+          "en": "– Mum is wondering if you're coming home for Christmas."
+        },
+        {
+          "sv": "– Ja, jag har redan köpt en biljett. Jag kommer den tjugoandra december.",
+          "en": "– Yes, I've already bought a ticket. I'm coming on the twenty-second of December."
+        },
+        {
+          "sv": "– Vad roligt! Ska jag hämta dig på stationen?",
+          "en": "– How nice! Shall I pick you up at the station?"
+        },
+        {
+          "sv": "– Gärna. Tåget kommer klockan sex på kvällen.",
+          "en": "– Yes, please. The train arrives at six in the evening."
+        },
+        {
+          "sv": "– Då ses vi då. Hej då!",
+          "en": "– See you then. Bye!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur länge har Erik bott i Oslo?",
+          "options": [
+            "En månad",
+            "Tre månader",
+            "Ett år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad saknar Erik mest, förutom familjen?",
+          "options": [
+            "Mammas köttbullar",
+            "Sitt gamla jobb",
+            "Sin katt"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur kommer Erik hem till jul?",
+          "options": [
+            "Med bil",
+            "Med flyg",
+            "Med tåg"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "A2-28",
+      "level": "A2",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Språkcaféet",
+      "names": [
+        "Amira",
+        "Gunnel"
+      ],
+      "above_level": [
+        "språkcafé"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej! Är det här språkcaféet?",
+          "en": "– Hi! Is this the language café?"
+        },
+        {
+          "sv": "– Ja, välkommen! Är det första gången du är här?",
+          "en": "– Yes, welcome! Is it your first time here?"
+        },
+        {
+          "sv": "– Ja. Jag heter Amira. Jag kom till Sverige i våras.",
+          "en": "– Yes. My name is Amira. I came to Sweden this spring."
+        },
+        {
+          "sv": "– Vad kul att du kom. Jag heter Gunnel. Jag hjälper till här.",
+          "en": "– How nice that you came. I'm Gunnel. I help out here."
+        },
+        {
+          "sv": "– Vad gör man på ett språkcafé?",
+          "en": "– What do you do at a language café?"
+        },
+        {
+          "sv": "– Vi sitter i små grupper och pratar svenska.",
+          "en": "– We sit in small groups and speak Swedish."
+        },
+        {
+          "sv": "– Måste man betala?",
+          "en": "– Do you have to pay?"
+        },
+        {
+          "sv": "– Nej, det är gratis. Biblioteket ordnar det varje onsdag.",
+          "en": "– No, it's free. The library organises it every Wednesday."
+        },
+        {
+          "sv": "– Bra. Jag går på en kurs, men jag pratar för lite.",
+          "en": "– Good. I'm on a course, but I speak too little."
+        },
+        {
+          "sv": "– Vad pratar ni om?",
+          "en": "– What do you talk about?"
+        },
+        {
+          "sv": "– Om allt möjligt. Förra veckan pratade vi om mat och om våra familjer.",
+          "en": "– About all sorts of things. Last week we talked about food and our families."
+        },
+        {
+          "sv": "– Det låter trevligt. Var ska jag sitta?",
+          "en": "– That sounds nice. Where should I sit?"
+        },
+        {
+          "sv": "– Vid bordet vid fönstret. Där sitter två andra som också är nya.",
+          "en": "– At the table by the window. Two others who are also new are sitting there."
+        }
+      ],
+      "questions": [
+        {
+          "q": "När kom Amira till Sverige?",
+          "options": [
+            "I våras",
+            "Förra året",
+            "I höstas"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem ordnar språkcaféet?",
+          "options": [
+            "Skolan",
+            "Biblioteket",
+            "Kommunen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var ska Amira sitta?",
+          "options": [
+            "Vid dörren",
+            "Vid fönstret",
+            "Vid kaffet"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-29",
+      "level": "A2",
+      "topic": "Nature and environment",
+      "form": "prose",
+      "kind": "reading",
+      "title": "En natt i tält",
+      "names": [
+        "Maja"
+      ],
+      "above_level": [
+        "tält",
+        "till slut",
+        "bada"
+      ],
+      "lines": [
+        {
+          "sv": "I somras sov jag i tält för första gången.",
+          "en": "Last summer I slept in a tent for the first time."
+        },
+        {
+          "sv": "Jag och min kompis Maja cyklade till en sjö utanför stan.",
+          "en": "My friend Maja and I cycled to a lake outside town."
+        },
+        {
+          "sv": "Vi hade med oss ett tält, varma kläder och mat för två dagar.",
+          "en": "We brought a tent, warm clothes and food for two days."
+        },
+        {
+          "sv": "Vi kom fram klockan fem på eftermiddagen.",
+          "en": "We arrived at five in the afternoon."
+        },
+        {
+          "sv": "Först satte vi upp tältet nära vattnet.",
+          "en": "First we put up the tent near the water."
+        },
+        {
+          "sv": "Det var svårare än vi trodde, men till slut stod det.",
+          "en": "It was harder than we thought, but in the end it stood."
+        },
+        {
+          "sv": "Sedan badade vi. Vattnet var kallt men skönt.",
+          "en": "Then we swam. The water was cold but lovely."
+        },
+        {
+          "sv": "På kvällen lagade vi korv och potatis över en liten eld.",
+          "en": "In the evening we cooked sausages and potatoes over a small fire."
+        },
+        {
+          "sv": "Solen gick ner sent, och himlen blev rosa.",
+          "en": "The sun set late, and the sky turned pink."
+        },
+        {
+          "sv": "Vi hörde bara fåglar och vinden i träden.",
+          "en": "We only heard birds and the wind in the trees."
+        },
+        {
+          "sv": "På natten blev det kallt, och jag sov inte så bra.",
+          "en": "At night it got cold, and I didn't sleep very well."
+        },
+        {
+          "sv": "Men på morgonen var jag glad igen.",
+          "en": "But in the morning I was happy again."
+        },
+        {
+          "sv": "Nästa sommar vill vi stanna en hel vecka.",
+          "en": "Next summer we want to stay a whole week."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur kom de till sjön?",
+          "options": [
+            "Med buss",
+            "Med cykel",
+            "Till fots"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad lagade de på kvällen?",
+          "options": [
+            "Fisk och ris",
+            "Korv och potatis",
+            "Pasta"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur sov jag på natten?",
+          "options": [
+            "Mycket bra",
+            "Inte så bra",
+            "Inte alls"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }
