@@ -23,23 +23,28 @@ async function signIn(page) {
 
 // G-09 FR-901 as amended by addendum 005 (question-pages/77, 3 and 8; question-pages/76, 2): three
 // headed groups of labelled tiles.
-// FR-905 (question-pages/78, 3): a session that would run short first offers a new text or Fill the time.
-async function fillIfShort(page) {
+// FR-905, FR-920 (addendum 006): a Review that would run short first offers Fill the time; a Mix or
+// Discover short of new texts opens with its offer, where Practise without goes on.
+async function goOnIfShort(page) {
   const fill = page.getByRole('group', { name: 'This session would be short' }).getByRole('button', { name: 'Fill the time' });
   await expect(fill.or(page.locator('#session-line'))).toBeVisible();
   if (await fill.isVisible()) await fill.click();
+  await page.waitForURL(/\/session$/);
+  const without = page.getByRole('button', { name: 'Practise without' });
+  await expect(without.or(page.locator('#exercise'))).toBeVisible();
+  if (await without.isVisible()) await without.click();
 }
 
-const GROUPS = { Learning: ['Practise', 'By skill', 'One mode'], Library: ['Common library', 'Your library'], Progress: ['Progress'] };
+const GROUPS = { Learning: ['Discover', 'Review', 'Mix'], Library: ['Common library', 'Your library'], Progress: ['Progress'] };
 
-test('FR-901 RQ-419 RQ-429: Home has three headed groups of labelled icon tiles in the spec\'s order; a tile opens below its row, one at a time, and Esc, ✕ or the tile again closes it with focus back on the tile', async ({ page }) => {
+test('FR-901 RQ-419 RQ-429 RQ-440: Home has three headed groups of labelled icon tiles in the spec\'s order; a tile opens below its row, one at a time, and Esc, ✕ or the tile again closes it with focus back on the tile', async ({ page }) => {
   await signIn(page);
   await expect(page.getByRole('button', { name: 'Progress' })).toBeVisible();
   for (const [heading, labels] of Object.entries(GROUPS)) {
     const group = page.getByRole('region', { name: heading });
     await expect(group.getByRole('heading', { name: heading })).toBeVisible();
     const names = await group.locator('button.tile').evaluateAll((list) => list.map((b) => b.textContent.trim()));
-    expect(names.filter((n) => n !== 'Resume')).toEqual(labels);
+    expect(names).toEqual(labels);
   }
   for (const t of await page.locator('#tiles button.tile').all()) {
     await expect(t.locator('svg')).toBeVisible();
@@ -68,10 +73,10 @@ test('FR-901 RQ-419 RQ-429: Home has three headed groups of labelled icon tiles 
   const common = page.getByRole('button', { name: 'Common library' });
   await common.click();
   await expect(panel.getByRole('link', { name: 'Open the common library' })).toHaveAttribute('href', '/library');
-  await page.getByRole('button', { name: 'By skill' }).click();
-  await expect(page.locator('#tile-title')).toHaveText('By skill');
+  await page.getByRole('button', { name: 'Discover', exact: true }).click();
+  await expect(page.locator('#tile-title')).toHaveText('Discover');
   await expect(common).toHaveAttribute('aria-expanded', 'false');
-  await page.getByRole('button', { name: 'By skill' }).click();
+  await page.getByRole('button', { name: 'Discover', exact: true }).click();
   await expect(panel).toBeHidden();
   const progress = page.getByRole('button', { name: 'Progress' });
   await progress.click();
@@ -81,26 +86,45 @@ test('FR-901 RQ-419 RQ-429: Home has three headed groups of labelled icon tiles 
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
-test('FR-901 FR-903 FR-904 RQ-419 RQ-421: Practise for X min starts a session; while it is going Resume is the first tile and opens it', async ({ page }) => {
+test('FR-901 FR-903 FR-904 RQ-440 RQ-442: Mix → Start is a 10-minute Mix; Options… offers the skills and 5, 10, 20, 30 minutes; while a session is going a Resume bar above the tiles opens it', async ({ page }) => {
   await signIn(page);
-  await page.getByRole('button', { name: 'Practise' }).click();
-  await expect(page.getByRole('radio', { name: '10 min' })).toHaveAttribute('aria-checked', 'true');
-  for (const m of [3, 5, 20, 30]) await expect(page.getByRole('radio', { name: `${m} min` })).toBeVisible();
-  await page.getByLabel('Other length in minutes').fill('61');
-  await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
-  await expect(page.locator('#tile-panel .message')).toHaveText('Choose a length from 3 to 60 minutes.');
-  await page.getByRole('radio', { name: '5 min' }).click();
-  await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
-  await fillIfShort(page);
-  await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('5-minute session');
+  await page.getByRole('button', { name: 'Mix', exact: true }).click();
+  const panel = page.locator('#tile-panel');
+  await panel.getByRole('button', { name: 'Options…' }).click();
+  for (const skill of ['Mix', 'Reading', 'Listening', 'Words', 'Grammar']) await expect(panel.getByRole('radio', { name: skill, exact: true })).toBeVisible();
+  for (const m of [5, 10, 20, 30]) await expect(panel.getByRole('radio', { name: `${m} min` })).toBeVisible();
+  await expect(panel.getByRole('radio', { name: 'Mix', exact: true })).toHaveAttribute('aria-checked', 'true');
+  await expect(panel.getByRole('radio', { name: '10 min' })).toHaveAttribute('aria-checked', 'true');
+  await expect(panel.getByLabel('Harder questions only')).toHaveCount(0);
+  await panel.getByRole('button', { name: 'Start', exact: true }).first().click();
+  await goOnIfShort(page);
+  await expect(page.locator('#session-line')).toContainText('10-minute Mix');
   await page.goto('/');
-  const first = page.locator('#tiles button.tile').first();
-  await expect(first).toHaveText('Resume');
-  await first.click();
-  await page.locator('#tile-panel').getByRole('link', { name: 'Resume' }).click();
+  const resume = page.locator('.resume-bar');
+  await expect(resume).toContainText('Resume: 10-minute Mix');
+  const [rBox, tBox] = [await resume.boundingBox(), await page.getByRole('button', { name: 'Discover', exact: true }).boundingBox()];
+  expect(rBox.y).toBeLessThan(tBox.y);
+  await resume.click();
   await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('5-minute session');
+  await expect(page.locator('#session-line')).toContainText('10-minute Mix');
+});
+
+test('FR-903 FR-905 RQ-440 RQ-441: Review\'s Options… add Harder questions only; the chosen options start that session and are shown again next time', async ({ page }) => {
+  await signIn(page);
+  await page.getByRole('button', { name: 'Review', exact: true }).click();
+  const panel = page.locator('#tile-panel');
+  await panel.getByRole('button', { name: 'Options…' }).click();
+  await expect(panel.getByLabel('Harder questions only')).not.toBeChecked();
+  await panel.getByRole('radio', { name: 'Reading', exact: true }).click();
+  await panel.getByRole('radio', { name: '5 min' }).click();
+  await panel.locator('.session-options').getByRole('button', { name: 'Start' }).click();
+  await goOnIfShort(page);
+  await expect(page.locator('#session-line')).toContainText('5-minute Review');
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Review', exact: true }).click();
+  await panel.getByRole('button', { name: 'Options…' }).click();
+  await expect(panel.getByRole('radio', { name: 'Reading', exact: true })).toHaveAttribute('aria-checked', 'true');
+  await expect(panel.getByRole('radio', { name: '5 min' })).toHaveAttribute('aria-checked', 'true');
 });
 
 test('FR-902 RQ-420: the top bar has the logo linking Home and ☰ with Account, Settings, Help and Sign out; Help shows How grove works in a bubble with Replay', async ({ page }) => {
@@ -135,28 +159,7 @@ test('FR-902 RQ-420: the top bar has the logo linking Home and ☰ with Account,
   await page.waitForURL(/\/signin$/);
 });
 
-test('FR-906 FR-908 RQ-423 RQ-424: By skill offers four skills in three forms and starts a session; Just one mode starts Discover, Review or Master on its own', async ({ page }) => {
-  await signIn(page);
-  await page.getByRole('button', { name: 'By skill' }).click();
-  const panel = page.locator('#tile-panel');
-  for (const skill of ['Reading', 'Listening', 'Words and phrases', 'Grammar']) {
-    for (const [form, minutes] of [['short', 5], ['medium', 10], ['long', 20]]) {
-      await expect(panel.getByRole('button', { name: `${skill}, ${form} (${minutes} min)` })).toBeVisible();
-    }
-  }
-  await panel.getByRole('button', { name: 'Words and phrases, short (5 min)' }).click();
-  await fillIfShort(page);
-  await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('5-minute session');
-  await page.goto('/');
-  await page.getByRole('button', { name: 'One mode' }).click();
-  for (const mode of ['Discover', 'Review', 'Master']) await expect(panel.getByRole('button', { name: mode })).toBeVisible();
-  await panel.getByRole('button', { name: 'Discover' }).click();
-  await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('Discover');
-});
-
-test('FR-916 RQ-431 RQ-438: the Common library lists grove texts by topic with their levels, filtered up to the chosen level (the learner\'s first); one added is a grove text in Your library, never Beta', async ({ page }) => {
+test('FR-916 RQ-431 RQ-438 RQ-445: the Common library lists grove texts by topic with level, kind and minutes, filtered up to the chosen level (the learner\'s first); + Add adds one without leaving the list, a grove text in Your library, never Beta; a title opens the full text', async ({ page }) => {
   await signIn(page);
   await page.getByRole('button', { name: 'Common library' }).click();
   await page.locator('#tile-panel').getByRole('link', { name: 'Open the common library' }).click();
@@ -172,11 +175,24 @@ test('FR-916 RQ-431 RQ-438: the Common library lists grove texts by topic with t
   expect(upToB1.every((l) => levels.indexOf(l) <= 2)).toBe(true);
   expect(new Set(upToB1)).toEqual(new Set(['A1', 'A2', 'B1']));
   await expect(page.locator('#library-texts .topic-group h3').first()).not.toBeEmpty();
+  await expect(page.locator('#library-texts .library-item .text-state').first()).toHaveText(/(reading|listening) · \d+ min$/);
   const item = page.locator('#library-texts .library-item', { has: page.getByRole('button', { name: /^Add .* to your library$/ }) }).first();
   const title = (await item.locator('.text-title').textContent()).trim();
+  const preview = await item.locator('a.text-title').getAttribute('href');
+  expect(preview).toMatch(/^\/library\/text\?id=/);
   await item.getByRole('button', { name: /to your library$/ }).click();
   await expect(page.locator('#library-status')).toContainText(title);
-  await expect(page.getByRole('link', { name: `Open ${title}` })).toBeVisible();
+  await expect(page).toHaveURL(/\/library$/);
+  const row = page.locator('#library-texts .library-item', { hasText: title }).first();
+  await expect(row.locator('.added')).toHaveText('Added ✓');
+  await expect(row.locator('a.text-title')).toHaveAttribute('href', /^\/text\?id=\d+$/);
+  const other = page.locator('#library-texts .library-item', { has: page.getByRole('button', { name: /^Add .* to your library$/ }) }).first();
+  const otherTitle = (await other.locator('.text-title').textContent()).trim();
+  await other.locator('a.text-title').click();
+  await page.waitForURL(/\/library\/text\?id=/);
+  await expect(page.getByRole('heading', { name: otherTitle })).toBeVisible();
+  await expect(page.locator('.way-back a')).toHaveText('‹ Common library');
+  await expect(page.getByRole('button', { name: '+ Add to your library' })).toBeVisible();
   await page.goto('/texts');
   const mine = page.locator('#texts a', { hasText: title }).first();
   await expect(mine.locator('.grove-mark')).toHaveText('grove text');
@@ -204,7 +220,7 @@ test('FR-917 RQ-432: the common dictionary searches grove\'s whole word list as 
   }
 });
 
-test('FR-920 RQ-434: with no unread text, Practise first says so and offers the common library, Add a text or practising without a text', async ({ page }) => {
+test('FR-920 FR-923 SC-006 RQ-444 RQ-445 B-20 B-23: a Reading session short of new texts offers Add a text or Practise without; the library then lists only reading texts with a Reading bar that fills as texts are added, ‹ Back to your session at the top, and ▶ Start your session when full', async ({ page }) => {
   const t = await startTestGrove({ host: 'localhost' });
   try {
     const learner = t.seedAccount({ email: 'no-texts@example.test' });
@@ -217,16 +233,76 @@ test('FR-920 RQ-434: with no unread text, Practise first says so and offers the 
     await page.waitForURL(/\/terms$/);
     await agreeTerms(page);
     await page.waitForURL(`${t.base}/`);
-    await page.getByRole('button', { name: 'Practise' }).click();
-    await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
-    const offer = page.getByRole('group', { name: 'You have no new texts' });
-    await expect(offer).toBeVisible();
-    await expect(offer.getByRole('link', { name: 'Pick from the common library' })).toHaveAttribute('href', '/library');
-    await expect(offer.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
-    await offer.getByRole('button', { name: 'Practise without a text' }).click();
-    // Nothing at all to practise for this learner: the panel says so (FR-905).
-    await expect(page.locator('#tile-panel .message')).toContainText('nothing to practise');
+    await page.getByRole('button', { name: 'Discover', exact: true }).click();
+    const panel = page.locator('#tile-panel');
+    await panel.getByRole('button', { name: 'Options…' }).click();
+    await panel.getByRole('radio', { name: 'Reading', exact: true }).click();
+    await panel.getByRole('radio', { name: '5 min' }).click();
+    await panel.locator('.session-options').getByRole('button', { name: 'Start' }).click();
+    await page.waitForURL(/\/session$/);
+    // B-20: two choices.
+    await expect(page.locator('#offer-line')).toContainText('min of reading');
+    await expect(page.locator('#offer-line')).not.toContainText('listening');
+    await expect(page.locator('#offer-choices').locator('a, button')).toHaveText(['Add a text', 'Practise without']);
+    await page.getByRole('link', { name: 'Add a text' }).click();
+    await page.waitForURL(/\/add\?from=session$/);
+    await expect(page.locator('.way-back a')).toHaveText('‹ Back to your session');
+    await expect(page.locator('.fill-bar')).toHaveCount(1);
+    await expect(page.locator('.fill-bar .fill-name')).toHaveText('Reading');
+    await page.getByRole('link', { name: 'Choose from the common library' }).click();
+    await page.waitForURL(/\/library\?from=session$/);
+    // B-23: only reading texts, and no way to show the others.
+    await expect(page.locator('#library-kinds')).toContainText('reading');
+    const kinds = await page.locator('#library-texts .library-item .text-state').allTextContents();
+    expect(kinds.length).toBeGreaterThan(0);
+    expect(kinds.every((k) => k.includes('reading'))).toBe(true);
+    await expect(page.getByRole('button', { name: /Show all/ })).toHaveCount(0);
+    // Open one in full: the bars stay; ‹ Back to your session still leads back.
+    await page.locator('#library-texts a.text-title').first().click();
+    await page.waitForURL(/\/library\/text\?id=.*from=session/);
+    await expect(page.locator('.fill-bar')).toHaveCount(1);
+    await page.getByRole('button', { name: '+ Add to your library' }).click();
+    await expect(page.locator('#lt-added')).toBeVisible();
+    await page.goBack();
+    for (let i = 0; i < 12 && !(await page.getByRole('button', { name: '▶ Start your session' }).isVisible()); i += 1) {
+      const adds = page.locator('#library-texts .library-item').getByRole('button', { name: /^Add .* to your library$/ });
+      const before = await adds.count();
+      await adds.first().click();
+      await expect(adds.and(page.locator(':not([disabled])'))).toHaveCount(before - 1).catch(() => {});
+      await expect(page.locator('#library-status')).toContainText('is in your library');
+    }
+    await page.getByRole('button', { name: '▶ Start your session' }).click();
+    await page.waitForURL(/\/session$/);
+    await expect(page.locator('#exercise')).toBeVisible();
+    await expect(page.locator('#session-line')).toContainText('5-minute Discover');
+    // The offer is answered: the way back is gone.
+    await page.goto(`${t.base}/library?from=session`);
+    await expect(page.locator('.way-back a')).toHaveText('‹ Home');
+    await expect(page.locator('.fill-bars')).toHaveCount(0);
   } finally {
     await t.close();
   }
+});
+
+test('FR-922 RQ-446: every signed-in page but Home names the page it belongs under at the top and goes there; the phone\'s Back closes the menu first', async ({ page }) => {
+  await signIn(page);
+  const map = { '/session': 'Home', '/texts': 'Home', '/library': 'Home', '/progress': 'Home', '/settings': 'Home', '/profile': 'Home', '/add': 'Your library', '/dictionary': 'Your library', '/leaves': 'Your library', '/add/ai': 'Add a text', '/own': 'Add a text' };
+  const hrefs = { Home: '/', 'Your library': '/texts', 'Add a text': '/add' };
+  for (const [path, parent] of Object.entries(map)) {
+    await page.goto(path);
+    const back = page.locator('.way-back a');
+    await expect(back, path).toHaveText(`‹ ${parent}`);
+    await expect(back, path).toHaveAttribute('href', hrefs[parent]);
+  }
+  await page.goto('/');
+  await expect(page.locator('.way-back')).toHaveCount(0);
+  await page.goto('/progress');
+  await page.goto('/texts');
+  await page.getByRole('button', { name: 'Menu' }).click();
+  await expect(page.locator('#site-menu')).toBeVisible();
+  await page.goBack();
+  await expect(page.locator('#site-menu')).toBeHidden();
+  await expect(page).toHaveURL(/\/texts$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/progress$/);
 });

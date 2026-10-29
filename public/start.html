@@ -17,11 +17,33 @@
 </div>
 </header>
 <main>
-<section class="card" id="choose">
+<section class="card" id="way">
 <h2>Your starting level</h2>
-<p>Pick the level you think you are at. Then either use it as it is, or let grove check it with 30 words from that level.</p>
+<p>grove writes your texts from the words you know. Pick your level yourself, or let grove assess it with 30 words.</p>
 <p class="message bad" id="start-unavailable" role="alert" hidden></p>
+<div class="row"><button type="button" class="main" id="way-pick">Pick my level</button><button type="button" id="way-assess">Assess my level</button></div>
+<p class="small muted">Either way, you can do this again from Settings.</p>
+</section>
+<section class="card" id="pick" hidden>
+<h2>Pick my level</h2>
+<p class="small muted">Tap the level that fits you best, then Choose.</p>
 <div class="level-list" id="levels">
+<button type="button" aria-pressed="false" data-level="A1"><strong>A1</strong> <span>First words and phrases: greetings, numbers, everyday things.</span></button>
+<button type="button" aria-pressed="false" data-level="A2"><strong>A2</strong> <span>Simple everyday talk: shopping, family, work, your day.</span></button>
+<button type="button" aria-pressed="false" data-level="B1"><strong>B1</strong> <span>You follow clear everyday texts and talk about familiar topics.</span></button>
+<button type="button" aria-pressed="false" data-level="B2"><strong>B2</strong> <span>You read most articles and follow longer talk with some effort.</span></button>
+<button type="button" aria-pressed="false" data-level="C1"><strong>C1</strong> <span>You read demanding texts and express yourself fluently.</span></button>
+<button type="button" aria-pressed="false" data-level="C2"><strong>C2</strong> <span>Near-native: you understand almost everything.</span></button>
+<button type="button" aria-pressed="false" data-level="beginner"><strong>Beginner</strong> <span>I'm a complete beginner: no Swedish yet.</span></button>
+</div>
+<div class="row"><button type="button" class="main" id="choose" disabled>Choose</button><button type="button" id="not-sure">Not sure, assess</button></div>
+<p class="message" id="use-message" role="status" hidden></p>
+<p><button type="button" class="link-button" id="pick-back">‹ Back</button></p>
+</section>
+<section class="card" id="guess" hidden>
+<h2>Which level do you think you are?</h2>
+<p class="small muted">grove then shows 30 words from that level; you tick the ones you don't know.</p>
+<div class="level-list" id="guess-levels">
 <button type="button" data-level="A1"><strong>A1</strong> <span>First words and phrases: greetings, numbers, everyday things.</span></button>
 <button type="button" data-level="A2"><strong>A2</strong> <span>Simple everyday talk: shopping, family, work, your day.</span></button>
 <button type="button" data-level="B1"><strong>B1</strong> <span>You follow clear everyday texts and talk about familiar topics.</span></button>
@@ -29,13 +51,7 @@
 <button type="button" data-level="C1"><strong>C1</strong> <span>You read demanding texts and express yourself fluently.</span></button>
 <button type="button" data-level="C2"><strong>C2</strong> <span>Near-native: you understand almost everything.</span></button>
 </div>
-<p><button type="button" id="beginner">I'm a complete beginner</button></p>
-</section>
-<section class="card" id="how-card" hidden>
-<h2 id="how-heading"></h2>
-<p class="small muted">Use the level as it is, or check it: grove shows 30 words from it and you tick the ones you don't know. Either way, you can do this again from Settings.</p>
-<div class="row"><button type="button" class="main" id="use-level">Use this level</button><button type="button" id="check-level">Check my level</button></div>
-<p class="message" id="use-message" role="status" hidden></p>
+<p><button type="button" class="link-button" id="guess-back">‹ Back</button></p>
 </section>
 <section class="card" id="sample-card" hidden>
 <h2 id="sample-heading"></h2>
@@ -44,6 +60,7 @@
 <p class="message" id="start-message" role="status" hidden></p>
 <div class="row"><button type="button" class="main" id="confirm">Confirm</button><button type="button" id="lower" hidden></button></div>
 <p class="small"><a href="/" id="to-home" hidden>Go to Home</a></p>
+<p><button type="button" class="link-button" id="sample-back">‹ Back</button></p>
 </section>
 </main>
 </body>

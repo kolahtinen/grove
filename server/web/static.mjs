@@ -29,6 +29,7 @@ export const PAGES = [
   { path: '/add', file: 'add.html', access: 'agreed' },
   { path: '/add/ai', file: 'ai.html', access: 'agreed' },
   { path: '/library', file: 'library.html', access: 'agreed' },
+  { path: '/library/text', file: 'library-text.html', access: 'agreed' },
   { path: '/review', file: 'review.html', access: 'agreed' },
   { path: '/session', file: 'session.html', access: 'agreed' },
   { path: '/settings', file: 'settings.html', access: 'agreed' },

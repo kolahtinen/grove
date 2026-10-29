@@ -1,9 +1,10 @@
 // grove's small icons (G-09 FR-912), drawn inline with DOM calls in the logo's stroke style, so no
-// file or font is fetched (G-01 FR-024): Discover a sprout, Review a circle arrow, Master a mountain;
-// and Home's tiles (FR-901).
+// file or font is fetched (G-01 FR-024): Discover a sprout, Review a circle arrow, Mix the two together
+// (addendum 006), Master a mountain (old plans); and Home's tiles (FR-901).
 const PATHS = {
   discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
   review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  mix: ['M12 21v-7', 'M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5z', 'M4.5 14A8 8 0 0 1 17 5.3', 'M17.5 2v4h-4'],
   master: ['M3 20l6-10 4 6 3-4 5 8z'],
   resume: ['M8 5l11 7-11 7z'],
   practise: ['M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16z', 'M12 9v4l2.5 2', 'M10 2h4'],

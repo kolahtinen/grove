@@ -75,15 +75,19 @@ test('FR-401 RQ-52 RQ-415: after rating, the marking step lists the new words wi
   await expect(page.locator('#marking-card')).toBeHidden();
 });
 
-test('FR-908 FR-406 RQ-424 RQ-415: Just one mode → Review shows a due leaf in its sentence with Play, one card at a time', async ({ page }) => {
+test('FR-903 FR-406 RQ-440 RQ-415: the Review tile → Start shows a due leaf in its sentence with Play, one card at a time', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await setState(page, 'gärna', { ground: true });
   await api(page, '/api/pick-up', { lemma: 'gärna' });
-  // G-09 FR-908 replaces Home's three stages: Review on its own is a session of the due leaves.
+  // G-09 FR-903 (addendum 006): the Review tile's Start is a 10-minute Review of the due leaves; a short
+  // one first offers Fill the time or Start shorter (FR-905).
   await page.goto('/');
-  await page.getByRole('button', { name: 'One mode' }).click();
-  await page.locator('#tile-panel').getByRole('button', { name: 'Review' }).click();
+  await page.getByRole('button', { name: 'Review', exact: true }).click();
+  await page.locator('#tile-panel').getByRole('button', { name: 'Start', exact: true }).click();
+  const shorter = page.getByRole('group', { name: 'This session would be short' }).getByRole('button', { name: 'Start shorter' });
+  await expect(shorter.or(page.locator('#session-line'))).toBeVisible();
+  if (await shorter.isVisible()) await shorter.click();
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('Review');
   await expect(page.locator('#exercise-banner .chip.review').first()).toContainText('Review');

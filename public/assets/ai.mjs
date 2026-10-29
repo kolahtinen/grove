@@ -6,6 +6,7 @@
 // question-pages/78, 2). Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { fromSession } from './way.mjs';
 
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
@@ -229,7 +230,8 @@ function showProblems(problems) {
 
 async function requestPrompt(action) {
   showProblems([]);
-  const result = await post('/api/prompt', { action });
+  // B-23: sent by a session's offer, a new package asks only for the kind the session needs (G-02 FR-202).
+  const result = await post('/api/prompt', { action, ...(fromSession() ? { forSession: true } : {}) });
   if (!result.ok) { showMessage($('package-message'), result.message); return; }
   await load();
   const w = home.waiting;

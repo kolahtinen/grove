@@ -1,6 +1,5 @@
 // Your library (G-09 FR-915, FR-907): the learner's texts by topic (unread first, own texts under "My
-// own texts"), each topic with Start a session for a chosen length; Add a text, your dictionary and your
-// leaves. Everything is set with textContent.
+// own texts"), each topic with Practise this topic; Add a text, your dictionary and your leaves. Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { hasSwedish } from './speech.mjs';
@@ -35,48 +34,26 @@ function textItem(t) {
   return li;
 }
 
-// G-09 FR-909, FR-907: the texts by topic (unread first, own texts under "My own texts"), each topic
-// with Start a session for a chosen length.
+// G-09 FR-915, FR-907 (addendum 006): each topic has Practise this topic, a 10-minute Mix on it; a
+// session short of new texts opens with its offer.
 function startRow(topic, label) {
   const row = document.createElement('div');
   row.className = 'row topic-start';
-  const select = document.createElement('select');
-  select.setAttribute('aria-label', `Session length for ${label}`);
-  for (const m of [5, 10, 20]) {
-    const o = document.createElement('option');
-    o.value = String(m);
-    o.textContent = `${m} min`;
-    select.append(o);
-  }
-  select.value = '10';
   const go = document.createElement('button');
   go.type = 'button';
-  go.textContent = 'Start a session';
-  go.setAttribute('aria-label', `Start a session on ${label}`);
+  go.className = 'bar-button';
+  go.textContent = 'Practise this topic';
+  go.setAttribute('aria-label', `Practise ${label}`);
   const message = document.createElement('p');
   message.className = 'message';
   message.setAttribute('role', 'status');
   message.hidden = true;
-  const begin = async (fill) => {
-    const result = await post('/api/sessions', { kind: 'topic', topic, minutes: Number(select.value), voice: hasSwedish(), ...(fill ? { fill: true } : {}) });
-    // FR-905: a session that would run short first offers a new text or filling the time.
-    if (!result.ok && result.data.error === 'short') {
-      showMessage(message, result.message);
-      const fillButton = document.createElement('button');
-      fillButton.type = 'button';
-      fillButton.textContent = 'Fill the time';
-      fillButton.addEventListener('click', () => begin(true));
-      const add = document.createElement('a');
-      add.href = '/add';
-      add.textContent = 'Add a text';
-      message.append(' ', add, ' ', fillButton);
-      return;
-    }
+  go.addEventListener('click', async () => {
+    const result = await post('/api/sessions', { kind: 'topic', tile: 'mix', skill: 'mix', minutes: 10, topic, voice: hasSwedish() });
     if (!result.ok) { showMessage(message, result.message); return; }
     window.location.assign('/session');
-  };
-  go.addEventListener('click', () => begin(false));
-  row.append(select, go);
+  });
+  row.append(go);
   return [row, message];
 }
 

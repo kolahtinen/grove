@@ -1,18 +1,21 @@
 // Every signed-in page's top bar (G-09 FR-902): the logo links to Home, and ☰ opens a menu of Account,
-// Settings, Help and Sign out. Help shows How grove works in a bubble over the page, taken from grove's
+// Settings, Help and Sign out. The phone's Back closes the menu and the bubble first (FR-922). Help shows How grove works in a bubble over the page, taken from grove's
 // own /how page (research R8), with the animation's Replay. All text comes from grove's own pages.
 import { post } from './api.mjs';
 import { playGrow } from './grow.mjs';
+import { backCloses } from './way.mjs';
 
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
 let bubble = null;
 
 function closeHelp() {
   if (!bubble) return;
+  const done = bubble.done;
   bubble.backdrop.remove();
   bubble.pop.remove();
   bubble.returnTo?.focus();
   bubble = null;
+  done?.();
 }
 
 export async function showHelp(returnTo) {
@@ -28,7 +31,8 @@ export async function showHelp(returnTo) {
   close.setAttribute('aria-label', 'Close');
   close.addEventListener('click', closeHelp);
   pop.append(close);
-  bubble = { backdrop, pop, returnTo };
+  bubble = { backdrop, pop, returnTo, done: null };
+  bubble.done = backCloses(closeHelp, { reuse: true });
   backdrop.addEventListener('click', closeHelp);
   document.body.append(backdrop, pop);
   close.focus();
@@ -59,9 +63,14 @@ export function showMenu() {
   signout.type = 'button';
   menu.append(link('/profile', 'Account'), link('/settings', 'Settings'), help, signout);
   button.after(menu);
-  const toggle = (open) => {
+  let release = null;
+  // FR-922: the phone's Back closes the menu first.
+  const toggle = (open, keep = false) => {
+    if (open === !menu.hidden) return;
     menu.hidden = !open;
     button.setAttribute('aria-expanded', String(open));
+    if (open) release = backCloses(() => { release = null; toggle(false); });
+    else { const r = release; release = null; r?.(keep); }
   };
   button.addEventListener('click', (event) => {
     event.stopPropagation();
@@ -74,7 +83,7 @@ export function showMenu() {
     if (bubble) { closeHelp(); return; }
     if (!menu.hidden) { toggle(false); button.focus(); }
   });
-  help.addEventListener('click', () => { toggle(false); showHelp(button); });
+  help.addEventListener('click', () => { toggle(false, true); showHelp(button); });
   signout.addEventListener('click', async () => {
     await post('/api/signout', {});
     window.location.assign('/signin');

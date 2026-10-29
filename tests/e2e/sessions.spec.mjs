@@ -40,18 +40,17 @@ async function addSample(page) {
   await api(page, '/api/answer', { exchangeId: p.body.exchangeId, answer: JSON.stringify(answer) });
 }
 
-// Home's Practise tile comes with the tile grid (FR-901); until then the session starts through the API.
 test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under its line and bar, each card with the mode banner\'s two chips, texts open and come back, and it ends with a summary', async ({ page }) => {
   await signIn(page);
   await addSample(page);
-  const started = await api(page, '/api/sessions', { kind: 'time', minutes: 10, voice: true, fill: true });
+  const started = await api(page, '/api/sessions', { kind: 'time', tile: 'mix', skill: 'mix', minutes: 10, voice: true, fill: true });
   expect(started.status, JSON.stringify(started.body)).toBe(200);
   await page.goto('/session');
-  await expect(page.locator('#session-line')).toHaveText(/^10-minute session · 1 of \d+ · about \d+ min left$/);
+  await expect(page.locator('#session-line')).toHaveText(/^10-minute Mix · 1 of \d+ · about \d+ min left$/);
   await expect(page.locator('#session-bar')).toBeVisible();
   const chips = page.locator('#exercise-banner .chip');
   await expect(chips).toHaveCount(2);
-  await expect(chips.first()).toHaveText(/^(Discover|Review|Master)$/);
+  await expect(chips.first()).toHaveText(/^(Discover|Review)$/);
   await expect(chips.first().locator('svg.icon')).toHaveCount(1);
   await expect(chips.nth(1)).toHaveText(/^\d+ min$/);
   expect(await chips.first().evaluate((n) => getComputedStyle(n).textTransform)).toBe('none');
@@ -88,7 +87,7 @@ test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under 
   expect(after).toBeNull();
 });
 
-test('FR-915 FR-907 RQ-430 RQ-422: Your library lists the texts by topic, unread first, with Beta badges, and links Add a text, your dictionary and your leaves; Start a session on a topic starts one', async ({ page }) => {
+test('FR-915 FR-907 RQ-430 RQ-443: Your library lists the texts by topic, unread first, with Beta badges, and links Add a text, your dictionary and your leaves; Practise this topic starts a 10-minute Mix on it', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await page.goto('/texts');
@@ -105,14 +104,13 @@ test('FR-915 FR-907 RQ-430 RQ-422: Your library lists the texts by topic, unread
   const demo = page.locator('#texts a', { hasText: 'Brevet i väskan' });
   await expect(demo).toBeVisible();
   await expect(demo.locator('.beta')).toHaveCount(0);
-  await group.getByLabel(`Session length for ${topic.label}`).selectOption('5');
-  await group.getByRole('button', { name: `Start a session on ${topic.label}` }).click();
-  // FR-905 (question-pages/78, 3): a session that would run short first offers a text or Fill the time.
-  const fillTopic = group.getByRole('button', { name: 'Fill the time' });
-  await expect(fillTopic.or(page.locator('#session-line'))).toBeVisible();
-  if (await fillTopic.isVisible()) await fillTopic.click();
+  await group.getByRole('button', { name: `Practise ${topic.label}` }).click();
   await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('5-minute session');
+  // FR-920: a session short of new texts opens with its offer; Practise without goes on.
+  const without = page.getByRole('button', { name: 'Practise without' });
+  await expect(without.or(page.locator('#exercise'))).toBeVisible();
+  if (await without.isVisible()) await without.click();
+  await expect(page.locator('#session-line')).toContainText(`10-minute Mix: ${topic.label}`);
 });
 
 test('FR-918 RQ-435 RQ-439: Add a text shows the three ways side by side, each with its explainer, each leading to its own page', async ({ page }) => {

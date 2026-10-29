@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Library text · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/library-text.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
+</div>
+</header>
+<main>
+<section class="card">
+<h2 id="lt-title"></h2>
+<p class="small muted" id="lt-meta"></p>
+<div class="row"><button type="button" class="main" id="lt-add" hidden>+ Add to your library</button><span class="text-state added" id="lt-added" hidden>Added ✓</span><a class="button-link" id="lt-open" hidden>Open your copy</a></div>
+<p class="message" id="lt-message" role="status" hidden></p>
+<div class="library-preview" id="lt-lines" lang="sv"></div>
+</section>
+</main>
+</body>
+</html>

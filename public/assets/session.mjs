@@ -1,7 +1,9 @@
-// A session, one exercise at a time (G-09 FR-904, FR-912): "N-minute session · i of n · about m min
-// left" and a bar; each exercise in a card with its mode banner. Review and Master questions are answered
-// here; a text opens on the reading page, which comes back when the text is done. The learner can only go
-// on or leave. All text via textContent.
+// A session, one exercise at a time (G-09 FR-904, FR-912): "10-minute Mix · i of n · about m min left"
+// and a bar; each exercise in a card with its mode banner (a harder question shows as Review). Review
+// questions are answered here; a text opens on the reading page, which comes back when the text is done.
+// The learner can only go on or leave. A session short of new texts first shows its offer (FR-920): how
+// many minutes of each kind are missing, Add a text (the fill bars follow) or Practise without; ▶ Start
+// your session once the bars are full. All text via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { startHeartbeat } from './heartbeat.mjs';
@@ -11,7 +13,8 @@ import { icon } from './icons.mjs';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
-const NAMES = { discover: 'Discover', review: 'Review', master: 'Master' };
+const NAMES = { discover: 'Discover', review: 'Review' };
+const KINDS = { reading: 'reading', listening: 'listening' };
 
 await showAccount();
 await getMe();
@@ -47,6 +50,35 @@ async function next(session) {
   show(r.data.session);
 }
 
+function showOffer(session) {
+  const o = session.offer;
+  $('offer').hidden = false;
+  $('exercise').hidden = true;
+  const parts = o.needs.map((k) => `${Math.max(0, o.missing[k] - o.added[k])} min of ${KINDS[k]}`);
+  $('session-line').textContent = session.label;
+  $('session-bar').value = 0;
+  $('offer-line').textContent = o.full
+    ? 'You have added enough. Start your session.'
+    : `This session needs more new texts: about ${parts.join(' and ')}.`;
+  const choices = $('offer-choices');
+  choices.querySelector('.start-now')?.remove();
+  if (o.full) {
+    const go = el('button', 'main start-now', '▶ Start your session');
+    go.type = 'button';
+    go.addEventListener('click', () => plan(session, false));
+    choices.prepend(go);
+    $('offer-add').classList.remove('main');
+  }
+  $('offer-without').onclick = () => plan(session, true);
+}
+
+async function plan(session, fill) {
+  const r = await post('/api/session/plan', { sessionId: session.id, fill });
+  if (!r.ok) { showMessage($('session-message'), r.message); return; }
+  $('offer').hidden = true;
+  show(r.data.session);
+}
+
 function show(session) {
   if (!session) {
     $('session-line').textContent = 'No session going.';
@@ -55,15 +87,17 @@ function show(session) {
   }
   if (session.status === 'finished') { showEnd(session); return; }
   if (session.status !== 'going') { show(null); return; }
+  if (session.offer && !session.total) { showOffer(session); return; }
   $('session-line').textContent = `${session.label} · ${session.index + 1} of ${session.total} · about ${session.minutesLeft} min left`;
-  // FR-905, FR-906: a plan that is shorter than asked, or a text outside the form's range, says so.
-  const notes = [session.short && 'There isn’t enough to fill the whole time, so this session is shorter.', session.note === 'out_of_band' && 'No text is in this form’s range of known words, so grove took the nearest.'].filter(Boolean);
+  // FR-905: a plan that is shorter than asked says so.
+  const notes = [session.short && 'There isn’t enough to fill the whole time, so this session is shorter.'].filter(Boolean);
   $('session-note').hidden = !notes.length;
   $('session-note').textContent = notes.join(' ');
   $('session-bar').value = session.index / session.total;
   const ex = session.exercise;
   $('exercise').hidden = false;
-  $('exercise-banner').replaceChildren(chip(ex.mode, NAMES[ex.mode], true), chip(ex.mode, `${ex.minutes} min`, false));
+  const mode = NAMES[ex.mode] ? ex.mode : 'review';
+  $('exercise-banner').replaceChildren(chip(mode, NAMES[mode], true), chip(mode, `${ex.minutes} min`, false));
   const box = $('exercise-box');
   if (ex.textId) {
     box.replaceChildren(el('p', '', ex.title ?? 'A text'), el('p', 'small muted', 'Read it, answer its questions and rate it; grove brings you back here.'));

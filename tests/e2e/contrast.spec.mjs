@@ -108,12 +108,12 @@ async function auditAll(page, scheme) {
   await signIn(page);
   const topics = await page.evaluate(async () => (await (await fetch('/api/topics')).json()).topics);
   const textId = topics.flatMap((t) => t.texts).find((x) => x.title === 'Brevet i väskan')?.id ?? topics[0].texts[0].id;
-  await api(page, '/api/sessions', { kind: 'time', minutes: 5, voice: true, fill: true });
+  await api(page, '/api/sessions', { kind: 'time', tile: 'mix', skill: 'mix', minutes: 5, voice: true, fill: true });
   for (const path of SIGNED_IN) {
     await page.goto(path === '/text' ? `/text?id=${textId}` : path);
     await page.waitForLoadState('networkidle');
     if (path === '/') {
-      await page.getByRole('button', { name: 'Practise' }).click();
+      await page.getByRole('button', { name: 'Mix', exact: true }).click();
       await expect(page.locator('#tile-panel')).toBeVisible();
     }
     await check(path);

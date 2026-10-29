@@ -2,12 +2,23 @@
 // for their AI round or ready. A saved text opens on the reading page for its AI round. All text via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { kindsStillNeeded } from './way.mjs';
 
 const $ = (id) => document.getElementById(id);
 const STATES = { waiting: 'waiting for your AI', new: 'new', read: 'read' };
 
 await showAccount();
 await getMe();
+{
+  // FR-920: from a session's offer needing only listening, say an own text won't fill that bar.
+  const kinds = kindsStillNeeded();
+  if (kinds && kinds.length === 1 && kinds[0] === 'listening') {
+    const p = document.createElement('p');
+    p.className = 'small own-note';
+    p.textContent = 'Your own text is a reading text, so it won’t fill the Listening bar.';
+    $('own-card').append(p);
+  }
+}
 
 const res = await fetch('/api/own-texts', { credentials: 'same-origin' });
 const { texts } = res.ok ? await res.json() : { texts: [] };

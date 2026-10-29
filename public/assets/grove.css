@@ -565,3 +565,30 @@ fieldset.tactics { border: 1px solid var(--line); border-radius: 16px; padding: 
 .library-item .text-title { flex: 1; }
 .grove-mark { display: inline-block; vertical-align: middle; margin-left: .4rem; padding: .05rem .5rem; border-radius: 999px; border: 1px solid var(--line); color: var(--link); font-size: .7rem; font-weight: 600; }
 @media (min-width: 520px) { .add-ways { grid-template-columns: 1fr 1fr 1fr; } }
+
+/* Addendum 006: the way back (G-09 FR-922, FR-923), the fill bars (FR-920), Learning's Resume bar and
+   Options… (FR-903, FR-904), library rows with + Add and minutes (FR-916), Pick my level (G-06 FR-603). */
+.way-back { margin: 0 0 .5rem; }
+.way-back a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--link); text-decoration: none; }
+.way-back a:hover, .way-back a:focus-visible { text-decoration: underline; }
+.fill-bars { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; padding: .6rem 16px calc(.6rem + env(safe-area-inset-bottom)); background: var(--card); border-top: 1px solid var(--line); box-shadow: var(--shadow); }
+.fill-bars > * { display: flex; flex-direction: column; gap: .35rem; max-width: 760px; margin: 0 auto; color: var(--ink); text-decoration: none; }
+.fill-bars button.main { width: 100%; min-height: 48px; }
+.fill-bar { display: grid; grid-template-columns: 5.5rem 1fr auto; align-items: center; gap: .6rem; font-size: .92rem; }
+.fill-bar progress { width: 100%; height: .7rem; accent-color: var(--accent); }
+.fill-bar.full .fill-count { color: var(--ok); font-weight: 700; }
+body.has-fill-bars main { padding-bottom: 7rem; }
+.resume-bar { display: flex; align-items: center; gap: .5rem; min-height: 48px; margin: 0 0 .6rem; padding: .5rem .9rem; border-radius: 16px; background: var(--soft); color: var(--ink); font-weight: 700; text-decoration: none; }
+.resume-bar .icon { width: 1.2rem; height: 1.2rem; }
+.session-options { margin: .6rem 0 0; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 16px; }
+.session-options legend { font-weight: 700; padding: 0 .3rem; }
+.session-options > p { margin: .5rem 0 .2rem; }
+.session-options button.main { margin-top: .7rem; }
+.topic-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
+.library-item { flex-wrap: wrap; }
+.library-item .text-title { min-width: 10rem; }
+.text-state.added { color: var(--ok); font-weight: 700; }
+.library-preview p { line-height: 1.7; }
+.level-list button[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); box-shadow: var(--glow); }
+button.link-button { background: none; border: 0; padding: 0; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.own-note { color: var(--muted-strong); }
