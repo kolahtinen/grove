@@ -10,7 +10,9 @@ import { createQuestions } from '../drill/questions.mjs';
 import { plan as planSession } from './plan.mjs';
 import { readInventory } from './inventory.mjs';
 import { summarise } from './summary.mjs';
-import { durationsFor, textSeconds } from './durations.mjs';
+import { offerState } from './offer.mjs';
+
+const publicOffer = ({ notFull, ...offer }) => offer;
 
 const TILE_NAMES = { discover: 'Discover', review: 'Review', mix: 'Mix' };
 
@@ -38,19 +40,6 @@ export function createSessions({ db, now = () => Date.now() }) {
     return view;
   }
 
-  // The fill bars (FR-920): the minutes of each kind missing at the offer, and those of the learner's
-  // texts of that kind created since it, wherever they were added, at the planner's durations (R-34).
-  function offerView(accountId, offer) {
-    const inventory = readInventory(db, accountId);
-    const durations = durationsFor(inventory.belowB1);
-    const added = { reading: 0, listening: 0 };
-    for (const t of inventory.texts) if (t.createdAt >= offer.at) added[t.kind] += textSeconds(t, durations);
-    const needs = Object.keys(offer.missing).filter((k) => offer.missing[k] > 0);
-    const missing = { reading: Math.ceil((offer.missing.reading ?? 0) / 60), listening: Math.ceil((offer.missing.listening ?? 0) / 60) };
-    const addedMinutes = { reading: Math.floor(added.reading / 60), listening: Math.floor(added.listening / 60) };
-    return { needs, missing, added: addedMinutes, full: needs.every((k) => added[k] >= offer.missing[k]) };
-  }
-
   function label(row, params) {
     const name = TILE_NAMES[row.tile] ?? 'Session';
     if (!row.minutes) return name;
@@ -63,7 +52,7 @@ export function createSessions({ db, now = () => Date.now() }) {
     const exercises = JSON.parse(row.plan);
     const left = exercises.slice(row.at_index).reduce((s, e) => s + e.seconds, 0);
     const params = JSON.parse(row.params);
-    const offer = row.offer && row.status === 'going' ? offerView(accountId, JSON.parse(row.offer)) : null;
+    const offer = row.offer && row.status === 'going' ? publicOffer(offerState(db, accountId, JSON.parse(row.offer))) : null;
     return {
       id: row.id,
       kind: row.kind,

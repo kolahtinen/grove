@@ -18,6 +18,7 @@ import { tokenize } from '../words/tokens.mjs';
 import { askedForms } from '../words/asked.mjs';
 import { openRequests } from '../reading/flags.mjs';
 import { answerOwn } from '../reading/own.mjs';
+import { kindsStillNeeded } from '../sessions/offer.mjs';
 
 export const PARTS = 3;
 export const DEFAULT_TOPIC = 'everyday life';
@@ -50,12 +51,15 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
   const unratedIn = (accountId, packageId) => db.prepare(`SELECT COUNT(*) AS n FROM texts t WHERE t.account_id = ? AND t.package_id = ?
     AND NOT EXISTS (SELECT 1 FROM ratings r WHERE r.text_id = t.id)`).get(accountId, packageId).n;
 
-  // A part's texts: GROVE_PART_READING reading and GROVE_PART_LISTENING listening (FR-202).
-  const partKinds = () => [...Array(sizes.partReading).fill('reading'), ...Array(sizes.partListening).fill('listening')];
+  // A part's texts: GROVE_PART_READING reading and GROVE_PART_LISTENING listening (FR-202); a package of
+  // one kind (started from G-09's short-session offer, B-23) as many texts, all of that kind.
+  const partKinds = (pkg) => (pkg.only_kind
+    ? Array(sizes.partReading + sizes.partListening).fill(pkg.only_kind)
+    : [...Array(sizes.partReading).fill('reading'), ...Array(sizes.partListening).fill('listening')]);
   function openAsks(pkg, partNo) {
     const have = db.prepare('SELECT kind, COUNT(*) AS n FROM texts WHERE package_id = ? AND part_no = ? GROUP BY kind').all(pkg.id, partNo);
     const left = Object.fromEntries(have.map((r) => [r.kind, r.n]));
-    return partKinds().filter((kind) => (left[kind] = (left[kind] || 0) - 1) < 0).map((kind) => ({ part: partNo, kind }));
+    return partKinds(pkg).filter((kind) => (left[kind] = (left[kind] || 0) - 1) < 0).map((kind) => ({ part: partNo, kind }));
   }
   const currentPart = (pkg) => [1, 2, 3].find((p) => openAsks(pkg, p).length > 0) ?? null;
   function countParts(pkg) {
@@ -136,13 +140,13 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     return exchangeById(Number(info.lastInsertRowid));
   }
 
-  function newPackage(accountId) {
+  function newPackage(accountId, onlyKind = null) {
     const s = settings(accountId);
     const sum = summary(accountId, s.last_summary_at);
     if (sum) db.prepare('UPDATE learner_settings SET last_summary_at = ? WHERE account_id = ?').run(now(), accountId);
     const code = Array.from({ length: 4 }, () => LETTERS[randomInt(LETTERS.length)]).join('');
     // The package keeps the tactic it starts with (FR-223).
-    const info = db.prepare("INSERT INTO packages (account_id, status, created_at, code, summary, tactic) VALUES (?, 'open', ?, ?, ?, ?)").run(accountId, now(), code, sum, s.tactic);
+    const info = db.prepare("INSERT INTO packages (account_id, status, created_at, code, summary, tactic, only_kind) VALUES (?, 'open', ?, ?, ?, ?, ?)").run(accountId, now(), code, sum, s.tactic, onlyKind);
     const pkg = db.prepare('SELECT * FROM packages WHERE id = ?').get(Number(info.lastInsertRowid));
     if (s.tactic === 'whole') {
       return makeRequest(accountId, pkg, { kind: 'package', partNo: 1, asks: [1, 2, 3].flatMap((p) => openAsks(pkg, p)), withSetup: true });
@@ -363,7 +367,7 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     },
 
     // FR-201, FR-203: the waiting request, the next one, part 1 of a new package, or the setup again.
-    requestPrompt(accountId, action) {
+    requestPrompt(accountId, action, { forSession = false } = {}) {
       return transaction(db, () => {
         settings(accountId);
         let pkg = openPackage(accountId);
@@ -377,8 +381,11 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
           return view(exchangeById(waiting.id));
         }
         if (action === 'new_package' && pkg) { closePackage(accountId, pkg, 'closed'); pkg = null; }
+        // From the offer, a session needing one kind gets a package of only that kind (FR-202, B-23).
+        const needed = forSession ? kindsStillNeeded(db, accountId) : [];
+        const onlyKind = needed.length === 1 ? needed[0] : null;
         let ex;
-        if (!pkg) ex = newPackage(accountId);
+        if (!pkg) ex = newPackage(accountId, onlyKind);
         else {
           ex = waitingOf(accountId, pkg.id) ?? nextRequest(accountId, pkg);
           if (!ex) {
@@ -386,7 +393,7 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
               throw new HttpError(409, 'package_waiting', 'Rate every text of this package first, or start a new package.');
             }
             closePackage(accountId, pkg, 'finished');
-            ex = newPackage(accountId);
+            ex = newPackage(accountId, onlyKind);
           }
         }
         return view(ex);

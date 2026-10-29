@@ -124,3 +124,6 @@ New table `text_meanings` (G-03 FR-318): account_id, text_id → texts ON DELETE
 
 `server/store/migrations/011-tactics.sql`: `learner_settings` gains `ai_family` TEXT NULL (`chatgpt`, `gemini`, `claude`, `copilot`, `lechat`, `other`), `ai_product` TEXT NULL (an id from the table in `server/texts/plans.mjs`) and `tactic` TEXT NOT NULL DEFAULT 'steps' (`steps`, `long`, `whole`; CHECK); a learner with `whole_package = 1` gets `tactic = 'whole'`. `whole_package` stays unused. `packages` gains `tactic` TEXT NULL: the tactic its first request used, so a started package keeps its shape.
 
+## Migration 018 (2026-10-29; FR-202 as amended by addendum 006, B-23)
+
+`server/store/migrations/018-package-kind.sql`: `packages` gains `only_kind` TEXT NULL CHECK (`reading`, `listening`): set when a package is started from G-09's short-session offer and the session needs only that kind (`POST /api/prompt` with `forSession: true`; the kinds still needed come from the going session's offer); every part of that package then asks for only that kind, `GROVE_PART_READING` + `GROVE_PART_LISTENING` texts. NULL for every package before it, and for packages started any other way.

@@ -37,8 +37,8 @@ export function registerTextRoutes(router, { db, sizes = DEFAULT_SIZES, now = ()
 
   router.add({
     method: 'POST', path: '/api/prompt', access: 'agreed',
-    schema: { action: { type: 'enum', values: ['next', 'new_package', 'new_chat'] } },
-    handler: (ctx) => sendJson(ctx.res, 200, packages.requestPrompt(ctx.account.id, ctx.body.action)),
+    schema: { action: { type: 'enum', values: ['next', 'new_package', 'new_chat'] }, forSession: { type: 'boolean', optional: true } },
+    handler: (ctx) => sendJson(ctx.res, 200, packages.requestPrompt(ctx.account.id, ctx.body.action, { forSession: !!ctx.body.forSession })),
   });
 
   router.add({

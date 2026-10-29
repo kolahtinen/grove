@@ -433,3 +433,20 @@ test('FR-903 FR-905 FR-920 RQ-440 RQ-441 RQ-444: migration 017 keeps every sessi
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-202 RQ-444: migration 018 keeps every package and adds only_kind, reading or listening or none', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 17 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO packages (id, account_id, status, created_at) VALUES (7, 1, 'closed', 1)").run();
+    migrate(db);
+    assert.equal(db.prepare('SELECT only_kind FROM packages WHERE id = 7').get().only_kind, null);
+    db.prepare("INSERT INTO packages (account_id, status, created_at, only_kind) VALUES (1, 'closed', 2, 'reading')").run();
+    assert.throws(() => db.prepare("INSERT INTO packages (account_id, status, created_at, only_kind) VALUES (1, 'closed', 3, 'video')").run());
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
