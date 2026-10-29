@@ -19,7 +19,8 @@ test('FR-704 FR-705 FR-909 RQ-362 RQ-363: the reviewer lands on Home as the demo
     await expect(page.locator('#texts')).toContainText(title);
   }
   await page.goto('/progress');
-  await expect(page.locator('#bars .bar')).toHaveCount(14);
-  const withMinutes = await page.locator('#bars .bar').evaluateAll((bars) => bars.filter((b) => b.getAttribute('aria-label').match(/: [1-9]\d* minutes/)).length);
+  // G-09 FR-924 (B-27): the last 7 days; the demo's minutes are read on three earlier days.
+  await expect(page.locator('#week-chart .week-bar')).toHaveCount(7);
+  const withMinutes = await page.locator('#week-chart .week-bar').evaluateAll((bars) => bars.filter((b) => b.getAttribute('aria-label').match(/read [1-9]\d* min/)).length);
   expect(withMinutes).toBeGreaterThanOrEqual(3);
 });

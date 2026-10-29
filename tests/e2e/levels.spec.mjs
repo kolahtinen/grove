@@ -44,7 +44,7 @@ test('FR-605 FR-604 FR-606 RQ-248 RQ-114 RQ-252: a new account goes from the wel
   await page.locator('#to-home').click();
   // G-09 FR-910: the level is on Progress, the starting check on Settings.
   await page.goto('/progress');
-  await expect(page.locator('#progress-level')).toContainText('Your level: A2');
+  await expect(page.locator('#progress-levels .lv.now .v')).toHaveText('A2');
   await page.goto('/settings');
   await expect(page.locator('#restart')).toBeVisible();
 });
@@ -80,5 +80,5 @@ test('FR-603 FR-605 RQ-447 RQ-433 RQ-113: Pick my level lists each level with a 
   await page.getByRole('button', { name: 'Choose' }).click();
   await page.waitForURL(/\/$/);
   await page.goto('/progress');
-  await expect(page.locator('#progress-level')).toContainText('Your level: B1');
+  await expect(page.locator('#progress-levels .lv.now .v')).toHaveText('B1');
 });

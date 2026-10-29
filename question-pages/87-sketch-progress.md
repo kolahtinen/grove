@@ -31,3 +31,10 @@ Screenshots: `prototypes/sketches/2026-10-29-progress/picked.png` (version B, th
 3. Since you started: the sketch puts the words on their own line under the minutes; the build puts them after "·".
 4. The demo learner shows "Listened 0 min · 136 words": its history has a listening text read but its minutes count as reading.
 
+### After the side by side: make the chart match the sketch? (default: yes)
+
+- Yes, match the sketch (Recommended): the scale, the totals, "today" and the hint; also no extra level line, and words on their own line under the minutes
+- Keep it as built
+
+**Answer:** Yes, match the sketch. Applied to FR-924 (3), (1), (4).
+

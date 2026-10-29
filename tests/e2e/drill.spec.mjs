@@ -168,7 +168,8 @@ test('FR-413 RQ-294 RQ-413 RQ-415 RQ-426: To remember words are teal-green with 
 test('FR-924 FR-414 RQ-448 RQ-03: Progress shows started → now with today\'s minutes, four cards that open their details, the last 7 days and since you started', async ({ page }) => {
   await signIn(page);
   await page.goto('/progress');
-  await expect(page.locator('#progress-level')).toContainText(/Your level: |Set your starting level/);
+  await expect(page.locator('#progress-levels .lv.now .v')).toHaveText(/^(A1|A2|B1|B2|C1|C2|below A1)$/);
+  await expect(page.locator('#progress-level')).toHaveCount(0);
   await expect(page.locator('#progress-today')).toHaveText(/^today \d+ min$/);
   await expect(page.locator('#progress-levels .lv .k').first()).toHaveText('Started');
   const cards = page.locator('#progress-stats a.stat');
@@ -178,6 +179,12 @@ test('FR-924 FR-414 RQ-448 RQ-03: Progress shows started → now with today\'s m
   await expect(cards.first().locator('.w')).toHaveText(/words$/);
   await expect(page.locator('#week-chart .week-bar')).toHaveCount(7);
   await expect(page.locator('#week-chart .legend')).toContainText('Listened');
+  await expect(page.locator('#week-chart .week-bar .total')).toHaveCount(7);
+  await expect(page.locator('#week-chart .bar-label.today')).toContainText('today');
+  await expect(page.locator('#week-chart .week-axis .tick').first()).toBeVisible();
+  await expect(page.locator('.week-readout')).toHaveText('Tap a bar to see its minutes and words.');
+  await page.locator('#week-chart .week-bar').last().click();
+  await expect(page.locator('.week-readout')).toContainText('(today)');
   await expect(page.locator('#since')).toContainText('from your starting level');
   // The demo learner's minutes, read in the last 7 days (G-07), are on the bars.
   const read = await page.evaluate(async () => (await (await fetch('/api/progress')).json()).last7.read);

@@ -27,7 +27,6 @@ function levelBoxes() {
     arrow,
     box('Now', p.level.now ?? 'below A1', '', 'now'),
   );
-  $('progress-level').textContent = p.level.now ? `Your level: ${p.level.now}${p.level.start ? ` · you started at ${p.level.start}` : ''}` : 'Set your starting level to see your level.';
 }
 
 function stat(k, v, sub, hash) {
@@ -37,9 +36,10 @@ function stat(k, v, sub, hash) {
   return a;
 }
 
-// FR-924: one bar per day, read and listened stacked; listening striped as well as coloured.
+// FR-924: the legend above; one bar per day, read and listened stacked (listening striped as well as
+// coloured) on a minute scale with grid lines, each day's total above its bar, today marked; a tap on a bar
+// shows that day's minutes and words in the line under the chart.
 function weekChart(box) {
-  const max = Math.max(10, ...p.week.map((d) => d.read + d.listen));
   const empty = p.week.every((d) => d.read + d.listen === 0);
   if (empty) {
     const e = el('p', 'muted', 'Nothing read or heard in the last 7 days yet. ');
@@ -49,40 +49,65 @@ function weekChart(box) {
     box.replaceChildren(e);
     return;
   }
+  const legend = el('ul', 'legend');
+  const item = (cls, text) => { const li = el('li'); li.append(el('span', `sw ${cls}`), document.createTextNode(text)); return li; };
+  legend.append(item('read', 'Read'), item('listen', 'Listened'));
+  const most = Math.max(...p.week.map((d) => d.read + d.listen));
+  const step = most <= 20 ? 5 : most <= 60 ? 15 : most <= 120 ? 30 : 60;
+  const top = Math.max(step, Math.ceil(most / step) * step);
+  const plot = el('div', 'week-plot');
+  const axis = el('div', 'week-axis');
+  axis.setAttribute('aria-hidden', 'true');
+  axis.append(el('span', 'unit', 'min'));
+  const grid = el('div', 'week-grid');
+  grid.setAttribute('aria-hidden', 'true');
+  for (let v = top; v >= 0; v -= step) {
+    const tick = el('span', 'tick', String(v));
+    tick.style.bottom = `${(v / top) * 100}%`;
+    axis.append(tick);
+    const line = el('span', 'gridline');
+    line.style.bottom = `${(v / top) * 100}%`;
+    grid.append(line);
+  }
   const chart = el('div', 'week-bars');
-  const readout = el('p', 'small muted week-readout');
+  const readout = el('p', 'small muted week-readout', 'Tap a bar to see its minutes and words.');
   readout.setAttribute('role', 'status');
-  for (const d of p.week) {
+  p.week.forEach((d, i) => {
     const col = el('button', 'week-bar');
     col.type = 'button';
     const total = d.read + d.listen;
-    const text = `${dayName(d.day)} ${d.day.slice(8)}: read ${d.read} min · ${fmt(d.readWords)} words; listened ${d.listen} min · ${fmt(d.listenWords)} words`;
+    const today = i === p.week.length - 1;
+    const text = `${dayName(d.day)} ${d.day.slice(8)}${today ? ' (today)' : ''}: read ${d.read} min · ${fmt(d.readWords)} words; listened ${d.listen} min · ${fmt(d.listenWords)} words`;
     col.setAttribute('aria-label', text);
+    const area = el('span', 'bar-area');
+    const wrap = el('span', 'stack-wrap');
+    wrap.style.setProperty('--h', `${(total / top) * 100}%`);
     const stack = el('span', 'stack');
-    stack.style.setProperty('--h', `${Math.round((total / max) * 100)}%`);
     const listen = el('span', 'seg listen');
     listen.style.flexGrow = String(d.listen);
     const read = el('span', 'seg read');
     read.style.flexGrow = String(d.read);
     stack.append(listen, read);
-    col.append(stack, el('span', 'bar-label', dayName(d.day)));
+    wrap.append(el('span', 'total', String(total)), stack);
+    area.append(wrap);
+    const label = el('span', today ? 'bar-label today' : 'bar-label', dayName(d.day));
+    if (today) label.append(el('span', 'today-tag', 'today'));
+    col.append(area, label);
     col.addEventListener('click', () => { readout.textContent = text; });
     chart.append(col);
-  }
-  const legend = el('ul', 'legend');
-  const item = (cls, text) => { const li = el('li'); li.append(el('span', `sw ${cls}`), document.createTextNode(text)); return li; };
-  legend.append(item('read', 'Read'), item('listen', 'Listened'));
-  box.replaceChildren(chart, legend, readout);
+  });
+  plot.append(axis, grid, chart);
+  box.replaceChildren(legend, plot, readout);
 }
 
 function since() {
-  const row = (k, v, sub) => { const dd = el('dd'); dd.append(el('b', '', v)); if (sub) dd.append(el('span', 'muted small', ` · ${sub}`)); return [el('dt', '', k), dd]; };
+  const row = (k, v, sub, under = false) => { const dd = el('dd'); dd.append(el('b', '', v)); if (sub) dd.append(el('span', under ? 'mw small muted' : 'muted small', under ? sub : ` · ${sub}`)); return [el('dt', '', k), dd]; };
   $('since-date').textContent = p.ever.since ? `(${date(`${p.ever.since}T12:00:00Z`)})` : '';
   const ground = row('Ground', `${fmt(p.ground.words)} words`, `${p.ground.patterns} patterns`);
   ground[1].append(el('span', 'mw small muted', `${fmt(p.ground.fromStart)} of them from your starting level`));
   $('since').replaceChildren(
-    ...row('Read', `${fmt(p.ever.read)} min`, `${fmt(p.ever.readWords)} words`),
-    ...row('Listened', `${fmt(p.ever.listen)} min`, `${fmt(p.ever.listenWords)} words`),
+    ...row('Read', `${fmt(p.ever.read)} min`, `${fmt(p.ever.readWords)} words`, true),
+    ...row('Listened', `${fmt(p.ever.listen)} min`, `${fmt(p.ever.listenWords)} words`, true),
     ...row('Picked up', `${fmt(p.leaves.everWords)} words`, `${p.leaves.everPatterns} patterns`),
     ...ground,
   );
@@ -133,7 +158,9 @@ function words(which) {
 
 function level() {
   const body = $('level-body');
-  body.replaceChildren($('progress-levels').cloneNode(true));
+  const boxes = $('progress-levels').cloneNode(true);
+  boxes.removeAttribute('id');
+  body.replaceChildren(boxes);
   body.append(el('h3', 'small muted', 'Share of each level\'s words in your ground'));
   const ul = el('ul', 'coverage');
   for (const [lv, pct] of p.level.coverage) {
@@ -160,7 +187,8 @@ function route() {
 }
 
 if (!p) {
-  $('progress-level').textContent = 'Progress can’t be shown right now. Try again in a moment.';
+  $('progress-error').textContent = 'Progress can’t be shown right now. Try again in a moment.';
+  $('progress-error').hidden = false;
 } else {
   $('progress-today').textContent = `today ${p.today.minutes} min`;
   levelBoxes();
