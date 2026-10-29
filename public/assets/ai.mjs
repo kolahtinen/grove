@@ -1,8 +1,9 @@
 // Texts from your AI (G-09 FR-919; G-02 FR-201, FR-203, FR-206, FR-223): a wizard with a step list
 // always at the top (done ✓, now ●, next ○) and one step on screen at a time, with one main button and
 // Back; every action ends in a confirmation. The steps follow G-02's prompting state, so leaving and
-// coming back shows where the learner is. grove chooses the tactic from the learner's AI; another is
-// offered only after failed answers. Everything is set with textContent.
+// coming back shows where the learner is. The three tactics are always all there to choose, the one
+// grove recommends labelled; after failed answers the label moves and a line says so (G-02 FR-223;
+// question-pages/78, 2). Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 
@@ -89,8 +90,32 @@ function renderPlan(plan) {
   family.value = plan.family ?? '';
   fillProducts(plan.families.find((f) => f.id === plan.family));
   if (plan.product) $('plan-product').value = plan.product;
-  // FR-919: the tactic is grove's choice, shown as one line.
-  $('tactic-line').textContent = plan.family ? `${TACTIC_LINES[plan.tactic]}${plan.reason && plan.tactic === plan.recommended ? ` ${plan.reason}` : ''}` : '';
+  // G-02 FR-223, FR-919: all three tactics, the recommended one labelled, the one in use selected.
+  // After two failed answers in this package, the other main tactic to the one grove's table recommends
+  // (one long prompt from step by step, step by step from the others); it stays so after switching.
+  const failed = home.package?.oneText && plan.recommended ? (plan.recommended === 'steps' ? 'long' : 'steps') : null;
+  const recommended = failed ?? plan.recommended;
+  $('tactics').hidden = !plan.family;
+  const box = $('tactic-options');
+  box.replaceChildren();
+  for (const t of ['steps', 'long', 'whole']) {
+    const label = el('label', 'tactic-option');
+    const input = el('input');
+    input.type = 'radio';
+    input.name = 'tactic';
+    input.value = t;
+    input.checked = t === plan.tactic;
+    input.addEventListener('change', () => savePlan(t));
+    const text = el('span', 'tactic-text');
+    text.append(el('strong', '', TACTIC_NAMES[t]));
+    if (t === recommended) text.append(el('span', 'tag', 'Recommended'));
+    if (t === plan.tactic) text.append(el('span', 'tag', 'In use'));
+    text.append(el('span', 'small muted tactic-line', TACTIC_LINES[t]));
+    label.append(input, text);
+    box.append(label);
+  }
+  $('tactic-note').hidden = !failed && !(plan.reason && plan.tactic === plan.recommended);
+  $('tactic-note').textContent = failed ? `After the failed answers, grove now recommends ${TACTIC_NAMES[failed].toLowerCase()}.` : plan.reason ?? '';
 }
 
 async function savePlan(tactic) {
@@ -178,15 +203,6 @@ function render() {
   $('progress').textContent = pkg ? `Package: ${pkg.partsAccepted} of ${pkg.of} parts in` : '';
   if (home.waiting) renderPrompts(home.waiting);
   renderPlan(home.plan);
-  const offer = home.offer && home.offer !== home.plan.tactic ? home.offer : null;
-  $('offer').hidden = !offer;
-  if (offer) {
-    $('offer').replaceChildren(document.createTextNode(`Texts keep failing. ${offer === 'long' ? 'Your AI may keep to your words better with everything in one long prompt.' : 'Your AI may do better with the setup sent once, step by step.'} `));
-    const b = el('button', 'bar-button', `Try ${TACTIC_NAMES[offer].toLowerCase()}`);
-    b.type = 'button';
-    b.addEventListener('click', () => savePlan(offer));
-    $('offer').append(b);
-  }
   renderAdded();
   renderStepList();
 }

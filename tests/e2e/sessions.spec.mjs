@@ -129,7 +129,7 @@ test('FR-918 RQ-435: Add a text shows the two ways side by side, each with its e
   await page.waitForURL(/\/text\?id=\d+$/);
 });
 
-test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows done, now and next; one step at a time with Back; a confirmation after each action; the tactic as one line', async ({ page, context }) => {
+test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows done, now and next; one step at a time with Back; a confirmation after each action; all three tactics always there', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await signIn(page);
   await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'steps' });
@@ -141,7 +141,8 @@ test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows do
   if (await page.locator('.ai-step[data-step="ai"]').isHidden()) {
     while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
   }
-  await expect(page.locator('#tactic-line')).not.toBeEmpty();
+  // G-02 FR-223 as amended (question-pages/78, 2): all three tactics, always there to choose.
+  await expect(page.locator('.tactic-option')).toHaveCount(3);
   await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
   await page.evaluate(async () => {
     const me = await (await fetch('/api/me')).json();

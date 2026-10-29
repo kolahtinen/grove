@@ -21,7 +21,6 @@
 <h2>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
 <ol class="step-list" id="ai-steps" aria-label="Steps"></ol>
 <p class="muted small" id="progress"></p>
-<p class="message" id="offer" role="status" hidden></p>
 <p class="message" id="package-message" role="status" hidden></p>
 <ul class="problems" id="problems" hidden></ul>
 
@@ -31,7 +30,7 @@
 <label>AI<select id="plan-family"><option value="">Choose…</option></select></label>
 <label>Version<select id="plan-product" disabled></select></label>
 </div>
-<p class="small" id="tactic-line"></p>
+<fieldset class="tactics" id="tactics" hidden><legend>How grove asks your AI</legend><div id="tactic-options"></div><p class="small" id="tactic-note" hidden></p></fieldset>
 <p class="message" id="plan-message" role="status" hidden></p>
 <p class="topic-line">Topic: <span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>
 <form id="topic-form" hidden>

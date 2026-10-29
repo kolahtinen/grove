@@ -126,8 +126,10 @@ test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked
   await expect(page.locator('#translation script, #translation b')).toHaveCount(0);
 });
 
-// G-09 FR-919 (addendum 005) replaces the tactic tabs: grove chooses the tactic from the AI, shown as one line.
-test('FR-223 FR-919 RQ-403 RQ-404 RQ-391 RQ-436: the AI and version set the tactic, shown as one line; I\'m in a new chat gives the setup again', async ({ page }) => {
+// G-02 FR-223 as amended (question-pages/78, 2): all three tactics always there to choose, the recommended one labelled.
+const option = (page, name) => page.locator('.tactic-option', { hasText: name });
+
+test('FR-223 FR-919 RQ-403 RQ-404 RQ-391 RQ-436: the AI and version put their recommended tactic in use; all three stay there to choose; I\'m in a new chat gives the setup again', async ({ page }) => {
   await signIn(page);
   const waiting = await freshPrompt(page);
   await toPaste(page);
@@ -144,10 +146,15 @@ test('FR-223 FR-919 RQ-403 RQ-404 RQ-391 RQ-436: the AI and version set the tact
   while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
   await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('lechat');
   await expect(page.getByRole('combobox', { name: 'Version' })).toHaveValue('free');
-  await expect(page.locator('#tactic-line')).toContainText('puts everything your AI needs into each prompt');
-  await expect(page.locator('[role="tab"]')).toHaveCount(0);
+  await expect(page.locator('.tactic-option')).toHaveCount(3);
+  await expect(option(page, 'One long prompt')).toContainText('Recommended');
+  await expect(option(page, 'One long prompt').getByRole('radio')).toBeChecked();
+  await option(page, 'Whole package').getByRole('radio').check();
+  await expect(page.locator('#plan-message')).toContainText('whole package, from your next package on');
+  await expect(option(page, 'Whole package')).toContainText('In use');
   await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
-  await expect(page.locator('#tactic-line')).toContainText('sends your AI a short setup once');
+  await expect(option(page, 'Step by step')).toContainText('Recommended');
+  await expect(option(page, 'Step by step')).toContainText('In use');
 });
 
 test('FR-224 RQ-406: texts from the AI and own texts carry a Beta badge, in Your library and on the reading page', async ({ page }) => {
@@ -251,7 +258,7 @@ test('FR-223 RQ-403: the first Get texts asks for the AI and its version first',
   }
 });
 
-test('FR-223 RQ-405: after two failed answers in a row, Texts from your AI offers the other main tactic, and its button switches to it', async ({ page }) => {
+test('FR-223 RQ-405: after two failed answers in a row, the other main tactic is labelled Recommended with a line saying so, and choosing it puts it in use; every tactic stays there to choose', async ({ page }) => {
   const { t } = await ownGrove(page, 'offer@example.test');
   try {
     await page.evaluate(async (bad) => {
@@ -268,12 +275,16 @@ test('FR-223 RQ-405: after two failed answers in a row, Texts from your AI offer
       await post('/api/answer', { exchangeId: first.next.exchangeId, answer: JSON.stringify(one) });
     }, sample('too-many-new.json'));
     await page.goto(`${t.base}/add/ai`);
-    await expect(page.locator('#offer')).toContainText('Texts keep failing.');
-    await page.locator('#offer').getByRole('button', { name: 'Try one long prompt' }).click();
+    while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
+    await expect(page.locator('#tactic-note')).toHaveText('After the failed answers, grove now recommends one long prompt.');
+    await expect(option(page, 'One long prompt')).toContainText('Recommended');
+    await option(page, 'One long prompt').getByRole('radio').check();
     await expect(page.locator('#plan-message')).toContainText('one long prompt');
     await page.reload();
-    await expect(page.locator('#tactic-line')).toContainText('puts everything your AI needs into each prompt');
-    await expect(page.locator('#offer')).toBeHidden();
+    while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
+    await expect(option(page, 'One long prompt')).toContainText('In use');
+    await expect(option(page, 'One long prompt')).toContainText('Recommended');
+    await expect(page.locator('.tactic-option input:enabled')).toHaveCount(3);
   } finally {
     await t.close();
   }
