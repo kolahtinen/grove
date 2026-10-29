@@ -84,4 +84,4 @@ Asked 2026-10-29 in Claude Code, one at a time. Notes: [docs/reviews/2026-10-29-
 
 ## Applied
 
-(filled in when the specs change)
+2026-10-29, on branch `g09-sessions`: addendum 005 (RQ-429…437, R-27…30); constitution 3.1 redefined (2.0.0; answer 1); G-01 FR-011 (answer 1); G-06 FR-603, FR-605, FR-606 (answer 2); G-09 FR-901 (answers 3, 8), FR-909 and new FR-915 (answer 8, F1), FR-916, FR-917 (answer 4), FR-918 (answer 6), FR-919 (answer 7), FR-920 (answer 5).

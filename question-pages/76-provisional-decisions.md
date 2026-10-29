@@ -219,4 +219,4 @@ Prepared 2026-10-27 while the owner was away; asked one at a time in Claude Code
 
 ## Applied
 
-(filled in after the session: which specs and addenda changed)
+2026-10-29, on branch `g09-sessions`: G-09 spec (clarifications 2026-10-29; FR-901 PD-07, PD-08 labels, PD-10, PD-11; FR-904 PD-05; FR-905 PD-02, PD-28 with F1; FR-906 PD-04; FR-911 PD-16; FR-912, FR-913 PD-12, PD-14, the light gradient end proposed `#577F5E`, owner to confirm; FR-916 PD-17, PD-18; new FR-921 PD-03), G-04 FR-413 (PD-13), addendum 005 (RQ-431 from 17, 18). PD-22 (5-word check after starting texts), PD-21 and PD-23 (starting texts) wait for the starting-texts feature; PD-19 noted for learner sharing; PD-25 (own learner for state-dependent tests) is a recorded exception in the plan; PD-01, 09, 20, 24, 26 unchanged. F2, F4: the graded list and core list are on branch `library-content`. F3: `texts.spec.mjs` committed on main.
