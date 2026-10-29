@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { REVIEWER, OWNER } from '../fakes/dev-accounts.mjs';
 
 async function signIn(page, account) {
@@ -7,9 +8,7 @@ async function signIn(page, account) {
   await page.getByLabel('Password').fill(account.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
 }
 
 test('FR-602 C-05: the terms page links to Credits, which names the Kelly list and the font with their licences', async ({ page }) => {

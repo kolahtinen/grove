@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 
-test('FR-011 FR-902 RQ-228 RQ-420: sign in, agree on the terms, sign out from ☰, and agree again next time', async ({ page }) => {
+test('FR-911 FR-902 RQ-228 RQ-428 RQ-420: sign in, agree on the terms, sign out from ☰, and agree again next time', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/signin$/);
 
@@ -10,13 +11,8 @@ test('FR-011 FR-902 RQ-228 RQ-420: sign in, agree on the terms, sign out from �
   await page.getByRole('button', { name: 'Sign in' }).click();
   await expect(page).toHaveURL(/\/terms$/);
 
-  const agree = page.getByRole('button', { name: 'Agree' });
-  await expect(agree).toBeDisabled();
-  await page.getByLabel(/I agree to the terms/).check();
-  await expect(agree).toBeDisabled();
-  await page.getByLabel(/I am 13 or over/).check();
-  await expect(agree).toBeEnabled();
-  await agree.click();
+  // G-09 FR-911 replaces FR-011's two boxes with the terms screens (tests/e2e/terms-screens.spec.mjs).
+  await agreeTerms(page);
 
   await expect(page).toHaveURL(/\/$/);
   // G-09 FR-902 replaces FR-014's email and Sign out in the bar: Sign out is in the ☰ menu.

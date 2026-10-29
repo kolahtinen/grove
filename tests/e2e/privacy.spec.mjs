@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { REVIEWER, HTMLISH } from '../fakes/dev-accounts.mjs';
 
 async function signIn(page, account) {
@@ -7,9 +8,7 @@ async function signIn(page, account) {
   await page.getByLabel('Password').fill(account.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await expect(page).toHaveURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await expect(page).toHaveURL(/\/$/);
 }
 

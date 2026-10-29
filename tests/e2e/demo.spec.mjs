@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { agreeTerms } from './helpers.mjs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 
 test('FR-704 FR-705 FR-909 RQ-362 RQ-363: the reviewer lands on Home as the demo learner: four demo texts on Texts, no starting check offered, minutes on earlier days', async ({ page }) => {
@@ -7,9 +8,7 @@ test('FR-704 FR-705 FR-909 RQ-362 RQ-363: the reviewer lands on Home as the demo
   await page.getByLabel('Password').fill(REVIEWER.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(/\/$/);
   // G-09 FR-901, FR-909, FR-910: Home is the tile grid, the texts are on Texts, the starting check on Settings.
   await expect(page.locator('#tiles')).toBeVisible();

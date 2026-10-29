@@ -168,7 +168,7 @@ function render(home) {
   getButton.hidden = !!waiting;
   getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
   $('new-package').hidden = !pkg;
-  // After a finished package, Home suggests My own texts (G-03 FR-321; addendum 003).
+  // After a finished package, Texts suggests My own texts (G-03 FR-321; addendum 003; on Home until G-09).
   $('own-suggest').hidden = !(pkg && pkg.partsAccepted >= pkg.of);
 
   renderTopics(home.texts);
