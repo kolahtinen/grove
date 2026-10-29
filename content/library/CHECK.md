@@ -122,7 +122,7 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B2-19 | Bin på taket | listening, dialogue | 233 | 17 | **bi** (C2), **bikupa** (—), honung (C1), **kupa** (—), **tam** (C2), **humla** (—) | 7 → 5 (kilo, bry no longer far) | passes |
 | B2-20 | Att våga starta eget | reading | 248 | 22 | ugn (C1), bokföring (C1), **bakning** (—), **kardemummabull** (—*) | 3 → 2 (bageri no longer far) | passes |
 
-## C1 (10 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
+## C1 (15 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -136,8 +136,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C1-08 | När kroppen säger ifrån | listening | 274 | 27 | **pinkod** (—), **bulta** (—), **diffus** (—) | 7 → 3 (arbetsbelastning, utvilad, deltid, arbetsmängd no longer far) | passes |
 | C1-09 | Skogen – resurs eller livsmiljö? | reading | 268 | 27 | infekterad (C2), **likåldrig** (—*), **lav** (—), **bärplockning** (—), **hyggesfri** (—*), **friluftsliv** (—) | 6 → 5 (kalhuggs no longer far) | passes |
 | C1-10 | Litar vi fortfarande på varandra? | reading, dialogue | 266 | 28 | **otrygghet** (—), **naturlag** (—) | 2 → 2 (none no longer far) | passes |
+| C1-11 | När mörkret kommer | listening | 252 | 24 | **vintertid** (—), **mörkertid** (—*), **nedstämdhet** (—), **advent** (—), **vintersolstånd** (—) | 5 → 5 (none no longer far) | passes |
+| C1-12 | Innan Systemet stänger | reading, dialogue | 277 | 21 | **omständlig** (—), legitimation (C2), **opraktisk** (—), **utlämningsställe** (—*) | 3 → 3 (none no longer far) | passes |
+| C1-13 | Pengar till hälsan | reading | 289 | 29 | **skattefri** (—), **fysioterapeut** (—*), **mirakelkur** (—*), **knuff** (—) | 6 → 4 (friskvårdsbidrag, yoga no longer far) | passes |
+| C1-14 | Mobilfri skola? | listening, dialogue | 315 | 25 | **skoldag** (—*), **högstadieskola** (—) | 2 → 2 (none no longer far) | passes |
+| C1-15 | Hela landet tycker till | reading | 347 | 25 | **dipp** (—), **schlager** (—), **rap** (—) | 5 → 3 (app, håna no longer far) | passes |
 
-## C2 (10 texts; 300–400 words, sentences ≤ 35 words, ≤ 15 far words)
+## C2 (15 texts; 300–400 words, sentences ≤ 35 words, ≤ 15 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -151,5 +156,10 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C2-08 | Ingen penicillin den här gången | listening, dialogue | 305 | 23 | **penicillin** (—), **streptokock** (—), **magbesvär** (—*), **resistent** (—), **resistens** (—), **febernedsättande** (—*) | 8 → 6 (antibiotika, snopen no longer far) | passes |
 | C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
 | C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
+| C2-11 | Vad ska vi heta? | reading | 315 | 31 | **given** (—), **kännas** (—), **klinga** (—), **opraktisk** (—) | 5 → 4 (arbetssökande no longer far) | passes |
+| C2-12 | Tjugo år i kö | listening | 332 | 31 | **innerstad** (—), **bostadskö** (—), **kötid** (—), **hyreshöjning** (—), **nyinflyttad** (—), **andrahandskontrakt** (—), **hyressättning** (—*), **misstroendeomröstning** (—) | 10 → 8 (eftertraktad, nybyggda no longer far) | passes |
+| C2-13 | En resa, fem veckor | reading, dialogue | 348 | 31 | **varukorg** (—), **pandemi** (—), **utrikesflyg** (—*), **weekendresa** (—*) | 4 → 4 (none no longer far) | passes |
+| C2-14 | Det som inte sägs | listening, dialogue | 384 | 26 | **podd** (—), **konsenskultur** (—*), **sabotera** (—) | 4 → 3 (frustrerande no longer far) | passes |
+| C2-15 | När trädgränsen flyttar | reading | 396 | 29 | **karg** (—), **fjällbjörk** (—*), **lav** (—), **björkskog** (—*), **arktis** (—), **vegetation** (—), **stödutfodring** (—*), **lya** (—), **tö** (—), **utfodra** (—), **renskötare** (—), **mätseri** (—*), **beredd** (—) | 16 → 13 (kalfjäll, orörd, alltmer no longer far) | passes |
 
-120 of 120 texts pass.
+130 of 130 texts pass.

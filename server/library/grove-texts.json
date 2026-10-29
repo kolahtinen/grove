@@ -10362,6 +10362,627 @@
   ]
  },
  {
+  "id": "C1-11",
+  "level": "C1",
+  "topic": "Daily life",
+  "form": "prose",
+  "kind": "listening",
+  "title": "När mörkret kommer",
+  "names": [
+   "Stockholm"
+  ],
+  "lines": [
+   {
+    "sv": "I november händer något med Sverige.",
+    "en": "In November something happens to Sweden."
+   },
+   {
+    "sv": "Klockan har ställts om till vintertid, och plötsligt är det mörkt redan när man går hem från jobbet.",
+    "en": "The clocks have been put back to winter time, and suddenly it's already dark when you go home from work."
+   },
+   {
+    "sv": "Längst i norr går solen inte upp alls under några veckor runt jul. Det kallas mörkertid.",
+    "en": "In the far north the sun doesn't rise at all for a few weeks around Christmas. It's called the polar night."
+   },
+   {
+    "sv": "Även i Stockholm är dagarna korta. I december är det ljust i ungefär sex timmar.",
+    "en": "Even in Stockholm the days are short. In December it's light for about six hours."
+   },
+   {
+    "sv": "För många påverkar det humöret.",
+    "en": "For many people it affects their mood."
+   },
+   {
+    "sv": "Man blir trött, sover mer och har svårare att komma igång på morgonen.",
+    "en": "You get tired, sleep more and find it harder to get going in the morning."
+   },
+   {
+    "sv": "En del drabbas av vinterdepression, men de flesta upplever bara en mildare nedstämdhet.",
+    "en": "Some suffer from winter depression, but most only experience a milder low mood."
+   },
+   {
+    "sv": "Hur hanterar svenskarna mörkret?",
+    "en": "How do Swedes deal with the darkness?"
+   },
+   {
+    "sv": "Ett svar syns i nästan varje fönster.",
+    "en": "One answer can be seen in almost every window."
+   },
+   {
+    "sv": "I början av advent tänds stjärnor och ljusstakar, och de får ofta lysa ända till februari.",
+    "en": "At the start of Advent, stars and candlesticks are lit, and they are often left shining until February."
+   },
+   {
+    "sv": "Levande ljus är också vanligt, både hemma och på kaféer.",
+    "en": "Real candles are also common, both at home and in cafés."
+   },
+   {
+    "sv": "Svenskarna hör till dem i Europa som tänder flest ljus, och varje vinter påminner räddningstjänsten om att man aldrig ska lämna dem utan uppsikt.",
+    "en": "Swedes are among the people in Europe who light the most candles, and every winter the fire service reminds people never to leave them unattended."
+   },
+   {
+    "sv": "Läkare ger dessutom några enkla råd.",
+    "en": "Doctors also give some simple advice."
+   },
+   {
+    "sv": "Det viktigaste är att gå ut mitt på dagen, när det är som ljusast, även om himlen är grå.",
+    "en": "The most important thing is to go out in the middle of the day, when it's at its lightest, even if the sky is grey."
+   },
+   {
+    "sv": "Dagsljus utomhus är nämligen mycket starkare än lampor inomhus.",
+    "en": "Daylight outdoors is in fact much stronger than lamps indoors."
+   },
+   {
+    "sv": "Motion hjälper också, liksom regelbundna tider för sömn och måltider.",
+    "en": "Exercise also helps, as do regular times for sleep and meals."
+   },
+   {
+    "sv": "Många nämner också gemenskapen.",
+    "en": "Many also mention being together."
+   },
+   {
+    "sv": "Att träffa vänner, äta något gott och tända ljus tillsammans gör de mörka kvällarna mysigare.",
+    "en": "Meeting friends, eating something nice and lighting candles together make the dark evenings cosier."
+   },
+   {
+    "sv": "Och så finns det något att se fram emot.",
+    "en": "And then there is something to look forward to."
+   },
+   {
+    "sv": "Efter vintersolståndet blir dagarna längre igen, först med några minuter, sedan allt snabbare.",
+    "en": "After the winter solstice the days get longer again, first by a few minutes, then faster and faster."
+   },
+   {
+    "sv": "I mars märker alla skillnaden.",
+    "en": "In March everyone notices the difference."
+   },
+   {
+    "sv": "Då sitter folk på trappor och bänkar med slutna ögon och vänder ansiktet mot solen, som om de laddade batterierna.",
+    "en": "Then people sit on steps and benches with their eyes closed and turn their faces to the sun, as if they were charging their batteries."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad är mörkertid?",
+    "options": [
+     "När solen inte går upp alls på några veckor",
+     "När det är ljust hela natten",
+     "Den längsta natten i Stockholm"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vilket är läkarnas viktigaste råd?",
+    "options": [
+     "Att sova mer",
+     "Att gå ut mitt på dagen",
+     "Att tända levande ljus"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör folk i mars, enligt texten?",
+    "options": [
+     "De reser söderut",
+     "De sitter ute och vänder ansiktet mot solen",
+     "De tar ner stjärnorna i fönstren"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C1-12",
+  "level": "C1",
+  "topic": "Food and drink",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Innan Systemet stänger",
+  "names": [
+   "Karin",
+   "Systembolaget",
+   "Systemet"
+  ],
+  "lines": [
+   {
+    "sv": "– Karin, jag behöver köpa en flaska vin till middagen hos dina föräldrar. Finns det någon vinbutik i närheten?",
+    "en": "– Karin, I need to buy a bottle of wine for dinner at your parents'. Is there a wine shop nearby?"
+   },
+   {
+    "sv": "– Det finns bara en sorts vinbutik i Sverige: Systembolaget. Och den stänger klockan tre på lördagar, så vi får skynda oss.",
+    "en": "– There's only one kind of wine shop in Sweden: Systembolaget. And it closes at three on Saturdays, so we'd better hurry."
+   },
+   {
+    "sv": "– Klockan tre? Du skojar.",
+    "en": "– Three o'clock? You're joking."
+   },
+   {
+    "sv": "– Inte alls. Och på söndagar har den stängt.",
+    "en": "– Not at all. And on Sundays it's closed."
+   },
+   {
+    "sv": "– Men kan jag inte bara köpa vin i matbutiken?",
+    "en": "– But can't I just buy wine at the supermarket?"
+   },
+   {
+    "sv": "– Nej, vanliga matbutiker får bara sälja öl och drycker med låg alkoholhalt. Allt starkare säljs på Systemet.",
+    "en": "– No, ordinary food shops may only sell beer and drinks with a low alcohol content. Anything stronger is sold at Systemet."
+   },
+   {
+    "sv": "– Varför då? Det låter ju väldigt omständligt.",
+    "en": "– Why? It sounds really cumbersome."
+   },
+   {
+    "sv": "– Det är meningen. Staten har monopol för att begränsa hur mycket folk dricker. Om ingen tjänar pengar på att sälja mer, finns det ingen anledning att locka kunder.",
+    "en": "– That's the idea. The state has a monopoly to limit how much people drink. If nobody makes money from selling more, there's no reason to attract customers."
+   },
+   {
+    "sv": "– Så de vill inte att man köper något?",
+    "en": "– So they don't want you to buy anything?"
+   },
+   {
+    "sv": "– Ungefär. De gör ingen reklam, de har inga extrapriser, och personalen ska fråga efter legitimation om man ser ut att vara under 25.",
+    "en": "– More or less. They don't advertise, they have no special offers, and the staff are to ask for ID if you look under 25."
+   },
+   {
+    "sv": "– Det låter som ett märkligt sätt att driva en affär.",
+    "en": "– That sounds like a strange way to run a shop."
+   },
+   {
+    "sv": "– Kanske. Men det är faktiskt ganska populärt. De flesta svenskar vill behålla det, enligt undersökningarna.",
+    "en": "– Maybe. But it's actually quite popular. Most Swedes want to keep it, according to the surveys."
+   },
+   {
+    "sv": "– Hur kommer det sig?",
+    "en": "– How come?"
+   },
+   {
+    "sv": "– Men är det inte opraktiskt för dem som bor på landet?",
+    "en": "– But isn't it impractical for people who live in the countryside?"
+   },
+   {
+    "sv": "– Lite, men man kan beställa varor till ett utlämningsställe, ofta i den närmaste mataffären. Det fungerar bättre än man tror.",
+    "en": "– A bit, but you can order goods to a pick-up point, often in the nearest food shop. It works better than you might think."
+   },
+   {
+    "sv": "– Okej. Men varför är det populärt?",
+    "en": "– Okay. But why is it popular?"
+   },
+   {
+    "sv": "– Utbudet är stort, och personalen är kunnig. Om du berättar vad mina föräldrar ska laga kan de föreslå ett vin som passar. Och priserna är desamma i hela landet.",
+    "en": "– The range is large and the staff know their stuff. If you tell them what my parents are cooking, they can suggest a wine that goes with it. And the prices are the same all over the country."
+   },
+   {
+    "sv": "– Vad ska de laga, förresten?",
+    "en": "– What are they cooking, by the way?"
+   },
+   {
+    "sv": "– Älg, tror jag. Pappa var ute och jagade i höstas.",
+    "en": "– Elk, I think. Dad was out hunting this autumn."
+   },
+   {
+    "sv": "– Då hoppas jag att de har något rött som passar till vilt.",
+    "en": "– Then I hope they've got something red that goes with game."
+   },
+   {
+    "sv": "– Det har de säkert. Men först måste vi hinna dit. Klockan är kvart i tre.",
+    "en": "– I'm sure they have. But first we have to get there in time. It's a quarter to three."
+   },
+   {
+    "sv": "– Då springer vi!",
+    "en": "– Then let's run!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför kan man inte köpa vin i en vanlig matbutik?",
+    "options": [
+     "Det är för dyrt",
+     "Bara Systembolaget får sälja starkare drycker",
+     "Matbutikerna har stängt på lördagar"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Varför har staten monopol, enligt Karin?",
+    "options": [
+     "För att begränsa hur mycket folk dricker",
+     "För att tjäna mer pengar",
+     "För att hålla priserna låga"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad ska Karins föräldrar laga?",
+    "options": [
+     "Fisk",
+     "Älg",
+     "Kyckling"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C1-13",
+  "level": "C1",
+  "topic": "Health",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Pengar till hälsan",
+  "names": [
+   "Skatteverket",
+   "Skatteverkets"
+  ],
+  "lines": [
+   {
+    "sv": "De flesta svenska arbetsgivare erbjuder sina anställda ett så kallat friskvårdsbidrag.",
+    "en": "Most Swedish employers offer their employees a so-called wellness allowance."
+   },
+   {
+    "sv": "Det är en summa pengar, ofta mellan två och fem tusen kronor om året, som man kan använda till aktiviteter som främjar hälsan, till exempel gymkort, simhall eller yoga.",
+    "en": "It is a sum of money, often between two and five thousand kronor a year, which you can use for activities that promote health, for example a gym card, the swimming pool or yoga."
+   },
+   {
+    "sv": "Bidraget är skattefritt för den anställde, förutsatt att aktiviteten finns med på Skatteverkets lista.",
+    "en": "The allowance is tax-free for the employee, provided that the activity is on the Tax Agency's list."
+   },
+   {
+    "sv": "Tanken är enkel: friska medarbetare är mindre sjukskrivna, presterar bättre och trivs längre på jobbet.",
+    "en": "The idea is simple: healthy employees are on sick leave less, perform better and stay happy in their jobs longer."
+   },
+   {
+    "sv": "Ändå visar undersökningar att ungefär hälften av dem som har rätt till bidraget aldrig använder det.",
+    "en": "Yet surveys show that about half of those entitled to the allowance never use it."
+   },
+   {
+    "sv": "Dessutom upplever många att listan över godkända aktiviteter är svår att överblicka.",
+    "en": "In addition, many find the list of approved activities hard to get an overview of."
+   },
+   {
+    "sv": "Varför?",
+    "en": "Why?"
+   },
+   {
+    "sv": "Ett skäl är att många helt enkelt glömmer bort det eller inte vet hur man gör.",
+    "en": "One reason is that many simply forget about it or don't know how to go about it."
+   },
+   {
+    "sv": "Ofta måste man först betala själv och sedan lämna in kvittot, och det är ett steg som lätt blir liggande.",
+    "en": "Often you have to pay yourself first and then hand in the receipt, and that is a step that easily gets put off."
+   },
+   {
+    "sv": "Ett annat skäl är att bidraget främst lockar dem som redan tränar.",
+    "en": "Another reason is that the allowance mainly attracts those who already exercise."
+   },
+   {
+    "sv": "Den som springer tre gånger i veckan har inga problem att använda pengarna. Men den som inte har rört sig på flera år börjar sällan bara för att det finns ett bidrag.",
+    "en": "Someone who runs three times a week has no trouble using the money. But someone who hasn't exercised for years rarely starts just because there is an allowance."
+   },
+   {
+    "sv": "Därmed riskerar bidraget att gynna de friska snarare än dem som skulle ha mest nytta av det.",
+    "en": "The allowance thus risks benefiting the healthy rather than those who would gain most from it."
+   },
+   {
+    "sv": "Vissa arbetsplatser har därför valt en annan väg.",
+    "en": "Some workplaces have therefore chosen a different path."
+   },
+   {
+    "sv": "I stället för att bara dela ut pengar ordnar de gemensamma promenader på lunchen.",
+    "en": "Instead of just handing out money, they organise group walks at lunchtime."
+   },
+   {
+    "sv": "Andra låter de anställda träna en timme i veckan på arbetstid eller bjuder in en fysioterapeut som ger råd om hur man sitter vid skrivbordet.",
+    "en": "Others let employees exercise for an hour a week during working hours, or invite a physiotherapist who gives advice on how to sit at your desk."
+   },
+   {
+    "sv": "Erfarenheterna är hittills goda, enligt arbetsgivarna själva.",
+    "en": "So far the experience has been good, according to the employers themselves."
+   },
+   {
+    "sv": "När aktiviteten är en del av arbetsdagen deltar betydligt fler, även de som annars aldrig skulle ha satt sin fot på ett gym.",
+    "en": "When the activity is part of the working day, considerably more people take part, even those who would otherwise never have set foot in a gym."
+   },
+   {
+    "sv": "Friskvårdsbidraget är alltså ingen mirakelkur.",
+    "en": "So the wellness allowance is no miracle cure."
+   },
+   {
+    "sv": "Men rätt använt kan det vara en liten knuff i rätt riktning, och för många räcker det långt.",
+    "en": "But used properly, it can be a little nudge in the right direction, and for many that goes a long way."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur många av dem som har rätt till bidraget använder det aldrig?",
+    "options": [
+     "Ungefär en tiondel",
+     "Ungefär hälften",
+     "Nästan alla"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vilket problem med bidraget beskriver texten?",
+    "options": [
+     "Det är för litet",
+     "Det lockar främst dem som redan tränar",
+     "Det är skattepliktigt"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad har gett goda erfarenheter på vissa arbetsplatser?",
+    "options": [
+     "Högre bidrag",
+     "Aktiviteter som är en del av arbetsdagen",
+     "Gratis gymkort till chefer"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C1-14",
+  "level": "C1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Mobilfri skola?",
+  "names": [
+   "Maria",
+   "Jonas"
+  ],
+  "lines": [
+   {
+    "sv": "– God morgon och välkommen. Snart kan mobiltelefoner bli förbjudna under hela skoldagen i grundskolan.",
+    "en": "– Good morning and welcome. Soon mobile phones may be banned for the whole school day in compulsory school."
+   },
+   {
+    "sv": "– I studion har vi Maria, som är lärare på en högstadieskola, och Jonas, som är förälder och skeptisk till förslaget. Maria, varför behövs ett förbud?",
+    "en": "– In the studio we have Maria, a teacher at a lower secondary school, and Jonas, a parent who is sceptical of the proposal. Maria, why is a ban needed?"
+   },
+   {
+    "sv": "– För att mobilen tar fokus från undervisningen. Eleverna får notiser hela tiden, och även när de inte tittar på telefonen tänker de på den.",
+    "en": "– Because the phone takes the focus away from teaching. Pupils get notifications all the time, and even when they aren't looking at the phone they're thinking about it."
+   },
+   {
+    "sv": "– Det finns studier som visar att bara det att mobilen ligger på bordet försämrar koncentrationen.",
+    "en": "– There are studies showing that just having the phone on the desk impairs concentration."
+   },
+   {
+    "sv": "– Jonas, du håller inte med?",
+    "en": "– Jonas, you don't agree?"
+   },
+   {
+    "sv": "– Jag håller med om att mobilen kan störa på lektionerna. Men ett förbud under hela dagen, även på rasterna, går för långt.",
+    "en": "– I agree that the phone can be disruptive in lessons. But a ban for the whole day, even during breaks, goes too far."
+   },
+   {
+    "sv": "– Mobilen är ju ett verktyg som eleverna kommer att använda resten av livet. Skolan borde lära dem att hantera den, inte gömma undan den.",
+    "en": "– The phone is a tool that pupils will use for the rest of their lives. School should teach them to handle it, not hide it away."
+   },
+   {
+    "sv": "– Men barn har svårt att hantera något som är byggt för att fånga deras uppmärksamhet. Det är ingen jämn kamp. Vuxna klarar det knappt själva.",
+    "en": "– But children find it hard to handle something that's built to capture their attention. It's not a fair fight. Adults barely manage it themselves."
+   },
+   {
+    "sv": "– Där har du en poäng. Men vem ska bestämma, staten eller skolan? Varje rektor känner sina elever bäst.",
+    "en": "– You have a point there. But who should decide, the state or the school? Every head teacher knows their pupils best."
+   },
+   {
+    "sv": "– Problemet är att när det är upp till varje skola blir det olika regler överallt, och lärarna får ta diskussionen varje dag. Ett nationellt förbud gör det tydligt.",
+    "en": "– The problem is that when it's up to each school, the rules differ everywhere, and teachers have to have the argument every day. A national ban makes it clear."
+   },
+   {
+    "sv": "– Maria, hur har det fungerat på din skola? Ni har redan infört mobilfria dagar, eller hur?",
+    "en": "– Maria, how has it worked at your school? You've already introduced phone-free days, haven't you?"
+   },
+   {
+    "sv": "– Ja, sedan ett år tillbaka lämnar eleverna in telefonerna på morgonen. I början protesterade många, men nu märker vi att de pratar mer med varandra på rasterna. Några har till och med börjat spela kort.",
+    "en": "– Yes, for a year now pupils have handed in their phones in the morning. At first many protested, but now we notice they talk more to each other at break. Some have even started playing cards."
+   },
+   {
+    "sv": "– Lärarna slipper dessutom tjata hela tiden, och de elever som tidigare satt ensamma med sina skärmar har fått lättare att hitta någon att umgås med.",
+    "en": "– Teachers also no longer have to nag all the time, and the pupils who used to sit alone with their screens have found it easier to find someone to spend time with."
+   },
+   {
+    "sv": "– Och föräldrarna, Jonas? Många vill ju kunna nå sina barn.",
+    "en": "– And the parents, Jonas? Many want to be able to reach their children."
+   },
+   {
+    "sv": "– Precis, det är min största oro. Om något händer vill jag kunna få tag i mitt barn direkt.",
+    "en": "– Exactly, that's my biggest worry. If something happens, I want to be able to get hold of my child straight away."
+   },
+   {
+    "sv": "– Då kan man ringa skolan, precis som man gjorde förr.",
+    "en": "– Then you can call the school, just as people used to."
+   },
+   {
+    "sv": "– Vi får se hur det blir. Tack båda två för att ni kom hit.",
+    "en": "– We will see how it turns out. Thank you both for coming in."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad tycker Jonas om ett förbud under lektionerna?",
+    "options": [
+     "Han håller med om att mobilen kan störa där",
+     "Han tycker att mobilen alltid hjälper",
+     "Han vill förbjuda mobiler även hemma"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad har hänt på Marias skola sedan eleverna började lämna in telefonerna?",
+    "options": [
+     "Eleverna har slutat komma i tid",
+     "Eleverna pratar mer med varandra på rasterna",
+     "Föräldrarna har bytt skola"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är Jonas största oro?",
+    "options": [
+     "Att eleverna blir uttråkade",
+     "Att han inte kan nå sitt barn om något händer",
+     "Att lärarna får mer arbete"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C1-15",
+  "level": "C1",
+  "topic": "Free time and culture",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Hela landet tycker till",
+  "names": [
+   "Melodifestivalen",
+   "Melodifestivalens",
+   "Eurovision",
+   "Abba"
+  ],
+  "lines": [
+   {
+    "sv": "Varje lördag i februari och början av mars händer något som är svårt att förklara för den som inte har bott i Sverige.",
+    "en": "Every Saturday in February and early March, something happens that is hard to explain to anyone who hasn't lived in Sweden."
+   },
+   {
+    "sv": "Miljontals människor sätter sig i soffan för att titta på Melodifestivalen, tävlingen där Sverige väljer sitt bidrag till Eurovision.",
+    "en": "Millions of people settle on the sofa to watch Melodifestivalen, the contest in which Sweden chooses its entry for Eurovision."
+   },
+   {
+    "sv": "Under finalen tittar ungefär var tredje svensk, vilket gör programmet till ett av årets mest sedda.",
+    "en": "During the final, about one Swede in three watches, which makes the programme one of the most watched of the year."
+   },
+   {
+    "sv": "Tävlingen har funnits sedan 1959, men i sin nuvarande form, med deltävlingar som turnerar runt i landet, startade den 2002.",
+    "en": "The contest has existed since 1959, but in its present form, with heats that tour around the country, it started in 2002."
+   },
+   {
+    "sv": "Sedan dess har den vuxit till ett slags folkfest.",
+    "en": "Since then it has grown into a kind of national celebration."
+   },
+   {
+    "sv": "I varje deltävling röstar tittarna via telefon eller en app fram vilka bidrag som går vidare. I finalen avgör tittarna tillsammans med internationella jurygrupper vem som vinner.",
+    "en": "In each heat, viewers vote by phone or an app for which entries go through. In the final, viewers together with international juries decide who wins."
+   },
+   {
+    "sv": "Familjer samlas med chips och dipp, vänner ordnar fester där alla delar ut poäng, och dagen efter diskuteras resultaten på jobbet och i skolan.",
+    "en": "Families gather with crisps and dip, friends throw parties where everyone gives out points, and the next day the results are discussed at work and at school."
+   },
+   {
+    "sv": "Under några veckor är låtarna dessutom svåra att undvika, eftersom de spelas överallt.",
+    "en": "For a few weeks the songs are also hard to avoid, since they are played everywhere."
+   },
+   {
+    "sv": "Varför är just Melodifestivalen så populär?",
+    "en": "Why is Melodifestivalen in particular so popular?"
+   },
+   {
+    "sv": "En förklaring är att Sverige har haft stora framgångar i Eurovision.",
+    "en": "One explanation is that Sweden has had great success in Eurovision."
+   },
+   {
+    "sv": "Ända sedan Abba vann 1974 har landet vunnit flera gånger, och tävlingen förknippas med en sorts nationell stolthet över svensk popmusik.",
+    "en": "Ever since ABBA won in 1974, the country has won several times, and the contest is associated with a kind of national pride in Swedish pop music."
+   },
+   {
+    "sv": "En annan förklaring är att programmet erbjuder något för alla.",
+    "en": "Another explanation is that the programme offers something for everyone."
+   },
+   {
+    "sv": "Där finns allt från schlager och ballader till rock och rap, ibland med uppträdanden som är medvetet överdrivna.",
+    "en": "There is everything from schlager and ballads to rock and rap, sometimes with performances that are deliberately over the top."
+   },
+   {
+    "sv": "Man behöver inte gilla alla bidrag för att ha roligt; tvärtom är det en del av nöjet att håna de låtar man tycker sämst om.",
+    "en": "You don't have to like every entry to have fun; on the contrary, mocking the songs you like least is part of the pleasure."
+   },
+   {
+    "sv": "Kritikerna menar att tävlingen belönar en ganska förutsägbar sorts musik, och att det är formeln snarare än kreativiteten som vinner.",
+    "en": "Critics argue that the contest rewards a rather predictable kind of music, and that it is the formula rather than creativity that wins."
+   },
+   {
+    "sv": "Andra påpekar att den har gett många artister en chans att nå en bred publik som de annars aldrig hade nått.",
+    "en": "Others point out that it has given many artists a chance to reach a broad audience they would otherwise never have reached."
+   },
+   {
+    "sv": "Flera av dem har sedan gjort stora karriärer, både i Sverige och utomlands.",
+    "en": "Several of them have since gone on to have big careers, both in Sweden and abroad."
+   },
+   {
+    "sv": "Men kanske handlar fenomenet egentligen inte så mycket om musik.",
+    "en": "But perhaps the phenomenon isn't really so much about music."
+   },
+   {
+    "sv": "Mitt i den mörka vintern, när vardagen känns lång, ger Melodifestivalen människor en anledning att samlas kring något gemensamt.",
+    "en": "In the middle of the dark winter, when everyday life feels long, Melodifestivalen gives people a reason to gather around something shared."
+   },
+   {
+    "sv": "I ett land där människor ofta beskrivs som reserverade blir lördagskvällen ett tillfälle då alla får tycka till, högt och utan att skämmas.",
+    "en": "In a country where people are often described as reserved, Saturday evening becomes an occasion when everyone gets to have their say, loudly and without embarrassment."
+   },
+   {
+    "sv": "Och när vinnaren står klar i mars har halva landet en åsikt om saken.",
+    "en": "And when the winner is decided in March, half the country has an opinion on the matter."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad är Melodifestivalen?",
+    "options": [
+     "En musikfestival på sommaren",
+     "Tävlingen där Sverige väljer sitt bidrag till Eurovision",
+     "Ett tv-program om svensk historia"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad menar kritikerna?",
+    "options": [
+     "Att tävlingen belönar förutsägbar musik",
+     "Att programmet är för kort",
+     "Att för få människor tittar"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad handlar fenomenet kanske egentligen om, enligt texten?",
+    "options": [
+     "Om pengar",
+     "Om att samlas kring något gemensamt mitt i vintern",
+     "Om att lära sig sjunga"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "C2-01",
   "level": "C2",
   "topic": "People and family",
@@ -11465,6 +12086,636 @@
      "Att förbjuda engelska i skolan",
      "Parallellspråkighet och broar mellan språken",
      "Att bara använda engelska"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-11",
+  "level": "C2",
+  "topic": "People and family",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Vad ska vi heta?",
+  "names": [
+   "Linnea",
+   "Ahmed",
+   "Andersson",
+   "Johansson",
+   "Karlsson",
+   "Lindberg",
+   "Bergström",
+   "Sjögren"
+  ],
+  "lines": [
+   {
+    "sv": "När Linnea och Ahmed gifte sig förra våren uppstod en fråga som tidigare generationer av svenska par knappt hade behövt ställa: vilket efternamn skulle de ha?",
+    "en": "When Linnea and Ahmed married last spring, a question arose that earlier generations of Swedish couples hardly had to ask: which surname should they have?"
+   },
+   {
+    "sv": "Under större delen av 1900-talet var svaret givet. Hustrun tog makens namn, och barnen fick detsamma.",
+    "en": "For most of the twentieth century the answer was a given. The wife took her husband's name, and the children got the same."
+   },
+   {
+    "sv": "I dag ger lagen betydligt större frihet.",
+    "en": "Today the law gives considerably more freedom."
+   },
+   {
+    "sv": "Makarna kan behålla sina namn, välja det ena av dem som gemensamt namn eller, sedan den nya namnlagen trädde i kraft 2017, bilda ett dubbelt efternamn av båda.",
+    "en": "The spouses can keep their own names, choose one of them as a shared name or, since the new names act came into force in 2017, form a double surname from both."
+   },
+   {
+    "sv": "Det är också betydligt lättare än förr att byta till ett helt nytt efternamn, och tusentals svenskar gör det varje år.",
+    "en": "It is also considerably easier than before to change to an entirely new surname, and thousands of Swedes do so every year."
+   },
+   {
+    "sv": "En viktig orsak är de mycket vanliga namnen på -son.",
+    "en": "One important reason is the very common names ending in -son."
+   },
+   {
+    "sv": "Andersson, Johansson och Karlsson bärs av omkring 200 000 personer vardera, en kvarleva från den tid då barn fick sin fars förnamn med tillägget son eller dotter.",
+    "en": "Andersson, Johansson and Karlsson are each borne by around 200,000 people, a remnant of the time when children got their father's first name with the addition son or daughter."
+   },
+   {
+    "sv": "Redan i början av 1900-talet tog många familjer därför nya namn, ofta inspirerade av naturen, och det är därför det i dag finns så många som heter Lindberg, Bergström eller Sjögren.",
+    "en": "As early as the start of the twentieth century, many families therefore took new names, often inspired by nature, which is why so many people today are called Lindberg, Bergström or Sjögren."
+   },
+   {
+    "sv": "Den som heter Johansson och vill sticka ut kan i dag ansöka om ett nybildat namn, förutsatt att det inte redan är upptaget eller kan uppfattas som stötande.",
+    "en": "Someone called Johansson who wants to stand out can now apply for a newly coined name, provided it is not already taken and could not be seen as offensive."
+   },
+   {
+    "sv": "För Linnea och Ahmed var frågan dock mer laddad än så.",
+    "en": "For Linnea and Ahmed, however, the question was more charged than that."
+   },
+   {
+    "sv": "– Vi diskuterade det i flera månader, berättar Linnea. Varje alternativ kändes som ett ställningstagande.",
+    "en": "– We discussed it for several months, Linnea says. Every option felt like taking a stand."
+   },
+   {
+    "sv": "– Jag ville inte att våra barn skulle få ett namn som signalerar att bara den ena av oss räknas, säger Ahmed. Samtidigt vet vi att ett namn påverkar hur man blir bemött.",
+    "en": "– I didn't want our children to get a name that signals that only one of us counts, says Ahmed. At the same time, we know that a name affects how you are treated."
+   },
+   {
+    "sv": "Forskning har nämligen visat att arbetssökande med utländskt klingande namn i genomsnitt kallas till färre intervjuer än de med svenska namn, trots likvärdiga meriter.",
+    "en": "Research has shown that job applicants with foreign-sounding names are on average called to fewer interviews than those with Swedish names, despite equivalent qualifications."
+   },
+   {
+    "sv": "Det är en obekväm insikt som får vissa att byta namn av rent praktiska skäl, och andra att vägra av just samma anledning.",
+    "en": "It is an uncomfortable insight that leads some to change their names for purely practical reasons, and others to refuse for exactly the same reason."
+   },
+   {
+    "sv": "Paret valde till slut ett dubbelt efternamn.",
+    "en": "In the end the couple chose a double surname."
+   },
+   {
+    "sv": "– Det är långt och opraktiskt när man ska fylla i blanketter, skrattar Linnea. Men det berättar sanningen om vår familj: att den består av två historier som har blivit en.",
+    "en": "– It is long and impractical when you have to fill in forms, Linnea laughs. But it tells the truth about our family: that it is made of two stories that have become one."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad blev möjligt med den nya namnlagen 2017?",
+    "options": [
+     "Att behålla sitt eget namn",
+     "Att bilda ett dubbelt efternamn av båda makarnas namn",
+     "Att byta förnamn"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Varför byter många svenskar efternamn, enligt texten?",
+    "options": [
+     "Namnen på -son är mycket vanliga",
+     "Lagen kräver det vid giftermål",
+     "Gamla namn är dyra att behålla"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Varför var frågan laddad för Linnea och Ahmed?",
+    "options": [
+     "De var oense om bröllopet",
+     "Ett namn signalerar vem som räknas och påverkar hur man blir bemött",
+     "Deras föräldrar bestämde namnet"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-12",
+  "level": "C2",
+  "topic": "Home",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Tjugo år i kö",
+  "names": [
+   "Stockholm",
+   "Stockholms",
+   "Hyresgästföreningen"
+  ],
+  "lines": [
+   {
+    "sv": "Föreställ dig att du ställer dig i en kö i dag, och att det blir din tur först om tjugo år.",
+    "en": "Imagine that you join a queue today, and that your turn only comes in twenty years."
+   },
+   {
+    "sv": "För den som vill hyra en lägenhet i Stockholms innerstad är det ingen överdrift.",
+    "en": "For anyone who wants to rent a flat in central Stockholm, that's no exaggeration."
+   },
+   {
+    "sv": "Hundratusentals människor står i stadens bostadskö, och för en hyresrätt i de mest eftertraktade områdena krävs ofta långt över tjugo års kötid.",
+    "en": "Hundreds of thousands of people are in the city's housing queue, and a rental flat in the most sought-after areas often requires well over twenty years of queuing time."
+   },
+   {
+    "sv": "Därför ställer många föräldrar sina barn i kön samma år som de fyller arton, i hopp om att de ska ha samlat tillräckligt med år när de väl behöver ett hem.",
+    "en": "That's why many parents put their children in the queue the year they turn eighteen, hoping they will have collected enough years by the time they actually need a home."
+   },
+   {
+    "sv": "Förklaringen ligger i hur hyrorna sätts.",
+    "en": "The explanation lies in how rents are set."
+   },
+   {
+    "sv": "I Sverige förhandlas hyran för de flesta hyresrätter fram mellan hyresvärdarna och Hyresgästföreningen.",
+    "en": "In Sweden, the rent for most rental flats is negotiated between the landlords and the Tenants' Union."
+   },
+   {
+    "sv": "Den speglar främst lägenhetens standard, inte hur många som vill bo i området.",
+    "en": "It mainly reflects the standard of the flat, not how many people want to live in the area."
+   },
+   {
+    "sv": "En trea i centrum kan alltså kosta ungefär lika mycket som en trea i en förort, trots att betydligt fler vill bo i den första.",
+    "en": "So a three-room flat in the centre can cost roughly as much as one in a suburb, even though far more people want to live in the former."
+   },
+   {
+    "sv": "Resultatet är att det uppstår en kö i stället för ett pris.",
+    "en": "The result is that a queue arises instead of a price."
+   },
+   {
+    "sv": "Ekonomer brukar beskriva det som ett klassiskt exempel på vad som händer när ett pris hålls under den nivå där utbud och efterfrågan möts.",
+    "en": "Economists tend to describe it as a classic example of what happens when a price is kept below the level where supply and demand meet."
+   },
+   {
+    "sv": "Systemet har sina försvarare.",
+    "en": "The system has its defenders."
+   },
+   {
+    "sv": "De menar att det skyddar hyresgäster från kraftiga hyreshöjningar och gör det möjligt för vanliga löntagare att bo centralt, något som annars hade varit förbehållet de rika.",
+    "en": "They argue that it protects tenants from steep rent rises and makes it possible for ordinary wage earners to live centrally, something that would otherwise be reserved for the rich."
+   },
+   {
+    "sv": "Kritikerna å sin sida pekar på att den som redan har ett kontrakt sällan flyttar, även när behoven förändras, eftersom alternativet är så mycket dyrare.",
+    "en": "The critics, for their part, point out that people who already have a contract rarely move, even when their needs change, because the alternative is so much more expensive."
+   },
+   {
+    "sv": "Unga och nyinflyttade hamnar däremot utanför och tvingas till dyra andrahandskontrakt, ofta på osäkra villkor.",
+    "en": "Young people and newcomers, on the other hand, end up outside and are forced into expensive sublets, often on insecure terms."
+   },
+   {
+    "sv": "Dessutom har det vuxit fram en svart marknad där kontrakt säljs olagligt för stora summor.",
+    "en": "In addition, a black market has grown up where contracts are sold illegally for large sums."
+   },
+   {
+    "sv": "Den som köper ett kontrakt riskerar att bli av med lägenheten, men efterfrågan är så stor att handeln ändå fortsätter.",
+    "en": "Anyone who buys a contract risks losing the flat, but demand is so great that the trade continues anyway."
+   },
+   {
+    "sv": "Frågan om marknadshyror har därför diskuterats i decennier, men den är politiskt mycket känslig.",
+    "en": "The question of market rents has therefore been debated for decades, but it is politically very sensitive."
+   },
+   {
+    "sv": "När en regering 2021 ville tillåta fri hyressättning i nybyggda hus bidrog det till att statsministern fälldes i en misstroendeomröstning, för första gången i svensk historia.",
+    "en": "When a government wanted to allow free rent-setting in newly built housing in 2021, it contributed to the prime minister losing a vote of no confidence, for the first time in Swedish history."
+   },
+   {
+    "sv": "Under tiden står hundratusentals människor kvar i kön och väntar.",
+    "en": "Meanwhile, hundreds of thousands of people stay in the queue and wait."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför ställer många föräldrar sina barn i bostadskön vid arton års ålder?",
+    "options": [
+     "För att det är gratis då",
+     "För att barnen ska ha samlat tillräckligt med kötid när de behöver ett hem",
+     "För att lagen kräver det"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad speglar hyran främst, enligt texten?",
+    "options": [
+     "Hur många som vill bo i området",
+     "Lägenhetens standard",
+     "Hyresgästens inkomst"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad hände 2021?",
+    "options": [
+     "Bostadskön avskaffades",
+     "Statsministern fälldes i en misstroendeomröstning",
+     "Hyrorna i Stockholm sänktes"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-13",
+  "level": "C2",
+  "topic": "Travel and transport",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "En resa, fem veckor",
+  "names": [
+   "Thailand",
+   "Bangkok",
+   "Mallorca",
+   "London",
+   "Göteborg"
+  ],
+  "lines": [
+   {
+    "sv": "– Har du bokat resan till Thailand än?",
+    "en": "– Have you booked the trip to Thailand yet?"
+   },
+   {
+    "sv": "– Nästan. Biljetterna ligger i varukorgen, men jag har inte riktigt kunnat förmå mig att trycka på knappen.",
+    "en": "– Almost. The tickets are in the basket, but I haven't quite been able to bring myself to press the button."
+   },
+   {
+    "sv": "– Flygskammen?",
+    "en": "– Flight shame?"
+   },
+   {
+    "sv": "– Kalla det vad du vill. En tur och retur till Bangkok motsvarar ungefär två ton koldioxid per person, har jag läst. Det är mer än vad en genomsnittlig människa i många länder släpper ut på ett helt år.",
+    "en": "– Call it what you like. A return trip to Bangkok equals roughly two tonnes of carbon dioxide per person, I've read. That's more than an average person in many countries emits in a whole year."
+   },
+   {
+    "sv": "– Visst, men om du inte flyger går planet ändå. Din stol står inte tom bara för att du stannar hemma.",
+    "en": "– Sure, but if you don't fly, the plane still goes. Your seat won't stay empty just because you stay at home."
+   },
+   {
+    "sv": "– Det argumentet har jag hört förut, och det håller inte riktigt. Om tillräckligt många avstår minskar efterfrågan, och då blir det färre avgångar.",
+    "en": "– I've heard that argument before, and it doesn't really hold up. If enough people abstain, demand falls, and then there are fewer departures."
+   },
+   {
+    "sv": "– Var det inte främst pandemin som fick flygandet att minska?",
+    "en": "– Wasn't it mainly the pandemic that made flying decline?"
+   },
+   {
+    "sv": "– Delvis, men inrikesflyget här började minska redan innan, samtidigt som tågresandet ökade.",
+    "en": "– Partly, but domestic flying here had already started to fall before that, at the same time as train travel increased."
+   },
+   {
+    "sv": "– Och nu, när pandemin är över?",
+    "en": "– And now that the pandemic is over?"
+   },
+   {
+    "sv": "– Utrikesflyget har till stor del återhämtat sig, men inrikesflyget har inte gjort det. Och det har blivit mer socialt accepterat att ta tåget, även när det tar längre tid.",
+    "en": "– International flying has largely recovered, but domestic flying hasn't. And it has become more socially accepted to take the train, even when it takes longer."
+   },
+   {
+    "sv": "– Men till Thailand går det knappast att ta tåget.",
+    "en": "– But you can hardly take the train to Thailand."
+   },
+   {
+    "sv": "– Nej, och det är just därför jag tvekar. Jag har inte varit där på sex år, och min bästa vän bor där numera.",
+    "en": "– No, and that's exactly why I'm hesitating. I haven't been there in six years, and my best friend lives there now."
+   },
+   {
+    "sv": "– Då tycker jag att du ska åka. Det är skillnad på att flyga till Mallorca tre gånger om året för att ligga på stranden och att flyga en gång för att träffa någon som betyder mycket för en.",
+    "en": "– Then I think you should go. There is a difference between flying to Mallorca three times a year to lie on the beach and flying once to see someone who means a lot to you."
+   },
+   {
+    "sv": "– Så du menar att det finns godtagbara och oacceptabla resor?",
+    "en": "– So you mean there are acceptable and unacceptable trips?"
+   },
+   {
+    "sv": "– Snarare att det handlar om proportioner. Om man flyger sällan och stannar länge, är det något annat än en weekendresa till London.",
+    "en": "– Rather that it's about proportion. If you fly rarely and stay a long time, it's something different from a weekend trip to London."
+   },
+   {
+    "sv": "– Det är ett resonemang jag kan köpa. Jag funderade faktiskt på att stanna i fem veckor i stället för två och jobba på distans en del av tiden.",
+    "en": "– That's reasoning I can buy. I was actually thinking of staying five weeks instead of two and working remotely part of the time."
+   },
+   {
+    "sv": "– Där ser du. Och du kan ju dra ner på annat, till exempel äta mindre kött eller ta tåget när du ska till Göteborg.",
+    "en": "– There you go. And you can cut down on other things, for example eating less meat or taking the train when you go to Gothenburg."
+   },
+   {
+    "sv": "– Klimatkompensation är ett kapitel för sig. Det känns ofta som att köpa sig ett gott samvete.",
+    "en": "– Carbon offsetting is a chapter of its own. It often feels like buying yourself a clear conscience."
+   },
+   {
+    "sv": "– Kanske. Men att inte göra någonting alls är inte heller någon lösning.",
+    "en": "– Maybe. But doing nothing at all is no solution either."
+   },
+   {
+    "sv": "– Nej. Okej, jag trycker på knappen. Fem veckor, en flygresa.",
+    "en": "– No. Okay, I'll press the button. Five weeks, one flight."
+   },
+   {
+    "sv": "– Och ett vykort till mig.",
+    "en": "– And a postcard for me."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför har resenären inte bokat än?",
+    "options": [
+     "Biljetterna är för dyra",
+     "Flygets klimatpåverkan får resenären att tveka",
+     "Vännen har flyttat hem"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vilket argument ger vännen för att resan är rimlig?",
+    "options": [
+     "Att planet går ändå",
+     "Att det handlar om proportioner: sällan och länge",
+     "Att tåget är dyrare"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad bestämmer sig resenären för till slut?",
+    "options": [
+     "Att stanna hemma",
+     "Att åka i två veckor",
+     "Att flyga en gång och stanna i fem veckor"
+    ],
+    "answer": 2
+   }
+  ]
+ },
+ {
+  "id": "C2-14",
+  "level": "C2",
+  "topic": "Work and study",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Det som inte sägs",
+  "names": [
+   "Pieter",
+   "Nederländerna"
+  ],
+  "lines": [
+   {
+    "sv": "– Välkommen till podden. Min gäst i dag är Pieter, som kommer från Nederländerna och har varit chef på ett svenskt företag i tre år. Vad var det första som förvånade dig?",
+    "en": "– Welcome to the podcast. My guest today is Pieter, who comes from the Netherlands and has been a manager at a Swedish company for three years. What was the first thing that surprised you?"
+   },
+   {
+    "sv": "– Mötena. I Nederländerna har vi ett möte, vi diskuterar, ibland högljutt, och sedan fattar chefen ett beslut. Här hade vi möte efter möte, och jag förstod aldrig när beslutet egentligen fattades.",
+    "en": "– The meetings. In the Netherlands we have a meeting, we discuss, sometimes loudly, and then the boss makes a decision. Here we had meeting after meeting, and I never understood when the decision was actually made."
+   },
+   {
+    "sv": "– Hur menar du?",
+    "en": "– What do you mean?"
+   },
+   {
+    "sv": "– Alla fick säga sitt, och alla nickade. Jag trodde att vi var överens. Men en vecka senare kom det fram att två personer egentligen tyckte annorlunda, och då började vi om.",
+    "en": "– Everyone got to have their say, and everyone nodded. I thought we agreed. But a week later it came out that two people actually thought differently, and then we started over."
+   },
+   {
+    "sv": "– Det låter frustrerande.",
+    "en": "– That sounds frustrating."
+   },
+   {
+    "sv": "– Det var det. Jag tolkade tystnad som medhåll, men i Sverige kan tystnad betyda nästan vad som helst.",
+    "en": "– It was. I took silence as agreement, but in Sweden silence can mean almost anything."
+   },
+   {
+    "sv": "– Att man håller med, att man behöver tänka, eller att man tycker att förslaget är dåligt men inte vill vara den som säger det inför alla.",
+    "en": "– That you agree, that you need to think, or that you think the proposal is bad but don't want to be the one who says so in front of everyone."
+   },
+   {
+    "sv": "– Har du förstått varför det är så?",
+    "en": "– Have you understood why it is like that?"
+   },
+   {
+    "sv": "– Jag tror att det hänger ihop med en stark konsenskultur. Hierarkierna är platta, och chefen förväntas inte bestämma över huvudet på sina medarbetare. Man vill att alla ska känna sig delaktiga.",
+    "en": "– I think it is connected to a strong culture of consensus. Hierarchies are flat, and the boss is not expected to decide over the heads of the staff. People want everyone to feel involved."
+   },
+   {
+    "sv": "– Det tar tid, men det har också stora fördelar.",
+    "en": "– It takes time, but it also has big advantages."
+   },
+   {
+    "sv": "– Vilka då?",
+    "en": "– Such as?"
+   },
+   {
+    "sv": "– När beslutet väl är fattat står alla bakom det. Ingen saboterar, ingen säger att de visste att det skulle gå fel.",
+    "en": "– Once the decision has been made, everyone stands behind it. Nobody sabotages it, nobody says they knew it would go wrong."
+   },
+   {
+    "sv": "– Genomförandet går ofta mycket snabbare än i länder där chefen bestämmer allt och sedan får kämpa mot ett tyst motstånd.",
+    "en": "– Implementation often goes much faster than in countries where the boss decides everything and then has to fight silent resistance."
+   },
+   {
+    "sv": "– Så processen är långsam, men resultatet är stabilt?",
+    "en": "– So the process is slow, but the result is stable?"
+   },
+   {
+    "sv": "– Precis. Det har jag lärt mig att uppskatta. Men jag har också anpassat mig. Numera pratar jag med folk en och en innan mötet.",
+    "en": "– Exactly. I've learned to appreciate that. But I've also adapted. These days I talk to people one by one before the meeting."
+   },
+   {
+    "sv": "– Det är där de verkliga diskussionerna sker, vid kaffeautomaten eller på fikat.",
+    "en": "– That is where the real discussions take place, by the coffee machine or at the coffee break."
+   },
+   {
+    "sv": "– Fikat som en arena för beslut?",
+    "en": "– The coffee break as an arena for decisions?"
+   },
+   {
+    "sv": "– Absolut. Det är ingen slump att svenskarna tar det på så stort allvar.",
+    "en": "– Absolutely. It's no coincidence that Swedes take it so seriously."
+   },
+   {
+    "sv": "– Vad skulle du säga till en utländsk chef som just har börjat här?",
+    "en": "– What would you say to a foreign manager who has just started here?"
+   },
+   {
+    "sv": "– Ha tålamod, och lyssna efter det som inte sägs. Om någon säger att det är en intressant idé kan det betyda att den är helt orealistisk.",
+    "en": "– Be patient, and listen for what isn't said. If someone says it's an interesting idea, it may mean it's completely unrealistic."
+   },
+   {
+    "sv": "– Har du själv blivit mer svensk?",
+    "en": "– Have you become more Swedish yourself?"
+   },
+   {
+    "sv": "– Min familj tycker det. Förra julen frågade min bror varför jag plötsligt ville att alla skulle få säga sitt innan vi bestämde vilken film vi skulle se.",
+    "en": "– My family thinks so. Last Christmas my brother asked why I suddenly wanted everyone to have their say before we decided which film to watch."
+   },
+   {
+    "sv": "– Och tycker du fortfarande att det är för många möten?",
+    "en": "– And do you still think there are too many meetings?"
+   },
+   {
+    "sv": "– Ja. Men det tycker svenskarna också, så där är vi faktiskt överens.",
+    "en": "– Yes. But so do the Swedes, so there we actually agree."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad missförstod Pieter i början?",
+    "options": [
+     "Han trodde att tystnad betydde medhåll",
+     "Han trodde att mötena var frivilliga",
+     "Han trodde att fikat var obligatoriskt"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vilken fördel ser Pieter med den svenska konsenskulturen?",
+    "options": [
+     "Besluten fattas snabbt",
+     "Alla står bakom beslutet när det väl är fattat",
+     "Chefen bestämmer allt"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur har Pieter anpassat sig?",
+    "options": [
+     "Han har slutat hålla möten",
+     "Han pratar med folk en och en före mötet",
+     "Han bestämmer allt själv"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-15",
+  "level": "C2",
+  "topic": "Nature and environment",
+  "form": "prose",
+  "kind": "reading",
+  "title": "När trädgränsen flyttar",
+  "names": [],
+  "lines": [
+   {
+    "sv": "Den som vandrar i fjällen i dag rör sig i ett landskap som förändras snabbare än på mycket länge.",
+    "en": "Anyone hiking in the mountains today moves through a landscape that is changing faster than it has for a very long time."
+   },
+   {
+    "sv": "Kalfjället, det trädlösa landskapet ovanför skogen, har länge varit en symbol för det orörda Sverige: vidsträckt, karg och till synes evigt.",
+    "en": "The bare mountain, the treeless landscape above the forest, has long been a symbol of untouched Sweden: vast, barren and seemingly eternal."
+   },
+   {
+    "sv": "Men under det senaste århundradet har trädgränsen på många håll klättrat uppåt, på vissa platser med över hundra meter.",
+    "en": "But over the last century the tree line has climbed upwards in many places, in some spots by more than a hundred metres."
+   },
+   {
+    "sv": "Fjällbjörkar och granar etablerar sig där det tidigare bara växte lav, ris och gräs.",
+    "en": "Mountain birches and spruces are establishing themselves where previously only lichen, dwarf shrubs and grass grew."
+   },
+   {
+    "sv": "Vandrare märker det också: stigar som förr gick över öppen mark går i dag genom björkskog.",
+    "en": "Hikers notice it too: paths that used to cross open ground now run through birch forest."
+   },
+   {
+    "sv": "Den främsta förklaringen är det varmare klimatet.",
+    "en": "The main explanation is the warmer climate."
+   },
+   {
+    "sv": "Arktis och fjällregionen värms upp betydligt snabbare än jorden i genomsnitt, och växtsäsongen har blivit längre.",
+    "en": "The Arctic and the mountain region are warming considerably faster than the earth on average, and the growing season has become longer."
+   },
+   {
+    "sv": "Även minskat bete spelar in: där färre djur håller vegetationen nere får buskar och träd lättare fäste.",
+    "en": "Reduced grazing also plays a part: where fewer animals keep the vegetation down, bushes and trees take hold more easily."
+   },
+   {
+    "sv": "För den som inte känner till sammanhanget kan det låta som en positiv utveckling. Mer skog binder ju mer koldioxid.",
+    "en": "To someone unfamiliar with the context, it may sound like a positive development. More forest binds more carbon dioxide, after all."
+   },
+   {
+    "sv": "Men för fjällets ekosystem är förändringen djupgående.",
+    "en": "But for the mountain ecosystem the change is profound."
+   },
+   {
+    "sv": "Arter som är anpassade till det kalla och öppna landskapet, som fjällräven och många fjällväxter, får allt mindre utrymme och har ingenstans att ta vägen när värmen kryper uppåt.",
+    "en": "Species adapted to the cold, open landscape, such as the Arctic fox and many mountain plants, get less and less space and have nowhere to go when the warmth creeps upwards."
+   },
+   {
+    "sv": "Fjällräven är dessutom redan starkt hotad, och dess återhämtning har krävt årtionden av stödutfodring och jakt på rödräven, som konkurrerar om både föda och lyor.",
+    "en": "The Arctic fox is moreover already critically endangered, and its recovery has required decades of supplementary feeding and hunting of the red fox, which competes for both food and dens."
+   },
+   {
+    "sv": "Även för den samiska rennäringen innebär klimatförändringarna stora utmaningar.",
+    "en": "For Sami reindeer herding, too, climate change brings great challenges."
+   },
+   {
+    "sv": "Milda vintrar med omväxlande tö och frost kan skapa ett hårt islager över marken, så att renarna inte kommer åt laven under snön.",
+    "en": "Mild winters with alternating thaw and frost can create a hard layer of ice over the ground, so that the reindeer cannot get at the lichen under the snow."
+   },
+   {
+    "sv": "Då tvingas renskötarna utfodra djuren, vilket är både dyrt och påfrestande för renarna.",
+    "en": "Then the herders are forced to feed the animals, which is both expensive and stressful for the reindeer."
+   },
+   {
+    "sv": "Samtidigt konkurrerar renskötseln med andra intressen: gruvor, vindkraft, turism och skogsbruk tar mark i anspråk, och betesmarkerna blir alltmer splittrade.",
+    "en": "At the same time, reindeer herding competes with other interests: mines, wind power, tourism and forestry claim land, and the grazing lands become more and more fragmented."
+   },
+   {
+    "sv": "Forskare och renskötare har på senare år börjat samarbeta för att dokumentera förändringarna.",
+    "en": "In recent years researchers and reindeer herders have begun working together to document the changes."
+   },
+   {
+    "sv": "Renskötarnas kunskap, samlad under generationer av liv i fjällen, kompletterar satellitbilder och mätserier på ett sätt som ingen av metoderna klarar på egen hand.",
+    "en": "The herders' knowledge, gathered over generations of life in the mountains, complements satellite images and measurement series in a way that neither method manages on its own."
+   },
+   {
+    "sv": "Där forskarna ser en kurva ser renskötarna konkreta förändringar: att snön lägger sig senare, att isen på sjöarna inte längre bär som förr, att flyttlederna måste läggas om.",
+    "en": "Where researchers see a curve, the herders see concrete changes: that the snow settles later, that the ice on the lakes no longer holds as it used to, that the migration routes have to be moved."
+   },
+   {
+    "sv": "Frågan är inte längre om fjällen förändras, utan hur snabbt, och vad vi är beredda att göra åt det.",
+    "en": "The question is no longer whether the mountains are changing, but how fast, and what we are prepared to do about it."
+   },
+   {
+    "sv": "Att begränsa uppvärmningen är det enda som på sikt kan bromsa utvecklingen.",
+    "en": "Limiting warming is the only thing that can slow the development in the long run."
+   },
+   {
+    "sv": "Under tiden handlar det om att ge både djur och människor de bästa möjliga förutsättningarna att anpassa sig till ett landskap som inte längre är vad det har varit.",
+    "en": "In the meantime, it is about giving both animals and people the best possible conditions to adapt to a landscape that is no longer what it was."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad har hänt med trädgränsen under det senaste århundradet?",
+    "options": [
+     "Den har flyttat nedåt",
+     "Den har klättrat uppåt på många håll",
+     "Den har inte förändrats"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Varför kan milda vintrar vara ett problem för renarna?",
+    "options": [
+     "Det blir för varmt för dem",
+     "Ett islager gör att de inte kommer åt laven",
+     "Det växer för mycket gräs"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad kan renskötarnas kunskap bidra med, enligt texten?",
+    "options": [
+     "Den ersätter satellitbilderna helt",
+     "Den kompletterar forskarnas mätningar",
+     "Den visar att ingenting har förändrats"
     ],
     "answer": 1
    }
