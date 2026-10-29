@@ -4,13 +4,14 @@ This app is built with the prototype-to-spec process. Where it stands: `docs/STA
 
 ## How we work
 
-- When you need decisions from me, ask multiple-choice questions in Claude Code as in `/questions` (instructions in `~/.claude/commands/questions.md`): one question per call, explanations in the option previews, answers saved in `question-pages/`. Inside Spec Kit, use only its clarify step.
+- Every visible screen change gets a sketch first, as in `docs/sketching.md`; the spec is written from the version I pick.
+- When you need decisions from me, ask multiple-choice questions in Claude Code as in `/questions` (instructions in `~/.claude/commands/questions.md`): one question per call, explanations in the option previews, answers saved in `question-pages/`. A long set (dozens of questions) goes on an answer page I fill in while you work on (question-pages/84). Inside Spec Kit, use only its clarify step.
 - Templates: `docs/templates/`.
 - Phases 1–2 use the `/pre.*` commands; phase 3 uses Spec Kit's `/speckit.*` commands; changes after the first build use `/regenerate <module>`.
 
 ## Rules
 
-- `prototypes/` is throwaway and read-only once the middle-steps document is frozen. Never copy code from it into the build.
+- `prototypes/` is throwaway and read-only once the middle-steps document is frozen, except `prototypes/sketches/`, where new screens are sketched before their spec changes (`docs/sketching.md`, question-pages/84). Never copy code from `prototypes/` into the build.
 - In phase 1, build prototype code only when I say yes.
 - Needs are never edited or deleted; a wrong one is withdrawn with a reason. When a requirement isn't feasible, reduce the requirement, never the need.
 - `docs/middle-steps.md` is frozen once phase 2 ends. Risky new needs get an addendum in `docs/addenda/` (`/pre.addendum`).
