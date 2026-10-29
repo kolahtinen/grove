@@ -6,6 +6,7 @@ import { loadConfig } from './config.mjs';
 import { openDb } from './store/db.mjs';
 import { migrate } from './store/migrate.mjs';
 import { importGroveTexts } from './library/library.mjs';
+import { importLearningContent } from './learning/learning.mjs';
 import { createSeclog } from './seclog/seclog.mjs';
 import { createFirebase } from './firebase/client.mjs';
 import { createApp } from './web/app.mjs';
@@ -29,6 +30,8 @@ export function createGrove(config, { now = () => Date.now(), fetchImpl, loads }
   const db = openStore(config);
   // The common library's grove texts, when the build's file is new or changed (G-09 FR-916).
   importGroveTexts(db);
+  // Discover's Words and Grammar content, when the build's file is new or changed (G-09 FR-930).
+  importLearningContent(db);
   const seclog = createSeclog({ db, logDir: join(config.dataDir, 'logs'), now });
   // The word list always; the Kelly import unless a test server skips it (config.importLevels false);
   // the examples of words met before migration 012, once (G-03 FR-316).
