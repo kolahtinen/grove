@@ -4,6 +4,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { GROVE_TEXTS_FILE, importGroveTexts } from '../../server/library/library.mjs';
 import { validateAnswer } from '../../server/texts/schema.mjs';
+import { durationsFor, textSeconds } from '../../server/sessions/durations.mjs';
+import { tokenize } from '../../server/words/tokens.mjs';
 
 let t;
 let c;
@@ -73,4 +75,17 @@ test('FR-916 RQ-438 RQ-155: Add to your library stores the learner\'s own copy t
   assert.equal((await other.get('/api/library')).body.texts.find((x) => x.id === one.id).added, null);
   assert.equal((await other.get(`/api/reading?id=${r.body.textId}`)).status, 404);
   assert.equal((await c.post('/api/library/add', { id: 'Z9-99' })).status, 404);
+});
+
+test('FR-916 FR-905 RQ-445 R-34: every library text shows its kind and its minutes for this learner, at the planner\'s durations', async () => {
+  const { texts } = (await c.get('/api/library')).body;
+  const below = durationsFor(true);
+  for (const x of texts) {
+    const source = FILE.find((y) => y.id === x.id);
+    const words = source.lines.reduce((n, l) => n + tokenize(l.sv).length, 0);
+    assert.ok(['reading', 'listening'].includes(x.kind), x.id);
+    assert.equal(x.minutes, Math.max(1, Math.round(textSeconds({ kind: x.kind, words, read: false }, below) / 60)), x.id);
+  }
+  const lengths = new Set(texts.map((x) => x.minutes));
+  assert.ok(lengths.size > 1, 'texts differ in length');
 });

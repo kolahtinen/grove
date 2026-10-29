@@ -11,7 +11,9 @@ import { validateAnswer } from '../texts/schema.mjs';
 import { checkAnswer } from '../texts/check.mjs';
 import { acceptAnswer } from '../texts/accept.mjs';
 import { createWordStore } from '../words/store.mjs';
-import { levelFor } from '../drill/progress.mjs';
+import { levelFor, isBelowB1 } from '../drill/progress.mjs';
+import { tokenize } from '../words/tokens.mjs';
+import { durationsFor, textSeconds } from '../sessions/durations.mjs';
 
 export const GROVE_TEXTS_FILE = join(dirname(fileURLToPath(import.meta.url)), 'grove-texts.json');
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -37,16 +39,22 @@ export function importGroveTexts(db, file = GROVE_TEXTS_FILE) {
 }
 
 // The library for a learner: their level (the filter's default), and every grove text by topic with
-// its level and the learner's copy, if any.
+// its level, kind, minutes for this learner (the planner's durations, so the fill bars and the session
+// agree, FR-905, R-34) and the learner's copy, if any.
 export function listLibrary(db, accountId) {
   const level = levelFor(db, accountId);
+  const durations = durationsFor(isBelowB1(level));
   const copies = new Map(db.prepare('SELECT library_id, id FROM texts WHERE account_id = ? AND library_id IS NOT NULL').all(accountId).map((r) => [r.library_id, r.id]));
-  const texts = db.prepare('SELECT id, level, topic, kind, title FROM library_texts ORDER BY topic, level, id').all()
-    .map((t) => ({ ...t, added: copies.get(t.id) ?? null }));
+  const texts = db.prepare('SELECT id, level, topic, kind, title, data FROM library_texts ORDER BY topic, level, id').all()
+    .map(({ data, ...t }) => {
+      const words = JSON.parse(data).lines.reduce((n, l) => n + tokenize(l.sv).length, 0);
+      return { ...t, minutes: Math.max(1, Math.round(textSeconds({ kind: t.kind, words, read: false }, durations) / 60)), added: copies.get(t.id) ?? null };
+    });
   return { level: LEVELS.includes(level) ? level : 'A1', texts };
 }
 
 // Adds a grove text to the learner's library through G-02's accept path; adding it again opens the copy.
+// Only an ID in library_texts is accepted, so no other text can be copied this way (T-24).
 export function addToLibrary({ db, accountId, id, now = () => Date.now() }) {
   const row = db.prepare('SELECT * FROM library_texts WHERE id = ?').get(id);
   if (!row) throw new HttpError(404, 'not_found', 'There is no such text in the library.');
