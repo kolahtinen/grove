@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Dictionary pick up and let fall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* A sketch (docs/sketching.md), not grove. Tokens and parts copied from public/assets/grove.css
+   (palette 14, G-09 FR-913) on 2026-10-29; nothing is loaded from public/. Made-up data; nothing saved. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --backdrop: rgba(5,6,5,.45); --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --wood-bg: rgba(201,162,126,.16);
+  --shadow: 0 12px 34px rgba(0,0,0,.45); --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --pbg: #222822; --pink: #E9EBE3; --pbord: #6FA27E; --phtx: #0F110E; --cw: #7CC2B0;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent);
+    --link: #2F5A40; --muted-strong: #4F4C46; --onacc: #FFFFFF; --soft: rgba(47,90,64,.10);
+    --backdrop: rgba(38,36,31,.30); --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC;
+    --amber: #74432C; --wood: #4B2E2B; --wood-bg: rgba(75,46,43,.10);
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF; --cw: #2E6B5E;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent);
+  --link: #2F5A40; --muted-strong: #4F4C46; --onacc: #FFFFFF; --soft: rgba(47,90,64,.10);
+  --backdrop: rgba(38,36,31,.30); --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC;
+  --amber: #74432C; --wood: #4B2E2B; --wood-bg: rgba(75,46,43,.10);
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF; --cw: #2E6B5E;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; } .muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease, opacity .2s ease; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); min-height: 44px; }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+input[type=text], input[type=search], textarea { display: block; width: 100%; margin-top: .3rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; min-height: 44px; }
+label { display: block; margin: 0 0 .75rem; font-size: .9rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.text-state { font-size: .75rem; padding: .1rem .55rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); white-space: nowrap; }
+.text-state.leaf { color: var(--link); }
+.text-state.ground { background: var(--wood-bg); color: var(--wood); }
+.level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); }
+.tab-list { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .6rem; }
+.tab-list [role="tab"] { border-radius: 12px 12px 0 0; min-height: 44px; padding: .4rem .7rem; font-size: .85rem; }
+.tab-list [role="tab"][aria-selected="true"] { background: var(--soft); border-color: var(--accent); }
+.tab-list .tag { margin-left: .35rem; font-size: .7rem; color: var(--muted-strong); }
+.tab-panel { border: 1px solid var(--line); border-radius: 0 16px 16px 16px; padding: .6rem .8rem; }
+.frame:not(.desktop) .card { padding: .9rem .8rem; }
+.frame:not(.desktop) .tab-panel { padding: .5rem .45rem; }
+button.option { position: relative; display: block; width: 100%; text-align: left; margin: 0 0 .4rem; border-radius: 16px; min-height: 3rem; padding: .8rem 2.6rem .8rem 1rem; }
+button.option.right { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); opacity: 1; }
+button.option.wrong { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); opacity: 1; }
+button.option.right::after, button.option.wrong::after { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; }
+button.option.right::after { content: "✓"; } button.option.wrong::after { content: "✗"; }
+.way-back { margin: 0 0 .5rem; }
+.way-back a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--link); text-decoration: none; cursor: pointer; }
+.button-link.main { display: block; text-align: center; padding: .7rem 1rem; border-radius: 14px; background: var(--button-bg); color: var(--onacc); text-decoration: none; font-weight: 600; }
+
+/* ---------- The sketch page around the frame ---------- */
+.page { max-width: 1040px; margin: 0 auto; padding: 1rem 16px 4rem; }
+.page h1 { font-size: 1.35rem; }
+.kicker { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 .2rem; }
+.note { border-left: 3px solid var(--accent); background: var(--soft); border-radius: 8px; padding: .5rem .8rem; margin: 0 0 .8rem; }
+.note p { margin: 0; }
+.intro ul { margin: .2rem 0 .8rem; padding-left: 1.2rem; }
+.intro li { margin-bottom: .2rem; }
+.controls { display: grid; gap: .5rem; margin: .4rem 0 .8rem; }
+.ctl { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; }
+.ctl-name { font-size: .78rem; font-weight: 700; color: var(--muted-strong); min-width: 4.2rem; }
+.ctl button { min-height: 44px; padding: .35rem .75rem; font-size: .85rem; border-radius: 999px; }
+.ctl button[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--link); font-weight: 700; }
+.ctl.versions button { font-weight: 700; }
+.version-about { margin: 0 0 .6rem; padding: .55rem .8rem; border-radius: 14px; border: 1px solid var(--line); background: var(--card); font-size: .88rem; }
+.version-about strong { color: var(--link); }
+.state-about { font-size: .82rem; color: var(--muted); margin: 0 0 .5rem; }
+
+/* The device frame: a fixed-height screen that scrolls inside; sheet and toast sit inside it. */
+.stage { display: flex; justify-content: center; }
+.frame { position: relative; width: min(380px, 100%); height: min(760px, 82vh); min-height: 520px; overflow: hidden; border-radius: 28px; border: 1px solid var(--line); background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.frame.desktop { width: min(1000px, 100%); border-radius: 14px; }
+.screen { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .62rem; color: var(--muted); }
+.menu-button { margin-left: auto; min-width: 44px; min-height: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.screen main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 6rem; }
+
+/* Your library */
+.links { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0 0; }
+.go-row { display: flex; align-items: center; gap: .7rem; width: 100%; min-height: 56px; text-align: left; border-radius: 16px; margin: 0 0 .5rem; }
+.go-row .icon { width: 22px; height: 22px; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.go-row .go-text { flex: 1; display: flex; flex-direction: column; line-height: 1.3; }
+.go-row .go-sub { font-size: .78rem; color: var(--muted); }
+.go-row .chev { color: var(--muted); font-size: 1.2rem; }
+.go-row.target { border-color: var(--accent); box-shadow: var(--glow); }
+.topic-group + .topic-group { margin-top: .8rem; padding-top: .6rem; border-top: 1px solid var(--line); }
+.topic-group h3 { font-size: .95rem; margin-bottom: .3rem; }
+.text-list { list-style: none; margin: 0; padding: 0; }
+.text-list li { display: flex; justify-content: space-between; gap: .6rem; padding: .45rem .1rem; }
+.text-list li + li { border-top: 1px solid var(--line); }
+
+/* Dictionary rows: the word on the left, the two-sided control at the right (B-28) */
+.dict { list-style: none; margin: 0 0 .4rem; padding: 0; }
+.drow { display: flex; align-items: center; gap: .6rem; padding: .55rem .1rem; border-top: 1px solid var(--line); border-radius: 10px; }
+.dict li:first-child .drow { border-top: 0; }
+.dmain { flex: 1 1 auto; min-width: 0; }
+.dmain p { margin: 0; overflow-wrap: anywhere; }
+.dhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .45rem; }
+.dlemma { font-weight: 700; }
+.dmeaning { color: var(--muted-strong); font-size: .9rem; }
+.dex { font-size: .8rem; color: var(--muted); font-style: italic; }
+.dact { flex: none; margin-left: auto; display: flex; align-items: center; gap: .35rem; }
+.drow.flash { animation: rowflash 1.4s ease; }
+@keyframes rowflash { 0% { background: var(--soft); box-shadow: 0 0 0 4px var(--soft); } 100% { background: transparent; box-shadow: none; } }
+.rowmsg { font-size: .8rem; margin: .1rem 0 .35rem; padding: .3rem .6rem; border-radius: 10px; display: flex; flex-wrap: wrap; align-items: center; gap: .2rem .6rem; }
+.rowmsg.ok { background: var(--ok-bg); color: var(--ok); }
+.rowmsg.fell { background: var(--wood-bg); color: var(--wood); }
+.rowmsg.bad { background: var(--bad-bg); color: var(--bad); }
+.rowmsg button, .toast button { min-height: 44px; padding: .2rem .7rem; font-size: .82rem; font-weight: 700; background: transparent; border: 0; color: inherit; text-decoration: underline; }
+.count-line { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+
+/* A: a segmented two-part control; the side for the word's state is lit */
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card2); }
+.seg button { border: 0; border-radius: 0; min-height: 44px; padding: .25rem .5rem; font-size: .76rem; line-height: 1.15; background: transparent; white-space: nowrap; color: var(--muted-strong); }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button.lit { cursor: default; font-weight: 700; }
+.seg button.lit:active { transform: none; }
+.seg .up.lit { background: var(--soft); color: var(--link); box-shadow: inset 0 0 0 1.5px var(--accent); }
+.seg .fall.lit { background: var(--wood-bg); color: var(--wood); box-shadow: inset 0 0 0 1.5px var(--wood); }
+.seg .lit::before { content: "● "; font-size: .6rem; vertical-align: .1em; }
+.seg button:disabled { opacity: .35; }
+
+/* B: one button; its label, icon and colour flip */
+.flip { min-height: 44px; min-width: 7.4rem; padding: .3rem .7rem; border-radius: 14px; font-size: .84rem; font-weight: 700; display: inline-flex; gap: .35rem; align-items: center; justify-content: center; white-space: nowrap; }
+.flip .icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.flip.to-up { background: var(--button-bg); color: var(--onacc); border: 0; box-shadow: var(--glow); }
+.flip.to-fall { background: transparent; color: var(--wood); border: 1.5px solid var(--wood); }
+.flip.turned { animation: turn .45s ease; }
+@keyframes turn { 0% { transform: rotateX(90deg); } 100% { transform: rotateX(0); } }
+
+/* C: an upright switch; up = a leaf on the tree, down = in the ground. Both words always show. */
+.sw { display: flex; align-items: center; gap: .4rem; background: none; border: 0; padding: .15rem .1rem; min-height: 72px; border-radius: 14px; }
+.sw-words { display: flex; flex-direction: column; justify-content: space-between; height: 66px; text-align: right; font-size: .72rem; line-height: 1.1; padding: .25rem 0; }
+.sw-words span { color: var(--muted); }
+.sw-words span.cur-up { color: var(--link); font-weight: 700; }
+.sw-words span.cur-fall { color: var(--wood); font-weight: 700; }
+.sw-track { position: relative; width: 32px; height: 66px; border-radius: 999px; border: 1px solid var(--line); background: var(--card2); flex: none; }
+.sw.is-leaf .sw-track { background: var(--soft); border-color: var(--accent); }
+.sw.is-ground .sw-track { background: var(--wood-bg); border-color: var(--wood); }
+.sw.is-none .sw-track { border-style: dashed; border-color: var(--muted); }
+.sw-knob { position: absolute; left: 3px; top: 3px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--onacc); transition: top .4s cubic-bezier(.5,0,.4,1.35), background .3s; }
+.sw-knob .icon { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.sw.is-ground .sw-knob { top: 37px; background: var(--wood); color: var(--bg); }
+.sw.is-none .sw-knob { top: 37px; background: transparent; border: 2px dashed var(--muted); color: var(--muted); }
+
+.pending { opacity: .6; pointer-events: none; }
+.spin { display: inline-block; width: 14px; height: 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.skel { display: block; height: .9rem; border-radius: 6px; background: linear-gradient(90deg, var(--card2), var(--soft), var(--card2)); background-size: 200% 100%; animation: shimmer 1.3s linear infinite; margin: .35rem 0; }
+.skel.btn { width: 7rem; height: 44px; border-radius: 14px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* The meaning check: grove's word sheet, inside the frame */
+.backdrop { position: absolute; inset: 0; background: var(--backdrop); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 20; animation: fade .2s ease; }
+.sheet { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 21; width: min(560px, 100%); max-height: 88%; overflow-y: auto; background: var(--pbg); color: var(--pink); border: 1px solid var(--pbord); border-bottom: none; border-radius: 22px 22px 0 0; padding: 1rem 1.05rem 1.4rem; box-shadow: var(--shadow); animation: up .25s ease; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; background: var(--pbord); color: var(--phtx); margin: -1rem -1.05rem .8rem; padding: .45rem 1.05rem; border-radius: 22px 22px 0 0; }
+.sheet-head h3 { margin: 0; font-size: 1.6rem; }
+.sheet-head button { min-width: 44px; min-height: 44px; padding: 0; color: var(--phtx); background: transparent; border-color: currentColor; }
+.sheet .menu-status { font-size: .85rem; color: var(--link); margin-bottom: .4rem; }
+.sheet .passage { font-size: 1.12rem; line-height: 1.8; margin: .2rem 0 .7rem; }
+.sheet .passage mark { background: none; color: var(--cw); border-bottom: 2px dotted var(--cw); }
+.sheet .feedback { font-size: .92rem; margin: .4rem 0 .7rem; }
+.sheet .two { display: flex; gap: .5rem; } .sheet .two > button { flex: 1; min-height: 44px; }
+@keyframes up { from { opacity: 0; transform: translate(-50%, 40px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* B's toast */
+.toast { position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 15; max-width: 520px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .35rem .5rem .35rem .9rem; border-radius: 14px; background: var(--ink); color: var(--bg); font-size: .86rem; box-shadow: var(--shadow); animation: fade .2s ease; }
+
+/* Your pick */
+.pick { margin-top: 1.4rem; }
+.pick fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 .9rem; }
+.pick legend { font-weight: 700; padding: 0 .3rem; }
+.choice { display: flex; gap: .55rem; align-items: flex-start; min-height: 44px; padding: .35rem 0; margin: 0; font-size: .92rem; cursor: pointer; }
+.choice input { margin-top: .35rem; width: 1.1rem; height: 1.1rem; accent-color: var(--accent); flex: none; }
+.choice .why { display: block; font-size: .8rem; color: var(--muted); }
+.default-tag { font-size: .7rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+.comment-grid { display: grid; gap: .6rem; }
+@media (min-width: 760px) { .comment-grid { grid-template-columns: repeat(3, 1fr); } }
+textarea { min-height: 5.5rem; resize: vertical; font-size: .9rem; }
+pre.answers { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .78rem; background: var(--card2); border: 1px solid var(--line); border-radius: 12px; padding: .6rem .8rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="intro">
+    <p class="kicker">grove · UI sketch · 2026-10-29 · round 1</p>
+    <h1>Sketch: Dictionary pick up and let fall</h1>
+    <div class="note">
+      <p><strong>B-28</strong>: “dict should have both 'pick up' and 'let fall'. these should be two sides of the same button, which is on the right hand side of the current div.”</p>
+    </div>
+    <p><strong>Brief.</strong> Every word row in your dictionary and in the common dictionary gets one two-sided button at its right: a leaf can <em>Let it fall</em>, a word in your ground can be <em>Picked up</em>, and a word that's neither (common dictionary only) can be picked up as a new leaf.<br>
+    Screens: Your library → Your dictionary → the meaning check that Let it fall asks → back with the row flipped; and the common dictionary search.<br>
+    Open: how the two-sided button looks and acts (A, B, C below), and what you see after a tap.</p>
+    <p class="small"><strong>Questions it settles:</strong></p>
+    <ul class="small">
+      <li>What the two-sided button looks like and how it flips (the versions).</li>
+      <li>What a tap shows afterwards: a line in the row, a toast with Undo, or the switch itself.</li>
+      <li>Where Let it fall's meaning check sits when it starts from the dictionary.</li>
+      <li>Already decided (question-pages/85, 3): both dictionaries get it; ground → Pick up, leaf → Let it fall, neither → Pick up (adds a leaf).</li>
+    </ul>
+    <p class="small muted">Made-up words; nothing is saved. Tap through: try <em>Let it fall</em> on <strong>tidning</strong> (newspaper), and <em>Pick up</em> on <strong>glömma</strong>.</p>
+  </header>
+
+  <div class="controls" id="controls">
+    <div class="ctl versions" role="group" aria-label="Version"><span class="ctl-name">Version</span>
+      <button type="button" data-v="A" aria-pressed="true">A · Two parts</button>
+      <button type="button" data-v="B" aria-pressed="false">B · One flip button</button>
+      <button type="button" data-v="C" aria-pressed="false">C · Upright switch</button>
+    </div>
+    <div class="ctl" role="group" aria-label="Screen"><span class="ctl-name">Screen</span>
+      <button type="button" data-s="1" aria-pressed="true">1 Your library</button>
+      <button type="button" data-s="2" aria-pressed="false">2 Your dictionary</button>
+      <button type="button" data-s="3" aria-pressed="false">3 Let it fall check</button>
+      <button type="button" data-s="4" aria-pressed="false">4 Back, flipped</button>
+      <button type="button" data-s="5" aria-pressed="false">5 Common dictionary</button>
+    </div>
+    <div class="ctl" role="group" aria-label="State"><span class="ctl-name">State</span>
+      <button type="button" data-st="normal" aria-pressed="true">Normal</button>
+      <button type="button" data-st="empty" aria-pressed="false">Empty</button>
+      <button type="button" data-st="error" aria-pressed="false">Error</button>
+      <button type="button" data-st="loading" aria-pressed="false">Loading</button>
+    </div>
+    <div class="ctl" role="group" aria-label="Width and look"><span class="ctl-name">View</span>
+      <button type="button" data-w="phone" aria-pressed="true">Phone</button>
+      <button type="button" data-w="desktop" aria-pressed="false">Desktop</button>
+      <button type="button" data-t="auto" aria-pressed="true">Device look</button>
+      <button type="button" data-t="light" aria-pressed="false">Light</button>
+      <button type="button" data-t="dark" aria-pressed="false">Dark</button>
+      <button type="button" id="reset">Reset words</button>
+    </div>
+  </div>
+
+  <p class="version-about" id="version-about"></p>
+  <p class="state-about" id="state-about" aria-live="polite"></p>
+
+  <div class="stage"><div class="frame" id="frame"><div class="screen" id="screen"></div><div id="overlay"></div></div></div>
+
+  <section class="pick card" aria-labelledby="pick-title">
+    <h2 id="pick-title">Your pick</h2>
+    <p class="small muted">Pick a version and say what you think in your own words. The questions below have defaults; a blank takes its default. Then say “done” in Claude Code.</p>
+    <fieldset>
+      <legend>Which version?</legend>
+      <label class="choice"><input type="radio" name="pick" id="pick-A" value="A"><span>A · Two parts<span class="why">Both sides always there; the side for the word's state is lit.</span></span></label>
+      <label class="choice"><input type="radio" name="pick" id="pick-B" value="B"><span>B · One flip button<span class="why">Shows only what you can do now; it turns over to the other side.</span></span></label>
+      <label class="choice"><input type="radio" name="pick" id="pick-C" value="C"><span>C · Upright switch<span class="why">Up is a leaf, down is the ground; both words beside it.</span></span></label>
+    </fieldset>
+    <div class="comment-grid">
+      <label>Comment on A<textarea id="comment-A" maxlength="2000"></textarea></label>
+      <label>Comment on B<textarea id="comment-B" maxlength="2000"></textarea></label>
+      <label>Comment on C<textarea id="comment-C" maxlength="2000"></textarea></label>
+    </div>
+
+    <fieldset>
+      <legend>1. After a tap, can you undo it?</legend>
+      <label class="choice"><input type="radio" name="q-undo" id="q-undo-both" value="both"><span>Undo for both, for a few seconds <span class="default-tag">default</span><span class="why">Pick up and a fall after a right answer can both be taken back at once.</span></span></label>
+      <label class="choice"><input type="radio" name="q-undo" id="q-undo-pickup" value="pickup"><span>Undo for Pick up only<span class="why">A fall you earned with a right answer stays.</span></span></label>
+      <label class="choice"><input type="radio" name="q-undo" id="q-undo-none" value="none"><span>No undo; tap the other side<span class="why">As in C: the button itself is the way back (Let it fall still asks the meaning).</span></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>2. When Let it fall's answer is wrong in the dictionary</legend>
+      <label class="choice"><input type="radio" name="q-wrong" id="q-wrong-stays" value="stays"><span>It stays a leaf <span class="default-tag">default</span><span class="why">As the word menu does today (G-04 FR-410).</span></span></label>
+      <label class="choice"><input type="radio" name="q-wrong" id="q-wrong-anyway" value="anyway"><span>Offer “Let it fall anyway”<span class="why">You may know it in other sentences; you decide.</span></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>3. Should the row also say its state in words (leaf / in your ground)?</legend>
+      <label class="choice"><input type="radio" name="q-status" id="q-status-yes" value="yes"><span>Yes, a small label by the meaning <span class="default-tag">default</span><span class="why">As the dictionary does now; the state never rests on the button alone.</span></span></label>
+      <label class="choice"><input type="radio" name="q-status" id="q-status-no" value="no"><span>No, the button shows it<span class="why">Less on each row; works for A and C, less so for B.</span></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>4. In version A, which side is lit?</legend>
+      <label class="choice"><input type="radio" name="q-lit" id="q-lit-state" value="state"><span>The side the word is on now <span class="default-tag">default</span><span class="why">A leaf lights Pick up (it was picked up); tap Let it fall to change it.</span></span></label>
+      <label class="choice"><input type="radio" name="q-lit" id="q-lit-action" value="action"><span>The side you can tap<span class="why">A leaf lights Let it fall, like a main button.</span></span></label>
+    </fieldset>
+    <label>Anything else<textarea id="comment-other" maxlength="2000"></textarea></label>
+    <button type="button" class="main" id="show-answers">Show my answers</button>
+    <pre class="answers" id="answers" hidden></pre>
+  </section>
+</div>
+
+<script>
+'use strict';
+// ---------- Made-up data (no real learner) ----------
+const START = [
+  // kind: word | phrase | pattern | name. met: in your dictionary. state: leaf | ground | none.
+  { lemma: 'arbete', en: 'work, job', level: 'A1', kind: 'word', met: true, state: 'ground', ex: 'Mitt arbete börjar klockan åtta.' },
+  { lemma: 'billig', en: 'cheap', level: 'A1', kind: 'word', met: true, state: 'leaf', ex: 'Tröjan var billig på rean.' },
+  { lemma: 'följa', en: 'to follow', level: 'A2', kind: 'word', met: true, state: 'leaf', ex: 'Kan jag följa med till stan?' },
+  { lemma: 'glömma', en: 'to forget', level: 'A2', kind: 'word', met: true, state: 'ground', ex: 'Glöm inte nyckeln!' },
+  { lemma: 'hälsa', en: 'health; to greet', level: 'A2', kind: 'word', met: true, state: 'ground', ex: 'Hälsa på farmor från mig.' },
+  { lemma: 'kanske', en: 'maybe', level: 'A1', kind: 'word', met: true, state: 'ground', ex: '' },
+  { lemma: 'lagom', en: 'just right, enough', level: 'B1', kind: 'word', met: true, state: 'leaf', ex: 'Kaffet är lagom varmt nu.' },
+  { lemma: 'nyckel', en: 'key', level: 'A1', kind: 'word', met: true, state: 'leaf', ex: 'Glöm inte nyckeln!' },
+  { lemma: 'tidning', en: 'newspaper', level: 'A1', kind: 'word', met: true, state: 'leaf', ex: 'Pappa läser tidningen varje morgon.', form: 'tidningen' },
+  { lemma: 'ändå', en: 'still, anyway', level: 'B1', kind: 'word', met: true, state: 'ground', ex: 'Det regnade, men vi gick ut ändå.' },
+  { lemma: 'hur mår du', en: 'how are you', kind: 'phrase', met: true, state: 'ground', ex: 'Hej Anna, hur mår du?' },
+  { lemma: 'i alla fall', en: 'anyway, at least', kind: 'phrase', met: true, state: 'leaf', ex: 'Vi hann i alla fall med tåget.' },
+  { lemma: 'ha det så bra', en: 'take care', kind: 'phrase', met: true, state: 'leaf', ex: 'Ha det så bra i Göteborg!' },
+  { lemma: 'ska + infinitive', en: 'is going to, will (a plan)', kind: 'pattern', met: true, state: 'leaf', ex: 'Vi ska åka till Malmö i morgon.' },
+  { lemma: 'har + supine', en: 'has done (perfect)', kind: 'pattern', met: true, state: 'ground', ex: 'Jag har läst boken.' },
+  { lemma: 'Anna', kind: 'name', met: true }, { lemma: 'Göteborg', kind: 'name', met: true }, { lemma: 'Malmö', kind: 'name', met: true },
+  // In grove's word list only (the common dictionary)
+  { lemma: 'tid', en: 'time', level: 'A1', kind: 'word', met: false, state: 'ground', ex: '' },
+  { lemma: 'tidig', en: 'early', level: 'A2', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'tidigare', en: 'earlier, before', level: 'A2', kind: 'word', met: false, state: 'ground', ex: '' },
+  { lemma: 'tidskrift', en: 'magazine, journal', level: 'B1', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'tidtabell', en: 'timetable', level: 'B1', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'tidsfördriv', en: 'pastime', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'billet', en: 'small note (old)', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'biljett', en: 'ticket', level: 'A1', kind: 'word', met: false, state: 'leaf', ex: '' },
+  { lemma: 'nyckelpiga', en: 'ladybird', level: 'B2', kind: 'word', met: false, state: 'none', ex: '' },
+  { lemma: 'lagomt', en: 'moderately (form of lagom)', kind: 'word', met: false, state: 'none', ex: '' },
+];
+const DISTRACT = ['weather', 'ticket', 'drawer', 'kitchen', 'to borrow', 'always', 'slowly', 'a meeting', 'tired'];
+const TAB_NAMES = { word: 'Words', phrase: 'Phrases', pattern: 'Grammar patterns', name: 'Names' };
+
+const VERSIONS = {
+  A: '<strong>A · Two parts.</strong> A segmented control with both sides always visible: <em>Pick up | Let it fall</em>. The side for the word\'s state is lit (a leaf lights Pick up; a ground word lights Let it fall). Tap the other side to change it. After a tap a line under the row says what happened, with Undo.',
+  B: '<strong>B · One flip button.</strong> One button that shows only the side you can use now: a leaf shows <em>Let it fall</em> (outlined, wood brown), a ground word or a new word shows <em>Pick up</em> (filled green). After a tap it turns over to its other side, and a toast at the bottom says what happened, with Undo for a few seconds.',
+  C: '<strong>C · Upright switch.</strong> A switch standing on end, with <em>Pick up</em> at the top and <em>Let it fall</em> at the bottom: the knob up is a leaf on the tree, down is in the ground; a dashed knob is a word that isn\'t yours yet. Tap to move it. No Undo: flipping it back is the undo (a word you just picked up can drop again without the meaning check).',
+};
+const STATES = {
+  1: { normal: 'Your library with its links; tap Your dictionary.', empty: 'A new learner: no texts yet, the dictionary still reachable.', error: 'The library couldn\'t load.', loading: 'Waiting for the library.' },
+  2: { normal: 'Rows with the button at the right. Leaves: Let it fall. Ground: Pick up.', empty: 'No words met yet.', error: 'A Pick up that failed to save: the row says so and keeps its state.', loading: 'Waiting for the list; buttons appear when their rows do.' },
+  3: { normal: 'Let it fall on tidning: grove asks its meaning once. Right → it falls; wrong → it stays.', empty: 'Nothing to ask from: a grammar pattern (or a word with too few other meanings) gets “Are you sure?” instead.', error: 'The meaning check failed: a wrong answer, so the word stays a leaf.', loading: 'Finding a sentence and choices.' },
+  4: { normal: 'Back in the dictionary: tidning fell, its row flipped, with a confirmation.', empty: 'A search with no match.', error: 'Undo failed to save; the row keeps its new state.', loading: 'The flip is being saved: the button waits.' },
+  5: { normal: 'The common dictionary, search “tid”: the same button on every result. A new word shows Pick up, which adds it as a leaf.', empty: 'No match in grove\'s word list.', error: 'The search couldn\'t run.', loading: 'Searching.' },
+};
+
+// ---------- State (in memory only) ----------
+const S = { v: 'A', screen: 1, st: 'normal', w: 'phone', t: 'auto', words: [], tab: 'word', q: '', cq: 'tid', sheet: null, msg: null, flash: null, toast: null, justPicked: null, pend: null };
+function resetWords() { S.words = START.map((w) => ({ ...w })); S.msg = null; S.toast = null; S.flash = null; S.justPicked = null; S.sheet = null; }
+resetWords();
+const W = (lemma) => S.words.find((w) => w.lemma === lemma);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const ICON = {
+  up: 'M12 19V6M6.5 11.5 12 6l5.5 5.5',
+  fall: 'M12 5v13M6.5 12.5 12 18l5.5-5.5',
+  leaf: 'M5 19c0-8 6-14 14-14 0 8-6 14-14 14zM5 19l7-7',
+  dict: 'M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11M9 8h6',
+  leaves: 'M12 21v-7M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5zM12 14c0-3-2-5-6-5 0 3 2 5 6 5z',
+  common: 'M4 20h16M5 20V8M9 20V6M13 20V9M16 20l2-12 3 .6-2 11.4',
+};
+const icon = (n) => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+// ---------- The two-sided button, per version ----------
+function control(w) {
+  const L = esc(w.lemma);
+  const pending = S.pend === w.lemma || (S.st === 'loading' && S.screen === 4 && w.lemma === 'tidning');
+  if (S.v === 'A') {
+    const up = w.state === 'leaf', fall = w.state === 'ground';
+    return `<div class="seg${pending ? ' pending' : ''}" role="group" aria-label="${L}: ${stateWords(w)}">` +
+      `<button type="button" class="up${up ? ' lit' : ''}" aria-pressed="${up}" data-act="${up ? '' : 'pickup'}" data-w="${L}">${pending && !up ? '<span class="spin"></span>' : 'Pick up'}</button>` +
+      `<button type="button" class="fall${fall ? ' lit' : ''}" aria-pressed="${fall}" data-act="${fall || w.state === 'none' ? '' : 'fall'}" data-w="${L}"${w.state === 'none' ? ' disabled title="Not yours yet"' : ''}>${pending && up ? '<span class="spin"></span>' : 'Let it fall'}</button></div>`;
+  }
+  if (S.v === 'B') {
+    const leaf = w.state === 'leaf';
+    const turned = S.flash === w.lemma ? ' turned' : '';
+    const label = pending ? '<span class="spin"></span> Saving' : leaf ? `${icon('fall')} Let it fall` : `${icon('up')} Pick up`;
+    return `<button type="button" class="flip ${leaf ? 'to-fall' : 'to-up'}${turned}${pending ? ' pending' : ''}" data-act="${leaf ? 'fall' : 'pickup'}" data-w="${L}" aria-label="${leaf ? 'Let ' + L + ' fall' : 'Pick up ' + L}">${label}</button>`;
+  }
+  const cls = w.state === 'leaf' ? 'is-leaf' : w.state === 'ground' ? 'is-ground' : 'is-none';
+  return `<button type="button" class="sw ${cls}${pending ? ' pending' : ''}" role="switch" aria-checked="${w.state === 'leaf'}" data-act="${w.state === 'leaf' ? 'fall' : 'pickup'}" data-w="${L}" aria-label="${L} is ${stateWords(w)}. ${w.state === 'leaf' ? 'Let it fall' : 'Pick it up'}.">` +
+    `<span class="sw-words"><span class="${w.state === 'leaf' ? 'cur-up' : ''}">Pick up</span><span class="${w.state === 'ground' ? 'cur-fall' : ''}">Let it fall</span></span>` +
+    `<span class="sw-track"><span class="sw-knob">${pending ? '<span class="spin"></span>' : icon('leaf')}</span></span></button>`;
+}
+function stateWords(w) { return w.state === 'leaf' ? 'a leaf' : w.state === 'ground' ? 'in your ground' : 'not yours yet'; }
+function pill(w) {
+  if (S.v !== 'B' && answer('q-status') === 'no') return '';
+  if (w.state === 'leaf') return '<span class="text-state leaf">leaf</span>';
+  if (w.state === 'ground') return '<span class="text-state ground">ground</span>';
+  return '<span class="text-state">new</span>';
+}
+
+function row(w, common) {
+  const ex = !common && w.ex ? `<p class="dex">${esc(w.ex)}</p>` : '';
+  const lvl = common && w.level ? `<span class="level-badge">${w.level}</span>` : '';
+  const act = w.kind === 'name' ? '' : `<div class="dact">${control(w)}</div>`;
+  const meaning = w.kind === 'name' ? '' : `<span class="dmeaning">${esc(w.en)}</span>${lvl}${pill(w)}`;
+  return `<li><div class="drow${S.flash === w.lemma ? ' flash' : ''}"><div class="dmain"><p class="dhead"><span class="dlemma">${esc(w.lemma)}</span>${meaning}</p>${ex}</div>${act}</div>${rowMsg(w)}</li>`;
+}
+function rowMsg(w) {
+  const m = S.msg;
+  if (!m || m.lemma !== w.lemma) return '';
+  if (m.kind === 'bad') return `<p class="rowmsg bad" role="status">${esc(m.text)} <button type="button" data-act="retry" data-w="${esc(w.lemma)}">Try again</button></p>`;
+  if (S.v === 'B') return ''; // B says it in a toast
+  const undo = S.v === 'A' && m.undo ? `<button type="button" data-act="undo" data-w="${esc(w.lemma)}">Undo</button>` : '';
+  return `<p class="rowmsg ${m.kind}" role="status">${esc(m.text)}${undo}</p>`;
+}
+
+// ---------- Screens ----------
+function shell(back, body) {
+  return `<header class="topbar"><div class="topbar-inner"><span class="brand">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu">☰</button></div></header>` +
+    `<main><p class="way-back"><a data-go="${back[1]}">‹ ${back[0]}</a></p>${body}</main>`;
+}
+function skelRows(n) { let h = ''; for (let i = 0; i < n; i++) h += `<li><div class="drow"><div class="dmain"><span class="skel" style="width:${40 + (i * 13) % 40}%"></span><span class="skel" style="width:${55 + (i * 7) % 30}%"></span></div><span class="skel btn"></span></div></li>`; return h; }
+
+function screenLibrary() {
+  const st = S.st;
+  let texts;
+  if (st === 'loading') texts = '<span class="skel" style="width:50%"></span><span class="skel"></span><span class="skel" style="width:80%"></span>';
+  else if (st === 'error') texts = '<p class="message bad">Your library can\'t be loaded right now. <a data-go="1">Try again</a></p>';
+  else if (st === 'empty') texts = '<p class="muted">No texts yet. Add a text to start.</p>';
+  else texts = '<div class="topic-group"><h3>Vardag</h3><ul class="text-list"><li><span>Morgon hos familjen Berg</span><span class="text-state">📖 6 min</span></li><li><span>Nyckeln som försvann</span><span class="text-state">🎧 4 min</span></li></ul></div>' +
+    '<div class="topic-group"><h3>Resor</h3><ul class="text-list"><li><span>Tåget till Göteborg</span><span class="text-state">📖 8 min</span></li></ul></div>';
+  const count = st === 'empty' ? 'no words yet' : st === 'loading' ? '…' : '1,284 words · 23 leaves';
+  return shell(['Home', 1], `<section class="card"><h2>Your library</h2>` +
+    `<button type="button" class="go-row target" data-go="2">${icon('dict')}<span class="go-text"><span>Your dictionary</span><span class="go-sub">${count}</span></span><span class="chev">›</span></button>` +
+    `<button type="button" class="go-row">${icon('leaves')}<span class="go-text"><span>Your leaves</span><span class="go-sub">Words you're drilling</span></span><span class="chev">›</span></button>` +
+    `<button type="button" class="go-row" data-go="5">${icon('common')}<span class="go-text"><span>Common dictionary</span><span class="go-sub">In the Common library: grove's whole word list</span></span><span class="chev">›</span></button>` +
+    `<a class="button-link main">Add a text</a></section><section class="card"><h2>Your texts by topic</h2>${texts}</section>`);
+}
+
+function screenDict() {
+  const st = S.screen === 2 || S.screen === 3 || S.screen === 4 ? S.st : 'normal';
+  const isEmpty = st === 'empty' && S.screen === 2;
+  const q = S.q;
+  const mine = S.words.filter((w) => w.met);
+  const counts = {}; for (const k of Object.keys(TAB_NAMES)) counts[k] = isEmpty ? 0 : mine.filter((w) => w.kind === k && match(w, q)).length;
+  const shown = mine.filter((w) => w.kind === S.tab && match(w, q));
+  let list;
+  if (st === 'loading' && S.screen === 2) list = `<ul class="dict">${skelRows(5)}</ul>`;
+  else if (isEmpty) list = '<p class="muted">No words yet. Words, phrases and grammar patterns you meet in your texts show up here, with a button to pick them up or let them fall.</p>';
+  else if (!shown.length) list = `<p class="muted">Nothing in your dictionary matches “${esc(q)}”.</p>`;
+  else list = `<ul class="dict">${shown.map((w) => row(w, false)).join('')}</ul>`;
+  const total = { word: 1284, phrase: 96, pattern: 31, name: 58 }[S.tab];
+  const count = isEmpty || (st === 'loading' && S.screen === 2) ? '' : `<p class="small muted count-line"><span>${q ? shown.length + ' found' : shown.length + ' of ' + total.toLocaleString('en')}</span><span>A–Ö</span></p>`;
+  const tabs = Object.entries(TAB_NAMES).map(([k, n]) => `<button type="button" role="tab" aria-selected="${S.tab === k}" data-tab="${k}">${n}<span class="tag">${st === 'loading' && S.screen === 2 ? '' : counts[k]}</span></button>`).join('');
+  const names = S.tab === 'name' ? '<p class="small muted">People and places in your texts. They never count as new words, so they have no button.</p>' : '';
+  const more = !isEmpty && !q && shown.length && st !== 'loading' ? '<button type="button" style="min-height:44px">More</button>' : '';
+  return shell(['Your library', 1], `<section class="card"><h2>Your dictionary</h2><p class="small muted">Every word, phrase, grammar pattern and name you have met. Leaves can fall; words in your ground can be picked up.</p>` +
+    `<label>Search<input type="search" id="dict-search" autocomplete="off" value="${esc(q)}"></label>` +
+    `<div class="tab-list" role="tablist" aria-label="Kinds">${tabs}</div><div class="tab-panel">${names}${count}${list}${more}</div></section>`);
+}
+function match(w, q) { q = (q || '').trim().toLowerCase(); return !q || w.lemma.toLowerCase().includes(q) || (w.en || '').toLowerCase().includes(q); }
+
+function screenCommon() {
+  const st = S.st;
+  const q = S.cq;
+  let body;
+  const hits = S.words.filter((w) => w.kind === 'word' && q.length >= 2 && w.lemma.toLowerCase().startsWith(q.toLowerCase().trim())).sort((a, b) => a.lemma.localeCompare(b.lemma, 'sv'));
+  if (st === 'loading') body = `<p class="small muted" role="status"><span class="spin"></span> Searching for “${esc(q)}”…</p><ul class="dict">${skelRows(4)}</ul>`;
+  else if (st === 'error') body = '<p class="message bad" role="status">The word list can\'t be searched right now. Try again in a moment.</p>';
+  else if (q.trim().length < 2) body = '<p class="small muted">Type at least 2 letters.</p>';
+  else if (!hits.length) body = `<p class="small muted" role="status">No word in the list matches “${esc(q)}”.</p>`;
+  else body = `<p class="small muted" role="status">${hits.length} for “${esc(q)}”</p><ul class="dict">${hits.map((w) => row(w, true)).join('')}</ul>`;
+  return shell(['Common library', 1], `<section class="card"><h2>Common dictionary</h2><p class="small muted">Every Swedish word in grove's word list, with its English meaning and level. Pick up a new word to practise it as a leaf.</p>` +
+    `<label>Search<input type="search" id="common-search" autocomplete="off" spellcheck="false" placeholder="at least 2 letters" value="${esc(q)}"></label>${body}` +
+    '<p class="small muted">Word list: Wiktionary via kaikki.org (CC BY-SA 4.0); levels: the Swedish Kelly list.</p></section>');
+}
+
+// The meaning check (G-04 FR-410), as a sheet over the dictionary.
+function sheetHtml() {
+  const sh = S.sheet; if (!sh) return '';
+  const w = W(sh.lemma);
+  const head = `<div class="sheet-head"><h3>${esc(w.lemma)}</h3><button type="button" data-act="close" aria-label="Close">✕</button></div><p class="menu-status">A leaf · To remember</p>`;
+  let body;
+  if (sh.mode === 'loading') {
+    body = '<p><span class="spin"></span> Finding a sentence to ask you about…</p><span class="skel" style="height:2.6rem"></span><span class="skel" style="height:2.6rem"></span><span class="skel" style="height:2.6rem"></span>';
+  } else if (sh.mode === 'sure') {
+    const done = sh.done;
+    body = done ? `<p class="feedback">${esc(w.lemma)} fell to your ground.</p><button type="button" class="main" data-act="close">Back to your dictionary</button>`
+      : `<p><strong>Let it fall?</strong> ${w.kind === 'pattern' ? 'A grammar pattern has no meaning to pick from.' : 'There aren\'t enough other meanings to ask you about this one.'} It joins your ground and won't be reviewed any more.</p><div class="two"><button type="button" data-act="keep">Keep it</button><button type="button" class="main" data-act="sure">Yes, let it fall</button></div>`;
+  } else {
+    const opts = sh.options.map((o) => {
+      let cls = '';
+      if (sh.picked != null) { if (o === w.en) cls = ' right'; else if (o === sh.picked) cls = ' wrong'; }
+      return `<button type="button" class="option${cls}" data-act="answer" data-o="${esc(o)}"${sh.picked != null ? ' disabled' : ''}>${esc(o)}</button>`;
+    }).join('');
+    const sentence = w.ex ? `<p class="passage">${esc(w.ex).replace(esc(w.form || w.lemma), `<mark>${esc(w.form || w.lemma)}</mark>`)}</p>` : '';
+    const ask = `<p>Before it falls, one check: what does <strong>${esc(w.lemma)}</strong> mean${w.ex ? ' here' : ''}?</p>`;
+    let fb = '';
+    if (sh.picked != null) {
+      if (sh.picked === w.en) fb = `<p class="feedback message ok" role="status">Right. ${esc(w.lemma)} falls to your ground.</p><button type="button" class="main" data-act="close">Back to your dictionary</button>`;
+      else {
+        fb = `<p class="feedback message bad" role="status">Not quite: it means “${esc(w.en)}”. ${esc(w.lemma)} stays a leaf and comes back in Review.</p>`;
+        fb += answer('q-wrong') === 'anyway' ? `<div class="two"><button type="button" data-act="close">Keep it</button><button type="button" data-act="sure">Let it fall anyway</button></div>` : `<button type="button" class="main" data-act="close">Back to your dictionary</button>`;
+      }
+    }
+    body = ask + sentence + opts + fb;
+  }
+  return `<div class="backdrop" data-act="close"></div><div class="sheet" role="dialog" aria-label="Let ${esc(w.lemma)} fall">${head}${body}</div>`;
+}
+function openCheck(lemma, mode) {
+  const w = W(lemma);
+  const fewMeanings = w.kind === 'pattern' || w.lemma === 'lagom';
+  const others = DISTRACT.filter((d) => d !== w.en).sort(() => Math.random() - .5).slice(0, 3);
+  const options = [w.en, ...others].sort(() => Math.random() - .5);
+  S.sheet = { lemma, mode: mode || (fewMeanings ? 'sure' : 'ask'), options, picked: null, done: false };
+}
+
+// ---------- Render ----------
+function render() {
+  const root = document.documentElement;
+  if (S.t === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.t);
+  for (const b of document.querySelectorAll('#controls [data-v]')) b.setAttribute('aria-pressed', String(b.dataset.v === S.v));
+  for (const b of document.querySelectorAll('#controls [data-s]')) b.setAttribute('aria-pressed', String(+b.dataset.s === S.screen));
+  for (const b of document.querySelectorAll('#controls [data-st]')) b.setAttribute('aria-pressed', String(b.dataset.st === S.st));
+  for (const b of document.querySelectorAll('#controls [data-w]')) b.setAttribute('aria-pressed', String(b.dataset.w === S.w));
+  for (const b of document.querySelectorAll('#controls [data-t]')) b.setAttribute('aria-pressed', String(b.dataset.t === S.t));
+  document.getElementById('version-about').innerHTML = VERSIONS[S.v];
+  document.getElementById('state-about').textContent = `Screen ${S.screen}, ${S.st}: ${STATES[S.screen][S.st]}`;
+  const frame = document.getElementById('frame');
+  frame.classList.toggle('desktop', S.w === 'desktop');
+  const screen = document.getElementById('screen');
+  const top = screen.scrollTop;
+  screen.innerHTML = S.screen === 1 ? screenLibrary() : S.screen === 5 ? screenCommon() : screenDict();
+  screen.scrollTop = top;
+  let over = sheetHtml();
+  if (S.v === 'B' && S.toast) over += `<div class="toast" role="status"><span>${esc(S.toast.text)}</span>${S.toast.undo ? `<button type="button" data-act="undo" data-w="${esc(S.toast.lemma)}">Undo</button>` : ''}</div>`;
+  document.getElementById('overlay').innerHTML = over;
+}
+
+// ---------- Actions ----------
+let toastTimer = null;
+function said(lemma, kind, text, undo) {
+  S.msg = { lemma, kind, text, undo };
+  S.flash = lemma;
+  if (S.v === 'B') {
+    S.toast = { lemma, text, undo };
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { S.toast = null; S.flash = null; render(); }, 8000);
+  }
+}
+function saveThen(lemma, fn) { // a short wait, as a save would take
+  S.pend = lemma; render();
+  setTimeout(() => { S.pend = null; fn(); render(); }, 450);
+}
+function pickUp(lemma) {
+  const w = W(lemma);
+  if (S.screen === 2 && S.st === 'error' && lemma === 'glömma' && !S.retried) { S.msg = { lemma, kind: 'bad', text: 'Couldn\'t pick it up just now; it\'s still in your ground.' }; render(); return; }
+  const was = w.state;
+  saveThen(lemma, () => {
+    w.state = 'leaf'; w.was = was; S.justPicked = lemma;
+    said(lemma, 'ok', was === 'none' ? `${w.lemma} is a new leaf: due now in Review.` : `${w.lemma} is a leaf again: due now in Review.`, answer('q-undo') !== 'none');
+  });
+}
+function fall(lemma) {
+  const w = W(lemma);
+  if (S.v === 'C' && S.justPicked === lemma) { // C: dropping a word you just picked up is the undo
+    saveThen(lemma, () => { w.state = w.was || 'ground'; S.justPicked = null; said(lemma, 'fell', w.state === 'none' ? 'Taken back.' : `Back in your ground.`, false); });
+    return;
+  }
+  S.msg = null; S.toast = null; S.flash = null;
+  openCheck(lemma);
+  if (S.screen === 5) S.sheetFrom = 5;
+  else { S.sheetFrom = 2; S.screen = 3; S.st = 'normal'; }
+  render();
+}
+function felled(lemma) {
+  const w = W(lemma); w.was = 'leaf'; w.state = 'ground'; S.justPicked = null;
+  const undo = answer('q-undo') === 'both';
+  said(lemma, 'fell', `${w.lemma} fell to your ground. Well done.`, undo);
+}
+function undo(lemma) {
+  const w = W(lemma);
+  if (S.screen === 4 && S.st === 'error') { S.msg = { lemma, kind: 'bad', text: 'Couldn\'t undo just now.' }; S.toast = null; render(); return; }
+  const back = w.was || 'ground';
+  saveThen(lemma, () => { w.was = w.state; w.state = back; S.msg = { lemma, kind: 'ok', text: 'Undone.' }; S.toast = S.v === 'B' ? { lemma, text: 'Undone.' } : null; S.flash = lemma; S.justPicked = null; });
+}
+
+document.getElementById('frame').addEventListener('click', (e) => {
+  const go = e.target.closest('[data-go]');
+  if (go) { S.screen = +go.dataset.go; S.st = 'normal'; S.sheet = null; S.msg = null; S.flash = null; S.toast = null; render(); document.getElementById('screen').scrollTop = 0; return; }
+  const tab = e.target.closest('[data-tab]');
+  if (tab) { S.tab = tab.dataset.tab; S.msg = null; S.flash = null; render(); return; }
+  const a = e.target.closest('[data-act]');
+  if (!a || !a.dataset.act) return;
+  const lemma = a.dataset.w;
+  const act = a.dataset.act;
+  if (act === 'pickup') pickUp(lemma);
+  else if (act === 'fall') fall(lemma);
+  else if (act === 'undo') undo(lemma);
+  else if (act === 'retry') { S.retried = true; pickUp(lemma); }
+  else if (act === 'answer') {
+    const sh = S.sheet; sh.picked = a.dataset.o;
+    if (sh.picked === W(sh.lemma).en) felled(sh.lemma);
+    render();
+  } else if (act === 'sure') {
+    felled(S.sheet.lemma); S.sheet.mode = 'sure'; S.sheet.done = true; render();
+  } else if (act === 'keep') { S.sheet = null; S.screen = S.sheetFrom || 2; render(); }
+  else if (act === 'close') {
+    const sh = S.sheet; S.sheet = null;
+    if (S.screen === 3) S.screen = sh && W(sh.lemma).state === 'ground' ? 4 : 2;
+    if (sh && W(sh.lemma).state === 'leaf' && sh.picked != null) S.msg = { lemma: sh.lemma, kind: 'ok', text: 'Still a leaf: you\'ll see it in Review.' };
+    render();
+  }
+});
+document.getElementById('frame').addEventListener('input', (e) => {
+  if (e.target.id === 'dict-search') { S.q = e.target.value; rerenderKeepFocus('dict-search'); }
+  if (e.target.id === 'common-search') { S.cq = e.target.value; rerenderKeepFocus('common-search'); }
+});
+function rerenderKeepFocus(id) {
+  const pos = document.getElementById(id).selectionStart;
+  S.msg = null; S.flash = null; render();
+  const el = document.getElementById(id); el.focus(); try { el.setSelectionRange(pos, pos); } catch (_) { /* search inputs in some browsers */ }
+}
+
+// Jumping straight to a screen sets up what it shows.
+function setScreen(n) {
+  S.screen = n; S.sheet = null; S.msg = null; S.flash = null; S.toast = null;
+  if (n === 2 || n === 3 || n === 4) { S.tab = 'word'; S.q = n === 4 && S.st === 'empty' ? 'xyzzy' : ''; }
+  if (n === 3) {
+    const st = S.st;
+    if (st === 'empty') { const w = W('ska + infinitive'); w.state = 'leaf'; openCheck('ska + infinitive', 'sure'); S.tab = 'pattern'; }
+    else { W('tidning').state = 'leaf'; openCheck('tidning', st === 'loading' ? 'loading' : 'ask'); }
+    if (st === 'error') S.sheet.picked = S.sheet.options.find((o) => o !== 'newspaper');
+    S.sheetFrom = 2;
+  }
+  if (n === 4) {
+    W('tidning').state = 'ground'; W('tidning').was = 'leaf';
+    if (S.st === 'loading') { W('tidning').state = 'leaf'; }
+    else if (S.st !== 'empty') { said('tidning', 'fell', 'tidning fell to your ground. Well done.', answer('q-undo') === 'both' || S.st === 'error'); }
+  }
+  if (n === 2 && S.st === 'error') { S.msg = { lemma: 'glömma', kind: 'bad', text: 'Couldn\'t pick it up just now; it\'s still in your ground.' }; S.retried = false; }
+  if (n === 5) S.cq = S.st === 'empty' ? 'tidx' : 'tid';
+  render();
+}
+
+document.getElementById('controls').addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.v) { S.v = b.dataset.v; S.toast = null; render(); }
+  else if (b.dataset.s) setScreen(+b.dataset.s);
+  else if (b.dataset.st) { S.st = b.dataset.st; setScreen(S.screen); }
+  else if (b.dataset.w) { S.w = b.dataset.w; render(); }
+  else if (b.dataset.t) { S.t = b.dataset.t; render(); }
+  else if (b.id === 'reset') { resetWords(); setScreen(S.screen); }
+});
+
+// ---------- Your pick: all answers in one object ----------
+const QUESTIONS = { 'q-undo': 'both', 'q-wrong': 'stays', 'q-status': 'yes', 'q-lit': 'state' };
+function answer(name) { const c = document.querySelector(`input[name="${name}"]:checked`); return c ? c.value : QUESTIONS[name]; }
+function collectAnswers() {
+  const questions = {};
+  for (const [name, def] of Object.entries(QUESTIONS)) {
+    const c = document.querySelector(`input[name="${name}"]:checked`);
+    questions[name] = { answer: c ? c.value : def, defaulted: !c };
+  }
+  const p = document.querySelector('input[name="pick"]:checked');
+  return {
+    sketch: '2026-10-29-dictionary-toggle',
+    note: 'B-28',
+    pick: p ? p.value : null,
+    comments: { A: document.getElementById('comment-A').value.trim(), B: document.getElementById('comment-B').value.trim(), C: document.getElementById('comment-C').value.trim(), other: document.getElementById('comment-other').value.trim() },
+    questions,
+  };
+}
+window.collectAnswers = collectAnswers;
+document.querySelector('.pick').addEventListener('change', (e) => { if (e.target.name && e.target.name.startsWith('q-')) render(); });
+document.getElementById('show-answers').addEventListener('click', async () => {
+  const text = JSON.stringify(collectAnswers(), null, 2);
+  const out = document.getElementById('answers');
+  out.hidden = false; out.textContent = text;
+  try { await navigator.clipboard.writeText(text); out.textContent = '(Copied.)\n' + text; } catch (_) { /* copying is optional */ }
+});
+
+render();
+</script>
+</body>
+</html>
