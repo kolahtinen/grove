@@ -70,7 +70,7 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-28 | Språkcaféet | listening, dialogue | 106 | 10 | **språkcafé** (—*) | 1 → 1 (none no longer far) | passes |
 | A2-29 | En natt i tält | reading | 117 | 13 | tält (B1), **till slut** (C1), bada (B1) | 2 → 1 (korv no longer far) | passes |
 
-## B1 (17 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
+## B1 (22 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -91,8 +91,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B1-15 | Praktik på redaktionen | reading | 150 | 18 | **korrektur** (—*), termin (B2) | 1 → 1 (none no longer far) | passes |
 | B1-16 | Mötet i föreningen | listening, dialogue | 145 | 18 | **gunga** (C2), arbetsdag (B2), **trappuppgång** (—) | 2 → 2 (none no longer far) | passes |
 | B1-17 | Våren och pollen | reading | 169 | 19 | **allergisk** (C2), **björkpollen** (—*), **björk** (—), **klia** (C1), **pollenallergi** (—), **pollenprognos** (—*), app (B2), halt (B2), pol (B2), symtom (B2) | 9 → 6 (app, tablett, symtom no longer far) | passes |
+| B1-18 | Vid incheckningen | listening, dialogue | 124 | 12 | check (B2), kilo (B2) | 2 → 0 (varsågod, kilo no longer far) | passes |
+| B1-19 | Middag för sex | reading, dialogue | 140 | 11 | **ugn** (C1), **vegetarian** (—), **allergisk** (C2), **nöt** (C2), **gryta** (C1) | 7 → 5 (sallad, bageri no longer far) | passes |
+| B1-20 | Farfar på skärmen | listening | 159 | 15 | **surfplatta** (—) | 1 → 1 (none no longer far) | passes |
+| B1-21 | Ett år utan nya saker | reading | 150 | 18 | **tandkräm** (C2), **schampo** (—), **begagnad** (C1), dammsugare (B2) | 3 → 3 (none no longer far) | passes |
+| B1-22 | Nattskiftet | reading | 177 | 19 | **undersköterska** (—), **arbetspass** (—) | 2 → 2 (none no longer far) | passes |
 
-## B2 (15 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
+## B2 (20 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -111,6 +116,11 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B2-13 | Andrahandskontraktet | reading | 181 | 25 | **förstahandskontrakt** (—), till slut (C1), hyresvärd (C1) | 1 → 1 (none no longer far) | passes |
 | B2-14 | Promenadens kraft | listening | 185 | 20 | maraton (C1), **rask** (—), **hjärt** (—*), **två-diabetes** (—*) | 4 → 3 (maraton no longer far) | passes |
 | B2-15 | Allemansrätten till information | reading | 204 | 23 | urholka (C1), **skyndsamt** (—) | 1 → 1 (none no longer far) | passes |
+| B2-16 | Ett land som sjunger | listening | 184 | 19 | **kyrkokör** (—), **repetition** (C2) | 2 → 2 (none no longer far) | passes |
+| B2-17 | Ska vi skaffa hund? | reading, dialogue | 218 | 13 | veterinär (C1), uppoffring (C1) | 1 → 0 (regnig no longer far) | passes |
+| B2-18 | Cykel året runt | reading | 193 | 16 | **såld** (—), **dubbdäck** (—), **plogas** (—), minusgrad (C1), parkering (C1), **isig** (—) | 5 → 4 (riskabel no longer far) | passes |
+| B2-19 | Bin på taket | listening, dialogue | 233 | 17 | **bi** (C2), **bikupa** (—), honung (C1), **kupa** (—), **tam** (C2), **humla** (—) | 7 → 5 (kilo, bry no longer far) | passes |
+| B2-20 | Att våga starta eget | reading | 248 | 22 | ugn (C1), bokföring (C1), **bakning** (—), **kardemummabull** (—*) | 3 → 2 (bageri no longer far) | passes |
 
 ## C1 (10 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
 
@@ -142,4 +152,4 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
 | C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
 
-110 of 110 texts pass.
+120 of 120 texts pass.

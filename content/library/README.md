@@ -82,3 +82,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2026-10-29, batch 5 (10 texts): A1-22…A1-24, A2-23, A2-24, B2-11…B2-15, added by Claude at the owner's word, 2026-10-29 (B-19).
 
 2026-10-29, batch 6 (10 texts): A1-25…A1-29, A2-25…A2-29, added by Claude at the owner's word, 2026-10-29 (B-19), at the owner's request "make a bunch of texts of DIFFERENT LENGTHS on top of the current ones". Their lengths spread across each level's whole range in the check (A1 52–79 words, A2 83–117), from a short text to a long one; the check's word ranges stay as they are.
+
+2026-10-29, batch 7 (10 texts): B1-18…B1-22, B2-16…B2-20, added by Claude at the owner's word, 2026-10-29 (B-19), at the same request for texts of different lengths. Lengths spread across the check's ranges: B1 124–177 words, B2 184–248.
