@@ -139,7 +139,7 @@ Every page uses palette 14 (spruce greens on sad beige; dark: deep green-black),
 1. **Given** any page in either look, **When** shown, **Then** its colours are palette 14's (FR-913) and text meets contrast AA against its background. (RQ-426; R-26)
 2. **Given** an exercise card, **When** shown, **Then** its banner is plain green with a chip holding the mode's icon (sprout, circle arrow) and name and a chip with its minutes, both in the mode's colour, in sentence case ("Review", "1 min"); a harder question shows as Review. (RQ-425, RQ-441)
 3. **Given** a new sign-in, **When** the terms show, **Then** they come one section per screen; each Next unlocks after 3 seconds; the last screen has one Agree that records being 13 or over and agreeing to the terms. (RQ-428; O-03)
-4. **Given** Settings, **When** opened, **Then** it holds speech speed and the voice help, Speak words, and Start the starting level again; Account holds the email and how to ask for an export or deletion. (RQ-427)
+4. **Given** Settings, **When** opened, **Then** it holds speech speed and the voice help, and Start the starting level again (Speak words withdrawn, question-pages/86); Account holds the email and how to ask for an export or deletion. (RQ-427)
 
 ---
 
@@ -221,7 +221,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 
 **Other pages**
 
-- **FR-910** (RQ-427; N-19, N-17, N-20): **Settings** MUST hold speech speed with its note and the voice help (G-05 FR-502, FR-503), **Speak words** (G-03 FR-305) and **Start the starting level again** (G-06); **Account** MUST show the signed-in email, Sign out, and how to ask the owner for an export or deletion (G-01 FR-017). **Progress** keeps G-04 FR-415's contents and gains the level (FR-414) and today's minutes.
+- **FR-910** (RQ-427; N-19, N-17, N-20): **Settings** MUST hold speech speed with its note and the voice help (G-05 FR-502, FR-503) and **Start the starting level again** (Speak words withdrawn with RQ-412, question-pages/86) (G-06); **Account** MUST show the signed-in email, Sign out, and how to ask the owner for an export or deletion (G-01 FR-017). **Progress** keeps G-04 FR-415's contents and gains the level (FR-414) and today's minutes.
 - **FR-911** (RQ-428, RQ-437; N-27, N-28, N-25; constitution 3.1): When G-01 FR-011 asks for the terms (sign-up, a new device, a new terms version), the person MUST read them one section per screen (the sections of G-01 FR-025), each with **Next** enabled after 3 seconds and **Back**, and the last screen with one **Agree** labelled "I am 13 or over and agree to the terms", a link to the whole terms on one page, and Back; Agree records both being 13 or over and agreeing, with the terms' version (PD-16). Replaces G-01 FR-011's two boxes.
 
 **The look**

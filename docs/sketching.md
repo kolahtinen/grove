@@ -4,7 +4,7 @@ The light way to try a screen before its spec changes (note B-29; decided on [qu
 
 ## When
 
-- Every visible change to a screen gets a sketch (84: 1, 2). Text-only changes and bug fixes skip it (48). Deadlines don't change this (49).
+- Every visible change to a screen gets a sketch (84: 1, 2). Text-only changes, bug fixes and a single control added, removed or renamed skip it (48; question-pages/86, F1). Deadlines don't change this (49).
 - It starts from a note of yours (B-…): Claude offers the sketch (15). Related notes are grouped into one sketch (23).
 
 ## The loop
