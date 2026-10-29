@@ -28,17 +28,19 @@ function ratio(a, b) {
 const PAIRS = [
   ['--ink', '--bg', 4.5], ['--ink', '--card', 4.5], ['--ink', '--card2', 4.5],
   ['--muted', '--card', 4.5], ['--muted', '--card2', 4.5],
-  ['--onbanner', '--banner', 4.5],
+  ['--link', '--card', 4.5], ['--link', '--card2', 4.5], ['--muted-strong', '--card', 4.5],
+  ['--onbanner', '--banner', 4.5], ['--onacc', '--accent', 4.5], ['--onacc', '--accent2', 4.5],
   ['--cw', '--card', 4.5], ['--ok', '--card', 4.5], ['--bad', '--card', 4.5], ['--amber', '--card', 4.5],
   ['--discover', '--card', 3], ['--review', '--card', 3], ['--master', '--card', 3],
 ];
-// Palette 14 as chosen falls short on these; PD-12 (question-pages/76, 12) proposes adjusted values.
-const PENDING = new Set(['light --muted --card', 'light --muted --card2', 'light --discover --card']);
+// Palette 14 as chosen falls short on these; PD-12 (question-pages/76, 12) proposes adjusted values for
+// the first three; white on the light gradient's end (#5E8A66) was found by the contrast test (T804).
+const PENDING = new Set(['light --muted --card', 'light --muted --card2', 'light --discover --card', 'light --onacc --accent2']);
 
 for (const [look, t] of Object.entries(LOOKS)) {
   for (const [fg, bg, need] of PAIRS) {
     const key = `${look} ${fg} ${bg}`;
-    const options = PENDING.has(key) ? { todo: 'palette 14 as chosen; PD-12 adjusts it for contrast' } : {};
+    const options = PENDING.has(key) ? { todo: 'palette 14 as chosen; waits for the owner (PD-12)' } : {};
     test(`FR-913 RQ-426 RQ-306: ${look}, ${fg} on ${bg} meets ${need}:1`, options, () => {
       assert.match(t[fg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${fg}`);
       assert.match(t[bg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${bg}`);
