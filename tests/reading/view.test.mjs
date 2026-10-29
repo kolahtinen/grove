@@ -35,11 +35,8 @@ test('FR-305 FR-306 RQ-18: the reading payload carries each word\'s status, dict
   assert.ok(tokensOf(r).some((x) => x.word === undefined && x.t === ' '), 'spaces are tokens without a word');
 });
 
-test('FR-302 RQ-55 RQ-76: each sentence has its new count and the text its word count, new words and share', async () => {
+test('FR-302 RQ-55 RQ-76: the text has its word count and share of known words (no new-word count is shown, B-31)', async () => {
   const r = (await reading('En bra dag')).body;
-  const sentence = r.lines.flatMap((l) => l.sentences).find((s) => s.sv === 'Maja tvättar kopparna.');
-  assert.equal(sentence.newCount, 1);
-  assert.equal(r.stats.newWords >= 5, true);
   assert.ok(r.stats.words > 100);
   assert.ok(r.stats.share > 90 && r.stats.share < 100);
 });

@@ -49,6 +49,7 @@ function remember(tile, options) {
 async function start(body, message) {
   const result = await post('/api/sessions', { kind: 'time', voice: hasSwedish(), ...body });
   if (!result.ok && result.data.error === 'short') { shortReview(body, message, result.message); return; }
+  if (!result.ok && result.data.error === 'nothing_to_do' && body.tile === 'review') { nothingToReview(message, result.message); return; }
   if (!result.ok) { showMessage(message, result.message); return; }
   window.location.assign('/session');
 }
@@ -68,6 +69,22 @@ function shortReview(body, message, text) {
   showMessage(message, '');
   message.before(box);
   fill.focus();
+}
+
+// FR-905 (B-30): a Review with nothing at all to practise offers Discover and Add a text.
+function nothingToReview(message, text) {
+  const box = el('div', 'no-texts-offer');
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', 'Nothing to review');
+  const discover = button('Go to Discover', 'main');
+  discover.addEventListener('click', () => open($('tile-discover')));
+  const row = el('div', 'row');
+  row.append(discover, link('/add', 'Add a text'));
+  box.append(el('p', '', text), row);
+  $('tile-way').querySelector('.no-texts-offer')?.remove();
+  showMessage(message, '');
+  message.before(box);
+  discover.focus();
 }
 
 function choices(label, items, chosen, onPick) {

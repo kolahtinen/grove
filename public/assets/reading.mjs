@@ -91,7 +91,6 @@ function renderLines(list, { tappable = true } = {}) {
         group.append(w);
         span.append(group);
       });
-      if (s.newCount > 0) span.append(el('span', 'new-count', `${s.newCount} new`));
       sv.append(span, document.createTextNode(' '));
     }
     li.append(sv);
@@ -332,7 +331,8 @@ if (res.status === 409) {
   // G-02 FR-224: texts from the learner's AI and own texts are beta.
   $('beta').hidden = !data.beta;
   $('beta-note').hidden = !data.beta;
-  $('stats').textContent = `${data.stats.words} words · ${data.stats.newWords} new (${data.stats.share}% known)${data.own ? ' · your own text' : ''}${data.kind === 'listening' ? ' · a listening text' : ''}`;
+  // G-03 FR-302 (B-31): no count of new words; a learner who doesn't know a word marks it.
+  $('stats').textContent = `${data.stats.words} words · ${data.stats.share}% known${data.own ? ' · your own text' : ''}${data.kind === 'listening' ? ' · a listening text' : ''}`;
   // G-03 FR-318: an own text shows how hard it is for this learner and the AI's copyright view.
   if (data.own && data.knownShare !== null && data.knownShare < data.targetShare) $('stats').textContent += ` · ${data.knownShare}% known: harder than your usual texts`;
   if (data.copyright && data.copyright.view !== 'free') {
@@ -650,6 +650,8 @@ onVoices((has) => { if (has) $('voice-help').hidden = true; });
 // G-05 FR-509: a listening text opens in listening mode.
 // Listen works once its handler is attached, after the text has loaded (it starts disabled).
 $('listen').disabled = !data;
+// G-05 FR-504, FR-509 (B-32): only a listening text has Listen; a reading text is for reading.
+$('listen').hidden = !data || data.kind !== 'listening';
 if (data && data.kind === 'listening') $('listen').click();
 
 // G-03 FR-318: the own-text AI round. Copy prompt says "Copied to clipboard"; only when copying fails

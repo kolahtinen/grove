@@ -306,3 +306,29 @@ test('FR-922 RQ-446: every signed-in page but Home names the page it belongs und
   await page.goBack();
   await expect(page).toHaveURL(/\/progress$/);
 });
+
+test('FR-905 RQ-441 B-30: a Review with nothing to practise says so and offers Go to Discover and Add a text', async ({ page }) => {
+  const t = await startTestGrove({ host: 'localhost' });
+  try {
+    const learner = t.seedAccount({ email: 'nothing@example.test' });
+    t.grove.db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(learner.id);
+    t.grove.db.prepare('UPDATE learner_settings SET start_done = 1, welcome_dismissed = 1 WHERE account_id = ?').run(learner.id);
+    await page.goto(`${t.base}/signin`);
+    await page.getByLabel('Email').fill('nothing@example.test');
+    await page.getByLabel('Password').fill(PASSWORD);
+    await page.getByRole('button', { name: 'Sign in' }).click();
+    await page.waitForURL(/\/terms$/);
+    await agreeTerms(page);
+    await page.waitForURL(`${t.base}/`);
+    await page.getByRole('button', { name: 'Review', exact: true }).click();
+    await page.locator('#tile-panel').getByRole('button', { name: 'Start', exact: true }).click();
+    const offer = page.getByRole('group', { name: 'Nothing to review' });
+    await expect(offer).toContainText('nothing to practise');
+    await expect(offer.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
+    await offer.getByRole('button', { name: 'Go to Discover' }).click();
+    await expect(page.locator('#tile-title')).toHaveText('Discover');
+  } finally {
+    await t.close();
+  }
+});
+

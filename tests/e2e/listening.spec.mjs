@@ -40,6 +40,23 @@ async function api(page, path, body) {
   }, { path, body });
 }
 
+// A listening text from a package (G-05 FR-504, FR-509: only listening texts have Listen since B-32).
+async function listeningText(page) {
+  const ids = await page.evaluate(async ({ sample }) => {
+    const me = await (await fetch('/api/me')).json();
+    const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
+    const p = await (await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) })).json();
+    const answer = JSON.parse(sample.replaceAll('TEST-1', p.code));
+    const tag = Math.random().toString(36).slice(2, 7);
+    answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
+    const r = await (await fetch('/api/answer', { method: 'POST', headers: h, body: JSON.stringify({ exchangeId: p.exchangeId, answer: JSON.stringify(answer) }) })).json();
+    return r.texts;
+  }, { sample: readFileSync(new URL('../texts/answers/good.json', import.meta.url), 'utf8') });
+  return ids.find((x) => x.kind === 'listening').id;
+}
+
+const sentencesOf = (page, id) => page.evaluate(async (tid) => (await (await fetch(`/api/reading?id=${tid}`)).json()).lines.flatMap((l) => l.sentences).map((x) => x.sv), id);
+
 // A short text of our own (3 sentences) so listening finishes fast.
 // Own texts open after their AI round since G-03 FR-318 changed (2026-10-26), so the round is answered here.
 async function shortText(page) {
@@ -54,21 +71,21 @@ test('FR-504 FR-505 FR-508 RQ-198 RQ-21 RQ-47 RQ-57 RQ-270: Listen blurs the tex
   await fakeSpeech(page, 'sv');
   await signIn(page);
   await api(page, '/api/settings', { speechRate: 1, voiceHelpShown: false });
-  const id = await shortText(page);
+  const id = await listeningText(page);
   await page.goto(`/text?id=${id}`);
   await page.locator('#listen').click();
   await expect(page.locator('#lines')).toHaveClass(/blurred/);
   await page.locator('#listen-play').click();
   await expect(page.locator('#lines .sentence.speaking')).toHaveCount(1);
-  await expect(page.locator('#lines')).not.toHaveClass(/blurred/, { timeout: 5000 });
+  await expect(page.locator('#lines')).not.toHaveClass(/blurred/, { timeout: 15000 });
   const spoken = (await page.evaluate(() => window.__spoken)).map((u) => u.text);
-  expect(spoken).toEqual(['Det är en kall morgon.', 'Elsa öppnar dörren.', 'Hon dricker kaffe.']);
+  expect(spoken).toEqual(await sentencesOf(page, id));
 });
 
 test('FR-506 FR-507 RQ-14 RQ-197: replay counts plays; a looped sentence repeats until the loop is turned off', async ({ page }) => {
   await fakeSpeech(page, 'sv');
   await signIn(page);
-  const id = await shortText(page);
+  const id = await listeningText(page);
   await page.goto(`/text?id=${id}`);
   await page.locator('#listen').click();
   const row = page.locator('#listen-list .listen-row').nth(1);
@@ -78,7 +95,8 @@ test('FR-506 FR-507 RQ-14 RQ-197: replay counts plays; a looped sentence repeats
   await page.locator('#listen-list .listen-row').nth(1).getByRole('button', { name: 'Replay' }).click();
   await expect(page.locator('#listen-list .listen-row').nth(1).locator('.play-count')).toHaveText('played 2×');
   await page.locator('#listen-list .listen-row').nth(2).getByRole('button', { name: 'Loop' }).click();
-  await expect.poll(async () => (await page.evaluate(() => window.__spoken)).filter((u) => u.text === 'Hon dricker kaffe.').length, { timeout: 5000 }).toBeGreaterThan(3);
+  const looped = (await sentencesOf(page, id))[2];
+  await expect.poll(async () => (await page.evaluate(() => window.__spoken)).filter((u) => u.text === looped).length, { timeout: 5000 }).toBeGreaterThan(3);
   await page.locator('#listen-list .listen-row').nth(2).getByRole('button', { name: 'Loop' }).click();
   const n = (await page.evaluate(() => window.__spoken)).length;
   await page.waitForTimeout(400);
@@ -88,7 +106,7 @@ test('FR-506 FR-507 RQ-14 RQ-197: replay counts plays; a looped sentence repeats
 test('FR-503 RQ-13 RQ-365: the speed slider sets the rate of the next utterance, shows the note, and is kept', async ({ page }) => {
   await fakeSpeech(page, 'sv');
   await signIn(page);
-  const id = await shortText(page);
+  const id = await listeningText(page);
   await page.goto(`/text?id=${id}`);
   await page.locator('#listen').click();
   await expect(page.locator('#listening-card')).toContainText("depends on your device's voice");
@@ -107,7 +125,7 @@ test('FR-501 FR-502 RQ-20 RQ-369: with only an English voice nothing is spoken a
   await fakeSpeech(page, 'en');
   await signIn(page);
   await api(page, '/api/settings', { voiceHelpShown: false });
-  const id = await shortText(page);
+  const id = await listeningText(page);
   await page.goto(`/text?id=${id}`);
   await page.locator('#listen').click();
   await expect(page.locator('#voice-help')).toBeVisible();
@@ -156,6 +174,7 @@ test('FR-509 FR-505 RQ-393: a listening text from the AI opens in listening mode
   await expect(page.locator('#listen-play')).toBeVisible();
   await page.goto(`/text?id=${reading.id}`);
   await expect(page.locator('#listening-card')).toBeHidden();
+  await expect(page.locator('#listen')).toBeHidden();
   await expect(page.locator('#lines')).not.toHaveClass(/blurred/);
 });
 
