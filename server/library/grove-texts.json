@@ -5682,5 +5682,1114 @@
     "answer": 1
    }
   ]
+ },
+ {
+  "id": "C2-01",
+  "level": "C2",
+  "topic": "People and family",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Huset vid sjön",
+  "names": [
+   "Birgitta",
+   "Lars",
+   "Anna"
+  ],
+  "lines": [
+   {
+    "sv": "När deras mor dog lämnade hon efter sig ett rött trähus vid en sjö i Småland, och med det en fråga som syskonen hade skjutit framför sig i åratal.",
+    "en": "When their mother died she left behind a red wooden house by a lake in Småland, and with it a question the siblings had put off for years."
+   },
+   {
+    "sv": "Birgitta, den äldsta, hade tillbringat varje sommar där sedan barndomen och betraktade huset som en självklar del av sitt liv.",
+    "en": "Birgitta, the eldest, had spent every summer there since childhood and regarded the house as a natural part of her life."
+   },
+   {
+    "sv": "Lars hade flyttat utomlands för länge sedan och kom hem högst en vecka om året.",
+    "en": "Lars had moved abroad long ago and came home for a week a year at most."
+   },
+   {
+    "sv": "Anna, den yngsta, hade svårt att få ekonomin att gå ihop och såg i första hand ett kapital som kunde lösa hennes bekymmer.",
+    "en": "Anna, the youngest, struggled to make ends meet and saw first of all a capital that could solve her worries."
+   },
+   {
+    "sv": "Arvskiften av det här slaget hör till de mest konfliktfyllda situationer en familj kan hamna i, konstaterar jurister som arbetar med dödsbon.",
+    "en": "Divisions of inheritance of this kind are among the most conflict-ridden situations a family can find itself in, note lawyers who work with estates."
+   },
+   {
+    "sv": "Det handlar sällan bara om pengar.",
+    "en": "It is seldom only about money."
+   },
+   {
+    "sv": "Ett sommarhus är laddat med minnen, och frågan om vem som ska få det väcker ofta gamla oförrätter till liv.",
+    "en": "A summer house is charged with memories, and the question of who gets it often revives old grievances."
+   },
+   {
+    "sv": "Vem fick mest uppmärksamhet som barn, vem tog hand om föräldrarna när de blev sjuka, och vem hörde aldrig av sig?",
+    "en": "Who got the most attention as a child, who looked after the parents when they fell ill, and who never got in touch?"
+   },
+   {
+    "sv": "Hos syskonen kom allt detta upp till ytan under en enda, lång middag i det gamla köket.",
+    "en": "For the siblings all of this rose to the surface during a single long dinner in the old kitchen."
+   },
+   {
+    "sv": "Lars föreslog att de skulle sälja och dela lika, vilket Birgitta uppfattade som ett svek mot allt huset stod för.",
+    "en": "Lars suggested they sell and split it equally, which Birgitta took as a betrayal of everything the house stood for."
+   },
+   {
+    "sv": "Anna, som länge hade hållit tyst, sa till slut att hon inte hade råd att vara sentimental.",
+    "en": "Anna, who had kept quiet for a long time, finally said she couldn't afford to be sentimental."
+   },
+   {
+    "sv": "Det blev tyst runt bordet.",
+    "en": "There was silence around the table."
+   },
+   {
+    "sv": "Lösningen kom inte den kvällen, utan efter flera månader och med hjälp av en medlare.",
+    "en": "The solution didn't come that evening, but after several months and with the help of a mediator."
+   },
+   {
+    "sv": "Birgitta köper ut sina syskon i etapper, Anna får sin del direkt genom ett banklån, och Lars har förbehållit sig rätten att bo i huset två veckor varje sommar.",
+    "en": "Birgitta is buying out her siblings in stages, Anna gets her share at once through a bank loan, and Lars has reserved the right to stay in the house two weeks every summer."
+   },
+   {
+    "sv": "Det var inte den lösning någon av dem hade drömt om, men den gjorde det möjligt att fortsätta vara syskon.",
+    "en": "It wasn't the solution any of them had dreamed of, but it made it possible to go on being siblings."
+   },
+   {
+    "sv": "Medlaren, som har varit med om hundratals liknande fall, menar att det är just där de flesta familjer hamnar till slut, om de har tur.",
+    "en": "The mediator, who has seen hundreds of similar cases, thinks that is just where most families end up in the end, if they are lucky."
+   },
+   {
+    "sv": "Hennes råd till föräldrar är enkelt men sällan följt: prata med era barn om arvet medan ni lever, och skriv ner vad ni vill.",
+    "en": "Her advice to parents is simple but seldom followed: talk to your children about the inheritance while you are alive, and write down what you want."
+   },
+   {
+    "sv": "Det är inte morbidt, säger hon, utan den kanske största tjänst man kan göra dem man lämnar efter sig.",
+    "en": "It isn't morbid, she says, but perhaps the greatest favour you can do those you leave behind."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför ville Anna sälja huset?",
+    "options": [
+     "Hon bor utomlands",
+     "Hon hade svårt att få ekonomin att gå ihop",
+     "Hon tyckte inte om huset"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur löstes konflikten?",
+    "options": [
+     "Huset såldes",
+     "Med hjälp av en medlare, efter flera månader",
+     "Lars fick huset"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är medlarens råd till föräldrar?",
+    "options": [
+     "Att sälja sommarhuset i tid",
+     "Att prata med barnen om arvet medan de lever",
+     "Att ge allt till det äldsta barnet"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-02",
+  "level": "C2",
+  "topic": "Daily life",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Uppmärksamhetens pris",
+  "names": [],
+  "lines": [
+   {
+    "sv": "Hur många gånger har du tittat på mobilen i dag?",
+    "en": "How many times have you looked at your phone today?"
+   },
+   {
+    "sv": "Om du är som de flesta har du ingen aning, och just det är en del av problemet.",
+    "en": "If you are like most people you have no idea, and that is precisely part of the problem."
+   },
+   {
+    "sv": "Undersökningar tyder på att en genomsnittlig vuxen plockar upp telefonen flera gånger i timmen, ofta utan att ha något särskilt ärende.",
+    "en": "Studies suggest that an average adult picks up their phone several times an hour, often without any particular reason."
+   },
+   {
+    "sv": "Det är inte en slump.",
+    "en": "That is no coincidence."
+   },
+   {
+    "sv": "Bakom apparna som fyller våra dagar finns några av världens mest välbetalda ingenjörer, vars uppgift är att fånga och behålla vår uppmärksamhet så länge som möjligt.",
+    "en": "Behind the apps that fill our days are some of the world's best-paid engineers, whose task is to capture and hold our attention for as long as possible."
+   },
+   {
+    "sv": "Varje notis, varje röd siffra och varje flöde utan slut är utformat för att väcka en lätt nyfikenhet som är svår att stå emot.",
+    "en": "Every notification, every red number and every endless feed is designed to arouse a mild curiosity that is hard to resist."
+   },
+   {
+    "sv": "Ekonomer talar därför om en uppmärksamhetsekonomi, där det är vår tid snarare än våra pengar som är den egentliga valutan.",
+    "en": "Economists therefore speak of an attention economy, where it is our time rather than our money that is the real currency."
+   },
+   {
+    "sv": "Konsekvenserna är omdiskuterade.",
+    "en": "The consequences are debated."
+   },
+   {
+    "sv": "Vissa forskare varnar för att förmågan att läsa längre texter och följa ett komplext resonemang håller på att försvagas.",
+    "en": "Some researchers warn that the ability to read longer texts and follow a complex argument is weakening."
+   },
+   {
+    "sv": "Andra menar att varningarna är överdrivna och påminner om att man en gång oroade sig för att romanläsning skulle förstöra ungdomen.",
+    "en": "Others think the warnings are exaggerated and point out that people once worried that reading novels would ruin the young."
+   },
+   {
+    "sv": "Klart är i alla fall att allt fler känner ett behov av att ta tillbaka kontrollen.",
+    "en": "What is clear, at any rate, is that more and more people feel a need to take back control."
+   },
+   {
+    "sv": "Strategierna varierar från det drastiska till det vardagliga: en del byter ut sin smarta telefon mot en enkel modell som bara kan ringa och skicka sms.",
+    "en": "The strategies range from the drastic to the everyday: some swap their smartphone for a simple model that can only call and text."
+   },
+   {
+    "sv": "Andra stänger av alla notiser, lägger telefonen i ett annat rum när de arbetar eller inför skärmfria söndagar.",
+    "en": "Others turn off all notifications, put the phone in another room when they work or introduce screen-free Sundays."
+   },
+   {
+    "sv": "Flera skolor har förbjudit mobiler under skoldagen och rapporterar att eleverna pratar mer med varandra på rasterna.",
+    "en": "Several schools have banned phones during the school day and report that pupils talk more with each other at break."
+   },
+   {
+    "sv": "Arbetsgivare har också börjat inse att ständiga avbrott kostar, och en del inför tider på dagen då ingen förväntas svara på mejl eller meddelanden.",
+    "en": "Employers have also begun to realise that constant interruptions are costly, and some introduce times of day when nobody is expected to answer email or messages."
+   },
+   {
+    "sv": "Effekten är ofta större än man tror: det tar en stund att hitta tillbaka till en tanke som har avbrutits, och den stunden upprepas många gånger varje dag.",
+    "en": "The effect is often greater than you think: it takes a while to find your way back to an interrupted thought, and that moment is repeated many times every day."
+   },
+   {
+    "sv": "Kanske är den viktigaste insikten att uppmärksamhet inte är en oändlig resurs.",
+    "en": "Perhaps the most important insight is that attention is not an endless resource."
+   },
+   {
+    "sv": "Det vi väljer att lägga den på formar i förlängningen vilka vi blir, och det valet är för viktigt för att överlåtas åt en algoritm.",
+    "en": "What we choose to spend it on shapes in the long run who we become, and that choice is too important to be left to an algorithm."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad är den egentliga valutan i uppmärksamhetsekonomin?",
+    "options": [
+     "Pengar",
+     "Vår tid",
+     "Data om var vi bor"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad påminner kritikerna av varningarna om?",
+    "options": [
+     "Att man en gång trodde att romanläsning skulle förstöra ungdomen",
+     "Att telefoner är nyttiga",
+     "Att barn läser mer än förr"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad rapporterar skolor som har förbjudit mobiler?",
+    "options": [
+     "Bättre betyg",
+     "Att eleverna pratar mer med varandra",
+     "Fler konflikter"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-03",
+  "level": "C2",
+  "topic": "Food and drink",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Husmanskostens återkomst",
+  "names": [
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "Under en stor del av nittonhundratalet var husmanskosten själva ryggraden i det svenska köket.",
+    "en": "For much of the twentieth century traditional home cooking was the very backbone of Swedish cuisine."
+   },
+   {
+    "sv": "Ärtsoppa på torsdagar, köttbullar med gräddsås och lingon, stekt strömming och kåldolmar var rätter som de flesta svenskar växte upp med och som serverades i skolmatsalar, på arbetsplatser och vid söndagsmiddagar.",
+    "en": "Pea soup on Thursdays, meatballs with cream sauce and lingonberries, fried herring and stuffed cabbage rolls were dishes most Swedes grew up with and that were served in school canteens, at workplaces and at Sunday dinners."
+   },
+   {
+    "sv": "Maten var enkel, mättande och anpassad efter vad som gick att odla och förvara i ett kallt klimat.",
+    "en": "The food was simple, filling and adapted to what could be grown and stored in a cold climate."
+   },
+   {
+    "sv": "Från sjuttiotalet och framåt fick den dock allt hårdare konkurrens.",
+    "en": "From the seventies onwards, however, it faced increasingly fierce competition."
+   },
+   {
+    "sv": "Pizzerior och kinesiska restauranger öppnade i nästan varje ort, och pasta och tacos tog plats i vardagsmenyn.",
+    "en": "Pizzerias and Chinese restaurants opened in almost every town, and pasta and tacos found a place on the everyday menu."
+   },
+   {
+    "sv": "Husmanskosten började framstå som lite tråkig, något som hörde till äldre generationer och skolmaten man helst ville glömma.",
+    "en": "Traditional cooking began to seem a little dull, something belonging to older generations and the school dinners you'd rather forget."
+   },
+   {
+    "sv": "Under de senaste två decennierna har pendeln svängt tillbaka.",
+    "en": "Over the past two decades the pendulum has swung back."
+   },
+   {
+    "sv": "En ny generation kockar har tagit sig an de gamla rätterna med samma allvar som andra ägnar sig åt fransk eller japansk matlagning.",
+    "en": "A new generation of chefs has taken on the old dishes with the same seriousness others devote to French or Japanese cooking."
+   },
+   {
+    "sv": "De letar upp lokala råvaror, väcker liv i bortglömda tekniker som att salta, röka och fermentera och lyfter fram smaker som länge betraktades som alldagliga.",
+    "en": "They seek out local produce, revive forgotten techniques such as salting, smoking and fermenting and highlight flavours long regarded as ordinary."
+   },
+   {
+    "sv": "På krogar i storstäderna kan man i dag beställa pytt i panna eller raggmunk till priser som skulle ha fått tidigare generationer att höja på ögonbrynen.",
+    "en": "In big-city restaurants today you can order hash or potato pancakes at prices that would have made earlier generations raise their eyebrows."
+   },
+   {
+    "sv": "Återkomsten har flera förklaringar.",
+    "en": "The comeback has several explanations."
+   },
+   {
+    "sv": "Den första är praktisk: många av rätterna är billiga att laga och går att göra i stora mängder, vilket passar en tid då matpriserna har stigit kraftigt.",
+    "en": "The first is practical: many of the dishes are cheap to make and can be made in large quantities, which suits a time when food prices have risen sharply."
+   },
+   {
+    "sv": "Intresset för hållbarhet har gjort det attraktivt att äta det som växer nära och efter säsong, vilket husmanskosten alltid har gjort.",
+    "en": "Interest in sustainability has made it attractive to eat what grows nearby and in season, which traditional cooking has always done."
+   },
+   {
+    "sv": "Samtidigt längtar många, i en alltmer globaliserad värld, efter något som känns förankrat och personligt.",
+    "en": "At the same time many people, in an increasingly globalised world, long for something that feels rooted and personal."
+   },
+   {
+    "sv": "Att laga sin mormors kåldolmar blir då inte bara en måltid, utan ett sätt att knyta an till en historia.",
+    "en": "Making your grandmother's cabbage rolls then becomes not just a meal, but a way of connecting with a history."
+   },
+   {
+    "sv": "Kritiska röster påpekar visserligen att nostalgin ibland skymmer verkligheten: den gamla vardagsmaten var ofta både fet och salt, och den åts av nödvändighet snarare än av lust.",
+    "en": "Critical voices do point out that nostalgia sometimes obscures reality: the old everyday food was often both fatty and salty, and it was eaten out of necessity rather than desire."
+   },
+   {
+    "sv": "Men kanske är det just förmågan att förnya sig som har gjort att husmanskosten överlevt.",
+    "en": "But perhaps it is precisely the ability to renew itself that has allowed traditional cooking to survive."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför började husmanskosten uppfattas som tråkig?",
+    "options": [
+     "Den blev för dyr",
+     "Den fick konkurrens av pizza, pasta och annan mat",
+     "Den förbjöds i skolorna"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vilken förklaring till återkomsten nämns?",
+    "options": [
+     "Intresset för hållbarhet",
+     "Lägre priser",
+     "Nya regler för restauranger"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad påpekar kritikerna?",
+    "options": [
+     "Att nostalgin ibland skymmer verkligheten",
+     "Att maten är för dyr",
+     "Att ingen äter husmanskost längre"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "C2-04",
+  "level": "C2",
+  "topic": "Home",
+  "form": "prose",
+  "kind": "reading",
+  "title": "En miljon bostäder",
+  "names": [
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "I mitten av sextiotalet rådde det akut bostadsbrist i Sverige.",
+    "en": "In the mid-sixties there was an acute housing shortage in Sweden."
+   },
+   {
+    "sv": "Människor flyttade från landsbygden till städerna i rekordtakt, barnfamiljer trängdes i små och omoderna lägenheter, och i vissa städer fick man stå i kö i tio år för att få ett kontrakt.",
+    "en": "People were moving from the countryside to the cities at record speed, families with children were crammed into small, outdated flats, and in some cities you had to queue for ten years to get a lease."
+   },
+   {
+    "sv": "Riksdagen fattade då ett beslut som skulle prägla landet i generationer: under tio år skulle det byggas en miljon nya bostäder.",
+    "en": "Parliament then took a decision that would shape the country for generations: over ten years a million new homes would be built."
+   },
+   {
+    "sv": "Det var ett enormt åtagande för ett land med drygt åtta miljoner invånare.",
+    "en": "It was an enormous undertaking for a country with just over eight million inhabitants."
+   },
+   {
+    "sv": "Målet nåddes, och resultatet blev det som i dag kallas miljonprogrammet.",
+    "en": "The goal was reached, and the result became what is today called the Million Programme."
+   },
+   {
+    "sv": "För att bygga så snabbt och billigt som möjligt användes industriella metoder: färdiga betongelement lyftes på plats med kranar, och hela stadsdelar planerades på ritbordet i ett enda stycke.",
+    "en": "To build as quickly and cheaply as possible, industrial methods were used: prefabricated concrete elements were lifted into place by cranes, and whole districts were planned on the drawing board in one piece."
+   },
+   {
+    "sv": "Lägenheterna var ljusa och rymliga, med eget badrum, kylskåp och centralvärme, en standard som många av de första hyresgästerna aldrig tidigare hade haft.",
+    "en": "The flats were light and spacious, with their own bathroom, fridge and central heating, a standard many of the first tenants had never had before."
+   },
+   {
+    "sv": "Trots det fick områdena tidigt dåligt rykte.",
+    "en": "Despite this, the areas soon got a bad reputation."
+   },
+   {
+    "sv": "Kritikerna beskrev dem som grå och monotona, långt från stadskärnan och utan den service och de mötesplatser som behövdes.",
+    "en": "Critics described them as grey and monotonous, far from the city centre and without the services and meeting places that were needed."
+   },
+   {
+    "sv": "De som hade råd flyttade så småningom till villor, och i deras ställe kom ofta nyanlända med begränsade valmöjligheter.",
+    "en": "Those who could afford it eventually moved to houses, and in their place often came newcomers with limited choices."
+   },
+   {
+    "sv": "På så sätt bidrog bostadspolitiken, mot sin avsikt, till den segregation som i dag präglar många svenska städer.",
+    "en": "In this way housing policy contributed, against its intention, to the segregation that marks many Swedish cities today."
+   },
+   {
+    "sv": "Bilden är dock mer nyanserad än rubrikerna ibland ger sken av.",
+    "en": "The picture is, however, more nuanced than the headlines sometimes suggest."
+   },
+   {
+    "sv": "Många boende trivs och har starka band till sitt område, där det finns ett rikt föreningsliv och grönytor som barnen i innerstaden kan avundas.",
+    "en": "Many residents are happy and have strong ties to their area, where there is a rich community life and green spaces children in the inner city could envy."
+   },
+   {
+    "sv": "Husen behöver nu renoveras, och frågan om hur det ska gå till har blivit politiskt brännbar.",
+    "en": "The buildings now need renovating, and the question of how it should be done has become politically explosive."
+   },
+   {
+    "sv": "Fastighetsägarna menar att omfattande renoveringar är nödvändiga, eftersom rören, fönstren och fasaderna har nått slutet av sin livslängd.",
+    "en": "The property owners argue that extensive renovations are necessary, since the pipes, windows and façades have reached the end of their lifespan."
+   },
+   {
+    "sv": "Hyresgästerna invänder att de inte har bett om nya kök och badrum, utan bara om att få bo kvar till en rimlig kostnad.",
+    "en": "The tenants object that they haven't asked for new kitchens and bathrooms, only to be able to stay at a reasonable cost."
+   },
+   {
+    "sv": "När hyrorna höjs kraftigt efter en upprustning tvingas en del att flytta från de hem de har bott i i decennier.",
+    "en": "When rents rise sharply after a renovation, some are forced to move from homes they have lived in for decades."
+   },
+   {
+    "sv": "Miljonprogrammet var en gång symbolen för det moderna Sverige; vad det blir i framtiden beror på de beslut som fattas i dag.",
+    "en": "The Million Programme was once the symbol of modern Sweden; what it becomes in the future depends on decisions taken today."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför startades miljonprogrammet?",
+    "options": [
+     "På grund av akut bostadsbrist",
+     "För att ge arbete åt byggarbetare",
+     "För att riva gamla hus"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad var nytt för många av de första hyresgästerna?",
+    "options": [
+     "Eget badrum, kylskåp och centralvärme",
+     "Balkong mot havet",
+     "Gratis hyra"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Varför är renoveringarna politiskt brännbara?",
+    "options": [
+     "De tar för lång tid",
+     "Hyrorna höjs kraftigt och en del tvingas flytta",
+     "Husen rivs"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-05",
+  "level": "C2",
+  "topic": "Work and study",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Lönesamtalet",
+  "names": [
+   "Sara",
+   "Henrik"
+  ],
+  "lines": [
+   {
+    "sv": "– Välkommen, Sara. Som du vet är det dags för det årliga lönesamtalet. Hur har du upplevt det gångna året?",
+    "en": "– Welcome, Sara. As you know it's time for the annual salary review. How have you found the past year?"
+   },
+   {
+    "sv": "– Intensivt men givande. Jag har tagit över ansvaret för två av våra största kunder och lett omorganisationen av supportavdelningen.",
+    "en": "– Intense but rewarding. I've taken over responsibility for two of our biggest clients and led the reorganisation of the support department."
+   },
+   {
+    "sv": "– Det har inte gått oss förbi. Kunderna är nöjda, och supportärendena hanteras betydligt snabbare än tidigare.",
+    "en": "– That hasn't escaped us. The clients are satisfied, and support cases are handled much faster than before."
+   },
+   {
+    "sv": "– Tack. Jag vill därför lägga korten på bordet direkt: jag anser att mina arbetsuppgifter har förändrats så mycket att det bör avspeglas i lönen.",
+    "en": "– Thank you. So I want to put my cards on the table straight away: I believe my duties have changed so much that it should be reflected in my salary."
+   },
+   {
+    "sv": "– Vad hade du tänkt dig?",
+    "en": "– What did you have in mind?"
+   },
+   {
+    "sv": "– Jag har jämfört med statistiken från facket för liknande tjänster i branschen. Med det ansvar jag har i dag ligger jag ungefär tio procent under medianen.",
+    "en": "– I've compared with the union's statistics for similar positions in the industry. With the responsibility I have today I'm about ten per cent below the median."
+   },
+   {
+    "sv": "– Jag uppskattar att du är påläst. Samtidigt måste jag vara ärlig: kollektivavtalet ger oss ett utrymme på knappt tre procent i år, och det ska fördelas på hela gruppen.",
+    "en": "– I appreciate that you've done your homework. At the same time I have to be honest: the collective agreement gives us room for just under three per cent this year, and it has to be shared across the whole team."
+   },
+   {
+    "sv": "– Det förstår jag. Men utrymmet är väl ett genomsnitt, inte ett tak för varje enskild medarbetare?",
+    "en": "– I understand that. But the room is an average, isn't it, not a ceiling for each individual employee?"
+   },
+   {
+    "sv": "– Det stämmer också att jag har fått erbjudanden från andra företag. Jag vill stanna, men jag vill också känna att mitt arbete värderas.",
+    "en": "– It's also true that I've had offers from other companies. I want to stay, but I also want to feel that my work is valued."
+   },
+   {
+    "sv": "– Tack för att du säger det rakt ut. Det är bättre än att jag får veta det när du redan har sagt upp dig.",
+    "en": "– Thank you for saying it straight out. That's better than me finding out when you've already resigned."
+   },
+   {
+    "sv": "– Det stämmer. Den som har tagit på sig mer kan få mer, men det innebär att någon annan får mindre.",
+    "en": "– That's right. Whoever has taken on more can get more, but that means someone else gets less."
+   },
+   {
+    "sv": "– Då vill jag föreslå en kombination. En lönehöjning nu som speglar de nya uppgifterna, och en tydlig plan för hur jag kan nå marknadsnivå inom två år.",
+    "en": "– Then I'd like to propose a combination. A pay rise now that reflects the new duties, and a clear plan for how I can reach market level within two years."
+   },
+   {
+    "sv": "– Det är ett konstruktivt förslag. Vad skulle du säga om fem och en halv procent nu, och en ny titel som gruppchef?",
+    "en": "– That's a constructive proposal. What would you say to five and a half per cent now, and a new title as team leader?"
+   },
+   {
+    "sv": "– Titeln är välkommen, men den får inte bli en ersättning för lönen. Om vi skriver in en uppföljning om ett år kan jag acceptera det.",
+    "en": "– The title is welcome, but it mustn't become a substitute for pay. If we write in a follow-up in a year, I can accept that."
+   },
+   {
+    "sv": "– Det låter rimligt. Jag skickar ett utkast till dig i morgon, så kan du läsa igenom det i lugn och ro innan vi skriver under.",
+    "en": "– That sounds reasonable. I'll send you a draft tomorrow, so you can read it through in peace before we sign."
+   },
+   {
+    "sv": "– Tack, Henrik. Jag uppskattar att vi kunde ha ett så öppet samtal.",
+    "en": "– Thank you, Henrik. I appreciate that we could have such an open conversation."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad har Sara jämfört sin lön med?",
+    "options": [
+     "Kollegornas löner",
+     "Fackets statistik för liknande tjänster",
+     "Lönen i ett annat land"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad säger chefen om utrymmet i kollektivavtalet?",
+    "options": [
+     "Att det är ett tak för alla",
+     "Att det är ett genomsnitt för hela gruppen",
+     "Att det inte finns något utrymme"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad kommer de överens om?",
+    "options": [
+     "Tio procent direkt",
+     "Fem och en halv procent, en ny titel och en uppföljning om ett år",
+     "Ingen höjning i år"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-06",
+  "level": "C2",
+  "topic": "Travel and transport",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Inlandsbanan",
+  "names": [
+   "Inlandsbanan",
+   "Kristinehamn",
+   "Gällivare",
+   "Norrland",
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "Det finns snabbare sätt att ta sig norrut i Sverige, men knappast något som ger en lika stark känsla av landets storlek som Inlandsbanan.",
+    "en": "There are faster ways to travel north in Sweden, but hardly any that gives as strong a sense of the country's size as the Inland Line."
+   },
+   {
+    "sv": "Järnvägen sträcker sig över hundratals mil från Kristinehamn i söder till Gällivare långt ovanför polcirkeln, genom skogar, myrar och samhällen som många svenskar aldrig har besökt.",
+    "en": "The railway stretches for well over a thousand kilometres from Kristinehamn in the south to Gällivare far above the Arctic Circle, through forests, bogs and communities many Swedes have never visited."
+   },
+   {
+    "sv": "Den byggdes under första halvan av nittonhundratalet, delvis av strategiska skäl, delvis för att öppna inlandets skogar och malmfyndigheter för industrin.",
+    "en": "It was built in the first half of the twentieth century, partly for strategic reasons, partly to open up the inland forests and ore deposits to industry."
+   },
+   {
+    "sv": "Arbetet var hårt och farligt, och rallarna som lade rälsen bodde under primitiva förhållanden i baracker längs sträckan.",
+    "en": "The work was hard and dangerous, and the navvies who laid the track lived in primitive conditions in barracks along the line."
+   },
+   {
+    "sv": "När bilen och lastbilen tog över blev banan allt mindre lönsam, och i perioder hotades den av nedläggning.",
+    "en": "When cars and lorries took over, the line became less and less profitable, and at times it was threatened with closure."
+   },
+   {
+    "sv": "I dag trafikeras den främst sommartid av ett litet tåg som stannar när det dyker upp en älg på spåret eller när föraren vill visa resenärerna en särskild utsikt.",
+    "en": "Today it is mainly served in summer by a small train that stops when an elk appears on the track or when the driver wants to show the passengers a particular view."
+   },
+   {
+    "sv": "Hastigheten är låg, och det är meningen.",
+    "en": "The speed is low, and that is intentional."
+   },
+   {
+    "sv": "Från fönstret ser man milslånga skogar, glittrande sjöar och ibland en ensam gård där någon vinkar när tåget passerar.",
+    "en": "From the window you see endless forests, glittering lakes and sometimes a lonely farm where someone waves as the train passes."
+   },
+   {
+    "sv": "Mobiltäckningen försvinner emellanåt, och många resenärer berättar att de för första gången på länge har läst en hel bok utan att bli avbrutna.",
+    "en": "Mobile coverage disappears now and then, and many travellers say that for the first time in a long while they have read a whole book without being interrupted."
+   },
+   {
+    "sv": "Resan tar flera dagar om man vill hinna stiga av, och många väljer att övernatta i små orter där tågets ankomst fortfarande är dagens händelse.",
+    "en": "The journey takes several days if you want time to get off, and many choose to stay overnight in small places where the train's arrival is still the event of the day."
+   },
+   {
+    "sv": "På vissa stationer serveras kaffe och nybakade bullar, på andra möts man av en samisk guide som berättar om renskötsel och om landskapet ur ett perspektiv som sällan hörs i söder.",
+    "en": "At some stations coffee and freshly baked buns are served, at others you are met by a Sami guide who talks about reindeer herding and about the landscape from a perspective seldom heard in the south."
+   },
+   {
+    "sv": "För många resenärer blir det en påminnelse om att Sverige inte bara består av storstäder och kuster.",
+    "en": "For many travellers it becomes a reminder that Sweden doesn't consist only of big cities and coasts."
+   },
+   {
+    "sv": "Inlandets kommuner kämpar med utflyttning, stängda skolor och långa avstånd till vård, samtidigt som de har en natur och en tystnad som blir alltmer sällsynt i Europa.",
+    "en": "The inland municipalities struggle with people moving away, closed schools and long distances to healthcare, while having a nature and a silence that are increasingly rare in Europe."
+   },
+   {
+    "sv": "Turismen längs banan är långt ifrån någon lösning på dessa problem, men den ger arbetstillfällen och en anledning för människor att stanna upp.",
+    "en": "Tourism along the line is far from a solution to these problems, but it provides jobs and a reason for people to pause."
+   },
+   {
+    "sv": "Och kanske är det just det som Inlandsbanan erbjuder: inte en transportsträcka, utan en möjlighet att se ett land som de flesta bara flyger över.",
+    "en": "And perhaps that is just what the Inland Line offers: not a way to get from A to B, but a chance to see a country most people only fly over."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför byggdes Inlandsbanan?",
+    "options": [
+     "För turister",
+     "Av strategiska skäl och för att öppna skogar och malm för industrin",
+     "För att ersätta flyget"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "När stannar tåget enligt texten?",
+    "options": [
+     "Bara vid stora städer",
+     "När en älg dyker upp eller för en särskild utsikt",
+     "Aldrig"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vilka problem har inlandets kommuner?",
+    "options": [
+     "För många turister",
+     "Utflyttning, stängda skolor och långt till vård",
+     "För höga hyror"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-07",
+  "level": "C2",
+  "topic": "Free time and culture",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Översättarens osynliga arbete",
+  "names": [
+   "Karin",
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "När vi läser en roman som har översatts till svenska tänker vi sällan på att varje mening vi möter har formulerats av någon annan än författaren.",
+    "en": "When we read a novel translated into Swedish we seldom think that every sentence we meet has been worded by someone other than the author."
+   },
+   {
+    "sv": "Översättarens namn står ofta med liten stil på titelsidan, och i recensioner nämns det, om alls, i förbigående.",
+    "en": "The translator's name is often in small print on the title page, and in reviews it is mentioned, if at all, in passing."
+   },
+   {
+    "sv": "Ändå är det översättaren som avgör hur en karaktär låter, vilka ord som väljs och om ett skämt fungerar på ett annat språk.",
+    "en": "Yet it is the translator who decides how a character sounds, which words are chosen and whether a joke works in another language."
+   },
+   {
+    "sv": "Karin har översatt skönlitteratur från spanska i över tjugo år och beskriver arbetet som en ständig förhandling.",
+    "en": "Karin has translated fiction from Spanish for over twenty years and describes the work as a constant negotiation."
+   },
+   {
+    "sv": "Man måste vara trogen originalet, men inte så trogen att texten blir stel och främmande, säger hon.",
+    "en": "You have to be faithful to the original, but not so faithful that the text becomes stiff and foreign, she says."
+   },
+   {
+    "sv": "Ett ordagrant översatt idiom kan bli obegripligt, medan en alltför fri tolkning riskerar att sudda ut det som gör författaren unik.",
+    "en": "A word-for-word translated idiom can become incomprehensible, while too free an interpretation risks erasing what makes the author unique."
+   },
+   {
+    "sv": "Särskilt svårt är det med dialekter och sociolekter.",
+    "en": "Dialects and sociolects are especially difficult."
+   },
+   {
+    "sv": "Ännu svårare är ordlekar och rim, där ljudet är minst lika viktigt som betydelsen.",
+    "en": "Even harder are puns and rhymes, where the sound is at least as important as the meaning."
+   },
+   {
+    "sv": "Ibland tvingas översättaren uppfinna ett helt nytt skämt som fungerar på svenska och som läsaren uppfattar på samma sätt som originalets läsare gjorde.",
+    "en": "Sometimes the translator has to invent a completely new joke that works in Swedish and that the reader takes in the same way as the original's readers did."
+   },
+   {
+    "sv": "Om en person i originalet talar med en tydlig regional prägel, ska hon då få en svensk dialekt, och i så fall vilken?",
+    "en": "If a character in the original speaks with a clear regional flavour, should she get a Swedish dialect, and if so which?"
+   },
+   {
+    "sv": "Att låta en fiskare från Andalusien prata skånska väcker lätt fel associationer, men att låta honom tala rikssvenska gör honom blekare än han är.",
+    "en": "Letting a fisherman from Andalusia speak the Skåne dialect easily evokes the wrong associations, but letting him speak standard Swedish makes him paler than he is."
+   },
+   {
+    "sv": "Karin brukar lösa det genom små förskjutningar i ordval och rytm snarare än genom att efterlikna en bestämd dialekt.",
+    "en": "Karin usually solves it through small shifts in word choice and rhythm rather than by imitating a particular dialect."
+   },
+   {
+    "sv": "Arbetet är dessutom ekonomiskt osäkert.",
+    "en": "The work is also financially insecure."
+   },
+   {
+    "sv": "Arvodena har inte följt med prisutvecklingen, och många översättare har andra jobb vid sidan av för att få det att gå runt.",
+    "en": "Fees haven't kept up with prices, and many translators have other jobs on the side to make ends meet."
+   },
+   {
+    "sv": "Den snabba utvecklingen av maskinöversättning har också väckt frågan om yrket har en framtid.",
+    "en": "The rapid development of machine translation has also raised the question of whether the profession has a future."
+   },
+   {
+    "sv": "Karin är inte orolig, åtminstone inte när det gäller litteraturen.",
+    "en": "Karin isn't worried, at least not when it comes to literature."
+   },
+   {
+    "sv": "En maskin kan översätta vad som står där, säger hon, men den vet inte varför det står där.",
+    "en": "A machine can translate what is written, she says, but it doesn't know why it is written."
+   },
+   {
+    "sv": "Hon jämför sitt arbete med en musikers: noterna är givna, men tolkningen är alltid personlig, och två översättningar av samma bok blir aldrig likadana.",
+    "en": "She compares her work to a musician's: the notes are given, but the interpretation is always personal, and two translations of the same book are never alike."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur beskriver Karin översättningsarbetet?",
+    "options": [
+     "Som en ständig förhandling",
+     "Som enkelt och mekaniskt",
+     "Som ett ensamt hantverk utan val"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Hur brukar Karin lösa problemet med dialekter?",
+    "options": [
+     "Hon använder skånska",
+     "Genom små förskjutningar i ordval och rytm",
+     "Hon tar bort dialogen"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad kan en maskin inte göra enligt Karin?",
+    "options": [
+     "Översätta snabbt",
+     "Veta varför något står där",
+     "Översätta från spanska"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-08",
+  "level": "C2",
+  "topic": "Health",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Ingen penicillin den här gången",
+  "names": [],
+  "lines": [
+   {
+    "sv": "– Jag har haft ont i halsen i fem dagar nu, och jag hade hoppats att få penicillin så att det går över.",
+    "en": "– I've had a sore throat for five days now, and I had hoped to get penicillin so it goes away."
+   },
+   {
+    "sv": "– Jag förstår att det är jobbigt. Snabbtestet visar dock att det inte är streptokocker, utan med största sannolikhet ett virus.",
+    "en": "– I understand it's tough. The rapid test shows, however, that it isn't strep, but most probably a virus."
+   },
+   {
+    "sv": "– Men skulle inte antibiotika hjälpa ändå, för säkerhets skull?",
+    "en": "– But wouldn't antibiotics help anyway, just to be safe?"
+   },
+   {
+    "sv": "– Tyvärr inte. Antibiotika verkar bara mot bakterier, och mot ett virus gör de ingen som helst nytta. Däremot kan de ge biverkningar, som magbesvär.",
+    "en": "– Unfortunately not. Antibiotics only work against bacteria, and against a virus they do no good at all. They can, however, cause side effects, such as stomach problems."
+   },
+   {
+    "sv": "– Jag har en kollega som alltid får antibiotika när han är förkyld.",
+    "en": "– I have a colleague who always gets antibiotics when he has a cold."
+   },
+   {
+    "sv": "– Det kan jag inte uttala mig om, men det är något vi försöker komma bort ifrån. Varje gång antibiotika används i onödan ökar risken för att bakterier blir resistenta.",
+    "en": "– I can't comment on that, but it's something we're trying to move away from. Every time antibiotics are used unnecessarily, the risk of bacteria becoming resistant increases."
+   },
+   {
+    "sv": "– Resistenta, alltså att medicinen slutar fungera?",
+    "en": "– Resistant, meaning the medicine stops working?"
+   },
+   {
+    "sv": "– Precis. Bakterierna anpassar sig, och till slut finns det infektioner som vi inte kan behandla. I vissa delar av världen är det redan ett allvarligt problem, och Världshälsoorganisationen räknar det som ett av de största hoten mot folkhälsan.",
+    "en": "– Exactly. The bacteria adapt, and in the end there are infections we can't treat. In some parts of the world it is already a serious problem, and the World Health Organization counts it as one of the biggest threats to public health."
+   },
+   {
+    "sv": "– Hur kan det bli så? Det är ju jag som tar medicinen, inte bakterierna.",
+    "en": "– How can that be? It's me who takes the medicine, not the bacteria."
+   },
+   {
+    "sv": "– De bakterier som råkar tåla medicinen överlever och förökar sig, medan de känsliga dör. Med tiden blir de motståndskraftiga allt fler, och de kan sedan spridas till andra människor.",
+    "en": "– The bacteria that happen to tolerate the medicine survive and multiply, while the sensitive ones die. Over time the resistant ones become more and more numerous, and they can then spread to other people."
+   },
+   {
+    "sv": "– Det hade jag ingen aning om. Är det därför Sverige är så restriktivt?",
+    "en": "– I had no idea. Is that why Sweden is so restrictive?"
+   },
+   {
+    "sv": "– Delvis. Vi har länge haft en försiktig förskrivning, och det har gjort att resistensen här är lägre än i många andra länder. Det är en fördel vi gärna vill behålla.",
+    "en": "– Partly. We have long been careful about prescribing, and that has meant resistance here is lower than in many other countries. It's an advantage we'd like to keep."
+   },
+   {
+    "sv": "– Vad ska jag göra då?",
+    "en": "– So what should I do?"
+   },
+   {
+    "sv": "– Vila, drick mycket och ta något febernedsättande om det behövs. Om du får hög feber, svårt att svälja eller inte blir bättre inom en vecka ska du höra av dig igen.",
+    "en": "– Rest, drink plenty and take something to bring down a fever if needed. If you get a high fever, difficulty swallowing or aren't better within a week, get in touch again."
+   },
+   {
+    "sv": "– Okej. Lite snopet, men jag förstår resonemanget.",
+    "en": "– Okay. A bit disappointing, but I understand the reasoning."
+   },
+   {
+    "sv": "– Tack för att du lyssnar. Det är faktiskt tack vare patienter som du att vi fortfarande har fungerande antibiotika när någon verkligen behöver dem.",
+    "en": "– Thank you for listening. It's actually thanks to patients like you that we still have working antibiotics when someone really needs them."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför får patienten inte antibiotika?",
+    "options": [
+     "Det är för dyrt",
+     "Det är troligen ett virus, och antibiotika verkar bara mot bakterier",
+     "Patienten är allergisk"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad händer när antibiotika används i onödan?",
+    "options": [
+     "Risken för resistenta bakterier ökar",
+     "Patienten blir frisk snabbare",
+     "Ingenting"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "När ska patienten höra av sig igen?",
+    "options": [
+     "I morgon",
+     "Om hon får hög feber, svårt att svälja eller inte blir bättre inom en vecka",
+     "Om en månad"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-09",
+  "level": "C2",
+  "topic": "Nature and environment",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Ett innanhav i kris",
+  "names": [
+   "Östersjön",
+   "Sverige",
+   "Europa"
+  ],
+  "lines": [
+   {
+    "sv": "Östersjön är ett av världens största bräckvattenhav och ett av de mest förorenade.",
+    "en": "The Baltic Sea is one of the world's largest brackish-water seas and one of the most polluted."
+   },
+   {
+    "sv": "Eftersom havet är grunt och bara har en smal förbindelse med Nordsjön byts vattnet ut mycket långsamt, och det som en gång har hamnat där stannar kvar i årtionden.",
+    "en": "Because the sea is shallow and has only a narrow connection with the North Sea, the water is exchanged very slowly, and what has once ended up there remains for decades."
+   },
+   {
+    "sv": "Det största problemet är övergödningen.",
+    "en": "The biggest problem is eutrophication."
+   },
+   {
+    "sv": "Ämnena kommer från alla länder runt havet, vilket innebär att inget land ensamt kan lösa problemet.",
+    "en": "The substances come from all the countries around the sea, which means no single country can solve the problem alone."
+   },
+   {
+    "sv": "Kväve och fosfor från jordbruk, avlopp och industrier rinner ut i havet och fungerar som gödning för alger.",
+    "en": "Nitrogen and phosphorus from farming, sewage and industry run out into the sea and act as fertiliser for algae."
+   },
+   {
+    "sv": "På sommaren bildas stora blomningar som färgar vattnet grönt och gör det olämpligt att bada i.",
+    "en": "In summer large blooms form that colour the water green and make it unsuitable for swimming."
+   },
+   {
+    "sv": "När algerna dör sjunker de till botten, där nedbrytningen förbrukar syret.",
+    "en": "When the algae die they sink to the bottom, where their decomposition uses up the oxygen."
+   },
+   {
+    "sv": "Följden är så kallade döda bottnar, områden där nästan inget liv kan överleva, och de täcker i dag en yta som är större än flera av länderna runt havet.",
+    "en": "The result is so-called dead zones, areas where almost no life can survive, and today they cover an area larger than several of the countries around the sea."
+   },
+   {
+    "sv": "Även fisket har satt djupa spår.",
+    "en": "Fishing has also left deep marks."
+   },
+   {
+    "sv": "Torsken, som en gång var en av Östersjöns viktigaste arter, har minskat så kraftigt att det kommersiella fisket efter den i stora delar av havet har stoppats.",
+    "en": "Cod, once one of the Baltic's most important species, has declined so sharply that commercial fishing for it has been stopped in large parts of the sea."
+   },
+   {
+    "sv": "Forskare har dessutom upptäckt att de torskar som finns kvar ofta är små och magra, vilket tyder på att hela ekosystemet är i obalans.",
+    "en": "Researchers have also found that the remaining cod are often small and thin, suggesting the whole ecosystem is out of balance."
+   },
+   {
+    "sv": "Det finns ändå skäl till försiktig optimism.",
+    "en": "There are nevertheless reasons for cautious optimism."
+   },
+   {
+    "sv": "Bönder har på många håll anlagt våtmarker och skyddszoner längs vattendragen, som fångar upp näringen innan den når havet.",
+    "en": "In many places farmers have created wetlands and buffer strips along waterways, which catch the nutrients before they reach the sea."
+   },
+   {
+    "sv": "Utsläppen av fosfor har minskat betydligt sedan åttiotalet tack vare bättre reningsverk, och i vissa vikar har vattnet blivit klarare.",
+    "en": "Phosphorus emissions have fallen considerably since the eighties thanks to better sewage treatment, and in some bays the water has become clearer."
+   },
+   {
+    "sv": "Länderna runt havet har förbundit sig att samarbeta, även om tempot i genomförandet ofta har kritiserats som alltför långsamt.",
+    "en": "The countries around the sea have committed to cooperate, although the pace of implementation has often been criticised as far too slow."
+   },
+   {
+    "sv": "Problemet är att havet har ett långt minne.",
+    "en": "The problem is that the sea has a long memory."
+   },
+   {
+    "sv": "Även om alla utsläpp upphörde i morgon skulle det ta generationer innan näringsämnena som redan finns i bottensedimenten är borta.",
+    "en": "Even if all emissions stopped tomorrow, it would take generations before the nutrients already in the bottom sediments are gone."
+   },
+   {
+    "sv": "Östersjöns framtid avgörs därför inte av ett enskilt beslut, utan av hur uthålligt vi är beredda att arbeta, långt efter att uppmärksamheten har riktats mot annat.",
+    "en": "The Baltic's future will therefore not be decided by a single decision, but by how persistently we are prepared to work, long after attention has turned elsewhere."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför stannar föroreningarna kvar länge i Östersjön?",
+    "options": [
+     "Havet är djupt",
+     "Havet är grunt och vattnet byts ut långsamt",
+     "Det regnar sällan"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är döda bottnar?",
+    "options": [
+     "Områden där nästan inget liv kan överleva",
+     "Platser där man har slutat fiska",
+     "Gamla vrak"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad har förbättrats sedan åttiotalet?",
+    "options": [
+     "Torskbeståndet",
+     "Utsläppen av fosfor har minskat",
+     "Antalet döda bottnar har halverats"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-10",
+  "level": "C2",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Svenskan i engelskans skugga",
+  "names": [
+   "Elin",
+   "Bergström",
+   "Omid",
+   "Sverige",
+   "climate",
+   "policy",
+   "supply",
+   "chains"
+  ],
+  "lines": [
+   {
+    "sv": "– Välkomna till veckans språkprogram. Vi ska tala om engelskans ställning i Sverige. Elin Bergström, du forskar i språkpolitik. Är svenskan hotad?",
+    "en": "– Welcome to this week's language programme. We'll talk about the position of English in Sweden. Elin Bergström, you research language policy. Is Swedish threatened?"
+   },
+   {
+    "sv": "– Inte i den meningen att den skulle försvinna. Den talas av miljontals människor, har en stark ställning i lagen och används i alla delar av samhället. Men det finns domäner där den håller på att trängas undan.",
+    "en": "– Not in the sense that it would disappear. It is spoken by millions of people, has a strong legal position and is used in all parts of society. But there are domains where it is being pushed aside."
+   },
+   {
+    "sv": "– Vilka då?",
+    "en": "– Which ones?"
+   },
+   {
+    "sv": "– Framför allt högre utbildning och forskning, där en stor del av kurslitteraturen och nästan alla avhandlingar är på engelska. Även i många internationella företag är engelska koncernspråk.",
+    "en": "– Above all higher education and research, where much of the course literature and almost all dissertations are in English. In many international companies English is also the corporate language."
+   },
+   {
+    "sv": "– Omid, du är lärare på gymnasiet. Märker du något av det här i klassrummet?",
+    "en": "– Omid, you teach at upper secondary school. Do you notice any of this in the classroom?"
+   },
+   {
+    "sv": "– Absolut. Mina elever är ofta bättre på engelska än vi var i deras ålder, vilket är fantastiskt. Men när de ska skriva en argumenterande text om ett samhällsämne saknar de ibland de svenska orden.",
+    "en": "– Absolutely. My pupils are often better at English than we were at their age, which is fantastic. But when they have to write an argumentative text on a social issue they sometimes lack the Swedish words."
+   },
+   {
+    "sv": "– Kan du ge ett exempel?",
+    "en": "– Can you give an example?"
+   },
+   {
+    "sv": "– De kan förklara climate policy eller supply chains på engelska, men de famlar efter motsvarande begrepp på svenska. Det blir som ett hål i ordförrådet.",
+    "en": "– They can explain climate policy or supply chains in English, but they grope for the corresponding concepts in Swedish. It becomes like a hole in their vocabulary."
+   },
+   {
+    "sv": "– Det fenomenet kallas domänförlust, och det är just därför språklagen säger att svenskan ska vara ett komplett och samhällsbärande språk.",
+    "en": "– That phenomenon is called domain loss, and it is precisely why the Language Act says Swedish should be a complete language that carries society."
+   },
+   {
+    "sv": "– Men är det inte naturligt att ett litet språk lånar från ett stort? Svenskan har ju alltid tagit in ord från tyskan och franskan.",
+    "en": "– But isn't it natural for a small language to borrow from a big one? Swedish has always taken in words from German and French."
+   },
+   {
+    "sv": "– Lånord i sig är inget problem; de berikar språket och anpassas efter hand. Det som är nytt är att hela områden kan få ett annat språk, inte bara enstaka ord.",
+    "en": "– Loanwords in themselves aren't a problem; they enrich the language and are adapted over time. What's new is that whole areas can get another language, not just individual words."
+   },
+   {
+    "sv": "– För eleverna som har svenska som andraspråk blir det dessutom extra tydligt. De ska lära sig två språk samtidigt för att kunna delta fullt ut.",
+    "en": "– For pupils who have Swedish as a second language it becomes especially clear. They have to learn two languages at once to be able to take full part."
+   },
+   {
+    "sv": "– Så vad är lösningen, enligt er båda?",
+    "en": "– So what's the solution, according to you both?"
+   },
+   {
+    "sv": "– Parallellspråkighet. Att man medvetet använder båda språken och ser till att svenskan utvecklas även inom de områden där engelskan dominerar.",
+    "en": "– Parallel language use. Consciously using both languages and making sure Swedish develops even in the areas where English dominates."
+   },
+   {
+    "sv": "– Och i skolan att vi slutar se engelskan som ett hot och i stället hjälper eleverna att bygga broar mellan språken.",
+    "en": "– And at school, that we stop seeing English as a threat and instead help pupils build bridges between the languages."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Inom vilka områden trängs svenskan undan enligt Elin?",
+    "options": [
+     "I familjen",
+     "I högre utbildning, forskning och internationella företag",
+     "I sport"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad saknar Omids elever ibland?",
+    "options": [
+     "Engelska ord",
+     "De svenska begreppen för samhällsämnen",
+     "Motivation"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad föreslår de som lösning?",
+    "options": [
+     "Att förbjuda engelska i skolan",
+     "Parallellspråkighet och broar mellan språken",
+     "Att bara använda engelska"
+    ],
+    "answer": 1
+   }
+  ]
  }
 ]

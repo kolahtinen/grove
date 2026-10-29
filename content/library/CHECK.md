@@ -87,4 +87,19 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C1-09 | Skogen – resurs eller livsmiljö? | reading | 268 | 27 | infekterad (C2), **likåldrig** (—*), **lav** (—), **bärplockning** (—), **hyggesfri** (—*), **friluftsliv** (—) | 6 → 5 (kalhuggs no longer far) | passes |
 | C1-10 | Litar vi fortfarande på varandra? | reading, dialogue | 266 | 28 | **otrygghet** (—), **naturlag** (—) | 2 → 2 (none no longer far) | passes |
 
-60 of 60 texts pass.
+## C2 (10 texts; 300–400 words, sentences ≤ 35 words, ≤ 15 far words)
+
+| id | title | kind | words | longest | above | far: Kelly alone → now | result |
+|---|---|---|---|---|---|---|---|
+| C2-01 | Huset vid sjön | reading | 331 | 29 | **trähus** (—), **konfliktfylld** (—), **dödsbo** (—), **sommarhus** (—), **sentimental** (—*), **medlare** (—), **banklån** (—), **morbid** (—) | 8 → 8 (none no longer far) | passes |
+| C2-02 | Uppmärksamhetens pris | listening | 326 | 28 | **välbetald** (—), **skoldag** (—*) | 3 → 2 (app no longer far) | passes |
+| C2-03 | Husmanskostens återkomst | reading | 319 | 31 | **husmanskost** (—), **gräddsås** (—*), **lingon** (—), **strömming** (—), **kåldolme** (—), **skolmatsal** (—), **taco** (—), **skolmat** (—), **pendel** (—), **fermentera** (—), **pyttipanna** (—), **raggmunk** (—), **nostalgi** (—) | 19 → 13 (ärtsoppa, bortglömd, alltmer, globalisera, förankrad, skymma no longer far) | passes |
+| C2-04 | En miljon bostäder | reading | 328 | 32 | **omodern** (—), **monoton** (—), **segregation** (—), **nyansera** (—), **föreningsliv** (—), **innerstad** (—), **avundas** (—*), **brännbar** (—), **upprustning** (—) | 9 → 9 (none no longer far) | passes |
+| C2-05 | Lönesamtalet | reading, dialogue | 328 | 23 | **lönesamtal** (—*), **supportavdelning** (—*), **supportärende** (—*), **lönehöjning** (—) | 5 → 4 (median no longer far) | passes |
+| C2-06 | Inlandsbanan | listening | 324 | 31 | **rallare** (—), **räls** (—), **glittra** (—), **avbruten** (—), **flytta ut** (—) | 7 → 5 (sommartid, alltmer no longer far) | passes |
+| C2-07 | Översättarens osynliga arbete | reading | 316 | 26 | **ordagrann** (—), **idiom** (—*), **sociolekt** (—*), **rim** (—), **förskjutning** (—), **ordval** (—), **given** (—) | 9 → 7 (sudda, ännu no longer far) | passes |
+| C2-08 | Ingen penicillin den här gången | listening, dialogue | 305 | 23 | **penicillin** (—), **streptokock** (—), **magbesvär** (—*), **resistent** (—), **resistens** (—), **febernedsättande** (—*) | 8 → 6 (antibiotika, snopen no longer far) | passes |
+| C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
+| C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
+
+70 of 70 texts pass.
