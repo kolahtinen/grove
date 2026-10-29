@@ -1,5 +1,5 @@
 // Sessions on the server (G-09 FR-904, FR-914, FR-920, FR-923; addendum 006; research R1, R5): one going
-// session per account, its tile, skill and length, its planned exercises and how far the learner has got.
+// session per account, its tile, ticked skills (B-25; `params.skills`, an old row's single skill) and length, its planned exercises and how far the learner has got.
 // Starting a session replaces the going one. A Mix or Discover short of new texts is kept as a going
 // session with an empty plan and its offer (the minutes missing per kind and when), which is also the way
 // back to it; answering the offer plans it. An exercise's question is built when it is shown, so a word
@@ -7,7 +7,8 @@
 import { HttpError } from '../web/http.mjs';
 import { transaction } from '../store/db.mjs';
 import { createQuestions } from '../drill/questions.mjs';
-import { plan as planSession } from './plan.mjs';
+import { plan as planSession, TICKS } from './plan.mjs';
+import { getItem, wordCard, phraseCard, patternCard } from '../learning/learning.mjs';
 import { readInventory } from './inventory.mjs';
 import { summarise } from './summary.mjs';
 import { offerState } from './offer.mjs';
@@ -15,6 +16,12 @@ import { offerState } from './offer.mjs';
 const publicOffer = ({ notFull, ...offer }) => offer;
 
 const TILE_NAMES = { discover: 'Discover', review: 'Review', mix: 'Mix' };
+
+// The ticked skills of a request or a row: `skills` as ticked ([] = all), else the single skill (Mix = all).
+function skillsOf(skills, skill) {
+  if (Array.isArray(skills)) return TICKS.filter((s) => skills.includes(s));
+  return !skill || skill === 'mix' ? [] : [skill];
+}
 
 export function createSessions({ db, now = () => Date.now() }) {
   const questions = createQuestions(db);
@@ -28,7 +35,16 @@ export function createSessions({ db, now = () => Date.now() }) {
   function exerciseView(accountId, ex) {
     // An old plan's Master item is shown as Review (FR-912, addendum 006).
     const view = { mode: ex.mode === 'master' ? 'review' : ex.mode, type: ex.type, minutes: Math.max(1, Math.round(ex.seconds / 60)) };
-    if (ex.textId) {
+    if (ex.type === 'words') {
+      view.words = (ex.items ?? []).map((id) => getItem(db, id)).filter((i) => i?.type === 'word').map(wordCard);
+    } else if (ex.type === 'phrase') {
+      const item = getItem(db, ex.item);
+      view.phrase = item?.type === 'phrase' ? phraseCard(db, item) : null;
+    } else if (ex.type === 'grammar') {
+      const item = getItem(db, ex.item);
+      view.learn = !!ex.learn;
+      view.pattern = item?.type === 'pattern' ? patternCard(item) : null;
+    } else if (ex.textId) {
       view.textId = ex.textId;
       view.title = db.prepare('SELECT title FROM texts WHERE id = ? AND account_id = ?').get(ex.textId, accountId)?.title ?? null;
     } else {
@@ -58,6 +74,7 @@ export function createSessions({ db, now = () => Date.now() }) {
       kind: row.kind,
       tile: row.tile,
       skill: row.skill,
+      skills: skillsOf(params.skills, row.skill),
       hardOnly: !!row.hard_only,
       topic: params.topic ?? null,
       minutes: row.minutes,
@@ -75,8 +92,8 @@ export function createSessions({ db, now = () => Date.now() }) {
 
   function planFor(accountId, row, { fill }) {
     const params = JSON.parse(row.params);
-    const inventory = readInventory(db, accountId, { now: now(), knownShares: row.tile !== 'review' });
-    return planSession({ params: { kind: row.kind, tile: row.tile, skill: row.skill, minutes: row.minutes, hardOnly: !!row.hard_only, topic: params.topic, voice: params.voice, fill }, inventory });
+    const inventory = readInventory(db, accountId, { now: now(), knownShares: row.tile !== 'review', learning: row.tile !== 'review' });
+    return planSession({ params: { kind: row.kind, tile: row.tile, skills: skillsOf(params.skills, row.skill), minutes: row.minutes, hardOnly: !!row.hard_only, topic: params.topic, voice: params.voice, fill }, inventory });
   }
 
   function store(rowId, planned) {
@@ -86,16 +103,19 @@ export function createSessions({ db, now = () => Date.now() }) {
 
   return {
     start(accountId, body) {
-      const { kind, tile, skill, minutes, voice } = body;
+      const { kind, tile, minutes, voice } = body;
       const hardOnly = !!body.hardOnly;
-      if (skill === 'listening' && voice === false) {
+      const skills = skillsOf(body.skills, body.skill);
+      const skill = skills.length === 1 ? skills[0] : 'mix';
+      if (skills.length === 1 && skill === 'listening' && voice === false) {
         throw new HttpError(409, 'no_voice', 'This device has no Swedish voice, so grove can’t plan listening.');
       }
-      const params = { voice, ...(kind === 'topic' ? { topic: body.topic } : {}) };
-      const inventory = readInventory(db, accountId, { now: now(), knownShares: tile !== 'review' });
-      const planned = planSession({ params: { kind, tile, skill, minutes, hardOnly, topic: body.topic, voice, fill: !!body.fill }, inventory });
-      // FR-905: a Review that would run short first says so: Fill the time or Start shorter (as is).
-      if (tile === 'review' && planned.wouldBeShort && !body.fill && !body.asIs && planned.exercises.length) {
+      const params = { voice, skills, ...(kind === 'topic' ? { topic: body.topic } : {}) };
+      const inventory = readInventory(db, accountId, { now: now(), knownShares: tile !== 'review', learning: tile !== 'review' });
+      const planned = planSession({ params: { kind, tile, skills, minutes, hardOnly, topic: body.topic, voice, fill: !!body.fill }, inventory });
+      // FR-905: a Review, or a Mix or Discover without a text target, that would run short first says so:
+      // Fill the time or Start shorter (as is).
+      if (!planned.offer && planned.wouldBeShort && !body.fill && !body.asIs && planned.exercises.length) {
         throw new HttpError(409, 'short', `This session would only be about ${Math.max(1, Math.round(planned.seconds / 60))} min. Fill the time with practice, or start it shorter.`);
       }
       if (!planned.exercises.length && !planned.offer) throw new HttpError(409, 'nothing_to_do', 'There is nothing to practise right now. Add a text first.');

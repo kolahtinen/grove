@@ -19,6 +19,7 @@
     "learner:delete": "node server/owner/cli.mjs learner:delete",
     "log:show": "node server/owner/cli.mjs log:show",
     "availability:show": "node server/owner/cli.mjs availability:show",
+    "reports:show": "node server/owner/cli.mjs reports:show",
     "backup:now": "node server/owner/cli.mjs backup:now",
     "backup:restore": "node server/owner/cli.mjs backup:restore"
   },

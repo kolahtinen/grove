@@ -58,3 +58,32 @@ The return link (FR-923) is this row: a page shows "‹ Back to your session" on
 | `words` | `picked_at` INTEGER | When the leaf was first drilled (FR-925). Existing drilled or fallen leaves: `added_at`. |
 The starting level's day is `learner_settings.start_at`, kept since G-06.
 
+
+## Migration 020 (B-24…B-26; FR-905, FR-928…FR-931): learning content, what a learner has seen, reports
+
+`020-learning.sql` adds three tables and changes no row. The ticked skills (B-25) need no column: a new session's `params` holds `skills` (the ticked skills in the order Reading, Listening, Words, Grammar; `[]` = all), and its `skill` column is the one ticked skill, or `mix` for none or several. A row without `params.skills` (every session before 020) counts as `[]` for `mix` and `[skill]` otherwise.
+
+| Table | Column | Notes |
+|---|---|---|
+| `learning_items` | `id` TEXT PRIMARY KEY | `G-<level>-<nn>` a grammar pattern, `P-<level>-<nn>` a phrase, `W-<dictionary form>` a word (next words first, then topic words; one item per form) |
+| | `type` TEXT NOT NULL | `pattern` \| `phrase` \| `word` |
+| | `level` TEXT NOT NULL | A1…C2 |
+| | `position` INTEGER NOT NULL | order within its type: the ladder's for patterns, the files' for phrases and words |
+| | `data` TEXT NOT NULL | JSON: the item as in its content file (pattern: name, explain_en, how_to_spot, examples, text, spot; phrase: phrase, en, note, examples; word: lemma, pos, en, example, topic) |
+| `learning_seen` | `account_id` INTEGER NOT NULL | → `accounts (id)` ON DELETE CASCADE |
+| | `item_id` TEXT NOT NULL | a `learning_items` ID (no foreign key: the content can change at start-up) |
+| | `first_at`, `last_at` INTEGER NOT NULL | ms; a word or phrase shown, a pattern met (its Spot it checked) |
+| | | PRIMARY KEY `(account_id, item_id)` |
+| `learning_reports` | `id` INTEGER PRIMARY KEY | |
+| | `account_id` INTEGER NOT NULL | → `accounts (id)` ON DELETE CASCADE |
+| | `item_id` TEXT NOT NULL | |
+| | `reason` TEXT NOT NULL | `wrong_meaning` \| `bad_translation` \| `unnatural` \| `wrong_mark` \| `audio` \| `other` |
+| | `note` TEXT | ≤ 200 characters |
+| | `status` TEXT NOT NULL DEFAULT `open` | `open` \| `closed` |
+| | `created_at` INTEGER NOT NULL | ms |
+
+The import keeps a hash of `server/learning/learning-content.json` in `settings` (`learning_content_hash`), as the library's texts do (`grove_texts_hash`).
+
+## Exercise (B-26 additions)
+
+`{ mode: discover, type: words, items: [ids], seconds }` (a Words exercise, 30 s a card) · `{ mode: discover, type: phrase, item, seconds: 150 }` · `{ mode: discover, type: grammar, item, learn: bool, seconds: 300 | 150 }`.

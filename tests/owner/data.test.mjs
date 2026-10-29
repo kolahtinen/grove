@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { createAccount } from '../../server/owner/setup.mjs';
 import { exportAccount, deleteAccount } from '../../server/owner/data.mjs';
-import { formatLog } from '../../server/owner/log.mjs';
+import { formatLog, showReports } from '../../server/owner/log.mjs';
 
 let t;
 let deps;
@@ -46,6 +46,20 @@ test('FR-017 RQ-229: learner:delete removes the account, its sessions and its ro
 test('FR-017 RQ-229: export and delete of an unknown address fail plainly', async () => {
   assert.throws(() => exportAccount({ ...deps, email: 'nobody@example.test' }), /no account/);
   await assert.rejects(deleteAccount({ ...deps, email: 'nobody@example.test' }), /no account/);
+});
+
+test('FR-931 RQ-454: reports:show lists the open reports on grove\'s learning content, oldest first, with the item and what it is', () => {
+  const db = t.grove.db;
+  assert.equal(showReports(db), 'No open reports on the learning content.');
+  db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (9001, 'u9001', 'rep@example.test', 1)").run();
+  db.prepare("INSERT INTO learning_reports (account_id, item_id, reason, note, created_at) VALUES (9001, 'G-A1-01', 'unnatural', 'line 3', 2), (9001, 'W-noll', 'wrong_meaning', NULL, 1)").run();
+  db.prepare("INSERT INTO learning_reports (account_id, item_id, reason, status, created_at) VALUES (9001, 'P-A1-01', 'audio', 'closed', 3)").run();
+  const lines = showReports(db).split('\n');
+  assert.equal(lines.length, 2);
+  assert.match(lines[0], /W-noll\s+noll\s+— wrong meaning/);
+  assert.match(lines[1], /G-A1-01\s+Present tense.*— unnatural sentence\s+— "line 3"/);
+  db.prepare('DELETE FROM accounts WHERE id = 9001').run();
+  assert.equal(showReports(db), 'No open reports on the learning content.', 'a deleted account\'s reports go with it');
 });
 
 test('FR-023 RQ-371: log:show prints entries filtered by event and hours', () => {

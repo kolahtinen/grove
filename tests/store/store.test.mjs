@@ -470,3 +470,31 @@ test('FR-925 RQ-448: migration 019 keeps every row; earlier minutes count as rea
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-930 FR-931 FR-905 RQ-454 RQ-451: migration 020 keeps every row and adds learning_items, learning_seen and learning_reports, which go with the account', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 19 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 111)").run();
+    db.prepare("INSERT INTO practice_sessions (account_id, kind, minutes, params, plan, at_index, status, started_at, tile, skill) VALUES (1, 'time', 10, '{}', '[]', 0, 'going', 1, 'mix', 'words')").run();
+    migrate(db);
+    assert.equal(db.prepare('SELECT skill FROM practice_sessions').get().skill, 'words', 'old sessions kept as they were');
+    db.prepare("INSERT INTO learning_items (id, type, level, position, data) VALUES ('G-A1-01', 'pattern', 'A1', 0, '{}')").run();
+    assert.throws(() => db.prepare("INSERT INTO learning_items (id, type, level, position, data) VALUES ('X', 'text', 'A1', 0, '{}')").run());
+    assert.throws(() => db.prepare("INSERT INTO learning_items (id, type, level, position, data) VALUES ('Y', 'word', 'D1', 0, '{}')").run());
+    db.prepare("INSERT INTO learning_seen (account_id, item_id, first_at, last_at) VALUES (1, 'G-A1-01', 5, 5)").run();
+    assert.throws(() => db.prepare("INSERT INTO learning_seen (account_id, item_id, first_at, last_at) VALUES (1, 'G-A1-01', 6, 6)").run(), 'one row per learner and item');
+    db.prepare("INSERT INTO learning_reports (account_id, item_id, reason, note, created_at) VALUES (1, 'W-noll', 'wrong_meaning', 'hm', 7)").run();
+    assert.equal(db.prepare('SELECT status FROM learning_reports').get().status, 'open');
+    assert.throws(() => db.prepare("INSERT INTO learning_reports (account_id, item_id, reason, created_at) VALUES (1, 'W-noll', 'nonsense', 7)").run());
+    db.prepare('DELETE FROM practice_sessions').run();
+    db.prepare('DELETE FROM accounts WHERE id = 1').run();
+    assert.equal(db.prepare('SELECT COUNT(*) AS n FROM learning_seen').get().n, 0);
+    assert.equal(db.prepare('SELECT COUNT(*) AS n FROM learning_reports').get().n, 0);
+    assert.equal(db.prepare('SELECT COUNT(*) AS n FROM learning_items').get().n, 1, 'the content belongs to no learner');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

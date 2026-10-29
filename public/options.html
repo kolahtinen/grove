@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Options · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/options.mjs"></script>
+</head>
+<body class="sheet-page">
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
+</div>
+</header>
+<main>
+<div class="sheet-under" aria-hidden="true"><div class="tiles"><div class="ghost-tile"></div><div class="ghost-tile"></div><div class="ghost-tile"></div></div></div>
+<div class="sheet-shade" aria-hidden="true"></div>
+<section class="options-sheet" aria-labelledby="options-title">
+<div class="handle" aria-hidden="true"></div>
+<div class="sheet-top"><span data-way-back></span><h1 id="options-title">Options</h1><a class="bar-button tile-close" id="options-close" href="/" aria-label="Close"></a></div>
+<h2 id="skills-title">Skills <span class="small muted">· tick any; none = all</span></h2>
+<div class="skill-chips" id="skill-chips" role="group" aria-labelledby="skills-title"></div>
+<h2 id="minutes-title">Minutes</h2>
+<div class="segmented" id="minutes" role="radiogroup" aria-labelledby="minutes-title"></div>
+<div class="switch-line" id="hard-line" hidden><span id="hard-label">Harder questions only</span><button type="button" class="toggle" id="hard" role="switch" aria-checked="false" aria-labelledby="hard-label"></button></div>
+<div class="plan-summary" aria-live="polite"><p class="small" id="plan-line"></p><div class="plan-bar" id="plan-bar" aria-hidden="true"></div><ul class="legend" id="plan-legend"></ul></div>
+<p class="message" id="options-message" role="status" hidden></p>
+<div class="options-start"><button type="button" class="main" id="options-start">Start</button></div>
+</section>
+</main>
+</body>
+</html>

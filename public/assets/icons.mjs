@@ -1,6 +1,7 @@
 // grove's small icons (G-09 FR-912), drawn inline with DOM calls in the logo's stroke style, so no
 // file or font is fetched (G-01 FR-024): Discover a sprout, Review a circle arrow, Mix the two together
-// (addendum 006), Master a mountain (old plans); and Home's tiles (FR-901).
+// (addendum 006), Master a mountain (old plans); Home's tiles (FR-901); the four skills of the Options page
+// (FR-903: an open book, headphones, a speech bubble, a branching stem) and Play.
 const PATHS = {
   discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
   review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
@@ -16,6 +17,11 @@ const PATHS = {
   common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
   yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
   close: ['M6 6l12 12', 'M18 6L6 18'],
+  reading: ['M4 5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0z', 'M12 5c2.5-1.5 5-1.5 8 0v15c-3-1.5-5.5-1.5-8 0'],
+  listening: ['M4 15v-3a8 8 0 0 1 16 0v3', 'M4 15h3v5H4z', 'M17 15h3v5h-3z'],
+  words: ['M4 5h16v11H10l-5 4v-4H4z', 'M8 9h8', 'M8 12h5'],
+  grammar: ['M7 3v18', 'M7 9h5a4 4 0 0 0 4-4V3', 'M7 15h8a3 3 0 0 1 3 3v3'],
+  play: ['M8 5l11 7-11 7z'],
 };
 const NS = 'http://www.w3.org/2000/svg';
 

@@ -32,6 +32,7 @@ export const PAGES = [
   { path: '/library/text', file: 'library-text.html', access: 'agreed' },
   { path: '/review', file: 'review.html', access: 'agreed' },
   { path: '/session', file: 'session.html', access: 'agreed' },
+  { path: '/options', file: 'options.html', access: 'agreed' },
   { path: '/settings', file: 'settings.html', access: 'agreed' },
   { path: '/profile', file: 'account.html', access: 'agreed' },
   { path: '/leaves', file: 'leaves.html', access: 'agreed' },

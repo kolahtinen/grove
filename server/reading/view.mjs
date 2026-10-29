@@ -7,6 +7,7 @@ import { createWordStore } from '../words/store.mjs';
 import { unmarkedOf } from '../drill/marking.mjs';
 import { speechRateFor } from '../drill/progress.mjs';
 import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
+import { ladderFor } from '../learning/learning.mjs';
 
 const WORD = /\p{L}+(?:[-’']\p{L}+)*/gu;
 
@@ -60,6 +61,8 @@ export function buildReading(db, accountId, textId) {
   const patterns = db.prepare(`SELECT DISTINCT w.id, w.lemma AS name, w.en AS explain, w.state, w.drilled FROM pattern_places p JOIN words w ON w.id = p.word_id
     WHERE p.text_id = ? ORDER BY w.id`).all(text.id);
   const places = db.prepare('SELECT word_id, line_position, words FROM pattern_places WHERE text_id = ?').all(text.id);
+  const textPatternNames = new Set(patterns.map((p) => String(p.name).toLowerCase()));
+  const ladder = new Map();
   const reported = reportedQuestions(db, text.id);
   const reportedLines = new Set(db.prepare("SELECT line_position FROM reports WHERE text_id = ? AND line_position IS NOT NULL AND status = 'open'").all(text.id).map((r) => r.line_position));
 
@@ -107,6 +110,12 @@ export function buildReading(db, accountId, textId) {
           if (phrase.every((w, k) => wordTokens[i + k].word === w)) for (let k = 0; k < phrase.length; k += 1) wordTokens[i + k].phrases.push(phrase.join(' '));
         }
       }
+      // FR-305 (RQ-455): grove's grammar ladder patterns whose marked parts occur in this sentence.
+      for (const found of ladderFor(db, wordTokens.map((x) => x.word))) {
+        if (textPatternNames.has(found.name.toLowerCase())) continue;
+        if (!ladder.has(found.id)) ladder.set(found.id, found);
+        for (const i of found.indexes) wordTokens[i].ladder = [...(wordTokens[i].ladder ?? []), found.id];
+      }
       return { id: s.id, sv: s.sv, newCount: count.items.length, tokens };
     });
     // Pattern places: the given words, in a row, inside this line's sentences.
@@ -148,6 +157,11 @@ export function buildReading(db, accountId, textId) {
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },
     lines,
     patterns,
+    // The ladder patterns met in the text, with the learner's state of each (picked up by name, FR-411).
+    ladder: [...ladder.values()].map(({ id, level, name, explain }) => {
+      const own = db.prepare("SELECT state, drilled FROM words WHERE account_id = ? AND kind = 'pattern' AND lemma = ?").get(accountId, name.toLowerCase());
+      return { id, level, name, explain, state: own?.state ?? null, drilled: own?.drilled ?? 0 };
+    }),
     marking: unmarkedOf(db, accountId, text.id).length,
     questions,
     answered,

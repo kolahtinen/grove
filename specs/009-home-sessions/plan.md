@@ -100,3 +100,13 @@ Found by searching `tests/e2e/` (2026-10-27). Each changes only because the rule
 ## Complexity Tracking
 
 None.
+
+## B-24…B-26 (2026-10-29; question-pages/85, 89): the Options page, ticked skills, Words and Grammar
+
+- **New module `learning`** (`server/learning/`, `scripts/build-learning.mjs`): builds `server/learning/learning-content.json` from the approved `content/learning/` files (FR-930), imports it at start-up into `learning_items` (migration 020) like the library's texts (`importLearningContent`, called from `server/main.mjs` next to `importGroveTexts`), answers the learner's what-to-show-next (`learningInventory`: next words, phrases, the pattern of the day and earlier patterns, FR-928, FR-929), the cards' answers and Report (`/api/learning/*`), the ladder patterns of a sentence for the word menu (`ladderFor`), and the owner's list of reports (`listReports`, used by `npm run reports:show` in the owner module).
+- **sessions**: `plan.mjs` takes the ticked skills (`params.skills`; an old row's single skill as one ticked, Mix = all); each skill has a queue of exercises (texts per kind, Words and phrase exercises, Grammar exercises) and the shares are filled in turns, a skill with too little giving its time to the others (texts count as plenty until the offer is answered with Practise without). `inventory.mjs` adds `learning` from the learning module; `store.mjs` shows Words, phrase and Grammar exercises with their content. Durations in `durations.mjs`.
+- **reading**: the text payload adds the ladder patterns of each sentence (`ladderFor`), for FR-305's Patterns section.
+- **web**: registers `/api/learning/*` and `/options`.
+- **client**: `options.html` + `assets/options.mjs` (the sheet), `home.mjs` (Options… is a link; "Last time in Options"), `session.mjs` + `assets/learning.mjs` (the Words, phrase and Grammar cards and Report), `reading.mjs` (Patterns section), `grove.css` (sheet, chips, segmented control, split bar, spot text).
+- **store**: migration 020.
+- **owner**: `reports:show`.

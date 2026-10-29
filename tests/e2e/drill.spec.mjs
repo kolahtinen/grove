@@ -84,7 +84,7 @@ test('FR-903 FR-406 RQ-440 RQ-415: the Review tile → Start shows a due leaf in
   // one first offers Fill the time or Start shorter (FR-905).
   await page.goto('/');
   await page.getByRole('button', { name: 'Review', exact: true }).click();
-  await page.locator('#tile-panel').getByRole('button', { name: 'Start', exact: true }).click();
+  await page.locator('#tile-panel').getByRole('button', { name: /^Start/ }).click();
   const shorter = page.getByRole('group', { name: 'This session would be short' }).getByRole('button', { name: 'Start shorter' });
   await expect(shorter.or(page.locator('#session-line'))).toBeVisible();
   if (await shorter.isVisible()) await shorter.click();

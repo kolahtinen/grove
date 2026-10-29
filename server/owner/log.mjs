@@ -1,4 +1,10 @@
-// Text for log:show and availability:show.
+// Text for log:show, availability:show and reports:show.
+import { listReports, formatReports } from '../learning/learning.mjs';
+
+// G-09 FR-931: the open reports on grove's learning content, for the owner to fix content/learning/.
+export function showReports(db) {
+  return formatReports(listReports(db));
+}
 
 export function formatLog(rows) {
   if (!rows.length) return 'No entries.';

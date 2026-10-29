@@ -3,8 +3,8 @@
 // row, with its title, a one-line explanation and its way in (research R7: a disclosure button per tile,
 // one panel moved after the row, focus to the panel's title, Esc / ✕ / the tile again / the phone's Back
 // closes it and focus returns to the tile). A Learning tile offers Start (10 minutes, all skills) and
-// Options… (skill, length, and on Review Harder questions only), FR-903; the last options used on a tile
-// are shown next time but not applied by Start. While a session is going, a Resume bar sits above the
+// Options…, which opens the tile's Options page (FR-903, B-24: options.mjs); the last options used there
+// are named in the panel but not applied by Start. While a session is going, a Resume bar sits above the
 // Learning tiles (FR-904). The welcome card (G-04 FR-416) shows above the groups until closed.
 // Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
@@ -19,8 +19,7 @@ const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls)
 const link = (href, text, cls = 'button-link') => { const a = el('a', cls, text); a.href = href; return a; };
 const button = (text, cls = '') => { const b = el('button', cls, text); b.type = 'button'; return b; };
 
-const LENGTHS = [5, 10, 20, 30];
-const SKILLS = [['mix', 'Mix'], ['reading', 'Reading'], ['listening', 'Listening'], ['words', 'Words'], ['grammar', 'Grammar']];
+const SKILLS = [['reading', 'Reading'], ['listening', 'Listening'], ['words', 'Words'], ['grammar', 'Grammar']];
 
 const TILES = [
   { id: 'discover', group: 'learning', label: 'Discover', name: 'Discover', line: 'New texts to read and hear, at your level.', body: () => sessionBody('discover') },
@@ -36,12 +35,15 @@ let going = null;
 let openId = null;
 let release = null;
 
-// The options last used on a tile (shown next time; Start always uses 10 minutes, all skills).
-function remembered(tile) {
-  try { return JSON.parse(localStorage.getItem(`grove-options-${tile}`)) ?? {}; } catch { return {}; }
-}
-function remember(tile, options) {
-  try { localStorage.setItem(`grove-options-${tile}`, JSON.stringify(options)); } catch { /* nothing kept */ }
+// The options last used on a tile's Options page (named in the panel; Start always uses 10 minutes, all
+// skills). An old saved single skill counts as that one ticked.
+function lastOptions(tile) {
+  let o = null;
+  try { o = JSON.parse(localStorage.getItem(`grove-options-${tile}`)); } catch { o = null; }
+  if (!o?.minutes) return null;
+  const skills = Array.isArray(o.skills) ? o.skills : (o.skill && o.skill !== 'mix' ? [o.skill] : []);
+  const names = SKILLS.filter(([k]) => skills.includes(k)).map(([, n]) => n);
+  return `${names.length ? `${names.join(' + ')}${names.length > 1 ? ', in turns' : ''}` : 'All skills, in turns'} · ${o.minutes} min`;
 }
 
 // Starts a session and opens it; a session short of new texts opens with its offer (FR-920). A Review
@@ -87,62 +89,19 @@ function nothingToReview(message, text) {
   discover.focus();
 }
 
-function choices(label, items, chosen, onPick) {
-  const group = el('div', 'minute-choices');
-  group.setAttribute('role', 'radiogroup');
-  group.setAttribute('aria-label', label);
-  const buttons = items.map(([value, text]) => {
-    const b = button(text, 'chip-choice');
-    b.setAttribute('role', 'radio');
-    b.setAttribute('aria-checked', String(value === chosen));
-    b.addEventListener('click', () => {
-      onPick(value);
-      for (const c of buttons) c.setAttribute('aria-checked', String(c === b));
-    });
-    return b;
-  });
-  group.append(...buttons);
-  return group;
-}
-
 function sessionBody(tile) {
   const message = el('p', 'message');
   message.setAttribute('role', 'status');
   message.hidden = true;
-  const go = button('Start', 'main');
-  go.addEventListener('click', () => start({ tile, skill: 'mix', minutes: 10 }, message));
-  const more = button('Options…');
-  more.setAttribute('aria-expanded', 'false');
-  const last = remembered(tile);
-  const picked = { skill: last.skill ?? 'mix', minutes: last.minutes ?? 10, hardOnly: !!last.hardOnly };
-  const options = el('fieldset', 'session-options');
-  options.hidden = true;
-  options.append(el('legend', '', 'Options'));
-  options.append(el('p', 'small muted', 'Skill'), choices('Skill', SKILLS, picked.skill, (v) => { picked.skill = v; }));
-  options.append(el('p', 'small muted', 'Length'), choices('Length', LENGTHS.map((m) => [m, `${m} min`]), picked.minutes, (v) => { picked.minutes = v; }));
-  if (tile === 'review') {
-    const label = el('label', 'check');
-    const box = el('input');
-    box.type = 'checkbox';
-    box.checked = picked.hardOnly;
-    box.addEventListener('change', () => { picked.hardOnly = box.checked; });
-    label.append(box, el('span', '', 'Harder questions only'));
-    options.append(label);
-  }
-  const startOptions = button('Start', 'main');
-  startOptions.addEventListener('click', () => {
-    remember(tile, picked);
-    start({ tile, skill: picked.skill, minutes: picked.minutes, ...(tile === 'review' && picked.hardOnly ? { hardOnly: true } : {}) }, message);
-  });
-  options.append(startOptions);
-  more.addEventListener('click', () => {
-    options.hidden = !options.hidden;
-    more.setAttribute('aria-expanded', String(!options.hidden));
-    if (!options.hidden) options.querySelector('[aria-checked="true"]')?.focus();
-  });
+  const go = button('', 'main');
+  go.append(document.createTextNode('Start'), el('span', 'start-detail', ' · 10 min, all skills'));
+  go.addEventListener('click', () => start({ tile, skills: [], minutes: 10 }, message));
+  // FR-903 (B-24): Options… opens the tile's own page.
+  const more = link(`/options?tile=${tile}`, 'Options…');
   const row = el('div', 'row');
   row.append(go, more);
-  return [row, options, message];
+  const last = lastOptions(tile);
+  return [row, ...(last ? [el('p', 'small muted', `Last time in Options: ${last}`)] : []), message];
 }
 
 function yoursBody() {
@@ -268,6 +227,9 @@ const sessionRes = await fetch('/api/session', { credentials: 'same-origin' });
 if (sessionRes.ok) going = (await sessionRes.json()).session;
 if (going && going.status !== 'going') going = null;
 renderTiles();
+// "Go to Discover" from another page opens the Discover tile (FR-905, B-30).
+const openFirst = new URLSearchParams(window.location.search).get('open');
+if (openFirst === 'discover' && away !== 'start') open($('tile-discover'));
 
 // G-08 FR-802: once after agreeing to the terms, the leaves-and-ground scene in a card at the top of
 // Home (kept until Home is reached, so a learner sent to the starting check first still sees it).

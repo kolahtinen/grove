@@ -3,13 +3,15 @@
 // questions are answered here; a text opens on the reading page, which comes back when the text is done.
 // The learner can only go on or leave. A session short of new texts first shows its offer (FR-920): how
 // many minutes of each kind are missing, Add a text (the fill bars follow) or Practise without; ▶ Start
-// your session once the bars are full. All text via textContent.
+// your session once the bars are full. Discover's Words and Grammar exercises are drawn by learning.mjs
+// (FR-928, FR-929). All text via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { startHeartbeat } from './heartbeat.mjs';
 import { setRate } from './speech.mjs';
 import { renderQuestion } from './questions.mjs';
 import { icon } from './icons.mjs';
+import { renderWords, renderPhrase, renderGrammar } from './learning.mjs';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
@@ -99,6 +101,8 @@ function show(session) {
   const mode = NAMES[ex.mode] ? ex.mode : 'review';
   $('exercise-banner').replaceChildren(chip(mode, NAMES[mode], true), chip(mode, `${ex.minutes} min`, false));
   const box = $('exercise-box');
+  const learning = { words: renderWords, phrase: renderPhrase, grammar: renderGrammar }[ex.type];
+  if (learning) { learning(box, ex, { onDone: () => next(session) }); return; }
   if (ex.textId) {
     box.replaceChildren(el('p', '', ex.title ?? 'A text'), el('p', 'small muted', 'Read it, answer its questions and rate it; grove brings you back here.'));
     const open = el('a', 'button-link main', 'Open the text');
