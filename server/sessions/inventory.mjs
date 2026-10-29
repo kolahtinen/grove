@@ -29,7 +29,7 @@ export function readInventory(db, accountId, { now = Date.now(), knownShares = f
   }
   const places = new Map(db.prepare('SELECT text_id, COUNT(*) AS n FROM pattern_places WHERE account_id = ? GROUP BY text_id').all(accountId).map((r) => [r.text_id, r.n]));
   const texts = db.prepare('SELECT id, kind, topic, own, read_at FROM texts WHERE account_id = ? AND ready = 1 ORDER BY id').all(accountId)
-    .map((t) => ({ id: t.id, kind: t.kind, topic: t.own ? '' : t.topic, read: !!t.read_at, words: words.get(t.id) ?? 0, patternPlaces: places.get(t.id) ?? 0 }));
+    .map((t) => ({ id: t.id, kind: t.kind, topic: t.own ? '' : t.topic, read: !!t.read_at, readAt: t.read_at ?? null, words: words.get(t.id) ?? 0, patternPlaces: places.get(t.id) ?? 0 }));
 
   if (knownShares) {
     // Counted now with G-02's counter (research R4): only unread texts are candidates.

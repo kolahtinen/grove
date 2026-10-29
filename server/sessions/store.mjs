@@ -59,7 +59,13 @@ export function createSessions({ db, now = () => Date.now() }) {
         throw new HttpError(409, 'no_voice', 'This device has no Swedish voice, so grove can’t plan listening.');
       }
       const inventory = readInventory(db, accountId, { now: now(), knownShares: kind === 'skill' });
-      const planned = planSession({ kind, params: { ...params, minutes }, inventory });
+      // FR-905 (question-pages/78, 3): a plan that would run short first says so, so the learner can add a
+      // new text or ask grove to fill the time with a mix.
+      if (kind !== 'mode' && !body.fill) {
+        const base = planSession({ kind, params: { ...params, minutes }, inventory });
+        if (base.wouldBeShort) throw new HttpError(409, 'short', `This session would only be about ${Math.max(1, Math.round(base.seconds / 60))} min. Add a new text, or fill the time with practice: early reviews, re-reading and listening again.`);
+      }
+      const planned = planSession({ kind, params: { ...params, minutes, fill: !!body.fill }, inventory });
       if (!planned.exercises.length) throw new HttpError(409, 'nothing_to_do', 'There is nothing to practise right now. Get some new texts first.');
       const id = transaction(db, () => {
         db.prepare("UPDATE practice_sessions SET status = 'replaced', finished_at = ? WHERE account_id = ? AND status = 'going'").run(now(), accountId);

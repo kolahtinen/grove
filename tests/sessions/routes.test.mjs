@@ -20,7 +20,8 @@ before(async () => {
 });
 after(() => t.close());
 
-const start = (body, client = c) => client.post('/api/sessions', { voice: true, ...body });
+// Sessions here fill their time (FR-905: without `fill`, a plan that would run short is answered 409 first).
+const start = (body, client = c) => client.post('/api/sessions', { voice: true, fill: true, ...body });
 
 test('FR-903 FR-904 RQ-421: Practise for X min takes 3–60 minutes and starts a session shown one exercise at a time with its label, place and minutes left', async () => {
   for (const minutes of [2, 61]) assert.equal((await start({ kind: 'time', minutes })).status, 400, `${minutes} minutes`);
@@ -106,12 +107,16 @@ test('FR-914 RQ-155: another account can\'t see, move or list this learner\'s se
 
 // SC-001 as amended 2026-10-29: within 20% or 2 minutes, or, where even practice reviews can't fill the
 // length (the demo has six drilled leaves), a plan that says it is shorter and uses every leaf it has.
-test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes are planned within 20% or 2 minutes, or say they are shorter with every leaf used', () => {
+// SC-001 as amended (question-pages/78, 3): filled with the mix, within 20% or 2 minutes; where even the mix
+// can't fill a length, every leaf and every read text is used and the plan says it is shorter.
+test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes, filled, are planned within 20% or 2 minutes, or use every leaf and read text and say they are shorter', () => {
   const inventory = readInventory(t.grove.db, learner.id);
   for (const minutes of [3, 5, 10, 20]) {
-    const p = plan({ kind: 'time', params: { minutes, voice: true }, inventory });
-    const used = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
-    assert.ok(fits(p.seconds, minutes * 60) || (p.short && inventory.leaves.every((l) => used.has(l.lemma))), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
+    const p = plan({ kind: 'time', params: { minutes, voice: true, fill: true }, inventory });
+    const lemmas = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
+    const texts = new Set(p.exercises.filter((e) => e.textId).map((e) => e.textId));
+    const everything = inventory.leaves.every((l) => lemmas.has(l.lemma)) && inventory.texts.filter((x) => x.read).every((x) => texts.has(x.id));
+    assert.ok(fits(p.seconds, minutes * 60) || (p.short && everything), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
   }
 });
 
@@ -136,4 +141,12 @@ test('FR-904 RQ-421: the summary counts practice reviews among the words reviewe
   assert.equal(view.status, 'finished');
   assert.deepEqual(Object.keys(view.summary).sort(), ['daysThisWeek', 'minutes', 'textsRead', 'wordsFell', 'wordsReviewed']);
   assert.ok(view.summary.daysThisWeek >= 0 && view.summary.daysThisWeek <= 7);
+});
+
+test('FR-905 FR-920 RQ-421 RQ-434: a session that would run short is answered first with how long it would be, so the learner can add a text or fill the time; filled, it starts', async () => {
+  const short = await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true });
+  assert.equal(short.status, 409);
+  assert.equal(short.body.error, 'short');
+  assert.match(short.body.message, /would only be about \d+ min/);
+  assert.equal((await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true, fill: true })).status, 200);
 });

@@ -121,18 +121,25 @@ test('FR-908 RQ-424: Just one mode: Review the due leaves (at most 10), Master i
   assert.deepEqual(one('discover').exercises.map((e) => e.textId), [texts[1].id]);
 });
 
-test('FR-905 RQ-421: after Master, practice reviews of leaves not yet due fill the plan while it is under 80% of the length, weakest first, each once (PD-28)', () => {
-  const notDue = Array.from({ length: 40 }, (_, i) => leaf({ due: false, strength: 0.9 - i / 100 }));
-  const p = time(5, inventory({ leaves: notDue }));
-  const practice = p.exercises.filter((e) => e.practice);
-  assert.ok(practice.length > 0);
-  assert.ok(practice.every((e) => e.mode === 'review' && e.type === 'review'));
-  assert.equal(new Set(practice.map((e) => e.lemma)).size, practice.length, 'each leaf at most once');
-  assert.equal(practice[0].lemma, notDue.at(-1).lemma, 'the weakest (soonest due) first');
-  assert.ok(p.seconds >= 0.8 * 300 && p.seconds <= 300, `planned ${p.seconds} s`);
-  assert.ok(fits(p.seconds, 300));
+test('FR-905 RQ-421: a plan under 80% says it would be short; filled, it mixes practice reviews, re-reading and listening again in turn, each once, until 80% (PD-28; question-pages/78, 3)', () => {
+  const notDue = Array.from({ length: 20 }, (_, i) => leaf({ due: false, strength: 0.9 - i / 100 }));
+  const readTexts = [text({ read: true, words: 100, readAt: 3 }), text({ read: true, words: 100, readAt: 1 }), text({ kind: 'listening', read: true, words: 80, readAt: 2 })];
+  const inv = inventory({ leaves: notDue, texts: readTexts });
+  const unfilled = plan({ kind: 'time', params: { minutes: 10, voice: true }, inventory: inv });
+  assert.equal(unfilled.wouldBeShort, true);
+  assert.equal(unfilled.exercises.length, 0);
+  const p = plan({ kind: 'time', params: { minutes: 10, voice: true, fill: true }, inventory: inv });
+  const kinds = p.exercises.map((e) => (e.practice ? 'practice' : e.again));
+  assert.deepEqual(kinds.slice(0, 3), ['practice', 'reread', 'listen'], 'taken in turn');
+  assert.equal(p.exercises.find((e) => e.again === 'reread').textId, readTexts[1].id, 'the longest ago first');
+  assert.ok(p.exercises.filter((e) => e.practice).every((e) => e.mode === 'review' && e.type === 'review'));
+  assert.equal(new Set(p.exercises.map((e) => e.lemma ?? `t${e.textId}`)).size, p.exercises.length, 'each at most once');
+  assert.equal(p.exercises.filter((e) => e.practice)[0].lemma, notDue.at(-1).lemma, 'the soonest due first');
+  assert.ok(p.seconds >= 0.8 * 600 && p.seconds <= 600, `planned ${p.seconds} s`);
+  // Without a voice, no listening again.
+  assert.ok(!plan({ kind: 'time', params: { minutes: 10, voice: false, fill: true }, inventory: inv }).exercises.some((e) => e.again === 'listen'));
   // A leaf already planned as due or Master isn't planned again as practice.
-  const both = time(5, inventory({ leaves: [leaf({ due: true }), leaf({ due: false, masterReady: true, gap: 3 })] }));
+  const both = plan({ kind: 'time', params: { minutes: 5, voice: true, fill: true }, inventory: inventory({ leaves: [leaf({ due: true }), leaf({ due: false, masterReady: true, gap: 3 })] }) });
   assert.equal(both.exercises.filter((e) => e.practice).length, 0);
 });
 

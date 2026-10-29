@@ -1,7 +1,7 @@
 // The session planner (G-09 FR-905…FR-908; research R2): a pure function from what the learner has
 // (an inventory) to an ordered list of exercises with their planned seconds. Review of fading then due
-// leaves first (at most 40% of the length), one Discover text that fits, Master, then practice reviews
-// of leaves not yet due while the plan is under 80% (PD-28; their answers never change a schedule, F1).
+// leaves first (at most 40% of the length), one Discover text that fits, then Master; a plan under 80%
+// says so (`wouldBeShort`) and, when asked (`fill`), is filled with a mix (fillMix below).
 // Ties are broken by id, so the same inventory always gives the same plan.
 import { DURATIONS, durationsFor, textSeconds } from './durations.mjs';
 
@@ -59,11 +59,31 @@ function fill({ length, leaves, pickText, reviewFirst = () => 0, spoken = false,
     used += durations.master;
     planned.add(leaf.id);
   }
-  // Practice reviews: leaves not yet due, the soonest due (weakest) first, each at most once.
-  for (const leaf of leaves.filter((l) => !l.due && !planned.has(l.id)).sort((a, b) => (a.strength - b.strength) || (a.id - b.id))) {
-    if (used >= 0.8 * length || used + durations.review > length || exercises.length >= MAX_EXERCISES) break;
-    exercises.push(reviewExercise(leaf, { practice: true, ...(spoken ? { spoken: true } : {}) }));
-    used += durations.review;
+  return { exercises, seconds: used, planned };
+}
+
+// FR-905 (question-pages/78, 3): a plan under 80% of its length is filled, when the learner asks, with a
+// mix taken in turn from practice reviews (leaves not yet due, the soonest due first; their answers never
+// change a schedule), re-reading read reading texts and listening again to read listening texts (the
+// longest ago first), each item at most once, while the plan is under 80%.
+function fillMix(base, { length, leaves, texts, voice, spoken = false, durations }) {
+  const exercises = [...base.exercises];
+  let used = base.seconds;
+  const byOldest = (a, b) => ((a.readAt ?? 0) - (b.readAt ?? 0)) || (a.id - b.id);
+  const queues = [
+    leaves.filter((l) => !l.due && !base.planned.has(l.id)).sort((a, b) => (a.strength - b.strength) || (a.id - b.id))
+      .map((leaf) => reviewExercise(leaf, { practice: true, ...(spoken ? { spoken: true } : {}) })),
+    texts.filter((t) => t.read && t.kind === 'reading').sort(byOldest).map((t) => ({ ...textExercise(t, durations), again: 'reread' })),
+    voice ? texts.filter((t) => t.read && t.kind === 'listening').sort(byOldest).map((t) => ({ ...textExercise(t, durations), again: 'listen' })) : [],
+  ];
+  for (let turn = 0; used < 0.8 * length && queues.some((q) => q.length) && exercises.length < MAX_EXERCISES; turn += 1) {
+    const queue = queues[turn % queues.length];
+    // Skip an item that would run past the length; the others of its kind may still fit.
+    while (queue.length && used + queue[0].seconds > length) queue.shift();
+    const next = queue.shift();
+    if (!next) continue;
+    exercises.push(next);
+    used += next.seconds;
   }
   return { exercises, seconds: used };
 }
@@ -74,9 +94,12 @@ function firstFitting(texts, room, prefer, durations) {
   return fitting.find((t) => t.kind === prefer) ?? fitting[0] ?? null;
 }
 
-function result(plan, length) {
+// The base plan, and, when it is under 80% of the length: `wouldBeShort`, and the mix if asked (`fill`).
+function result(base, length, mix) {
+  const wouldBeShort = base.seconds < 0.8 * length;
+  const plan = wouldBeShort && mix.fill ? fillMix(base, { ...mix, length }) : { exercises: base.exercises, seconds: base.seconds };
   const short = length !== null && plan.seconds < length - Math.max(0.2 * length, 120);
-  return { ...plan, length, short, reason: short ? (plan.exercises.length ? 'not_enough' : 'nothing_to_do') : null };
+  return { ...plan, length, short, wouldBeShort, reason: short ? (plan.exercises.length ? 'not_enough' : 'nothing_to_do') : null };
 }
 
 // kind: time | topic | skill | mode. params: { minutes, topic, skill, form, mode, voice }.
@@ -103,7 +126,7 @@ export function plan({ kind, params, inventory, durations: base = DURATIONS }) {
     const ids = new Set(own.map((t) => t.id));
     const length = params.minutes * 60;
     const topicLeaves = leaves.filter((l) => (l.textIds || []).some((id) => ids.has(id)));
-    return result(fill({ length, leaves: topicLeaves, durations, pickText: (room) => firstFitting(own, room, lessDone(inventory), durations) }), length);
+    return result(fill({ length, leaves: topicLeaves, durations, pickText: (room) => firstFitting(own, room, lessDone(inventory), durations) }), length, { leaves: topicLeaves, texts: own, voice, durations, fill: !!params.fill });
   }
 
   if (kind === 'skill') {
@@ -137,9 +160,9 @@ export function plan({ kind, params, inventory, durations: base = DURATIONS }) {
       const text = pickText(length - lean.seconds);
       if (text) { const ex = textExercise(text, durations); lean.exercises.push(ex); lean.seconds += ex.seconds; }
     }
-    return { ...result(lean, length), note: outOfBand ? "out_of_band" : null };
+    return { ...result(lean, length, { leaves, texts, voice, durations, fill: !!params.fill, spoken: params.skill === 'listening' }), note: outOfBand ? 'out_of_band' : null };
   }
 
   const length = params.minutes * 60;
-  return result(fill({ length, leaves, durations, pickText: (room) => firstFitting(texts, room, lessDone(inventory), durations) }), length);
+  return result(fill({ length, leaves, durations, pickText: (room) => firstFitting(texts, room, lessDone(inventory), durations) }), length, { leaves, texts, voice, durations, fill: !!params.fill });
 }

@@ -36,11 +36,30 @@ let going = null;
 let openId = null;
 let unread = 0;
 
-// Starts a session and opens it; a refusal (nothing to do, no voice) is shown in the panel.
+// Starts a session and opens it. A session that would run short first offers a new text or filling the
+// time (FR-905, FR-920); another refusal (nothing to do, no voice) is shown in the panel.
 async function start(body, message) {
   const result = await post('/api/sessions', { ...body, voice: hasSwedish() });
+  if (!result.ok && result.data.error === 'short') { offer(body, message, result.message, 'This session would be short', 'Fill the time'); return; }
   if (!result.ok) { showMessage(message, result.message); return; }
   window.location.assign('/session');
+}
+
+// The choice before a session (FR-920): Add a text, or go on (filling the time). The common library's
+// choice comes when the library has texts.
+function offer(body, message, text, name, goLabel) {
+  const box = el('div', 'no-texts-offer');
+  box.setAttribute('role', 'group');
+  box.setAttribute('aria-label', name);
+  const go = button(goLabel);
+  go.addEventListener('click', () => start({ ...body, fill: true }, message));
+  const row = el('div', 'row');
+  row.append(link('/add', 'Add a text', 'button-link main'), go);
+  box.append(el('p', '', text), row);
+  $('tile-way').querySelector('.no-texts-offer')?.remove();
+  showMessage(message, '');
+  message.before(box);
+  box.querySelector('a').focus();
 }
 
 function yoursBody() {
@@ -53,17 +72,7 @@ function yoursBody() {
 // common library's choice comes when the library has texts.)
 function startOrOffer(body, message) {
   if (unread > 0) { start(body, message); return; }
-  const offer = el('div', 'no-texts-offer');
-  offer.setAttribute('role', 'group');
-  offer.setAttribute('aria-label', 'You have no new texts');
-  const go = button('Practise without a text');
-  go.addEventListener('click', () => start(body, message));
-  const row = el('div', 'row');
-  row.append(link('/add', 'Add a text', 'button-link main'), go);
-  offer.append(el('p', '', 'You have no new texts.'), row);
-  $('tile-way').querySelector('.no-texts-offer')?.remove();
-  message.before(offer);
-  offer.querySelector('a').focus();
+  offer(body, message, 'You have no new texts.', 'You have no new texts', 'Practise without a text');
 }
 
 function resumeBody() {

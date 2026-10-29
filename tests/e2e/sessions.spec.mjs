@@ -44,7 +44,7 @@ async function addSample(page) {
 test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under its line and bar, each card with the mode banner\'s two chips, texts open and come back, and it ends with a summary', async ({ page }) => {
   await signIn(page);
   await addSample(page);
-  const started = await api(page, '/api/sessions', { kind: 'time', minutes: 10, voice: true });
+  const started = await api(page, '/api/sessions', { kind: 'time', minutes: 10, voice: true, fill: true });
   expect(started.status, JSON.stringify(started.body)).toBe(200);
   await page.goto('/session');
   await expect(page.locator('#session-line')).toHaveText(/^10-minute session · 1 of \d+ · about \d+ min left$/);
@@ -107,6 +107,10 @@ test('FR-915 FR-907 RQ-430 RQ-422: Your library lists the texts by topic, unread
   await expect(demo.locator('.beta')).toHaveCount(0);
   await group.getByLabel(`Session length for ${topic.label}`).selectOption('5');
   await group.getByRole('button', { name: `Start a session on ${topic.label}` }).click();
+  // FR-905 (question-pages/78, 3): a session that would run short first offers a text or Fill the time.
+  const fillTopic = group.getByRole('button', { name: 'Fill the time' });
+  await expect(fillTopic.or(page.locator('#session-line'))).toBeVisible();
+  if (await fillTopic.isVisible()) await fillTopic.click();
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('5-minute session');
 });

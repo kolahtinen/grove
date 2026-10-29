@@ -20,6 +20,7 @@ export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
       form: { type: 'enum', values: ['short', 'medium', 'long'], optional: true },
       mode: { type: 'enum', values: ['discover', 'review', 'master'], optional: true },
       voice: { type: 'boolean' },
+      fill: { type: 'boolean', optional: true },
     },
     handler: (ctx) => {
       const needs = NEEDS[ctx.body.kind];

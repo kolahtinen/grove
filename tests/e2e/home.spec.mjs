@@ -23,6 +23,13 @@ async function signIn(page) {
 
 // G-09 FR-901 as amended by addendum 005 (question-pages/77, 3 and 8; question-pages/76, 2): three
 // headed groups of labelled tiles.
+// FR-905 (question-pages/78, 3): a session that would run short first offers a new text or Fill the time.
+async function fillIfShort(page) {
+  const fill = page.getByRole('group', { name: 'This session would be short' }).getByRole('button', { name: 'Fill the time' });
+  await expect(fill.or(page.locator('#session-line'))).toBeVisible();
+  if (await fill.isVisible()) await fill.click();
+}
+
 const GROUPS = { Learning: ['Practise', 'By skill', 'One mode'], Library: ['Common library', 'Your library'], Progress: ['Progress'] };
 
 test('FR-901 RQ-419 RQ-429: Home has three headed groups of labelled icon tiles in the spec\'s order; a tile opens below its row, one at a time, and Esc, ✕ or the tile again closes it with focus back on the tile', async ({ page }) => {
@@ -84,6 +91,7 @@ test('FR-901 FR-903 FR-904 RQ-419 RQ-421: Practise for X min starts a session; w
   await expect(page.locator('#tile-panel .message')).toHaveText('Choose a length from 3 to 60 minutes.');
   await page.getByRole('radio', { name: '5 min' }).click();
   await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
+  await fillIfShort(page);
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('5-minute session');
   await page.goto('/');
@@ -137,6 +145,7 @@ test('FR-906 FR-908 RQ-423 RQ-424: By skill offers four skills in three forms an
     }
   }
   await panel.getByRole('button', { name: 'Words and phrases, short (5 min)' }).click();
+  await fillIfShort(page);
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('5-minute session');
   await page.goto('/');

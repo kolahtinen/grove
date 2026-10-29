@@ -50,11 +50,25 @@ function startRow(topic, label) {
   message.className = 'message';
   message.setAttribute('role', 'status');
   message.hidden = true;
-  go.addEventListener('click', async () => {
-    const result = await post('/api/sessions', { kind: 'topic', topic, minutes: Number(select.value), voice: hasSwedish() });
+  const begin = async (fill) => {
+    const result = await post('/api/sessions', { kind: 'topic', topic, minutes: Number(select.value), voice: hasSwedish(), ...(fill ? { fill: true } : {}) });
+    // FR-905: a session that would run short first offers a new text or filling the time.
+    if (!result.ok && result.data.error === 'short') {
+      showMessage(message, result.message);
+      const fillButton = document.createElement('button');
+      fillButton.type = 'button';
+      fillButton.textContent = 'Fill the time';
+      fillButton.addEventListener('click', () => begin(true));
+      const add = document.createElement('a');
+      add.href = '/add';
+      add.textContent = 'Add a text';
+      message.append(' ', add, ' ', fillButton);
+      return;
+    }
     if (!result.ok) { showMessage(message, result.message); return; }
     window.location.assign('/session');
-  });
+  };
+  go.addEventListener('click', () => begin(false));
   row.append(select, go);
   return [row, message];
 }
