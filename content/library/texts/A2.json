@@ -1449,6 +1449,387 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "A2-16",
+      "level": "A2",
+      "topic": "Society",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Den nya grannen",
+      "names": [
+        "Tariq",
+        "Elsie"
+      ],
+      "above_level": [
+        "sjuttiofem",
+        "gengäld"
+      ],
+      "lines": [
+        {
+          "sv": "I förra veckan flyttade en ny familj in i lägenheten bredvid Elsie.",
+          "en": "Last week a new family moved into the flat next to Elsie."
+        },
+        {
+          "sv": "Elsie är sjuttiofem år och har bott i huset i trettio år.",
+          "en": "Elsie is seventy-five and has lived in the building for thirty years."
+        },
+        {
+          "sv": "Hon hörde barn som skrattade i trappan och blev nyfiken.",
+          "en": "She heard children laughing on the stairs and got curious."
+        },
+        {
+          "sv": "På lördagen bakade hon en sockerkaka och knackade på deras dörr.",
+          "en": "On Saturday she baked a sponge cake and knocked on their door."
+        },
+        {
+          "sv": "En man som heter Tariq öppnade och såg först lite förvånad ut.",
+          "en": "A man called Tariq opened and looked a little surprised at first."
+        },
+        {
+          "sv": "Sedan log han och bjöd in henne på te.",
+          "en": "Then he smiled and invited her in for tea."
+        },
+        {
+          "sv": "Familjen kommer från Syrien och har bott i Sverige i två år.",
+          "en": "The family comes from Syria and has lived in Sweden for two years."
+        },
+        {
+          "sv": "Barnen pratar redan bra svenska, men pappan tycker att det är svårt.",
+          "en": "The children already speak good Swedish, but the father finds it hard."
+        },
+        {
+          "sv": "Elsie erbjöd sig att öva med honom en kväll i veckan.",
+          "en": "Elsie offered to practise with him one evening a week."
+        },
+        {
+          "sv": "I gengäld lagar Tariq ibland middag åt henne.",
+          "en": "In return Tariq sometimes cooks dinner for her."
+        },
+        {
+          "sv": "Nu säger Elsie att hon har fått en ny familj i huset.",
+          "en": "Now Elsie says she has got a new family in the building."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur länge har Elsie bott i huset?",
+          "options": [
+            "Tio år",
+            "Trettio år",
+            "Hela livet"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad tog Elsie med sig till grannarna?",
+          "options": [
+            "Blommor",
+            "En sockerkaka",
+            "En bok"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör Elsie och Tariq en kväll i veckan?",
+          "options": [
+            "Spelar kort",
+            "Övar svenska",
+            "Lagar mat"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-17",
+      "level": "A2",
+      "topic": "Health",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "På apoteket",
+      "names": [],
+      "above_level": [
+        "hosta",
+        "hostmedicin",
+        "honung"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej, kan jag hjälpa dig?",
+          "en": "– Hi, can I help you?"
+        },
+        {
+          "sv": "– Ja, jag har varit förkyld i tre dagar. Jag hostar mycket på natten.",
+          "en": "– Yes, I've had a cold for three days. I cough a lot at night."
+        },
+        {
+          "sv": "– Har du feber?",
+          "en": "– Do you have a temperature?"
+        },
+        {
+          "sv": "– Nej, inte nu. Men jag hade lite feber i går.",
+          "en": "– No, not now. But I had a slight temperature yesterday."
+        },
+        {
+          "sv": "– Då kan du pröva den här hostmedicinen. Du tar en sked tre gånger om dagen.",
+          "en": "– Then you can try this cough medicine. You take one spoonful three times a day."
+        },
+        {
+          "sv": "– Kan jag ta den om jag ska köra bil?",
+          "en": "– Can I take it if I'm going to drive?"
+        },
+        {
+          "sv": "– Ja, den gör dig inte trött.",
+          "en": "– Yes, it doesn't make you tired."
+        },
+        {
+          "sv": "– Bra. Har ni något för halsen också?",
+          "en": "– Good. Do you have something for the throat too?"
+        },
+        {
+          "sv": "– Ja, de här tabletterna kan du suga på. De smakar mint.",
+          "en": "– Yes, you can suck these lozenges. They taste of mint."
+        },
+        {
+          "sv": "– Tack. Vad kostar allt?",
+          "en": "– Thanks. How much is everything?"
+        },
+        {
+          "sv": "– Hundrafyrtio kronor. Och drick mycket varmt te med honung.",
+          "en": "– A hundred and forty kronor. And drink plenty of hot tea with honey."
+        },
+        {
+          "sv": "– Det ska jag göra. Om det inte blir bättre, vad gör jag då?",
+          "en": "– I will. If it doesn't get better, what do I do then?"
+        },
+        {
+          "sv": "– Om du fortfarande hostar om en vecka ska du ringa vårdcentralen.",
+          "en": "– If you're still coughing in a week, you should call the health centre."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur länge har kunden varit förkyld?",
+          "options": [
+            "En dag",
+            "Tre dagar",
+            "En vecka"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur ofta ska kunden ta hostmedicinen?",
+          "options": [
+            "En gång om dagen",
+            "Tre gånger om dagen",
+            "Bara på natten"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När ska kunden ringa vårdcentralen?",
+          "options": [
+            "I morgon",
+            "Om hen fortfarande hostar om en vecka",
+            "Aldrig"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-18",
+      "level": "A2",
+      "topic": "Daily life",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Tvättstugan",
+      "names": [
+        "Linus"
+      ],
+      "above_level": [
+        "hyreshus",
+        "tvättstuga",
+        "källare",
+        "korg",
+        "i förväg"
+      ],
+      "lines": [
+        {
+          "sv": "I många svenska hyreshus finns det en gemensam tvättstuga i källaren.",
+          "en": "In many Swedish rental buildings there is a shared laundry room in the basement."
+        },
+        {
+          "sv": "Där bokar man en tid för att tvätta sina kläder.",
+          "en": "There you book a time to wash your clothes."
+        },
+        {
+          "sv": "Linus flyttade in i sin första lägenhet i januari.",
+          "en": "Linus moved into his first flat in January."
+        },
+        {
+          "sv": "Han visste inte hur tvättstugan fungerade, så han gick ner en söndag utan att boka.",
+          "en": "He didn't know how the laundry room worked, so he went down one Sunday without booking."
+        },
+        {
+          "sv": "Alla maskiner var lediga, och han startade två av dem.",
+          "en": "All the machines were free, and he started two of them."
+        },
+        {
+          "sv": "Efter en kvart kom en äldre kvinna med en stor korg.",
+          "en": "After a quarter of an hour an older woman came with a big basket."
+        },
+        {
+          "sv": "Hon såg arg ut och pekade på listan på väggen.",
+          "en": "She looked angry and pointed at the list on the wall."
+        },
+        {
+          "sv": "Det här är min tid, sa hon.",
+          "en": "This is my time, she said."
+        },
+        {
+          "sv": "Linus bad om ursäkt och förklarade att han var ny.",
+          "en": "Linus apologised and explained that he was new."
+        },
+        {
+          "sv": "Då blev hon vänligare och visade honom hur man bokar.",
+          "en": "Then she became friendlier and showed him how to book."
+        },
+        {
+          "sv": "Hon lät honom till och med tvätta klart.",
+          "en": "She even let him finish his washing."
+        },
+        {
+          "sv": "Nu bokar Linus alltid i förväg.",
+          "en": "Now Linus always books in advance."
+        },
+        {
+          "sv": "Han hälsar på kvinnan när de möts i trappan.",
+          "en": "He says hello to the woman when they meet on the stairs."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var finns tvättstugan?",
+          "options": [
+            "På vinden",
+            "I källaren",
+            "I lägenheten"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gjorde Linus fel?",
+          "options": [
+            "Han tvättade utan att boka",
+            "Han glömde sina kläder",
+            "Han tappade nyckeln"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur slutade det?",
+          "options": [
+            "Kvinnan ringde värden",
+            "Kvinnan visade honom hur man bokar",
+            "Linus flyttade"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-19",
+      "level": "A2",
+      "topic": "Nature and environment",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Kolonilotten",
+      "names": [
+        "Greta",
+        "Mohammed"
+      ],
+      "above_level": [
+        "kolonilott",
+        "lott",
+        "snigel"
+      ],
+      "lines": [
+        {
+          "sv": "Greta och Mohammed bor i en lägenhet mitt i staden.",
+          "en": "Greta and Mohammed live in a flat in the middle of the city."
+        },
+        {
+          "sv": "De har ingen trädgård, men för två år sedan fick de en kolonilott.",
+          "en": "They have no garden, but two years ago they got an allotment."
+        },
+        {
+          "sv": "Lotten ligger tio minuter bort med cykel.",
+          "en": "The allotment is ten minutes away by bike."
+        },
+        {
+          "sv": "Där odlar de potatis, morötter, sallad och jordgubbar.",
+          "en": "There they grow potatoes, carrots, lettuce and strawberries."
+        },
+        {
+          "sv": "På våren arbetar de där nästan varje kväll.",
+          "en": "In spring they work there almost every evening."
+        },
+        {
+          "sv": "Det första året gick inte så bra.",
+          "en": "The first year didn't go so well."
+        },
+        {
+          "sv": "Sniglarna åt upp salladen, och det regnade nästan inte alls i juli.",
+          "en": "The slugs ate the lettuce, and it hardly rained at all in July."
+        },
+        {
+          "sv": "Men grannarna på de andra lotterna gav dem många bra råd.",
+          "en": "But the neighbours on the other plots gave them a lot of good advice."
+        },
+        {
+          "sv": "I år fick de så mycket potatis att de gav bort en del.",
+          "en": "This year they got so many potatoes that they gave some away."
+        },
+        {
+          "sv": "Mohammed säger att maten smakar bättre när man har odlat den själv.",
+          "en": "Mohammed says food tastes better when you have grown it yourself."
+        },
+        {
+          "sv": "Greta tycker mest om att det är tyst och lugnt där, långt från bilarna.",
+          "en": "Greta likes most that it is quiet and calm there, far from the cars."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur kommer de till kolonilotten?",
+          "options": [
+            "Med bil",
+            "Med cykel",
+            "Med buss"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför gick det första året dåligt?",
+          "options": [
+            "Sniglar och torka",
+            "De hade inte tid",
+            "Det var för kallt"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad tycker Greta mest om?",
+          "options": [
+            "Att det är tyst och lugnt",
+            "Jordgubbarna",
+            "Att träffa grannarna"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

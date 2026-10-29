@@ -1279,6 +1279,587 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "A1-14",
+      "level": "A1",
+      "topic": "Home",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Vi städar på söndag",
+      "names": [
+        "Hassan",
+        "Nora"
+      ],
+      "above_level": [
+        "städa",
+        "lägenhet",
+        "dammsuga",
+        "vardagsrum",
+        "golv",
+        "fönster",
+        "frisk",
+        "luft"
+      ],
+      "lines": [
+        {
+          "sv": "Det är söndag morgon.",
+          "en": "It is Sunday morning."
+        },
+        {
+          "sv": "Hassan och Nora städar lägenheten.",
+          "en": "Hassan and Nora are cleaning the flat."
+        },
+        {
+          "sv": "Hassan dammsuger i vardagsrummet.",
+          "en": "Hassan vacuums the living room."
+        },
+        {
+          "sv": "Nora tvättar golvet i köket.",
+          "en": "Nora washes the kitchen floor."
+        },
+        {
+          "sv": "Sedan tar Hassan badrummet.",
+          "en": "Then Hassan does the bathroom."
+        },
+        {
+          "sv": "Han tycker inte om att städa badrummet.",
+          "en": "He doesn't like cleaning the bathroom."
+        },
+        {
+          "sv": "Nora öppnar alla fönster.",
+          "en": "Nora opens all the windows."
+        },
+        {
+          "sv": "Nu kommer frisk luft in.",
+          "en": "Now fresh air comes in."
+        },
+        {
+          "sv": "De bär ut soporna tillsammans.",
+          "en": "They take out the rubbish together."
+        },
+        {
+          "sv": "Efter två timmar är allt rent.",
+          "en": "After two hours everything is clean."
+        },
+        {
+          "sv": "De sätter sig i soffan och dricker te.",
+          "en": "They sit down on the sofa and drink tea."
+        },
+        {
+          "sv": "Nu är det skönt hemma, säger Nora.",
+          "en": "Now it's nice at home, says Nora."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad gör Hassan först?",
+          "options": [
+            "Han dammsuger",
+            "Han diskar",
+            "Han lagar mat"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad tycker Hassan inte om?",
+          "options": [
+            "Att städa badrummet",
+            "Att dricka te",
+            "Att öppna fönster"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur lång tid tar städningen?",
+          "options": [
+            "En timme",
+            "Två timmar",
+            "Hela dagen"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-15",
+      "level": "A1",
+      "topic": "Nature and environment",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "En promenad i parken",
+      "names": [
+        "Moa"
+      ],
+      "above_level": [
+        "träd",
+        "gul",
+        "löv",
+        "fågel",
+        "bröd",
+        "bada",
+        "bänk",
+        "mörk"
+      ],
+      "lines": [
+        {
+          "sv": "– Titta, Moa! Träden är gula och röda.",
+          "en": "– Look, Moa! The trees are yellow and red."
+        },
+        {
+          "sv": "– Ja, det är höst nu.",
+          "en": "– Yes, it's autumn now."
+        },
+        {
+          "sv": "– Vad är det där på marken?",
+          "en": "– What's that on the ground?"
+        },
+        {
+          "sv": "– Det är löv. De faller från träden.",
+          "en": "– They are leaves. They fall from the trees."
+        },
+        {
+          "sv": "– Och där! En liten fågel.",
+          "en": "– And there! A little bird."
+        },
+        {
+          "sv": "– Den äter bröd. Någon har gett den mat.",
+          "en": "– It's eating bread. Someone has given it food."
+        },
+        {
+          "sv": "– Är det kallt i vattnet?",
+          "en": "– Is the water cold?"
+        },
+        {
+          "sv": "– Ja, mycket kallt. Vi badar inte i dag.",
+          "en": "– Yes, very cold. We aren't swimming today."
+        },
+        {
+          "sv": "– Kan vi sitta på bänken en stund?",
+          "en": "– Can we sit on the bench for a while?"
+        },
+        {
+          "sv": "– Ja, men bara fem minuter. Det blir mörkt snart.",
+          "en": "– Yes, but only five minutes. It's getting dark soon."
+        },
+        {
+          "sv": "– Jag tycker om hösten.",
+          "en": "– I like the autumn."
+        },
+        {
+          "sv": "– Jag också. Men jag tycker mer om sommaren!",
+          "en": "– Me too. But I like the summer more!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vilken årstid är det?",
+          "options": [
+            "Vår",
+            "Sommar",
+            "Höst"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Vad äter fågeln?",
+          "options": [
+            "Bröd",
+            "Löv",
+            "Fisk"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Varför kan de bara sitta fem minuter?",
+          "options": [
+            "Det regnar",
+            "Det blir mörkt snart",
+            "De är hungriga"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-16",
+      "level": "A1",
+      "topic": "Work and study",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Första dagen på kursen",
+      "names": [
+        "Ana",
+        "Brasilien",
+        "Ivan",
+        "Ukraina"
+      ],
+      "above_level": [
+        "kurs",
+        "okej",
+        "ingenjör",
+        "sjuksköterska"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej! Är det här kursen i svenska?",
+          "en": "– Hi! Is this the Swedish course?"
+        },
+        {
+          "sv": "– Ja, välkommen. Sätt dig här.",
+          "en": "– Yes, welcome. Sit here."
+        },
+        {
+          "sv": "– Tack. Jag heter Ana. Jag kommer från Brasilien.",
+          "en": "– Thanks. My name is Ana. I come from Brazil."
+        },
+        {
+          "sv": "– Hej Ana. Jag heter Ivan. Jag kommer från Ukraina.",
+          "en": "– Hi Ana. My name is Ivan. I come from Ukraine."
+        },
+        {
+          "sv": "– Hur länge har du bott i Sverige?",
+          "en": "– How long have you lived in Sweden?"
+        },
+        {
+          "sv": "– Ett år. Och du?",
+          "en": "– One year. And you?"
+        },
+        {
+          "sv": "– Bara två månader. Min svenska är inte så bra.",
+          "en": "– Only two months. My Swedish isn't very good."
+        },
+        {
+          "sv": "– Det är okej. Vi lär oss tillsammans.",
+          "en": "– That's okay. We'll learn together."
+        },
+        {
+          "sv": "– Vad jobbar du med?",
+          "en": "– What do you work as?"
+        },
+        {
+          "sv": "– Jag är ingenjör. Men nu studerar jag bara svenska.",
+          "en": "– I'm an engineer. But now I'm only studying Swedish."
+        },
+        {
+          "sv": "– Jag är sjuksköterska. Jag vill jobba här i Sverige.",
+          "en": "– I'm a nurse. I want to work here in Sweden."
+        },
+        {
+          "sv": "– Titta, läraren kommer nu.",
+          "en": "– Look, the teacher is coming now."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var kommer Ana från?",
+          "options": [
+            "Ukraina",
+            "Brasilien",
+            "Spanien"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur länge har Ana bott i Sverige?",
+          "options": [
+            "Två månader",
+            "Ett år",
+            "Fem år"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad är Ivan till yrket?",
+          "options": [
+            "Sjuksköterska",
+            "Lärare",
+            "Ingenjör"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "A1-17",
+      "level": "A1",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Jag springer",
+      "names": [
+        "Pia"
+      ],
+      "above_level": [
+        "kilometer",
+        "regna",
+        "löpning",
+        "gröt",
+        "frukt",
+        "träna"
+      ],
+      "lines": [
+        {
+          "sv": "Pia springer tre gånger i veckan.",
+          "en": "Pia runs three times a week."
+        },
+        {
+          "sv": "Hon springer på morgonen, före jobbet.",
+          "en": "She runs in the morning, before work."
+        },
+        {
+          "sv": "Hon springer fem kilometer i skogen.",
+          "en": "She runs five kilometres in the forest."
+        },
+        {
+          "sv": "Ibland regnar det, men hon springer ändå.",
+          "en": "Sometimes it rains, but she runs anyway."
+        },
+        {
+          "sv": "Efter löpningen duschar hon och äter frukost.",
+          "en": "After the run she has a shower and eats breakfast."
+        },
+        {
+          "sv": "Hon äter gröt med frukt och dricker mycket vatten.",
+          "en": "She eats porridge with fruit and drinks a lot of water."
+        },
+        {
+          "sv": "Pia mår bra när hon tränar.",
+          "en": "Pia feels good when she exercises."
+        },
+        {
+          "sv": "Hon sover bättre och är gladare.",
+          "en": "She sleeps better and is happier."
+        },
+        {
+          "sv": "På helgen springer hon med sin syster.",
+          "en": "At the weekend she runs with her sister."
+        },
+        {
+          "sv": "Systern springer långsamt, så de pratar mycket.",
+          "en": "Her sister runs slowly, so they talk a lot."
+        },
+        {
+          "sv": "Det är också bra, säger Pia.",
+          "en": "That's good too, says Pia."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur ofta springer Pia?",
+          "options": [
+            "Varje dag",
+            "Tre gånger i veckan",
+            "En gång i veckan"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad äter hon till frukost?",
+          "options": [
+            "Gröt med frukt",
+            "Bröd med ost",
+            "Ägg"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem springer hon med på helgen?",
+          "options": [
+            "Sin bror",
+            "Sin syster",
+            "Sin mamma"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-18",
+      "level": "A1",
+      "topic": "Free time and culture",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Musik på torsdag",
+      "names": [
+        "Leo"
+      ],
+      "above_level": [
+        "sjunga",
+        "trumma",
+        "nervös"
+      ],
+      "lines": [
+        {
+          "sv": "Leo spelar gitarr.",
+          "en": "Leo plays the guitar."
+        },
+        {
+          "sv": "Han spelar i ett band med tre vänner.",
+          "en": "He plays in a band with three friends."
+        },
+        {
+          "sv": "De övar varje torsdag kväll.",
+          "en": "They practise every Thursday evening."
+        },
+        {
+          "sv": "De övar i ett litet rum i skolan.",
+          "en": "They practise in a small room at the school."
+        },
+        {
+          "sv": "En vän sjunger och en spelar trummor.",
+          "en": "One friend sings and one plays the drums."
+        },
+        {
+          "sv": "Den tredje vännen spelar piano.",
+          "en": "The third friend plays the piano."
+        },
+        {
+          "sv": "Bandet spelar gamla och nya låtar.",
+          "en": "The band plays old and new songs."
+        },
+        {
+          "sv": "Nästa lördag spelar de på ett kafé.",
+          "en": "Next Saturday they are playing at a café."
+        },
+        {
+          "sv": "Leo är lite nervös.",
+          "en": "Leo is a little nervous."
+        },
+        {
+          "sv": "Hans mamma och pappa kommer och lyssnar.",
+          "en": "His mum and dad are coming to listen."
+        },
+        {
+          "sv": "Det blir roligt, säger Leo.",
+          "en": "It will be fun, says Leo."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad spelar Leo?",
+          "options": [
+            "Piano",
+            "Gitarr",
+            "Trummor"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När övar bandet?",
+          "options": [
+            "På torsdag kväll",
+            "På lördag",
+            "Varje dag"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Var spelar de nästa lördag?",
+          "options": [
+            "I skolan",
+            "På ett kafé",
+            "Hemma"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-19",
+      "level": "A1",
+      "topic": "Travel and transport",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "I taxin",
+      "names": [
+        "Storgatan"
+      ],
+      "above_level": [
+        "okej",
+        "bråttom",
+        "tåg",
+        "mörk"
+      ],
+      "lines": [
+        {
+          "sv": "– God kväll. Vart ska du?",
+          "en": "– Good evening. Where are you going?"
+        },
+        {
+          "sv": "– Till Storgatan tolv, tack.",
+          "en": "– To Storgatan twelve, please."
+        },
+        {
+          "sv": "– Okej. Har du bråttom?",
+          "en": "– Okay. Are you in a hurry?"
+        },
+        {
+          "sv": "– Lite. Mitt tåg kom sent.",
+          "en": "– A little. My train was late."
+        },
+        {
+          "sv": "– Det tar ungefär tio minuter.",
+          "en": "– It takes about ten minutes."
+        },
+        {
+          "sv": "– Bra. Vad kostar det?",
+          "en": "– Good. How much does it cost?"
+        },
+        {
+          "sv": "– Ungefär tvåhundra kronor.",
+          "en": "– About two hundred kronor."
+        },
+        {
+          "sv": "– Kan jag betala med kort?",
+          "en": "– Can I pay by card?"
+        },
+        {
+          "sv": "– Ja, självklart.",
+          "en": "– Yes, of course."
+        },
+        {
+          "sv": "– Det är mörkt och kallt i kväll.",
+          "en": "– It's dark and cold tonight."
+        },
+        {
+          "sv": "– Ja, det är november. Nu är vi framme.",
+          "en": "– Yes, it's November. Now we're here."
+        },
+        {
+          "sv": "– Tack för resan. Ha en bra kväll!",
+          "en": "– Thanks for the ride. Have a good evening!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vart ska kunden?",
+          "options": [
+            "Till stationen",
+            "Till Storgatan tolv",
+            "Till flygplatsen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför har kunden lite bråttom?",
+          "options": [
+            "Tåget kom sent",
+            "Hen är sjuk",
+            "Det regnar"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur betalar kunden?",
+          "options": [
+            "Med kort",
+            "Med kontanter",
+            "Med appen"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

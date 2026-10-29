@@ -74,3 +74,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2026-10-29, batch 1 (10 texts): A1-11…A1-13, A2-11…A2-15, B1-11, B1-12, added by Claude at the owner's word, 2026-10-29 (B-19). They fill the topic gaps (A1 Society; A2 People and family, Daily life, Nature and environment, Society) and thin topics (People and family, Food and drink).
 
 2026-10-29, batch 2 (10 texts): C2-01…C2-10, one per shared topic, added by Claude at the owner's word, 2026-10-29 (B-19).
+
+2026-10-29, batch 3 (10 texts): A1-14…A1-19, A2-16…A2-19, added by Claude at the owner's word, 2026-10-29 (B-19).
