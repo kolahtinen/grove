@@ -11,7 +11,7 @@ import { REVIEWER } from '../fakes/dev-accounts.mjs';
 const palette = (f) => f.color === 'rgb(255, 255, 255)' && f.bg === 'rgb(94, 138, 102)';
 
 const SIGNED_OUT = ['/signin', '/reset', '/terms', '/how', '/credits'];
-const SIGNED_IN = ['/', '/texts', '/session', '/review?mode=review', '/text', '/leaves', '/progress', '/dictionary', '/settings', '/profile'];
+const SIGNED_IN = ['/', '/texts', '/add', '/add/ai', '/own', '/library', '/session', '/review?mode=review', '/text', '/leaves', '/progress', '/dictionary', '/settings', '/profile'];
 
 function audit() {
   const parse = (c) => {
@@ -115,7 +115,7 @@ async function auditAll(page, scheme) {
     await page.goto(path === '/text' ? `/text?id=${textId}` : path);
     await page.waitForLoadState('networkidle');
     if (path === '/') {
-      await page.getByRole('button', { name: 'Practise for X min' }).click();
+      await page.getByRole('button', { name: 'Practise' }).click();
       await expect(page.locator('#tile-panel')).toBeVisible();
     }
     await check(path);

@@ -1,8 +1,10 @@
-// Home (G-09 FR-901): a grid of square icon tiles; tapping one opens it in place below its row, with its
-// title, a one-line explanation and its way in (research R7: a disclosure button per tile, one panel
-// moved after the row, focus to the panel's title, Esc / ✕ / the tile again closes it and focus returns
-// to the tile). Resume shows first while a session is going (FR-904). The welcome card (G-04 FR-416)
-// shows above the grid until closed. Everything is set with textContent.
+// Home (G-09 FR-901, addendum 005): square tiles with an icon and a one-word label, in three headed
+// groups, Learning, Library and Progress; tapping one opens it in place below its row, with its title, a
+// one-line explanation and its way in (research R7: a disclosure button per tile, one panel moved after
+// the row, focus to the panel's title, Esc / ✕ / the tile again closes it and focus returns to the
+// tile). Resume shows first while a session is going (FR-904). With no unread text, Practise and By
+// skill first offer Add a text or practising without one (FR-920). The welcome card (G-04 FR-416) shows
+// above the groups until closed. Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { playGrow } from './grow.mjs';
@@ -19,23 +21,49 @@ const SKILLS = [['reading', 'Reading'], ['listening', 'Listening'], ['words', 'W
 const FORMS = [['short', 'Short', 5], ['medium', 'Medium', 10], ['long', 'Long', 20]];
 
 const TILES = [
-  { id: 'resume', name: 'Resume', line: 'Carry on with your session where you left off.', body: resumeBody },
-  { id: 'practise', name: 'Practise for X min', line: 'grove plans Discover, Review and Master for the time you have.', body: practiseBody },
-  { id: 'texts', name: 'Texts', line: 'Your texts by topic, new texts from your AI, and texts of your own.', body: () => [link('/texts', 'Open Texts', 'button-link main')] },
-  { id: 'skill', name: 'By skill', line: 'Practise one skill: reading, listening, words and phrases, or grammar.', body: skillBody },
-  { id: 'dictionary', name: 'Dictionary', line: 'Every word you have met, with its meaning; and your leaves.', body: () => [link('/dictionary', 'Open the Dictionary', 'button-link main'), link('/leaves', 'Your leaves', 'small leaves-link')] },
-  { id: 'mode', name: 'Just one mode', line: 'Only Discover, only Review or only Master, one exercise at a time.', body: modeBody },
-  { id: 'progress', name: 'Progress', line: 'Your level, today’s minutes and the last 14 days.', body: () => [link('/progress', 'Open Progress', 'button-link main')] },
+  { id: 'resume', group: 'learning', label: 'Resume', name: 'Resume', line: 'Carry on with your session where you left off.', body: resumeBody },
+  { id: 'practise', group: 'learning', label: 'Practise', name: 'Practise for X min', line: 'grove plans Discover, Review and Master for the time you have.', body: practiseBody },
+  { id: 'skill', group: 'learning', label: 'By skill', name: 'By skill', line: 'Practise one skill: reading, listening, words and phrases, or grammar.', body: skillBody },
+  { id: 'mode', group: 'learning', label: 'One mode', name: 'Just one mode', line: 'Only Discover, only Review or only Master, one exercise at a time.', body: modeBody },
+  { id: 'common', group: 'library', label: 'Common library', name: 'Common library', line: 'grove’s shared texts by topic, and the dictionary of every Swedish word.', body: () => [link('/library', 'Open the common library', 'button-link main')] },
+  { id: 'yours', group: 'library', label: 'Your library', name: 'Your library', line: 'Your texts by topic, Add a text, your dictionary and your leaves.', body: yoursBody },
+  { id: 'progress', group: 'progress', label: 'Progress', name: 'Progress', line: 'Your level, today’s minutes and the last 14 days.', body: () => [link('/progress', 'Open Progress', 'button-link main')] },
 ];
+const GROUPS = [['learning', 'Learning'], ['library', 'Library'], ['progress', 'Progress']];
+
 
 let going = null;
 let openId = null;
+let unread = 0;
 
 // Starts a session and opens it; a refusal (nothing to do, no voice) is shown in the panel.
 async function start(body, message) {
   const result = await post('/api/sessions', { ...body, voice: hasSwedish() });
   if (!result.ok) { showMessage(message, result.message); return; }
   window.location.assign('/session');
+}
+
+function yoursBody() {
+  const more = el('p', 'links small');
+  more.append(link('/add', 'Add a text', ''), link('/dictionary', 'Your dictionary', ''), link('/leaves', 'Your leaves', ''));
+  return [link('/texts', 'Open your library', 'button-link main'), more];
+}
+
+// FR-920: with no unread text, first say so and offer Add a text or practising without a text. (The
+// common library's choice comes when the library has texts.)
+function startOrOffer(body, message) {
+  if (unread > 0) { start(body, message); return; }
+  const offer = el('div', 'no-texts-offer');
+  offer.setAttribute('role', 'group');
+  offer.setAttribute('aria-label', 'You have no new texts');
+  const go = button('Practise without a text');
+  go.addEventListener('click', () => start(body, message));
+  const row = el('div', 'row');
+  row.append(link('/add', 'Add a text', 'button-link main'), go);
+  offer.append(el('p', '', 'You have no new texts.'), row);
+  $('tile-way').querySelector('.no-texts-offer')?.remove();
+  message.before(offer);
+  offer.querySelector('a').focus();
 }
 
 function resumeBody() {
@@ -74,7 +102,7 @@ function practiseBody() {
   go.addEventListener('click', () => {
     const minutes = typed.value === '' ? chosen : Number(typed.value);
     if (!Number.isInteger(minutes) || minutes < 3 || minutes > 60) { showMessage(message, 'Choose a length from 3 to 60 minutes.'); return; }
-    start({ kind: 'time', minutes }, message);
+    startOrOffer({ kind: 'time', minutes }, message);
   });
   return [group, go, message];
 }
@@ -89,7 +117,7 @@ function skillBody() {
     for (const [form, label, minutes] of FORMS) {
       const b = button(label, 'chip-choice');
       b.setAttribute('aria-label', `${name}, ${label.toLowerCase()} (${minutes} min)`);
-      b.addEventListener('click', () => start({ kind: 'skill', skill, form }, message));
+      b.addEventListener('click', () => startOrOffer({ kind: 'skill', skill, form }, message));
       row.append(b);
     }
     return row;
@@ -126,7 +154,7 @@ function close({ focus = true } = {}) {
 }
 
 function open(tile) {
-  const grid = $('tiles');
+  const grid = tile.closest('.tiles');
   const panel = $('tile-panel');
   close({ focus: false });
   const tiles = [...grid.querySelectorAll('.tile')];
@@ -145,18 +173,26 @@ function open(tile) {
 }
 
 function renderTiles() {
-  const grid = $('tiles');
-  grid.replaceChildren();
-  for (const def of TILES) {
-    if (def.id === 'resume' && !going) continue;
-    const tile = button('', `tile tile-is-${def.id}`);
-    tile.id = `tile-${def.id}`;
-    tile.setAttribute('aria-label', def.name);
-    tile.setAttribute('aria-expanded', 'false');
-    tile.setAttribute('aria-controls', 'tile-panel');
-    tile.append(icon(def.id));
-    tile.addEventListener('click', () => (openId === def.id ? close() : open(tile)));
-    grid.append(tile);
+  const box = $('tiles');
+  box.replaceChildren();
+  for (const [group, heading] of GROUPS) {
+    const section = el('section', 'tile-group');
+    section.setAttribute('aria-labelledby', `group-${group}`);
+    const h = el('h2', 'group-title', heading);
+    h.id = `group-${group}`;
+    const grid = el('div', 'tiles');
+    for (const def of TILES.filter((t) => t.group === group)) {
+      if (def.id === 'resume' && !going) continue;
+      const tile = button('', `tile tile-is-${def.id}`);
+      tile.id = `tile-${def.id}`;
+      tile.setAttribute('aria-expanded', 'false');
+      tile.setAttribute('aria-controls', 'tile-panel');
+      tile.append(icon(def.id), el('span', 'tile-label', def.label));
+      tile.addEventListener('click', () => (openId === def.id ? close() : open(tile)));
+      grid.append(tile);
+    }
+    section.append(h, grid);
+    box.append(section);
   }
   const panel = el('section', 'card tile-panel');
   panel.id = 'tile-panel';
@@ -176,7 +212,8 @@ function renderTiles() {
   const way = el('div', 'tile-way');
   way.id = 'tile-way';
   panel.append(head, line, way);
-  grid.append(panel);
+  panel.hidden = true;
+  box.append(panel);
 }
 
 document.addEventListener('keydown', (event) => {
@@ -188,6 +225,8 @@ await getMe();
 const sessionRes = await fetch('/api/session', { credentials: 'same-origin' });
 if (sessionRes.ok) going = (await sessionRes.json()).session;
 if (going && going.status !== 'going') going = null;
+const topicsRes = await fetch('/api/topics', { credentials: 'same-origin' });
+if (topicsRes.ok) unread = (await topicsRes.json()).topics.reduce((n, t) => n + t.texts.filter((x) => !x.read && x.ready).length, 0);
 renderTiles();
 
 // G-04 FR-416 and G-06 FR-605: the welcome card; a new account goes to the starting check once the

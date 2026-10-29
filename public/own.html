@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My own texts · grove</title>
+<title>Your own text · grove</title>
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/grove.css">
 <script type="module" src="/assets/topbar.mjs"></script>
@@ -18,8 +18,8 @@
 </header>
 <main>
 <section class="card" id="own-card">
-<h2>My own texts <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="small muted">Paste a Swedish text you want to read (an article, a song). It stays private to you.</p>
+<h2>Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
+<p class="small muted">Paste a Swedish text you choose, such as an article or a song. It stays private to you. Your AI checks its new words once, then you read it like any other text.</p>
 <form id="own-form">
 <label>Title<input type="text" name="title" maxlength="120" required></label>
 <label>Swedish text<textarea name="text" rows="5" maxlength="20000" required></textarea></label>
@@ -28,9 +28,10 @@
 </form>
 </section>
 <section class="card">
-<h2>Your texts</h2>
+<h2>Your own texts</h2>
 <ul class="text-list" id="own-list"></ul>
 <p class="small muted" id="own-none" hidden>No texts of your own yet.</p>
+<p class="small"><a href="/add">Back to Add a text</a> · <a href="/texts">Your library</a></p>
 </section>
 </main>
 </body>

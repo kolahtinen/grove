@@ -88,9 +88,14 @@ test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under 
   expect(after).toBeNull();
 });
 
-test('FR-909 FR-907 RQ-422: Texts lists the texts by topic, unread first, with Beta badges, and Start a session on a topic starts one', async ({ page }) => {
+test('FR-915 FR-907 RQ-430 RQ-422: Your library lists the texts by topic, unread first, with Beta badges, and links Add a text, your dictionary and your leaves; Start a session on a topic starts one', async ({ page }) => {
   await signIn(page);
   await addSample(page);
+  await page.goto('/texts');
+  await expect(page.getByRole('heading', { name: 'Your library' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Add a text' }).first()).toHaveAttribute('href', '/add');
+  await expect(page.getByRole('link', { name: 'Your dictionary' })).toHaveAttribute('href', '/dictionary');
+  await expect(page.getByRole('link', { name: 'Your leaves' })).toHaveAttribute('href', '/leaves');
   const topics = await page.evaluate(async () => (await (await fetch('/api/topics')).json()).topics);
   const topic = topics.find((t) => t.topic && t.texts.some((x) => !x.read));
   await page.goto('/texts');
@@ -106,48 +111,66 @@ test('FR-909 FR-907 RQ-422: Texts lists the texts by topic, unread first, with B
   await expect(page.locator('#session-line')).toContainText('5-minute session');
 });
 
-test('FR-909 RQ-422 RQ-418: New texts shows the AI and version above a wizard card with the tactic tabs on top and one step open at a time; Your own text is on Texts', async ({ page, context }) => {
+test('FR-918 RQ-435: Add a text shows the two ways side by side, each with its explainer, each leading to its own page', async ({ page }) => {
+  await signIn(page);
+  await page.goto('/add');
+  const ai = page.locator('.add-way', { has: page.getByRole('heading', { name: /Texts from your AI/ }) });
+  const own = page.locator('.add-way', { has: page.getByRole('heading', { name: /Your own text/ }) });
+  await expect(ai).toContainText('free AI chat');
+  await expect(ai).toContainText('About 5 minutes');
+  await expect(own).toContainText('stays private');
+  await expect(ai.getByRole('link')).toHaveAttribute('href', '/add/ai');
+  await expect(own.getByRole('link')).toHaveAttribute('href', '/own');
+  await own.getByRole('link').click();
+  await page.waitForURL(/\/own$/);
+  await page.getByLabel('Title').fill('Min lista');
+  await page.getByLabel('Swedish text').fill('Jag läser en bok.');
+  await page.getByRole('button', { name: 'Save text' }).click();
+  await page.waitForURL(/\/text\?id=\d+$/);
+});
+
+test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows done, now and next; one step at a time with Back; a confirmation after each action; the tactic as one line', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await signIn(page);
   await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'steps' });
-  await page.goto('/texts');
-  await expect(page.locator('#progress')).not.toBeEmpty();
-  const [plan, wizard] = [await page.locator('#plan').boundingBox(), await page.locator('#wizard').boundingBox()];
-  expect(plan.y + plan.height).toBeLessThanOrEqual(wizard.y + 1);
-  await expect(page.locator('#wizard #tactic-tabs')).toBeVisible();
-  const tabs = await page.locator('#tactic-tabs').boundingBox();
-  const next = page.locator('#step-next');
-  expect(tabs.y).toBeLessThan((await next.boundingBox()).y);
-  // A fresh package in a new chat: setup is the open step, the others closed.
-  // With nothing waiting, Next part is the open step; with a prompt waiting, its heading opens it.
-  if (await page.locator('#prompt-area').isHidden()) await expect(page.locator('#step-next-body')).toBeVisible();
-  else await page.locator('#step-next .wstep-head').click();
-  await expect(page.locator('#step-next-body')).toBeVisible();
-  await page.locator(await page.locator('#new-package').isVisible() ? '#new-package' : '#get-texts').click();
-  await expect(page.locator('#prompt-area')).toBeVisible();
-  const heads = page.locator('#wizard .wstep-head[aria-expanded="true"]');
-  await expect(heads).toHaveCount(1);
-  await expect(page.locator('#step-setup-body')).toBeVisible();
-  await expect(page.locator('#step-prompt-body')).toBeHidden();
-  await expect(page.locator('#step-paste-body')).toBeHidden();
-  const setup = page.locator('#setup-steps .prompt-step');
-  const n = await setup.count();
-  expect(n).toBeGreaterThan(0);
-  for (let i = 0; i < n; i += 1) await setup.nth(i).getByRole('button', { name: 'Copy prompt' }).click();
-  await expect(page.locator('#step-prompt-body')).toBeVisible();
-  await expect(page.locator('#step-setup-body')).toBeHidden();
-  await page.locator('#prompt-steps .prompt-step').getByRole('button', { name: 'Copy prompt' }).click();
-  await expect(page.locator('#step-paste-body')).toBeVisible();
+  await page.goto('/add/ai');
+  const list = page.locator('#ai-steps');
+  await expect(list.locator('li').first()).toContainText('Your AI: ChatGPT');
+  await expect(page.locator('#tab-list, [role="tablist"]')).toHaveCount(0);
+  // Start from a fresh package in a new chat, wherever the shared account was.
+  if (await page.locator('.ai-step[data-step="ai"]').isHidden()) {
+    while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
+  }
+  await expect(page.locator('#tactic-line')).not.toBeEmpty();
+  await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
+  await page.evaluate(async () => {
+    const me = await (await fetch('/api/me')).json();
+    await fetch('/api/prompt', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ action: 'new_package' }) });
+  });
+  await page.reload();
+  // A waiting package with a setup: the setup step is now, Your AI done.
+  await expect(list.locator('li[aria-current="step"]')).toContainText('Send the setup');
+  await expect(list.locator('li.done')).toHaveCount(1);
+  await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
+  for (const b of await page.locator('#setup-steps').getByRole('button', { name: 'Copy prompt' }).all()) await b.click();
+  await page.getByRole('button', { name: "I've sent them" }).click();
+  await expect(page.locator('#package-message')).toContainText('Setup sent');
+  await expect(list.locator('li[aria-current="step"]')).toContainText('Copy the request');
+  await page.locator('#prompt-steps').getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(page.locator('#package-message')).toHaveText('Copied. Now paste it into your AI chat and wait for its answer.');
+  await expect(list.locator('li[aria-current="step"]')).toContainText('Paste the answer');
   await expect(page.getByLabel("Paste the AI's answer here")).toBeVisible();
-  await expect(heads).toHaveCount(1);
-  // A step's heading opens it and closes the one open.
-  await page.locator('#step-setup .wstep-head').click();
-  await expect(page.locator('#step-setup-body')).toBeVisible();
-  await expect(page.locator('#step-paste-body')).toBeHidden();
-  // Your own text: G-03 FR-318's form, here on Texts.
-  const own = page.locator('#own-card');
-  await own.getByLabel('Title').fill('Min lista');
-  await own.getByLabel('Swedish text').fill('Jag läser en bok.');
-  await own.getByRole('button', { name: 'Save text' }).click();
-  await page.waitForURL(/\/text\?id=\d+$/);
+  await page.getByRole('button', { name: 'Back' }).click();
+  await expect(list.locator('li[aria-current="step"]')).toContainText('Copy the request');
+  await page.locator('#prompt-steps').getByRole('button', { name: 'Copy prompt' }).click();
+  const code = await page.evaluate(async () => (await (await fetch('/api/home')).json()).waiting.code);
+  const tag = Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5);
+  const answer = JSON.parse(SAMPLE.replaceAll('TEST-1', code ?? 'TEST-1'));
+  answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
+  await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify(answer));
+  await page.getByRole('button', { name: 'Add texts' }).click();
+  await expect(page.locator('#package-message')).toContainText(/\d+ texts? added/);
+  await expect(list.locator('li[aria-current="step"]')).toContainText('Texts added');
+  await expect(page.locator('#added-list a').first()).toContainText(tag);
+  await expect(list.locator('li.done')).toHaveCount(await list.locator('li').count() - 1);
 });

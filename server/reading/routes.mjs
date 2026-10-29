@@ -4,6 +4,7 @@ import { buildReading } from './view.mjs';
 import { buildPractice } from './practice.mjs';
 import { createFlag, createReport, EXPLAIN_REASONS, REPORT_REASONS } from './flags.mjs';
 import { dictionaryPage, readQuery } from './dictionary.mjs';
+import { search as searchLexicon } from '../lexicon/lexicon.mjs';
 import { addOwnText, saveLeaf, ownStatus } from './own.mjs';
 import { ownText } from './view.mjs';
 import { DEFAULT_SIZES } from '../config.mjs';
@@ -15,6 +16,18 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
   router.add({ method: 'GET', path: '/api/reading', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildReading(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/practice', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, buildPractice(db, ctx.account.id, ctx.url.searchParams.get('id'))) });
   router.add({ method: 'GET', path: '/api/dictionary', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, dictionaryPage(db, ctx.account.id, readQuery(ctx.url.searchParams))) });
+  // The common dictionary (G-09 FR-917): grove's whole word list, with each word's level and whether
+  // it is already the learner's leaf or in their ground.
+  router.add({
+    method: 'GET', path: '/api/common-dictionary', access: 'agreed',
+    handler: (ctx) => {
+      const q = (ctx.url.searchParams.get('q') ?? '').slice(0, 60);
+      const level = db.prepare('SELECT MIN(level) AS level FROM level_words WHERE lemma = ?');
+      const mine = db.prepare('SELECT state FROM words WHERE account_id = ? AND lemma = ? AND kind = ?');
+      const results = searchLexicon(q).map((r) => ({ ...r, level: level.get(r.lemma)?.level ?? null, state: mine.get(ctx.account.id, r.lemma, 'word')?.state ?? null }));
+      sendJson(ctx.res, 200, { q, results });
+    },
+  });
 
   // The Settings page's values (G-09 FR-910).
   router.add({

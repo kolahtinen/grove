@@ -12,6 +12,8 @@ const PATHS = {
   dictionary: ['M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z', 'M5 17a3 3 0 0 1 3-3h11', 'M9 8h6'],
   mode: ['M12 3v18', 'M5 8l7-5 7 5', 'M7 21h10'],
   progress: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20v-10'],
+  common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
+  yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
   close: ['M6 6l12 12', 'M18 6L6 18'],
 };
 const NS = 'http://www.w3.org/2000/svg';

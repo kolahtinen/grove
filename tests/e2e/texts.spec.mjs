@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 import { startTestGrove, seedGround, PASSWORD } from '../fakes/harness.mjs';
+import { agreeTerms } from './helpers.mjs';
 
 const sample = (name) => readFileSync(new URL(`../texts/answers/${name}`, import.meta.url), 'utf8');
 
@@ -20,49 +21,64 @@ async function signIn(page) {
   await page.getByLabel('Password').fill(REVIEWER.password);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(/\/$/);
 }
 
-// Starts a fresh package on Home and returns its request's code (a waiting redo or fix-it from an
-// earlier run would otherwise answer "next"; G-02 FR-206 changed on 2026-10-26).
+// Starts a fresh package on Texts from your AI (G-09 FR-919; on Home before G-09) and returns its waiting
+// prompt (a waiting redo or fix-it from an earlier run would otherwise answer "next"; G-02 FR-206).
 async function freshPrompt(page) {
-  await expect(page.locator('#progress')).not.toBeEmpty();
+  await page.goto('/add/ai');
+  await expect(page.locator('#ai-steps li').first()).toBeVisible();
   // FR-223: the AI is chosen first; the shared reviewer account uses free ChatGPT, step by step.
   await page.evaluate(async () => {
     const me = await (await fetch('/api/me')).json();
-    await fetch('/api/plan', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ family: 'chatgpt', product: 'free' }) });
+    const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
+    await fetch('/api/plan', { method: 'POST', headers: h, body: JSON.stringify({ family: 'chatgpt', product: 'free', tactic: 'steps' }) });
+    await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
   });
   await page.reload();
-  await expect(page.locator('#progress')).not.toBeEmpty();
-  if (await page.locator('#new-package').isVisible()) await page.locator('#new-package').click();
-  else await page.locator('#get-texts').click();
-  await expect(page.locator('#prompt-area')).toBeVisible();
+  await expect(page.locator('#ai-steps li[aria-current="step"]')).toBeVisible();
   const home = await page.evaluate(async () => (await fetch('/api/home')).json());
   return home.waiting;
 }
 
-test('FR-201 FR-203 FR-219 RQ-40 RQ-19 RQ-390 RQ-402: Home shows the topic; Get texts asks for a new chat and gives the setup and the request, each copied with Copy prompt ("Copied to clipboard", the text itself hidden); a pasted answer adds three texts', async ({ page, context }) => {
+// FR-919: one step at a time; these move on to the request and to the paste box.
+async function toRequest(page) {
+  if (await page.locator('.ai-step[data-step="setup"]').isVisible()) await page.getByRole('button', { name: "I've sent them" }).click();
+  await expect(page.locator('.ai-step[data-step="request"]')).toBeVisible();
+}
+async function toPaste(page) {
+  await toRequest(page);
+  await page.locator('#prompt-steps .prompt-step').last().getByRole('button', { name: 'Copy prompt' }).click();
+  // Copied: the paste step opens; copying blocked: "Next: paste the answer" appears instead.
+  await expect(page.locator('.ai-step[data-step="paste"]:not([hidden]), #request-done:not([hidden])')).toBeVisible();
+  if (await page.locator('#request-done').isVisible()) await page.locator('#request-done').click();
+  await expect(page.getByLabel("Paste the AI's answer here")).toBeVisible();
+}
+
+test('FR-201 FR-203 FR-219 RQ-40 RQ-19 RQ-390 RQ-402: Texts from your AI shows the topic; Get texts asks for a new chat and gives the setup and the request, each copied with Copy prompt ("Copied to clipboard", the text itself hidden); a pasted answer adds three texts', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await signIn(page);
-  await expect(page.locator('#topic-text')).not.toBeEmpty();
   const waiting = await freshPrompt(page);
-  await expect(page.locator('#new-chat-note')).toContainText('Open a new chat');
-  const steps = page.locator('#prompt-steps .prompt-step');
-  await expect(steps).toHaveCount(waiting.steps.length + 1);
-  await expect(steps.first()).toContainText('setup');
-  await steps.first().getByRole('button', { name: 'Copy prompt' }).click();
-  await expect(steps.first().locator('.copied')).toHaveText('Copied to clipboard');
-  await expect(steps.first().locator('textarea')).toBeHidden();
+  // G-09 FR-919: the setup and the request are steps of the wizard on Texts from your AI, which shows the topic.
+  await expect(page.locator('#topic-text')).not.toBeEmpty();
+  await expect(page.locator('.ai-step[data-step="setup"]')).toContainText('Open a new chat');
+  const setup = page.locator('#setup-steps .prompt-step');
+  await expect(setup).toHaveCount(waiting.steps.length);
+  await expect(setup.first()).toContainText('Setup');
+  await setup.first().getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(setup.first().locator('.copied')).toHaveText('Copied to clipboard');
+  await expect(setup.first().locator('textarea')).toBeHidden();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain('reply only with "OK"');
-  await steps.last().getByRole('button', { name: 'Copy prompt' }).click();
+  await toRequest(page);
+  await page.locator('#prompt-steps .prompt-step').last().getByRole('button', { name: 'Copy prompt' }).click();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain(waiting.code);
   const { text, titles } = answerFor('good.json', waiting.code);
   await page.getByLabel("Paste the AI's answer here").fill(text);
   await page.getByRole('button', { name: 'Add texts' }).click();
   await expect(page.locator('#package-message')).toHaveText(/3 texts added/);
+  await page.goto('/texts');
   for (const title of titles) await expect(page.locator('#texts')).toContainText(title);
   await expect(page.locator('#texts')).toContainText('listening · new');
 });
@@ -71,6 +87,8 @@ test('FR-201 RQ-402: when copying is blocked, the prompt is shown and selected f
   await signIn(page);
   await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.reject(new Error('blocked')); });
   await freshPrompt(page);
+  await page.evaluate(() => { navigator.clipboard.writeText = () => Promise.reject(new Error('blocked')); });
+  await toRequest(page);
   const last = page.locator('#prompt-steps .prompt-step').last();
   await last.getByRole('button', { name: 'Copy prompt' }).click();
   await expect(last.locator('.copied')).toContainText('copy it by hand');
@@ -81,6 +99,7 @@ test('FR-201 RQ-402: when copying is blocked, the prompt is shown and selected f
 test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked for again on its own while the others are kept; HTML in an answer is shown as text', async ({ page }) => {
   await signIn(page);
   const waiting = await freshPrompt(page);
+  await toPaste(page);
   const bad = answerFor('too-many-new.json', waiting.code);
   await page.getByLabel("Paste the AI's answer here").fill(bad.text);
   await page.getByRole('button', { name: 'Add texts' }).click();
@@ -92,9 +111,11 @@ test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked
   one.part = redo.code;
   one.texts = [one.texts[0]];
   one.texts[0].title = `${one.texts[0].title} ${Math.random().toString(36).slice(2, 7)}`;
+  await toPaste(page);
   await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify(one));
   await page.getByRole('button', { name: 'Add texts' }).click();
   await expect(page.locator('#package-message')).toHaveText(/1 text added/);
+  await page.goto('/texts');
   const item = page.locator('#texts a', { hasText: one.texts[0].title });
   await expect(item).toContainText('<b>x</b> rubrik');
   await expect(item.locator('b')).toHaveCount(0);
@@ -105,38 +126,37 @@ test('FR-206 FR-221 RQ-185 RQ-63 RQ-395: a text with too many new words is asked
   await expect(page.locator('#translation script, #translation b')).toHaveCount(0);
 });
 
-test('FR-223 RQ-403 RQ-404 RQ-391: the AI and version menus recommend a tactic in tabs; another can be chosen; I\'m in a new chat gives the setup again', async ({ page }) => {
+// G-09 FR-919 (addendum 005) replaces the tactic tabs: grove chooses the tactic from the AI, shown as one line.
+test('FR-223 FR-919 RQ-403 RQ-404 RQ-391 RQ-436: the AI and version set the tactic, shown as one line; I\'m in a new chat gives the setup again', async ({ page }) => {
   await signIn(page);
   const waiting = await freshPrompt(page);
+  await toPaste(page);
   const answer = answerFor('good.json', waiting.code);
   await page.getByLabel("Paste the AI's answer here").fill(answer.text);
   await page.getByRole('button', { name: 'Add texts' }).click();
   await expect(page.locator('#package-message')).toHaveText(/3 texts added/);
-  await page.locator('#get-texts').click();
+  await page.locator('#next-part').click();
   await expect(page.locator('#prompt-steps .prompt-step')).toHaveCount(1);
+  await toPaste(page);
   await page.getByRole('button', { name: "I'm in a new chat" }).click();
-  await expect(page.locator('#prompt-steps .prompt-step').first()).toContainText('setup');
+  await expect(page.locator('#setup-steps .prompt-step').first()).toContainText('Setup');
 
+  while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
   await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('lechat');
   await expect(page.getByRole('combobox', { name: 'Version' })).toHaveValue('free');
-  const tabs = page.locator('#tactic-tabs [role="tab"]');
-  await expect(tabs).toHaveText([/Step by step/, /One long prompt.*Recommended/, /Whole package/]);
-  await expect(page.locator('#tactic-panel')).toContainText('carries the rules and your known words');
-  await expect(tabs.nth(1)).toContainText('In use');
-  await tabs.nth(2).click();
-  await expect(page.locator('#tactic-panel')).toContainText('all three parts');
-  await page.getByRole('button', { name: 'Use this way' }).click();
-  await expect(page.locator('#plan-message')).toContainText('whole package, from your next package on');
-  await page.reload();
-  await expect(page.locator('#tactic-tabs [role="tab"]').nth(2)).toContainText('In use');
+  await expect(page.locator('#tactic-line')).toContainText('puts everything your AI needs into each prompt');
+  await expect(page.locator('[role="tab"]')).toHaveCount(0);
   await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
-  await expect(page.locator('#tactic-tabs [role="tab"]').nth(0)).toContainText('Recommended · In use');
+  await expect(page.locator('#tactic-line')).toContainText('sends your AI a short setup once');
 });
 
-test('FR-224 RQ-406: texts from the AI and own texts carry a Beta badge, on Home and the reading page', async ({ page }) => {
+test('FR-224 RQ-406: texts from the AI and own texts carry a Beta badge, in Your library and on the reading page', async ({ page }) => {
   await signIn(page);
+  await page.goto('/add/ai');
   await expect(page.locator('#package-card h2 .beta')).toHaveText('Beta');
+  await page.goto('/own');
   await expect(page.locator('#own-card h2 .beta')).toHaveText('Beta');
+  await page.goto('/texts');
   const item = page.locator('#texts a', { hasText: 'reading ·' }).first();
   await expect(item.locator('.beta')).toHaveText('Beta');
   await item.click();
@@ -144,8 +164,9 @@ test('FR-224 RQ-406: texts from the AI and own texts carry a Beta badge, on Home
   await expect(page.locator('#beta-note')).toHaveText('This part of grove is new and still being tested.');
 });
 
-test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a question, rate it, and see it rated on Home', async ({ page }) => {
+test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a question, rate it, and see it rated in Your library', async ({ page }) => {
   await signIn(page);
+  await page.goto('/texts');
   // A reading text: listening texts open in listening mode (G-05 FR-509).
   const first = page.locator('#texts a', { hasText: 'reading ·' }).first();
   await expect(first).toBeVisible();
@@ -163,6 +184,7 @@ test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a 
   await page.getByRole('button', { name: 'Most', exact: true }).click();
   await expect(page.locator('#rating-message')).toHaveText(/Thanks/);
   await page.getByRole('link', { name: 'Back to Home' }).click();
+  await page.goto('/texts');
   // FR-219 names each text's kind with its state since 2026-10-26.
   await expect(page.locator('#texts a', { hasText: title }).locator('.text-state')).toHaveText('reading · rated');
 });
@@ -181,14 +203,12 @@ async function ownGrove(page, email) {
   await page.getByLabel('Password').fill(PASSWORD);
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.waitForURL(/\/terms$/);
-  await page.getByLabel(/I agree to the terms/).check();
-  await page.getByLabel(/I am 13 or over/).check();
-  await page.getByRole('button', { name: 'Agree' }).click();
+  await agreeTerms(page);
   await page.waitForURL(`${t.base}/`);
   return { t, learner };
 }
 
-test('FR-224 RQ-406: a text from the AI has a Beta badge on Home and its reading page; a demo text has none', async ({ page }) => {
+test('FR-224 RQ-406: a text from the AI has a Beta badge in Your library and on its reading page; a demo text has none', async ({ page }) => {
   await signIn(page);
   const added = await page.evaluate(async (good) => {
     const me = await (await fetch('/api/me')).json();
@@ -201,7 +221,7 @@ test('FR-224 RQ-406: a text from the AI has a Beta badge on Home and its reading
     return (await (await fetch('/api/answer', { method: 'POST', headers: h, body: JSON.stringify({ exchangeId: p.exchangeId, answer: JSON.stringify(a) }) })).json()).texts;
   }, sample('good.json'));
   const reading = added.find((x) => x.kind === 'reading');
-  await page.reload();
+  await page.goto('/texts');
   const item = page.locator('#texts a', { hasText: reading.title });
   await expect(item.locator('.beta')).toHaveText('Beta');
   const demo = page.locator('#texts a', { hasText: 'Brevet i väskan' });
@@ -218,19 +238,20 @@ test('FR-224 RQ-406: a text from the AI has a Beta badge on Home and its reading
 test('FR-223 RQ-403: the first Get texts asks for the AI and its version first', async ({ page }) => {
   const { t } = await ownGrove(page, 'ai-first@example.test');
   try {
+    await page.goto(`${t.base}/add/ai`);
     await page.locator('#get-texts').click();
     await expect(page.locator('#plan-message')).toHaveText('First choose your AI and its version, so grove can ask it the best way.');
     await expect(page.getByRole('combobox', { name: 'AI', exact: true })).toBeFocused();
-    await expect(page.locator('#prompt-area')).toBeHidden();
+    await expect(page.locator('#ai-steps li[aria-current="step"]')).toContainText('Your AI');
     await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
     await page.locator('#get-texts').click();
-    await expect(page.locator('#prompt-area')).toBeVisible();
+    await expect(page.locator('#ai-steps li[aria-current="step"]')).not.toContainText('Your AI');
   } finally {
     await t.close();
   }
 });
 
-test('FR-223 RQ-405: after two failed answers in a row, Home offers the other main tactic, and its button switches to it', async ({ page }) => {
+test('FR-223 RQ-405: after two failed answers in a row, Texts from your AI offers the other main tactic, and its button switches to it', async ({ page }) => {
   const { t } = await ownGrove(page, 'offer@example.test');
   try {
     await page.evaluate(async (bad) => {
@@ -246,12 +267,12 @@ test('FR-223 RQ-405: after two failed answers in a row, Home offers the other ma
       one.texts = [one.texts[0]];
       await post('/api/answer', { exchangeId: first.next.exchangeId, answer: JSON.stringify(one) });
     }, sample('too-many-new.json'));
-    await page.reload();
+    await page.goto(`${t.base}/add/ai`);
     await expect(page.locator('#offer')).toContainText('Texts keep failing.');
     await page.locator('#offer').getByRole('button', { name: 'Try one long prompt' }).click();
     await expect(page.locator('#plan-message')).toContainText('one long prompt');
     await page.reload();
-    await expect(page.locator('#tactic-tabs [role="tab"]').nth(1)).toContainText('In use');
+    await expect(page.locator('#tactic-line')).toContainText('puts everything your AI needs into each prompt');
     await expect(page.locator('#offer')).toBeHidden();
   } finally {
     await t.close();

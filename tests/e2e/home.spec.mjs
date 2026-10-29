@@ -20,53 +20,62 @@ async function signIn(page) {
   if (await page.locator('#welcome').isVisible()) await page.locator('#welcome-close').click();
 }
 
-const ORDER = ['Practise for X min', 'Texts', 'By skill', 'Dictionary', 'Just one mode', 'Progress'];
+// G-09 FR-901 as amended by addendum 005 (question-pages/77, 3 and 8; question-pages/76, 2): three
+// headed groups of labelled tiles.
+const GROUPS = { Learning: ['Practise', 'By skill', 'One mode'], Library: ['Common library', 'Your library'], Progress: ['Progress'] };
 
-test('FR-901 RQ-419: Home is a grid of icon tiles in the spec\'s order; a tile opens below its row, one at a time, and Esc, ✕ or the tile again closes it with focus back on the tile', async ({ page }) => {
+test('FR-901 RQ-419 RQ-429: Home has three headed groups of labelled icon tiles in the spec\'s order; a tile opens below its row, one at a time, and Esc, ✕ or the tile again closes it with focus back on the tile', async ({ page }) => {
   await signIn(page);
-  const tiles = page.locator('#tiles button.tile');
   await expect(page.getByRole('button', { name: 'Progress' })).toBeVisible();
-  const names = await tiles.evaluateAll((list) => list.map((b) => b.getAttribute('aria-label')));
-  expect(names.filter((n) => n !== 'Resume')).toEqual(ORDER);
-  for (const t of await tiles.all()) {
-    expect(await t.textContent()).toBe('');
+  for (const [heading, labels] of Object.entries(GROUPS)) {
+    const group = page.getByRole('region', { name: heading });
+    await expect(group.getByRole('heading', { name: heading })).toBeVisible();
+    const names = await group.locator('button.tile').evaluateAll((list) => list.map((b) => b.textContent.trim()));
+    expect(names.filter((n) => n !== 'Resume')).toEqual(labels);
+  }
+  for (const t of await page.locator('#tiles button.tile').all()) {
     await expect(t.locator('svg')).toBeVisible();
+    await expect(t.locator('.tile-label')).toBeVisible();
     const box = await t.boundingBox();
     expect(Math.abs(box.width - box.height)).toBeLessThan(2);
     expect(box.width).toBeGreaterThanOrEqual(44);
   }
-  const texts = page.getByRole('button', { name: 'Texts' });
-  await texts.click();
-  await expect(texts).toHaveAttribute('aria-expanded', 'true');
+  const yours = page.getByRole('button', { name: 'Your library' });
+  await yours.click();
+  await expect(yours).toHaveAttribute('aria-expanded', 'true');
   const panel = page.locator('#tile-panel');
   await expect(panel).toBeVisible();
-  await expect(page.locator('#tile-title')).toHaveText('Texts');
+  await expect(page.locator('#tile-title')).toHaveText('Your library');
   await expect(page.locator('#tile-title')).toBeFocused();
-  await expect(panel.getByRole('link', { name: 'Open Texts' })).toHaveAttribute('href', '/texts');
+  await expect(panel.getByRole('link', { name: 'Open your library' })).toHaveAttribute('href', '/texts');
+  await expect(panel.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
+  await expect(panel.getByRole('link', { name: 'Your dictionary' })).toHaveAttribute('href', '/dictionary');
+  await expect(panel.getByRole('link', { name: 'Your leaves' })).toHaveAttribute('href', '/leaves');
   // Below the opened tile's row: the panel's top is under every tile of that row.
-  const [tBox, pBox] = [await texts.boundingBox(), await panel.boundingBox()];
+  const [tBox, pBox] = [await yours.boundingBox(), await panel.boundingBox()];
   expect(pBox.y).toBeGreaterThan(tBox.y + tBox.height - 1);
   await page.keyboard.press('Escape');
   await expect(panel).toBeHidden();
-  await expect(texts).toBeFocused();
-  const progress = page.getByRole('button', { name: 'Progress' });
-  await progress.click();
-  await expect(page.locator('#tile-title')).toHaveText('Progress');
+  await expect(yours).toBeFocused();
+  const common = page.getByRole('button', { name: 'Common library' });
+  await common.click();
+  await expect(panel.getByRole('link', { name: 'Open the common library' })).toHaveAttribute('href', '/library');
   await page.getByRole('button', { name: 'By skill' }).click();
   await expect(page.locator('#tile-title')).toHaveText('By skill');
-  await expect(progress).toHaveAttribute('aria-expanded', 'false');
+  await expect(common).toHaveAttribute('aria-expanded', 'false');
   await page.getByRole('button', { name: 'By skill' }).click();
   await expect(panel).toBeHidden();
-  await page.getByRole('button', { name: 'Dictionary' }).click();
+  const progress = page.getByRole('button', { name: 'Progress' });
+  await progress.click();
   await panel.getByRole('button', { name: 'Close' }).click();
   await expect(panel).toBeHidden();
-  await expect(page.getByRole('button', { name: 'Dictionary' })).toBeFocused();
+  await expect(progress).toBeFocused();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
 test('FR-901 FR-903 FR-904 RQ-419 RQ-421: Practise for X min starts a session; while it is going Resume is the first tile and opens it', async ({ page }) => {
   await signIn(page);
-  await page.getByRole('button', { name: 'Practise for X min' }).click();
+  await page.getByRole('button', { name: 'Practise' }).click();
   await expect(page.getByRole('radio', { name: '10 min' })).toHaveAttribute('aria-checked', 'true');
   for (const m of [3, 5, 20, 30]) await expect(page.getByRole('radio', { name: `${m} min` })).toBeVisible();
   await page.getByLabel('Other length in minutes').fill('61');
@@ -78,7 +87,7 @@ test('FR-901 FR-903 FR-904 RQ-419 RQ-421: Practise for X min starts a session; w
   await expect(page.locator('#session-line')).toContainText('5-minute session');
   await page.goto('/');
   const first = page.locator('#tiles button.tile').first();
-  await expect(first).toHaveAttribute('aria-label', 'Resume');
+  await expect(first).toHaveText('Resume');
   await first.click();
   await page.locator('#tile-panel').getByRole('link', { name: 'Resume' }).click();
   await page.waitForURL(/\/session$/);
@@ -130,7 +139,7 @@ test('FR-906 FR-908 RQ-423 RQ-424: By skill offers four skills in three forms an
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('5-minute session');
   await page.goto('/');
-  await page.getByRole('button', { name: 'Just one mode' }).click();
+  await page.getByRole('button', { name: 'One mode' }).click();
   for (const mode of ['Discover', 'Review', 'Master']) await expect(panel.getByRole('button', { name: mode })).toBeVisible();
   await panel.getByRole('button', { name: 'Discover' }).click();
   await page.waitForURL(/\/session$/);

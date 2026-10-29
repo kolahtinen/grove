@@ -82,7 +82,7 @@ test('FR-908 FR-406 RQ-424 RQ-415: Just one mode → Review shows a due leaf in 
   await api(page, '/api/pick-up', { lemma: 'gärna' });
   // G-09 FR-908 replaces Home's three stages: Review on its own is a session of the due leaves.
   await page.goto('/');
-  await page.getByRole('button', { name: 'Just one mode' }).click();
+  await page.getByRole('button', { name: 'One mode' }).click();
   await page.locator('#tile-panel').getByRole('button', { name: 'Review' }).click();
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('Review');
