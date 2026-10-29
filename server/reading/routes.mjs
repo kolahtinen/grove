@@ -33,21 +33,20 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
   router.add({
     method: 'GET', path: '/api/settings', access: 'agreed',
     handler: (ctx) => {
-      const s = db.prepare('SELECT speak_words, speech_rate FROM learner_settings WHERE account_id = ?').get(ctx.account.id);
-      sendJson(ctx.res, 200, { speakWords: s ? !!s.speak_words : true, speechRate: speechRateFor(db, ctx.account.id) });
+      sendJson(ctx.res, 200, { speechRate: speechRateFor(db, ctx.account.id) });
     },
   });
 
   router.add({
     method: 'POST', path: '/api/settings', access: 'agreed',
     schema: {
-      speakWords: { type: 'boolean', optional: true },
       speechRate: { type: 'number', min: 0.5, max: 1.5, optional: true },
       voiceHelpShown: { type: 'boolean', optional: true },
     },
     handler: (ctx) => {
-      // Saves only the settings sent, and answers with them (G-03 FR-305, G-05 FR-502, FR-503).
-      const columns = { speakWords: 'speak_words', speechRate: 'speech_rate', voiceHelpShown: 'voice_help_shown' };
+      // Saves only the settings sent, and answers with them (G-05 FR-502, FR-503). A tap always speaks
+      // (G-03 FR-305, question-pages/86), so there is no Speak words setting.
+      const columns = { speechRate: 'speech_rate', voiceHelpShown: 'voice_help_shown' };
       db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(ctx.account.id);
       const sent = {};
       for (const [key, column] of Object.entries(columns)) {

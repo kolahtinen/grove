@@ -107,8 +107,10 @@ function splitTrailing(text) {
 
 function openMenu(token, sentence, line) {
   current = { token, sentence, line };
-  if (data.speakWords) speak(token.t);
-  setSwitch($('menu-speak'), !!data.speakWords);
+  // FR-305 (question-pages/86): a tap always says the word; ▶ says it again, only with a Swedish voice.
+  speak(token.t);
+  $('menu-say').hidden = !hasSwedish();
+  $('menu-say').setAttribute('aria-label', `Say ${token.t} again`);
   $('menu-word').textContent = token.t;
   $('menu-status').textContent = STATUS[token.status] || '';
   $('menu-status').className = `menu-status ${token.status}`;
@@ -416,14 +418,7 @@ async function toggleRemember() {
   renderLines($('lines'));
 }
 $('menu-remember').addEventListener('click', toggleRemember);
-// Speak words (FR-305; addendum 003): kept for the learner on the server.
-$('menu-speak').addEventListener('click', async () => {
-  const on = !data.speakWords;
-  const r = await post('/api/settings', { speakWords: on });
-  if (!r.ok) { showMessage($('menu-message'), r.message); return; }
-  data.speakWords = on;
-  setSwitch($('menu-speak'), on);
-});
+$('menu-say').addEventListener('click', () => { if (current) speak(current.token.t); });
 
 $('menu-fall').addEventListener('click', async () => {
   const item = itemOf(current.token);

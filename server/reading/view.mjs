@@ -38,7 +38,7 @@ export function reportedQuestions(db, textId) {
 export function buildReading(db, accountId, textId) {
   const text = ownText(db, accountId, textId);
   if (!text.ready) throw new HttpError(409, 'not_ready', 'Paste your AI\'s answer for this text first.');
-  const settings = db.prepare('SELECT speak_words, speech_rate, voice_help_shown, target_share FROM learner_settings WHERE account_id = ?').get(accountId);
+  const settings = db.prepare('SELECT speech_rate, voice_help_shown, target_share FROM learner_settings WHERE account_id = ?').get(accountId);
   const resolver = createResolver(db, accountId);
   const words = createWordStore({ db });
   const names = db.prepare('SELECT name FROM names WHERE account_id = ?').all(accountId).map((r) => r.name);
@@ -143,7 +143,6 @@ export function buildReading(db, accountId, textId) {
     knownShare: text.own ? text.known_share : null,
     targetShare: settings?.target_share ?? 95,
     copyright: text.own && text.copyright_view ? { view: text.copyright_view, note: text.copyright_note } : null,
-    speakWords: settings ? !!settings.speak_words : true,
     speechRate: speechRateFor(db, accountId),
     voiceHelpShown: !!settings?.voice_help_shown,
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },

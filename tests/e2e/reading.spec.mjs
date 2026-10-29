@@ -44,7 +44,7 @@ async function addSample(page) {
   }, { sample: SAMPLE, tag });
 }
 
-test('FR-305 FR-301 FR-304 RQ-18 RQ-10 RQ-411 RQ-412: no English under the lines but one Show translation; a tap speaks the word and opens its menu fast; Speak words can be switched off and stays off', async ({ page }) => {
+test('FR-305 FR-301 FR-304 RQ-18 RQ-10 RQ-411: no English under the lines but one Show translation; a tap always speaks the word and opens its menu fast; ▶ in the menu says it again', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
   await page.goto(`/text?id=${ids['En bra dag']}`);
@@ -64,16 +64,10 @@ test('FR-305 FR-301 FR-304 RQ-18 RQ-10 RQ-411 RQ-412: no English under the lines
   await expect(page.locator('#menu-meaning')).toHaveText('the cups');
   await expect(page.locator('#menu-status')).toContainText('Leaf');
   expect(await page.evaluate(() => window.__spoken)).toContain('kopparna');
-  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'true');
-  await page.locator('#menu-speak').click();
-  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'false');
-  await page.locator('#menu-close').click();
-  await page.reload();
-  await page.locator('button.w', { hasText: 'kopparna' }).click();
-  await expect(page.locator('#menu')).toBeVisible();
-  expect(await page.evaluate(() => window.__spoken)).not.toContain('kopparna');
-  await page.locator('#menu-speak').click();
-  await expect(page.locator('#menu-speak')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#menu-speak')).toHaveCount(0);
+  const said = (await page.evaluate(() => window.__spoken)).filter((w) => w === 'kopparna').length;
+  await page.locator('#menu').getByRole('button', { name: 'Say kopparna again' }).click();
+  await expect.poll(async () => (await page.evaluate(() => window.__spoken)).filter((w) => w === 'kopparna').length).toBe(said + 1);
 });
 
 test('FR-320 RQ-417: a word never breaks from the punctuation around it, so a name never stands alone before its full stop', async ({ page }) => {

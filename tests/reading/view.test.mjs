@@ -53,14 +53,11 @@ test('FR-301 RQ-10 RQ-411: each line carries its English for Show translation; t
   assert.equal((await c.post('/api/settings', { showTranslations: false })).status, 400);
 });
 
-test('FR-305 RQ-18 RQ-412: Speak words is on by default and kept for the learner when switched', async () => {
+test('FR-305 RQ-18: a tap always speaks, so there is no Speak words setting to read or change (question-pages/86)', async () => {
   const c = await signedIn(t);
   const id = textId(t, learner.id, 'En bra dag');
-  assert.equal((await c.get(`/api/reading?id=${id}`)).body.speakWords, true);
-  const r = await c.post('/api/settings', { speakWords: false });
-  assert.equal(r.body.speakWords, false);
-  assert.equal((await c.get(`/api/reading?id=${id}`)).body.speakWords, false);
-  await c.post('/api/settings', { speakWords: true });
+  assert.equal('speakWords' in (await c.get(`/api/reading?id=${id}`)).body, false);
+  assert.equal((await c.post('/api/settings', { speakWords: false })).status, 400);
 });
 
 test('FR-306 RQ-413 RQ-396: a form of more than one dictionary word lists each with its meaning; every word token has a meaning', async () => {
@@ -87,16 +84,17 @@ test('FR-319 RQ-155: another account gets 404 for the text and the settings chan
   const other = await reading('En bra dag', 'other@example.test');
   assert.equal(other.status, 404);
   const c = await signedIn(t, 'other@example.test');
-  await c.post('/api/settings', { speakWords: false });
-  assert.equal((await reading('En bra dag')).body.speakWords, true);
+  const mine = (await (await signedIn(t)).get('/api/settings')).body.speechRate;
+  await c.post('/api/settings', { speechRate: 0.7 });
+  assert.equal((await (await signedIn(t)).get('/api/settings')).body.speechRate, mine);
 });
 
-test('FR-910 RQ-427: Settings reads Speak words and the speech speed the learner saved, and only theirs', async () => {
+test('FR-910 RQ-427: Settings reads the speech speed the learner saved, and only theirs', async () => {
   const c = await signedIn(t);
   const other = await signedIn(t, 'other@example.test');
   const others = (await other.get('/api/settings')).body;
-  await c.post('/api/settings', { speakWords: false, speechRate: 0.8 });
-  assert.deepEqual((await c.get('/api/settings')).body, { speakWords: false, speechRate: 0.8 });
+  await c.post('/api/settings', { speechRate: 0.8 });
+  assert.deepEqual((await c.get('/api/settings')).body, { speechRate: 0.8 });
   assert.deepEqual((await other.get('/api/settings')).body, others, 'another learner\'s settings are untouched');
-  await c.post('/api/settings', { speakWords: true, speechRate: 1 });
+  await c.post('/api/settings', { speechRate: 1 });
 });

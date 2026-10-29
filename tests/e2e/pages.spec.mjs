@@ -13,20 +13,14 @@ async function signIn(page) {
 }
 
 // The ☰ menu that links to these pages comes with FR-902; until then they are opened by address.
-test('FR-910 RQ-427: Settings holds the speech speed with its note and the voice help, Speak words, and the starting level; changes are kept', async ({ page }) => {
+test('FR-910 RQ-427: Settings holds the speech speed with its note and the voice help, and the starting level; there is no Speak words', async ({ page }) => {
   await signIn(page);
   await page.goto('/settings');
   await expect(page.locator('#speed')).toBeVisible();
   await expect(page.getByText("How well the speed works depends on your device's voice.")).toBeVisible();
   await page.getByText('No Swedish voice?').click();
   await expect(page.locator('#voice-help')).toContainText('Settings → Accessibility → Spoken Content');
-  const speak = page.locator('#speak-words');
-  const before = await speak.getAttribute('aria-pressed');
-  await speak.click();
-  await expect(speak).toHaveAttribute('aria-pressed', before === 'true' ? 'false' : 'true');
-  await page.reload();
-  await expect(speak).toHaveAttribute('aria-pressed', before === 'true' ? 'false' : 'true');
-  await speak.click();
+  await expect(page.locator('#speak-words')).toHaveCount(0);
   // The reviewer starts with its demo history, so the starting level can't be set again (G-06 FR-606).
   await expect(page.locator('#no-restart')).toBeVisible();
 });
