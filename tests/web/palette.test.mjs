@@ -33,15 +33,15 @@ const PAIRS = [
   ['--cw', '--card', 4.5], ['--ok', '--card', 4.5], ['--bad', '--card', 4.5], ['--amber', '--card', 4.5],
   ['--discover', '--card', 3], ['--review', '--card', 3], ['--master', '--card', 3],
 ];
-// White on the light gradient's end (#5E8A66) falls short (found by the contrast test, T804); FR-913
-// proposes #577F5E, for the owner to confirm. PD-12's adjusted colours pass (question-pages/76, 12).
-const PENDING = new Set(['light --onacc --accent2']);
+// White text sits on --accent2 only in the dark look's gradient; light main buttons are flat --accent
+// (G-09 FR-913; question-pages/78, 1).
+const NOT_A_PAIR = new Set(['light --onacc --accent2']);
 
 for (const [look, t] of Object.entries(LOOKS)) {
   for (const [fg, bg, need] of PAIRS) {
     const key = `${look} ${fg} ${bg}`;
-    const options = PENDING.has(key) ? { todo: 'FR-913 proposes #577F5E for the light gradient end; owner to confirm' } : {};
-    test(`FR-913 RQ-426 RQ-306: ${look}, ${fg} on ${bg} meets ${need}:1`, options, () => {
+    if (NOT_A_PAIR.has(key)) continue;
+    test(`FR-913 RQ-426 RQ-306: ${look}, ${fg} on ${bg} meets ${need}:1`, () => {
       assert.match(t[fg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${fg}`);
       assert.match(t[bg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${bg}`);
       const r = ratio(t[fg], t[bg]);

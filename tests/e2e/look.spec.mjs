@@ -77,3 +77,12 @@ test('FR-031 RQ-314 R-15: with reduced motion, cards and the top bar drop the bl
   expect(await style(page.locator('.card').first(), 'backdrop-filter')).toBe('none');
   expect(await style(page.locator('.topbar'), 'backdrop-filter')).toBe('none');
 });
+
+test('FR-029 FR-913 RQ-316 RQ-426: in the light look main buttons are flat dark green, no fade', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/signin');
+  const button = page.getByRole('button', { name: 'Sign in' });
+  expect(await style(button, 'background-image')).toBe('none');
+  expect(await style(button, 'background-color')).toBe('rgb(47, 90, 64)');
+  expect(await style(button, 'color')).toBe('rgb(255, 255, 255)');
+});
