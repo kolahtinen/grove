@@ -39,9 +39,11 @@ export function createReview({ db, now = () => Date.now() }) {
       const upcoming = all.filter((i) => !isDue(i, t)).map(dueAt).sort((a, b) => a - b);
       return { items: list, nextDue: upcoming[0] ?? null };
     },
-    answer(accountId, { lemma, kind = 'word', mode, right }) {
+    answer(accountId, { lemma, kind = 'word', mode, right, practice = false }) {
       const item = items.mustFind(accountId, lemma, kind);
       if (!item.drilled) throw new HttpError(409, 'not_drilled', 'This word isn’t being drilled.');
+      // A practice review (G-09 FR-905, question-pages/76 F1) never changes the schedule and isn't stored.
+      if (practice) return { gap: item.gap_days, fell: false, practice: true };
       const result = schedule(item, right, now());
       transaction(db, () => {
         db.prepare('INSERT INTO review_answers (account_id, word_id, mode, right, at) VALUES (?, ?, ?, ?, ?)').run(accountId, item.id, mode, right ? 1 : 0, now());

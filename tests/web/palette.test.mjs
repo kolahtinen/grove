@@ -33,14 +33,14 @@ const PAIRS = [
   ['--cw', '--card', 4.5], ['--ok', '--card', 4.5], ['--bad', '--card', 4.5], ['--amber', '--card', 4.5],
   ['--discover', '--card', 3], ['--review', '--card', 3], ['--master', '--card', 3],
 ];
-// Palette 14 as chosen falls short on these; PD-12 (question-pages/76, 12) proposes adjusted values for
-// the first three; white on the light gradient's end (#5E8A66) was found by the contrast test (T804).
-const PENDING = new Set(['light --muted --card', 'light --muted --card2', 'light --discover --card', 'light --onacc --accent2']);
+// White on the light gradient's end (#5E8A66) falls short (found by the contrast test, T804); FR-913
+// proposes #577F5E, for the owner to confirm. PD-12's adjusted colours pass (question-pages/76, 12).
+const PENDING = new Set(['light --onacc --accent2']);
 
 for (const [look, t] of Object.entries(LOOKS)) {
   for (const [fg, bg, need] of PAIRS) {
     const key = `${look} ${fg} ${bg}`;
-    const options = PENDING.has(key) ? { todo: 'palette 14 as chosen; waits for the owner (PD-12)' } : {};
+    const options = PENDING.has(key) ? { todo: 'FR-913 proposes #577F5E for the light gradient end; owner to confirm' } : {};
     test(`FR-913 RQ-426 RQ-306: ${look}, ${fg} on ${bg} meets ${need}:1`, options, () => {
       assert.match(t[fg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${fg}`);
       assert.match(t[bg] ?? '', /^#[0-9A-F]{6}$/i, `${look} ${bg}`);

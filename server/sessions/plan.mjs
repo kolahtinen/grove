@@ -1,8 +1,9 @@
 // The session planner (G-09 FR-905…FR-908; research R2): a pure function from what the learner has
 // (an inventory) to an ordered list of exercises with their planned seconds. Review of fading then due
-// leaves first (at most 40% of the length), one Discover text that fits, then Master to fill. Ties are
-// broken by id, so the same inventory always gives the same plan.
-import { DURATIONS, textSeconds } from './durations.mjs';
+// leaves first (at most 40% of the length), one Discover text that fits, Master, then practice reviews
+// of leaves not yet due while the plan is under 80% (PD-28; their answers never change a schedule, F1).
+// Ties are broken by id, so the same inventory always gives the same plan.
+import { DURATIONS, durationsFor, textSeconds } from './durations.mjs';
 
 export const FORMS = { short: 5, medium: 10, long: 20 };
 export const SKILLS = ['reading', 'listening', 'words', 'grammar'];
@@ -56,6 +57,13 @@ function fill({ length, leaves, pickText, reviewFirst = () => 0, spoken = false,
     if (used + durations.master > length || exercises.length >= MAX_EXERCISES) break;
     exercises.push(masterExercise(leaf));
     used += durations.master;
+    planned.add(leaf.id);
+  }
+  // Practice reviews: leaves not yet due, the soonest due (weakest) first, each at most once.
+  for (const leaf of leaves.filter((l) => !l.due && !planned.has(l.id)).sort((a, b) => (a.strength - b.strength) || (a.id - b.id))) {
+    if (used >= 0.8 * length || used + durations.review > length || exercises.length >= MAX_EXERCISES) break;
+    exercises.push(reviewExercise(leaf, { practice: true, ...(spoken ? { spoken: true } : {}) }));
+    used += durations.review;
   }
   return { exercises, seconds: used };
 }
@@ -72,7 +80,8 @@ function result(plan, length) {
 }
 
 // kind: time | topic | skill | mode. params: { minutes, topic, skill, form, mode, voice }.
-export function plan({ kind, params, inventory, durations = DURATIONS }) {
+export function plan({ kind, params, inventory, durations: base = DURATIONS }) {
+  const durations = durationsFor(inventory.belowB1 ?? false, base);
   const voice = params.voice !== false;
   const texts = inventory.texts.filter((t) => voice || t.kind !== 'listening');
   const leaves = inventory.leaves;
@@ -111,14 +120,15 @@ export function plan({ kind, params, inventory, durations = DURATIONS }) {
       if (!candidates.length) return null;
       if (params.skill === 'words') return [...candidates].sort((a, b) => (a.words - b.words) || (a.id - b.id))[0];
       if (params.skill === 'grammar') return [...candidates].sort((a, b) => (b.patternPlaces - a.patternPlaces) || (a.id - b.id))[0];
+      // PD-04: Short 90–94%, Medium nearest the target, Long 98%+; the nearest when none is in the band.
       const share = (t) => t.knownShare ?? 100;
-      const order = {
-        short: (a, b) => share(a) - share(b),
-        long: (a, b) => share(b) - share(a),
-        medium: (a, b) => Math.abs(share(a) - target) - Math.abs(share(b) - target),
-      }[params.form];
-      return [...candidates].sort((a, b) => order(a, b) || (a.id - b.id))[0];
+      const band = { short: [90, 94], medium: [target, target], long: [98, 100] }[params.form];
+      const distance = (t) => Math.max(0, band[0] - share(t), share(t) - band[1]);
+      const pick = [...candidates].sort((a, b) => (distance(a) - distance(b)) || (a.id - b.id))[0];
+      if (distance(pick) > 0 && params.form !== 'medium') outOfBand = true;
+      return pick;
     };
+    let outOfBand = false;
     const reviewFirst = params.skill === 'grammar' ? (a, b) => (b.kind === 'pattern') - (a.kind === 'pattern') : () => 0;
     const lean = params.skill === 'words'
       ? fill({ length, leaves, durations, pickText: () => null })
@@ -127,7 +137,7 @@ export function plan({ kind, params, inventory, durations = DURATIONS }) {
       const text = pickText(length - lean.seconds);
       if (text) { const ex = textExercise(text, durations); lean.exercises.push(ex); lean.seconds += ex.seconds; }
     }
-    return result(lean, length);
+    return { ...result(lean, length), note: outOfBand ? "out_of_band" : null };
   }
 
   const length = params.minutes * 60;

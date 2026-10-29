@@ -104,10 +104,36 @@ test('FR-914 RQ-155: another account can\'t see, move or list this learner\'s se
   assert.deepEqual((await other.get('/api/topics')).body.topics, []);
 });
 
-test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes are planned within 20% or 2 minutes', { todo: 'FR-905 as written fills 4.3 min on the demo: PD-28 (question-pages/76, 1) decides how a session fills its time' }, () => {
+// SC-001 as amended 2026-10-29: within 20% or 2 minutes, or, where even practice reviews can't fill the
+// length (the demo has six drilled leaves), a plan that says it is shorter and uses every leaf it has.
+test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes are planned within 20% or 2 minutes, or say they are shorter with every leaf used', () => {
   const inventory = readInventory(t.grove.db, learner.id);
   for (const minutes of [3, 5, 10, 20]) {
     const p = plan({ kind: 'time', params: { minutes, voice: true }, inventory });
-    assert.ok(fits(p.seconds, minutes * 60), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
+    const used = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
+    assert.ok(fits(p.seconds, minutes * 60) || (p.short && inventory.leaves.every((l) => used.has(l.lemma))), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
   }
+});
+
+test('FR-905 RQ-421: a practice review answered in a session never changes the leaf\'s schedule, right or wrong (question-pages/76, F1)', async () => {
+  const db = t.grove.db;
+  const leaf = db.prepare("SELECT * FROM words WHERE account_id = ? AND drilled = 1 AND state = 'leaf' ORDER BY id LIMIT 1").get(learner.id);
+  const before = db.prepare('SELECT gap_days, last_review_at, reviews, state FROM words WHERE id = ?').get(leaf.id);
+  const answers = db.prepare('SELECT COUNT(*) AS n FROM review_answers WHERE word_id = ?').get(leaf.id).n;
+  for (const right of [true, false]) {
+    const r = await c.post('/api/review', { lemma: leaf.lemma, kind: leaf.kind, mode: 'remember', right, practice: true });
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    assert.equal(r.body.fell, false);
+  }
+  assert.deepEqual(db.prepare('SELECT gap_days, last_review_at, reviews, state FROM words WHERE id = ?').get(leaf.id), before);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM review_answers WHERE word_id = ?').get(leaf.id).n, answers);
+});
+
+test('FR-904 RQ-421: the summary counts practice reviews among the words reviewed and gives the days practised this week, no streak (PD-05)', async () => {
+  const s = (await start({ kind: 'time', minutes: 3 })).body.session;
+  let view = s;
+  for (let i = 0; i < 40 && view.status === 'going'; i += 1) view = (await c.post('/api/session/next', { sessionId: view.id, index: view.index })).body.session;
+  assert.equal(view.status, 'finished');
+  assert.deepEqual(Object.keys(view.summary).sort(), ['daysThisWeek', 'minutes', 'textsRead', 'wordsFell', 'wordsReviewed']);
+  assert.ok(view.summary.daysThisWeek >= 0 && view.summary.daysThisWeek <= 7);
 });

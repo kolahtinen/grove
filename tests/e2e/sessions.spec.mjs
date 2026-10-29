@@ -80,7 +80,9 @@ test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under 
     await page.waitForTimeout(150);
   }
   await expect(page.locator('#session-end')).toBeVisible();
-  await expect(page.locator('#summary li')).toHaveCount(4);
+  // FR-904 (PD-05): minutes, texts, words reviewed, words that fell and the days practised this week.
+  await expect(page.locator('#summary li')).toHaveCount(5);
+  await expect(page.locator('#summary li').last()).toContainText('this week');
   await expect(page.locator('#summary')).toContainText('min of practice');
   const after = await page.evaluate(async () => (await (await fetch('/api/session')).json()).session);
   expect(after).toBeNull();

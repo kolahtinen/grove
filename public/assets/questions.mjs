@@ -7,7 +7,8 @@ import { speak } from './speech.mjs';
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
 
 async function send(item, right) {
-  const r = await post('/api/review', { lemma: item.lemma, kind: item.kind, mode: item.mode, right });
+  // A practice review (G-09 FR-905) never changes the word's schedule.
+  const r = await post('/api/review', { lemma: item.lemma, kind: item.kind, mode: item.mode, right, ...(item.practice ? { practice: true } : {}) });
   return r.ok ? r.data : null;
 }
 

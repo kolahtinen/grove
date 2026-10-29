@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { plan, fits } from '../../server/sessions/plan.mjs';
-import { DURATIONS, textSeconds } from '../../server/sessions/durations.mjs';
+import { DURATIONS, durationsFor, textSeconds } from '../../server/sessions/durations.mjs';
 
 let nextId = 1;
 const leaf = (over = {}) => ({ id: nextId++, lemma: `ord${nextId}`, kind: 'word', strength: 0.4, due: true, fading: false, gap: 1, masterReady: false, textIds: [], ...over });
@@ -9,8 +9,10 @@ const text = (over = {}) => ({ id: nextId++, kind: 'reading', topic: 'café', re
 const inventory = (over = {}) => ({ leaves: [], texts: [], recent: { reading: 0, listening: 0 }, targetShare: 95, ...over });
 const time = (minutes, inv, voice = true) => plan({ kind: 'time', params: { minutes, voice }, inventory: inv });
 
-test('FR-905 RQ-421: durations are reading 100 words a minute, listening 80, Review 20 s, Master 25 s, and a marking step 30 s after a first reading', () => {
-  assert.deepEqual(DURATIONS, { readingWordsPerMinute: 100, listeningWordsPerMinute: 80, review: 20, master: 25, marking: 30 });
+test('FR-905 RQ-421: durations are reading 100 words a minute from B1 and 70 below (PD-02), listening 80, Review 20 s, Master 25 s, and a marking step 30 s after a first reading', () => {
+  assert.deepEqual(DURATIONS, { readingWordsPerMinute: 100, readingWordsPerMinuteBelowB1: 70, listeningWordsPerMinute: 80, review: 20, master: 25, marking: 30 });
+  assert.equal(textSeconds({ kind: 'reading', words: 140, read: true }, durationsFor(true)), 120);
+  assert.equal(textSeconds({ kind: 'listening', words: 160, read: true }, durationsFor(true)), 120);
   assert.equal(textSeconds({ kind: 'reading', words: 200, read: false }), 120 + 30);
   assert.equal(textSeconds({ kind: 'listening', words: 160, read: false }), 120 + 30);
   assert.equal(textSeconds({ kind: 'reading', words: 200, read: true }), 120);
@@ -117,4 +119,39 @@ test('FR-908 RQ-424: Just one mode: Review the due leaves (at most 10), Master i
   assert.ok(one('review').exercises.every((e) => e.mode === 'review'));
   assert.equal(one('master').exercises.length, 10);
   assert.deepEqual(one('discover').exercises.map((e) => e.textId), [texts[1].id]);
+});
+
+test('FR-905 RQ-421: after Master, practice reviews of leaves not yet due fill the plan while it is under 80% of the length, weakest first, each once (PD-28)', () => {
+  const notDue = Array.from({ length: 40 }, (_, i) => leaf({ due: false, strength: 0.9 - i / 100 }));
+  const p = time(5, inventory({ leaves: notDue }));
+  const practice = p.exercises.filter((e) => e.practice);
+  assert.ok(practice.length > 0);
+  assert.ok(practice.every((e) => e.mode === 'review' && e.type === 'review'));
+  assert.equal(new Set(practice.map((e) => e.lemma)).size, practice.length, 'each leaf at most once');
+  assert.equal(practice[0].lemma, notDue.at(-1).lemma, 'the weakest (soonest due) first');
+  assert.ok(p.seconds >= 0.8 * 300 && p.seconds <= 300, `planned ${p.seconds} s`);
+  assert.ok(fits(p.seconds, 300));
+  // A leaf already planned as due or Master isn't planned again as practice.
+  const both = time(5, inventory({ leaves: [leaf({ due: true }), leaf({ due: false, masterReady: true, gap: 3 })] }));
+  assert.equal(both.exercises.filter((e) => e.practice).length, 0);
+});
+
+test('FR-905 RQ-421: below B1 a reading text is planned at 70 words a minute; from B1 at 100 (PD-02)', () => {
+  const t1 = text({ words: 140, read: true });
+  const below = plan({ kind: 'time', params: { minutes: 5, voice: true }, inventory: inventory({ texts: [{ ...t1, read: false }], belowB1: true }) });
+  const from = plan({ kind: 'time', params: { minutes: 5, voice: true }, inventory: inventory({ texts: [{ ...t1, read: false }], belowB1: false }) });
+  assert.equal(below.exercises.find((e) => e.type === 'text').seconds, 120 + 30);
+  assert.equal(from.exercises.find((e) => e.type === 'text').seconds, 84 + 30);
+});
+
+test('FR-906 RQ-423: Short takes a text with 90–94% known words, Long 98% or more, Medium nearest the target; the nearest when none is in the band, and the plan says so (PD-04)', () => {
+  const texts = [text({ knownShare: 80 }), text({ knownShare: 92 }), text({ knownShare: 97 }), text({ knownShare: 99.5 })];
+  const run = (form, list = texts) => plan({ kind: 'skill', params: { skill: 'reading', form, voice: true }, inventory: inventory({ texts: list }) });
+  assert.equal(run('short').exercises.find((e) => e.type === 'text').textId, texts[1].id);
+  assert.equal(run('short').note, null);
+  assert.equal(run('long').exercises.find((e) => e.type === 'text').textId, texts[3].id);
+  assert.equal(run('medium').exercises.find((e) => e.type === 'text').textId, texts[2].id);
+  const outside = run('long', [texts[0], texts[2]]);
+  assert.equal(outside.exercises.find((e) => e.type === 'text').textId, texts[2].id, 'the nearest to the band');
+  assert.equal(outside.note, 'out_of_band');
 });

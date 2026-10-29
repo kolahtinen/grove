@@ -23,6 +23,7 @@ export function createSessions({ db, now = () => Date.now() }) {
       const item = db.prepare('SELECT * FROM words WHERE account_id = ? AND lemma = ? AND kind = ?').get(accountId, ex.lemma, ex.kind);
       if (item) view.question = ex.type === 'master' ? questions.masterQuestion(accountId, item) : questions.meaningQuestion(accountId, item);
       if (ex.spoken) view.spoken = true;
+      if (ex.practice) view.practice = true;
     }
     return view;
   }
@@ -42,6 +43,7 @@ export function createSessions({ db, now = () => Date.now() }) {
       total: exercises.length,
       minutesLeft: Math.round(left / 60),
       short: !!params.short,
+      note: params.note ?? null,
       status: row.status,
       exercise: row.status === 'going' && row.at_index < exercises.length ? exerciseView(accountId, exercises[row.at_index]) : null,
       summary: row.status === 'finished' ? summarise(db, accountId, row) : null,
@@ -62,7 +64,7 @@ export function createSessions({ db, now = () => Date.now() }) {
       const id = transaction(db, () => {
         db.prepare("UPDATE practice_sessions SET status = 'replaced', finished_at = ? WHERE account_id = ? AND status = 'going'").run(now(), accountId);
         return Number(db.prepare(`INSERT INTO practice_sessions (account_id, kind, minutes, params, plan, at_index, status, started_at)
-          VALUES (?, ?, ?, ?, ?, 0, 'going', ?)`).run(accountId, kind, minutes, JSON.stringify({ ...params, short: planned.short }), JSON.stringify(planned.exercises), now()).lastInsertRowid);
+          VALUES (?, ?, ?, ?, ?, 0, 'going', ?)`).run(accountId, kind, minutes, JSON.stringify({ ...params, short: planned.short, note: planned.note ?? null }), JSON.stringify(planned.exercises), now()).lastInsertRowid);
       });
       return view(accountId, db.prepare('SELECT * FROM practice_sessions WHERE id = ?').get(id));
     },

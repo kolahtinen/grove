@@ -5,7 +5,7 @@ import { createMarking } from './marking.mjs';
 import { createReview } from './review.mjs';
 import { createMarks } from './marks.mjs';
 import { createLeaves } from './leaves.mjs';
-import { createProgress, computeLevel } from './progress.mjs';
+import { createProgress, levelFor, speechRateFor } from './progress.mjs';
 import { createStart } from '../levels/start.mjs';
 
 const lemma = { type: 'string', min: 1, max: 80 };
@@ -28,7 +28,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
       const welcome = !settings?.welcome_dismissed;
       // G-06: before the starting check, the level line keeps "Set your starting level" (FR-608).
       const flags = start.flags(id);
-      sendJson(ctx.res, 200, { level: flags.needsStart ? null : computeLevel(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome, ...flags, speechRate: settings?.speech_rate ?? 1, voiceHelpShown: !!settings?.voice_help_shown });
+      sendJson(ctx.res, 200, { level: flags.needsStart ? null : levelFor(db, id), todayMinutes: progress.minutes(id, progress.today()), ...review.counts(id), welcome, ...flags, speechRate: speechRateFor(db, id), voiceHelpShown: !!settings?.voice_help_shown });
     },
   });
   router.add({
@@ -63,7 +63,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
   });
   router.add({
     method: 'POST', path: '/api/review', access: 'agreed',
-    schema: { lemma, kind, mode: { type: 'enum', values: ['remember', 'master', 'recall'] }, right: { type: 'boolean' } },
+    schema: { lemma, kind, mode: { type: 'enum', values: ['remember', 'master', 'recall'] }, right: { type: 'boolean' }, practice: { type: 'boolean', optional: true } },
     handler: (ctx) => sendJson(ctx.res, 200, review.answer(ctx.account.id, ctx.body)),
   });
   router.add({ method: 'GET', path: '/api/leaves', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, leaves.list(ctx.account.id)) });

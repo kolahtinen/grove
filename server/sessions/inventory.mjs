@@ -4,6 +4,7 @@
 import { strength, isDue, MASTER_GAP } from '../drill/schedule.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { createWordStore } from '../words/store.mjs';
+import { levelFor, isBelowB1 } from '../drill/progress.mjs';
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -55,5 +56,5 @@ export function readInventory(db, accountId, { now = Date.now(), knownShares = f
     recent[t.kind] += words.get(t.id) ?? 0;
   }
   const targetShare = db.prepare('SELECT target_share FROM learner_settings WHERE account_id = ?').get(accountId)?.target_share ?? 95;
-  return { leaves, texts, recent, targetShare };
+  return { leaves, texts, recent, targetShare, belowB1: isBelowB1(levelFor(db, accountId)) };
 }

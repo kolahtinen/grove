@@ -5,8 +5,8 @@ const rootVar = (page, name) => page.evaluate((n) => getComputedStyle(document.d
 
 // Palette 14 (G-09 FR-913 replaces Appendix A.1's colours).
 const TOKENS = {
-  dark: { '--bg': '#0F110E', '--card': '#1A1F1A', '--card2': '#222822', '--ink': '#E9EBE3', '--accent': '#6FA27E', '--accent2': '#97C3A2', '--muted': '#9AA095', '--discover': '#E3A46E', '--review': '#C27A52', '--master': '#9C5745' },
-  light: { '--bg': '#ECE5DA', '--card': '#EEEEE2', '--card2': '#F5F4EC', '--ink': '#26241F', '--accent': '#2F5A40', '--accent2': '#5E8A66', '--muted': '#74706A', '--discover': '#C08552', '--review': '#8C5A3C', '--master': '#4B2E2B' },
+  dark: { '--bg': '#0F110E', '--card': '#1A1F1A', '--card2': '#222822', '--ink': '#E9EBE3', '--accent': '#6FA27E', '--accent2': '#97C3A2', '--muted': '#9AA095', '--discover': '#F0C28F', '--review': '#DE9A66', '--master': '#CF7A5E' },
+  light: { '--bg': '#ECE5DA', '--card': '#EEEEE2', '--card2': '#F5F4EC', '--ink': '#26241F', '--accent': '#2F5A40', '--accent2': '#5E8A66', '--muted': '#6A6761', '--discover': '#92592C', '--review': '#74432C', '--master': '#4B2E2B' },
 };
 const RGB = { dark: { bg: 'rgb(15, 17, 14)', ink: 'rgb(233, 235, 227)' }, light: { bg: 'rgb(236, 229, 218)', ink: 'rgb(38, 36, 31)' } };
 

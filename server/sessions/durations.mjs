@@ -1,13 +1,19 @@
 // How long grove counts each kind of exercise when it plans a session (G-09 FR-905; question-pages/75, 1:
 // the first guess; learning each learner's own times is for a later version). One place to change after
-// SC-004's timed session. PD-02 (70 words a minute below B1) is still to confirm with the owner.
+// SC-004's timed session. Reading is 100 words a minute from B1 and 70 below (PD-02, question-pages/76, 5).
 export const DURATIONS = {
   readingWordsPerMinute: 100,
+  readingWordsPerMinuteBelowB1: 70,
   listeningWordsPerMinute: 80,
   review: 20,
   master: 25,
   marking: 30,
 };
+
+// The durations for a learner: below B1, reading is planned at the slower rate.
+export function durationsFor(belowB1, durations = DURATIONS) {
+  return belowB1 ? { ...durations, readingWordsPerMinute: durations.readingWordsPerMinuteBelowB1 ?? durations.readingWordsPerMinute } : durations;
+}
 
 // A text's seconds: its words at the reading or listening rate, plus the marking step after a first reading.
 export function textSeconds(text, durations = DURATIONS) {

@@ -145,7 +145,7 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember swi
   await expect(page.locator('#leaves-remember')).toContainText('servitör');
 });
 
-test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mark they had when they fell; a form of more than one word has no mark', async ({ page }) => {
+test('FR-413 RQ-294 RQ-413 RQ-415 RQ-426: To remember words are teal-green with a dotted underline; fallen words look like known words; a form of more than one word has no mark', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
   await setState(page, 'räkna', { remember: true });
@@ -153,7 +153,11 @@ test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mar
   await api(page, '/api/let-it-fall', { lemma: 'gärna', confirmed: true });
   await page.goto(`/text?id=${ids['En bra dag']}`);
   await expect(page.locator('button.w', { hasText: /^räknar$/ })).toHaveClass(/m-remember/);
-  await expect(page.locator('button.w', { hasText: /^gärna$/ })).toHaveClass(/f-remember/);
+  const remember = page.locator('button.w', { hasText: /^räknar$/ });
+  await expect(remember).toHaveCSS('border-bottom-style', 'dotted');
+  // PD-13 (question-pages/76, 13): a fallen word has the text's own colour, like any known word.
+  const [fallen, text] = await page.evaluate(() => [getComputedStyle([...document.querySelectorAll('button.w')].find((b) => b.textContent === 'gärna')).color, getComputedStyle(document.body).color]);
+  expect(fallen).toBe(text);
   await expect(page.locator('button.w.other-reading')).toHaveCount(0);
 });
 

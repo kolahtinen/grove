@@ -35,6 +35,7 @@ function showEnd(session) {
     el('li', '', `${s.textsRead} text${s.textsRead === 1 ? '' : 's'} read`),
     el('li', '', `${s.wordsReviewed} word${s.wordsReviewed === 1 ? '' : 's'} reviewed`),
     el('li', '', `${s.wordsFell} word${s.wordsFell === 1 ? '' : 's'} fell to your ground`),
+    el('li', '', `You’ve practised ${s.daysThisWeek} day${s.daysThisWeek === 1 ? '' : 's'} this week`),
   );
   $('session-line').textContent = `${session.label} · done`;
   $('session-bar').value = 1;
@@ -55,6 +56,10 @@ function show(session) {
   if (session.status === 'finished') { showEnd(session); return; }
   if (session.status !== 'going') { show(null); return; }
   $('session-line').textContent = `${session.label} · ${session.index + 1} of ${session.total} · about ${session.minutesLeft} min left`;
+  // FR-905, FR-906: a plan that is shorter than asked, or a text outside the form's range, says so.
+  const notes = [session.short && 'There isn’t enough to fill the whole time, so this session is shorter.', session.note === 'out_of_band' && 'No text is in this form’s range of known words, so grove took the nearest.'].filter(Boolean);
+  $('session-note').hidden = !notes.length;
+  $('session-note').textContent = notes.join(' ');
   $('session-bar').value = session.index / session.total;
   const ex = session.exercise;
   $('exercise').hidden = false;
@@ -76,7 +81,7 @@ function show(session) {
     box.append(b);
     return;
   }
-  renderQuestion(box, ex.question, { spoken: !!ex.spoken, onDone: () => next(session) });
+  renderQuestion(box, { ...ex.question, practice: !!ex.practice }, { spoken: !!ex.spoken, onDone: () => next(session) });
 }
 
 // After a text, the page names its session, so one the text finished still shows its summary.

@@ -7,6 +7,7 @@ import { dictionaryPage, readQuery } from './dictionary.mjs';
 import { addOwnText, saveLeaf, ownStatus } from './own.mjs';
 import { ownText } from './view.mjs';
 import { DEFAULT_SIZES } from '../config.mjs';
+import { speechRateFor } from '../drill/progress.mjs';
 
 const note = { type: 'string', min: 0, max: 200, optional: true };
 
@@ -20,7 +21,7 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
     method: 'GET', path: '/api/settings', access: 'agreed',
     handler: (ctx) => {
       const s = db.prepare('SELECT speak_words, speech_rate FROM learner_settings WHERE account_id = ?').get(ctx.account.id);
-      sendJson(ctx.res, 200, { speakWords: s ? !!s.speak_words : true, speechRate: s?.speech_rate ?? 1 });
+      sendJson(ctx.res, 200, { speakWords: s ? !!s.speak_words : true, speechRate: speechRateFor(db, ctx.account.id) });
     },
   });
 
@@ -41,6 +42,8 @@ export function registerReadingRoutes(router, { db, sizes = DEFAULT_SIZES, now =
         const value = typeof ctx.body[key] === 'boolean' ? (ctx.body[key] ? 1 : 0) : Math.round(ctx.body[key] * 10) / 10;
         db.prepare(`UPDATE learner_settings SET ${column} = ? WHERE account_id = ?`).run(value, ctx.account.id);
         sent[key] = ctx.body[key];
+        // G-09 FR-921: once the learner sets the speed, it no longer follows the level.
+        if (key === 'speechRate') db.prepare('UPDATE learner_settings SET speech_rate_set = 1 WHERE account_id = ?').run(ctx.account.id);
       }
       sendJson(ctx.res, 200, sent);
     },

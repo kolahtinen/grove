@@ -3,10 +3,10 @@
 
 /* Palette 14 (G-09 FR-913, replacing Appendix A.1's colours): dark by default; light follows the device's
    setting (FR-026). Every colour in this file is a token here. The word, ok, bad and Beta colours are
-   re-picked from the same family (PD-13, PD-14, provisional); --link and
-   --muted-strong are the accent and muted shades that keep AA where text sits on cards and tinted pills
-   (found by the contrast test, T804); the mode colours are FR-913's as written
-   (PD-12's contrast adjustment still to confirm). */
+   re-picked from the same family (PD-13, PD-14); --link and --muted-strong are the accent and muted
+   shades that keep AA where text sits on cards and tinted pills (found by the contrast test, T804); the
+   mode and light muted colours are PD-12's, adjusted for contrast (question-pages/76, 12). The light
+   gradient's end stays FR-913's #5E8A66 until the owner confirms the proposed #577F5E. */
 :root {
   color-scheme: dark;
   --bg: #0F110E;
@@ -39,12 +39,9 @@
   --phtx: #0F110E;
   --cw: #7CC2B0;
   --gpk: #E3A46E;
-  --rw: #B9BDB2;
-  --rr: #B9BDB2;
-  --rb: #B9BDB2;
-  --discover: #E3A46E;
-  --review: #C27A52;
-  --master: #9C5745;
+  --discover: #F0C28F;
+  --review: #DE9A66;
+  --master: #CF7A5E;
   --size-factor: 1;
   --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
 }
@@ -57,7 +54,7 @@
     --card: #EEEEE2;
     --card2: #F5F4EC;
     --ink: #26241F;
-    --muted: #74706A;
+    --muted: #6A6761;
     --line: rgba(38,36,31,.12);
     --accent: #2F5A40;
     --accent2: #5E8A66;
@@ -82,11 +79,8 @@
     --phtx: #FFFFFF;
     --cw: #2E6B5E;
     --gpk: #92592C;
-    --rw: #4F4C46;
-    --rr: #4F4C46;
-    --rb: #4F4C46;
-    --discover: #C08552;
-    --review: #8C5A3C;
+    --discover: #92592C;
+    --review: #74432C;
     --master: #4B2E2B;
   }
 }
@@ -317,10 +311,9 @@ a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82re
 .marking-list li { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; padding: .35rem 0; border-top: 1px solid var(--line); }
 .marking-list .mark-word { flex: 1 1 8rem; }
 .switch[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--link); }
-.w.m-remember { color: var(--cw); }
-.w.f-read { color: var(--rr); }
-.w.f-remember { color: var(--rw); }
-.w.f-both { color: var(--rb); }
+/* G-04 FR-413 (PD-13): To remember in teal-green with a dotted underline, so colour isn't the only sign;
+   fallen words look like any known word. */
+.w.m-remember { color: var(--cw); border-bottom: 2px dotted var(--cw); }
 /* A word and the punctuation around it never break apart (FR-320): a flex box doesn't wrap, where an
    inline button followed by text may break even with nowrap. */
 .nb { display: inline-flex; align-items: baseline; white-space: nowrap; }

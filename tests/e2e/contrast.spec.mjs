@@ -6,12 +6,9 @@ import { REVIEWER } from '../fakes/dev-accounts.mjs';
 // meets 4.5:1 against the background it sits on (3:1 for text ≥ 24 px or ≥ 18.66 px bold, and for
 // chips). Disabled controls are exempt (WCAG 1.4.3). The background is the nearest opaque one, with
 // any translucent layers above it blended in; on a gradient, every colour stop is checked.
-// Palette 14 as FR-913 gives it is below these ratios in three places, reported apart until the owner
-// decides: light muted text and light Discover (PD-12, question-pages/76, 12 proposes adjusted values),
-// and white text on the light end of the main buttons' gradient, #5E8A66 (3.96:1; found by this test,
-// not yet in PD-12: no text colour passes on both ends of FR-913's light accent gradient).
-const PD12 = ['rgb(116, 112, 106)', 'rgb(192, 133, 82)'];
-const palette = (f) => PD12.includes(f.color) || (f.color === 'rgb(255, 255, 255)' && f.bg === 'rgb(94, 138, 102)');
+// One pair is reported apart until the owner decides: white text on the light end of the main buttons'
+// gradient, #5E8A66 (3.96:1; found by this test); FR-913 proposes #577F5E (PD-12's colours now pass).
+const palette = (f) => f.color === 'rgb(255, 255, 255)' && f.bg === 'rgb(94, 138, 102)';
 
 const SIGNED_OUT = ['/signin', '/reset', '/terms', '/how', '/credits'];
 const SIGNED_IN = ['/', '/texts', '/session', '/review?mode=review', '/text', '/leaves', '/progress', '/dictionary', '/settings', '/profile'];
@@ -127,14 +124,14 @@ async function auditAll(page, scheme) {
 }
 
 for (const scheme of ['light', 'dark']) {
-  test(`FR-913 SC-003 RQ-426 R-26: in the ${scheme} look every page's text meets AA against its background (apart from palette 14's three known pairs)`, async ({ page }) => {
+  test(`FR-913 SC-003 RQ-426 R-26: in the ${scheme} look every page's text meets AA against its background (apart from the light gradient end FR-913 proposes to change)`, async ({ page }) => {
     test.setTimeout(90000);
     const found = await auditAll(page, scheme);
     expect(found.filter((f) => !palette(f))).toEqual([]);
   });
 
-  test.fixme(`FR-913 SC-003 RQ-426 R-26: in the ${scheme} look every page's text meets AA, palette 14's known pairs included`, async ({ page }) => {
-    // Waits for the owner: PD-12 (light muted, light Discover) and white on the light gradient's end.
+  test.fixme(`FR-913 SC-003 RQ-426 R-26: in the ${scheme} look every page's text meets AA, the light gradient end included`, async ({ page }) => {
+    // Waits for the owner: white on the light gradient's end (FR-913 proposes #577F5E).
     test.setTimeout(90000);
     expect(await auditAll(page, scheme)).toEqual([]);
   });
