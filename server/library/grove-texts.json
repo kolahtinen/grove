@@ -1730,6 +1730,188 @@
   ]
  },
  {
+  "id": "A1-20",
+  "level": "A1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Ett lånekort",
+  "names": [],
+  "lines": [
+   {
+    "sv": "– Hej. Jag vill låna böcker här.",
+    "en": "– Hi. I want to borrow books here."
+   },
+   {
+    "sv": "– Hej! Har du ett lånekort?",
+    "en": "– Hi! Do you have a library card?"
+   },
+   {
+    "sv": "– Nej, jag är ny i stan.",
+    "en": "– No, I'm new in town."
+   },
+   {
+    "sv": "– Det är inga problem. Har du id-kort?",
+    "en": "– That's no problem. Do you have an ID card?"
+   },
+   {
+    "sv": "– Ja, här är det.",
+    "en": "– Yes, here it is."
+   },
+   {
+    "sv": "– Tack. Vilken är din adress?",
+    "en": "– Thanks. What is your address?"
+   },
+   {
+    "sv": "– Jag bor på Skolgatan fem.",
+    "en": "– I live at Skolgatan five."
+   },
+   {
+    "sv": "– Bra. Här är ditt kort. Det är gratis.",
+    "en": "– Good. Here is your card. It's free."
+   },
+   {
+    "sv": "– Hur många böcker kan jag låna?",
+    "en": "– How many books can I borrow?"
+   },
+   {
+    "sv": "– Så många du vill. Du har dem i fyra veckor.",
+    "en": "– As many as you want. You have them for four weeks."
+   },
+   {
+    "sv": "– Har ni böcker på lätt svenska?",
+    "en": "– Do you have books in easy Swedish?"
+   },
+   {
+    "sv": "– Ja, de står där borta, vid fönstret.",
+    "en": "– Yes, they're over there, by the window."
+   },
+   {
+    "sv": "– Tack så mycket!",
+    "en": "– Thank you very much!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad behöver man för att få ett lånekort?",
+    "options": [
+     "Id-kort",
+     "Pengar",
+     "Ett foto"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad kostar lånekortet?",
+    "options": [
+     "Tio kronor",
+     "Det är gratis",
+     "Hundra kronor"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur länge får man ha böckerna?",
+    "options": [
+     "En vecka",
+     "Fyra veckor",
+     "Ett år"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A1-21",
+  "level": "A1",
+  "topic": "People and family",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Grattis, mormor!",
+  "names": [
+   "Alma"
+  ],
+  "lines": [
+   {
+    "sv": "– Hej mormor! Det är Alma.",
+    "en": "– Hi grandma! It's Alma."
+   },
+   {
+    "sv": "– Hej, älskling! Vad roligt att du ringer.",
+    "en": "– Hi, darling! How nice that you're calling."
+   },
+   {
+    "sv": "– Grattis på födelsedagen!",
+    "en": "– Happy birthday!"
+   },
+   {
+    "sv": "– Tack! Nu är jag sjuttio år.",
+    "en": "– Thanks! Now I'm seventy."
+   },
+   {
+    "sv": "– Vad gör du i dag?",
+    "en": "– What are you doing today?"
+   },
+   {
+    "sv": "– Mina vänner kommer klockan tre. Vi dricker kaffe och äter tårta.",
+    "en": "– My friends are coming at three. We'll drink coffee and eat cake."
+   },
+   {
+    "sv": "– Vilken tårta har du?",
+    "en": "– What cake do you have?"
+   },
+   {
+    "sv": "– En stor tårta med jordgubbar.",
+    "en": "– A big cake with strawberries."
+   },
+   {
+    "sv": "– Mums! Jag kommer på lördag med mamma.",
+    "en": "– Yum! I'm coming on Saturday with mum."
+   },
+   {
+    "sv": "– Vad bra. Då sparar jag lite tårta till dig.",
+    "en": "– Good. Then I'll save a little cake for you."
+   },
+   {
+    "sv": "– Tack, mormor. Jag har en present till dig också.",
+    "en": "– Thanks, grandma. I have a present for you too."
+   },
+   {
+    "sv": "– Åh, vad snällt. Vi ses på lördag!",
+    "en": "– Oh, how kind. See you on Saturday!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur gammal blir mormor?",
+    "options": [
+     "Sextio år",
+     "Sjuttio år",
+     "Åttio år"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad finns på tårtan?",
+    "options": [
+     "Choklad",
+     "Jordgubbar",
+     "Äpplen"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "När kommer Alma?",
+    "options": [
+     "I dag",
+     "På lördag",
+     "Nästa vecka"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "A2-01",
   "level": "A2",
   "topic": "Travel and transport",
@@ -3487,6 +3669,275 @@
   ]
  },
  {
+  "id": "A2-20",
+  "level": "A2",
+  "topic": "People and family",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Pappa är hemma",
+  "names": [
+   "Erik",
+   "Eriks",
+   "Liv"
+  ],
+  "lines": [
+   {
+    "sv": "Erik är föräldraledig i sex månader med sin dotter Liv.",
+    "en": "Erik is on parental leave for six months with his daughter Liv."
+   },
+   {
+    "sv": "Liv är tio månader gammal och har precis börjat gå.",
+    "en": "Liv is ten months old and has just started walking."
+   },
+   {
+    "sv": "I Sverige kan både mammor och pappor vara hemma med sina barn.",
+    "en": "In Sweden both mothers and fathers can stay at home with their children."
+   },
+   {
+    "sv": "Föräldrarna delar på dagarna, och man får pengar från staten.",
+    "en": "The parents share the days, and you get money from the state."
+   },
+   {
+    "sv": "Eriks dagar är fulla.",
+    "en": "Erik's days are full."
+   },
+   {
+    "sv": "På morgonen går de till parken, där han träffar andra pappor med barnvagnar.",
+    "en": "In the morning they go to the park, where he meets other dads with prams."
+   },
+   {
+    "sv": "Efter lunch sover Liv i två timmar.",
+    "en": "After lunch Liv sleeps for two hours."
+   },
+   {
+    "sv": "Då hinner Erik städa, laga mat och ibland läsa en bok.",
+    "en": "Then Erik has time to clean, cook and sometimes read a book."
+   },
+   {
+    "sv": "Det är tröttare än jobbet, säger han och skrattar.",
+    "en": "It's more tiring than work, he says and laughs."
+   },
+   {
+    "sv": "Men han är glad att han får se Liv lära sig nya saker.",
+    "en": "But he is glad he gets to see Liv learn new things."
+   },
+   {
+    "sv": "Förra veckan sa hon pappa för första gången.",
+    "en": "Last week she said dad for the first time."
+   },
+   {
+    "sv": "Det glömmer jag aldrig, säger Erik.",
+    "en": "I'll never forget that, says Erik."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur länge är Erik föräldraledig?",
+    "options": [
+     "Tre månader",
+     "Sex månader",
+     "Ett år"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör Erik när Liv sover?",
+    "options": [
+     "Han sover också",
+     "Han städar, lagar mat och läser",
+     "Han jobbar"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad hände förra veckan?",
+    "options": [
+     "Liv började gå",
+     "Liv sa pappa för första gången",
+     "Liv började på förskolan"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A2-21",
+  "level": "A2",
+  "topic": "Home",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Flyttdagen",
+  "names": [
+   "Kevin",
+   "Sanna"
+  ],
+  "lines": [
+   {
+    "sv": "– Kevin, var ska vi ställa den här lådan?",
+    "en": "– Kevin, where shall we put this box?"
+   },
+   {
+    "sv": "– Vad står det på den?",
+    "en": "– What does it say on it?"
+   },
+   {
+    "sv": "– Kök. Den är jättetung.",
+    "en": "– Kitchen. It's really heavy."
+   },
+   {
+    "sv": "– Ställ den på golvet vid spisen. Där finns det plats.",
+    "en": "– Put it on the floor by the cooker. There's room there."
+   },
+   {
+    "sv": "– Hur många lådor har vi kvar i bilen?",
+    "en": "– How many boxes do we have left in the car?"
+   },
+   {
+    "sv": "– Bara fem eller sex. Och soffan.",
+    "en": "– Only five or six. And the sofa."
+   },
+   {
+    "sv": "– Soffan? Den kan vi inte bära själva.",
+    "en": "– The sofa? We can't carry that ourselves."
+   },
+   {
+    "sv": "– Nej, min bror kommer och hjälper oss klockan tre.",
+    "en": "– No, my brother is coming to help us at three."
+   },
+   {
+    "sv": "– Bra. Ska vi ta en paus först? Jag är så hungrig.",
+    "en": "– Good. Shall we take a break first? I'm so hungry."
+   },
+   {
+    "sv": "– Ja. Vi kan beställa pizza. Vi har ju inga tallrikar uppackade än.",
+    "en": "– Yes. We can order pizza. We don't have any plates unpacked yet."
+   },
+   {
+    "sv": "– Vi kan äta på golvet. Det blir vår första middag här.",
+    "en": "– We can eat on the floor. It'll be our first dinner here."
+   },
+   {
+    "sv": "– Jag tycker redan om den här lägenheten. Titta vilken utsikt!",
+    "en": "– I already like this flat. Look at the view!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Var ska lådan stå?",
+    "options": [
+     "I sovrummet",
+     "Vid spisen",
+     "I hallen"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vem hjälper dem med soffan?",
+    "options": [
+     "Kevins bror",
+     "En granne",
+     "Ingen"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad ska de äta?",
+    "options": [
+     "Pizza",
+     "Soppa",
+     "Smörgåsar"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "A2-22",
+  "level": "A2",
+  "topic": "Work and study",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Sommarjobbet",
+  "names": [
+   "Tilda"
+  ],
+  "lines": [
+   {
+    "sv": "Tilda är sjutton år och har fått sitt första sommarjobb.",
+    "en": "Tilda is seventeen and has got her first summer job."
+   },
+   {
+    "sv": "Hon jobbar på ett kafé vid havet i fyra veckor.",
+    "en": "She works at a café by the sea for four weeks."
+   },
+   {
+    "sv": "Första dagen var hon mycket nervös.",
+    "en": "On the first day she was very nervous."
+   },
+   {
+    "sv": "Hon visste inte hur kaffemaskinen fungerade och tappade en kopp på golvet.",
+    "en": "She didn't know how the coffee machine worked and dropped a cup on the floor."
+   },
+   {
+    "sv": "Men hennes chef var snäll och visade henne allt.",
+    "en": "But her boss was kind and showed her everything."
+   },
+   {
+    "sv": "Nu kan hon göra cappuccino och ta betalt i kassan.",
+    "en": "Now she can make cappuccino and take payment at the till."
+   },
+   {
+    "sv": "Det är mycket att göra när solen skiner, för då kommer många turister.",
+    "en": "There's a lot to do when the sun shines, because then many tourists come."
+   },
+   {
+    "sv": "När det regnar är det lugnt, och då bakar hon bullar med sin kollega.",
+    "en": "When it rains it's quiet, and then she bakes buns with her colleague."
+   },
+   {
+    "sv": "Tilda sparar pengarna till en resa med sina vänner.",
+    "en": "Tilda is saving the money for a trip with her friends."
+   },
+   {
+    "sv": "Hon har lärt sig mycket.",
+    "en": "She has learned a lot."
+   },
+   {
+    "sv": "Chefen har frågat om hon vill komma tillbaka nästa sommar.",
+    "en": "Her boss has asked if she wants to come back next summer."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Var jobbar Tilda?",
+    "options": [
+     "I en affär",
+     "På ett kafé vid havet",
+     "På ett hotell"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör hon när det regnar?",
+    "options": [
+     "Hon går hem",
+     "Hon bakar bullar",
+     "Hon städar"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad sparar hon pengarna till?",
+    "options": [
+     "En resa med vänner",
+     "En cykel",
+     "En dator"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
   "id": "B1-01",
   "level": "B1",
   "topic": "Work and study",
@@ -4592,6 +5043,471 @@
      "Att man träffas innan hösten kommer"
     ],
     "answer": 2
+   }
+  ]
+ },
+ {
+  "id": "B1-13",
+  "level": "B1",
+  "topic": "Daily life",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Mobilen som slutade fungera",
+  "names": [
+   "Jonas"
+  ],
+  "lines": [
+   {
+    "sv": "– Kundtjänst, du pratar med Jonas. Vad kan jag hjälpa dig med?",
+    "en": "– Customer service, you're speaking to Jonas. How can I help you?"
+   },
+   {
+    "sv": "– Hej. Jag köpte en mobil hos er för tre månader sedan, och nu går den inte att ladda.",
+    "en": "– Hi. I bought a phone from you three months ago, and now it won't charge."
+   },
+   {
+    "sv": "– Vad tråkigt. Har du provat med en annan laddare?",
+    "en": "– That's a shame. Have you tried with another charger?"
+   },
+   {
+    "sv": "– Ja, jag har provat två olika, men det händer ingenting.",
+    "en": "– Yes, I've tried two different ones, but nothing happens."
+   },
+   {
+    "sv": "– Har mobilen tappats eller blivit blöt?",
+    "en": "– Has the phone been dropped or got wet?"
+   },
+   {
+    "sv": "– Nej, den har legat i ett skal hela tiden.",
+    "en": "– No, it has been in a case the whole time."
+   },
+   {
+    "sv": "– Då gäller garantin. Du kan lämna in den i vilken av våra butiker som helst.",
+    "en": "– Then the warranty applies. You can hand it in at any of our shops."
+   },
+   {
+    "sv": "– Hur lång tid tar det att laga den?",
+    "en": "– How long does it take to repair it?"
+   },
+   {
+    "sv": "– Normalt ungefär två veckor. Om den inte går att laga får du en ny.",
+    "en": "– Normally about two weeks. If it can't be repaired you'll get a new one."
+   },
+   {
+    "sv": "– Två veckor? Jag behöver mobilen för jobbet.",
+    "en": "– Two weeks? I need the phone for work."
+   },
+   {
+    "sv": "– Jag förstår. Då kan du låna en ersättningsmobil i butiken under tiden.",
+    "en": "– I understand. Then you can borrow a replacement phone in the shop meanwhile."
+   },
+   {
+    "sv": "– Vad bra. Behöver jag ta med kvittot?",
+    "en": "– Great. Do I need to bring the receipt?"
+   },
+   {
+    "sv": "– Ja, eller visa köpet i appen. Glöm inte att spara dina bilder innan du lämnar in den.",
+    "en": "– Yes, or show the purchase in the app. Don't forget to save your photos before you hand it in."
+   },
+   {
+    "sv": "– Tack för hjälpen, Jonas.",
+    "en": "– Thanks for your help, Jonas."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad är problemet med mobilen?",
+    "options": [
+     "Skärmen är trasig",
+     "Den går inte att ladda",
+     "Den är för långsam"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur lång tid tar reparationen normalt?",
+    "options": [
+     "En dag",
+     "Två veckor",
+     "En månad"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad kan kunden låna under tiden?",
+    "options": [
+     "En dator",
+     "En ersättningsmobil",
+     "Ingenting"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "B1-14",
+  "level": "B1",
+  "topic": "Home",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Det gamla torpet",
+  "names": [
+   "Emma",
+   "Johan",
+   "Värmland"
+  ],
+  "lines": [
+   {
+    "sv": "För två år sedan köpte Emma och Johan ett gammalt torp i Värmland.",
+    "en": "Two years ago Emma and Johan bought an old cottage in Värmland."
+   },
+   {
+    "sv": "Huset hade stått tomt i nästan tio år och var i dåligt skick.",
+    "en": "The house had stood empty for almost ten years and was in poor condition."
+   },
+   {
+    "sv": "Taket läckte, fönstren var trasiga och det fanns möss i köket.",
+    "en": "The roof leaked, the windows were broken and there were mice in the kitchen."
+   },
+   {
+    "sv": "Deras vänner tyckte att de var galna, men Emma och Johan såg möjligheterna.",
+    "en": "Their friends thought they were mad, but Emma and Johan saw the possibilities."
+   },
+   {
+    "sv": "De har gjort det mesta av arbetet själva, på helger och under semestrar.",
+    "en": "They have done most of the work themselves, at weekends and during holidays."
+   },
+   {
+    "sv": "Först lade de nytt tak, eftersom det var det viktigaste.",
+    "en": "First they put on a new roof, since that was the most important thing."
+   },
+   {
+    "sv": "Sedan bytte de fönster och målade huset rött med vita knutar, som det ska vara.",
+    "en": "Then they replaced the windows and painted the house red with white corners, as it should be."
+   },
+   {
+    "sv": "Johan har lärt sig mycket genom att titta på filmer på nätet, och Emma är numera expert på gamla färger.",
+    "en": "Johan has learned a lot from watching videos online, and Emma is now an expert on old paints."
+   },
+   {
+    "sv": "Det har inte alltid varit roligt.",
+    "en": "It hasn't always been fun."
+   },
+   {
+    "sv": "En gång föll Johan från stegen och bröt armen, och arbetet fick vänta en hel sommar.",
+    "en": "Once Johan fell off the ladder and broke his arm, and the work had to wait a whole summer."
+   },
+   {
+    "sv": "Men nu är huset nästan klart, och i år firade de midsommar där med hela familjen.",
+    "en": "But now the house is almost finished, and this year they celebrated Midsummer there with the whole family."
+   },
+   {
+    "sv": "Det känns som om huset har fått ett nytt liv, säger Emma.",
+    "en": "It feels as if the house has got a new life, says Emma."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur var huset när de köpte det?",
+    "options": [
+     "Nyrenoverat",
+     "I dåligt skick",
+     "Litet men fint"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gjorde de först?",
+    "options": [
+     "Målade huset",
+     "Lade nytt tak",
+     "Bytte fönster"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad hände med Johan?",
+    "options": [
+     "Han föll från stegen och bröt armen",
+     "Han blev sjuk",
+     "Han fick nytt jobb"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "B1-15",
+  "level": "B1",
+  "topic": "Work and study",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Praktik på redaktionen",
+  "names": [
+   "Yasmin"
+  ],
+  "lines": [
+   {
+    "sv": "Yasmin läser journalistik och gör just nu tio veckors praktik på en lokaltidning.",
+    "en": "Yasmin is studying journalism and is currently doing a ten-week internship at a local newspaper."
+   },
+   {
+    "sv": "Hon hade trott att hon mest skulle koka kaffe och läsa korrektur.",
+    "en": "She had thought she would mostly make coffee and proofread."
+   },
+   {
+    "sv": "Men redan första veckan fick hon skriva en egen artikel.",
+    "en": "But already in the first week she got to write her own article."
+   },
+   {
+    "sv": "Den handlade om en skola som skulle läggas ner, och hon intervjuade både föräldrar och politiker.",
+    "en": "It was about a school that was going to close, and she interviewed both parents and politicians."
+   },
+   {
+    "sv": "Det var nervöst att ringa till kommunen och ställa svåra frågor.",
+    "en": "It was nerve-racking to call the council and ask difficult questions."
+   },
+   {
+    "sv": "Hennes handledare läste texten och gav henne många kommentarer.",
+    "en": "Her supervisor read the text and gave her lots of comments."
+   },
+   {
+    "sv": "Hon fick skriva om den tre gånger innan den blev publicerad.",
+    "en": "She had to rewrite it three times before it was published."
+   },
+   {
+    "sv": "Yasmin säger att hon har lärt sig mer på några veckor än under en hel termin på universitetet.",
+    "en": "Yasmin says she has learned more in a few weeks than during a whole term at university."
+   },
+   {
+    "sv": "På en riktig redaktion finns det ingen tid att vänta på inspiration, eftersom tidningen ska ut varje dag.",
+    "en": "At a real newsroom there is no time to wait for inspiration, since the paper comes out every day."
+   },
+   {
+    "sv": "Det svåraste har varit att skriva kort.",
+    "en": "The hardest thing has been writing briefly."
+   },
+   {
+    "sv": "Många läsare tittar bara på rubriken och den första meningen, så det viktigaste måste stå först.",
+    "en": "Many readers only look at the headline and the first sentence, so the most important thing must come first."
+   },
+   {
+    "sv": "Efter praktiken hoppas hon kunna jobba extra på tidningen under helgerna.",
+    "en": "After the internship she hopes to work extra at the paper at weekends."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad trodde Yasmin att hon skulle göra?",
+    "options": [
+     "Skriva artiklar",
+     "Koka kaffe och läsa korrektur",
+     "Fotografera"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad handlade hennes första artikel om?",
+    "options": [
+     "En skola som skulle läggas ner",
+     "En fotbollsmatch",
+     "Ett nytt kafé"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad har varit svårast?",
+    "options": [
+     "Att intervjua politiker",
+     "Att skriva kort",
+     "Att komma i tid"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "B1-16",
+  "level": "B1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Mötet i föreningen",
+  "names": [
+   "Lena",
+   "Ahmad"
+  ],
+  "lines": [
+   {
+    "sv": "– Välkomna till föreningens möte. Första punkten är gården. Ahmad, du ville säga något?",
+    "en": "– Welcome to the association's meeting. The first item is the courtyard. Ahmad, you wanted to say something?"
+   },
+   {
+    "sv": "– Ja. Många av oss har barn, men det finns ingenstans för dem att leka på gården.",
+    "en": "– Yes. Many of us have children, but there's nowhere for them to play in the courtyard."
+   },
+   {
+    "sv": "– Vad föreslår du?",
+    "en": "– What do you suggest?"
+   },
+   {
+    "sv": "– En sandlåda och några gungor. Det behöver inte vara dyrt.",
+    "en": "– A sandpit and some swings. It doesn't have to be expensive."
+   },
+   {
+    "sv": "– Jag tycker att det är en bra idé, men vi måste tänka på dem som bor på bottenvåningen. Det kan bli mycket ljud.",
+    "en": "– I think it's a good idea, but we have to think of those who live on the ground floor. It could get noisy."
+   },
+   {
+    "sv": "– Vi kan sätta upp gungorna längre bort, nära cykelstället.",
+    "en": "– We can put the swings further away, near the bike stand."
+   },
+   {
+    "sv": "– Vad kostar det ungefär?",
+    "en": "– Roughly how much does it cost?"
+   },
+   {
+    "sv": "– Jag har kollat. Runt tjugotusen kronor om vi bygger en del själva.",
+    "en": "– I've checked. Around twenty thousand kronor if we build part of it ourselves."
+   },
+   {
+    "sv": "– Föreningen har pengar för det i år. Finns det några som kan hjälpa till att bygga?",
+    "en": "– The association has money for that this year. Is there anyone who can help build?"
+   },
+   {
+    "sv": "– Jag kan, och jag tror att flera andra föräldrar också vill.",
+    "en": "– I can, and I think several other parents want to as well."
+   },
+   {
+    "sv": "– Då röstar vi. Alla som är för, räck upp handen.",
+    "en": "– Then let's vote. Everyone in favour, raise your hand."
+   },
+   {
+    "sv": "– Det blev en klar majoritet. Ahmad, kan du planera en arbetsdag i maj?",
+    "en": "– That's a clear majority. Ahmad, can you plan a work day in May?"
+   },
+   {
+    "sv": "– Gärna. Jag sätter upp en lapp i trappuppgången.",
+    "en": "– Gladly. I'll put up a note in the stairwell."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad saknas på gården enligt Ahmad?",
+    "options": [
+     "Parkering",
+     "Någonstans för barnen att leka",
+     "Blommor"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Varför ska gungorna stå längre bort?",
+    "options": [
+     "För att det inte ska störa dem på bottenvåningen",
+     "För att det är billigare",
+     "För att det är solen där"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad blev resultatet av omröstningen?",
+    "options": [
+     "Nej",
+     "En klar majoritet för",
+     "De skjuter upp beslutet"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "B1-17",
+  "level": "B1",
+  "topic": "Health",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Våren och pollen",
+  "names": [
+   "Felix"
+  ],
+  "lines": [
+   {
+    "sv": "För de flesta är våren en härlig tid, men för Felix är det den jobbigaste delen av året.",
+    "en": "For most people spring is a lovely time, but for Felix it is the hardest part of the year."
+   },
+   {
+    "sv": "Han är allergisk mot björkpollen, och när björkarna blommar i maj rinner det från näsan och kliar i ögonen.",
+    "en": "He is allergic to birch pollen, and when the birches flower in May his nose runs and his eyes itch."
+   },
+   {
+    "sv": "Ungefär var femte svensk har någon form av pollenallergi, och många blir trötta och har svårt att koncentrera sig.",
+    "en": "About one in five Swedes has some form of pollen allergy, and many become tired and find it hard to concentrate."
+   },
+   {
+    "sv": "Felix har lärt sig att planera efter pollenprognosen, som han kollar i en app varje morgon.",
+    "en": "Felix has learned to plan according to the pollen forecast, which he checks in an app every morning."
+   },
+   {
+    "sv": "De dagar då halterna är höga undviker han att träna ute och håller fönstren stängda.",
+    "en": "On days when the levels are high he avoids exercising outdoors and keeps the windows closed."
+   },
+   {
+    "sv": "Han duschar och byter kläder när han kommer hem, så att pollen inte följer med in i sängen.",
+    "en": "He showers and changes his clothes when he gets home, so that pollen doesn't come with him into bed."
+   },
+   {
+    "sv": "Han tar också tabletter som han köper på apoteket utan recept.",
+    "en": "He also takes tablets that he buys at the pharmacy without a prescription."
+   },
+   {
+    "sv": "Förra året började han en behandling hos läkaren.",
+    "en": "Last year he started a treatment with the doctor."
+   },
+   {
+    "sv": "Där får man små doser av det man är allergisk mot under flera år.",
+    "en": "There you get small doses of what you are allergic to over several years."
+   },
+   {
+    "sv": "Det tar tid, men målet är att kroppen ska vänja sig.",
+    "en": "It takes time, but the goal is for the body to get used to it."
+   },
+   {
+    "sv": "Redan nu märker han att symtomen har blivit lite mindre.",
+    "en": "Already now he notices that the symptoms have become a little less severe."
+   },
+   {
+    "sv": "Kanske kan jag snart njuta av våren som alla andra, säger han hoppfullt.",
+    "en": "Maybe soon I can enjoy spring like everyone else, he says hopefully."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad är Felix allergisk mot?",
+    "options": [
+     "Gräs",
+     "Björkpollen",
+     "Katter"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör han när pollenhalterna är höga?",
+    "options": [
+     "Tränar ute",
+     "Håller fönstren stängda och tränar inte ute",
+     "Reser bort"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är målet med behandlingen hos läkaren?",
+    "options": [
+     "Att kroppen ska vänja sig",
+     "Att han ska sova bättre",
+     "Att han ska slippa tabletter direkt"
+    ],
+    "answer": 0
    }
   ]
  },

@@ -61,7 +61,7 @@ function readForms() {
 // their dictionary form too.
 const GLOSSARY_FORMS = new Map([['sköt', 'skjuta'], ['stan', 'stad'], ['sjönk', 'sjunka'], ['drog', 'dra'], ['höll', 'hålla'], ['diffusa', 'diffus'], ['tömda', 'tömma'], ['bidrog', 'bidra'],
   ['förstagångsföräldrar', 'förstagångsförälder'], ['sansade', 'sansad'], ['infekterade', 'infekterad'],
-  ['monotona', 'monoton'], ['supportärendena', 'supportärende'], ['alger', 'alg'], ['morbidt', 'morbid']]);
+  ['monotona', 'monoton'], ['supportärendena', 'supportärende'], ['alger', 'alg'], ['morbidt', 'morbid'], ['björkpollen', 'björkpollen']]);
 const kelly = readKelly();
 const forms = readForms();
 for (const [form, lemma] of GLOSSARY_FORMS) forms.set(form, [...(forms.get(form) || []), lemma]);

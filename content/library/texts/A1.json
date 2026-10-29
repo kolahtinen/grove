@@ -1860,6 +1860,207 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A1-20",
+      "level": "A1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Ett lånekort",
+      "names": [],
+      "above_level": [
+        "låna",
+        "lånekort",
+        "id-kort",
+        "adress",
+        "fönster"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej. Jag vill låna böcker här.",
+          "en": "– Hi. I want to borrow books here."
+        },
+        {
+          "sv": "– Hej! Har du ett lånekort?",
+          "en": "– Hi! Do you have a library card?"
+        },
+        {
+          "sv": "– Nej, jag är ny i stan.",
+          "en": "– No, I'm new in town."
+        },
+        {
+          "sv": "– Det är inga problem. Har du id-kort?",
+          "en": "– That's no problem. Do you have an ID card?"
+        },
+        {
+          "sv": "– Ja, här är det.",
+          "en": "– Yes, here it is."
+        },
+        {
+          "sv": "– Tack. Vilken är din adress?",
+          "en": "– Thanks. What is your address?"
+        },
+        {
+          "sv": "– Jag bor på Skolgatan fem.",
+          "en": "– I live at Skolgatan five."
+        },
+        {
+          "sv": "– Bra. Här är ditt kort. Det är gratis.",
+          "en": "– Good. Here is your card. It's free."
+        },
+        {
+          "sv": "– Hur många böcker kan jag låna?",
+          "en": "– How many books can I borrow?"
+        },
+        {
+          "sv": "– Så många du vill. Du har dem i fyra veckor.",
+          "en": "– As many as you want. You have them for four weeks."
+        },
+        {
+          "sv": "– Har ni böcker på lätt svenska?",
+          "en": "– Do you have books in easy Swedish?"
+        },
+        {
+          "sv": "– Ja, de står där borta, vid fönstret.",
+          "en": "– Yes, they're over there, by the window."
+        },
+        {
+          "sv": "– Tack så mycket!",
+          "en": "– Thank you very much!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad behöver man för att få ett lånekort?",
+          "options": [
+            "Id-kort",
+            "Pengar",
+            "Ett foto"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad kostar lånekortet?",
+          "options": [
+            "Tio kronor",
+            "Det är gratis",
+            "Hundra kronor"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur länge får man ha böckerna?",
+          "options": [
+            "En vecka",
+            "Fyra veckor",
+            "Ett år"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-21",
+      "level": "A1",
+      "topic": "People and family",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Grattis, mormor!",
+      "names": [
+        "Alma"
+      ],
+      "above_level": [
+        "mormor",
+        "älskling",
+        "grattis",
+        "födelsedag",
+        "tårta",
+        "jordgubbe",
+        "mums",
+        "present",
+        "åh",
+        "snällt"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej mormor! Det är Alma.",
+          "en": "– Hi grandma! It's Alma."
+        },
+        {
+          "sv": "– Hej, älskling! Vad roligt att du ringer.",
+          "en": "– Hi, darling! How nice that you're calling."
+        },
+        {
+          "sv": "– Grattis på födelsedagen!",
+          "en": "– Happy birthday!"
+        },
+        {
+          "sv": "– Tack! Nu är jag sjuttio år.",
+          "en": "– Thanks! Now I'm seventy."
+        },
+        {
+          "sv": "– Vad gör du i dag?",
+          "en": "– What are you doing today?"
+        },
+        {
+          "sv": "– Mina vänner kommer klockan tre. Vi dricker kaffe och äter tårta.",
+          "en": "– My friends are coming at three. We'll drink coffee and eat cake."
+        },
+        {
+          "sv": "– Vilken tårta har du?",
+          "en": "– What cake do you have?"
+        },
+        {
+          "sv": "– En stor tårta med jordgubbar.",
+          "en": "– A big cake with strawberries."
+        },
+        {
+          "sv": "– Mums! Jag kommer på lördag med mamma.",
+          "en": "– Yum! I'm coming on Saturday with mum."
+        },
+        {
+          "sv": "– Vad bra. Då sparar jag lite tårta till dig.",
+          "en": "– Good. Then I'll save a little cake for you."
+        },
+        {
+          "sv": "– Tack, mormor. Jag har en present till dig också.",
+          "en": "– Thanks, grandma. I have a present for you too."
+        },
+        {
+          "sv": "– Åh, vad snällt. Vi ses på lördag!",
+          "en": "– Oh, how kind. See you on Saturday!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur gammal blir mormor?",
+          "options": [
+            "Sextio år",
+            "Sjuttio år",
+            "Åttio år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad finns på tårtan?",
+          "options": [
+            "Choklad",
+            "Jordgubbar",
+            "Äpplen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När kommer Alma?",
+          "options": [
+            "I dag",
+            "På lördag",
+            "Nästa vecka"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }

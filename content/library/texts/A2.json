@@ -1834,6 +1834,288 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A2-20",
+      "level": "A2",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Pappa är hemma",
+      "names": [
+        "Erik",
+        "Eriks",
+        "Liv"
+      ],
+      "above_level": [
+        "föräldraledig"
+      ],
+      "lines": [
+        {
+          "sv": "Erik är föräldraledig i sex månader med sin dotter Liv.",
+          "en": "Erik is on parental leave for six months with his daughter Liv."
+        },
+        {
+          "sv": "Liv är tio månader gammal och har precis börjat gå.",
+          "en": "Liv is ten months old and has just started walking."
+        },
+        {
+          "sv": "I Sverige kan både mammor och pappor vara hemma med sina barn.",
+          "en": "In Sweden both mothers and fathers can stay at home with their children."
+        },
+        {
+          "sv": "Föräldrarna delar på dagarna, och man får pengar från staten.",
+          "en": "The parents share the days, and you get money from the state."
+        },
+        {
+          "sv": "Eriks dagar är fulla.",
+          "en": "Erik's days are full."
+        },
+        {
+          "sv": "På morgonen går de till parken, där han träffar andra pappor med barnvagnar.",
+          "en": "In the morning they go to the park, where he meets other dads with prams."
+        },
+        {
+          "sv": "Efter lunch sover Liv i två timmar.",
+          "en": "After lunch Liv sleeps for two hours."
+        },
+        {
+          "sv": "Då hinner Erik städa, laga mat och ibland läsa en bok.",
+          "en": "Then Erik has time to clean, cook and sometimes read a book."
+        },
+        {
+          "sv": "Det är tröttare än jobbet, säger han och skrattar.",
+          "en": "It's more tiring than work, he says and laughs."
+        },
+        {
+          "sv": "Men han är glad att han får se Liv lära sig nya saker.",
+          "en": "But he is glad he gets to see Liv learn new things."
+        },
+        {
+          "sv": "Förra veckan sa hon pappa för första gången.",
+          "en": "Last week she said dad for the first time."
+        },
+        {
+          "sv": "Det glömmer jag aldrig, säger Erik.",
+          "en": "I'll never forget that, says Erik."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur länge är Erik föräldraledig?",
+          "options": [
+            "Tre månader",
+            "Sex månader",
+            "Ett år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör Erik när Liv sover?",
+          "options": [
+            "Han sover också",
+            "Han städar, lagar mat och läser",
+            "Han jobbar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad hände förra veckan?",
+          "options": [
+            "Liv började gå",
+            "Liv sa pappa för första gången",
+            "Liv började på förskolan"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-21",
+      "level": "A2",
+      "topic": "Home",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Flyttdagen",
+      "names": [
+        "Kevin",
+        "Sanna"
+      ],
+      "above_level": [
+        "låda",
+        "paus",
+        "uppackad"
+      ],
+      "lines": [
+        {
+          "sv": "– Kevin, var ska vi ställa den här lådan?",
+          "en": "– Kevin, where shall we put this box?"
+        },
+        {
+          "sv": "– Vad står det på den?",
+          "en": "– What does it say on it?"
+        },
+        {
+          "sv": "– Kök. Den är jättetung.",
+          "en": "– Kitchen. It's really heavy."
+        },
+        {
+          "sv": "– Ställ den på golvet vid spisen. Där finns det plats.",
+          "en": "– Put it on the floor by the cooker. There's room there."
+        },
+        {
+          "sv": "– Hur många lådor har vi kvar i bilen?",
+          "en": "– How many boxes do we have left in the car?"
+        },
+        {
+          "sv": "– Bara fem eller sex. Och soffan.",
+          "en": "– Only five or six. And the sofa."
+        },
+        {
+          "sv": "– Soffan? Den kan vi inte bära själva.",
+          "en": "– The sofa? We can't carry that ourselves."
+        },
+        {
+          "sv": "– Nej, min bror kommer och hjälper oss klockan tre.",
+          "en": "– No, my brother is coming to help us at three."
+        },
+        {
+          "sv": "– Bra. Ska vi ta en paus först? Jag är så hungrig.",
+          "en": "– Good. Shall we take a break first? I'm so hungry."
+        },
+        {
+          "sv": "– Ja. Vi kan beställa pizza. Vi har ju inga tallrikar uppackade än.",
+          "en": "– Yes. We can order pizza. We don't have any plates unpacked yet."
+        },
+        {
+          "sv": "– Vi kan äta på golvet. Det blir vår första middag här.",
+          "en": "– We can eat on the floor. It'll be our first dinner here."
+        },
+        {
+          "sv": "– Jag tycker redan om den här lägenheten. Titta vilken utsikt!",
+          "en": "– I already like this flat. Look at the view!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var ska lådan stå?",
+          "options": [
+            "I sovrummet",
+            "Vid spisen",
+            "I hallen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vem hjälper dem med soffan?",
+          "options": [
+            "Kevins bror",
+            "En granne",
+            "Ingen"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad ska de äta?",
+          "options": [
+            "Pizza",
+            "Soppa",
+            "Smörgåsar"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A2-22",
+      "level": "A2",
+      "topic": "Work and study",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Sommarjobbet",
+      "names": [
+        "Tilda"
+      ],
+      "above_level": [
+        "cappuccino",
+        "turist",
+        "bulle"
+      ],
+      "lines": [
+        {
+          "sv": "Tilda är sjutton år och har fått sitt första sommarjobb.",
+          "en": "Tilda is seventeen and has got her first summer job."
+        },
+        {
+          "sv": "Hon jobbar på ett kafé vid havet i fyra veckor.",
+          "en": "She works at a café by the sea for four weeks."
+        },
+        {
+          "sv": "Första dagen var hon mycket nervös.",
+          "en": "On the first day she was very nervous."
+        },
+        {
+          "sv": "Hon visste inte hur kaffemaskinen fungerade och tappade en kopp på golvet.",
+          "en": "She didn't know how the coffee machine worked and dropped a cup on the floor."
+        },
+        {
+          "sv": "Men hennes chef var snäll och visade henne allt.",
+          "en": "But her boss was kind and showed her everything."
+        },
+        {
+          "sv": "Nu kan hon göra cappuccino och ta betalt i kassan.",
+          "en": "Now she can make cappuccino and take payment at the till."
+        },
+        {
+          "sv": "Det är mycket att göra när solen skiner, för då kommer många turister.",
+          "en": "There's a lot to do when the sun shines, because then many tourists come."
+        },
+        {
+          "sv": "När det regnar är det lugnt, och då bakar hon bullar med sin kollega.",
+          "en": "When it rains it's quiet, and then she bakes buns with her colleague."
+        },
+        {
+          "sv": "Tilda sparar pengarna till en resa med sina vänner.",
+          "en": "Tilda is saving the money for a trip with her friends."
+        },
+        {
+          "sv": "Hon har lärt sig mycket.",
+          "en": "She has learned a lot."
+        },
+        {
+          "sv": "Chefen har frågat om hon vill komma tillbaka nästa sommar.",
+          "en": "Her boss has asked if she wants to come back next summer."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var jobbar Tilda?",
+          "options": [
+            "I en affär",
+            "På ett kafé vid havet",
+            "På ett hotell"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör hon när det regnar?",
+          "options": [
+            "Hon går hem",
+            "Hon bakar bullar",
+            "Hon städar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad sparar hon pengarna till?",
+          "options": [
+            "En resa med vänner",
+            "En cykel",
+            "En dator"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }
