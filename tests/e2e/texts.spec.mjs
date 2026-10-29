@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
+import { startTestGrove, seedGround, PASSWORD } from '../fakes/harness.mjs';
 
 const sample = (name) => readFileSync(new URL(`../texts/answers/${name}`, import.meta.url), 'utf8');
 
@@ -164,4 +165,95 @@ test('FR-218 RQ-36 RQ-46 RQ-11: open a text, see each line\'s English, answer a 
   await page.getByRole('link', { name: 'Back to Home' }).click();
   // FR-219 names each text's kind with its state since 2026-10-26.
   await expect(page.locator('#texts a', { hasText: title }).locator('.text-state')).toHaveText('reading · rated');
+});
+
+// A grove of the test's own with one new learner, so the test doesn't depend on what earlier tests
+// did to the shared reviewer account.
+async function ownGrove(page, email) {
+  const t = await startTestGrove({ host: 'localhost' });
+  const learner = t.seedAccount({ email });
+  seedGround(t.grove.db, learner.id, readFileSync(new URL('../../docs/middle/ai-test/known.txt', import.meta.url), 'utf8').split(/\s+/).filter(Boolean));
+  // Past the starting check and the welcome, as a learner with a ground would be.
+  t.grove.db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(learner.id);
+  t.grove.db.prepare('UPDATE learner_settings SET start_done = 1, welcome_dismissed = 1 WHERE account_id = ?').run(learner.id);
+  await page.goto(`${t.base}/signin`);
+  await page.getByLabel('Email').fill(email);
+  await page.getByLabel('Password').fill(PASSWORD);
+  await page.getByRole('button', { name: 'Sign in' }).click();
+  await page.waitForURL(/\/terms$/);
+  await page.getByLabel(/I agree to the terms/).check();
+  await page.getByLabel(/I am 13 or over/).check();
+  await page.getByRole('button', { name: 'Agree' }).click();
+  await page.waitForURL(`${t.base}/`);
+  return { t, learner };
+}
+
+test('FR-224 RQ-406: a text from the AI has a Beta badge on Home and its reading page; a demo text has none', async ({ page }) => {
+  await signIn(page);
+  const added = await page.evaluate(async (good) => {
+    const me = await (await fetch('/api/me')).json();
+    const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
+    const p = await (await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) })).json();
+    const a = JSON.parse(good);
+    a.part = p.code;
+    const tag = Math.random().toString(36).slice(2, 7);
+    a.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
+    return (await (await fetch('/api/answer', { method: 'POST', headers: h, body: JSON.stringify({ exchangeId: p.exchangeId, answer: JSON.stringify(a) }) })).json()).texts;
+  }, sample('good.json'));
+  const reading = added.find((x) => x.kind === 'reading');
+  await page.reload();
+  const item = page.locator('#texts a', { hasText: reading.title });
+  await expect(item.locator('.beta')).toHaveText('Beta');
+  const demo = page.locator('#texts a', { hasText: 'Brevet i väskan' });
+  await expect(demo).toBeVisible();
+  await expect(demo.locator('.beta')).toHaveCount(0);
+  await item.click();
+  await expect(page.locator('#beta')).toBeVisible();
+  await page.goBack();
+  await page.locator('#texts a', { hasText: 'Brevet i väskan' }).click();
+  await expect(page.locator('#title')).toHaveText('Brevet i väskan');
+  await expect(page.locator('#beta')).toBeHidden();
+});
+
+test('FR-223 RQ-403: the first Get texts asks for the AI and its version first', async ({ page }) => {
+  const { t } = await ownGrove(page, 'ai-first@example.test');
+  try {
+    await page.locator('#get-texts').click();
+    await expect(page.locator('#plan-message')).toHaveText('First choose your AI and its version, so grove can ask it the best way.');
+    await expect(page.getByRole('combobox', { name: 'AI', exact: true })).toBeFocused();
+    await expect(page.locator('#prompt-area')).toBeHidden();
+    await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
+    await page.locator('#get-texts').click();
+    await expect(page.locator('#prompt-area')).toBeVisible();
+  } finally {
+    await t.close();
+  }
+});
+
+test('FR-223 RQ-405: after two failed answers in a row, Home offers the other main tactic, and its button switches to it', async ({ page }) => {
+  const { t } = await ownGrove(page, 'offer@example.test');
+  try {
+    await page.evaluate(async (bad) => {
+      const me = await (await fetch('/api/me')).json();
+      const h = { 'content-type': 'application/json', 'x-csrf-token': me.csrf };
+      const post = async (path, body) => (await fetch(path, { method: 'POST', headers: h, body: JSON.stringify(body) })).json();
+      await post('/api/plan', { family: 'chatgpt', product: 'free' });
+      const p = await post('/api/prompt', { action: 'next' });
+      const first = await post('/api/answer', { exchangeId: p.exchangeId, answer: bad.replaceAll('TEST-1', p.code) });
+      const home = await (await fetch('/api/home')).json();
+      const one = JSON.parse(bad);
+      one.part = home.waiting.code;
+      one.texts = [one.texts[0]];
+      await post('/api/answer', { exchangeId: first.next.exchangeId, answer: JSON.stringify(one) });
+    }, sample('too-many-new.json'));
+    await page.reload();
+    await expect(page.locator('#offer')).toContainText('Texts keep failing.');
+    await page.locator('#offer').getByRole('button', { name: 'Try one long prompt' }).click();
+    await expect(page.locator('#plan-message')).toContainText('one long prompt');
+    await page.reload();
+    await expect(page.locator('#tactic-tabs [role="tab"]').nth(1)).toContainText('In use');
+    await expect(page.locator('#offer')).toBeHidden();
+  } finally {
+    await t.close();
+  }
 });
