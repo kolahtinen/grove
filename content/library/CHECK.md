@@ -17,4 +17,19 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A1-09 | På lördag | reading | 57 | 7 | **bio** (B2), **pizza** (B2), **promenera** (B2), **stan** (—*), buss (A2) | passes |
 | A1-10 | Jag är sjuk | reading, dialogue | 59 | 7 | **åh** (—), **hals** (B1), **feber** (B2), vila (A2), **krya** (—) | passes |
 
-10 of 10 texts pass.
+## A2 (10 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
+
+| id | title | kind | words | longest | above | result |
+|---|---|---|---|---|---|---|
+| A2-01 | En helg på landet | reading | 85 | 9 | mormor (B1), **soppa** (C1), **bakad** (B2), **älg** (B2) | passes |
+| A2-02 | Intervjun | reading, dialogue | 91 | 10 | **tjugofem** (—) | passes |
+| A2-03 | Farmors födelsedag | reading | 90 | 10 | farmor (B1), **träffas** (—), **duka** (—), **vas** (—), **tårta** (C1), present (B1) | passes |
+| A2-04 | Ett samtal till vårdcentralen | listening, dialogue | 82 | 9 | låda (B1), **böja** (B2), **värktablett** (C1) | passes |
+| A2-05 | En ny stad | reading | 87 | 11 | — | passes |
+| A2-06 | Pannkakor till middag | listening | 89 | 12 | **pannkaka** (—), **mjöl** (C1), mjölk (B1), salt (B1), panna (B1), **spis** (C1), **sylt** (C2), socker (B1), mormor (B1) | passes |
+| A2-07 | På biblioteket | reading | 90 | 10 | **språkkafé** (C1) | passes |
+| A2-08 | En dag i Stockholm | listening | 87 | 14 | **stan** (—*), **kafé** (C1), **promenera** (B2), tunnelbana (B1) | passes |
+| A2-09 | Fotbollsmatchen | reading | 82 | 9 | regna (B1), **blöt** (B2), paus (B1), tränare (B1), **halvlek** (B2), **sköt** (—), smutsig (B1) | passes |
+| A2-10 | Ett rum för två nätter | listening, dialogue | 92 | 8 | **familjerum** (—*), **parkering** (C1) | passes |
+
+20 of 20 texts pass.

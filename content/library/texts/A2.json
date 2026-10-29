@@ -1,0 +1,993 @@
+{
+  "level": "A2",
+  "texts": [
+    {
+      "id": "A2-01",
+      "topic": "Travel",
+      "form": "prose",
+      "kind": "reading",
+      "title": "En helg på landet",
+      "names": [
+        "Elin",
+        "Jonas",
+        "Dalarna"
+      ],
+      "above_level": [
+        "mormor",
+        "soppa",
+        "bakad",
+        "älg"
+      ],
+      "lines": [
+        {
+          "sv": "Förra helgen åkte Elin och Jonas till Dalarna.",
+          "en": "Last weekend Elin and Jonas went to Dalarna."
+        },
+        {
+          "sv": "Jonas mormor har ett litet rött hus där.",
+          "en": "Jonas's grandmother has a little red house there."
+        },
+        {
+          "sv": "De tog tåget på fredag eftermiddag.",
+          "en": "They took the train on Friday afternoon."
+        },
+        {
+          "sv": "Resan tog fyra timmar.",
+          "en": "The journey took four hours."
+        },
+        {
+          "sv": "När de kom fram var det redan mörkt.",
+          "en": "When they arrived it was already dark."
+        },
+        {
+          "sv": "Mormor hade lagat soppa och bakat bröd.",
+          "en": "Grandmother had made soup and baked bread."
+        },
+        {
+          "sv": "På lördagen gick de en lång promenad i skogen.",
+          "en": "On Saturday they went for a long walk in the forest."
+        },
+        {
+          "sv": "Det var tyst och luften var frisk.",
+          "en": "It was quiet and the air was fresh."
+        },
+        {
+          "sv": "De såg en älg vid sjön.",
+          "en": "They saw an elk by the lake."
+        },
+        {
+          "sv": "Elin hade aldrig sett en älg förut.",
+          "en": "Elin had never seen an elk before."
+        },
+        {
+          "sv": "På kvällen satt de ute och pratade länge.",
+          "en": "In the evening they sat outside and talked for a long time."
+        },
+        {
+          "sv": "På söndagen åkte de hem igen.",
+          "en": "On Sunday they went home again."
+        },
+        {
+          "sv": "Elin vill gärna åka tillbaka i sommar.",
+          "en": "Elin would like to go back this summer."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur reste Elin och Jonas till Dalarna?",
+          "options": [
+            "Med bil",
+            "Med tåg",
+            "Med buss"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad såg de vid sjön?",
+          "options": [
+            "En älg",
+            "En björn",
+            "En häst"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem äger huset?",
+          "options": [
+            "Elins pappa",
+            "Jonas mormor",
+            "En vän"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-02",
+      "topic": "Work",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Intervjun",
+      "names": [
+        "Nora",
+        "Andersson"
+      ],
+      "above_level": [
+        "tjugofem"
+      ],
+      "lines": [
+        {
+          "sv": "– Välkommen, Nora. Sätt dig, är du snäll.",
+          "en": "– Welcome, Nora. Please sit down."
+        },
+        {
+          "sv": "– Tack så mycket.",
+          "en": "– Thank you very much."
+        },
+        {
+          "sv": "– Kan du berätta lite om dig själv?",
+          "en": "– Can you tell me a little about yourself?"
+        },
+        {
+          "sv": "– Ja. Jag är tjugofem år och kommer från Finland.",
+          "en": "– Yes. I am twenty-five and I come from Finland."
+        },
+        {
+          "sv": "– Jag har bott i Sverige i tre år.",
+          "en": "– I have lived in Sweden for three years."
+        },
+        {
+          "sv": "– Vad har du arbetat med tidigare?",
+          "en": "– What have you worked with before?"
+        },
+        {
+          "sv": "– Jag har jobbat i en butik och på ett hotell.",
+          "en": "– I have worked in a shop and at a hotel."
+        },
+        {
+          "sv": "– Varför vill du arbeta här?",
+          "en": "– Why do you want to work here?"
+        },
+        {
+          "sv": "– Jag tycker om att träffa människor och hjälpa dem.",
+          "en": "– I like meeting people and helping them."
+        },
+        {
+          "sv": "– Kan du arbeta på kvällar och helger?",
+          "en": "– Can you work evenings and weekends?"
+        },
+        {
+          "sv": "– Ja, det går bra.",
+          "en": "– Yes, that's fine."
+        },
+        {
+          "sv": "– Bra. Har du några frågor till oss?",
+          "en": "– Good. Do you have any questions for us?"
+        },
+        {
+          "sv": "– Ja, när kan jag börja?",
+          "en": "– Yes, when can I start?"
+        },
+        {
+          "sv": "– Vi ringer dig på fredag och berättar.",
+          "en": "– We will call you on Friday and let you know."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var kommer Nora från?",
+          "options": [
+            "Norge",
+            "Finland",
+            "Danmark"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var har hon arbetat förut?",
+          "options": [
+            "I en butik och på ett hotell",
+            "På en skola",
+            "På ett sjukhus"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När ringer de till Nora?",
+          "options": [
+            "I morgon",
+            "På fredag",
+            "Nästa vecka"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-03",
+      "topic": "Celebrations",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Farmors födelsedag",
+      "names": [
+        "Leo"
+      ],
+      "above_level": [
+        "farmor",
+        "träffas",
+        "duka",
+        "vas",
+        "tårta",
+        "present"
+      ],
+      "lines": [
+        {
+          "sv": "I går fyllde Leos farmor åttio år.",
+          "en": "Yesterday Leo's grandmother turned eighty."
+        },
+        {
+          "sv": "Hela familjen träffades hemma hos henne.",
+          "en": "The whole family met at her home."
+        },
+        {
+          "sv": "Leo och hans pappa kom tidigt för att hjälpa till.",
+          "en": "Leo and his father came early to help."
+        },
+        {
+          "sv": "De dukade bordet och satte blommor i en vas.",
+          "en": "They laid the table and put flowers in a vase."
+        },
+        {
+          "sv": "Klockan tre kom resten av gästerna.",
+          "en": "At three o'clock the rest of the guests came."
+        },
+        {
+          "sv": "Alla sjöng för farmor och hon blev väldigt glad.",
+          "en": "Everyone sang for grandmother and she was very happy."
+        },
+        {
+          "sv": "Sedan åt de tårta och drack kaffe.",
+          "en": "Then they ate cake and drank coffee."
+        },
+        {
+          "sv": "Farmor fick många fina presenter.",
+          "en": "Grandmother got many nice presents."
+        },
+        {
+          "sv": "Leo gav henne en bok om trädgårdar.",
+          "en": "Leo gave her a book about gardens."
+        },
+        {
+          "sv": "Hon älskar sin trädgård och arbetar i den varje dag.",
+          "en": "She loves her garden and works in it every day."
+        },
+        {
+          "sv": "På kvällen visade hon gamla foton.",
+          "en": "In the evening she showed old photos."
+        },
+        {
+          "sv": "Leo såg sin pappa som liten pojke.",
+          "en": "Leo saw his father as a little boy."
+        },
+        {
+          "sv": "Det var en mycket trevlig dag.",
+          "en": "It was a very nice day."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur gammal blev farmor?",
+          "options": [
+            "Sjuttio år",
+            "Åttio år",
+            "Nittio år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gav Leo farmor?",
+          "options": [
+            "Blommor",
+            "En bok",
+            "En tårta"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad visade farmor på kvällen?",
+          "options": [
+            "Gamla foton",
+            "Sin trädgård",
+            "En film"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A2-04",
+      "topic": "Health",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Ett samtal till vårdcentralen",
+      "names": [
+        "Samir"
+      ],
+      "above_level": [
+        "låda",
+        "böja",
+        "värktablett"
+      ],
+      "lines": [
+        {
+          "sv": "– Vårdcentralen, hej. Vad kan jag hjälpa dig med?",
+          "en": "– The health centre, hello. How can I help you?"
+        },
+        {
+          "sv": "– Hej, jag heter Samir. Jag har ont i ryggen.",
+          "en": "– Hi, my name is Samir. My back hurts."
+        },
+        {
+          "sv": "– Hur länge har du haft ont?",
+          "en": "– How long have you been in pain?"
+        },
+        {
+          "sv": "– Sedan i söndags. Jag lyfte en tung låda.",
+          "en": "– Since Sunday. I lifted a heavy box."
+        },
+        {
+          "sv": "– Kan du gå och sitta normalt?",
+          "en": "– Can you walk and sit normally?"
+        },
+        {
+          "sv": "– Ja, men det gör ont när jag böjer mig.",
+          "en": "– Yes, but it hurts when I bend."
+        },
+        {
+          "sv": "– Har du tagit någon medicin?",
+          "en": "– Have you taken any medicine?"
+        },
+        {
+          "sv": "– Ja, jag har tagit värktabletter.",
+          "en": "– Yes, I have taken painkillers."
+        },
+        {
+          "sv": "– Hjälper de?",
+          "en": "– Do they help?"
+        },
+        {
+          "sv": "– Lite, men inte så mycket.",
+          "en": "– A little, but not very much."
+        },
+        {
+          "sv": "– Då vill jag att du träffar en läkare.",
+          "en": "– Then I want you to see a doctor."
+        },
+        {
+          "sv": "– Kan du komma i morgon klockan nio?",
+          "en": "– Can you come tomorrow at nine?"
+        },
+        {
+          "sv": "– Ja, det passar bra. Tack!",
+          "en": "– Yes, that suits me fine. Thank you!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var har Samir ont?",
+          "options": [
+            "I huvudet",
+            "I ryggen",
+            "I magen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför har han ont?",
+          "options": [
+            "Han lyfte en tung låda",
+            "Han ramlade",
+            "Han sprang"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När ska han träffa läkaren?",
+          "options": [
+            "I dag",
+            "I morgon klockan nio",
+            "På söndag"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-05",
+      "topic": "Home",
+      "form": "prose",
+      "kind": "reading",
+      "title": "En ny stad",
+      "names": [
+        "Maria",
+        "Umeå",
+        "Spanien"
+      ],
+      "above_level": [],
+      "lines": [
+        {
+          "sv": "Maria flyttade till Umeå i augusti.",
+          "en": "Maria moved to Umeå in August."
+        },
+        {
+          "sv": "Hon kommer från Spanien och ska studera här i två år.",
+          "en": "She comes from Spain and will study here for two years."
+        },
+        {
+          "sv": "De första veckorna var svåra.",
+          "en": "The first weeks were hard."
+        },
+        {
+          "sv": "Hon kände ingen och förstod inte mycket svenska.",
+          "en": "She didn't know anyone and didn't understand much Swedish."
+        },
+        {
+          "sv": "Dessutom blev det mörkt tidigt på eftermiddagen.",
+          "en": "Besides, it got dark early in the afternoon."
+        },
+        {
+          "sv": "Men sedan började hon på en kurs i svenska.",
+          "en": "But then she started a Swedish course."
+        },
+        {
+          "sv": "Där träffade hon andra studenter från hela världen.",
+          "en": "There she met other students from all over the world."
+        },
+        {
+          "sv": "Nu lagar de mat tillsammans varje fredag.",
+          "en": "Now they cook together every Friday."
+        },
+        {
+          "sv": "Maria har också köpt en cykel.",
+          "en": "Maria has also bought a bike."
+        },
+        {
+          "sv": "Hon cyklar till universitetet varje dag, även när det snöar.",
+          "en": "She cycles to the university every day, even when it snows."
+        },
+        {
+          "sv": "Hon tycker att svenskarna är lugna och vänliga.",
+          "en": "She thinks the Swedes are calm and friendly."
+        },
+        {
+          "sv": "Nu känner hon sig hemma i Umeå.",
+          "en": "Now she feels at home in Umeå."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför flyttade Maria till Umeå?",
+          "options": [
+            "För att arbeta",
+            "För att studera",
+            "För att hennes familj bor där"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad var svårt i början?",
+          "options": [
+            "Hon kände ingen",
+            "Hon hade ingen lägenhet",
+            "Hon var sjuk"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur tar hon sig till universitetet?",
+          "options": [
+            "Med buss",
+            "Hon cyklar",
+            "Hon går"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-06",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Pannkakor till middag",
+      "names": [
+        "Hugo"
+      ],
+      "above_level": [
+        "pannkaka",
+        "mjöl",
+        "mjölk",
+        "salt",
+        "panna",
+        "spis",
+        "sylt",
+        "socker",
+        "mormor"
+      ],
+      "lines": [
+        {
+          "sv": "På torsdagar äter många svenskar pannkakor till middag.",
+          "en": "On Thursdays many Swedes eat pancakes for dinner."
+        },
+        {
+          "sv": "Hugo tycker bäst om pannkakorna.",
+          "en": "Hugo likes the pancakes best."
+        },
+        {
+          "sv": "I dag ska han göra dem själv för första gången.",
+          "en": "Today he is going to make them himself for the first time."
+        },
+        {
+          "sv": "Han tar fram mjöl, mjölk, ägg och lite salt.",
+          "en": "He takes out flour, milk, eggs and a little salt."
+        },
+        {
+          "sv": "Först blandar han mjölet med hälften av mjölken.",
+          "en": "First he mixes the flour with half of the milk."
+        },
+        {
+          "sv": "Sedan blandar han i resten av mjölken och äggen.",
+          "en": "Then he mixes in the rest of the milk and the eggs."
+        },
+        {
+          "sv": "Nu ska allt vila en halvtimme.",
+          "en": "Now everything has to rest for half an hour."
+        },
+        {
+          "sv": "Hugo värmer en panna på spisen.",
+          "en": "Hugo heats a pan on the cooker."
+        },
+        {
+          "sv": "Den första pannkakan blir inte fin.",
+          "en": "The first pancake doesn't turn out nice."
+        },
+        {
+          "sv": "Men den andra blir mycket bättre.",
+          "en": "But the second one is much better."
+        },
+        {
+          "sv": "Han äter dem med sylt, och hans syster äter dem med socker.",
+          "en": "He eats them with jam, and his sister eats them with sugar."
+        },
+        {
+          "sv": "Det smakar precis som hos mormor.",
+          "en": "It tastes just like at grandma's."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad äter många svenskar på torsdagar?",
+          "options": [
+            "Fisk och potatis",
+            "Pannkakor",
+            "Pizza"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur länge ska allt vila?",
+          "options": [
+            "Fem minuter",
+            "En halvtimme",
+            "En timme"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur blir den första pannkakan?",
+          "options": [
+            "Inte fin",
+            "Perfekt",
+            "För stor"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A2-07",
+      "topic": "Culture",
+      "form": "prose",
+      "kind": "reading",
+      "title": "På biblioteket",
+      "names": [
+        "Ahmed"
+      ],
+      "above_level": [
+        "språkkafé"
+      ],
+      "lines": [
+        {
+          "sv": "Ahmed går till biblioteket varje lördag.",
+          "en": "Ahmed goes to the library every Saturday."
+        },
+        {
+          "sv": "Biblioteket ligger nära torget och är gratis för alla.",
+          "en": "The library is near the square and is free for everyone."
+        },
+        {
+          "sv": "Där kan man låna böcker, filmer och musik.",
+          "en": "There you can borrow books, films and music."
+        },
+        {
+          "sv": "Ahmed lånar ofta lätta böcker på svenska.",
+          "en": "Ahmed often borrows easy books in Swedish."
+        },
+        {
+          "sv": "Han läser långsamt, men han förstår mer och mer.",
+          "en": "He reads slowly, but he understands more and more."
+        },
+        {
+          "sv": "Ibland läser han samma bok två gånger.",
+          "en": "Sometimes he reads the same book twice."
+        },
+        {
+          "sv": "På biblioteket finns också datorer och tidningar.",
+          "en": "At the library there are also computers and newspapers."
+        },
+        {
+          "sv": "Varje onsdag har de ett språkkafé.",
+          "en": "Every Wednesday they have a language café."
+        },
+        {
+          "sv": "Där pratar man svenska med andra i en timme.",
+          "en": "There you speak Swedish with others for an hour."
+        },
+        {
+          "sv": "Förra veckan pratade Ahmed med en gammal man om fotboll.",
+          "en": "Last week Ahmed talked with an old man about football."
+        },
+        {
+          "sv": "Det var roligt, och han lärde sig många nya ord.",
+          "en": "It was fun, and he learned many new words."
+        },
+        {
+          "sv": "Nu vill han gå dit varje vecka.",
+          "en": "Now he wants to go there every week."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad kostar det att låna böcker?",
+          "options": [
+            "Det är gratis",
+            "Tio kronor",
+            "Det beror på boken"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När har biblioteket språkkafé?",
+          "options": [
+            "På lördagar",
+            "På onsdagar",
+            "På måndagar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad pratade Ahmed om förra veckan?",
+          "options": [
+            "Musik",
+            "Fotboll",
+            "Mat"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-08",
+      "topic": "Travel",
+      "form": "prose",
+      "kind": "listening",
+      "title": "En dag i Stockholm",
+      "names": [
+        "Stockholm",
+        "Gamla stan",
+        "Djurgården",
+        "Vasamuseet"
+      ],
+      "above_level": [
+        "stan",
+        "kafé",
+        "promenera",
+        "tunnelbana"
+      ],
+      "lines": [
+        {
+          "sv": "Stockholm ligger på fjorton öar.",
+          "en": "Stockholm lies on fourteen islands."
+        },
+        {
+          "sv": "Om du bara har en dag i staden, kan du börja i Gamla stan.",
+          "en": "If you only have one day in the city, you can start in the Old Town."
+        },
+        {
+          "sv": "Där är gatorna smala och husen är mycket gamla.",
+          "en": "There the streets are narrow and the houses are very old."
+        },
+        {
+          "sv": "Du kan dricka kaffe på ett litet kafé vid torget.",
+          "en": "You can drink coffee at a small café by the square."
+        },
+        {
+          "sv": "Sedan kan du ta båten till Djurgården.",
+          "en": "Then you can take the boat to Djurgården."
+        },
+        {
+          "sv": "Resan tar bara tio minuter.",
+          "en": "The trip only takes ten minutes."
+        },
+        {
+          "sv": "På Djurgården finns Vasamuseet.",
+          "en": "On Djurgården there is the Vasa Museum."
+        },
+        {
+          "sv": "Där kan du se ett skepp som sjönk för nästan fyrahundra år sedan.",
+          "en": "There you can see a ship that sank almost four hundred years ago."
+        },
+        {
+          "sv": "Efter museet kan du promenera längs vattnet.",
+          "en": "After the museum you can walk along the water."
+        },
+        {
+          "sv": "På kvällen finns det många restauranger i stan.",
+          "en": "In the evening there are many restaurants in town."
+        },
+        {
+          "sv": "Glöm inte att köpa ett kort för buss och tunnelbana!",
+          "en": "Don't forget to buy a card for the bus and the underground!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "På hur många öar ligger Stockholm?",
+          "options": [
+            "Fyra",
+            "Fjorton",
+            "Fyrtio"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur kommer man till Djurgården i texten?",
+          "options": [
+            "Med båt",
+            "Med tåg",
+            "Med bil"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad kan man se på Vasamuseet?",
+          "options": [
+            "Gamla foton",
+            "Ett gammalt skepp",
+            "Konst"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-09",
+      "topic": "Free time",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Fotbollsmatchen",
+      "names": [
+        "Ella",
+        "Ellas"
+      ],
+      "above_level": [
+        "regna",
+        "blöt",
+        "paus",
+        "tränare",
+        "halvlek",
+        "sköt",
+        "smutsig"
+      ],
+      "lines": [
+        {
+          "sv": "Ella spelar fotboll i ett lag för tjejer.",
+          "en": "Ella plays football in a girls' team."
+        },
+        {
+          "sv": "Laget tränar två gånger i veckan.",
+          "en": "The team trains twice a week."
+        },
+        {
+          "sv": "I söndags hade de en viktig match.",
+          "en": "Last Sunday they had an important match."
+        },
+        {
+          "sv": "Det regnade hela dagen och planen var blöt.",
+          "en": "It rained all day and the pitch was wet."
+        },
+        {
+          "sv": "Efter tio minuter gjorde det andra laget mål.",
+          "en": "After ten minutes the other team scored a goal."
+        },
+        {
+          "sv": "Ellas lag kämpade, men de kunde inte göra mål.",
+          "en": "Ella's team fought, but they couldn't score."
+        },
+        {
+          "sv": "I pausen pratade tränaren med dem.",
+          "en": "At half-time the coach talked with them."
+        },
+        {
+          "sv": "Ni spelar bra, sa hon. Fortsätt bara!",
+          "en": "You're playing well, she said. Just keep going!"
+        },
+        {
+          "sv": "I andra halvlek fick Ella bollen nära målet.",
+          "en": "In the second half Ella got the ball near the goal."
+        },
+        {
+          "sv": "Hon sköt hårt och bollen gick in.",
+          "en": "She shot hard and the ball went in."
+        },
+        {
+          "sv": "Matchen slutade ett–ett.",
+          "en": "The match ended one–one."
+        },
+        {
+          "sv": "Ella var smutsig och trött, men mycket glad.",
+          "en": "Ella was dirty and tired, but very happy."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur ofta tränar laget?",
+          "options": [
+            "En gång i veckan",
+            "Två gånger i veckan",
+            "Varje dag"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur var vädret?",
+          "options": [
+            "Det var soligt",
+            "Det regnade",
+            "Det snöade"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur slutade matchen?",
+          "options": [
+            "Ett–noll",
+            "Ett–ett",
+            "Noll–ett"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-10",
+      "topic": "Travel",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Ett rum för två nätter",
+      "names": [
+        "Lund",
+        "Berg"
+      ],
+      "above_level": [
+        "familjerum",
+        "parkering"
+      ],
+      "lines": [
+        {
+          "sv": "– Hotell Lund, god morgon.",
+          "en": "– Hotel Lund, good morning."
+        },
+        {
+          "sv": "– God morgon. Jag skulle vilja boka ett rum.",
+          "en": "– Good morning. I would like to book a room."
+        },
+        {
+          "sv": "– Vilka datum gäller det?",
+          "en": "– Which dates is it for?"
+        },
+        {
+          "sv": "– Från fredag till söndag, alltså två nätter.",
+          "en": "– From Friday to Sunday, so two nights."
+        },
+        {
+          "sv": "– Hur många personer är ni?",
+          "en": "– How many people are you?"
+        },
+        {
+          "sv": "– Vi är två vuxna och ett barn.",
+          "en": "– We are two adults and one child."
+        },
+        {
+          "sv": "– Vi har ett familjerum med tre sängar.",
+          "en": "– We have a family room with three beds."
+        },
+        {
+          "sv": "– Vad kostar det?",
+          "en": "– How much does it cost?"
+        },
+        {
+          "sv": "– Det kostar niohundra kronor per natt, med frukost.",
+          "en": "– It costs nine hundred kronor a night, with breakfast."
+        },
+        {
+          "sv": "– Bra, då tar vi det.",
+          "en": "– Good, then we'll take it."
+        },
+        {
+          "sv": "– Finns det parkering vid hotellet? Vi kommer med bil.",
+          "en": "– Is there parking at the hotel? We are coming by car."
+        },
+        {
+          "sv": "– Ja, men den kostar hundra kronor per dygn.",
+          "en": "– Yes, but it costs a hundred kronor per day."
+        },
+        {
+          "sv": "– Det går bra.",
+          "en": "– That's fine."
+        },
+        {
+          "sv": "– Vilket namn ska jag skriva?",
+          "en": "– Which name shall I write?"
+        },
+        {
+          "sv": "– Berg. Vi kommer på fredag kväll.",
+          "en": "– Berg. We will arrive on Friday evening."
+        },
+        {
+          "sv": "– Välkomna! Vi ses på fredag.",
+          "en": "– Welcome! See you on Friday."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur många nätter vill de bo på hotellet?",
+          "options": [
+            "En",
+            "Två",
+            "Tre"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur många personer är de?",
+          "options": [
+            "Två",
+            "Tre",
+            "Fyra"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad ingår i priset?",
+          "options": [
+            "Middag",
+            "Frukost",
+            "Ingenting"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}
