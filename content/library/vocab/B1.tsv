@@ -1,0 +1,1376 @@
+# grove library vocabulary, level B1. Words from the Swedish Kelly list (Språkbanken, CC BY-SA 3.0 / LGPL 3.0); meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-vocab.mjs; see content/library/README.md.
+sv	pos	kind	level	en	flags	wpm
+önskan	noun-en	word	B1	a wish		23.53
+konsert	noun-en	word	B1	a concert		23.52
+teckning	noun-en	word	B1	drawing		23.51
+avgå	verb	word	B1	to resign		23.46
+grav	noun-en	word	B1	a grave		23.45
+agenda	noun-en	word	B1	an agenda		23.43
+samfund	noun-ett	word	B1	an association, a community, a society		23.4
+krets	noun-en	word	B1	set		23.39
+kunglig	adjective	word	B1	royal, pertaining to the monarch or monarchy		23.37
+anmälan	noun-en	word	B1	a registration		23.34
+inneha	verb	word	B1	to hold, to keep, to possess		23.34
+soffa	noun-en	word	B1	a couch, a sofa		23.32
+stabilitet	noun-en	word	B1	stability		23.32
+förnuft	noun-ett	word	B1	rationality, good sense		23.3
+därav	adverb	word	B1	thereof		23.28
+tredjedel	noun-en	word	B1	third		23.27
+ovanstående	adjective	word	B1	aforementioned, above		23.26
+trovärdig	adjective	word	B1	credible, trustworthy		23.26
+strunta	verb	word	B1	only used in strunta i	pos	23.24
+akademisk	adjective	word	B1	academic		23.23
+permanent	adjective	word	B1	permanent		23.23
+nyttig	adjective	word	B1	useful		23.2
+invändning	noun-en	word	B1	an objection		23.17
+våning	noun-en	word	B1	apartment		23.11
+långsamt	adverb	word	B1	slow	via-form	23.1
+vild	adjective	word	B1	wild		23.1
+propaganda	noun-en	word	B1	propaganda		23.09
+troende	adjective	word	B1	believing, religious		23.07
+exemplar	noun-ett	word	B1	a copy, a specimen		23.05
+resolution	noun-en	word	B1		none	23.04
+därpå	adverb	word	B1	afterwards, thereafter, subsequently		23.03
+ekonomiskt	adverb	word	B1	economically, frugally		23.03
+formulering	noun-en	word	B1	wording, formulation		23.03
+ihjäl	particle	word	B1	to death		23.01
+såväl som	conj	phrase	B1		none	23
+instämma	verb	word	B1	to agree		22.98
+halvår	noun-ett	word	B1	a half-year		22.97
+debattera	verb	word	B1	to debate		22.96
+idiot	noun-en	word	B1	an idiot		22.96
+yttersta	adjective	word	B1	outermost, farthest away		22.96
+intill	prep	word	B1	next, beside		22.95
+torr	adjective	word	B1	dry		22.93
+söt	adjective	word	B1	sweet		22.92
+socialist	noun-en	word	B1	a socialist		22.91
+anordna	verb	word	B1	to arrange, to organize		22.9
+besviken	adjective	word	B1	disappointed		22.89
+lektion	noun-en	word	B1	lesson		22.89
+ledsen	adjective	word	B1	sad		22.86
+grattis	interj	word	B1	congratulations; congrats		22.84
+sistnämnd	adjective	word	B1	the latter		22.83
+tragisk	adjective	word	B1	tragic		22.83
+teater	noun-en	word	B1	theatre		22.82
+försäkra	verb	word	B1	to insure; to get an insurance for		22.81
+ideal	noun-ett	word	B1	ideal		22.81
+vice	adjective	word	B1	vice, second in rank, deputy, stand-in, acting		22.81
+hantering	noun-en	word	B1	handling, management		22.8
+målsättning	noun-en	word	B1	objective, goal		22.78
+begripa	verb	word	B1	to grasp, to understand		22.77
+upphov	noun-ett	word	B1	origin, beginning		22.74
+kränka	verb	word	B1	to attack or violate someone's personal honor; to violate, to disrespect, to insult, etc.	long	22.72
+i morse	adverb	phrase	B1	this morning		22.71
+hals	noun-en	word	B1	neck		22.7
+mån	noun	word	B1	extent, degree		22.7
+stam	noun-en	word	B1	a trunk		22.7
+journalistik	noun-en	word	B1	journalism		22.67
+intäkt	noun-en	word	B1	revenue, income		22.66
+mjuk	adjective	word	B1	soft		22.66
+bproper name	noun-en	phrase	B1		none	22.63
+grå	adjective	word	B1	grey		22.63
+profil	noun-en	word	B1	profile		22.61
+krossa	verb	word	B1	to crush; to press or bruise between two hard bodies until the point of breaking		22.6
+partiledare	noun-en	word	B1	a party leader or chairman		22.6
+centimeter	noun-en	word	B1	a centimetre		22.59
+övertyga	verb	word	B1	to convince		22.59
+romersk	adjective	word	B1	Roman		22.56
+sörja	verb	word	B1	sludge	pos	22.56
+inspirera	verb	word	B1	to inspire		22.55
+övertygelse	noun-en	word	B1	a persuasion, a conviction		22.54
+stackars	adjective	word	B1	poor		22.52
+sänkning	noun-en	word	B1	lowering		22.5
+potential	noun-en	word	B1	potential		22.48
+antagande	noun-ett	word	B1	an assumption, a hypothesis		22.47
+tilldela	verb	word	B1	to assign		22.46
+biljett	noun-en	word	B1	ticket; an entitling pass		22.43
+motsätta	verb	word	B1	oppose	pos	22.41
+komplex	adjective	word	B1	complex		22.4
+skadad	adjective	word	B1	damaged		22.39
+begäran	noun-en	word	B1	a request		22.38
+arena	noun-en	word	B1	arena		22.36
+kust	noun-en	word	B1	coast		22.36
+åtal	noun-ett	word	B1	a prosecution, an indictment, a legal process		22.36
+dimension	noun-en	word	B1	dimension		22.34
+internationellt	adverb	word	B1	international	via-form	22.34
+nationellt	adverb	word	B1	national	via-form	22.34
+hållning	noun-en	word	B1	posture, stature, attitude		22.33
+döpa	verb	word	B1	to baptize, to christen		22.32
+fantasi	noun-en	word	B1	imagination, fantasy		22.32
+gen	noun-en	word	B1	gain; short, direct		22.32
+spets	noun-en	word	B1	point, tip		22.3
+avsätta	verb	word	B1	to dethrone, to oust, to remove; to get rid of		22.29
+fundering	noun-en	word	B1	thinking; thought; consideration		22.29
+kombinera	verb	word	B1	to combine		22.27
+observera	verb	word	B1	to watch		22.24
+intressera	verb	word	B1	to interest		22.23
+uppåt	adverb	word	B1	upwards, up		22.23
+fas	noun-en	word	B1	a phase, a time period		22.22
+dop	noun-ett	word	B1	baptism, christening		22.21
+professionell	adjective	word	B1	professional		22.2
+klippa	verb	word	B1	a cliff, a rock	pos	22.18
+ombord	adverb	word	B1	on board; being on ship		22.17
+sparka	verb	word	B1	to kick; to strike with the foot or leg		22.17
+trist	adjective	word	B1	boring		22.17
+klimatförändring	noun-en	word	B1	climate change		22.16
+undervisa	verb	word	B1	to teach, to educate, to tutor; to act as a teacher, to pass on knowledge		22.14
+dåvarande	adjective	word	B1	relating to a certain moment in the past		22.13
+varning	noun-en	word	B1	a warning		22.13
+ton	noun-ett	word	B1	tonne, metric ton		22.11
+tänkbar	adjective	word	B1	imaginable, conceivable		22.11
+villig	adjective	word	B1	willing		22.1
+station	noun-en	word	B1	station		22.08
+släkting	noun-en	word	B1	a relative		22.07
+övrigt	adverb	word	B1	other, remaining	via-form	22.04
+giltig	adjective	word	B1	valid		22.03
+gudomlig	adjective	word	B1	godly, divine		22.02
+objektiv	adjective	word	B1	objective		22
+brand	noun-en	word	B1	a larger, uncontrolled fire, a conflagration		21.99
+meningslös	adjective	word	B1	meaningless		21.89
+yttra	verb	word	B1	to utter, to say		21.89
+minskning	noun-en	word	B1	a reduction, a decrease		21.87
+axel	noun-en	word	B1	a shoulder		21.84
+försämra	verb	word	B1	worsen; make worse	pos	21.83
+motor	noun-en	word	B1	engine, motor		21.82
+i och med	adverb	phrase	B1		none	21.81
+konstruktion	noun-en	word	B1	construction		21.81
+arkiv	noun-ett	word	B1	an archive		21.8
+äventyr	noun-ett	word	B1	an adventure		21.8
+oj	interj	word	B1	oh, wow, gosh		21.78
+sverige	proper name	word	B1	Sweden		21.76
+humor	noun-en	word	B1	humor		21.75
+like	noun	word	B1	a like		21.73
+paragraf	noun-en	word	B1	section, article, paragraph, clause		21.73
+odla	verb	word	B1	to grow, to cultivate, to plant		21.69
+erbjudande	noun-ett	word	B1	offer; a proposal that has been made.		21.68
+vidga	verb	word	B1	to widen, to make wider, to expand		21.68
+motsätta sig	verb	phrase	B1		none	21.67
+volym	noun-en	word	B1	volume - any of		21.67
+missbruk	noun-ett	word	B1	harmful or improper usage; abuse, misuse		21.66
+utvidga	verb	word	B1	to extend, to expand		21.64
+snarast	adverb	word	B1	as soon as possible		21.6
+uppmaning	noun-en	word	B1	a statement whereby someone is asked to do something, a call, a request		21.58
+kram	noun-en	word	B1	A merchandise, commodities, small and cheap products sold to consumers; trash.		21.56
+intervjua	verb	word	B1	to interview		21.55
+livsmedel	noun-ett	word	B1	an item of food, a foodstuff		21.55
+anklagelse	noun-en	word	B1	accusation, allegation, charge		21.54
+cykla	verb	word	B1	to cycle, to ride a bike		21.54
+samordning	noun-en	word	B1	coordination		21.54
+dessvärre	adverb	word	B1	unfortunately		21.51
+oklar	adjective	word	B1	unclear		21.51
+företeelse	noun-en	word	B1	a phenomenon, a thing, an object		21.46
+offra	verb	word	B1	to sacrifice		21.46
+lager	noun-ett	word	B1	a store, a warehouse		21.45
+arbetsliv	noun-ett	word	B1	working life, work life		21.44
+lysande	adjective	word	B1	luminous, light emitting		21.43
+bränsle	noun-ett	word	B1	fuel		21.4
+finanskris	noun-en	word	B1	financial crisis		21.4
+nödvändigtvis	adverb	word	B1	necessarily		21.4
+gott om	adverb	phrase	B1		none	21.39
+medeltid	noun-en	word	B1	Middle Ages		21.39
+strävan	noun	word	B1	a goal to strive for, a desire, an ambition		21.39
+hastighet	noun-en	word	B1	velocity		21.38
+kö	noun-en	word	B1	a queue		21.38
+medvetande	noun-ett	word	B1	consciousness		21.37
+producent	noun-en	word	B1	a producer or manufacturer		21.37
+så pass	adverb	phrase	B1	to such a degree; so, such, enough	via-form	21.37
+vetande	noun-ett	word	B1	to know; to be certain about, to have knowledge or information about	via-form,pos	21.37
+i mitten av	prep	phrase	B1		none	21.36
+dylik	adjective	word	B1	such		21.33
+installera	verb	word	B1	to install; to prepare something for use		21.32
+utge	verb	word	B1	to publish		21.3
+förberedelse	noun-en	word	B1	preparation		21.28
+fördom	noun-en	word	B1	prejudice		21.25
+synnerligen	adverb	word	B1	rather, very, strongly		21.25
+i närheten av	prep	phrase	B1		none	21.22
+åtagande	noun-ett	word	B1	a commitment		21.22
+tillkännage	verb	word	B1	to announce, to make known		21.2
+kaos	noun-ett	word	B1	chaos		21.17
+mästare	noun-en	word	B1	a master		21.16
+utmana	verb	word	B1	to challenge		21.16
+drift	noun-en	word	B1	drift		21.15
+hundratal	noun-ett	word	B1	around one hundred		21.15
+måne	noun-en	word	B1	a moon		21.13
+bita	verb	word	B1	to bite		21.11
+blandad	adjective	word	B1	mixed, miscellaneous, assorted		21.1
+hjälte	noun-en	word	B1	a hero, a person of great bravery		21.1
+skänka	verb	word	B1	to give, to donate		21.09
+tillämplig	adjective	word	B1	applicable		21.09
+betydelsefull	adjective	word	B1	meaningful, significant		21.08
+synsätt	noun-ett	word	B1	a way of looking at things; an approach, a view, an outlook		21.07
+ström	noun-en	word	B1	having strong currents, "currenty"		21.03
+förse	verb	word	B1	to provide, to equip, to supply		21.02
+mätning	noun-en	word	B1	measure, a measurement		21.02
+massiv	adjective	word	B1	massive		21.01
+atmosfär	noun-en	word	B1	atmosphere		20.97
+mall	noun-en	word	B1	a template		20.96
+personlighet	noun-en	word	B1	personality		20.96
+gren	noun-en	word	B1	a branch		20.95
+väldig	adjective	word	B1	huge; of a very large size		20.93
+effektivt	adverb	word	B1	efficient	via-form	20.89
+vanligen	adverb	word	B1	commonly		20.88
+koncept	noun-ett	word	B1	a concept, an idea		20.85
+välkänd	adjective	word	B1	well-known		20.84
+förebild	noun-en	word	B1	a role model		20.81
+uppenbart	adverb	word	B1	obviously, apparently		20.81
+recept	noun-ett	word	B1	a recipe		20.79
+föreläsning	noun-en	word	B1	a lecture		20.77
+antisemitism	noun-en	word	B1	anti-Semitism		20.75
+geografisk	adjective	word	B1	geographical or geographic; related to geography		20.75
+grafisk	adjective	word	B1	graphic, graphical		20.75
+upplysning	noun-en	word	B1	enlightenment		20.74
+general	noun-en	word	B1	a general; a military title		20.73
+administration	noun-en	word	B1	administration		20.72
+bröst	noun-ett	word	B1	breast; the fleshy organs on the chest of a sexually mature human female		20.69
+befogenhet	noun-en	word	B1	a legal right to do something; authority, power		20.67
+patent	noun-ett	word	B1	patent		20.67
+skarp	adjective	word	B1	sharp; able to cut easily		20.63
+islamisk	adjective	word	B1	Islamic		20.6
+vem som helst	pronoun	phrase	B1	anyone, anybody		20.6
+förverkliga	verb	word	B1	to realize		20.57
+prioritering	noun-en	word	B1		none	20.57
+vistas	verb	word	B1	to stay, linger		20.55
+regelbundet	adverb	word	B1	regularly, periodically		20.53
+depression	noun-en	word	B1	depression		20.49
+effektivitet	noun-en	word	B1	efficacy, effectivity		20.48
+likväl	adverb	word	B1	nevertheless, still, yet		20.48
+blandning	noun-en	word	B1	mixing		20.47
+datera	verb	word	B1	to date, to assign a date to a document, to determine the age of an object		20.46
+final	noun-en	word	B1	a finale		20.45
+tjock	adjective	word	B1	thick		20.45
+erövra	verb	word	B1	to conquer, to seize		20.43
+vaka	verb	word	B1	to watch		20.41
+polsk	adjective	word	B1	Polish; of or pertaining to Poland, Poles, or the Polish language		20.4
+bomb	noun-en	word	B1	a bomb		20.39
+tår	noun-en	word	B1	a tear		20.39
+fackförening	noun-en	word	B1	a trade union, a labor union		20.37
+utvald	adjective	word	B1	chosen		20.36
+placering	noun-en	word	B1	placement, place, location		20.32
+huvudsaklig	adjective	word	B1	main, principal		20.31
+avfall	noun-ett	word	B1	waste, refuse, garbage		20.3
+gigantisk	adjective	word	B1	gigantic		20.3
+väntan	noun-en	word	B1	wait		20.3
+turnering	noun-en	word	B1	a tournament		20.28
+uppvärmning	noun-en	word	B1	heating		20.28
+praxis	noun-en	word	B1	practice, custom, the usual way to do things		20.26
+okej	interj	word	B1	okay, all right		20.25
+maximal	adjective	word	B1	maximal; as large as possible		20.23
+konstitution	noun-en	word	B1	constitution		20.22
+otrolig	adjective	word	B1	incredible		20.22
+fruktansvärd	adjective	word	B1	horrific, dreadful		20.21
+straffa	verb	word	B1	to punish		20.2
+sådär	adverb	word	B1	thus, in that way, like that, to that degree		20.2
+nödvändighet	noun-en	word	B1	necessity; the quality or state of being necessary		20.18
+medlemsland	noun-ett	word	B1	member country		20.17
+översyn	noun-en	word	B1	a review, an evaluation		20.16
+blind	adjective	word	B1	blind; unable or failing to see		20.15
+front	noun-en	word	B1	The front end or side of something.		20.15
+fördöma	verb	word	B1	to condemn, denounce		20.13
+synlig	adjective	word	B1	visible		20.12
+fint	adverb	word	B1	a feint		20.11
+rasa	verb	word	B1	to collapse		20.1
+skapelse	noun-en	word	B1	creation		20.1
+verksam	adjective	word	B1	active, busy, working in some area		20.1
+avlida	verb	word	B1	to die		20.09
+fullkomligt	adverb	word	B1	completely		20.09
+teoretisk	adjective	word	B1	theoretic.		20.09
+flyta	verb	word	B1	to float; of an object or substance, to be supported by a fluid of greater density	long	20.08
+urval	noun-ett	word	B1	choice, selection		20.07
+binda	verb	word	B1	to tie		20.05
+erkännande	noun-ett	word	B1	an acknowledgement, a recognition		20.03
+fett	noun-ett	word	B1	a positive intensifier		20.03
+hälsning	noun-en	word	B1	a greeting		20.03
+idrott	noun-en	word	B1	any athletic activity that uses physical skills		20.03
+debattartikel	noun-en	word	B1	an opinion piece		20.02
+belysa	verb	word	B1	to light, to light up, to illuminate		20
+emellan	prep	word	B1	in between		19.99
+övervaka	verb	word	B1	to surveil, to monitor, to supervise		19.98
+lagom	adverb	word	B1	right, fitting, neither too much nor too little		19.96
+sömn	noun-en	word	B1	sleep		19.96
+proletariat	noun-ett	word	B1	proletariat		19.91
+önskemål	noun-ett	word	B1	request, wish		19.91
+förlåta	verb	word	B1	to forgive		19.89
+sammanlagt	adverb	word	B1	together; in total		19.89
+slav	noun-en	word	B1	A person of Slavic origins, a Slav		19.89
+näsa	noun-en	word	B1	nose of a human or other primate		19.88
+däribland	adverb	word	B1	among them		19.85
+export	noun-en	word	B1	export		19.85
+nedgång	noun-en	word	B1	a descent		19.83
+vinkel	noun-en	word	B1	an angle		19.83
+experiment	noun-ett	word	B1	experiment		19.82
+allierad	adjective	word	B1	allied		19.81
+arbetstid	noun-en	word	B1	working hours, office hours		19.81
+flagga	noun-en	word	B1	a flag		19.81
+uppdatera	verb	word	B1	to update		19.81
+block	noun-ett	word	B1	a block, a boulder, a cuboid		19.79
+feminism	noun-en	word	B1	feminism		19.78
+skattebetalare	noun-en	word	B1	taxpayer		19.78
+globalisering	noun-en	word	B1	globalization		19.77
+miljontals	adverb	word	B1	millions of		19.77
+obehaglig	adjective	word	B1	unpleasant, uncomfortable, uneasy, "mentally unpleasant"		19.77
+ondska	noun-en	word	B1	evil		19.75
+anpassad	adjective	word	B1	adapted, fit, altered, integrated		19.74
+önskvärd	adjective	word	B1	desirable		19.74
+mysig	adjective	word	B1	cosy		19.7
+norr	noun	word	B1	north; one of the four major compass points		19.7
+andning	noun	word	B1	breathing, respiration		19.68
+motta	verb	word	B1	to receive, to accept	via-form	19.68
+utspela sig	verb	phrase	B1		none	19.66
+elit	noun-en	word	B1	an elite		19.64
+inverkan	noun-en	word	B1	influence		19.64
+akut	adjective	word	B1	critical; urgent, an emergency, etc.		19.61
+kvarstå	verb	word	B1	to continue		19.61
+troligtvis	adverb	word	B1	probably, most likely		19.6
+konkurs	noun-en	word	B1	a bankruptcy		19.58
+center	noun-en	word	B1	a centre; a place where some function or activity occurs		19.56
+än så länge	adverb	phrase	B1		none	19.56
+dramatisk	adjective	word	B1	dramatic		19.55
+låtsas	verb	word	B1	to pretend		19.54
+underlig	adjective	word	B1	strange		19.54
+förlängning	noun-en	word	B1	extension		19.52
+segla	verb	word	B1	to sail		19.51
+försiktig	adjective	word	B1	careful, cautious, gentle, prudent, etc.		19.5
+himla	adverb	word	B1	awfully, terribly, very		19.5
+inbördeskrig	noun-ett	word	B1	civil war		19.48
+vid sidan av	prep	phrase	B1		none	19.48
+grym	adjective	word	B1	cruel		19.47
+tunn	adjective	word	B1	thin; having small thickness		19.47
+grundlag	noun-en	word	B1	a fundamental law; basic law, a constitution		19.46
+realistisk	adjective	word	B1	realistic		19.45
+tvätta	verb	word	B1	to wash, to clean		19.45
+enormt	adverb	word	B1		none	19.42
+litterär	adjective	word	B1	literary, pertaining to literature		19.42
+mobiltelefon	noun-en	word	B1	a cell phone, a mobile phone		19.41
+dominerande	adjective	word	B1	dominating		19.38
+framkomma	verb	word	B1	to emerge, to be revealed		19.38
+misshandel	noun-en	word	B1	deliberately causing bodily harm to someone; beating someone up, physical abuse, assault, etc.	long	19.37
+förbannad	adjective	word	B1	pissed off		19.34
+skildra	verb	word	B1	to depict, to portray, to describe		19.34
+anpassning	noun-en	word	B1	adaptation, adjustment to a given set of conditions		19.33
+redaktör	noun-en	word	B1	an editor		19.31
+behörig	adjective	word	B1	competent		19.3
+last	noun-en	word	B1	cargo		19.29
+arbetarrörelse	noun-en	word	B1		none	19.28
+liberalism	noun-en	word	B1	liberalism; quality of being liberal; political movement based on personal freedom	long	19.28
+presentation	noun-en	word	B1	presentation		19.28
+stress	noun-en	word	B1	stress		19.27
+försörja	verb	word	B1	to support, to provide for		19.26
+objekt	noun-ett	word	B1	an object		19.26
+omslag	noun-ett	word	B1	a cover		19.25
+absurd	adjective	word	B1	absurd		19.24
+kvalificerad	adjective	word	B1	qualified		19.24
+trappa	noun-en	word	B1	staircase, stairway, stairs, flight of stairs		19.22
+offentligt	adverb	word	B1	public	via-form	19.2
+röka	verb	word	B1	to smoke		19.2
+valrörelse	noun-en	word	B1	election campaign		19.2
+anfalla	verb	word	B1	to attack		19.19
+rådande	adjective	word	B1	current, present		19.17
+spåra	verb	word	B1	to track, to trace		19.17
+upplaga	noun-en	word	B1	an edition, a stock of printed books, a printing		19.17
+ordentlig	adjective	word	B1	orderly, thorough, real, just		19.16
+klä	verb	word	B1	to clothe, to dress, to wear		19.15
+ambassad	noun-en	word	B1	an embassy		19.1
+konkurrera	verb	word	B1	to compete		19.1
+ovanför	prep	word	B1	above; located close by but at a higher level		19.1
+skämt	noun-ett	word	B1	a joke		19.1
+tända	verb	word	B1	to light, to ignite; to turn on lights		19.1
+anslutning	noun-en	word	B1	a connection		19.09
+backa	verb	word	B1	to reverse, to move or drive a vehicle backwards		19.09
+loss	particle	word	B1	to a no longer attached or stuck state; loose, off, untied		19.06
+samvete	noun-ett	word	B1	conscience		19.05
+fastän	subj	word	B1	even though		19.04
+årtionde	noun-ett	word	B1	decade		19.04
+tomt	noun-en	word	B1	a ground lot, a parcel, that has had, currently has or in the future will have a house built on it. It especially…	long	19.02
+avsevärt	adverb	word	B1	considerably, substantially		19.01
+rita	verb	word	B1	a female given name	pos	19.01
+värt	adverb	word	B1	worth; worthy; having a value	via-form	19.01
+register	noun-ett	word	B1	a register, a list, an index, a catalog, a directory, a database		19
+rörlighet	noun-en	word	B1	mobility		19
+ignorera	verb	word	B1	to ignore		18.99
+befria	verb	word	B1	to liberate, to free, to make free		18.98
+dold	adjective	word	B1	obscured, invisible, covered, hidden		18.98
+först och främst	adverb	phrase	B1	first of all, first and foremost		18.98
+retorik	noun-en	word	B1	rhetoric		18.97
+leende	noun-ett	word	B1	smiling		18.95
+olycklig	adjective	word	B1	unhappy, sad, discontented		18.92
+säkerligen	adverb	word	B1	surely		18.92
+abort	noun-en	word	B1	abort, abortion		18.89
+taktik	noun-en	word	B1	tactic		18.89
+beteckna	verb	word	B1	to characterize, to signify, to designate		18.88
+lärjunge	noun-en	word	B1	a disciple		18.88
+stadga	noun-en	word	B1	steadfastness, steadiness, stability, strength		18.87
+långsam	adjective	word	B1	slow		18.86
+oberoende av	prep	phrase	B1		none	18.86
+utlänning	noun-en	word	B1	alien, foreigner		18.84
+spelning	noun-en	word	B1	gig, performance		18.82
+godkännande	noun-ett	word	B1	approval		18.8
+fet	adjective	word	B1	fat, obese		18.78
+hovrätt	noun-en	word	B1	a court of appeal		18.78
+tiotal	noun-ett	word	B1	around ten, some ten		18.77
+skivbolag	noun-ett	word	B1	a record company		18.75
+stycke	noun-ett	word	B1	a piece		18.73
+tempo	noun-ett	word	B1	pace, tempo		18.73
+påve	noun-en	word	B1	pope		18.7
+kant	noun-en	word	B1	an edge; border; rim		18.68
+turist	noun-en	word	B1	a tourist		18.67
+predika	verb	word	B1	to preach		18.66
+reflektera	verb	word	B1	to reflect		18.65
+folkgrupp	noun-en	word	B1	population group, ethnic group		18.63
+rektor	noun-en	word	B1	headmaster or headmistress; headteacher		18.62
+klargöra	verb	word	B1	to clarify		18.6
+laglig	adjective	word	B1	legal		18.6
+neutral	adjective	word	B1	neutral		18.6
+tendera	verb	word	B1	to tend		18.6
+utrikespolitik	noun-en	word	B1	foreign policy		18.6
+glädja	verb	word	B1	to make happy, to gladden, to cheer		18.59
+rödgrön	adjective	word	B1	reddish green, green colour with a tendency towards red		18.56
+segra	verb	word	B1	to win; to obtain a victory		18.55
+inrikta	verb	word	B1	to direct, to set the direction, to focus, to specialize		18.53
+monopol	noun-ett	word	B1	monopoly		18.53
+konkurrent	noun-en	word	B1	competitor; a person or organization against whom one is competing		18.52
+plattform	noun-en	word	B1	platform, a particular type of operating system or environment		18.51
+skådespelare	noun-en	word	B1	an actor		18.51
+störning	noun-en	word	B1	disturbance		18.5
+remissinstans	noun-en	word	B1		none	18.47
+rutin	noun-en	word	B1	a routine		18.47
+dal	noun-en	word	B1	valley, dale		18.46
+studio	noun-en	word	B1	studio		18.46
+användbar	adjective	word	B1	useful		18.45
+lagförslag	noun-ett	word	B1	bill		18.45
+självfallet	adverb	word	B1	of course, naturally		18.45
+ömsesidig	adjective	word	B1	mutual		18.43
+förvåna	verb	word	B1	to astonish; to surprise		18.41
+flaska	noun-en	word	B1	a bottle		18.39
+packa	verb	word	B1	a bag; an unpleasant older woman	pos	18.38
+reportage	noun-ett	word	B1		none	18.34
+skylt	noun-en	word	B1	a sign		18.33
+platta	noun-en	word	B1	A wide flat object, often solid and stiff, a plate		18.32
+välsignelse	noun-en	word	B1	blessing		18.32
+cell	noun-en	word	B1	cell; a room in a prison.		18.3
+i förväg	adverb	phrase	B1	in advance, beforehand		18.28
+kopp	noun-en	word	B1	a cup		18.26
+bortse	verb	word	B1	to disregard, to neglect; not to include something in one's deliberations		18.25
+etik	noun-en	word	B1	ethics		18.25
+mördare	noun-en	word	B1	a murderer		18.25
+med stöd av	prep	phrase	B1		none	18.24
+förintelse	noun-en	word	B1	annihilation, destruction		18.23
+redogöra	verb	word	B1	to go over, to explain		18.23
+auktoritet	noun-en	word	B1	authority		18.22
+avslå	verb	word	B1	to reject, to refuse, to deny		18.22
+hud	noun-en	word	B1	skin		18.22
+välstånd	noun-ett	word	B1	prosperity, wealth		18.21
+rättfärdig	adjective	word	B1	righteous		18.2
+därvid	adverb	word	B1	thereby		18.19
+mental	adjective	word	B1	mental, pertaining to the mind		18.19
+tillgodose	verb	word	B1	accommodate, satisfy, fulfill	pos	18.19
+försvarsmakt	noun-en	word	B1	armed forces, a military force		18.17
+kollektivavtal	noun-ett	word	B1	a collective agreement, a collective bargaining agreement		18.16
+svaghet	noun-en	word	B1	weakness; condition of being weak		18.16
+frågeställning	noun-en	word	B1	a problem, an issue		18.15
+motsvarighet	noun-en	word	B1	equivalent		18.14
+slutändan	noun	word	B1	an end	via-form	18.14
+bitter	adjective	word	B1	bitter; having an acrid taste		18.13
+utanförskap	noun-ett	word	B1	social exclusion, alienation		18.13
+åtskillig	adjective	word	B1	several		18.1
+koldioxid	noun-en	word	B1	carbon dioxide		18.08
+mässa	noun-en	word	B1	a mass		18.08
+rå	adjective	word	B1	raw		18.07
+tvivla	verb	word	B1	to doubt		18.06
+höjning	noun-en	word	B1	a raise		18.05
+forn	adjective	word	B1	belonging to the past		18.04
+konjunktur	noun-en	word	B1	current state in the business cycle		18.03
+nöje	noun-ett	word	B1	enjoyment		18.03
+attraktiv	adjective	word	B1	attractive		17.99
+reflektion	noun-en	word	B1	reflection		17.99
+samråd	noun-ett	word	B1	unison, consensus		17.97
+afrikansk	adjective	word	B1	African		17.96
+kontroversiell	adjective	word	B1	controversial		17.96
+ruta	noun-en	word	B1	square, tile, box		17.96
+folklig	adjective	word	B1	popular		17.94
+framträda	verb	word	B1	to appear, to reveal oneself		17.93
+förlänga	verb	word	B1	to expand, to elongate, to extend, to make longer		17.92
+spegla	verb	word	B1	to reflect		17.91
+frånvaro	noun-en	word	B1	absence		17.9
+symptom	noun-ett	word	B1	symptom	via-form	17.9
+bokstav	noun-en	word	B1	letter of the alphabet		17.89
+webbläsare	noun-en	word	B1	web browser		17.85
+skrivelse	noun-en	word	B1	a writ, a written communication		17.84
+barndom	noun-en	word	B1	childhood		17.83
+usel	adjective	word	B1	terribly bad, awfully bad		17.81
+folkmord	noun-ett	word	B1	genocide		17.8
+till känna	adverb	phrase	B1		none	17.8
+arbetsuppgift	noun-en	word	B1	a task, a chore, a duty, an item in a job description		17.78
+illegal	adjective	word	B1	illegal		17.78
+städa	verb	word	B1	to clean, to tidy		17.78
+uppvisa	verb	word	B1	to show, to present		17.78
+väska	noun-en	word	B1	a bag		17.78
+ärligt	adverb	word	B1	honest; scrupulous	via-form	17.78
+historiskt	adverb	word	B1	historic	via-form	17.76
+upphovsman	noun-en	word	B1	a creator, an author, an owner of copyright		17.76
+lock	noun-ett	word	B1	a lock of hair, a curl of hair		17.75
+tes	noun-en	word	B1	a thesis, a statement, a hypothesis, a doctrine, an idea, a thought, a theory		17.75
+bekostnad	noun-en	word	B1	expense		17.74
+info	noun-en	word	B1	info, clipping of information		17.74
+skadlig	adjective	word	B1	harmful		17.74
+ansöka	verb	word	B1	to apply		17.73
+industriell	adjective	word	B1	industrial		17.73
+köpare	noun-en	word	B1	buyer		17.73
+börs	noun-en	word	B1	stock market, stock exchange, bourse		17.72
+beklaga	verb	word	B1	to regret, to be sorry		17.7
+korruption	noun-en	word	B1	corruption		17.66
+uppföra	verb	word	B1	to bring forth, to build		17.66
+arbetsförmedling	noun-en	word	B1	job centre, employment service		17.65
+fria	verb	word	B1	to propose; to ask for one's hand in marriage		17.65
+britt	noun-en	word	B1	a female given name		17.64
+kontinent	noun-en	word	B1	continent; a large contiguous landmass		17.64
+låda	noun-en	word	B1	a box, a case		17.64
+bevaka	verb	word	B1	to watch, to guard		17.61
+besparing	noun-en	word	B1	saving; reduction in cost		17.6
+detaljerad	adjective	word	B1	detailed		17.59
+redovisning	noun-en	word	B1	accounting, report		17.59
+variation	noun-en	word	B1	variation		17.59
+skratt	noun-ett	word	B1	laughter		17.58
+naken	adjective	word	B1	naked		17.56
+byggande	noun-ett	word	B1	building		17.54
+konstruktiv	adjective	word	B1	constructive		17.53
+integrera	verb	word	B1	to integrate, to adopt, to make a part fit in a whole, to blend in		17.5
+slump	noun-en	word	B1	chance, randomness, happenstance		17.49
+återkommande	adjective	word	B1	recurring, frequent, repetitive		17.49
+mottagare	noun-en	word	B1	receiver		17.47
+återgå	verb	word	B1	to get back		17.47
+i likhet med	adverb	phrase	B1		none	17.46
+leverantör	noun-en	word	B1	supplier		17.46
+noll	numeral	word	B1	zero		17.45
+storm	noun-en	word	B1	storm; heavy winds or weather associated with storm winds.		17.45
+pirat	noun-en	word	B1	pirate; plunderer at sea		17.42
+svänga	verb	word	B1	to turn		17.42
+bifall	noun-ett	word	B1	formal approval		17.41
+instruktion	noun-en	word	B1	an instruction		17.39
+upptagen	adjective	word	B1	busy, engaged in activity		17.39
+paus	noun-en	word	B1	a pause, a break		17.37
+rationell	adjective	word	B1	rational		17.36
+överstiga	verb	word	B1	to exceed, to surpass		17.36
+delad	adjective	word	B1	shared, split, divided		17.35
+skärpa	verb	word	B1	sharpness; the cutting ability of an edge	pos	17.35
+imponerande	adjective	word	B1	to impress; to affect someone strongly and favorably	via-form	17.34
+tillverkare	noun-en	word	B1	manufacturer		17.34
+följaktligen	adverb	word	B1	for that reason, consequently, thus, hence		17.32
+misstanke	noun-en	word	B1	suspicion		17.32
+omdöme	noun-ett	word	B1	judgment, opinion		17.32
+kod	noun-en	word	B1	code; a very short abbreviation		17.31
+server	noun-en	word	B1	a server		17.31
+magisk	adjective	word	B1	magic, magical		17.29
+sträng	adjective	word	B1	strict, stern		17.29
+vad som helst	adverb	phrase	B1	anything, whatever		17.27
+dagbok	noun-en	word	B1	a diary		17.25
+radera	verb	word	B1	to delete, to erase		17.25
+anknytning	noun-en	word	B1	connection, relation		17.23
+häromdagen	adverb	word	B1	the other day		17.23
+innovation	noun-en	word	B1	innovation		17.23
+gran	noun-en	word	B1	spruce		17.21
+uppföljning	noun-en	word	B1	follow-up, evaluation		17.21
+grabb	noun-en	word	B1	a lad, a boy; a guy		17.2
+frukta	verb	word	B1	to fear, to dread, to be afraid		17.18
+tvist	noun-en	word	B1	a dispute		17.16
+van	adjective	word	B1	accustomed to, used to, having the habit to		17.15
+dubbelt	adverb	word	B1	twice		17.14
+mild	adjective	word	B1	mild		17.14
+drivkraft	noun-en	word	B1	driving force, impetus		17.11
+tjänare	noun-en	word	B1	hey, yo		17.09
+nationalism	noun-en	word	B1	nationalism		17.08
+moln	noun-ett	word	B1	a cloud		17.07
+ordförandeskap	noun-ett	word	B1	chairmanship		17.07
+såvitt	subj	word	B1	as far as		17.07
+mekanism	noun-en	word	B1	mechanism		17.06
+minsann	adverb	word	B1	certainly, indeed, surely, for sure		17.06
+vaccin	noun-ett	word	B1	vaccine; substance that stimulates production of antibodies		17.06
+filosof	noun-en	word	B1	philosopher		17.05
+division	noun-en	word	B1	division; act of dividing; large military unit; section of a company		17.03
+belägen	adjective	word	B1	situated, located		17.02
+tåla	verb	word	B1	to be able to tolerate, to stand, to bear, to endure		17.01
+avdrag	noun-ett	word	B1	a deduction		17
+koloni	noun-en	word	B1	a colony		17
+sannerligen	adverb	word	B1	truly, verily, really		17
+till förmån för	prep	phrase	B1		none	16.96
+cancer	noun-en	word	B1	cancer		16.95
+förföljelse	noun-en	word	B1	stalking		16.95
+byråkrati	noun-en	word	B1	bureaucracy		16.94
+mobil	adjective	word	B1	mobile; capable of being moved		16.93
+tillsyn	noun-en	word	B1	supervision		16.93
+sur	adjective	word	B1	sour		16.92
+nazism	noun-en	word	B1	Nazism		16.9
+rösträtt	noun-en	word	B1	suffrage, the right to vote		16.89
+somlig	pronoun	word	B1	some		16.89
+utredare	noun-en	word	B1	an investigator, an analyst		16.89
+stadium	noun-ett	word	B1	a stage, a phase		16.88
+dagis	noun-ett	word	B1	daycare centre, kindergarten, preschool		16.87
+färsk	adjective	word	B1	fresh		16.86
+positivt	adverb	word	B1	positive	via-form	16.86
+livsstil	noun-en	word	B1	lifestyle		16.85
+pressmeddelande	noun-ett	word	B1	a press release		16.83
+inlagd	adjective	word	B1	to put	via-form	16.82
+klyfta	noun-en	word	B1	a clove; a separate bulb of a garlic		16.82
+skapande	noun-ett	word	B1	creating, creative		16.82
+konstnärlig	adjective	word	B1	artistic		16.81
+pinsam	adjective	word	B1	embarrassing, awkward		16.81
+konstant	adjective	word	B1	constant, unvarying		16.8
+löpande	adjective	word	B1	running		16.8
+åberopa	verb	word	B1	to refer to, to invoke		16.8
+arrangemang	noun-ett	word	B1	a arranged social event or function		16.78
+avslutad	adjective	word	B1	finished, finalized, terminated		16.78
+varifrån	adverb	word	B1	from which place; from which direction; from where; wherefrom; whence		16.77
+jurist	noun-en	word	B1	a jurist, a legal expert, someone who specializes in law		16.76
+lagra	verb	word	B1	to store		16.75
+påtaglig	adjective	word	B1	tangible, palpable, noticeable		16.75
+tillgänglighet	noun-en	word	B1	availability		16.75
+pedagogisk	adjective	word	B1	pedagogic, pertaining to teaching, successful at teaching		16.73
+skita	verb	word	B1	to shit		16.73
+kärnvapen	noun-ett	word	B1	a nuclear weapon		16.71
+plikt	noun-en	word	B1	duty		16.71
+företräda	verb	word	B1	to represent, to advocate		16.68
+mjölk	noun-en	word	B1	milk		16.68
+policy	noun-en	word	B1		none	16.68
+ångra	verb	word	B1	to regret		16.66
+apostel	noun-en	word	B1	an Apostle		16.65
+ingripa	verb	word	B1	intervene	pos	16.64
+tröttna	verb	word	B1	to get tired		16.63
+utvidgning	noun-en	word	B1	expansion, extension		16.63
+kvarter	noun-ett	word	B1	city block		16.62
+flexibel	adjective	word	B1	flexible		16.61
+motionär	noun-en	word	B1	someone performing physical exercise to promote health and well-being		16.6
+ideell	adjective	word	B1	nonprofit, not-for-profit		16.58
+insyn	noun-en	word	B1	insight, transparency		16.58
+bosatt	adjective	word	B1	settled, living		16.57
+filosofisk	adjective	word	B1	philosophical		16.54
+generera	verb	word	B1	to generate		16.53
+inspelning	noun-en	word	B1	recording, filming		16.53
+reell	adjective	word	B1	real, actual, really existing		16.53
+krypa	verb	word	B1	to crawl, to creep		16.5
+kränkning	noun-en	word	B1	violation		16.48
+trogen	adjective	word	B1	faithful		16.47
+underteckna	verb	word	B1	to undersign, to underwrite		16.47
+stilla	adverb	word	B1	still, calm		16.45
+invasion	noun-en	word	B1	invasion		16.43
+enhetlig	adjective	word	B1	uniform		16.4
+not	noun-en	word	B1	note.		16.39
+förebygga	verb	word	B1	to prevent		16.36
+lukta	verb	word	B1	to smell; to use one’s nose		16.36
+besvär	noun-ett	word	B1	a trouble, a problem		16.32
+humanitär	adjective	word	B1	humanitarian		16.32
+intelligent	adjective	word	B1	intelligent, bright		16.32
+flotta	noun-en	word	B1	a navy		16.31
+turkisk	adjective	word	B1	Turkish		16.31
+mandatperiod	noun-en	word	B1	term		16.3
+civilisation	noun-en	word	B1	civilization		16.28
+ursäkta	verb	word	B1	excuse me!, pardon, I'm sorry!	pos	16.25
+demonstrera	verb	word	B1	to demonstrate		16.24
+godta	verb	word	B1	to accept		16.24
+andas	verb	word	B1	to breathe		16.23
+böter	noun	word	B1	fine		16.23
+lärdom	noun-en	word	B1	learning, lesson		16.23
+kyla	noun-en	word	B1	cold, coldness		16.21
+ordinarie	adjective	word	B1	regular, ordinary		16.21
+delegation	noun-en	word	B1	a delegation		16.19
+suga	verb	word	B1	carpet bugle, plants in the genus Ajuga	pos	16.18
+tränare	noun-en	word	B1	a trainer, a coach		16.18
+användande	noun-ett	word	B1	to use	via-form,pos	16.17
+arbetsgrupp	noun-en	word	B1	a working group		16.17
+operatör	noun-en	word	B1	an operator, a service provider, an ISP		16.17
+reporter	noun-en	word	B1	reporter		16.16
+tortyr	noun-en	word	B1	torture		16.13
+kapten	noun-en	word	B1	a captain		16.12
+forska	verb	word	B1	to research		16.1
+avkastning	noun-en	word	B1	yield, profit, gain, interest, return, increase, fruit		16.09
+genomsnittlig	adjective	word	B1	average, mean		16.09
+jägare	noun-en	word	B1	a hunter		16.09
+makthavare	noun-en	word	B1	a person who possesses power		16.06
+löjlig	adjective	word	B1	silly, ridiculous		16.04
+skönhet	noun-en	word	B1	beauty		16.04
+orimlig	adjective	word	B1	unreasonable, absurd		16.03
+matematik	noun-en	word	B1	mathematics		16.02
+officiellt	adverb	word	B1	officially		16.01
+rensa	verb	word	B1	to remove undesired things; to clean, to clear, to purge, to wipe, etc.		16
+utvärdera	verb	word	B1	to evaluate		16
+onekligen	adverb	word	B1	undeniably		15.99
+tonåring	noun-en	word	B1	a teenager		15.99
+dagsläge	noun-ett	word	B1	today's situation, the current situation		15.98
+entreprenör	noun-en	word	B1	an entrepreneur		15.98
+kines	noun-en	word	B1	a Chinese person		15.98
+blivande	adjective	word	B1	becoming		15.97
+elände	noun-ett	word	B1	misery		15.96
+glida	verb	word	B1	to move smoothly along a surface; to slide, to slip, to glide, etc.		15.96
+stiftelse	noun-en	word	B1	a foundation, a self-owning corporation where board members appoint their own successors	long	15.96
+frivilligt	adverb	word	B1	voluntarily, freely, willingly		15.92
+introducera	verb	word	B1	to introduce		15.92
+villigt	adverb	word	B1	willingly		15.92
+friskola	noun-en	word	B1	a free school		15.89
+smula	noun-en	word	B1	a crumb		15.89
+försvåra	verb	word	B1	to make difficult, to make harder, to hamper		15.88
+kyrklig	adjective	word	B1	ecclesiastical		15.88
+oväntad	adjective	word	B1	unexpected		15.87
+rikedom	noun-en	word	B1	wealth, riches		15.86
+delstat	noun-en	word	B1	federated state; a state in a federation.		15.85
+gång på gång	adverb	phrase	B1	again and again, time and again		15.82
+illustrera	verb	word	B1	to illustrate		15.82
+centralbank	noun-en	word	B1	a central bank		15.81
+grannland	noun-ett	word	B1	neighboring country		15.79
+rasist	noun-en	word	B1	a racist		15.79
+ägande	noun-ett	word	B1	ownership		15.79
+förvirrad	adjective	word	B1	confused		15.78
+kredit	noun-en	word	B1	credit		15.77
+rom	noun-en	word	B1	Rome		15.77
+storstad	noun-en	word	B1	metropolis; large, busy city		15.76
+tveka	verb	word	B1	to hesitate, to waver		15.76
+överföring	noun-en	word	B1	transfer, transmission		15.76
+katolik	noun-en	word	B1	a Catholic, a follower of the Roman Catholic Church		15.75
+tät	adjective	word	B1	dense, thick or crowded		15.75
+fotografi	noun-ett	word	B1	photography		15.74
+förare	noun-en	word	B1	a driver		15.74
+historiker	noun-en	word	B1	an historian; person who studies or specializes in history		15.74
+misslyckande	noun-ett	word	B1	failure		15.72
+present	noun-en	word	B1	gift, present		15.71
+dödsstraff	noun-ett	word	B1	capital punishment		15.7
+evighet	noun-en	word	B1	eternity; all senses of the word		15.68
+enighet	noun-en	word	B1	agreement, consensus		15.66
+stigande	adjective	word	B1	increasing, rising		15.66
+torn	noun-ett	word	B1	tower		15.66
+förkasta	verb	word	B1	to reject, to repudiate		15.65
+humör	noun-ett	word	B1	mood, temper		15.64
+hemskt	adverb	word	B1	ghastly, frightful, horrifying, evil, dark, terrible	via-form	15.63
+moment	noun-ett	word	B1	a step in a process		15.62
+allihop	pronoun	word	B1	everybody, everyone, all people		15.6
+fritid	noun-en	word	B1	free time		15.6
+rapportering	noun-en	word	B1		none	15.6
+stöld	noun-en	word	B1	theft		15.6
+konkurrenskraft	noun-en	word	B1	competitiveness		15.59
+psykologisk	adjective	word	B1	psychological		15.59
+alternativt	adverb	word	B1	alternate, other, alternative	via-form	15.58
+direktör	noun-en	word	B1	manager; boss or leader		15.58
+skeptisk	adjective	word	B1	skeptical		15.56
+bakåt	adverb	word	B1	back, backwards, in reverse, towards the rear		15.54
+lapp	noun-en	word	B1	a patch, a piece of any flexible material, used to cover a hole in something; such as a piece of fabric used over a…	long	15.53
+anlita	verb	word	B1	to hire, to consult, to call in		15.52
+avfärda	verb	word	B1	to dismiss, to reject		15.52
+likadant	adverb	word	B1	similarly; in the same manner		15.51
+separat	adjective	word	B1		none	15.5
+överensstämma	verb	word	B1	to coincide, to agree, to be similar, to fit		15.49
+finansminister	noun-en	word	B1	a minister for finance		15.48
+format	noun-ett	word	B1	format		15.48
+ogilla	verb	word	B1	dislike	pos	15.48
+omvandla	verb	word	B1	to convert, to transform, to change, to reshape		15.48
+argumentation	noun-en	word	B1	argument, arguing; a discussion or a quarrel		15.47
+likadan	adjective	word	B1	the same, alike		15.47
+tavla	noun-en	word	B1	a framed picture		15.47
+kännedom	noun-en	word	B1	lore, learning, teaching, doctrine		15.43
+programvara	noun-en	word	B1	software		15.43
+skattesänkning	noun-en	word	B1	tax reduction, tax cut		15.43
+jämlikhet	noun-en	word	B1	equality, equal opportunity		15.42
+chefredaktör	noun-en	word	B1	an editor-in-chief		15.41
+säljare	noun-en	word	B1	seller		15.41
+duga	verb	word	B1	to be good enough; to suffice, to be acceptable, etc.		15.4
+negativt	adverb	word	B1	less than zero	via-form	15.4
+arkitekt	noun-en	word	B1	an architect		15.39
+finans	noun-en	word	B1	finance		15.38
+livad	adjective	word	B1	lively, boisterous		15.38
+passagerare	noun-en	word	B1	a passenger		15.38
+ekonom	noun-en	word	B1	an economist		15.37
+läsvärd	adjective	word	B1	worth reading		15.37
+obegriplig	adjective	word	B1	incomprehensible		15.37
+skam	noun-en	word	B1	shame		15.36
+skicklig	adjective	word	B1	skilled, skillful, good, proficient		15.36
+störta	verb	word	B1	to descend or fall or collapse uncontrollably		15.34
+överta	verb	word	B1	to take over		15.33
+feminist	noun-en	word	B1	feminist		15.32
+orättvisa	noun-en	word	B1	injustice, unfairness		15.32
+stadsdel	noun-en	word	B1	a neighborhood, a district or part of a city, a suburb		15.32
+utbyggnad	noun-en	word	B1	expansion		15.32
+årligen	adverb	word	B1	annually		15.32
+beskattning	noun-en	word	B1	taxation		15.29
+återge	verb	word	B1	to reproduce, to recount		15.29
+koka	verb	word	B1	to boil		15.27
+taliban	noun-en	word	B1	Taliban		15.27
+skara	noun-en	word	B1	a group of people		15.26
+bröllop	noun-ett	word	B1	a wedding		15.25
+mormor	noun-en	word	B1	a maternal grandmother		15.25
+pasta	noun-en	word	B1	pasta		15.25
+itu	particle	word	B1	into two pieces, apart		15.24
+fan	noun-en	word	B1	the devil, Satan		15.23
+syskon	noun-ett	word	B1	a sibling		15.23
+tillverkning	noun-en	word	B1	manufacture, production, making		15.22
+bunden	adjective	word	B1	bound, tied, restricted		15.21
+gitarr	noun-en	word	B1	a guitar		15.21
+diagnos	noun-en	word	B1	a diagnosis		15.19
+häftig	adjective	word	B1	forceful or intense; violent, intense, fierce, etc.		15.19
+överklaga	verb	word	B1	to appeal		15.19
+dödsfall	noun-ett	word	B1	a death		15.18
+import	noun-en	word	B1	import		15.18
+strejk	noun-en	word	B1	strike		15.18
+tvång	noun-ett	word	B1	compulsion, coercion		15.18
+formellt	adverb	word	B1	formal	via-form	15.17
+rund	adjective	word	B1	round		15.17
+sambo	noun-en	word	B1	partner with whom one lives, usually not in a common law marriage relationship; cohabitant	long	15.17
+teknologi	noun-en	word	B1	technology		15.17
+iransk	adjective	word	B1		none	15.16
+någorlunda	adverb	word	B1	somewhat, fairly		15.16
+genomgång	noun-en	word	B1	a walkthrough, a briefing, a summary		15.15
+grundskola	noun-en	word	B1	primary school or elementary school; in Sweden a 10-year compulsory school generally from late-August that year the…	long	15.15
+framställning	noun-en	word	B1	production, manufacture		15.14
+rådgivare	noun-en	word	B1	an adviser		15.14
+vrida	verb	word	B1	to twist, to turn; to change the direction or orientation of		15.14
+behaglig	adjective	word	B1	comfortable, pleasant		15.13
+fästa	verb	word	B1	to fasten, to attach, to fix		15.13
+målning	noun-en	word	B1	a painting		15.13
+underskott	noun-ett	word	B1	deficit, shortage		15.13
+framme	adverb	word	B1	at the front		15.11
+imperium	noun-ett	word	B1	an empire		15.11
+lönsam	adjective	word	B1	profitable		15.11
+söder	noun	word	B1	south of		15.11
+hänvisning	noun-en	word	B1	a reference, a redirection		15.1
+konsekvent	adverb	word	B1	consistent		15.1
+successivt	adverb	word	B1	gradually, step by step		15.1
+handlingsplan	noun-en	word	B1	action plan		15.09
+isolerad	adjective	word	B1	to isolate, to insulate	via-form	15.09
+tvåa	noun-en	word	B1	two; the digit "2"		15.09
+häva	verb	word	B1	to heave, to lift		15.06
+upphäva	verb	word	B1	to abate or repeal		15.06
+färdighet	noun-en	word	B1	a capability, a skill		15.05
+självmord	noun-ett	word	B1	suicide		15.04
+svärd	noun-ett	word	B1	a sword		15.04
+stall	noun-ett	word	B1	stable, building for housing horses		15.03
+styre	noun-ett	word	B1	government, regime		15.01
+fristående	adjective	word	B1	independent, single		14.99
+ilska	noun-en	word	B1	anger		14.99
+dumt	adjective	word	B1	stupid, dumb	via-form	14.98
+offentliggöra	verb	word	B1	to publish, to make public		14.97
+privatperson	noun-en	word	B1		none	14.97
+kompensera	verb	word	B1	to compensate		14.96
+överraskning	noun-en	word	B1	a surprise		14.96
+stängd	particip	word	B1	closed		14.94
+tröja	noun-en	word	B1	an upper-body garment, excluding outerwear like jackets, especially one worn for warmth and usually not for example a…	long	14.92
+komponent	noun-en	word	B1	a component		14.91
+festival	noun-en	word	B1	a festival		14.9
+lågkonjunktur	noun-en	word	B1	bust		14.89
+skandal	noun-en	word	B1	scandal		14.89
+återställa	verb	word	B1	to restore		14.89
+med hänvisning till	prep	phrase	B1		none	14.88
+förutse	verb	word	B1	to predict, to anticipate, to foresee		14.87
+minst sagt	adverb	phrase	B1		none	14.87
+stötta	verb	word	B1	a support, a pillar	pos	14.87
+fantastiskt	adverb	word	B1	fantastic	via-form	14.85
+karl	noun-en	word	B1	a male given name from Old Norse		14.85
+aggressiv	adjective	word	B1	aggressive		14.84
+härmed	adverb	word	B1	hereby		14.84
+avsaknad	noun-en	word	B1	lack, absence		14.83
+kemisk	adjective	word	B1	chemical		14.83
+saknad	noun-en	word	B1	missing		14.83
+raket	noun-en	word	B1	a rocket		14.81
+tunnelbana	noun-en	word	B1	subway; underground railway		14.81
+värma	verb	word	B1	to heat, to warm		14.81
+kommunistparti	noun-ett	word	B1	communist party		14.79
+marginal	noun-en	word	B1	a margin		14.79
+gravid	adjective	word	B1	pregnant		14.78
+kniv	noun-en	word	B1	a knife		14.78
+ramla	verb	word	B1	to fall		14.78
+villa	noun-en	word	B1	a villa, a house		14.78
+dryg	adjective	word	B1	lasting, economical		14.77
+lampa	noun-en	word	B1	lamp		14.77
+back	noun-en	word	B1	back; position behind most players on the team		14.76
+kusin	noun-en	word	B1	a cousin		14.76
+överdriven	adjective	word	B1	exaggerated		14.76
+knapp	noun-en	word	B1	scarce, not much of something		14.75
+privatliv	noun-ett	word	B1	private life, privacy		14.75
+skynda	verb	word	B1	to hurry; to move quickly, to do something quickly		14.75
+toalett	noun-en	word	B1	a toilet		14.75
+bada	verb	word	B1	to bathe		14.73
+lustig	adjective	word	B1	comically amusing; funny, fun, comical		14.73
+provins	noun-en	word	B1	province		14.73
+orättvis	adjective	word	B1	unjust, unfair		14.72
+sexualitet	noun-en	word	B1	sexuality		14.72
+upptäckt	noun-en	word	B1	discovered		14.72
+kreativitet	noun-en	word	B1	creativity		14.71
+lagråd	noun-ett	word	B1	council on legislation		14.71
+malm	noun-en	word	B1	An ore		14.68
+referera	verb	word	B1	to reference		14.68
+teologi	noun-en	word	B1	theology		14.68
+arkitektur	noun-en	word	B1	architecture		14.67
+förvalta	verb	word	B1	to administer, to administrate, to manage		14.67
+rättsväsende	noun-ett	word	B1	the bodies involved in legislating, imposing, and enforcing laws, collectively; a legal system	via-form,long	14.67
+lord	noun-en	word	B1		none	14.66
+poet	noun-en	word	B1	a poet		14.65
+stuga	noun-en	word	B1	a cottage, a cabin		14.63
+regna	verb	word	B1	to rain		14.62
+spekulera	verb	word	B1	to speculate		14.62
+bonus	noun-en	word	B1	bonus		14.6
+längtan	noun-en	word	B1	longing; melancholic desire		14.6
+rymd	noun-en	word	B1	a space, a volume		14.6
+fruktansvärt	adverb	word	B1	horrific, dreadful	via-form	14.58
+bad	noun-ett	word	B1	bathing; swimming		14.55
+förhör	noun-ett	word	B1	interrogation; interviewing with the goal of extracting a confession or obtaining information	long	14.53
+likvärdig	adjective	word	B1	equal, equivalent, tantamount		14.53
+upplösa	verb	word	B1	to dissolve, do disband, to break up, to dismiss		14.52
+blockera	verb	word	B1	to block, to prevent; to stop someone from		14.5
+fröken	noun-en	word	B1	Miss		14.5
+hysa	verb	word	B1	to house		14.49
+klipp	noun-ett	word	B1	a cut with scissors, shears, or the like		14.49
+äganderätt	noun-en	word	B1	title, right of ownership		14.49
+akademi	noun-en	word	B1	academy		14.48
+benämna	verb	word	B1	to name, to call; to define a terminology		14.48
+indisk	adjective	word	B1	Indian; related to India		14.48
+rosa	adjective	word	B1	pink		14.48
+tycke	noun-ett	word	B1	taste, opinion		14.48
+avlägsen	adjective	word	B1	distant, far-off		14.47
+konstigt	adverb	word	B1	strangely, weirdly		14.46
+marknadsekonomi	noun-en	word	B1	market economy		14.46
+uppta	verb	word	B1	to pick up, to pick, to take up, to absorb, to include, to collect, to record, to occupy	long	14.46
+utland	noun-ett	word	B1	a foreign country, foreign countries, abroad		14.44
+erinra	verb	word	B1	to remind, to point out, to reiterate		14.43
+finanser	noun	word	B1	finance	via-form	14.43
+lärande	noun-ett	word	B1	learning, teaching, which stimulates learning		14.43
+råvara	noun-en	word	B1	raw material, feedstock		14.42
+förenlig	adjective	word	B1	compatible, consistent		14.4
+berättigad	adjective	word	B1	entitled		14.39
+brottsling	noun-en	word	B1	a criminal		14.39
+klättra	verb	word	B1	to climb		14.39
+tillhörande	adjective	word	B1	to belong to	via-form	14.37
+delaktig	adjective	word	B1	involved, taking part		14.36
+rusa	verb	word	B1	to rush, hurry		14.36
+änka	noun-en	word	B1	a widow		14.35
+plugga	verb	word	B1	to plug; to stop with a plug		14.34
+prins	noun-en	word	B1	a prince		14.34
+mystisk	adjective	word	B1	mysterious, arcane, strange		14.33
+same	noun-en	word	B1	a Sami		14.33
+indirekt	adverb	word	B1	indirect		14.32
+webbsida	noun-en	word	B1	a webpage		14.32
+avveckla	verb	word	B1	dismantle	pos	14.3
+bygge	noun-ett	word	B1	construction site; place where a building is being erected		14.3
+föredrag	noun-ett	word	B1	a talk		14.3
+bibehålla	verb	word	B1	maintain, sustain, keep	pos	14.29
+näring	noun-en	word	B1	nourishment, food; that which nurtures or nourishes an organism; the lunch on your table	long	14.29
+poesi	noun-en	word	B1	poetry		14.28
+smyga	verb	word	B1	to sneak, to creep, to steal		14.28
+förort	noun-en	word	B1	suburb		14.27
+genetisk	adjective	word	B1	genetic		14.26
+fransman	noun-en	word	B1	a Frenchman		14.25
+genre	noun-en	word	B1	a genre		14.25
+lat	adjective	word	B1	lazy		14.25
+sorglig	adjective	word	B1	sad		14.25
+lastbil	noun-en	word	B1	a truck; a lorry		14.23
+vårda	verb	word	B1	to provide medical care		14.22
+debattör	noun-en	word	B1	debater		14.19
+inledande	adjective	word	B1	introductory, introducing		14.19
+premiär	noun-en	word	B1	premiere, debut, opening		14.18
+redskap	noun-ett	word	B1	a tool, an instrument		14.18
+novell	noun-en	word	B1	a short story		14.16
+väsentligt	adverb	word	B1	essentially		14.16
+matte	noun-en	word	B1	female owner of a pet		14.15
+anförande	noun-ett	word	B1	a speech, a presentation, a lecture		14.12
+mogen	adjective	word	B1	mature		14.12
+osynlig	adjective	word	B1	invisible, unseen		14.12
+besvärlig	adjective	word	B1	difficult, troublesome		14.1
+överskott	noun-ett	word	B1	a surplus, an excess		14.09
+kompromiss	noun-en	word	B1	a compromise		14.07
+uppskattning	noun-en	word	B1	an estimate, an approximation		14.07
+kvart	noun-en	word	B1	a quarter		14.05
+spekulation	noun-en	word	B1	speculation, guess		14.05
+urban	adjective	word	B1	a male given name, which peaked in popularity in the 1940s and 1950s. Cognate to Urban	long	14.05
+begriplig	adjective	word	B1	comprehensible, understandable		14.04
+träff	noun-en	word	B1	a meeting, a date, an appointment		14.04
+besvikelse	noun-en	word	B1	a disappointment		14.03
+flykt	noun-en	word	B1	escape, flight		14.03
+gradvis	adverb	word	B1	gradual		14.03
+poker	noun-en	word	B1		none	14.03
+uppgörelse	noun-en	word	B1	an agreement, a contract, a settlement		14.03
+acceptabel	adjective	word	B1	acceptable		14.01
+lugna	verb	word	B1	to calm		14.01
+skräck	noun-en	word	B1	fear, terror, horror.		14.01
+komplett	adjective	word	B1	complete		14
+norr om	prep	phrase	B1		none	13.99
+förhållandevis	adverb	word	B1	relatively, comparatively		13.97
+hugga	verb	word	B1	to strike with something sharp; to stab, to cut, to hew, to chop, to fell, to carve	long	13.97
+massmedium	noun-ett	word	B1	mass medium		13.97
+varpå	adverb	word	B1	whereon, whereupon, then		13.97
+åtala	verb	word	B1	to charge, to prosecute, to indict		13.97
+gris	noun-en	word	B1	pig		13.96
+medverkan	noun-en	word	B1	participation, contribution		13.95
+märkligt	adverb	word	B1	strange, peculiar	via-form	13.95
+uppehållstillstånd	noun-ett	word	B1	a residence permit		13.95
+original	noun-ett	word	B1	an original		13.92
+utdelning	noun-en	word	B1	distribution, handing out		13.92
+julklapp	noun-en	word	B1	a Christmas present		13.91
+klapp	noun-en	word	B1	a Christmas present		13.91
+långvarig	adjective	word	B1	lengthy, prolonged		13.91
+still	adverb	word	B1	still		13.91
+oändlig	adjective	word	B1	infinite		13.89
+sammansättning	noun-en	word	B1	compound		13.89
+oerhörd	adjective	word	B1	unheard-of		13.87
+rast	noun-en	word	B1	a break		13.87
+skapare	noun-en	word	B1	a creator		13.87
+benämning	noun-en	word	B1	a name, a term, a title, a designation		13.86
+transportera	verb	word	B1	to transport		13.86
+uppdelning	noun-en	word	B1	division, partitioning, breakdown		13.85
+väsen	noun-ett	word	B1	a supernatural being or creature		13.85
+islamist	noun-en	word	B1	an Islamist		13.84
+självklarhet	noun-en	word	B1	something which is obvious or self-explanatory		13.84
+beaktande	noun-ett	word	B1	respect, consideration, regard		13.82
+i kombination med	prep	phrase	B1		none	13.82
+inledningsvis	adverb	word	B1	initially		13.82
+krog	noun-en	word	B1	a premise where alcohol is sold and consumed; a pub, a tavern		13.82
+reta	verb	word	B1	to tease		13.82
+trakt	noun-en	word	B1	an area, a region, parts		13.82
+enig	adjective	word	B1	agreeing, in agreement		13.81
+ärva	verb	word	B1	to inherit		13.81
+jätte	noun-en	word	B1	jotun; a mythical humanoid creature, originally human-sized but later associated with great size	long	13.8
+börda	noun-en	word	B1	burden		13.79
+föregå	verb	word	B1	to precede		13.79
+publicering	noun-en	word	B1	publishing		13.79
+skifte	noun-ett	word	B1	change, changeover		13.79
+aktivist	noun-en	word	B1	an activist		13.77
+guide	noun-en	word	B1	guide		13.77
+smälta	verb	word	B1	melt; molten material	pos	13.77
+frysa	verb	word	B1	feel cold, to the point of discomfort	pos	13.76
+noggrann	adjective	word	B1	careful, scrupulous		13.76
+systematisk	adjective	word	B1	systematic, following a system		13.75
+tillträde	noun-ett	word	B1	access		13.75
+oväntat	adverb	word	B1	unexpectedly		13.72
+kompetent	adjective	word	B1	competent		13.7
+mätt	adjective	word	B1	full, satisfied, satiated		13.7
+prostitution	noun-en	word	B1	prostitution		13.7
+skick	noun-ett	word	B1	condition, state		13.7
+ficka	noun-en	word	B1	a pocket		13.68
+inköp	noun-ett	word	B1	a purchase		13.68
+nederlag	noun-ett	word	B1	defeat		13.67
+ansökning	noun-en	word	B1	application		13.66
+verkligt	adverb	word	B1	really		13.66
+story	noun-en	word	B1	A story.		13.65
+byrå	noun-en	word	B1	a bureau, a dresser, a chest of drawers		13.64
+dryck	noun-en	word	B1	any liquid consumed; beverage, drink		13.64
+smidig	adjective	word	B1	flexible and in good control of one's body		13.64
+synvinkel	noun-en	word	B1	a point of view, a perspective		13.64
+så gott som	adverb	phrase	B1	almost		13.64
+försvaga	verb	word	B1	to weaken		13.62
+gräs	noun-ett	word	B1	grass; any plant of the family Poaceae		13.62
+förfluten	adjective	word	B1	that has ended		13.61
+fysik	noun-en	word	B1	physics		13.6
+hockey	noun-en	word	B1	hockey		13.6
+simma	verb	word	B1	to swim		13.6
+produktivitet	noun-en	word	B1	productivity		13.58
+incitament	noun-ett	word	B1	an incentive		13.57
+kontrast	noun-en	word	B1	contrast		13.56
+läpp	noun-en	word	B1	a lip		13.56
+progressiv	adjective	word	B1	progressive		13.56
+anmärkningsvärd	adjective	word	B1	remarkable		13.55
+tull	noun-en	word	B1	a toll		13.55
+fotografera	verb	word	B1	to photograph		13.54
+skärm	noun-en	word	B1	screen; an informational viewing area		13.54
+bekymmer	noun-ett	word	B1	trouble, difficulty; something which causes worry		13.53
+databas	noun-en	word	B1	database		13.53
+fynd	noun-ett	word	B1	a discovery, a find		13.53
+underhåll	noun-ett	word	B1	maintenance		13.53
+i gång	adverb	phrase	B1	in motion, moving, running		13.51
+tätt	adverb	word	B1	tightly, densely, closely, thickly		13.51
+överlägsen	adjective	word	B1	superior		13.51
+grek	noun-en	word	B1	Greek; person from Greece		13.5
+kedja	noun-en	word	B1	chain		13.49
+sår	noun-ett	word	B1	a wound, a puncture of the skin or a mucous membrane		13.47
+uppenbarelse	noun-en	word	B1	a revelation		13.47
+utfall	noun-ett	word	B1	an outcome, a result		13.47
+morgondag	noun-en	word	B1	tomorrow; Archaic or poetic the day after today.		13.46
+naiv	adjective	word	B1	naive, childish		13.46
+nöd	noun-en	word	B1	distress		13.46
+motorväg	noun-en	word	B1	a freeway, a motorway		13.45
+utvecklingsland	noun-ett	word	B1	a developing country, a third-world country		13.45
+avhandling	noun-en	word	B1	a thesis, a dissertation		13.44
+godis	noun-ett	word	B1	candy, sweets		13.44
+ko	noun-en	word	B1	cow; female cattle		13.44
+påvisa	verb	word	B1	to prove something; to show, to demonstrate, to detect		13.44
+trampa	verb	word	B1	to step, to tramp		13.42
+ambassadör	noun-en	word	B1	ambassador		13.41
+torka	verb	word	B1	a drought, a dry season, a lack of rain	pos	13.41
+så att säga	adverb	phrase	B1	so to speak, as it were, if you will		13.4
+titt	noun-en	word	B1	look, gander		13.4
+spränga	verb	word	B1	to blow up, to blast		13.39
+halva	noun-en	word	B1	halva		13.38
+känneteckna	verb	word	B1	to characterize		13.38
+ombud	noun-ett	word	B1	a proxy, a representative, a delegate		13.38
+ortodox	adjective	word	B1	orthodox, Orthodox		13.37
+problematisk	adjective	word	B1	problematic		13.37
+virus	noun-ett	word	B1	virus		13.35
+himmelsk	adjective	word	B1	heavenly		13.34
+strålande	adjective	word	B1	brilliant, splendid, excellent		13.34
+uppsats	noun-en	word	B1	article, paper		13.34
+bindande	adjective	word	B1	to tie	via-form	13.33
+alltjämt	adverb	word	B1	still, steadily		13.32
+jämt	adverb	word	B1	always, all the time		13.32
+hungrig	adjective	word	B1	hungry		13.31
+elak	adjective	word	B1	mean, cruel, malicious		13.3
+bosättning	noun-en	word	B1	residence, settlement		13.29
+miljövänlig	adjective	word	B1	environmentally friendly		13.28
+förfogande	noun	word	B1	disposal		13.26
+lucka	noun-en	word	B1	a gap, a hole, an open slot, a small empty room		13.26
+procentenhet	noun-en	word	B1	percentage point		13.26
+sammanträde	noun-ett	word	B1	a meeting, a sitting		13.26
+musikalisk	adjective	word	B1	musical		13.25
+självförtroende	noun-ett	word	B1	confidence, self-confidence		13.23
+cool	adjective	word	B1	cool		13.21
+fördjupa	verb	word	B1	to deepen, immerse		13.21
+ingång	noun-en	word	B1	entrance, way in		13.2
+sed	noun-en	word	B1	custom		13.19
+taxi	noun-en	word	B1	taxi		13.19
+vänja	verb	word	B1	to get used, to get accustomed		13.19
+avslutning	noun-en	word	B1	a final, an ending		13.18
+deklaration	noun-en	word	B1	a declaration		13.18
+författning	noun-en	word	B1	legal code, law		13.18
+huvudperson	noun-en	word	B1	a main character		13.18
+hypotes	noun-en	word	B1	hypothesis		13.18
+panik	noun-en	word	B1		none	13.18
+sväng	noun-en	word	B1	a turn		13.17
+presidentval	noun-ett	word	B1	presidential election		13.16
+undgå	verb	word	B1	to evade, to escape		13.15
+illusion	noun-en	word	B1	an illusion		13.12
+international	noun-en	word	B1		none	13.12
+intrång	noun-ett	word	B1	an intrusion, a trespassing, an infringement		13.12
+skattepengar	noun	word	B1		none	13.12
+stolthet	noun-en	word	B1	pride		13.11
+utnyttjande	noun-ett	word	B1	exploitation		13.11
+överlevnad	noun-en	word	B1	survival		13.11
+problematik	noun-en	word	B1	problem, group of cohesive issues		13.1
+sällsynt	adjective	word	B1	scarce, rare, uncommon		13.1
+dumhet	noun-en	word	B1	stupidity, foolishness		13.09
+flöde	noun-ett	word	B1	a flow, a flux, a stream		13.09
+jättebra	adjective	word	B1	very good, fantastic, excellent		13.08
+i jämförelse med	prep	phrase	B1		none	13.07
+medborgarskap	noun-ett	word	B1	a citizenship		13.04
+snack	noun-ett	word	B1	talk, speech		13.04
+parallellt	adverb	word	B1	parallel, parallelly		13.03
+påföljd	noun-en	word	B1	result, consequence		13.03
+söder om	prep	phrase	B1		none	13.02
+strax efter	adverb	phrase	B1		none	13.01
+talang	noun-en	word	B1	talent		13.01
+varmt	adverb	word	B1	warm, hot	via-form	13.01
+pjäs	noun-en	word	B1	a play, a piece		13
+kansli	noun-ett	word	B1	an office, a secretariat		12.99
+lagligt	adverb	word	B1	legally		12.99
+sand	noun-en	word	B1	sand		12.99
+fildelare	noun-en	word	B1	filesharer		12.98
+liga	noun-en	word	B1	a gang		12.98
+parlamentarisk	adjective	word	B1		none	12.98
+avrätta	verb	word	B1	to execute, put to death		12.96
+fiske	noun-ett	word	B1	fishing; catching fish either for sport or for a living		12.96
+gynnsam	adjective	word	B1	beneficial		12.96
+vittnesbörd	noun-ett	word	B1	witness		12.96
+dokumentär	noun-en	word	B1	documentary		12.95
+dödlig	adjective	word	B1	deadly, fatal, lethal		12.95
+beteckning	noun-en	word	B1	a designation, a mark		12.94
+jämte	prep	word	B1	besides, in addition to		12.94
+uttryckligen	adverb	word	B1	expressly, explicitly		12.94
+distrikt	noun-ett	word	B1	district		12.93
+påse	noun-en	word	B1	a bag		12.93
+baksida	noun-en	word	B1	a backside; a rear		12.92
+plånbok	noun-en	word	B1	a wallet		12.92
+uppsägning	noun-en	word	B1	notice, layoff		12.92
+fullfölja	verb	word	B1	to complete, to finish off; go all the way; to continue to the conclusion of a task or an action	long	12.91
+foga	verb	word	B1	join, attach, append	pos	12.9
+psykologi	noun-en	word	B1	psychology		12.9
+anteckning	noun-en	word	B1	a note, a memorandum		12.89
+hjul	noun-ett	word	B1	a wheel; a circular device capable of rotating on its axis		12.89
+klänning	noun-en	word	B1	a dress		12.89
+trä	noun-ett	word	B1	wood		12.89
+belägg	noun-ett	word	B1	a piece of evidence		12.88
+blunda	verb	word	B1	to shut one's eyes		12.88
+vik	noun-en	word	B1	a bay, an inlet, a creek		12.88
+bråk	noun-ett	word	B1	brawl, row, racket; trouble		12.87
+värva	verb	word	B1	to recruit, to get to join		12.87
+biblisk	adjective	word	B1	biblical		12.86
+sikta	verb	word	B1	to sight, to see, to make a sighting		12.86
+uteslutande	adverb	word	B1	exclusively		12.86
+pryl	noun-en	word	B1	a gadget, a widget		12.85
+begravning	noun-en	word	B1	a funeral		12.84
+naturligt	adverb	word	B1	natural	via-form	12.84
+bredd	noun-en	word	B1	width, breadth		12.83
+frälsning	noun-en	word	B1	salvation		12.82
+funktionshinder	noun-ett	word	B1	a disability, a handicap		12.82
+såvida	subj	word	B1	provided that		12.82
+avvika	verb	word	B1	to deviate		12.81
+influensa	noun-en	word	B1	influenza		12.81
+medvetenhet	noun-en	word	B1	consciousness, awareness		12.8
+muskel	noun-en	word	B1	a muscle		12.8
+ointressant	adjective	word	B1	uninteresting		12.8
+samhällelig	adjective	word	B1	societal		12.8
+apropå	prep	word	B1	apropos, speaking of		12.78
+cirkel	noun-en	word	B1	a circle		12.78
+rekord	noun-ett	word	B1	record		12.78
+bemärkelse	noun-en	word	B1	sense, meaning		12.77
+djävul	noun-en	word	B1	a devil		12.76
+tålamod	noun-ett	word	B1	patience		12.75
+utspel	noun-ett	word	B1	lead		12.75
+verkställa	verb	word	B1	execute, effect, enforce, carry out	pos	12.75
+hjälpmedel	noun-ett	word	B1	something that facilitates some work or the like; an aid, a tool, a means		12.74
+riksdagsval	noun-ett	word	B1	Riksdag election		12.74
+svära	verb	word	B1	to swear, to curse; to use offensive language		12.74
+tagg	noun-en	word	B1	a thorn; a spine; a quill		12.74
+deklarera	verb	word	B1	to declare		12.73
+meningsfull	adjective	word	B1		none	12.73
+i anslutning till	prep	phrase	B1		none	12.71
+rimligen	adverb	word	B1	plausibly, reasonably		12.71
+annanstans	adverb	word	B1	elsewhere; in another place		12.68
+kvartal	noun-ett	word	B1	a quarter		12.68
+party	noun-ett	word	B1	party; social gathering		12.68
+imponera	verb	word	B1	to impress; to affect someone strongly and favorably		12.67
+innanför	prep	word	B1	on the inner side of; inside, within, behind		12.67
+expansion	noun-en	word	B1	expansion		12.66
+vaken	adjective	word	B1	awake		12.66
+kunnig	adjective	word	B1	knowledgeable, especially in a way that makes one competent; having knowledge, know-how, or skill borne out of knowledge	long	12.64
+scenario	noun-ett	word	B1		none	12.64
+leverans	noun-en	word	B1	delivery, the act of delivering		12.62
+medelstor	adjective	word	B1	midsized		12.62
+salt	noun-ett	word	B1	salty		12.62
+sannolik	adjective	word	B1	probable; of high probability		12.62
+vänskap	noun-en	word	B1	friendship		12.62
+farmor	noun-en	word	B1	a paternal grandmother		12.61
+tiotusentals	adverb	word	B1	tens of thousands of		12.61
+lokalt	adverb	word	B1	local	via-form	12.6
+frigöra	verb	word	B1	to liberate, to free		12.59
+prestation	noun-en	word	B1	performance, achievement; what one has managed to perform or do		12.59
+olämplig	adjective	word	B1	inapposite, inappropriate, unsuitable; unfit for a given purpose		12.58
+belöning	noun-en	word	B1	reward		12.57
+styrning	noun-en	word	B1	steering		12.57
+säte	noun-ett	word	B1	a seat		12.57
+sjukförsäkring	noun-en	word	B1	income protection insurance		12.56
+upplysa	verb	word	B1	to enlighten, to inform		12.56
+halvtimme	noun-en	word	B1	half an hour, a half-hour		12.55
+sms	noun-ett	word	B1	text message, an SMS message		12.54
+uppsättning	noun-en	word	B1	a set		12.54
+elektrisk	adjective	word	B1	electric, electrical		12.53
+folkbildning	noun-en	word	B1	popular education		12.53
+kriminalitet	noun-en	word	B1	criminality		12.53
+födelse	noun-en	word	B1	birth		12.52
+registrering	noun-en	word	B1	registration		12.52
+färdas	verb	word	B1	to travel		12.5
+nord	noun	word	B1	north, a compass direction		12.5
+världsbild	noun-en	word	B1	worldview, world picture, view of the world		12.49
+brista	verb	word	B1	to break, to burst		12.48
+prinsessa	noun-en	word	B1	a princess		12.48
+överlåta	verb	word	B1	to hand over		12.48
+konsumera	verb	word	B1	to consume		12.47
+vardaglig	adjective	word	B1	everyday; casual; mundane		12.47
+besättning	noun-en	word	B1	a crew, complement, hands; a collection of people who take care of a certain unit	long	12.46
+glädjande	adjective	word	B1	to make happy, to gladden, to cheer	via-form	12.46
+imperialism	noun-en	word	B1	imperialism		12.46
+manus	noun-ett	word	B1	manuscript, something written by hand	via-form	12.46
+mestadels	adverb	word	B1	mostly, for the most part		12.46
+departement	noun-ett	word	B1	a ministry		12.44
+förfölja	verb	word	B1	to pursue, to stalk		12.44
+operativ	adjective	word	B1	operative, pertaining to operations		12.44
+fullmäktige	noun	word	B1	council		12.42
+kommunfullmäktige	noun	word	B1	a municipal council; a city council		12.42
+interpellation	noun-en	word	B1		none	12.39
+marxism	noun-en	word	B1	Marxism		12.39
+nyliberal	adjective	word	B1	relating to Nyliberala partiet, in existence from 1868 to 1871		12.39
+sparande	noun-ett	word	B1	to save, to store for future use	via-form,pos	12.39
+trång	adjective	word	B1	tight, narrow, cramped		12.39
+angelägenhet	noun-en	word	B1	an issue		12.38
+potatis	noun-en	word	B1	a potato		12.38
+medeltida	adjective	word	B1	medieval		12.37
+underhållande	adjective	word	B1	to entertain	via-form	12.37
+ensamhet	noun-en	word	B1	solitude, loneliness		12.36
+noggrant	adverb	word	B1	careful, scrupulous	via-form	12.36
+sprit	noun-en	word	B1	liquor, spirits; booze		12.36
+panna	noun-en	word	B1	forehead, brow		12.35
+sakfråga	noun-en	word	B1	an issue		12.34
+brun	adjective	word	B1	brown		12.33
+kind	noun-en	word	B1	cheek		12.33
+förekomst	noun-en	word	B1	occurrence, presence, incidence		12.32
+härifrån	adverb	word	B1	from here; herefrom		12.32
+oförändrad	adjective	word	B1	unaltered, unmodified, unchanging		12.32
+okunnig	adjective	word	B1	unknowledgeable		12.32
+sedermera	adverb	word	B1	later on		12.31
+möjligtvis	adverb	word	B1	possibly		12.3
+fordra	verb	word	B1	to demand, to ask		12.29
+förhållningssätt	noun-ett	word	B1	an approach, an attitude		12.29
+hall	noun-en	word	B1	a small room just inside the front door of a residential building, where shoes and outerwear are put on or taken off…	long	12.29
+regelbunden	adjective	word	B1	regular, periodic		12.28
+klassiker	noun-en	word	B1	a classic		12.27
+uppkomst	noun-en	word	B1	an origin		12.27
+vägledning	noun-en	word	B1	guidance		12.27
+kika	verb	word	B1	to look		12.26
+blodig	adjective	word	B1	bloody		12.25
+dos	noun-en	word	B1	dose		12.25
+dynamisk	adjective	word	B1	dynamic		12.25
+försiktigt	adverb	word	B1	cautiously, carefully, prudently		12.25
+portion	noun-en	word	B1	a portion		12.25
+smutsig	adjective	word	B1	dirty		12.25
+svika	verb	word	B1	to betray, to let down, to disappoint		12.24
+smått	adverb	word	B1	small		12.23
+bortsett från	prep	phrase	B1	aside from, apart from		12.22
+förstärkning	noun-en	word	B1	emphasis, amplification, gain		12.22
+förteckning	noun-en	word	B1	a list, a register, an index		12.22
+narkotikum	noun-ett	word	B1	a narcotic		12.21
+björn	noun-en	word	B1	a bear		12.2
+engelsman	noun-en	word	B1	an Englishman		12.2
+utropa	verb	word	B1	to exclaim, cry out, ejaculate		12.2
+fascism	noun-en	word	B1	fascism		12.19
+gnälla	verb	word	B1	to whinge, to whine, to nag, to complain incessantly about minor issues		12.19
+underbart	adverb	word	B1	wonderfully		12.19
+ankomst	noun-en	word	B1	arrival; the act of arriving		12.18
+barnbarn	noun-ett	word	B1	a grandchild		12.18
+gudstjänst	noun-en	word	B1	a divine service, a church service		12.18
+pott	noun-en	word	B1	pot, kitty		12.18
+regissör	noun-en	word	B1	a director		12.18
+tillfälligt	adverb	word	B1	temporary; valid for a brief period of time	via-form	12.18
+turk	noun-en	word	B1	a Turk; person from Turkey		12.18
+ungdomsförbund	noun-ett	word	B1	a youth league		12.16
+eftersträva	verb	word	B1	to seek, to pursue, to strive for		12.15
+förflytta	verb	word	B1	to move		12.15
+sekreterare	noun-en	word	B1	a secretary		12.15
+missnöjd	adjective	word	B1	unhappy; displeased, dissatisfied		12.14
+värdelös	adjective	word	B1	worthless, lousy, useless		12.13
+doft	noun-en	word	B1	smell; scent, odor, fragrance		12.12
+passiv	adjective	word	B1	passive		12.11
+uppfinning	noun-en	word	B1	an invention		12.11
+härska	verb	word	B1	to rule; to reign		12.1
+kast	noun-ett	word	B1	a throw		12.1
+språklig	adjective	word	B1	linguistic, relating to language		12.1
+sympati	noun-en	word	B1	sympathy		12.1
+behörighet	noun-en	word	B1	qualification, competence, authority		12.09
+förknippa	verb	word	B1	to associate, to connect		12.09
+insändare	noun-en	word	B1	a letter to the editor		12.09
+judendom	noun-en	word	B1	Judaism		12.09
+sjuksköterska	noun-en	word	B1	a nurse		12.07
+tält	noun-ett	word	B1	tent; a pavilion or portable lodge		12.07
+uppgång	noun-en	word	B1	an increasing or upward movement		12.07
+inskränka	verb	word	B1	restrict, narrow, confine	pos	12.06
+journal	noun-en	word	B1	a journal, a magazine, a periodical		12.06
+prestera	verb	word	B1	to perform well; in particular in a competitive environment		12.06
+udda	adjective	word	B1	odd; not divisible by 2		12.06
+diplomatisk	adjective	word	B1		none	12.05
+tillfredsställande	adjective	word	B1	satisfactory, acceptable		12.04
+förakt	noun-ett	word	B1	contempt		12.03
+regera	verb	word	B1	to rule, to govern, to be in government		12.03
+gyllene	adjective	word	B1	golden, gold		12
+söderut	adverb	word	B1	southwards, south		12
+kapitalist	noun-en	word	B1	capitalist		11.99
+genomslag	noun-ett	word	B1	impact, breakthrough		11.98
+teologisk	adjective	word	B1	theologic, theological		11.98
+matta	noun-en	word	B1	a carpet, rug		11.96
+medelklass	noun-en	word	B1	middle class		11.95
+målgrupp	noun-en	word	B1	target group, target audience		11.95
+sortera	verb	word	B1	to sort		11.95
+säkerhetspolitik	noun-en	word	B1	security policy		11.95
+födelsedag	noun-en	word	B1	a birthday		11.94
+misshandla	verb	word	B1	to cause bodily harm to; to beat up, to batter, to assault, to abuse, etc.		11.94
+mynt	noun-ett	word	B1	a coin		11.94
+rörlig	adjective	word	B1	moving, mobile, agile, flexible		11.94
+gods	noun-ett	word	B1	goods in a shipment, shipped goods		11.93
+beredning	noun-en	word	B1	processing		11.92
+traditionellt	adverb	word	B1	traditional	via-form	11.92
+bliva	verb	word	B1	to become	via-form	11.91
+agent	noun-en	word	B1	an agent		11.9
+exklusiv	adjective	word	B1		none	11.9
+handlande	noun-ett	word	B1	acting		11.9
+socker	noun-ett	word	B1	sugar; sucrose in the form of small crystals		11.9
+upplopp	noun-ett	word	B1	riot		11.9
+anlägga	verb	word	B1	to install, to establish		11.89
+kaka	noun-en	word	B1	a cookie		11.89
+kollektivtrafik	noun-en	word	B1	public transportation		11.89
+upphandling	noun-en	word	B1	procurement		11.89
+breda	verb	word	B1	to spread		11.88

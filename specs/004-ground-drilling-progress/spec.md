@@ -169,7 +169,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 
 **Colours**
 
-- **FR-413** (RQ-294, RQ-413, RQ-415; N-38, N-45): In the reading view, words MUST be coloured by state: To remember `--cw`, fallen from To remember `--rw`; words that fell while marked To read or both before addendum 003 keep `--rr` and `--rb` (the marks a word had when it fell are kept). There is no dot or other mark for a form that may be more than one dictionary form (G-03 FR-306).
+- **FR-413** (RQ-294, RQ-413, RQ-415, RQ-426; N-38, N-45, N-34): In the reading view, words marked To remember MUST show in `--cw` (teal-green: light `#2E6B5E`, dark `#7CC2B0`) **with a dotted underline**, so colour is not the only sign (WCAG 1.4.1); fallen words (in the ground) look like any known word, plain, whatever marks they had (PD-13, question-pages/76, 13; the colours for words that fell while marked To read or both are withdrawn). There is no dot or other mark for a form that may be more than one word.
 
 **Level and progress**
 

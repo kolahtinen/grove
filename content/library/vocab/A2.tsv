@@ -1,0 +1,1359 @@
+# grove library vocabulary, level A2. Words from the Swedish Kelly list (Språkbanken, CC BY-SA 3.0 / LGPL 3.0); meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-vocab.mjs; see content/library/README.md.
+sv	pos	kind	level	en	flags	wpm
+normal	adjective	word	A2	normal		63.27
+rikta	verb	word	A2	to direct, to aim		63.25
+kurs	noun-en	word	A2	course, class		63.24
+påstående	noun-ett	word	A2	a claim, a statement		63.24
+märklig	adjective	word	A2	strange, peculiar		63.17
+öst	noun-en	word	A2	towards the east, eastward		63.12
+affär	noun-en	word	A2	a shop, a store		63.08
+tidigt	adverb	word	A2	early		62.99
+upplevelse	noun-en	word	A2	an event		62.97
+riktning	noun-en	word	A2	a direction		62.93
+vetenskap	noun-en	word	A2	science, scholarly knowledge, scholarship		62.83
+avsnitt	noun-ett	word	A2	paragraph; piece of text		62.81
+handel	noun-en	word	A2	trade, commerce; the commercial exchange of goods and services		62.81
+sträckning	noun-en	word	A2	route		62.79
+locka	verb	word	A2	to attract, to lure, to entice		62.67
+redovisa	verb	word	A2	to show, to display, to present, to produce, to account		62.59
+uttalande	noun-ett	word	A2	a statement, a declaration		62.58
+respektive	conj	word	A2	respectively		62.53
+para	verb	word	A2	to pair, match into pairs		62.49
+störa	verb	word	A2	to disturb, to confuse or irritate, to interfere, to make noise		62.42
+ihåg	particle	word	A2	only used in komma ihåg and ihågkomma		62.4
+någonstans	adverb	word	A2	somewhere, anywhere; in, at or to any place		62.31
+respekt	noun-en	word	A2	respect		62.24
+rapportera	verb	word	A2	to report		62.23
+knappt	adverb	word	A2	hardly, scarcely, barely, almost not, not quite yet, slightly less than; see also knappast	long	62.21
+enkelt	adverb	word	A2	simply		62.17
+omständighet	noun-en	word	A2	circumstance		62.09
+hänsyn	noun-en	word	A2	respect, consideration		62.05
+ikväll	adverb	word	A2	this evening		62.03
+begära	verb	word	A2	to request, to ask for		61.92
+rubrik	noun-en	word	A2	header, headline; text used to mark off a quantity of text, often titling or summarizing it	long	61.88
+producera	verb	word	A2	to produce or manufacture		61.86
+utsträckning	noun-en	word	A2	extent, width, reach, stretch		61.82
+anonym	adjective	word	A2	anonymous		61.81
+begå	verb	word	A2	to commit, to perpetrate		61.74
+bar	adjective	word	A2	bare, uncovered; not covered by e.g. clothes, fur or a snow cover		61.59
+institution	noun-en	word	A2	an institution		61.59
+förstöra	verb	word	A2	to break, to demolish; to make something cease working		61.58
+boll	noun-en	word	A2	a ball; a more or less spherical object which is not hard or unyielding		61.53
+grunda	verb	word	A2	to found, to establish		61.49
+förbi	prep	word	A2	past, over		61.34
+luft	noun-en	word	A2	air		61.33
+industri	noun-en	word	A2	industry		61.23
+tåg	noun-ett	word	A2	a train		61.07
+nordisk	adjective	word	A2	Nordic		60.93
+uppfylla	verb	word	A2	fulfill; to fill up	pos	60.84
+akta	verb	word	A2	to be careful with, to watch, to mind		60.82
+förhandling	noun-en	word	A2	a negotiation		60.69
+syfta	verb	word	A2	to have as intention, to aim		60.6
+bror	noun-en	word	A2	a brother, a contracted form of broder		60.45
+byggnad	noun-en	word	A2	a building		60.45
+hälft	noun-en	word	A2	half, one of two roughly equal parts		60.43
+skrift	noun-en	word	A2	a text, any written work, a book, a report, a script		60.43
+ansvarig	adjective	word	A2	responsible		60.34
+allmänhet	noun-en	word	A2	public		60.26
+orsaka	verb	word	A2	to cause		60.24
+i slutet	prep	phrase	A2		none	60.23
+israelisk	adjective	word	A2	Israeli		60.2
+drygt	adverb	word	A2	lasting, economical	via-form	60.1
+lever	noun-en	word	A2	liver		60.09
+bloggare	noun-en	word	A2	blogger		60.07
+tävling	noun-en	word	A2	a competition, a contest		59.87
+kommunikation	noun-en	word	A2	communication		59.79
+kritisk	adjective	word	A2	critical, exacting		59.66
+plocka	verb	word	A2	to pick		59.59
+patient	noun-en	word	A2	a patient		59.58
+sjunga	verb	word	A2	to sing		59.53
+vakna	verb	word	A2	to wake up		59.51
+hälsa	noun-en	word	A2	health		59.45
+piratparti	noun-ett	word	A2	pirate party		59.45
+centrum	noun-ett	word	A2	centre; the middle of something		59.43
+otroligt	adverb	word	A2	incredible	via-form	59.42
+roligt	adverb	word	A2	funny, fun	via-form	59.42
+mörk	adjective	word	A2	dark		59.31
+träna	verb	word	A2	to exercise, to practice; to perform activities to develop skills		59.09
+bord	noun-ett	word	A2	a table		59.07
+förrän	subj	word	A2	until, before, ere		59.06
+dansk	adjective	word	A2	Danish; of or pertaining to Denmark		59.05
+reda	noun-en	word	A2	ready		59.02
+vidta	verb	word	A2	to take		59.02
+mana	verb	word	A2	to encourage or urge		58.88
+väljare	noun-en	word	A2	a voter; a person who votes in an election or a referendum		58.84
+uppmana	verb	word	A2	to urge, to ask		58.76
+publik	noun-en	word	A2	public		58.71
+lida	verb	word	A2	to suffer; to undergo hardship		58.6
+motstånd	noun-ett	word	A2	resistance, opposition		58.6
+lägenhet	noun-en	word	A2	apartment, flat		58.56
+vänsterparti	noun-ett	word	A2	a left-wing party		58.46
+rädd	adjective	word	A2	afraid, scared		58.45
+användare	noun-en	word	A2	user		58.35
+inre	adjective	word	A2	inner, internal, kept inside		58.31
+avslöja	verb	word	A2	reveal; uncover	pos	58.29
+fiende	noun-en	word	A2	an enemy		58.26
+lopp	noun-ett	word	A2	a race		58.2
+återvända	verb	word	A2	to return		58.17
+utmaning	noun-en	word	A2	a challenge		58.16
+hopp	noun-ett	word	A2	hope		58.14
+konkurrens	noun-en	word	A2	competition, rivalry		58.14
+dröm	noun-en	word	A2	a dream		58.07
+detalj	noun-en	word	A2	detail		58.03
+nedan	adverb	word	A2	below, underneath		57.98
+placera	verb	word	A2	to place		57.94
+litteratur	noun-en	word	A2	literature		57.85
+ana	verb	word	A2	to have a feeling that something will happen, has happened or is in a certain way, without really having firm reason…	long	57.79
+inställning	noun-en	word	A2	attitude, position		57.78
+armé	noun-en	word	A2	army		57.72
+lös	adjective	word	A2	loose; not tightened, able to move		57.71
+pröva	verb	word	A2	to test, to try		57.64
+egenskap	noun-en	word	A2	attribute, property		57.61
+rekommendera	verb	word	A2	to recommend		57.61
+liberal	adjective	word	A2	liberal		57.58
+synpunkt	noun-en	word	A2	a comment, an opinion		57.51
+undan	prep	word	A2	away		57.5
+angående	prep	word	A2	about, concerning		57.49
+unik	adjective	word	A2	unique		57.46
+präst	noun-en	word	A2	a priest		57.44
+webbplats	noun-en	word	A2	a web site		57.41
+bostad	noun-en	word	A2	a home, a house, an apartment, a residence		57.37
+vardag	noun-en	word	A2	weekday		57.37
+gratis	adverb	word	A2	free, without charge		57.31
+återkomma	verb	word	A2	to return, to come back		57.2
+bevisa	verb	word	A2	to prove		57.17
+anställd	noun-en	word	A2	employed, hired		57.15
+förbjuda	verb	word	A2	to forbid, to prohibit, to ban		57.13
+uttala	verb	word	A2	to pronounce		57.08
+investering	noun-en	word	A2	an investment		57.01
+fira	verb	word	A2	to celebrate		56.93
+försäljning	noun-en	word	A2	selling		56.93
+populär	adjective	word	A2	popular		56.93
+klubb	noun-en	word	A2	a club		56.9
+citat	noun-ett	word	A2	a quote		56.87
+palestinier	noun-en	word	A2	Palestinian		56.84
+utrymme	noun-ett	word	A2	space		56.83
+förr	adverb	word	A2	before; in the past		56.75
+svårt	adverb	word	A2	heavily, severely		56.72
+stark	adjective	word	A2	strong		56.58
+påminna	verb	word	A2	to remind		56.57
+aktör	noun-en	word	A2	player, operator, actor		56.53
+klassisk	adjective	word	A2	classical		56.38
+fokus	noun	word	A2	a focus		56.32
+officiell	adjective	word	A2	official		56.31
+beröra	verb	word	A2	to touch		56.26
+palestinsk	adjective	word	A2	Palestinian		56.26
+ägare	noun-en	word	A2	owner		56.2
+kapital	noun-ett	word	A2	grave, utter, all-encompassing; which does not contain a lot of success or correctness	long	56.03
+relevant	adjective	word	A2	relevant		56.02
+minister	noun-en	word	A2	minister		55.85
+anpassa	verb	word	A2	adapt, adjust	pos	55.79
+glädje	noun-en	word	A2	joy, happiness		55.79
+titel	noun-en	word	A2	a title		55.79
+något	adverb	word	A2	any, some, anything, something		55.74
+utgångspunkt	noun-en	word	A2	origin, starting point, point of departure		55.74
+nätverk	noun-ett	word	A2	a network		55.73
+scen	noun-en	word	A2	a stage		55.67
+nytta	noun-en	word	A2	benefit		55.62
+hållbar	adjective	word	A2	durable		55.61
+begränsa	verb	word	A2	to limit, to restrict		55.6
+sikte	noun-ett	word	A2	sight		55.52
+snygg	adjective	word	A2	good-looking; handsome		55.44
+kvinnlig	adjective	word	A2	feminine		55.42
+som vanligt	adverb	phrase	A2		none	55.42
+avstånd	noun-ett	word	A2	distance		55.37
+betydande	adjective	word	A2	significant, notable		55.32
+fly	verb	word	A2	to flee, to run away, to escape		55.32
+skyldig	adjective	word	A2	guilty		55.31
+i övrigt	adverb	phrase	A2		none	55.3
+inflation	noun-en	word	A2	inflation		55.13
+ben	noun-ett	word	A2	leg		55.11
+definition	noun-en	word	A2	a definition		54.94
+uppmärksamhet	noun-en	word	A2	attention, attentiveness		54.9
+ladda	verb	word	A2	to load		54.89
+jul	noun-en	word	A2	Christmas, Yule		54.78
+dåligt	adverb	word	A2	bad, badly		54.56
+kommunal	adjective	word	A2	relating to a municipality		54.45
+passera	verb	word	A2	to pass		54.39
+herre	noun-en	word	A2	a man, a gentleman, a sir		54.34
+i fråga om	prep	phrase	A2		none	54.28
+klimat	noun-ett	word	A2	climate		54.24
+topp	noun-en	word	A2	a top, a peak		54.11
+troligen	adverb	word	A2	probably; which makes sense to believe		54.11
+främja	verb	word	A2	to promote, to support		53.95
+kompis	noun-en	word	A2	pal, friend, mate, buddy		53.95
+landsting	noun-ett	word	A2	a representative body for a country, a parliament, in various geographical and historical contexts	long	53.95
+undersöka	verb	word	A2	to investigate, to examine, to explore, to survey		53.89
+kilometer	noun-en	word	A2	a kilometre		53.72
+reform	noun-en	word	A2	reform		53.71
+testa	verb	word	A2	to try, to attempt		53.66
+konkret	adjective	word	A2	concrete; particular, perceivable, real		53.61
+rakt	adverb	word	A2	straight		53.53
+uppenbarligen	adverb	word	A2	obviously, clearly		53.53
+desto	adverb	word	A2	the, all the		53.5
+socialdemokratisk	adjective	word	A2	social democratic		53.5
+trupp	noun-en	word	A2	a group of soldiers; a troop, a squad		53.44
+vart	adverb	word	A2	to where, to which place, whither, whereto?		53.43
+seger	noun-en	word	A2	victory		53.38
+centerparti	noun-ett	word	A2	a center party		53.37
+förlust	noun-en	word	A2	a loss		53.3
+själ	noun-en	word	A2	soul		53.26
+öde	noun-ett	word	A2	deserted, desolate, empty		53.22
+mord	noun-ett	word	A2	murder		53.2
+dokument	noun-ett	word	A2	a document		53.17
+upphöra	verb	word	A2	to cease, to end, to stop		53.15
+folkparti	noun-ett	word	A2	people's party		53.14
+kraftigt	adverb	word	A2	strongly		53.14
+middag	noun-en	word	A2	midday, noon		53.1
+reagera	verb	word	A2	to react		53.1
+hjärna	noun-en	word	A2	a brain		53.02
+kulturell	adjective	word	A2	cultural		53.02
+södra	adjective	word	A2	southern; situated in, or related to a more southern location		53.02
+förtroende	noun-ett	word	A2	trust		52.99
+förordning	noun-en	word	A2	an ordinance, a resolution, a decree, an instruction		52.95
+upphovsrätt	noun-en	word	A2	copyright; an author's right; the right to a work of authorship		52.95
+skuld	noun-en	word	A2	debt		52.87
+professor	noun-en	word	A2	professor		52.61
+inklusive	prep	word	A2	including		52.53
+beskrivning	noun-en	word	A2	description		52.51
+lycka	noun-en	word	A2	joy, happiness		52.51
+skrivning	noun-en	word	A2	writing		52.51
+yrkande	noun-ett	word	A2	a requirement, a demand		52.51
+kär	adjective	word	A2	[with i] in love, enamored		52.5
+äng	noun-en	word	A2	a meadow, a field of grass		52.49
+hänvisa	verb	word	A2	to reference, to redirect		52.38
+buss	noun-en	word	A2	a bus, a vehicle to transport people		52.35
+norra	adjective	word	A2	northern; synonym to nordlig, this form is used in definite form and in proper nouns	long	52.24
+fullständigt	adverb	word	A2	completely		52.21
+make	noun-en	word	A2	a spouse, a husband, a married man		52.21
+antagligen	adverb	word	A2	probably		52.05
+stil	noun-en	word	A2	style		51.78
+förbund	noun-ett	word	A2	a union, a federation, an association, a league, an agreement		51.74
+tolkning	noun-en	word	A2	an interpretation		51.7
+utöver	prep	word	A2	in addition to, apart from		51.6
+syster	noun-en	word	A2	a sister		51.59
+berg	noun-ett	word	A2	a mountain		51.57
+motståndare	noun-en	word	A2	an opponent		51.53
+höger	adjective	word	A2	right		51.47
+praktisk	adjective	word	A2	practical		51.45
+beteende	noun-ett	word	A2	behavior		51.29
+bud	noun-ett	word	A2	a message		51.28
+träning	noun-en	word	A2	training, exercise		51.25
+vare sig	conj	phrase	A2	neither		51.25
+äktenskap	noun-ett	word	A2	marriage		51.11
+grov	adjective	word	A2	coarse; composed of relatively large particles or pieces		51.04
+uppe	adverb	word	A2	up		50.95
+inslag	noun-ett	word	A2	a segment, a feature		50.92
+förhindra	verb	word	A2	to prevent		50.9
+delning	noun-en	word	A2	a split, a division, a separation		50.82
+kapitalism	noun-en	word	A2	capitalism		50.81
+bilaga	noun-en	word	A2	an appendix		50.76
+tom	adjective	word	A2	empty		50.74
+invånare	noun-en	word	A2	an inhabitant		50.64
+struktur	noun-en	word	A2	a structure		50.56
+politiskt	adverb	word	A2	political, having to do with politics	via-form	50.53
+sjukhus	noun-ett	word	A2	a hospital		50.51
+mer eller mindre	adverb	phrase	A2	more or less		50.5
+främsta	adjective	word	A2	foremost, first		50.47
+djupt	adverb	word	A2	deeply		50.43
+visning	noun-en	word	A2	show, display		50.3
+bäst	adverb	word	A2	good	via-form	50.24
+korrekt	adjective	word	A2	correct		50.24
+gentemot	prep	word	A2	towards, against		50.23
+tack vare	prep	phrase	A2	thanks to, normally used with a positive connotation, though it can be used sarcastically	long	50.23
+aspekt	noun-en	word	A2	an aspect		50.22
+godkänna	verb	word	A2	to pass		50.2
+dialog	noun-en	word	A2	dialog		50.17
+felaktig	adjective	word	A2	wrong, incorrect, faulty, erroneous		50.17
+oro	noun-en	word	A2	unrest		50.14
+vägg	noun-en	word	A2	a wall		50.14
+kinesisk	adjective	word	A2	Chinese		50.13
+ständig	adjective	word	A2	constant, permanent		50.11
+tema	noun-ett	word	A2	a theme, a topic		50.11
+helhet	noun-en	word	A2	a whole, an entirety		50.05
+satsning	noun-en	word	A2	a going for, an investment, a bet, a venture		50.02
+statistik	noun-en	word	A2	statistics		50
+beräkna	verb	word	A2	to calculate		49.99
+resonemang	noun-ett	word	A2	an argument, a reasoning		49.97
+förbud	noun-ett	word	A2	a prohibition		49.95
+dollar	noun-en	word	A2	dollar		49.94
+längs	prep	word	A2	along		49.8
+fixa	verb	word	A2	to fix, to organize, to solve		49.79
+kollega	noun-en	word	A2	colleague		49.68
+inträffa	verb	word	A2	to happen, to occur, especially at a specific time		49.66
+sjukvård	noun-en	word	A2	medical care		49.6
+överleva	verb	word	A2	to survive		49.51
+sannolikt	adverb	word	A2	probable; of high probability	via-form	49.49
+i första hand	adverb	phrase	A2	primarily		49.48
+meddelande	noun-ett	word	A2	a message		49.48
+näringsliv	noun-ett	word	A2	business, business life, enterprise, commerce		49.43
+låna	verb	word	A2	to loan, to borrow		49.26
+förståelse	noun-en	word	A2	an understanding		49.23
+fisk	noun-en	word	A2	a fish		49.17
+möjligen	adverb	word	A2	possibly		49.17
+konsument	noun-en	word	A2	a consumer		49.13
+framhålla	verb	word	A2	to stress, to emphasize, to mention, to maintain		49.07
+storlek	noun-en	word	A2	size		49.07
+telefon	noun-en	word	A2	a phone, a telephone		48.95
+kön	noun-ett	word	A2	sex, gender		48.94
+laga	verb	word	A2	to repair		48.7
+roman	noun-en	word	A2	A novel		48.7
+lån	noun-ett	word	A2	loan		48.68
+likna	verb	word	A2	to resemble, to be similar to		48.67
+lita	verb	word	A2	to trust		48.62
+säng	noun-en	word	A2	a bed		48.59
+rädsla	noun-en	word	A2	fear		48.56
+övertygad	adjective	word	A2	to convince	via-form	48.55
+skit	noun-en	word	A2	shit		48.52
+tänkande	noun-ett	word	A2	thinking		48.51
+arm	noun-en	word	A2	arm; the body part		48.45
+bruk	noun-ett	word	A2	use, usage		48.4
+radio	noun-en	word	A2	radio		48.33
+granska	verb	word	A2	to scrutinize, to inspect, to audit		48.31
+i synnerhet	adverb	phrase	A2	in particular, particularly		48.31
+bekräfta	verb	word	A2	to confirm, to acknowledge		48.27
+väder	noun-ett	word	A2	weather		48.25
+hinder	noun-ett	word	A2	an obstacle, an obstruction		48.24
+förut	adverb	word	A2	before		48.23
+personligen	adverb	word	A2	personally		48.21
+bana	noun-en	word	A2	a trajectory, a course, a path		48.15
+reklam	noun-en	word	A2	advertisement		48.04
+trafik	noun-en	word	A2	traffic		48.01
+ärlig	adjective	word	A2	honest; scrupulous		47.97
+allting	pronoun	word	A2	everything		47.95
+artist	noun-en	word	A2	an artist		47.95
+bröd	noun-ett	word	A2	bread		47.92
+huruvida	subj	word	A2	whether		47.92
+utsatt	adjective	word	A2	exposed, vulnerable		47.92
+butik	noun-en	word	A2	a small shop, typically larger than a kiosk but smaller than an affär, but need not restrict itself to foodstuffs	long	47.83
+ytterst	adverb	word	A2	outermost, farthest away		47.74
+förbli	verb	word	A2	to be, to stay, to remain		47.73
+tråkig	adjective	word	A2	unpleasant, unfortunate		47.67
+hemlig	adjective	word	A2	secret		47.62
+andlig	adjective	word	A2	spiritual		47.6
+beträffande	prep	word	A2	concerning		47.59
+fartyg	noun-ett	word	A2	a ship or boat, a vessel		47.47
+flyga	verb	word	A2	to fly		47.45
+gifta	verb	word	A2	to marry		47.43
+snäll	adjective	word	A2	kind, nice		47.36
+ränta	noun-en	word	A2	interest, interest rate		47.34
+proposition	noun-en	word	A2	a proposition, a government bill		47.31
+svårighet	noun-en	word	A2	difficulty		47.24
+fart	noun-en	word	A2	speed		47.21
+tant	noun-en	word	A2	a middle-aged or older female relative, an aunt		47.2
+berörd	adjective	word	A2	to touch	via-form	47.13
+avsikt	noun-en	word	A2	an intention, an intent, a purpose		47.12
+frisk	adjective	word	A2	healthy; not sick		47.12
+opposition	noun-en	word	A2	opposition		47.11
+härlig	adjective	word	A2	lovely, delightful, wonderful, great		47.1
+intryck	noun-ett	word	A2	impression		47
+duktig	adjective	word	A2	good; talented; capable		46.87
+ideologi	noun-en	word	A2	ideology		46.83
+representant	noun-en	word	A2	representative, delegate		46.77
+engagemang	noun-ett	word	A2	commitment, interest, enthusiasm, involvement, the degree of voluntary participation	long	46.69
+finsk	adjective	word	A2	Finnish; of, or pertaining to Finland, the Finnish language or Finns.		46.66
+bekant	adjective	word	A2	known, familiar		46.6
+överallt	adverb	word	A2	everywhere		46.57
+gäng	noun-ett	word	A2	a gang		46.56
+träda	verb	word	A2	fallow	pos	46.56
+sjunka	verb	word	A2	to sink		46.55
+föremål	noun-ett	word	A2	an object, an item		46.54
+attack	noun-en	word	A2	attack; an attempt to cause damage		46.49
+falsk	adjective	word	A2	false		46.49
+representera	verb	word	A2	represent	pos	46.46
+miljöparti	noun-ett	word	A2	a green party		46.41
+avgift	noun-en	word	A2	a cost		46.38
+normalt	adverb	word	A2	normally		46.36
+motsvara	verb	word	A2	to correspond, to meet		46.25
+i allmänhet	adverb	phrase	A2		none	46.2
+översättning	noun-en	word	A2	translation		46.2
+seriös	adjective	word	A2	serious		46.16
+omedelbart	adverb	word	A2	immediately, now, as soon as possible		46.15
+kraftig	adjective	word	A2	having great force; powerful, strong, etc.		46.13
+uppskatta	verb	word	A2	to appreciate		46.1
+kommitté	noun-en	word	A2	a committee		46
+blanda	verb	word	A2	to mix		45.98
+blod	noun-ett	word	A2	blood		45.98
+högskola	noun-en	word	A2	college; university college; an institution of higher education that teaches undergraduates, but that does not in…	long	45.98
+fritt	adverb	word	A2	freely		45.9
+integritet	noun-en	word	A2	integrity		45.9
+hår	noun-ett	word	A2	hair		45.86
+organ	noun-ett	word	A2	an organ		45.79
+lycklig	adjective	word	A2	happy, joyous, enjoying peace, comfort, etc.; contented		45.77
+misstag	noun-ett	word	A2	a mistake		45.74
+träd	noun-ett	word	A2	a tree		45.68
+tak	noun-ett	word	A2	a roof		45.67
+straff	noun-ett	word	A2	punishment, penalty		45.66
+perfekt	adjective	word	A2	perfect		45.65
+överenskommelse	noun-en	word	A2	an agreement, a contract		45.61
+kampanj	noun-en	word	A2	a campaign		45.59
+grej	noun-en	word	A2	a thing		45.58
+åstadkomma	verb	word	A2	to achieve, to accomplish		45.57
+budget	noun-en	word	A2	a budget		45.56
+rygg	noun-en	word	A2	back; the rear of the body; especially the part between the neck and the end of the spine	long	45.55
+gott	adverb	word	A2	well, good		45.5
+press	noun-en	word	A2	a press; a tool that applies pressure		45.45
+digital	adjective	word	A2	digital; in digital form		45.42
+framstå	verb	word	A2	to appear		45.4
+verktyg	noun-ett	word	A2	a tool		45.4
+beroende på	prep	phrase	A2		none	45.39
+betyg	noun-ett	word	A2	a grade		45.28
+detsamma	pronoun	word	A2	the same; see also densamma, desamma		45.26
+start	noun-en	word	A2	a start; a beginning		45.17
+leverera	verb	word	A2	to deliver		45.14
+kompetens	noun-en	word	A2	competence		45.13
+var och en	pronoun	phrase	A2	each one, everyone		45.08
+långsiktig	adjective	word	A2	long-term		44.96
+vinter	noun-en	word	A2	winter		44.95
+gripa	verb	word	A2	to catch hold of		44.94
+skyldighet	noun-en	word	A2	duty, obligation		44.81
+evig	adjective	word	A2	eternal, never-ending		44.78
+företrädare	noun-en	word	A2	a representative, an advocate		44.73
+etnisk	adjective	word	A2	ethnic		44.59
+med andra ord	adverb	phrase	A2	in other words		44.51
+njuta	verb	word	A2	to enjoy, to indulge		44.46
+posta	verb	word	A2	to put in the mail; to post, to mail, to send		44.39
+runda	verb	word	A2	a round	pos	44.38
+bereda	verb	word	A2	to prepare		44.28
+uppmärksamma	verb	word	A2	to notice		44.27
+arbetslös	adjective	word	A2	unemployed		44.2
+yta	noun-en	word	A2	a surface		44.18
+skratta	verb	word	A2	to laugh		44.04
+underlätta	verb	word	A2	to facilitate		44.04
+föreligga	verb	word	A2	to exist, to be at hand		43.98
+tillämpning	noun-en	word	A2	an application, a use		43.98
+garantera	verb	word	A2	to guarantee		43.97
+jakt	noun-en	word	A2	hunting		43.94
+utse	verb	word	A2	to appoint, to choose, to elect		43.93
+blick	noun-en	word	A2	look		43.86
+svenska	noun-en	word	A2	Swedish		43.74
+konferens	noun-en	word	A2	a conference		43.68
+framföra	verb	word	A2	to express, to deliver		43.66
+specifik	adjective	word	A2	specific		43.64
+varg	noun-en	word	A2	wolf		43.6
+kanal	noun-en	word	A2	a canal		43.59
+klok	adjective	word	A2	wise, intelligent, prudent		43.53
+regim	noun-en	word	A2	a regime, a government		43.51
+utöva	verb	word	A2	to exercise, to practise, to execute		43.51
+fokusera	verb	word	A2	to focus		43.48
+belopp	noun-ett	word	A2	a sum; an amount		43.46
+bransch	noun-en	word	A2	a sector of business, a trade, an industry		43.46
+sekund	noun-en	word	A2	second		43.43
+torde	aux verb	word	A2	should and also probably is; auxiliary verb used to express probable, but still hypothetical, actions or conditions.	pos,long	43.35
+färdig	adjective	word	A2	finished		43.33
+ordna	verb	word	A2	to order, to sort, to put in order, to arrange, to fix		43.33
+närma	verb	word	A2	to move closer, to approach		43.31
+vind	noun-en	word	A2	bent, twisted, warped		43.29
+gård	noun-en	word	A2	a property with houses in the countryside; an estate, a homestead, a farmstead, a ranch, etc.	long	43.28
+framgångsrik	adjective	word	A2	successful		43.21
+identitet	noun-en	word	A2	identity		43.18
+sång	noun-en	word	A2	singing, song		43.18
+närma sig	verb	phrase	A2		none	43.14
+skrika	verb	word	A2	to scream, to yell, to shout		43.14
+tidpunkt	noun-en	word	A2	point in time, timepoint, timing		43.12
+avskaffa	verb	word	A2	to abolish		43.11
+samband	noun-ett	word	A2	connection, relation, link		43.1
+lugn	adjective	word	A2	calm, tranquil		43.08
+uppge	verb	word	A2	to give as a fact; to state		43.08
+deltagare	noun-en	word	A2	participant		43.07
+ursprung	noun-ett	word	A2	an origin		43.07
+bestämd	adjective	word	A2	definite		43.06
+insikt	noun-en	word	A2	knowledge		43.05
+forum	noun-ett	word	A2	a forum		43.03
+statsminister	noun-en	word	A2	a prime minister		42.87
+annorlunda	adjective	word	A2	abnormal, nonstandard		42.85
+definiera	verb	word	A2	to define		42.8
+fönster	noun-ett	word	A2	a window		42.75
+get	noun-en	word	A2	goat		42.71
+likhet	noun-en	word	A2	similarity		42.68
+ljud	noun-ett	word	A2	sound		42.67
+beställa	verb	word	A2	to order		42.48
+synd	noun-en	word	A2	sin		42.46
+papper	noun-ett	word	A2	paper		42.43
+definitivt	adverb	word	A2	definitely; with certainty; for sure		42.38
+omfattning	noun-en	word	A2	extent		42.37
+bevara	verb	word	A2	to preserve; to keep		42.29
+väga	verb	word	A2	weigh	pos	42.23
+fenomen	noun-ett	word	A2	a phenomenon		42.2
+riktlinje	noun-en	word	A2	guideline, outline, benchmark		42.17
+profet	noun-en	word	A2	prophet		42.16
+decennium	noun-ett	word	A2	a decade		42.15
+i stort sett	adverb	phrase	A2	by and large, essentially		42.1
+inriktning	noun-en	word	A2	direction, orientation, specialization, speciality		42.05
+misslyckas	verb	word	A2	to fail		42.04
+ram	noun-en	word	A2	frame		42.04
+finansiera	verb	word	A2	to finance		42.03
+hotell	noun-ett	word	A2	a hotel		42
+kristendom	noun-en	word	A2	Christianity		42
+i förhållande till	prep	phrase	A2		none	41.87
+klaga	verb	word	A2	to complain		41.87
+skatta	verb	word	A2	to make an estimate based on present statistics concerning something		41.87
+upprätta	verb	word	A2	to raise, to erect		41.86
+förhoppningsvis	adverb	word	A2	hopefully		41.58
+gynna	verb	word	A2	to benefit		41.53
+ifall	subj	word	A2	in case		41.43
+oberoende	adjective	word	A2	independent		41.42
+leka	verb	word	A2	to play		41.37
+märke	noun-ett	word	A2	a mark		41.31
+snö	noun-en	word	A2	snow; frozen, crystalline water falling as precipitation		41.31
+upprepa	verb	word	A2	to repeat		41.31
+undervisning	noun-en	word	A2	education, training, schooling		41.29
+kött	noun-ett	word	A2	meat, flesh		41.19
+förutsätta	verb	word	A2	to presume		41.16
+replik	noun-en	word	A2	line, utterance		41.12
+koppling	noun-en	word	A2	a connection, a coupling		41.1
+snitt	noun-ett	word	A2	a cut		41.04
+engelska	noun-en	word	A2	English		41.03
+överhuvudtaget	adverb	word	A2	altogether		41
+sysselsättning	noun-en	word	A2	an occupation, a profession, a job		40.97
+besked	noun-ett	word	A2	answer, information; that to inform or let somebody know		40.96
+lätta	verb	word	A2	to ease, to lighten, to loosen		40.92
+avseende	noun-ett	word	A2	an aspect		40.83
+okänd	adjective	word	A2	unknown, unfamiliar		40.81
+katolsk	adjective	word	A2	Catholic, pertaining to the Roman Catholic Church		40.79
+ropa	verb	word	A2	to call, to shout		40.76
+bekämpa	verb	word	A2	to fight and thus get rid of; to combat, to fight		40.74
+genast	adverb	word	A2	immediately, at once, right away		40.7
+sjö	noun-en	word	A2	a lake		40.7
+så småningom	adverb	phrase	A2	eventually		40.7
+logisk	adjective	word	A2	logical		40.69
+inom ramen för	prep	phrase	A2		none	40.67
+kaffe	noun-ett	word	A2	coffee		40.67
+förstärka	verb	word	A2	to amplify, to fortify, to emphasize, to strengthen		40.65
+euro	noun-en	word	A2	the euro; the currency		40.64
+mänsklighet	noun-en	word	A2	humanity, mankind		40.59
+nere	adverb	word	A2	down, below, downstairs, at the far end of		40.57
+betona	verb	word	A2	to emphasize		40.53
+expert	noun-en	word	A2	expert		40.48
+fildelning	noun-en	word	A2	file sharing		40.41
+olja	noun-en	word	A2	oil		40.38
+förbereda	verb	word	A2	to prepare		40.33
+förfarande	noun-ett	word	A2	a procedure		40.3
+trygghet	noun-en	word	A2	security, safety		40.26
+konstnär	noun-en	word	A2	an artist		40.2
+i själva verket	adverb	phrase	A2	in reality, actually		40.15
+norsk	adjective	word	A2	Norwegian		40.15
+i fråga	adverb	phrase	A2	in question		40.14
+stjärna	noun-en	word	A2	a star		40.12
+tyg	noun-ett	word	A2	cloth, textile, fabric		40.09
+läsning	noun-en	word	A2	reading		40.01
+blå	adjective	word	A2	blue		40
+fotboll	noun-en	word	A2	soccer, football; a team sport		40
+flykting	noun-en	word	A2	a refugee		39.98
+koppla	verb	word	A2	to connect		39.9
+forma	verb	word	A2	to shape, give form		39.88
+bibel	noun-en	word	A2	the Bible		39.87
+förresten	adverb	word	A2	by the way		39.86
+samarbeta	verb	word	A2	to cooperate		39.84
+slänga	verb	word	A2	to throw, to sling, to toss		39.82
+ögonblick	noun-ett	word	A2	a moment, an instant, a blink of an eye		39.81
+neka	verb	word	A2	to deny, to say no		39.75
+arbetsplats	noun-en	word	A2	workplace		39.66
+summa	noun-en	word	A2	sum, result of addition		39.56
+tillräcklig	adjective	word	A2	sufficient		39.49
+äcklig	adjective	word	A2	disgusting, gross		39.49
+tona	verb	word	A2	to slowly emerge		39.44
+tendens	noun-en	word	A2	a tendency, a trend		39.43
+på så sätt	adverb	phrase	A2		none	39.33
+restaurang	noun-en	word	A2	a restaurant		39.29
+återstå	verb	word	A2	to remain		39.29
+vila	verb	word	A2	rest; relief from work, activity or exertion	pos	39.26
+extremt	adverb	word	A2	extremely		39.25
+kamera	noun-en	word	A2	camera		39.24
+självständig	adjective	word	A2	independent		39.17
+socialistisk	adjective	word	A2	socialist		39.15
+framställa	verb	word	A2	to produce, to manufacture		39.04
+mångfald	noun-en	word	A2	diversity, variety		38.97
+strand	noun-en	word	A2	beach		38.97
+pension	noun-en	word	A2	retirement		38.96
+diskriminering	noun-en	word	A2	discrimination		38.94
+misstänka	verb	word	A2	to suspect		38.94
+utsläpp	noun-ett	word	A2	emission		38.92
+logga	verb	word	A2	a logo, a logotype; contraction of logotyp	pos	38.85
+medicin	noun-en	word	A2	medicine		38.84
+sport	noun-en	word	A2	sports		38.76
+rättvisa	noun-en	word	A2	justice, fairness		38.74
+eld	noun-en	word	A2	fire		38.73
+individuell	adjective	word	A2	individual		38.72
+därifrån	adverb	word	A2	from there		38.64
+yttre	adjective	word	A2	outer, external, kept outside		38.53
+arabisk	adjective	word	A2	Arabic		38.42
+erhålla	verb	word	A2	to obtain, to receive		38.41
+moralisk	adjective	word	A2	moral		38.41
+revolutionär	adjective	word	A2	revolutionary		38.4
+egendom	noun-en	word	A2	property		38.38
+köp	noun-ett	word	A2	purchase		38.33
+välfärd	noun-en	word	A2	welfare		38.32
+sticka	verb	word	A2	a splinter	pos	38.31
+mäta	verb	word	A2	to measure		38.3
+helvete	noun-ett	word	A2	Hell		38.27
+tuff	adjective	word	A2	tuff		38.27
+jordbruk	noun-ett	word	A2	agriculture; the art or science of cultivating the ground		38.26
+sällskap	noun-ett	word	A2	company, companionship		38.25
+medverka	verb	word	A2	to participate, to contribute		38.2
+arbetstagare	noun-en	word	A2	an employee, a worker		38.17
+fånga	verb	word	A2	to catch		38.16
+blogga	verb	word	A2	to blog		38.15
+terrorism	noun-en	word	A2	terrorism		38.13
+fest	noun-en	word	A2	a party		38.12
+ordentligt	adverb	word	A2	orderly, thoroughly		38.12
+väst	noun	word	A2	west		38.1
+sajt	noun-en	word	A2	site		38.08
+prova	verb	word	A2	to try, to make an attempt; to sample		38.07
+prägla	verb	word	A2	to stamp, to dent, to make an impression		38.03
+dum	adjective	word	A2	stupid, dumb		38.02
+övning	noun-en	word	A2	exercise		37.99
+jobbig	adjective	word	A2	onerous, arduous, difficult, tiring, requiring or using a lot of energy or strength	long	37.96
+måla	verb	word	A2	to paint		37.96
+vin	noun-ett	word	A2	wine		37.91
+identifiera	verb	word	A2	to identify		37.89
+rasism	noun-en	word	A2	racism		37.84
+ståndpunkt	noun-en	word	A2	a stance, a position		37.84
+granne	noun-en	word	A2	a neighbour		37.82
+rang	noun-en	word	A2	rank, status		37.81
+resultera	verb	word	A2	to result		37.79
+karriär	noun-en	word	A2	a career		37.72
+trend	noun-en	word	A2	a trend		37.69
+kontor	noun-ett	word	A2	office; building or room		37.63
+jaga	verb	word	A2	to chase		37.6
+yttrandefrihet	noun-en	word	A2	freedom of speech		37.57
+diverse	adjective	word	A2	various, miscellaneous		37.46
+fortsättning	noun-en	word	A2	sequel, continuation; something which is continued		37.46
+stöta	verb	word	A2	to hit with a short, sharp impact; to bump, etc.		37.45
+förneka	verb	word	A2	to deny		37.44
+väsentlig	adjective	word	A2	essential		37.42
+manlig	adjective	word	A2	manly; having the characteristics of a man		37.38
+demonstration	noun-en	word	A2	a demonstration		37.37
+färd	noun-en	word	A2	a journey, a trip		37.3
+efterfrågan	noun-en	word	A2	demand		37.29
+kandidat	noun-en	word	A2	a candidate		37.23
+upprätthålla	verb	word	A2	to maintain, uphold		37.23
+fördrag	noun-ett	word	A2	a treaty		37.17
+instrument	noun-ett	word	A2	an instrument		37.17
+analysera	verb	word	A2	to analyze		37.12
+främmande	adjective	word	A2	strange, unfamiliar, unknown		37.08
+uppmuntra	verb	word	A2	encourage; to mentally support	pos	37.07
+genomförande	noun-ett	word	A2	implementation, realization, execution		37.04
+konservativ	adjective	word	A2	conservative		37.03
+attityd	noun-en	word	A2	attitude		36.99
+föreställning	noun-en	word	A2	an idea, a notion, a conception		36.97
+lyda	verb	word	A2	to obey		36.93
+juridisk	adjective	word	A2	legal, pertaining to law		36.89
+variant	noun-en	word	A2	variant		36.89
+höjd	noun-en	word	A2	raised, increased		36.87
+utrikesminister	noun-en	word	A2	a minister for foreign affairs		36.87
+gäst	noun-en	word	A2	a guest		36.85
+hustru	noun-en	word	A2	a wife		36.85
+vandring	noun-en	word	A2	a hike, a tour or journey, a long walk		36.83
+kontakta	verb	word	A2	to contact		36.81
+mil	noun-en	word	A2	A Scandinavian mile.		36.74
+eventuellt	adverb	word	A2	possibly, potentially, perhaps		36.69
+medge	verb	word	A2	to admit; to concede as true		36.61
+ologisk	adjective	word	A2	illogical		36.6
+alkohol	noun-en	word	A2	alcohol		36.54
+invandring	noun-en	word	A2	immigration		36.54
+arbetarklass	noun-en	word	A2	working class		36.51
+lögn	noun-en	word	A2	a lie		36.5
+yttrande	noun-ett	word	A2	a statement, an expression, speech		36.5
+tillfällig	adjective	word	A2	temporary; valid for a brief period of time		36.49
+varav	adverb	word	A2	whereof, of which		36.47
+doktor	noun-en	word	A2	doctor; physician		36.39
+gränsa	verb	word	A2	march; to have common borders or frontiers	pos	36.39
+olaglig	adjective	word	A2	illegal		36.39
+vision	noun-en	word	A2	vision; something imaginary		36.38
+framöver	adverb	word	A2	for the future		36.31
+omgivning	noun-en	word	A2	a surrounding, an environment, a context		36.28
+bistånd	noun-ett	word	A2	aid, support		36.19
+ansluta	verb	word	A2	to connect, to join		36.17
+bas	noun-en	word	A2	base; foundation		36.17
+fil	noun-en	word	A2	a file		36.17
+föredra	verb	word	A2	to prefer, to favor		36.14
+etablerad	adjective	word	A2	established		36.03
+sönder	particle	word	A2	broken, out of order		36.03
+välkomna	verb	word	A2	welcome	pos	36.02
+tillverka	verb	word	A2	to manufacture, to produce, to make		35.95
+ambition	noun-en	word	A2	ambition		35.85
+aktie	noun-en	word	A2	share, stock		35.75
+anklaga	verb	word	A2	to accuse		35.75
+dygn	noun-ett	word	A2	day, nychthemeron		35.75
+förtjäna	verb	word	A2	to deserve		35.75
+hur som helst	adverb	phrase	A2	in any case, anyway, anyhow		35.69
+norm	noun-en	word	A2	norm		35.69
+osäker	adjective	word	A2	unsafe, insecure		35.63
+räkning	noun-en	word	A2	counting		35.61
+republik	noun-en	word	A2	a republic		35.57
+rykte	noun-ett	word	A2	a rumor		35.54
+jämförelse	noun-en	word	A2	a comparison		35.52
+avstå	verb	word	A2	to abstain		35.46
+ära	noun-en	word	A2	honor, glory; an objectification of praiseworthiness		35.43
+länsstyrelse	noun-en	word	A2	a county administrative board or county council, the office of the landshövding		35.41
+smart	adjective	word	A2	smart; clever		35.4
+bibliotek	noun-ett	word	A2	library		35.39
+diktatur	noun-en	word	A2	dictatorship		35.37
+variera	verb	word	A2	to vary		35.35
+dominera	verb	word	A2	to dominate		35.32
+utreda	verb	word	A2	to investigate		35.32
+boende	noun-ett	word	A2	living, resident, dwelling		35.29
+museum	noun-ett	word	A2	a museum		35.28
+förvandla	verb	word	A2	to turn, to transform, to convert		35.27
+påbörja	verb	word	A2	to start, to begin		35.26
+ursäkt	noun-en	word	A2	an excuse		35.24
+vete	noun-ett	word	A2	wheat		35.23
+organisera	verb	word	A2	to organize		35.17
+kommunistisk	adjective	word	A2	communist		35.16
+öra	noun-ett	word	A2	ear; the part of the body used to hear		35.14
+aktivt	adverb	word	A2	active	via-form	35.1
+granskning	noun-en	word	A2	an inspection, an audit, a revision		35.1
+balans	noun-en	word	A2	balance		35.09
+mage	noun-en	word	A2	stomach		35.09
+teckna	verb	word	A2	to draw		35.07
+arg	adjective	word	A2	angry, mad		35.03
+säkra	verb	word	A2	to secure, to guarantee		35
+lunch	noun-en	word	A2	lunch, a meal eaten around noon		34.98
+kommunist	noun-en	word	A2	a communist		34.92
+gåva	noun-en	word	A2	gift		34.86
+för närvarande	adverb	phrase	A2	at present, currently		34.84
+befintlig	adjective	word	A2	present, existing, in existence, extant		34.8
+socialism	noun-en	word	A2	socialism		34.75
+ursprunglig	adjective	word	A2	original		34.75
+anställning	noun-en	word	A2	an employment		34.72
+ansökan	noun-en	word	A2	an application		34.66
+protest	noun-en	word	A2	protest		34.62
+test	noun-en	word	A2	a test, an examination, a trial		34.62
+anda	noun-en	word	A2	spirit		34.6
+galen	adjective	word	A2	crazy, mad, insane [with av ‘with’]		34.56
+katastrof	noun-en	word	A2	catastrophe		34.56
+hata	verb	word	A2	to hate		34.52
+gissa	verb	word	A2	to guess		34.5
+mur	noun-en	word	A2	a wall built of overlapping bricks or stones or cement or the like		34.49
+tjänsteman	noun-en	word	A2	a white-collar worker, or the role of such a person		34.46
+led	noun-ett	word	A2	LED		34.43
+beakta	verb	word	A2	to consider, to take into account		34.42
+till följd av	prep	phrase	A2		none	34.39
+reglera	verb	word	A2	to regulate, to control		34.32
+kristdemokrat	noun-en	word	A2	a Christian Democrat		34.3
+flod	noun-en	word	A2	a river		34.29
+talare	noun-en	word	A2	speaker; someone who makes a speech		34.29
+mörker	noun-ett	word	A2	darkness		34.28
+begränsning	noun-en	word	A2	limitation, restriction, limit		34.27
+värme	noun-en	word	A2	heat, warmth c		34.25
+agerande	noun-ett	word	A2	acting		34.24
+minoritet	noun-en	word	A2	minority; less than one half of a group		34.2
+etablera	verb	word	A2	to establish		34.17
+dam	noun-en	word	A2	a lady		34.16
+spansk	adjective	word	A2	Spanish; of or pertaining to Spain or the Spanish language		34.14
+motiv	noun-ett	word	A2	motive; that which incites to an action		34.12
+olikhet	noun-en	word	A2	an inequality		34.12
+rättslig	adjective	word	A2	judicial, legal		34.11
+utställning	noun-en	word	A2	exhibition		34.11
+utomlands	adverb	word	A2	abroad, overseas		34.1
+huvudstad	noun-en	word	A2	capital city		34.08
+likt	adverb	word	A2	looking like, resembling	via-form	34.08
+terrorist	noun-en	word	A2	terrorist		34.04
+besökare	noun-en	word	A2	visitor		34.03
+hushåll	noun-ett	word	A2	a household, a home		34.01
+fullständig	adjective	word	A2	complete		33.96
+respektera	verb	word	A2	to respect		33.96
+mäktig	adjective	word	A2	powerful		33.88
+växande	adjective	word	A2	growing; in the process of increasing its size		33.82
+stabil	adjective	word	A2	stable		33.81
+förvaltning	noun-en	word	A2	administration, maintenance, management		33.74
+hat	noun-ett	word	A2	hate, hatred		33.72
+mönster	noun-ett	word	A2	pattern; that from which a copy is made		33.72
+nyss	adverb	word	A2	just, quite recently		33.64
+varumärke	noun-ett	word	A2	a brand, a trademark		33.62
+fastighet	noun-en	word	A2	a property		33.61
+inta	verb	word	A2	to enter, to conquer, to take into possession		33.6
+orolig	adjective	word	A2	anxious, worried		33.6
+rulla	verb	word	A2	roll; an official or public document; a register; a record	pos	33.6
+moral	noun-en	word	A2	morality		33.59
+motivera	verb	word	A2	to justify		33.56
+myt	noun-en	word	A2	a myth; a story of great but unknown age		33.55
+noga	adverb	word	A2	careful; about someone who takes great care to make things properly		33.53
+snacka	verb	word	A2	to talk		33.46
+till sist	adverb	phrase	A2	eventually		33.46
+förmedla	verb	word	A2	to mediate, to act as a proxy, to make a deal		33.45
+hamn	noun-en	word	A2	a port		33.39
+tillhandahålla	verb	word	A2	to provide, to supply		33.37
+informera	verb	word	A2	to inform		33.33
+karta	noun-en	word	A2	a map		33.33
+utforma	verb	word	A2	to draft, to design, to shape		33.33
+konvention	noun-en	word	A2	a convention		33.31
+allt mer	adverb	phrase	A2		none	33.3
+koll	noun-en	word	A2	a look, a check, an inspection		33.3
+längd	noun-en	word	A2	length		33.28
+medicinsk	adjective	word	A2	medical		33.28
+läggning	noun-en	word	A2	disposition		33.2
+kilogram	noun-ett	word	A2	kilogram		33.17
+finansiering	noun-en	word	A2	financing, funding		33.11
+löfte	noun-ett	word	A2	a promise; a vow		33.11
+mörda	verb	word	A2	to murder, to assassinate		33.11
+amerikan	noun-en	word	A2	an American		33.09
+rit	noun-en	word	A2	rite		33.09
+status	noun-en	word	A2	status		33.08
+biologisk	adjective	word	A2	biological		33.07
+dikt	noun-en	word	A2	poem		33.01
+sko	noun-en	word	A2	a shoe		33
+sträcka	verb	word	A2	a stretch, a distance	pos	32.99
+medarbetare	noun-en	word	A2	coworker, colleague		32.96
+lust	noun-en	word	A2	desire to do something		32.94
+kassa	noun-en	word	A2	a collection of money; a capital, a fund, cash, "coffers"		32.91
+flygplats	noun-en	word	A2	airport		32.9
+tingsrätt	noun-en	word	A2	a district court; a city court		32.89
+avdelning	noun-en	word	A2	department		32.87
+säkerställa	verb	word	A2	to secure, to make sure, to ascertain, to verify		32.87
+åklagare	noun-en	word	A2	a prosecutor		32.84
+lysa	verb	word	A2	to shine, shed light, beam		32.82
+lidande	noun-ett	word	A2	suffering, misery, hurt		32.76
+syna	verb	word	A2	to examine by looking at, to scrutinize		32.75
+standard	noun-en	word	A2	a standard, a norm		32.74
+olycka	noun-en	word	A2	an accident		32.73
+term	noun-en	word	A2	a term		32.71
+maskin	noun-en	word	A2	machine		32.7
+transport	noun-en	word	A2	transport		32.7
+etisk	adjective	word	A2	ethical		32.68
+fattigdom	noun-en	word	A2	poverty		32.68
+servera	verb	word	A2	to serve, to wait on		32.68
+intern	adjective	word	A2	internal		32.67
+trolig	adjective	word	A2	probable, plausible		32.66
+golv	noun-ett	word	A2	a floor		32.64
+förmiddag	noun-en	word	A2	forenoon		32.6
+statsråd	noun-ett	word	A2	a minister		32.56
+inrätta	verb	word	A2	to install, to establish, to organize, to arrange		32.55
+närhet	noun-en	word	A2	closeness		32.51
+semester	noun-en	word	A2	a holiday/vacation, especially from work		32.51
+därigenom	adverb	word	A2	thereby, because of this		32.5
+ras	noun-en	word	A2	a race, a breed		32.4
+favorit	noun-en	word	A2	favourite		32.27
+framsteg	noun-ett	word	A2	progress, improvement		32.25
+tillvaro	noun-en	word	A2	everyday life, existence		32.25
+faktisk	adjective	word	A2	actual, real		32.24
+stolt	adjective	word	A2	proud		32.21
+strax	adverb	word	A2	soon		32.17
+strida	verb	word	A2	to battle		32.17
+angelägen	adjective	word	A2	important, urgent		32.13
+skylla	verb	word	A2	to blame		32.1
+ont	adverb	word	A2	pain		32.07
+engagera	verb	word	A2	to engage, to enthuse		32
+beräkning	noun-en	word	A2	calculation		31.99
+välkommen	adjective	word	A2	welcome		31.98
+ideologisk	adjective	word	A2	ideological		31.97
+finger	noun-ett	word	A2	finger		31.96
+hål	noun-ett	word	A2	a hole		31.96
+prövning	noun-en	word	A2	a trying experience; a trial, an ordeal		31.96
+komplicerad	adjective	word	A2	complicated, difficult, convoluted		31.95
+vettig	adjective	word	A2	reasonable, sensible		31.95
+sund	adjective	word	A2	sound, healthy		31.91
+domare	noun-en	word	A2	a judge		31.82
+frukt	noun-en	word	A2	fruit		31.82
+signal	noun-en	word	A2	a signal		31.8
+guld	noun-ett	word	A2	gold		31.79
+homosexuell	adjective	word	A2	homosexual		31.79
+brottslighet	noun-en	word	A2	crime, criminality		31.78
+rejäl	adjective	word	A2	considerable in extent; hefty, big, strong, etc.		31.77
+rättegång	noun-en	word	A2	a trial		31.75
+mått	noun-ett	word	A2	a measure		31.71
+kammare	noun-en	word	A2	a chamber, a small room		31.7
+nazist	noun-en	word	A2	a Nazi		31.7
+förefalla	verb	word	A2	to seem		31.68
+efteråt	adverb	word	A2	afterwards, after which, thereafter, whereupon		31.67
+försäkring	noun-en	word	A2	insurance		31.67
+konung	noun-en	word	A2	king		31.64
+avsedd	adjective	word	A2	intended		31.62
+såklart	adverb	word	A2	of course; naturally		31.62
+ändamål	noun-ett	word	A2	purpose		31.62
+generell	adjective	word	A2	general		31.6
+kommunism	noun-en	word	A2	communism		31.6
+dölja	verb	word	A2	to conceal, to hide; to put out of sight or to keep secret		31.58
+arab	noun-en	word	A2	Arab		31.56
+planerad	adjective	word	A2	to plan	via-form	31.5
+sträva	verb	word	A2	a strut, a brace	pos	31.5
+stämning	noun-en	word	A2	ambiance		31.5
+torg	noun-ett	word	A2	city square, market, plaza		31.5
+utrustning	noun-en	word	A2	equipment		31.48
+vandra	verb	word	A2	to wander		31.46
+registrera	verb	word	A2	to register		31.44
+argumentera	verb	word	A2	to argue		31.43
+kök	noun-ett	word	A2	a kitchen		31.43
+uppgå	verb	word	A2	to amount		31.41
+bön	noun-en	word	A2	prayer		31.39
+anläggning	noun-en	word	A2	installation, industrial plant, facility		31.35
+filosofi	noun-en	word	A2	philosophy		31.35
+gråta	verb	word	A2	to cry, to weep		31.33
+underlag	noun-ett	word	A2	an underlying surface or layer on which something is built or that supports something	long	31.33
+typisk	adjective	word	A2	typical		31.31
+förespråka	verb	word	A2	to advocate		31.23
+smärta	noun-en	word	A2	pain		31.2
+uppror	noun-ett	word	A2	a rebellion		31.2
+strategisk	adjective	word	A2	strategic		31.17
+symbol	noun-en	word	A2	symbol		31.17
+radikal	adjective	word	A2	radical		31.16
+vd	noun-en	word	A2	CEO, chief executive officer; initialism of verkställande direktör		31.15
+frid	noun-en	word	A2	peace, peacefulness		31.1
+arbetskraft	noun-en	word	A2	labour, manpower		31.08
+bevilja	verb	word	A2	to allow		31.06
+rot	noun-en	word	A2	root; the part of a plant that anchors the plant body		31.06
+förmå	verb	word	A2	to be capable, be able to		31.05
+rak	adjective	word	A2	straight; unbent		30.99
+formulera	verb	word	A2	to formulate, to put in words		30.98
+jämställdhet	noun-en	word	A2	gender equality		30.98
+existens	noun-en	word	A2	existence; the state of being		30.97
+bonde	noun-en	word	A2	a farmer		30.96
+bränna	verb	word	A2	to burn		30.94
+italiensk	adjective	word	A2	Italian		30.91
+utgift	noun-en	word	A2	an expense		30.88
+förbättring	noun-en	word	A2	improvement, enhancement		30.87
+föreställa	verb	word	A2	to present, to show, to depict		30.83
+operation	noun-en	word	A2	an operation		30.83
+landa	verb	word	A2	to land		30.82
+service	noun-en	word	A2	service, the level of comfort offered by assistants and servants		30.77
+låsa	verb	word	A2	to lock		30.76
+varna	verb	word	A2	to warn; to issue a warning		30.73
+anställa	verb	word	A2	to hire, to employ		30.69
+förtryck	noun-ett	word	A2	oppression		30.68
+varelse	noun-en	word	A2	a creature, a being		30.68
+bredvid	prep	word	A2	next to, beside		30.67
+syssla	verb	word	A2	something one does; an occupation, a chore, a task, etc.	pos	30.67
+tyst	adjective	word	A2	quiet, silent		30.67
+drömma	verb	word	A2	to dream; to see imaginary events in one's mind while sleeping		30.66
+evangelium	noun-ett	word	A2	gospel, good news		30.61
+planet	noun-en	word	A2	planet		30.61
+organiserad	adjective	word	A2	to organize	via-form	30.6
+fält	noun-ett	word	A2	a field, a area, an open space in a landscape		30.57
+omröstning	noun-en	word	A2	a vote, a ballot, a referendum		30.56
+psykisk	adjective	word	A2	mental		30.54
+fåtal	noun-ett	word	A2	a few		30.53
+öppet	adverb	word	A2	openly		30.52
+överväga	verb	word	A2	to consider, to weigh over; to evaluate multiple options		30.52
+stopp	noun-ett	word	A2	n a stop		30.49
+tråd	noun-en	word	A2	wire		30.46
+prov	noun-ett	word	A2	a test, a trial		30.45
+sinne	noun-ett	word	A2	a sense		30.45
+sorg	noun-en	word	A2	sorrow, sadness		30.45
+ensamt	adverb	word	A2	alone	via-form	30.41
+gemensamt	adverb	word	A2	together, commonly, publicly		30.41
+kommersiell	adjective	word	A2	commercial		30.4
+före detta	adverb	phrase	A2	previously, former, ex-		30.39
+sist	adverb	word	A2	last		30.39
+i huvudsak	adverb	phrase	A2		none	30.38
+lämpa sig	verb	phrase	A2		none	30.37
+lura	verb	word	A2	to trick, to fool, to deceive, to lure		30.35
+förvisso	adverb	word	A2	for sure, no doubt		30.34
+övervakning	noun-en	word	A2	surveillance, monitoring		30.33
+pågående	adjective	word	A2	current, going on		30.32
+utvärdering	noun-en	word	A2	an evaluation		30.3
+trygg	adjective	word	A2	safe, secure		30.29
+arv	noun-ett	word	A2	inheritance; the passing of titles, property etc upon someone's death		30.28
+seminarium	noun-ett	word	A2	a seminar, a lecture, a presentation; a situation for teaching and discussion		30.27
+besvara	verb	word	A2	to reply		30.25
+övergrepp	noun-ett	word	A2	abuse, violence, assault		30.21
+pass	noun-ett	word	A2	passport		30.2
+ljuga	verb	word	A2	to lie, to tell an untruth		30.17
+uppdatering	noun-en	word	A2	update		30.16
+grekisk	adjective	word	A2	Greek		30.14
+närvaro	noun-en	word	A2	presence		30.09
+tidskrift	noun-en	word	A2	a periodical		30.07
+infrastruktur	noun-en	word	A2	infrastructure		30.05
+biskop	noun-en	word	A2	a bishop		30.01
+läger	noun-ett	word	A2	a camp		29.98
+mer och mer	adverb	phrase	A2		none	29.9
+adress	noun-en	word	A2	an address; direction or superscription of a letter, or the name, title, and place of residence of the person addressed	long	29.89
+efterhand	adverb	word	A2	gradually, with time		29.89
+förvånad	adjective	word	A2	amazed, surprised, astounded, astonished		29.87
+ovanlig	adjective	word	A2	unusual		29.84
+jävla	adjective	word	A2	damn, goddamn, bloody, fucking		29.81
+kontrakt	noun-ett	word	A2	a contract		29.78
+skild	adjective	word	A2	to separate; to cause to be separate	via-form	29.77
+daglig	adjective	word	A2	daily, day-to-day		29.75
+penningpolitik	noun-en	word	A2	monetary policy		29.75
+röstning	noun-en	word	A2	voting		29.75
+lugnt	adverb	word	A2	calm, tranquil	via-form	29.74
+video	noun-en	word	A2	video		29.74
+med hänsyn till	prep	phrase	A2		none	29.73
+översätta	verb	word	A2	to translate; to change from one language to another, usually written text		29.68
+fågel	noun-en	word	A2	a high placed object		29.62
+era	noun-en	word	A2	your, yours		29.6
+inkludera	verb	word	A2	to include		29.6
+rörande	prep	word	A2	touching, moving		29.57
+förena	verb	word	A2	to unite		29.56
+ledig	adjective	word	A2	free, available, not occupied		29.56
+kärnkraft	noun-en	word	A2	nuclear power		29.53
+onödig	adjective	word	A2	unnecessary, not needed		29.5
+ryss	noun-en	word	A2	a Russian, male person from Russia		29.39
+känslig	adjective	word	A2	sensitive		29.38
+smak	noun-en	word	A2	taste		29.35
+avancerad	adjective	word	A2	advanced		29.34
+order	noun-en	word	A2	an order		29.34
+deltagande	noun-ett	word	A2	sympathetic, condoling		29.32
+nämnd	noun-en	word	A2	mentioned		29.32
+israel	noun-en	word	A2	Israel		29.29
+prioritera	verb	word	A2	to prioritize		29.23
+tillägga	verb	word	A2	to add, to amend		29.23
+blåsa	verb	word	A2	a bleb, a bubble	pos	29.2
+trädgård	noun-en	word	A2	a garden		29.17
+kors	noun-ett	word	A2	cross		29.16
+nyfiken	adjective	word	A2	curious, interested, nosey, nosy, inquisitive		29.16
+kombination	noun-en	word	A2	a combination		29.15
+mod	noun-ett	word	A2	courage		29.15
+landskap	noun-ett	word	A2	province, region		29.14
+överlämna	verb	word	A2	to hand over, to deliver		29.1
+vinnare	noun-en	word	A2	winner		29.09
+oskyldig	adjective	word	A2	innocent		29.07
+fastna	verb	word	A2	to get stuck, to stick		29.01
+förväntning	noun-en	word	A2	an expectation		28.99
+temperatur	noun-en	word	A2	temperature; a measure of cold or hot. A thermometer can usually be used to determine its value, measured in degrees…	long	28.99
+motverka	verb	word	A2	to remedy		28.98
+övergripande	adjective	word	A2	comprehensive, overarching, overall		28.98
+våldsam	adjective	word	A2	violent		28.97
+fack	noun-ett	word	A2	a compartment, a box, a slot		28.96
+komplettera	verb	word	A2	to complete, to make complete		28.94
+protokoll	noun-ett	word	A2	a protocol, minutes from a meeting		28.94
+webb	noun-en	word	A2	the World Wide Web		28.92
+bota	verb	word	A2	to cure, heal; to restore to good health; to relieve from a disease		28.9
+bege sig	verb	phrase	A2		none	28.89
+förlag	noun-ett	word	A2	an investment, an expense, a kind of business enterprise where a large one-time production cost is financed upfront,…	long	28.89
+konsumtion	noun-en	word	A2	consumption		28.83
+värdefull	adjective	word	A2	valuable, precious, useful		28.83
+godkänd	adjective	word	A2	approved, certified		28.82
+kost	noun-en	word	A2	diet, food		28.82
+datum	noun-ett	word	A2	date		28.69
+därtill	adverb	word	A2	thereto, in addition to		28.65
+recension	noun-en	word	A2	a review		28.65
+omsorg	noun-en	word	A2	care		28.61
+fånge	noun-en	word	A2	a prisoner		28.6
+kriterium	noun-ett	word	A2	a criterion, a characteristic, a sign, a requirement, a test		28.6
+extrem	adjective	word	A2	extreme		28.56
+förbindelse	noun-en	word	A2	connection		28.54
+angrepp	noun-ett	word	A2	an attack, an assault		28.53
+lansera	verb	word	A2	to launch		28.52
+saga	noun-en	word	A2	a fairy tale		28.5
+basera	verb	word	A2	to base		28.48
+cykel	noun-en	word	A2	a bicycle, a bike		28.46
+design	noun-en	word	A2	design		28.45
+frivillig	adjective	word	A2	voluntary		28.45
+med anledning av	prep	phrase	A2		none	28.44
+västra	adjective	word	A2	western; synonym to västlig, this form is used in definite form and in proper nouns	long	28.43
+påverkan	noun-en	word	A2	influence		28.4
+verkan	noun-en	word	A2	action		28.4
+ful	adjective	word	A2	ugly		28.39
+kongress	noun-en	word	A2	a congress		28.37
+skära	verb	word	A2	to cut; to perform an incision		28.35
+testamente	noun-ett	word	A2	a will		28.35
+gul	adjective	word	A2	yellow		28.34
+skriftlig	adjective	word	A2	written, in writing		28.34
+våg	noun-en	word	A2	a wave; a shape with alternating curves; a motion of liquid or energy		28.31
+årlig	adjective	word	A2	yearly, annual		28.31
+reservation	noun-en	word	A2		none	28.25
+rättvis	adjective	word	A2	just, fair		28.24
+yrke	noun-ett	word	A2	profession, occupation		28.24
+århundrade	noun-ett	word	A2	a century		28.24
+anslag	noun-ett	word	A2	touch		28.22
+drog	noun-en	word	A2	a drug, a narcotic		28.17
+gömma	verb	word	A2	place where things are hidden or stashed away	pos	28.13
+äkta	adjective	word	A2	genuine, authentic; not faked or counterfeit		28.13
+intellektuell	adjective	word	A2	intellectual		28.09
+kejsare	noun-en	word	A2	emperor		28.05
+planering	noun-en	word	A2	planning		28.05
+släkt	noun-en	word	A2	extended family, relatives		27.98
+drottning	noun-en	word	A2	a queen		27.97
+uppträda	verb	word	A2	to perform		27.94
+övergå	verb	word	A2	to exceed, to surpass		27.94
+het	adjective	word	A2	hot; having a very high temperature		27.88
+läkemedel	noun-ett	word	A2	a medicine		27.87
+utformning	noun-en	word	A2	design, shape		27.85
+elektronisk	adjective	word	A2	electronic		27.83
+obligatorisk	adjective	word	A2	compulsory, obligatory, mandatory		27.76
+investera	verb	word	A2	to invest		27.72
+fond	noun-en	word	A2	fund		27.71
+dubbel	adjective	word	A2	double		27.69
+uppkomma	verb	word	A2	to originate		27.67
+somna	verb	word	A2	to fall asleep		27.63
+ställningstagande	noun-ett	word	A2	taking a position; a position, a stance, a statement		27.63
+utesluta	verb	word	A2	to expel or exclude		27.6
+frukost	noun-en	word	A2	breakfast		27.59
+förhoppning	noun-en	word	A2	hope		27.59
+facklig	adjective	word	A2	of or pertaining to a trade union		27.56
+prognos	noun-en	word	A2	forecast, prognosis		27.55
+sannolikhet	noun-en	word	A2	a probability		27.54
+advokat	noun-en	word	A2	a lawyer, an attorney		27.53
+kapitalistisk	adjective	word	A2	capitalist, capitalistic		27.52
+anlända	verb	word	A2	to arrive		27.46
+tveksam	adjective	word	A2	hesitant, questionable, doubtful		27.46
+regn	noun-ett	word	A2	rain		27.44
+röja	verb	word	A2	to remove obstacles, to clear		27.4
+motsats	noun-en	word	A2	an opposite		27.39
+referens	noun-en	word	A2	a reference		27.39
+fabrik	noun-en	word	A2	a factory, a plant		27.37
+i och för sig	adverb	phrase	A2	Expresses concession; "when thinking about it", "well, now that I think about it", "well, now that you say it", "oh…	long	27.37
+japansk	adjective	word	A2	Japanese		27.32
+plus	adverb	word	A2	and, plus		27.31
+marknadsföring	noun-en	word	A2	marketing		27.3
+rena	verb	word	A2	to purify, to remove impurities from		27.3
+innebörd	noun-en	word	A2	an implication, a meaning		27.24
+stjäla	verb	word	A2	to steal		27.23
+online	adverb	word	A2	online.		27.21
+omgång	noun-en	word	A2	a round		27.19
+protestera	verb	word	A2	to protest		27.17
+tillkomma	verb	word	A2	to come about		27.17
+bemöta	verb	word	A2	to respond to someone's argument or criticism		27.15
+tränga	verb	word	A2	to press, to push, to cram		27.15
+bestående	adjective	word	A2	permanent, prevailing		27.11
+blomma	noun-en	word	A2	a flower		27.1
+solidaritet	noun-en	word	A2	solidarity		27.1
+överföra	verb	word	A2	to move from one point to another; to transfer, to transmit, to convey, to transport	long	27.1
+lydelse	noun-en	word	A2	language, wording, formulation		27.08
+annons	noun-en	word	A2	advertisement, advert, ad		27.05
+riksdagsledamot	noun-en	word	A2	a member of the riksdag, a member of the parliament		27.04
+brinna	verb	word	A2	to burn, to be on fire		27.03
+gärning	noun-en	word	A2	an act, a deed		27.03
+rinna	verb	word	A2	to run, to flow		27.03
+samverkan	noun-en	word	A2	collaboration, synergy; in particular among government agencies		27.03
+rymma	verb	word	A2	to hold		27.01
+blogginlägg	noun-ett	word	A2	blogpost		27
+sammanfatta	verb	word	A2	to summarize, to conclude		26.98
+östra	adjective	word	A2	eastern; synonym to östlig, this form is used in definite form and in proper nouns	long	26.97
+dröja	verb	word	A2	to not occur or do immediately; to linger, to wait, to last, to hold		26.96
+avbryta	verb	word	A2	to cancel, to abort		26.95
+gräva	verb	word	A2	to dig		26.93
+stryka	verb	word	A2	to strike, to erase, to delete, to remove		26.93
+kreativ	adjective	word	A2	creative		26.92
+till dess	adverb	phrase	A2	until		26.91
+intensiv	adjective	word	A2	intensive, intense		26.9
+sålunda	adverb	word	A2	thus, in that way		26.84
+roa	verb	word	A2	to amuse, to entertain		26.83
+understryka	verb	word	A2	underline, underscore	pos	26.82
+glas	noun-ett	word	A2	glass		26.81
+album	noun-ett	word	A2	an album, a book specially designed to keep photographs, stamps, or autographs		26.79
+territorium	noun-ett	word	A2	territory		26.78
+möjliggöra	verb	word	A2	to enable, to make possible		26.75
+folkomröstning	noun-en	word	A2	a referendum; direct vote		26.74
+fördelning	noun-en	word	A2	a distribution		26.74
+skede	noun-ett	word	A2	a stage, a phase		26.73
+markera	verb	word	A2	to mark, to sign		26.72
+skaka	verb	word	A2	to shake		26.71
+sten	noun-en	word	A2	a stone; a rock		26.71
+vagn	noun-en	word	A2	a four-wheeled, unpowered conveyance		26.71
+värna	verb	word	A2	to protect, to guard, to defend, to shield		26.7
+hemsk	adjective	word	A2	ghastly, frightful, horrifying, evil, dark, terrible		26.68
+kriminell	adjective	word	A2	criminal		26.67
+saklig	adjective	word	A2	dealing with things as they are; objective, unbiased, just, matter-of-fact, factual, etc.	long	26.64
+närvarande	adjective	word	A2	present		26.63
+automatiskt	adverb	word	A2	automatically		26.61
+skämma	verb	word	A2	to spoil, to ruin, to dishonour		26.61
+spendera	verb	word	A2	to spend		26.6
+vittna	verb	word	A2	to testify, to bear witness		26.6
+ansvara	verb	word	A2	to be responsible, to take responsibility, to be in charge		26.59
+ledarskap	noun-ett	word	A2	leadership		26.59
+trivas	verb	word	A2	To feel a durable sense of comfort and satisfaction.		26.58
+figur	noun-en	word	A2	a figure		26.57
+bygd	noun-en	word	A2	An rural region		26.56
+spridning	noun-en	word	A2	spread, distribution		26.56
+lyckad	adjective	word	A2	successful		26.55
+le	verb	word	A2	to smile		26.54
+betalning	noun-en	word	A2	a payment		26.52
+oroa	verb	word	A2	to worry		26.52
+lov	noun-ett	word	A2	permission		26.46
+motsatt	adjective	word	A2	opposite		26.46
+knyta	verb	word	A2	to tie		26.45
+från och med	prep	phrase	A2	starting from/with/in, from, as of, on or after		26.44
+rekommendation	noun-en	word	A2	a recommendation		26.44
+ansträngning	noun-en	word	A2	effort, exertion		26.41
+institut	noun-ett	word	A2	institute		26.41
+kritiker	noun-en	word	A2	critic; person who criticizes; person who points out flaws		26.41
+övre	adjective	word	A2	upper		26.39
+data	noun	word	A2	information, especially encoded information that can be processed by computers		26.32
+hörn	noun-ett	word	A2	a corner; the point where two converging lines meet; an angle, either external or internal.	long	26.31
+inhemsk	adjective	word	A2	domestic		26.31
+öl	noun-en	word	A2	a beer		26.31
+ängel	noun-en	word	A2	an angel		26.29
+blott	adverb	word	A2	mere		26.28
+förhålla	verb	word	A2	to behave, to conduct		26.27
+förhålla sig	verb	phrase	A2		none	26.27
+park	noun-en	word	A2	a park		26.25
+regelverk	noun-ett	word	A2	set of rules, regulations		26.23
+nackdel	noun-en	word	A2	drawback, disadvantage		26.22
+vittne	noun-ett	word	A2	a witness		26.21
+medvetet	adverb	word	A2	consciously		26.15
+gas	noun-en	word	A2	gas; a state of matter		26.13
+tipsa	verb	word	A2	give a helpful hint	pos	26.13
+våldtäkt	noun-en	word	A2	rape		26.11
+boka	verb	word	A2	to book, to reserve		26.1
+sådan här	det	phrase	A2		none	26.09
+ekologisk	adjective	word	A2	organic		26.08
+återfinna	verb	word	A2	to refind, to find		26.08
+huvudsakligen	adverb	word	A2	mainly		26.07
+överge	verb	word	A2	to abandon		26.04
+ockupation	noun-en	word	A2	an occupation		26.03
+likaså	adverb	word	A2	also, as well		26.02
+bringa	verb	word	A2	a breast, a chest; chiefly if wide	pos	26
+hylla	verb	word	A2	a shelf, a rack	pos	25.98
+sammanfattning	noun-en	word	A2	summary		25.98
+graf	noun-en	word	A2	graph, the set		25.96
+slott	noun-ett	word	A2	a castle, a palace		25.96
+anspråk	noun-ett	word	A2	a claim		25.94
+motsättning	noun-en	word	A2	conflict, contradiction		25.92
+byte	noun-ett	word	A2	a change; changing		25.89
+logik	noun-en	word	A2	a logic		25.88
+resonera	verb	word	A2	to reason, to argue		25.87
+tempel	noun-ett	word	A2	a temple		25.85
+krönika	noun-en	word	A2	a chronicle		25.84
+tillbringa	verb	word	A2	to spend		25.83
+kopia	noun-en	word	A2	a copy, a reproduction, a duplicate		25.82
+instans	noun-en	word	A2	an instance		25.8
+företagare	noun-en	word	A2	a business owner; an entrepreneur		25.78
+medlemskap	noun-ett	word	A2	membership		25.76
+egentlig	adjective	word	A2	real, actual		25.75
+landsbygd	noun-en	word	A2	countryside		25.75
+gest	noun-en	word	A2	a gesture; a motion of the hands		25.74
+integration	noun-en	word	A2	integration		25.74
+längta	verb	word	A2	long	pos	25.72
+föreskrift	noun-en	word	A2	an instruction, a regulation		25.67
+generellt	adverb	word	A2	generally, in any situation, always, anywhere		25.67
+konto	noun-ett	word	A2	account; a registry of pecuniary transactions, or more generally		25.67
+tämligen	adverb	word	A2	rather, quite		25.65
+då och då	adverb	phrase	A2	now and then, every so often, from time to time, occasionally		25.64
+ryka	verb	word	A2	to emit smoke		25.61
+reglering	noun-en	word	A2	regulation		25.6
+misstänkt	adjective	word	A2	suspected		25.55
+paket	noun-ett	word	A2	a package, a parcel, a packet, a wrapped gift		25.51
+bete sig	verb	phrase	A2		none	25.49
+kollektiv	adjective	word	A2	collective		25.48
+fotograf	noun-en	word	A2	a photographer		25.47
+vänlig	adjective	word	A2	friendly, kind		25.46
+hemlighet	noun-en	word	A2	secret		25.45
+administrativ	adjective	word	A2	administrative		25.42
+dansa	verb	word	A2	to dance		25.41
+tillägg	noun-ett	word	A2	an addition, an appendix, an amendment		25.41
+fordon	noun-ett	word	A2	a vehicle, a conveyance		25.4
+nöja sig	verb	phrase	A2		none	25.39
+kliva	verb	word	A2	to take one or more big steps, to step, to stride		25.38
+bro	noun-en	word	A2	a bridge		25.37
+mandat	noun-ett	word	A2	mandate		25.35
+inledning	noun-en	word	A2	introduction		25.34
+införande	noun-ett	word	A2	introduction		25.33
+antyda	verb	word	A2	to hint about; to imply; to give indications as to		25.32
+innefatta	verb	word	A2	to include, to involve		25.32
+kommunicera	verb	word	A2	to communicate		25.32
+praktiskt	adverb	word	A2	practical	via-form	25.32
+förmån	noun-en	word	A2	a benefit		25.31
+motivering	noun-en	word	A2	a justification		25.31
+tystnad	noun-en	word	A2	silence		25.3
+valuta	noun-en	word	A2	a currency		25.29
+genomgå	verb	word	A2	go through, undergo, suffer, experience	pos	25.25
+nåd	noun-en	word	A2	mercy		25.24
+redaktion	noun-en	word	A2	an editorial office, newsroom, editorial staff; a group of editors and their workplace	long	25.24
+extern	adjective	word	A2	external		25.22
+sfär	noun-en	word	A2	a sphere		25.22
+flygplan	noun-ett	word	A2	airplane, aeroplane		25.2
+kamrat	noun-en	word	A2	friend, mate, companion		25.18
+premiärminister	noun-en	word	A2	prime minister		25.18
+botten	noun-en	word	A2	bottom		25.17
+västerländsk	adjective	word	A2	Western		25.17
+skala	noun-en	word	A2	to peel, toshell	pos	25.14
+utsikt	noun-en	word	A2	a view		25.14
+besegra	verb	word	A2	to defeat		25.12
+utfärda	verb	word	A2	to issue		25.12
+stimulera	verb	word	A2	to stimulate		25.1
+kraftfull	adjective	word	A2	powerful		25.03
+utöka	verb	word	A2	to increase, expand, enlarge		25.03
+angripa	verb	word	A2	to attack, to assault		25.02
+utseende	noun-ett	word	A2	appearance		25.02
+promenad	noun-en	word	A2	a walk, a stroll, a promenade		25
+universum	noun-ett	word	A2	universe		24.97
+vanligtvis	adverb	word	A2	commonly, usually		24.95
+pensionär	noun-en	word	A2	a pensioner, a retiree		24.91
+redo	adjective	word	A2	ready; prepared to face whatever is coming one's way		24.9
+jämn	adjective	word	A2	smooth, even		24.89
+järnväg	noun-en	word	A2	railroad, railway, rail		24.89
+utbyte	noun-ett	word	A2	an exchange		24.89
+öppenhet	noun-en	word	A2	openness		24.89
+grundval	noun-en	word	A2	a basis, a foundation		24.88
+attackera	verb	word	A2	to attack		24.87
+slita	verb	word	A2	to wear		24.84
+förskola	noun-en	word	A2	preschool/nursery school		24.83
+anhängare	noun-en	word	A2	a follower, a fan		24.82
+föregående	adjective	word	A2	preceding, previous		24.82
+föreskriva	verb	word	A2	to prescribe, to instruct, to order		24.82
+inspiration	noun-en	word	A2	inspiration		24.82
+hyra	verb	word	A2	a rent; what is paid in order to rent something	pos	24.8
+kärna	noun-en	word	A2	a seed		24.79
+över huvud taget	adverb	phrase	A2	altogether	via-form	24.79
+löpa	verb	word	A2	to run along, stretch		24.75
+blad	noun-ett	word	A2	a leaf		24.74
+gårdag	noun-en	word	A2	yesterday; the day before today or another specified day		24.73
+tillföra	verb	word	A2	to bring, to supply		24.71
+trovärdighet	noun-en	word	A2	credibility, trustworthiness		24.71
+varv	noun-ett	word	A2	turn, revolution, a full circle		24.71
+värdighet	noun-en	word	A2	dignity, worthiness		24.71
+dans	noun-en	word	A2	dance		24.7
+osäkerhet	noun-en	word	A2	uncertainty		24.7
+enstaka	adjective	word	A2	unique		24.69
+flyg	noun-ett	word	A2	airplane flight		24.66
+vana	noun-en	word	A2	habit; a regularly done action		24.66
+spänning	noun-en	word	A2	tension		24.64
+anfall	noun-ett	word	A2	attack, assault		24.63
+utarbeta	verb	word	A2	to draw up, to develop		24.62
+skrämma	verb	word	A2	to scare, to frighten		24.6
+nyckel	noun-en	word	A2	a key		24.59
+skribent	noun-en	word	A2	a professional writer		24.54
+garanti	noun-en	word	A2	a guarantee		24.53
+sakta	adverb	word	A2	slow		24.53
+tillsätta	verb	word	A2	to appoint		24.51
+tvekan	noun-en	word	A2	hesitation		24.51
+tand	noun-en	word	A2	a tooth		24.5
+yrka	verb	word	A2	to urge, require, demand		24.5
+tacksam	adjective	word	A2	grateful		24.47
+tävla	verb	word	A2	to compete, to contend, to race		24.44
+bortom	prep	word	A2	beyond		24.39
+hemland	noun-ett	word	A2	homeland		24.39
+utbilda	verb	word	A2	to educate, to instruct, to train		24.39
+utav	prep	word	A2	synonym of av		24.37
+avvisa	verb	word	A2	to turn down; to reject; to turn back; to turn away		24.36
+potentiell	adjective	word	A2	potential		24.32
+sovjetisk	adjective	word	A2	Soviet		24.3
+skepp	noun-ett	word	A2	a ship		24.29
+utgång	noun-en	word	A2	exit, way out.		24.25
+skrämmande	adjective	word	A2	frightening		24.23
+omedelbar	adjective	word	A2	immediate, direct		24.21
+partner	noun-en	word	A2	partner		24.16
+rejält	adverb	word	A2	considerable in extent; hefty, big, strong, etc.	via-form	24.12
+kapacitet	noun-en	word	A2	capacity		24.06
+genomsnitt	noun-ett	word	A2	average		24.04
+värdig	adjective	word	A2	worthy, dignified		24.02
+gymnasium	noun-ett	word	A2	gymnasium; upper secondary school: either theoretical or vocational, most commonly three years long	long	24
+umgås	verb	word	A2	socialize; spend time together with	pos	23.99
+knä	noun-ett	word	A2	a knee		23.97
+element	noun-ett	word	A2	element; basic building block of matter in ancient philosophy		23.96
+fredlig	adjective	word	A2	peaceful		23.96
+gubbe	noun-en	word	A2	an older or elderly man		23.96
+smal	adjective	word	A2	not wide, narrow		23.96
+arrangera	verb	word	A2	to arrange		23.95
+skugga	noun-en	word	A2	a shadow; shade; the darkness that follows		23.95
+pressa	verb	word	A2	to press		23.86
+självständighet	noun-en	word	A2	independence		23.85
+densamma	pronoun	word	A2	the same; see also detsamma, desamma		23.84
+slutlig	adjective	word	A2	final		23.83
+tvivel	noun-ett	word	A2	a doubt		23.82
+fälla	verb	word	A2	a trap	pos	23.8
+smaka	verb	word	A2	to taste		23.78
+näst	adverb	word	A2	next		23.75
+opinion	noun-en	word	A2	opinion		23.75
+utbud	noun-ett	word	A2	supply, range		23.75
+värdera	verb	word	A2	to value, to appreciate, to like		23.75
+allvarligt	adverb	word	A2	seriously		23.74
+formell	adjective	word	A2	formal		23.74
+dagligen	adverb	word	A2	daily, every day		23.71
+ursprungligen	adverb	word	A2	originally		23.71
+fördela	verb	word	A2	to distribute, to divide		23.67
+ovanligt	adverb	word	A2	unusually		23.67
+reducera	verb	word	A2	to reduce		23.67
+vanligt	adverb	word	A2	common, usual	via-form	23.67
+skadestånd	noun-ett	word	A2	damages, tort		23.63
+kopiera	verb	word	A2	to copy		23.62
+anhörig	adjective	word	A2	a close relative		23.6
+ångest	noun-en	word	A2	anxiety		23.6
+övergång	noun-en	word	A2	a transition		23.6
+vakt	noun-en	word	A2	a guard		23.59
+förhandla	verb	word	A2	to negotiate, to bargain		23.58
+koncentrera	verb	word	A2	to concentrate		23.58
+tabell	noun-en	word	A2	a table		23.57

@@ -1,4 +1,4 @@
-// The reading page (FR-301…FR-318): sentences of tappable words, English per the setting, pattern
+// The reading page (FR-301…FR-321): sentences of tappable words, one Show translation, pattern
 // marks, the word menu sheet, Explain and Report, Practise and Play. All text via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
@@ -8,7 +8,10 @@ import { speak as say, cancel, hasSwedish, setRate, getRate, onVoices } from './
 const speak = (text, onend) => say(text, { onend });
 
 const $ = (id) => document.getElementById(id);
-const id = Number(new URLSearchParams(window.location.search).get('id'));
+const params = new URLSearchParams(window.location.search);
+const id = Number(params.get('id'));
+// Opened from a session (G-09 FR-904): the session's id and the exercise's index.
+const session = params.has('session') ? { id: Number(params.get('session')), index: Number(params.get('index')) } : null;
 const STATUS = { new: 'New word', leaf: 'Leaf — a word you are learning', ground: 'In your ground — you know it', name: 'Name — never counts as new' };
 let data = null;
 let current = null; // { token, sentence, line }
@@ -510,7 +513,24 @@ $('marking-done').addEventListener('click', async () => {
   $('marking-list').replaceChildren();
   $('marking-done').hidden = true;
   $('marking-later').hidden = true;
+  if (session) setTimeout(backToSession, 800);
 });
+// G-09 FR-904: a text in a session ends with Done, or with the marking step; then back to the session.
+async function backToSession() {
+  const r = await post('/api/session/next', { sessionId: session.id, index: session.index });
+  if (!r.ok && r.status !== 409) { showMessage($('marking-message'), r.message); return; }
+  window.location.assign(`/session?id=${session.id}`);
+}
+if (session) {
+  const bar = el('section', 'card session-head');
+  bar.append(el('p', 'session-line', 'Part of your session'));
+  const done = el('button', 'main', 'Done — next exercise');
+  done.type = 'button';
+  done.id = 'session-done';
+  done.addEventListener('click', backToSession);
+  bar.append(done);
+  document.querySelector('main').prepend(bar);
+}
 $('marking-later').addEventListener('click', () => { $('marking-card').hidden = true; });
 document.getElementById('ratings').addEventListener('click', (event) => {
   if (event.target.closest('button')) setTimeout(offerMarking, 300);

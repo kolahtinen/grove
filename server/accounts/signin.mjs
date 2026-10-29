@@ -2,6 +2,7 @@
 import { sendJson, HttpError } from '../web/http.mjs';
 import { FirebaseError } from '../firebase/client.mjs';
 import { holdUntil, normaliseEmail } from './same-answer.mjs';
+import { DEVICE_COOKIE } from './terms.mjs';
 
 const WRONG = { error: 'wrong_credentials', message: 'Wrong email or password.' };
 export const UNAVAILABLE_MESSAGE = 'Signing in isn’t possible right now. Please try again in a while.';
@@ -10,7 +11,7 @@ export function rolesOf(account) {
   return ['learner', ...(account.isReviewer ? ['reviewer'] : []), ...(account.isOwner ? ['owner'] : [])];
 }
 
-export function createSignin({ db, seclog, firebase, sessions, lockout, answerMinMs, now }) {
+export function createSignin({ db, seclog, firebase, sessions, lockout, terms, answerMinMs, now }) {
   const findByUid = db.prepare('SELECT id FROM accounts WHERE firebase_uid = ?');
 
   return {
@@ -49,7 +50,10 @@ export function createSignin({ db, seclog, firebase, sessions, lockout, answerMi
       lockout?.recordSuccess(email);
       const session = sessions.create(account.id);
       seclog.security('signin', { accountId: account.id, ip: ctx.ip });
-      return answer(200, { result: 'signed_in', termsNeeded: true }, { 'set-cookie': session.cookie });
+      // A device that agreed to the current terms needn't agree again (G-01 FR-011, constitution 3.1).
+      const agreement = terms?.find(account.id, ctx.cookies[DEVICE_COOKIE]);
+      if (agreement) sessions.agree(session.idHash, agreement.id);
+      return answer(200, { result: 'signed_in', termsNeeded: !agreement }, { 'set-cookie': session.cookie });
     },
 
     me(ctx) {

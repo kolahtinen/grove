@@ -76,3 +76,20 @@ export function meaning(form) {
   const lemma = forms.get(f);
   return lemma ? { lemma, en: words.get(lemma) } : null;
 }
+
+// The common dictionary (G-09 FR-917): headwords that start with the search first, then those that
+// contain it, each group in Swedish order; at most `limit`.
+const collator = new Intl.Collator('sv');
+export function search(query, limit = 50) {
+  ready();
+  const q = String(query || '').trim().toLowerCase();
+  if (q.length < 2) return [];
+  const starts = [];
+  const contains = [];
+  for (const [lemma, en] of words) {
+    if (lemma.startsWith(q)) starts.push({ lemma, en });
+    else if (contains.length < limit && lemma.includes(q)) contains.push({ lemma, en });
+  }
+  const order = (a, b) => (a.lemma.length - b.lemma.length) || collator.compare(a.lemma, b.lemma);
+  return [...starts.sort(order), ...contains.sort(order)].slice(0, limit);
+}

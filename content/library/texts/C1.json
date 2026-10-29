@@ -1,0 +1,1116 @@
+{
+  "level": "C1",
+  "texts": [
+    {
+      "id": "C1-01",
+      "level": "C1",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Ensam i ett land av ensamhushåll",
+      "names": [
+        "Sverige",
+        "Europa",
+        "Gustav"
+      ],
+      "above_level": [
+        "tjugosju",
+        "klätterklubb"
+      ],
+      "lines": [
+        {
+          "sv": "Sverige brukar beskrivas som ett av de länder i Europa där flest människor bor ensamma.",
+          "en": "Sweden is usually described as one of the countries in Europe where the most people live alone."
+        },
+        {
+          "sv": "I storstäderna utgör ensamhushållen nästan hälften av alla hushåll, och siffran har ökat i flera decennier.",
+          "en": "In the big cities single-person households make up almost half of all households, and the figure has risen for several decades."
+        },
+        {
+          "sv": "Att bo ensam behöver i sig inte vara ett problem; för många är det ett medvetet val som ger frihet och självständighet.",
+          "en": "Living alone need not be a problem in itself; for many it is a conscious choice that gives freedom and independence."
+        },
+        {
+          "sv": "Den svenska välfärdsmodellen har dessutom gjort det möjligt att klara sig utan att vara ekonomiskt beroende av familjen.",
+          "en": "The Swedish welfare model has also made it possible to get by without being financially dependent on the family."
+        },
+        {
+          "sv": "Men baksidan av myntet är att allt fler uppger att de känner sig ofrivilligt ensamma.",
+          "en": "But the other side of the coin is that more and more people say they feel involuntarily lonely."
+        },
+        {
+          "sv": "Det gäller inte bara äldre, som man kanske skulle tro, utan i lika hög grad unga vuxna mellan tjugo och trettio år.",
+          "en": "This applies not only to older people, as one might think, but just as much to young adults between twenty and thirty."
+        },
+        {
+          "sv": "Forskare varnar för att långvarig ensamhet kan påverka hälsan lika negativt som rökning eller fetma.",
+          "en": "Researchers warn that long-term loneliness can affect health as negatively as smoking or obesity."
+        },
+        {
+          "sv": "Gustav, som är tjugosju och flyttade till Stockholm för ett jobb, beskriver hur veckorna kunde gå utan att han pratade med någon utanför arbetet.",
+          "en": "Gustav, who is twenty-seven and moved to Stockholm for a job, describes how weeks could pass without him talking to anyone outside work."
+        },
+        {
+          "sv": "Alla verkade ha sina kompisgäng sedan länge, och jag visste inte hur man kommer in i ett sådant, säger han.",
+          "en": "Everyone seemed to have had their group of friends for a long time, and I didn't know how you get into one, he says."
+        },
+        {
+          "sv": "Till slut tog han tjuren vid hornen och gick med i en klätterklubb.",
+          "en": "In the end he took the bull by the horns and joined a climbing club."
+        },
+        {
+          "sv": "Där är det naturligt att prata med främlingar, eftersom man bokstavligen måste lita på varandra.",
+          "en": "There it is natural to talk to strangers, since you literally have to trust each other."
+        },
+        {
+          "sv": "Efter ett halvår hade han inte bara lärt sig att klättra, utan också fått ett par vänner som han numera träffar varje vecka.",
+          "en": "After six months he had not only learned to climb, but also made a couple of friends he now sees every week."
+        },
+        {
+          "sv": "Flera kommuner har börjat ta frågan på allvar och erbjuder mötesplatser, samtalsgrupper och aktiviteter som riktar sig till dem som saknar ett socialt nätverk.",
+          "en": "Several municipalities have started to take the issue seriously and offer meeting places, discussion groups and activities aimed at those who lack a social network."
+        },
+        {
+          "sv": "Kritiker menar dock att det offentliga aldrig kan ersätta det som tidigare sköttes av grannar, föreningar och släkt.",
+          "en": "Critics argue, however, that the public sector can never replace what used to be handled by neighbours, associations and relatives."
+        },
+        {
+          "sv": "Frågan är alltså inte bara hur samhället ska hjälpa den enskilde, utan hur vi tillsammans kan bygga sammanhang där människor faktiskt möts.",
+          "en": "So the question is not only how society should help the individual, but how together we can build settings where people actually meet."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vilka känner sig enligt texten ofrivilligt ensamma?",
+          "options": [
+            "Bara äldre",
+            "Både äldre och unga vuxna",
+            "Främst barn"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gjorde Gustav för att träffa folk?",
+          "options": [
+            "Han bytte jobb",
+            "Han gick med i en klätterklubb",
+            "Han flyttade hem igen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad menar kritikerna?",
+          "options": [
+            "Att kommunerna gör för lite",
+            "Att det offentliga inte kan ersätta grannar, föreningar och släkt",
+            "Att ensamhet inte är ett problem"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-02",
+      "level": "C1",
+      "topic": "Daily life",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Lagom är bäst – eller?",
+      "names": [
+        "Sverige"
+      ],
+      "above_level": [
+        "vikingatid",
+        "dryckeshorn",
+        "sansad",
+        "pragmatisk",
+        "fjäder",
+        "jantelag",
+        "oskriven"
+      ],
+      "lines": [
+        {
+          "sv": "Få ord sägs fånga den svenska mentaliteten lika väl som lagom.",
+          "en": "Few words are said to capture the Swedish mentality as well as lagom."
+        },
+        {
+          "sv": "Det brukar översättas med just lagom mycket, varken för lite eller för mycket, men ordet bär på betydligt mer än så.",
+          "en": "It is usually translated as just the right amount, neither too little nor too much, but the word carries much more than that."
+        },
+        {
+          "sv": "En vanlig men troligen felaktig förklaring är att det kommer från vikingatiden, då ett dryckeshorn skulle gå laget runt och räcka åt alla.",
+          "en": "A common but probably false explanation is that it comes from the Viking age, when a drinking horn was to go round the group and be enough for everyone."
+        },
+        {
+          "sv": "I själva verket kommer ordet från ett gammalt uttryck som betyder ungefär enligt lagen, alltså som det ska vara.",
+          "en": "In fact the word comes from an old expression meaning roughly according to the law, that is, as it should be."
+        },
+        {
+          "sv": "Under de senaste åren har lagom blivit något av en exportvara, med böcker som lovar att det svenska förhållningssättet ska ge ett lyckligare liv.",
+          "en": "In recent years lagom has become something of an export, with books promising that the Swedish attitude will give a happier life."
+        },
+        {
+          "sv": "Tanken är att man ska undvika överdrifter, inte sträva efter mer än man behöver och hitta en balans mellan arbete och vila.",
+          "en": "The idea is to avoid excess, not strive for more than you need and find a balance between work and rest."
+        },
+        {
+          "sv": "Lagom syns i allt från hur svenskar inreder sina hem till hur de förhandlar om löner. Där är målet sällan att vinna stort, utan att alla ska kunna leva med resultatet.",
+          "en": "Lagom shows in everything from how Swedes furnish their homes to how they negotiate wages. There the aim is seldom to win big, but for everyone to be able to live with the result."
+        },
+        {
+          "sv": "Många utländska besökare beskriver det som ett samhälle där konflikter hellre undviks än tas ut i öppen strid.",
+          "en": "Many foreign visitors describe it as a society where conflicts are avoided rather than fought out in the open."
+        },
+        {
+          "sv": "Många svenskar ser dock lagom med blandade känslor.",
+          "en": "Many Swedes, however, view lagom with mixed feelings."
+        },
+        {
+          "sv": "Å ena sidan uppskattar de det sansade och pragmatiska, att man inte gör en höna av en fjäder.",
+          "en": "On the one hand they appreciate the measured and pragmatic, not making a mountain out of a molehill."
+        },
+        {
+          "sv": "Å andra sidan kan idealet bli en tvångströja, där den som sticker ut eller vill något mer än andra uppfattas som besvärlig.",
+          "en": "On the other hand the ideal can become a straitjacket, where anyone who stands out or wants more than others is seen as difficult."
+        },
+        {
+          "sv": "Det finns till och med ett ord för den motsatta sidan av saken: jantelagen, den oskrivna regeln om att man inte ska tro att man är något.",
+          "en": "There is even a word for the flip side: the Law of Jante, the unwritten rule that you shouldn't think you are anything special."
+        },
+        {
+          "sv": "Kanske är det därför som många unga i dag hellre vill vara lite mer än lagom, åtminstone när det gäller ambitioner och drömmar.",
+          "en": "Perhaps that is why many young people today would rather be a bit more than lagom, at least when it comes to ambitions and dreams."
+        },
+        {
+          "sv": "Och kanske är det, när allt kommer omkring, just lagom att inte ta lagom alltför allvarligt.",
+          "en": "And perhaps, when all is said and done, it is just lagom not to take lagom too seriously."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var kommer ordet lagom troligen ifrån?",
+          "options": [
+            "Från vikingarnas dryckeshorn",
+            "Från ett uttryck som betyder ungefär enligt lagen",
+            "Från engelskan"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är en nackdel med lagom-idealet enligt texten?",
+          "options": [
+            "Det gör människor late",
+            "Den som sticker ut kan uppfattas som besvärlig",
+            "Det leder till överdrifter"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är jantelagen?",
+          "options": [
+            "En riktig lag",
+            "En oskriven regel om att man inte ska tro att man är något",
+            "En bok om lycka"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-03",
+      "level": "C1",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Maten som hamnar i soporna",
+      "names": [
+        "Sverige",
+        "Linnéa"
+      ],
+      "above_level": [
+        "före-datum",
+        "förbrukningsdag",
+        "affärsidé",
+        "skönhetsfel",
+        "banal"
+      ],
+      "lines": [
+        {
+          "sv": "Varje år slänger svenska hushåll hundratusentals ton mat som hade kunnat ätas.",
+          "en": "Every year Swedish households throw away hundreds of thousands of tonnes of food that could have been eaten."
+        },
+        {
+          "sv": "Det rör sig om allt från bröd som har hunnit bli torrt till grönsaker som glömts längst in i kylskåpet och rester som aldrig blev en ny måltid.",
+          "en": "It ranges from bread that has gone dry to vegetables forgotten at the back of the fridge and leftovers that never became a new meal."
+        },
+        {
+          "sv": "Matsvinnet är inte bara ett slöseri med pengar, utan också med de resurser som har gått åt till att producera, transportera och kyla maten.",
+          "en": "Food waste is not only a waste of money, but also of the resources used to produce, transport and refrigerate the food."
+        },
+        {
+          "sv": "En bidragande orsak är att många förväxlar bäst före-datum med sista förbrukningsdag.",
+          "en": "One contributing cause is that many people confuse the best-before date with the use-by date."
+        },
+        {
+          "sv": "Bäst före betyder att tillverkaren garanterar kvaliteten fram till det datumet, inte att varan blir farlig dagen efter.",
+          "en": "Best before means the manufacturer guarantees the quality up to that date, not that the product becomes dangerous the day after."
+        },
+        {
+          "sv": "Livsmedelsverket uppmanar därför konsumenterna att lita mer på sina sinnen: titta, lukta och smaka innan något åker i soporna.",
+          "en": "The Swedish Food Agency therefore urges consumers to trust their senses more: look, smell and taste before something goes in the bin."
+        },
+        {
+          "sv": "Linnéa, som driver ett kafé i en mellanstor stad, har gjort det till sin affärsidé att ta vara på det som andra slänger.",
+          "en": "Linnéa, who runs a café in a medium-sized town, has made it her business idea to make use of what others throw away."
+        },
+        {
+          "sv": "Hon köper frukt med skönhetsfel från bönder i trakten och bakar på bröd från gårdagen.",
+          "en": "She buys fruit with cosmetic flaws from local farmers and bakes with yesterday's bread."
+        },
+        {
+          "sv": "I början trodde folk att det skulle smaka sämre, men nu är det många som kommer just för att de gillar idén, berättar hon.",
+          "en": "At first people thought it would taste worse, but now many come precisely because they like the idea, she says."
+        },
+        {
+          "sv": "Dessutom har kostnaderna för råvaror sjunkit så mycket att hon kan hålla lägre priser än många konkurrenter.",
+          "en": "Moreover, the cost of ingredients has fallen so much that she can keep lower prices than many competitors."
+        },
+        {
+          "sv": "Även de stora livsmedelskedjorna har börjat sälja varor med kort hållbarhet till nedsatt pris.",
+          "en": "The big grocery chains have also started selling products with a short shelf life at reduced prices."
+        },
+        {
+          "sv": "Dessutom finns det appar där restauranger säljer överbliven mat billigt i slutet av dagen.",
+          "en": "There are also apps where restaurants sell leftover food cheaply at the end of the day."
+        },
+        {
+          "sv": "Ändå är det i hemmen som den största delen av svinnet uppstår.",
+          "en": "Even so, it is in homes that most of the waste arises."
+        },
+        {
+          "sv": "Att planera sina inköp, skriva en lista och våga laga mat av det som finns hemma kan låta banalt. Men enligt experterna är det just där som den stora skillnaden går att göra.",
+          "en": "Planning your shopping, writing a list and daring to cook with what you have at home may sound banal. But according to the experts that is exactly where the big difference can be made."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad betyder bäst före-datum?",
+          "options": [
+            "Att varan blir farlig efter datumet",
+            "Att kvaliteten garanteras fram till datumet",
+            "Att varan måste slängas"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är Linnéas affärsidé?",
+          "options": [
+            "Att sälja dyr ekologisk mat",
+            "Att ta vara på det som andra slänger",
+            "Att öppna en ny livsmedelskedja"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var uppstår den största delen av svinnet?",
+          "options": [
+            "I butikerna",
+            "På restaurangerna",
+            "I hemmen"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "C1-04",
+      "level": "C1",
+      "topic": "Home",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Hos banken",
+      "names": [
+        "Jonsson"
+      ],
+      "above_level": [
+        "budgivning",
+        "lånelöfte",
+        "amortering",
+        "belåningsgrad",
+        "överbryggningslån"
+      ],
+      "lines": [
+        {
+          "sv": "– Välkomna. Ni har alltså hittat en bostadsrätt som ni är intresserade av?",
+          "en": "– Welcome. So you've found a co-operative flat you're interested in?"
+        },
+        {
+          "sv": "– Ja, en trea i ett äldre hus nära centrum. Utgångspriset är tre miljoner, men vi räknar med att det blir budgivning.",
+          "en": "– Yes, a three-room flat in an older building near the centre. The asking price is three million, but we expect there to be a bidding war."
+        },
+        {
+          "sv": "– Då är det klokt att ni har ett lånelöfte innan visningen. Hur mycket har ni sparat till kontantinsatsen?",
+          "en": "– Then it's wise to have a mortgage commitment before the viewing. How much have you saved for the down payment?"
+        },
+        {
+          "sv": "– Ungefär femhundratusen tillsammans, efter flera år av sparande.",
+          "en": "– About five hundred thousand together, after several years of saving."
+        },
+        {
+          "sv": "– Det räcker för ett köp på drygt tre miljoner, eftersom ni behöver betala minst femton procent själva.",
+          "en": "– That's enough for a purchase of just over three million, since you need to pay at least fifteen per cent yourselves."
+        },
+        {
+          "sv": "– Men vi är lite oroliga för räntan. Den har ju gått upp en hel del.",
+          "en": "– But we're a bit worried about the interest rate. It has gone up quite a lot."
+        },
+        {
+          "sv": "– Det förstår jag. Ni kan välja att binda en del av lånet, så att ni vet exakt vad ni betalar de närmaste åren.",
+          "en": "– I understand. You can choose to fix part of the loan, so you know exactly what you'll pay for the next few years."
+        },
+        {
+          "sv": "– Och amorteringen, hur mycket blir den?",
+          "en": "– And the repayments, how much will they be?"
+        },
+        {
+          "sv": "– Med er inkomst och den belåningsgraden blir det två procent om året till att börja med. Glöm inte heller månadsavgiften till föreningen.",
+          "en": "– With your income and that loan-to-value ratio it will be two per cent a year to begin with. Don't forget the monthly fee to the association either."
+        },
+        {
+          "sv": "– Den är ganska låg, men vi har hört att föreningen planerar ett stambyte.",
+          "en": "– It's quite low, but we've heard the association is planning to replace the pipes."
+        },
+        {
+          "sv": "– Då ska ni läsa årsredovisningen noga. Ett stambyte kan kosta mycket, och ibland höjs avgiften kraftigt efteråt.",
+          "en": "– Then you should read the annual report carefully. Replacing the pipes can cost a lot, and sometimes the fee is raised sharply afterwards."
+        },
+        {
+          "sv": "– Det hade vi ingen aning om. Tack för att du lägger korten på bordet.",
+          "en": "– We had no idea. Thanks for putting your cards on the table."
+        },
+        {
+          "sv": "– Det är mitt jobb. Hellre att ni vet det nu än att ni får en obehaglig överraskning om ett år.",
+          "en": "– That's my job. Better you know it now than get an unpleasant surprise in a year's time."
+        },
+        {
+          "sv": "– En sak till: vad händer om vi inte lyckas sälja vår nuvarande lägenhet i tid?",
+          "en": "– One more thing: what happens if we don't manage to sell our current flat in time?"
+        },
+        {
+          "sv": "– Då kan ni behöva ett så kallat överbryggningslån. Det är dyrt, så jag rekommenderar att ni inte budar på något förrän ni vet ungefär vad er egen bostad är värd.",
+          "en": "– Then you may need a so-called bridging loan. It is expensive, so I recommend you don't bid on anything until you roughly know what your own home is worth."
+        },
+        {
+          "sv": "– Det låter klokt. Vi ringer en mäklare redan i morgon och ber om en värdering.",
+          "en": "– That sounds wise. We'll call an estate agent tomorrow and ask for a valuation."
+        },
+        {
+          "sv": "– Vi bokar ett nytt möte efter visningen och bestämmer oss då om hur högt vi vågar buda.",
+          "en": "– We'll book another meeting after the viewing and decide then how high we dare to bid."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur mycket måste köparna betala själva?",
+          "options": [
+            "Minst femton procent",
+            "Hälften",
+            "Ingenting"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad kan de göra för att veta vad de betalar de närmaste åren?",
+          "options": [
+            "Binda en del av lånet",
+            "Låna av föräldrarna",
+            "Hyra i stället"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Varför ska de läsa årsredovisningen noga?",
+          "options": [
+            "Föreningen planerar ett stambyte",
+            "Huset ska rivas",
+            "Banken kräver det"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "C1-05",
+      "level": "C1",
+      "topic": "Work and study",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Att byta bana mitt i livet",
+      "names": [
+        "Peter",
+        "Sverige"
+      ],
+      "above_level": [
+        "fyrtiofem",
+        "högskoleutbildning",
+        "avgiftsfri",
+        "tenta",
+        "arbetspass"
+      ],
+      "lines": [
+        {
+          "sv": "När Peter fyllde fyrtiofem hade han arbetat som ekonom på samma företag i nästan tjugo år.",
+          "en": "When Peter turned forty-five he had worked as an economist at the same company for almost twenty years."
+        },
+        {
+          "sv": "Lönen var god och arbetskamraterna trevliga, men han kände sig alltmer tom när han satte sig vid datorn på måndagsmorgnarna.",
+          "en": "The pay was good and his colleagues pleasant, but he felt increasingly empty when he sat down at the computer on Monday mornings."
+        },
+        {
+          "sv": "Efter en lång period av tvekan sade han upp sig och började läsa till sjuksköterska.",
+          "en": "After a long period of hesitation he resigned and started studying to become a nurse."
+        },
+        {
+          "sv": "Han är långt ifrån ensam om att byta bana i vuxen ålder.",
+          "en": "He is far from alone in changing career as an adult."
+        },
+        {
+          "sv": "I Sverige finns det goda möjligheter att studera senare i livet, eftersom högskoleutbildning är avgiftsfri och man kan få studiemedel långt upp i åldrarna.",
+          "en": "In Sweden there are good opportunities to study later in life, since university education is free of charge and you can get student finance well into later life."
+        },
+        {
+          "sv": "Dessutom har systemet med omställningsstöd gjort det lättare för anställda att vidareutbilda sig utan att helt förlora sin inkomst.",
+          "en": "In addition, the system of transition support has made it easier for employees to retrain without completely losing their income."
+        },
+        {
+          "sv": "Ändå är steget stort.",
+          "en": "Even so, the step is a big one."
+        },
+        {
+          "sv": "Peter och hans familj fick dra ner rejält på utgifterna under de tre åren han studerade, och semesterresorna fick vänta.",
+          "en": "Peter and his family had to cut their spending considerably during the three years he studied, and holiday trips had to wait."
+        },
+        {
+          "sv": "Det var också ovant att sitta i föreläsningssalar med studenter som var yngre än hans egna barn.",
+          "en": "It was also strange to sit in lecture halls with students younger than his own children."
+        },
+        {
+          "sv": "Han fick dessutom vänja sig vid att vara den som inte kunde något, efter att i många år ha varit den som kollegorna vände sig till med sina frågor.",
+          "en": "He also had to get used to being the one who didn't know anything, after many years of being the one his colleagues turned to with their questions."
+        },
+        {
+          "sv": "Några av de yngre studenterna blev med tiden goda vänner, och de pluggade ofta tillsammans inför tentorna.",
+          "en": "Some of the younger students became good friends over time, and they often studied together before the exams."
+        },
+        {
+          "sv": "Men han ångrar sig inte en sekund.",
+          "en": "But he doesn't regret it for a second."
+        },
+        {
+          "sv": "Jag har aldrig varit så trött efter ett arbetspass, men jag har heller aldrig känt mig så meningsfull, säger han.",
+          "en": "I've never been so tired after a shift, but I've never felt so useful either, he says."
+        },
+        {
+          "sv": "Hans erfarenhet från ekonomin har till och med visat sig vara en tillgång, eftersom han nu är med och planerar budgeten på sin avdelning.",
+          "en": "His background in finance has even turned out to be an asset, since he now helps plan the budget for his ward."
+        },
+        {
+          "sv": "Arbetsmarknadsforskare påpekar att den här typen av omställning kommer att bli allt vanligare, i takt med att vi lever och arbetar längre och tekniken förändrar yrkena.",
+          "en": "Labour market researchers point out that this kind of change will become increasingly common, as we live and work longer and technology changes occupations."
+        },
+        {
+          "sv": "Därför efterlyser de fler flexibla utbildningar som går att kombinera med arbete och familjeliv.",
+          "en": "So they call for more flexible courses that can be combined with work and family life."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad arbetade Peter med tidigare?",
+          "options": [
+            "Som lärare",
+            "Som ekonom",
+            "Som läkare"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför är det lättare att studera senare i livet i Sverige?",
+          "options": [
+            "Högskolan är avgiftsfri och man kan få studiemedel",
+            "Arbetsgivaren betalar alltid",
+            "Utbildningarna är kortare"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur har Peters gamla erfarenhet kommit till nytta?",
+          "options": [
+            "Han planerar budgeten på avdelningen",
+            "Han undervisar studenter",
+            "Han sköter lönerna på sjukhuset"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "C1-06",
+      "level": "C1",
+      "topic": "Travel and transport",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Ska bilen ut ur stan?",
+      "names": [
+        "Maria",
+        "Sandberg",
+        "Ali",
+        "Hassan"
+      ],
+      "above_level": [
+        "innerstad",
+        "byggd",
+        "utryckningsfordon",
+        "klädbutik",
+        "pendelparkering",
+        "stegvis",
+        "beredd"
+      ],
+      "lines": [
+        {
+          "sv": "– I kvällens debatt: ska bilen tvingas ut ur innerstaden? Maria Sandberg, du sitter i kommunfullmäktige och vill göra stora delar av centrum bilfritt.",
+          "en": "– In tonight's debate: should the car be forced out of the inner city? Maria Sandberg, you sit on the city council and want to make large parts of the centre car-free."
+        },
+        {
+          "sv": "– Ja. Gatorna är byggda för en annan tid. I dag tar bilarna enormt mycket plats, samtidigt som de flesta som rör sig i centrum går, cyklar eller åker kollektivt.",
+          "en": "– Yes. The streets were built for another time. Today cars take up an enormous amount of space, while most people moving around the centre walk, cycle or use public transport."
+        },
+        {
+          "sv": "– Ali Hassan, du driver en möbelbutik på en av gatorna som berörs. Vad säger du?",
+          "en": "– Ali Hassan, you run a furniture shop on one of the streets affected. What do you say?"
+        },
+        {
+          "sv": "– Jag förstår tanken, men verkligheten är mer komplicerad. Mina kunder köper soffor och bord. De kan knappast bära hem dem på bussen.",
+          "en": "– I understand the idea, but reality is more complicated. My customers buy sofas and tables. They can hardly carry them home on the bus."
+        },
+        {
+          "sv": "– Leveranser och hemtransporter ska förstås fortfarande vara tillåtna, liksom färdtjänst och utryckningsfordon.",
+          "en": "– Deliveries and home transport would of course still be allowed, as would special transport services and emergency vehicles."
+        },
+        {
+          "sv": "– Det låter bra på papperet, men varje ny regel gör det krångligare och dyrare att driva företag här. Risken är att handeln flyttar ut till köpcentren vid motorvägen.",
+          "en": "– It sounds good on paper, but every new rule makes it more complicated and expensive to run a business here. The risk is that trade moves out to the shopping centres by the motorway."
+        },
+        {
+          "sv": "– Erfarenheter från andra städer visar faktiskt motsatsen. När gatorna blir trevligare att vistas på stannar folk längre och handlar mer.",
+          "en": "– Experience from other cities actually shows the opposite. When the streets become nicer to spend time in, people stay longer and shop more."
+        },
+        {
+          "sv": "– Det kanske gäller kaféer och klädbutiker. Jag är inte lika säker på att det gäller oss.",
+          "en": "– That may apply to cafés and clothes shops. I'm not as sure it applies to us."
+        },
+        {
+          "sv": "– Får jag ställa en fråga till dig, Maria? Hur ska människor som bor utanför staden ta sig in om bussarna redan i dag är överfulla?",
+          "en": "– May I ask you a question, Maria? How will people who live outside the city get in if the buses are already overcrowded today?"
+        },
+        {
+          "sv": "– Det är en rimlig invändning. Därför vill vi samtidigt bygga ut pendelparkeringar och öka turtätheten, innan några gator stängs.",
+          "en": "– That's a reasonable objection. That's why we also want to expand park-and-ride and increase the frequency of services before any streets close."
+        },
+        {
+          "sv": "– Finns det någon kompromiss ni båda skulle kunna leva med?",
+          "en": "– Is there a compromise you could both live with?"
+        },
+        {
+          "sv": "– Vi föreslår att genomföra det stegvis och utvärdera efter två år. Om handeln tar stryk är vi beredda att tänka om.",
+          "en": "– We propose doing it step by step and evaluating after two years. If trade suffers, we're prepared to think again."
+        },
+        {
+          "sv": "– Det är ett steg i rätt riktning. Men då vill jag att vi som har butiker där får vara med och bestämma hur utvärderingen ska gå till, och inte bara bli informerade i efterhand.",
+          "en": "– That's a step in the right direction. But then I want those of us with shops there to have a say in how the evaluation is done, and not just be informed afterwards."
+        },
+        {
+          "sv": "– Det kan jag lova.",
+          "en": "– I can promise that."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad vill Maria Sandberg göra?",
+          "options": [
+            "Bygga fler parkeringar",
+            "Göra stora delar av centrum bilfritt",
+            "Sänka biljettpriserna"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad oroar sig Ali Hassan för?",
+          "options": [
+            "Att handeln flyttar till köpcentren",
+            "Att det blir för många cyklar",
+            "Att hyrorna sjunker"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vilken kompromiss föreslås?",
+          "options": [
+            "Att genomföra det stegvis och utvärdera efter två år",
+            "Att bara stänga gatorna på helger",
+            "Att ha en folkomröstning"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "C1-07",
+      "level": "C1",
+      "topic": "Free time and culture",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Flickan som inte ville bli vuxen",
+      "names": [
+        "Astrid",
+        "Lindgren",
+        "Pippi",
+        "Långstrump",
+        "Vimmerby",
+        "Sverige"
+      ],
+      "above_level": [
+        "rödhårig",
+        "trotsa",
+        "olydig",
+        "satirisk",
+        "folkmun",
+        "kännas"
+      ],
+      "lines": [
+        {
+          "sv": "Det började med en sjuk dotter och en berättelse som hittades på i stunden.",
+          "en": "It began with a sick daughter and a story made up on the spot."
+        },
+        {
+          "sv": "Vintern 1941 låg Astrid Lindgrens dotter i sängen och bad sin mamma berätta om Pippi Långstrump, ett namn som flickan själv hade hittat på.",
+          "en": "In the winter of 1941 Astrid Lindgren's daughter lay in bed and asked her mother to tell her about Pippi Longstocking, a name the girl had made up herself."
+        },
+        {
+          "sv": "Några år senare blev berättelserna en bok, och den rödhåriga flickan som bor ensam med en häst och en apa skulle bli känd över hela världen.",
+          "en": "A few years later the stories became a book, and the red-haired girl who lives alone with a horse and a monkey would become famous all over the world."
+        },
+        {
+          "sv": "Alla var dock inte förtjusta från början.",
+          "en": "Not everyone was delighted at first, though."
+        },
+        {
+          "sv": "Flera kritiker tyckte att Pippi var en olämplig förebild, eftersom hon trotsade vuxna, ljög med glimten i ögat och vägrade gå i skolan.",
+          "en": "Several critics thought Pippi was an unsuitable role model, since she defied adults, told lies with a twinkle in her eye and refused to go to school."
+        },
+        {
+          "sv": "Men det var just det som gjorde henne så populär.",
+          "en": "But that was exactly what made her so popular."
+        },
+        {
+          "sv": "Lindgren tog barnens perspektiv på allvar och skildrade en värld där barn kunde vara starka, självständiga och ibland lite olydiga.",
+          "en": "Lindgren took children's perspective seriously and portrayed a world where children could be strong, independent and sometimes a little disobedient."
+        },
+        {
+          "sv": "I hennes böcker är det ofta de vuxna som framstår som löjliga, medan barnen ser saker precis som de är.",
+          "en": "In her books it is often the adults who appear ridiculous, while the children see things exactly as they are."
+        },
+        {
+          "sv": "Hon skrev också om svårare ämnen, som döden, ensamheten och rädslan, utan att någonsin tala ner till sina läsare.",
+          "en": "She also wrote about harder subjects, such as death, loneliness and fear, without ever talking down to her readers."
+        },
+        {
+          "sv": "Under sitt långa liv blev hon dessutom en röst i samhällsdebatten.",
+          "en": "During her long life she also became a voice in public debate."
+        },
+        {
+          "sv": "På sjuttiotalet skrev hon en satirisk saga om sina egna orimligt höga skatter, och texten bidrog till att regeringen förlorade valet.",
+          "en": "In the seventies she wrote a satirical fairy tale about her own unreasonably high taxes, and the text helped the government lose the election."
+        },
+        {
+          "sv": "Senare engagerade hon sig för djurens rätt, och en ny lag om djurskydd fick i folkmun hennes namn.",
+          "en": "Later she campaigned for animal rights, and a new animal welfare law was popularly named after her."
+        },
+        {
+          "sv": "I dag är hennes barndomsstad Vimmerby ett resmål för familjer från hela världen, och hennes böcker har översatts till över hundra språk.",
+          "en": "Today her childhood town of Vimmerby is a destination for families from all over the world, and her books have been translated into more than a hundred languages."
+        },
+        {
+          "sv": "Kanske är det hennes förmåga att minnas hur det kändes att vara barn som gör att böckerna fortfarande känns levande.",
+          "en": "Perhaps it is her ability to remember what it felt like to be a child that makes the books still feel alive."
+        },
+        {
+          "sv": "Själv sade hon en gång att hon inte skrev för några barn alls, utan för det barn hon själv en gång hade varit.",
+          "en": "She once said herself that she didn't write for any children at all, but for the child she herself had once been."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vem hittade på namnet Pippi Långstrump?",
+          "options": [
+            "Astrid Lindgren",
+            "Hennes dotter",
+            "En förläggare"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför kritiserades Pippi i början?",
+          "options": [
+            "Hon var för snäll",
+            "Hon ansågs vara en olämplig förebild",
+            "Boken var för lång"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad handlade hennes satiriska saga om?",
+          "options": [
+            "Djurskydd",
+            "Hennes egna höga skatter",
+            "Skolan"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-08",
+      "level": "C1",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "listening",
+      "title": "När kroppen säger ifrån",
+      "names": [
+        "Camilla"
+      ],
+      "above_level": [
+        "pinkod",
+        "bulta",
+        "diffus"
+      ],
+      "lines": [
+        {
+          "sv": "Camilla minns exakt när det hände.",
+          "en": "Camilla remembers exactly when it happened."
+        },
+        {
+          "sv": "Hon stod i kön på mataffären en vanlig tisdag och kunde plötsligt inte komma ihåg sin egen pinkod.",
+          "en": "She was standing in the queue at the supermarket on an ordinary Tuesday and suddenly couldn't remember her own PIN."
+        },
+        {
+          "sv": "Hjärtat bultade, händerna skakade och hon fick lämna varorna och gå därifrån.",
+          "en": "Her heart pounded, her hands shook and she had to leave her shopping and walk away."
+        },
+        {
+          "sv": "Några veckor senare var hon sjukskriven för utmattningssyndrom, något som i vardagligt tal kallas att gå in i väggen.",
+          "en": "A few weeks later she was on sick leave with exhaustion disorder, which in everyday speech is called hitting the wall."
+        },
+        {
+          "sv": "Psykisk ohälsa är i dag den vanligaste orsaken till långa sjukskrivningar i Sverige, och kvinnor inom vård, skola och omsorg är särskilt drabbade.",
+          "en": "Mental ill-health is today the most common cause of long-term sick leave in Sweden, and women in healthcare, schools and care work are especially affected."
+        },
+        {
+          "sv": "Utmattning utvecklas sällan över en natt.",
+          "en": "Exhaustion rarely develops overnight."
+        },
+        {
+          "sv": "Ofta handlar det om månader eller år av hög arbetsbelastning, otillräcklig återhämtning och krav som kommer från flera håll samtidigt.",
+          "en": "It is often a matter of months or years of heavy workload, insufficient recovery and demands coming from several directions at once."
+        },
+        {
+          "sv": "Varningssignalerna kan vara diffusa: sömnproblem, irritation, svårt att koncentrera sig eller en känsla av att aldrig bli riktigt utvilad.",
+          "en": "The warning signs can be vague: sleep problems, irritability, difficulty concentrating or a feeling of never being properly rested."
+        },
+        {
+          "sv": "Många väljer att bita ihop, eftersom de inte vill svika kollegor eller familj.",
+          "en": "Many choose to grit their teeth, since they don't want to let down colleagues or family."
+        },
+        {
+          "sv": "Andra märker inte ens själva hur trötta de har blivit, eftersom förändringen sker så gradvis.",
+          "en": "Others don't even notice how tired they have become, because the change happens so gradually."
+        },
+        {
+          "sv": "Det är inte ovanligt att en partner eller en kollega är den som först säger att något verkar vara fel.",
+          "en": "It isn't unusual for a partner or a colleague to be the one who first says something seems wrong."
+        },
+        {
+          "sv": "Vägen tillbaka är ofta lång.",
+          "en": "The way back is often long."
+        },
+        {
+          "sv": "För Camilla tog det över ett år innan hon kunde börja arbeta deltid igen.",
+          "en": "For Camilla it took over a year before she could start working part-time again."
+        },
+        {
+          "sv": "Hon har fått lära sig att planera in vila med samma noggrannhet som hon tidigare planerade möten.",
+          "en": "She has had to learn to plan in rest as carefully as she used to plan meetings."
+        },
+        {
+          "sv": "Forskare betonar att ansvaret inte bara kan läggas på individen.",
+          "en": "Researchers stress that the responsibility can't be placed on the individual alone."
+        },
+        {
+          "sv": "Arbetsgivare måste se till att arbetsmängden är rimlig, att det finns tid för återhämtning och att det är tillåtet att säga ifrån innan det är för sent.",
+          "en": "Employers must make sure the workload is reasonable, that there is time for recovery and that it is acceptable to speak up before it is too late."
+        },
+        {
+          "sv": "Camilla har själv börjat prata öppet om sina erfarenheter, både på jobbet och i sociala medier.",
+          "en": "Camilla has herself started to talk openly about her experiences, both at work and on social media."
+        },
+        {
+          "sv": "Hon säger att hon hade önskat att någon hade berättat för henne om varningssignalerna innan det var för sent.",
+          "en": "She says she wishes someone had told her about the warning signs before it was too late."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad hände med Camilla i mataffären?",
+          "options": [
+            "Hon svimmade",
+            "Hon kunde inte komma ihåg sin pinkod",
+            "Hon tappade plånboken"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vilka grupper är särskilt drabbade av psykisk ohälsa enligt texten?",
+          "options": [
+            "Män inom industrin",
+            "Kvinnor inom vård, skola och omsorg",
+            "Studenter"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad säger forskarna om ansvaret?",
+          "options": [
+            "Att det bara ligger på individen",
+            "Att arbetsgivare också har ansvar",
+            "Att läkarna har allt ansvar"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "C1-09",
+      "level": "C1",
+      "topic": "Nature and environment",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Skogen – resurs eller livsmiljö?",
+      "names": [
+        "Sverige"
+      ],
+      "above_level": [
+        "infekterad",
+        "likåldrig",
+        "lav",
+        "bärplockning",
+        "hyggesfri",
+        "friluftsliv"
+      ],
+      "lines": [
+        {
+          "sv": "Nästan sjuttio procent av Sveriges yta är täckt av skog, och för många svenskar är skogen en självklar del av identiteten.",
+          "en": "Almost seventy per cent of Sweden's area is covered by forest, and for many Swedes the forest is a natural part of their identity."
+        },
+        {
+          "sv": "Men vad skogen egentligen är, och vad den ska användas till, är en av de mest infekterade frågorna i den svenska miljödebatten.",
+          "en": "But what the forest actually is, and what it should be used for, is one of the most heated questions in the Swedish environmental debate."
+        },
+        {
+          "sv": "För skogsindustrin är skogen en förnybar resurs som ger arbetstillfällen, exportinkomster och material som kan ersätta plast och betong.",
+          "en": "For the forestry industry the forest is a renewable resource that provides jobs, export income and material that can replace plastic and concrete."
+        },
+        {
+          "sv": "Varje år växer det mer skog än vad som avverkas, framhåller branschen, och de träd som planteras binder koldioxid när de växer.",
+          "en": "Every year more forest grows than is felled, the industry points out, and the trees that are planted absorb carbon dioxide as they grow."
+        },
+        {
+          "sv": "Kritikerna ser saken på ett helt annat sätt.",
+          "en": "The critics see things quite differently."
+        },
+        {
+          "sv": "De menar att stora delar av den svenska skogen inte längre är skog i ekologisk mening, utan snarare odlingar av likåldriga träd av ett eller två slag.",
+          "en": "They argue that large parts of the Swedish forest are no longer forest in an ecological sense, but rather plantations of same-aged trees of one or two species."
+        },
+        {
+          "sv": "När gammal skog kalhuggs försvinner livsmiljöer för arter som har tagit hundratals år att etablera sig, från lavar och svampar till fåglar och insekter.",
+          "en": "When old forest is clear-cut, habitats disappear for species that have taken hundreds of years to establish themselves, from lichens and fungi to birds and insects."
+        },
+        {
+          "sv": "Dessutom påverkas samiska renskötare, vars renar är beroende av de lavar som växer i äldre skog.",
+          "en": "In addition, Sami reindeer herders are affected, since their reindeer depend on the lichens that grow in older forest."
+        },
+        {
+          "sv": "Mellan dessa positioner står de enskilda skogsägarna, som äger ungefär hälften av skogsmarken.",
+          "en": "Between these positions stand the private forest owners, who own about half of the forest land."
+        },
+        {
+          "sv": "För dem är skogen inte bara ett ekonomiskt värde, utan också en plats för jakt, bärplockning och minnen.",
+          "en": "For them the forest is not only an economic asset, but also a place for hunting, berry picking and memories."
+        },
+        {
+          "sv": "Många av dem har ärvt sin skog i generationer och vill både få en inkomst och lämna över något värdefullt till sina barn.",
+          "en": "Many of them have inherited their forest over generations and want both to earn an income and to hand over something valuable to their children."
+        },
+        {
+          "sv": "En del har börjat pröva så kallat hyggesfritt skogsbruk, där man tar ut enstaka träd i stället för att avverka allt på en gång.",
+          "en": "Some have started trying so-called continuous-cover forestry, where individual trees are taken out instead of felling everything at once."
+        },
+        {
+          "sv": "Det ger lägre vinst på kort sikt, men kan enligt förespråkarna gynna både den biologiska mångfalden och friluftslivet.",
+          "en": "It gives lower profit in the short term, but according to its supporters can benefit both biodiversity and outdoor recreation."
+        },
+        {
+          "sv": "Kanske ligger framtiden någonstans däremellan, i en skog som får vara både resurs och livsmiljö.",
+          "en": "Perhaps the future lies somewhere in between, in a forest allowed to be both a resource and a habitat."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur stor del av Sverige är täckt av skog?",
+          "options": [
+            "Ungefär hälften",
+            "Nästan sjuttio procent",
+            "En tredjedel"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad menar kritikerna om stora delar av skogen?",
+          "options": [
+            "Att den växer för snabbt",
+            "Att den snarare är odlingar av likåldriga träd",
+            "Att den är för gammal"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är hyggesfritt skogsbruk?",
+          "options": [
+            "Att man tar ut enstaka träd i stället för att avverka allt",
+            "Att man aldrig fäller träd",
+            "Att man planterar nya träd varje år"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "C1-10",
+      "level": "C1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Litar vi fortfarande på varandra?",
+      "names": [
+        "Johanna",
+        "Emil",
+        "Sverige",
+        "Norden"
+      ],
+      "above_level": [
+        "otrygghet",
+        "naturlag"
+      ],
+      "lines": [
+        {
+          "sv": "– Har du sett den nya undersökningen, Emil? Sverige ligger fortfarande i topp när det gäller tillit till andra människor.",
+          "en": "– Have you seen the new survey, Emil? Sweden is still at the top when it comes to trust in other people."
+        },
+        {
+          "sv": "– Jag såg rubriken. Men jag undrar om det verkligen stämmer med hur folk känner i vardagen.",
+          "en": "– I saw the headline. But I wonder if it really matches how people feel in everyday life."
+        },
+        {
+          "sv": "– Hur menar du då?",
+          "en": "– What do you mean?"
+        },
+        {
+          "sv": "– Tänk på hur många som har fått sina konton tömda av bedragare på sistone. Min mamma vågar knappt svara i telefon längre.",
+          "en": "– Think of how many have had their accounts emptied by fraudsters lately. My mum hardly dares answer the phone any more."
+        },
+        {
+          "sv": "– Det är sant att bedrägerierna har blivit fler, men undersökningen mäter något annat: om man tror att de flesta människor går att lita på.",
+          "en": "– It's true that frauds have increased, but the survey measures something else: whether you think most people can be trusted."
+        },
+        {
+          "sv": "– Och det gör man alltså fortfarande?",
+          "en": "– And people still do?"
+        },
+        {
+          "sv": "– I hög grad, ja. Forskare kopplar det till att vi har relativt låg korruption, en fungerande rättsstat och myndigheter som de flesta upplever behandlar alla lika.",
+          "en": "– To a large extent, yes. Researchers link it to our relatively low corruption, a functioning rule of law and authorities that most people feel treat everyone equally."
+        },
+        {
+          "sv": "– Det är också något vi märker i vardagen. Folk lämnar barnvagnar utanför kaféer och lånar ut verktyg till grannar de knappt känner.",
+          "en": "– It's also something we notice in everyday life. People leave prams outside cafés and lend tools to neighbours they barely know."
+        },
+        {
+          "sv": "– Det har jag aldrig tänkt på, men du har rätt.",
+          "en": "– I've never thought about that, but you're right."
+        },
+        {
+          "sv": "– Men tilliten är väl inte lika stor överallt? Jag har läst att den skiljer sig mycket mellan olika bostadsområden.",
+          "en": "– But trust isn't equally high everywhere, is it? I've read that it differs a lot between different neighbourhoods."
+        },
+        {
+          "sv": "– Där har du en poäng. I områden med hög arbetslöshet och otrygghet är tilliten betydligt lägre, och det är en utveckling som borde oroa oss.",
+          "en": "– You have a point there. In areas with high unemployment and insecurity trust is considerably lower, and that is a trend that should worry us."
+        },
+        {
+          "sv": "– Precis. Tillit är som ett förtroendekapital. Det tar lång tid att bygga upp, men det kan raseras ganska snabbt.",
+          "en": "– Exactly. Trust is like capital. It takes a long time to build up, but it can be destroyed fairly quickly."
+        },
+        {
+          "sv": "– Därför tycker jag att det är så viktigt att människor faktiskt möts, i skolan, i föreningslivet och på arbetsplatser, och inte bara i sina egna bubblor på nätet.",
+          "en": "– That's why I think it's so important that people actually meet, at school, in clubs and associations and at workplaces, and not only in their own bubbles online."
+        },
+        {
+          "sv": "– Det ligger något i det. Kanske är den nordiska tilliten inte en naturlag, utan något som varje generation måste förtjäna på nytt.",
+          "en": "– There's something in that. Perhaps Nordic trust isn't a law of nature, but something every generation has to earn anew."
+        },
+        {
+          "sv": "– Snyggt formulerat. Det borde du skriva en debattartikel om.",
+          "en": "– Nicely put. You should write an opinion piece about that."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad mäter undersökningen?",
+          "options": [
+            "Hur många som har blivit lurade",
+            "Om man tror att de flesta människor går att lita på",
+            "Hur nöjda folk är med sina jobb"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var är tilliten lägre enligt Johanna?",
+          "options": [
+            "I områden med hög arbetslöshet och otrygghet",
+            "På landsbygden",
+            "Bland äldre"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad menar Emil med att tillit är som ett kapital?",
+          "options": [
+            "Att den kan köpas",
+            "Att den tar lång tid att bygga men kan raseras snabbt",
+            "Att den bara finns i Norden"
+          ],
+          "answer": 1
+        }
+      ]
+    }
+  ]
+}

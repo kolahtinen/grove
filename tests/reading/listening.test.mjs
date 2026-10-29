@@ -28,3 +28,17 @@ test('FR-502 RQ-20 RQ-369: "voice help shown" starts false, stays true once set,
   const other = await signedIn(t, 'other@example.test');
   assert.equal((await other.get('/api/stages')).body.voiceHelpShown, false);
 });
+
+test('FR-921 RQ-421: the speech speed starts at 0.9× below B1 and 1× from B1, until the learner sets it (PD-03)', async () => {
+  const { id } = t.seedAccount({ email: 'speed@example.test' });
+  const fresh = await signedIn(t, 'speed@example.test');
+  // No level yet counts as below B1.
+  assert.equal((await fresh.get('/api/settings')).body.speechRate, 0.9);
+  assert.equal((await fresh.get('/api/stages')).body.speechRate, 0.9);
+  t.grove.db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(id);
+  t.grove.db.prepare("UPDATE learner_settings SET start_level = 'B1' WHERE account_id = ?").run(id);
+  assert.equal((await fresh.get('/api/settings')).body.speechRate, 1);
+  await fresh.post('/api/settings', { speechRate: 1.2 });
+  t.grove.db.prepare("UPDATE learner_settings SET start_level = 'A1' WHERE account_id = ?").run(id);
+  assert.equal((await fresh.get('/api/settings')).body.speechRate, 1.2, 'the learner\'s own speed stays');
+});

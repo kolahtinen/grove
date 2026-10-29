@@ -13,20 +13,29 @@
 <header class="topbar">
 <div class="topbar-inner">
 <a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
-<div class="account" hidden><a class="bar-button nav" href="/dictionary">Dictionary</a><a class="bar-button nav nav-wide" href="/own">Own texts</a><span class="account-email"></span><button type="button" class="bar-button signout">Sign out</button></div>
-<a class="bar-button nav help-link" href="/how" aria-label="How grove works" title="How grove works">?</a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
 </div>
 </header>
 <main>
 <section class="card" id="choose">
 <h2>Your starting level</h2>
-<p>Pick the level you think you are at. grove then shows 30 words from it: tick the ones you <strong>don't</strong> know. Everything else from that level and the levels below goes into your ground as known.</p>
+<p>Pick the level you think you are at. Then either use it as it is, or let grove check it with 30 words from that level.</p>
 <p class="message bad" id="start-unavailable" role="alert" hidden></p>
-<div class="grid-3 level-buttons" id="levels">
-<button type="button" data-level="A1">A1</button><button type="button" data-level="A2">A2</button><button type="button" data-level="B1">B1</button>
-<button type="button" data-level="B2">B2</button><button type="button" data-level="C1">C1</button><button type="button" data-level="C2">C2</button>
+<div class="level-list" id="levels">
+<button type="button" data-level="A1"><strong>A1</strong> <span>First words and phrases: greetings, numbers, everyday things.</span></button>
+<button type="button" data-level="A2"><strong>A2</strong> <span>Simple everyday talk: shopping, family, work, your day.</span></button>
+<button type="button" data-level="B1"><strong>B1</strong> <span>You follow clear everyday texts and talk about familiar topics.</span></button>
+<button type="button" data-level="B2"><strong>B2</strong> <span>You read most articles and follow longer talk with some effort.</span></button>
+<button type="button" data-level="C1"><strong>C1</strong> <span>You read demanding texts and express yourself fluently.</span></button>
+<button type="button" data-level="C2"><strong>C2</strong> <span>Near-native: you understand almost everything.</span></button>
 </div>
 <p><button type="button" id="beginner">I'm a complete beginner</button></p>
+</section>
+<section class="card" id="how-card" hidden>
+<h2 id="how-heading"></h2>
+<p class="small muted">Use the level as it is, or check it: grove shows 30 words from it and you tick the ones you don't know. Either way, you can do this again from Settings.</p>
+<div class="row"><button type="button" class="main" id="use-level">Use this level</button><button type="button" id="check-level">Check my level</button></div>
+<p class="message" id="use-message" role="status" hidden></p>
 </section>
 <section class="card" id="sample-card" hidden>
 <h2 id="sample-heading"></h2>

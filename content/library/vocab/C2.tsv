@@ -1,0 +1,1336 @@
+# grove library vocabulary, level C2. Words from the Swedish Kelly list (Språkbanken, CC BY-SA 3.0 / LGPL 3.0); meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-vocab.mjs; see content/library/README.md.
+sv	pos	kind	level	en	flags	wpm
+övertid	noun-en	word	C2	overtime		3.41
+allergisk	adjective	word	C2	allergic		3.4
+eskalera	verb	word	C2	to escalate		3.4
+föreståndare	noun-en	word	C2	a superintendent, a manager; chiefly for a non-corporate organization or institution	long	3.4
+granat	noun-en	word	C2	a grenade		3.4
+instruktör	noun-en	word	C2	instructor		3.4
+mugg	noun-en	word	C2	mug; a large cup		3.4
+spanare	noun-en	word	C2	scout, spotter		3.4
+banal	adjective	word	C2	banal		3.39
+hektar	noun-ett	word	C2	hectare		3.39
+ofrivillig	adjective	word	C2	involuntary		3.39
+spjut	noun-ett	word	C2	a spear, a javelin		3.39
+subtil	adjective	word	C2	subtle		3.39
+successiv	adjective	word	C2	gradual		3.39
+välvilja	noun-en	word	C2	goodwill, benevolence		3.39
+avvärja	verb	word	C2	ward off, stave off, fend off	pos	3.38
+hållplats	noun-en	word	C2	a stop, a station		3.38
+härma	verb	word	C2	to imitate, to mimic		3.38
+distributör	noun-en	word	C2	distributor, organization or person that distributes		3.37
+grop	noun-en	word	C2	hole in the ground, pit		3.36
+hårdvara	noun-en	word	C2	hardware; the physical parts of a computer		3.36
+repetera	verb	word	C2	to repeat		3.36
+utrotning	noun-en	word	C2	eradication, extirpation, extinction		3.36
+avlopp	noun-ett	word	C2	a drain		3.35
+flamma	noun-en	word	C2	a flame		3.35
+grannskap	noun-ett	word	C2	neighbourhood, neighborhood		3.35
+hjälpsam	adjective	word	C2	helpful		3.35
+kamel	noun-en	word	C2	camel		3.35
+ämnesområde	noun-ett	word	C2	a subject area		3.35
+ändlös	adjective	word	C2	endless, never-ending		3.35
+livmoder	noun-en	word	C2	womb, uterus		3.34
+reduktion	noun-en	word	C2	a reduction, a transfer back to a previous state or location; a decrease		3.34
+susa	verb	word	C2	to make a drawn-out, soft, tone-less murmur, like a wind; to sigh, to sough		3.34
+funktionalitet	noun-en	word	C2		none	3.33
+hysteri	noun-en	word	C2	hysteria		3.33
+kulminera	verb	word	C2	to culminate, to peak		3.33
+rulle	noun-en	word	C2	roll		3.33
+slät	adjective	word	C2	smooth		3.33
+avskilja	verb	word	C2	to separate		3.32
+nattlig	adjective	word	C2	nocturnal		3.32
+stråle	noun-en	word	C2	a ray, a beam		3.32
+värdesätta	verb	word	C2	to value		3.32
+bark	noun-en	word	C2	bark		3.31
+fångst	noun-en	word	C2	catching		3.31
+nalle	noun-en	word	C2	a bear		3.31
+revolutionerande	adjective	word	C2	revolutionary, groundbreaking		3.31
+fåtölj	noun-en	word	C2	armchair		3.3
+hygien	noun-en	word	C2	hygiene		3.3
+ogiltig	adjective	word	C2	invalid		3.3
+tegel	noun-ett	word	C2	brick, tiles		3.3
+accelerera	verb	word	C2	to accelerate		3.29
+gedigen	adjective	word	C2	pure, unadulterated, solid		3.28
+känslighet	noun-en	word	C2	sensitivity		3.28
+sluttning	noun-en	word	C2	an area of sloping ground; a slope, a hillside		3.28
+analogi	noun-en	word	C2	analogy		3.27
+nordväst	noun	word	C2	northwest		3.27
+specifikation	noun-en	word	C2		none	3.27
+utsökt	adjective	word	C2	exquisite		3.27
+bandit	noun-en	word	C2	a bandit, an outlaw		3.26
+samordnare	noun-en	word	C2	a coordinator, an organizer		3.26
+stöt	noun-en	word	C2	a sharp impact; an impact, a shock, a jolt, a bump, a knock, etc.		3.26
+badkar	noun-ett	word	C2	a bathtub		3.25
+devalvering	noun-en	word	C2	devaluation		3.25
+frige	verb	word	C2	liberate, set free	pos	3.25
+internationalisering	noun-en	word	C2	internationalization		3.25
+kölvatten	noun-ett	word	C2	wake		3.25
+obligation	noun-en	word	C2	bond		3.25
+vertikal	adjective	word	C2	vertical		3.25
+åska	noun-en	word	C2	thunder		3.25
+likgiltighet	noun-en	word	C2	indifference		3.23
+mottaglig	adjective	word	C2	susceptible, receptive		3.23
+noggrannhet	noun-en	word	C2	accuracy		3.23
+sommarlov	noun-ett	word	C2	summer vacation/break		3.23
+tjat	noun-ett	word	C2	nagging, harping, repetitious requests		3.23
+volontär	noun-en	word	C2	trainee		3.23
+addera	verb	word	C2	to add, to sum		3.21
+barnvagn	noun-en	word	C2	a baby carriage, a pram, a stroller		3.21
+omvårdnad	noun-en	word	C2	provision of care, nursing, caregiving		3.21
+simning	noun-en	word	C2	swimming		3.21
+beskydda	verb	word	C2	to protect		3.2
+fyrkantig	adjective	word	C2	rectangular, square-shaped, quadratic		3.2
+tunna	noun-en	word	C2	to make or become thin or sparse, to disperse, to fade.	pos	3.2
+ull	noun-en	word	C2	wool; hair of sheep		3.2
+avresa	noun-en	word	C2	a departure; the act of entering a journey		3.19
+båge	noun-en	word	C2	a bow		3.19
+energisk	adjective	word	C2	energetic		3.19
+rikligt	adverb	word	C2	plentiful	via-form	3.19
+robust	adjective	word	C2	robust		3.19
+suppleant	noun-en	word	C2	a supplementary member		3.19
+blotta	verb	word	C2	to expose, to uncover		3.18
+interagera	verb	word	C2	to interact		3.18
+julgran	noun-en	word	C2	a Christmas tree		3.18
+lokalisering	noun-en	word	C2	localization		3.18
+porto	noun-ett	word	C2	postage		3.18
+rotera	verb	word	C2	to rotate		3.17
+stick	noun-ett	word	C2	get lost, fuck off		3.17
+galler	noun-ett	word	C2	a grid, a lattice, bars; a pattern like XXX or ||| formed by several long, more-or-less rigid objects	long	3.16
+kiosk	noun-en	word	C2	kiosk, newsagent, corner shop; a small shop where you can buy low priced items such as candy, newspapers, drink and a…	long	3.16
+olivolja	noun-en	word	C2	olive oil		3.15
+onormal	adjective	word	C2	abnormal		3.15
+oräknelig	adjective	word	C2	innumerable		3.15
+bokning	noun-en	word	C2	a booking, a reservation		3.14
+förskräcklig	adjective	word	C2	awful, dreadful		3.14
+inspektera	verb	word	C2	to inspect		3.14
+orientera	verb	word	C2	to orient, to find one's way, to practice orienteering		3.14
+reception	noun-en	word	C2	a reception, a front desk		3.14
+smeka	verb	word	C2	to stroke softly and tenderly; to caress, to stroke, to rub, to fondle, to pet, etc.	long	3.14
+välgörande	adjective	word	C2	charitable		3.14
+reproduktion	noun-en	word	C2		none	3.13
+konsul	noun-en	word	C2	consul		3.12
+konsulat	noun-ett	word	C2		none	3.12
+medvetslös	adjective	word	C2	unconscious		3.12
+moped	noun-en	word	C2	a moped		3.12
+sammanträda	verb	word	C2	to meet, to hold a meeting		3.12
+altare	noun-ett	word	C2	altar		3.11
+betingelse	noun-en	word	C2		none	3.11
+förplikta	verb	word	C2	obligate	pos	3.11
+handväska	noun-en	word	C2	a handbag		3.11
+häkta	verb	word	C2	to detain awaiting trial; to remand		3.11
+kidnappning	noun-en	word	C2	kidnapping		3.11
+rådjur	noun-ett	word	C2	roe deer, Capreolus capreolus		3.11
+specialisering	noun-en	word	C2	specialization		3.11
+uppfyllelse	noun-en	word	C2	fulfilment		3.11
+överfall	noun-ett	word	C2	attack, assault		3.11
+frimärke	noun-ett	word	C2	a postage stamp		3.1
+lakan	noun-ett	word	C2	a sheet		3.1
+gurka	noun-en	word	C2	cucumber		3.09
+kanna	noun-en	word	C2	a vessel with a handle and spout; a jug, a pot		3.09
+midja	noun-en	word	C2	waist		3.09
+omringa	verb	word	C2	to surround		3.09
+styrelseordförande	noun-en	word	C2	a chairman or chairwoman of the board		3.09
+ödelägga	verb	word	C2	to lay waste to, to devastate, to completely destroy		3.09
+handelsman	noun-en	word	C2	merchant		3.08
+linjär	adjective	word	C2	linear; concerning straight lines or courses		3.08
+slang	noun-en	word	C2	hose, tube, flexible pipe		3.08
+telekommunikation	noun-en	word	C2		none	3.08
+överhuvud	noun-ett	word	C2	head		3.08
+karakteristisk	adjective	word	C2	characteristic		3.07
+repetition	noun-en	word	C2	repetition; the act of repeating		3.07
+åklagarmyndighet	noun-en	word	C2		none	3.07
+årsdag	noun-en	word	C2	an anniversary		3.07
+underskrift	noun-en	word	C2	a signature		3.06
+förgrund	noun-en	word	C2	foreground		3.05
+grönska	noun-en	word	C2	the green, greenery		3.05
+kungörelse	noun-en	word	C2	proclamation, decree, edict		3.05
+besvära	verb	word	C2	to bother, to trouble, to inconvenience		3.04
+gunga	verb	word	C2	a swing	pos	3.04
+inspektör	noun-en	word	C2	an inspector, an officer		3.04
+legitimation	noun-en	word	C2	an ID		3.04
+patriotisk	adjective	word	C2	patriotic		3.04
+reflex	noun-en	word	C2	a reflex, a reaction		3.04
+stum	adjective	word	C2	mute		3.04
+uppdra	verb	word	C2	to command		3.04
+aptit	noun-en	word	C2	appetite; hunger		3.03
+artig	adjective	word	C2	polite		3.03
+beskyddare	noun-en	word	C2	a protector		3.03
+samstämmighet	noun-en	word	C2	unanimity, consensus, agreement		3.03
+segment	noun-ett	word	C2		none	3.03
+stege	noun-en	word	C2	a ladder		3.03
+uppehälle	noun-ett	word	C2	subsistence, livelihood		3.03
+rea	noun-en	word	C2	a sale; short for realisation		3.02
+besätta	verb	word	C2	to occupy		3.01
+dispyt	noun-en	word	C2	a dispute		3.01
+oliv	noun-en	word	C2	olive; a fruit from the tree Olea europaea		3.01
+syra	noun-en	word	C2	acid		3.01
+vattna	verb	word	C2	to water		3.01
+kräfta	noun-en	word	C2	crayfish		3
+läcker	adjective	word	C2	delicious, scrumptious, delectable		3
+vaktmästare	noun-en	word	C2	A janitor, a caretaker: a broad occupation whose specifics vary by setting, but mainly responsible for maintaining a…	long	3
+bi	noun-ett	word	C2	bee		2.99
+byggnation	noun-en	word	C2	construction, building		2.99
+dårskap	noun-en	word	C2	foolishness		2.99
+förlåt	interj	word	C2	I'm sorry		2.99
+räka	noun-en	word	C2	a shrimp, a prawn		2.99
+terminal	noun-en	word	C2		none	2.98
+vakuum	noun-ett	word	C2	vacuum; a region of space that contains no matter		2.98
+fusion	noun-en	word	C2	nuclear fusion		2.97
+offert	noun-en	word	C2	an offer, a bid		2.97
+utskrift	noun-en	word	C2	printing, a print job		2.97
+botemedel	noun-ett	word	C2	remedy, cure		2.96
+klumpig	adjective	word	C2	clumsy		2.96
+majestät	noun-ett	word	C2	majesty		2.96
+säregen	adjective	word	C2	idiosyncratic, peculiar, singular		2.96
+taxa	noun-en	word	C2		none	2.96
+tillflykt	noun-en	word	C2	a refuge		2.96
+välvillig	adjective	word	C2	benevolent		2.96
+vävnad	noun-en	word	C2	a tissue		2.96
+immunitet	noun-en	word	C2	immunity		2.95
+nunna	noun-en	word	C2	nun		2.95
+ombildning	noun-en	word	C2	reorganizing, restructuring		2.95
+omstridd	adjective	word	C2	on which there is much disagreement; disputed, controversial		2.95
+periferi	noun-en	word	C2	a periphery		2.95
+löjtnant	noun-en	word	C2	lieutenant, a low-ranking military officer		2.94
+återlämna	verb	word	C2	to hand back, to return		2.94
+fridfull	adjective	word	C2	peaceful, calm		2.93
+höghus	noun-ett	word	C2	high-rise, tower block, tall building		2.93
+innevånare	noun-en	word	C2	synonym of invånare		2.93
+sjösätta	verb	word	C2	to launch		2.93
+stav	noun-en	word	C2	a staff, a rod		2.93
+trauma	noun-ett	word	C2	a psychological trauma		2.93
+komplicera	verb	word	C2	to complicate		2.92
+oväder	noun-ett	word	C2	bad weather, usually with heavy precipitation and strong winds; a storm; bad weather	long	2.92
+spion	noun-en	word	C2	a spy		2.92
+substantiv	noun-ett	word	C2	noun		2.92
+undersida	noun-en	word	C2	underside		2.92
+kam	noun-en	word	C2	a comb for grooming hair		2.91
+manuell	adjective	word	C2	manual, by hand		2.91
+mittfält	noun-ett	word	C2	midfield		2.91
+pizzeria	noun-en	word	C2	a pizzeria		2.91
+putsa	verb	word	C2	to polish, to shine		2.91
+handtag	noun-ett	word	C2	a handle		2.9
+komplimang	noun-en	word	C2	a compliment		2.9
+sittplats	noun-en	word	C2	seat		2.9
+uthyrning	noun-en	word	C2	letting, leasing, hiring out		2.9
+bemästra	verb	word	C2	to master		2.89
+berättiga	verb	word	C2	to give the right, to entitle		2.89
+obekant	adjective	word	C2	unfamiliar, unknown		2.89
+stapla	verb	word	C2	to stack		2.89
+stereotyp	adjective	word	C2	stereotypic, stereotypical, banal, conventional		2.89
+tusental	noun-ett	word	C2	around one thousand		2.89
+vitlök	noun-en	word	C2	garlic, Allium sativum		2.88
+alkoholism	noun-en	word	C2	alcoholism		2.87
+beröring	noun-en	word	C2	touch		2.87
+bete	noun-ett	word	C2	bait		2.87
+flerårig	adjective	word	C2		none	2.87
+förråda	verb	word	C2	to betray		2.87
+försändelse	noun-en	word	C2	shipment		2.87
+resväska	noun-en	word	C2	a suitcase, a travel bag		2.87
+flyktig	adjective	word	C2	volatile		2.86
+kirurg	noun-en	word	C2	a surgeon		2.86
+otvivelaktigt	adverb	word	C2	undoubtedly		2.86
+saft	noun-en	word	C2	juice		2.86
+varaktighet	noun-en	word	C2	durability, durableness		2.86
+lekplats	noun-en	word	C2	a playground		2.85
+tillförlitlighet	noun-en	word	C2	reliability, dependability		2.85
+adjö	interj	word	C2	goodbye		2.84
+käpp	noun-en	word	C2	stick; cane		2.84
+lossa	verb	word	C2	to loosen		2.84
+summering	noun-en	word	C2	summation		2.84
+exekutiv	adjective	word	C2		none	2.83
+kandidatur	noun-en	word	C2		none	2.83
+tum	noun-en	word	C2	inch		2.83
+återkoppling	noun-en	word	C2	feedback		2.83
+dofta	verb	word	C2	to smell		2.82
+encyklopedi	noun-en	word	C2	an encyclopedia		2.82
+förrädare	noun-en	word	C2	a traitor		2.82
+kvist	noun-en	word	C2	a twig		2.82
+madrass	noun-en	word	C2	a mattress		2.82
+tvål	noun-en	word	C2	soap		2.82
+tvättmaskin	noun-en	word	C2	a washing machine		2.82
+alstra	verb	word	C2	generate, produce	pos	2.81
+beslutsam	adjective	word	C2	decisive, resolute		2.81
+heder	noun-en	word	C2	honour, dignity; what makes a person praiseworthy		2.81
+knop	noun-en	word	C2	a knot		2.81
+kontur	noun-en	word	C2	a contour, an outline of an object.		2.81
+maträtt	noun-en	word	C2	a dish		2.81
+njure	noun-en	word	C2	kidney		2.81
+värka	verb	word	C2	to ache; to be the source of a continued dull pain		2.81
+droppe	noun-en	word	C2	drop		2.8
+gnista	noun-en	word	C2	spark; a small glowing particle		2.8
+inställa	verb	word	C2	to cancel something which has been planned		2.8
+programmera	verb	word	C2	to program		2.8
+resebyrå	noun-en	word	C2	a travel agency; a company that arranges personal travel and accommodation for travellers.	long	2.8
+envishet	noun-en	word	C2	stubbornness, persistence, obstinacy		2.79
+stilig	adjective	word	C2	handsome, elegant, stylish		2.79
+vänskaplig	adjective	word	C2	friendly, amicable		2.79
+besiktning	noun-en	word	C2	an inspection		2.78
+delgivning	noun-en	word	C2	notification		2.78
+gjuta	verb	word	C2	to cast		2.78
+kristall	noun-en	word	C2	crystal		2.78
+passionerad	adjective	word	C2	passionate		2.78
+smörja	verb	word	C2	crap, bullshit; something of very low quality or truthfulness	pos	2.78
+yr	adjective	word	C2	dizzy		2.78
+ådra	verb	word	C2	vein, blood vessel	pos	2.78
+åkomma	noun-en	word	C2	a condition, an affliction		2.78
+konsultera	verb	word	C2	to consult		2.77
+stång	noun-en	word	C2	a pole, a rod, a bar		2.77
+återuppliva	verb	word	C2	to resuscitate		2.77
+frost	noun-en	word	C2	frost		2.76
+lykta	noun-en	word	C2	a lantern		2.76
+växtlighet	noun-en	word	C2	vegetation		2.76
+akustisk	adjective	word	C2	acoustic		2.75
+antydning	noun-en	word	C2		none	2.75
+citron	noun-en	word	C2	lemon		2.75
+förfalskning	noun-en	word	C2	forgery		2.75
+häl	noun-en	word	C2	heel		2.75
+hängivenhet	noun-en	word	C2	devotion		2.75
+orätt	noun-en	word	C2	an injustice		2.75
+syntes	noun-en	word	C2	synthesis		2.75
+tass	noun-en	word	C2	a paw		2.75
+tillbakadragande	noun-ett	word	C2		none	2.75
+trasa	noun-en	word	C2	a cloth, a rag		2.75
+ungdomlig	adjective	word	C2	youthful		2.75
+orgel	noun-en	word	C2	an organ		2.74
+geometri	noun-en	word	C2	geometry; the branch of mathematics dealing with spatial relationships		2.73
+omfång	noun-ett	word	C2	extent, register, reach, size, width		2.73
+oviss	adjective	word	C2	uncertain		2.73
+uteslutning	noun-en	word	C2	exclusion		2.73
+utsända	verb	word	C2	to transmit, to emit		2.73
+förstora	verb	word	C2	to enlarge; to magnify		2.72
+paraply	noun-ett	word	C2	an umbrella		2.72
+pensionering	noun-en	word	C2	the act of retiring; retirement		2.72
+plakat	noun-ett	word	C2	a placard		2.72
+veranda	noun-en	word	C2	a porch, a veranda		2.72
+kosttillskott	noun-ett	word	C2		none	2.71
+krock	noun-en	word	C2	a collision, a crash		2.71
+munter	adjective	word	C2	cheerful, merry, happy		2.71
+shorts	noun-en	word	C2	shorts		2.71
+skyltfönster	noun-ett	word	C2	a shop window		2.71
+vandrarhem	noun-ett	word	C2	a hostel		2.71
+kvadrat	noun-en	word	C2	a square		2.7
+raseri	noun-ett	word	C2	rage, fury		2.7
+tangent	noun-en	word	C2	a key		2.7
+bondgård	noun-en	word	C2	a farm		2.69
+brådska	noun-en	word	C2	a hurry		2.69
+interiör	noun-en	word	C2	interior		2.69
+svartsjuka	noun-en	word	C2	jealousness, jealousy		2.69
+älskarinna	noun-en	word	C2	a mistress		2.69
+adjektiv	noun-ett	word	C2	adjective		2.68
+berömmelse	noun-en	word	C2	fame		2.68
+bortskämd	adjective	word	C2	spoiled		2.68
+bundsförvant	noun-en	word	C2	ally		2.68
+byggare	noun-en	word	C2	a builder, normally in the sense of a contractor		2.68
+bål	noun-ett	word	C2	pyre, bonfire		2.68
+horisontell	adjective	word	C2	horizontal		2.68
+imitera	verb	word	C2	to imitate		2.68
+obildad	adjective	word	C2	uneducated		2.68
+optisk	adjective	word	C2	optic		2.68
+temperament	noun-ett	word	C2		none	2.68
+uppställning	noun-en	word	C2	a scheme, a list, a chart, an organization		2.68
+utantill	adverb	word	C2	by heart, by rote		2.68
+överträda	verb	word	C2	to transgress, to violate, to overstep		2.68
+bedragare	noun-en	word	C2	fraudster		2.67
+tonfall	noun-ett	word	C2	tone of voice		2.67
+fotografisk	adjective	word	C2	photographic, having to do with photographs or photography		2.66
+skissera	verb	word	C2	sketch, outline, draft	pos	2.66
+kollision	noun-en	word	C2	a collision		2.65
+magnetisk	adjective	word	C2	magnetic		2.64
+prestigefylld	adjective	word	C2	prestigious		2.64
+sparsam	adjective	word	C2	frugal, thrifty		2.64
+kran	noun-en	word	C2	a crane		2.63
+småstad	noun-en	word	C2	small town		2.63
+vingård	noun-en	word	C2	a vineyard		2.63
+försona	verb	word	C2	to reconcile, to redeem		2.62
+treårig	adjective	word	C2	three-year-old		2.62
+utlämna	verb	word	C2	hand out, give out, deliver, hand over	pos	2.62
+linne	noun-ett	word	C2	linen		2.61
+nybyggare	noun-en	word	C2	a settler, usually a homesteader		2.61
+slank	adjective	word	C2	slender, svelte		2.61
+triangel	noun-en	word	C2	a triangle		2.61
+utsliten	adjective	word	C2	decrepit, worn out		2.61
+annullera	verb	word	C2	to cancel, to revoke		2.6
+brandkår	noun-en	word	C2	fire brigade, fire department		2.6
+hare	noun-en	word	C2	hare		2.6
+jämförande	adjective	word	C2	to compare; to assess similarities and differences between	via-form	2.6
+ministerium	noun-ett	word	C2	a ministry		2.6
+pinne	noun-en	word	C2	a stick		2.6
+astma	noun-en	word	C2	The chronic respiratory disease asthma		2.59
+förvirra	verb	word	C2	to confuse		2.59
+inflammation	noun-en	word	C2	inflammation		2.59
+larma	verb	word	C2	To alarm, to alert, give a danger signal		2.59
+mätta	verb	word	C2	to make full, to satiate, to saturate		2.59
+vikarie	noun-en	word	C2	temp, alternate, substitute		2.59
+plåster	noun-ett	word	C2	a band-aid		2.58
+rotation	noun-en	word	C2	act of turning a physical object or a coordinate system around a center or an axis	long	2.58
+skolgård	noun-en	word	C2	a schoolyard		2.58
+åtkomst	noun-en	word	C2	access		2.58
+övernatta	verb	word	C2	to overnight, to stay overnight		2.58
+egenhet	noun-en	word	C2	ownness		2.57
+kommando	noun-ett	word	C2	a command, an order		2.57
+oordning	noun-en	word	C2	disorder, disarray		2.57
+revidering	noun-en	word	C2	revision		2.57
+ålderdom	noun-en	word	C2	old age		2.57
+keramik	noun	word	C2	ceramic		2.56
+mustasch	noun-en	word	C2	moustache		2.56
+utmattning	noun-en	word	C2	fatigue, exhaustion		2.56
+avfärd	noun-en	word	C2	departure		2.55
+baron	noun-en	word	C2	a baron, a ruler of a barony		2.55
+boss	noun-en	word	C2	boss, supervisor; someone who oversees work		2.55
+hink	noun-en	word	C2	bucket		2.55
+läder	noun-ett	word	C2	leather		2.55
+matematiker	noun-en	word	C2	mathematician		2.55
+passning	noun-en	word	C2	supervision, care		2.55
+rengöring	noun-en	word	C2	cleaning		2.55
+tillsättning	noun-en	word	C2	an appointment		2.55
+dekoration	noun-en	word	C2	a decoration		2.54
+gås	noun-en	word	C2	a goose		2.54
+hemort	noun-en	word	C2	place of residence		2.54
+instruera	verb	word	C2	to instruct, to teach		2.54
+månatlig	adjective	word	C2	monthly		2.54
+patriotism	noun-en	word	C2	patriotism		2.54
+rengöra	verb	word	C2	to clean		2.54
+tillmötesgå	verb	word	C2	to accommodate		2.54
+avla	verb	word	C2	to breed		2.53
+brigad	noun-en	word	C2	a brigade		2.53
+programmering	noun-en	word	C2	programming		2.53
+vicepresident	noun-en	word	C2	vice president		2.53
+allsidig	adjective	word	C2		none	2.52
+komfort	noun	word	C2	comfort		2.52
+listig	adjective	word	C2	cunning, sly		2.52
+simulering	noun-en	word	C2	a simulation		2.52
+återbetala	verb	word	C2	to reimburse, to repay, to refund		2.52
+bassäng	noun-en	word	C2	swimming pool; pool		2.51
+närbelägen	adjective	word	C2	adjacent, located nearby		2.51
+pensel	noun-en	word	C2	a brush		2.51
+sned	adjective	word	C2	at an angle, oblique, askew, crooked		2.51
+arbetsrum	noun-ett	word	C2	a workroom		2.5
+implementering	noun-en	word	C2		none	2.5
+luftfart	noun-en	word	C2	aviation		2.5
+patrull	noun-en	word	C2	a patrol		2.5
+hydda	noun-en	word	C2	a hut, a cabin		2.49
+oerfaren	adjective	word	C2	inexperienced		2.49
+bokstavlig	adjective	word	C2	literal, true, veritable		2.47
+elektromagnetisk	adjective	word	C2	electromagnetic		2.47
+rymlig	adjective	word	C2	spacious, roomy		2.47
+ansiktsuttryck	noun-ett	word	C2	expression		2.46
+fiber	noun-en	word	C2	fibre, fiber		2.46
+frigivning	noun-en	word	C2	release		2.46
+pristagare	noun-en	word	C2	a laureate, a winner or recipient of a prize or award		2.46
+självsäker	adjective	word	C2	confident, self-confident		2.46
+världsåskådning	noun-en	word	C2	worldview, weltanschauung		2.46
+dricks	noun-en	word	C2	tip; A small amount of money left for a bartender, waiter, taxi driver or other servant as a token of appreciation	long	2.45
+tam	adjective	word	C2	tame		2.45
+oreda	noun-en	word	C2	mess, disorder		2.44
+förnekande	noun-ett	word	C2	to deny	via-form,pos	2.43
+algoritm	noun-en	word	C2	algorithm		2.42
+avsiktlig	adjective	word	C2	intentional		2.42
+biolog	noun-en	word	C2	a biologist		2.42
+tall	noun-en	word	C2	pine, Scots pine tree, Pinus sylvestris		2.42
+tarm	noun-en	word	C2	an intestine, gut, bowels		2.42
+adlig	adjective	word	C2	Belonging to the nobility.		2.41
+campus	noun-ett	word	C2		none	2.41
+spegelbild	noun-en	word	C2	mirror image		2.41
+beväpna	verb	word	C2	to arm		2.4
+brännvin	noun-ett	word	C2	any of a group of clear, strong liquors, including aquavit and vodka but also various unflavored beverages	long	2.4
+kompatibel	adjective	word	C2	compatible		2.4
+tolfte	numeral	word	C2	twelfth		2.4
+tvåhundra	numeral	word	C2	two hundred		2.4
+ängslig	adjective	word	C2	anxious, worried		2.4
+biff	noun-en	word	C2	a steak, a beefsteak		2.39
+glänsa	verb	word	C2	to shine		2.39
+ratificering	noun-en	word	C2	ratification		2.39
+skådespelerska	noun-en	word	C2	an actor	via-form	2.39
+slavisk	adjective	word	C2	Slavic		2.39
+ömhet	noun-en	word	C2	tenderness, soreness		2.39
+föräldralös	adjective	word	C2	orphan		2.38
+juice	noun-en	word	C2	juice		2.38
+tumör	noun-en	word	C2	a tumor		2.38
+vidareutveckling	noun-en	word	C2	develop further	via-form	2.38
+deponera	verb	word	C2	deposit	pos	2.37
+kirurgi	noun	word	C2	surgery		2.37
+närmande	noun-ett	word	C2	advance		2.37
+rondell	noun-en	word	C2	the central island of a traffic circle		2.37
+sensationell	adjective	word	C2		none	2.37
+stabilisering	noun-en	word	C2	stabilization		2.37
+arkitektonisk	adjective	word	C2	architectural, architectonic		2.36
+förbluffande	adverb	word	C2	baffling, astonishing		2.36
+klunga	noun-en	word	C2	huddle, scrum, bunch		2.36
+medfölja	verb	word	C2		none	2.36
+processor	noun-en	word	C2		none	2.36
+tabu	adjective	word	C2	taboo		2.36
+törst	noun-en	word	C2	thirst		2.36
+vulgär	adjective	word	C2	vulgar		2.36
+minnesmärke	noun-ett	word	C2	a monument		2.35
+provision	noun-en	word	C2		none	2.35
+blödning	noun-en	word	C2	hemorrhage, flow or loss of blood from a damaged blood vessel.		2.34
+defekt	noun-en	word	C2	defective		2.34
+disposition	noun-en	word	C2	disposal		2.34
+koordinera	verb	word	C2	to coordinate		2.34
+staket	noun-ett	word	C2	a fence, a railing		2.34
+bal	noun-en	word	C2	bale, bundle		2.33
+hytt	noun-en	word	C2	a small compartment for people		2.33
+kastrull	noun-en	word	C2	a saucepan, a pot, a pan		2.33
+sked	noun-en	word	C2	a spoon		2.33
+startpunkt	noun-en	word	C2	starting point		2.33
+sandstrand	noun-en	word	C2	a sandy beach, a sandbeach		2.32
+tålmodigt	adverb	word	C2	patient	via-form	2.32
+arrestering	noun-en	word	C2	arrest		2.31
+kryssning	noun-en	word	C2	a cruise		2.31
+area	noun-en	word	C2	area; a measure of squared distance		2.3
+förbipasserande	adjective	word	C2	passing by, passing		2.3
+gräla	verb	word	C2	to argue, row, quarrel		2.3
+förlikning	noun-en	word	C2	conciliation, mediation		2.29
+hjort	noun-en	word	C2	a deer, ruminant mammal of the family Cervidae		2.29
+ljuda	verb	word	C2	to sound, to resound		2.29
+samexistens	noun-en	word	C2	coexistence		2.29
+terapeutisk	adjective	word	C2	therapeutic		2.29
+trendig	adjective	word	C2	trendy		2.29
+återhållsamhet	noun-en	word	C2	temperance, abstemiousness, frugality, continence, moderation		2.29
+debitera	verb	word	C2	to charge		2.28
+dundra	verb	word	C2	to make a deep, muffled booming and/or crackling sound; to thunder, to boom		2.28
+kräm	noun-en	word	C2	cream, crème		2.28
+aktualitet	noun-en	word	C2	topicality		2.27
+korrespondent	noun-en	word	C2	a correspondent, a letter-writer, someone who corresponds		2.27
+behållare	noun-en	word	C2	a container		2.26
+gruvarbetare	noun-en	word	C2	a miner		2.26
+kontinental	adjective	word	C2		none	2.26
+väster	noun	word	C2	west; one of the four major compass points		2.26
+åtstramning	noun-en	word	C2	austerity		2.26
+ankare	noun-ett	word	C2	an anchor		2.25
+häpnad	noun-en	word	C2	a feeling of great surprise; astonishment, amazement, consternation		2.25
+mynning	noun-en	word	C2	an opening		2.25
+omtänksam	adjective	word	C2	considerate, sweet		2.25
+omåttlig	adjective	word	C2	immoderate, excessive		2.25
+rekonstruera	verb	word	C2	to reconstruct		2.25
+senator	noun-en	word	C2	senator		2.25
+åker	noun-en	word	C2	field; a wide, open space that is used to grow crops		2.25
+maximum	noun-ett	word	C2		none	2.24
+karaktärsdrag	noun-ett	word	C2	a character trait		2.23
+perfektion	noun-en	word	C2	perfection		2.23
+timmer	noun-ett	word	C2	timber, log to be used in construction		2.23
+urin	noun-en	word	C2	urine		2.23
+arkivera	verb	word	C2	to archive		2.22
+oavbruten	adjective	word	C2	uninterrupted		2.22
+kolonn	noun-en	word	C2	column; vertical pillar		2.21
+appell	noun-en	word	C2	appeal, entreaty		2.2
+propp	noun-en	word	C2	a plug for stopping a hole		2.2
+strejka	verb	word	C2	to go or be on strike, to strike		2.2
+automat	noun-en	word	C2	automaton		2.19
+högljudd	adjective	word	C2	loud, noisy		2.19
+skaldjur	noun-ett	word	C2	shellfish		2.19
+stinka	verb	word	C2	to stink, to reek		2.19
+studium	noun-ett	word	C2	study		2.19
+tillfreds	adjective	word	C2	content, satisfied		2.19
+världsomfattande	adjective	word	C2	worldwide		2.19
+aktning	noun-en	word	C2	respect		2.18
+befruktning	noun-en	word	C2	fertilisation / fertilization		2.18
+boplats	noun-en	word	C2		none	2.18
+glänsande	adjective	word	C2	to shine	via-form	2.18
+organisatör	noun-en	word	C2	organizer		2.18
+pussel	noun-ett	word	C2	jigsaw puzzle		2.18
+vederbörlig	adjective	word	C2	due; appropriate		2.18
+vitamin	noun-en/-ett	word	C2	vitamin		2.18
+dråp	noun-ett	word	C2	manslaughter		2.17
+frikänna	verb	word	C2	acquit	pos	2.17
+jubileum	noun-ett	word	C2	an anniversary		2.17
+formation	noun-en	word	C2	formation		2.16
+ridå	noun-en	word	C2	a curtain		2.16
+rådfråga	verb	word	C2	to ask for advice; to consult		2.16
+svälla	verb	word	C2	to swell		2.16
+avföring	noun-en	word	C2	feces, stool, fecal matter		2.15
+modifikation	noun-en	word	C2	a modification		2.14
+ordförråd	noun-ett	word	C2	vocabulary		2.14
+tjocklek	noun-en	word	C2	thickness		2.14
+injektion	noun-en	word	C2	injection		2.13
+lantlig	adjective	word	C2	rural		2.13
+metropol	noun-en	word	C2		none	2.13
+veckotidning	noun-en	word	C2	a weekly newspaper, a magazine, a journal		2.12
+arvode	noun-ett	word	C2	fee, emolument		2.11
+matvara	noun-en	word	C2	an item of food, a foodstuff		2.11
+orkester	noun-en	word	C2	orchestra		2.11
+periodisk	adjective	word	C2	periodic		2.11
+regemente	noun-ett	word	C2	regiment		2.11
+sammanträffande	noun-ett	word	C2	coincidence		2.11
+skruv	noun-en	word	C2	a screw		2.11
+solsken	noun-ett	word	C2	sunshine		2.11
+utstrålning	noun-en	word	C2	radiance, charisma		2.11
+valla	verb	word	C2	ski wax	pos	2.11
+favör	noun-en	word	C2	favor, privilege		2.1
+kommunikativ	adjective	word	C2		none	2.1
+trappsteg	noun-ett	word	C2	a step, a stair		2.1
+anskaffa	verb	word	C2	acquire	pos	2.09
+paj	noun-en	word	C2	pie; a type of pastry		2.09
+kassett	noun-en	word	C2	a cassette, a cartridge		2.08
+mörkhyad	adjective	word	C2	dark-skinned, black		2.08
+räddare	noun-en	word	C2	savior, rescuer, saver		2.08
+tristess	noun-en	word	C2	boredom		2.08
+accent	noun-en	word	C2	an accent, an emphasis, a stress		2.07
+almanacka	noun-en	word	C2	a calendar		2.07
+kvällsmat	noun-en	word	C2	supper, evening meal		2.07
+bestiga	verb	word	C2	to climb, to scale, to get to the top of		2.06
+knekt	noun-en	word	C2	a soldier		2.05
+styv	adjective	word	C2	stiff; unbending, which does not easily fold		2.05
+väv	noun-en	word	C2	A weave, a fabric.		2.05
+översvämma	verb	word	C2	to flood		2.05
+lund	noun-en	word	C2	Lund		2.04
+seglare	noun-en	word	C2	a sailor		2.04
+spöke	noun-ett	word	C2	a ghost		2.04
+tålmodig	adjective	word	C2	patient		2.04
+örn	noun-en	word	C2	eagle		2.04
+balk	noun-en	word	C2	a wooden or metal beam		2.03
+koja	noun-en	word	C2	a hut		2.03
+lockelse	noun-en	word	C2	appeal, allure		2.03
+lärd	adjective	word	C2	learned, scholarly, educated		2.03
+åldring	noun-en	word	C2	an elderly person		2.02
+bröstkorg	noun-en	word	C2	rib cage		2.01
+fullmåne	noun-en	word	C2	full moon		2.01
+nöt	noun-en	word	C2	nut, a hard-shelled seed		2
+odjur	noun-ett	word	C2	monster, beast		2
+spektakel	noun-ett	word	C2	a spectacle, a scene		2
+ven	noun-en	word	C2	a vein		2
+äventyrare	noun-en	word	C2	adventurer		2
+bildlig	adjective	word	C2	figurative, metaphorical		1.99
+hjord	noun-en	word	C2	herd; a number of beasts gathered		1.99
+rangordna	verb	word	C2	rank	pos	1.99
+smörgås	noun-en	word	C2	an sandwich		1.99
+vildsvin	noun-ett	word	C2	a wild boar		1.98
+bibliografi	noun-en	word	C2	a bibliography		1.97
+grädda	verb	word	C2	cream	pos	1.97
+ihärdig	adjective	word	C2	tenacious		1.97
+indignation	noun-en	word	C2		none	1.97
+paradoxal	adjective	word	C2	paradoxical		1.97
+soluppgång	noun-en	word	C2	a sunrise		1.97
+kontrovers	noun-en	word	C2	controversy		1.96
+multiplicera	verb	word	C2	to multiply		1.96
+oförrätt	noun-en	word	C2	injustice, wrongdoing, affront, violation		1.96
+revben	noun-ett	word	C2	a rib		1.96
+yoghurt	noun-en	word	C2	yogurt		1.96
+delikat	adjective	word	C2	delicious		1.95
+konsultation	noun-en	word	C2		none	1.95
+kvarn	noun-en	word	C2	mill; the grinding apparatus for substances such as grains, seeds, spices, coffee beans etc., or the building or…	long	1.95
+kväve	noun	word	C2	nitrogen		1.95
+facilitet	noun-en	word	C2	facility		1.94
+gummi	noun-ett	word	C2	rubber		1.94
+mittemot	prep	word	C2	opposite, facing		1.94
+oenig	adjective	word	C2	disagreeing, not in agreement		1.94
+oföränderlig	adjective	word	C2	never changing; immutable, unchanging, invariable		1.94
+restaurering	noun-en	word	C2	restoration		1.94
+snuskig	adjective	word	C2	offensively foul; gross		1.94
+tågstation	noun-en	word	C2	a train station		1.94
+herde	noun-en	word	C2	a herder, a shepherd		1.93
+kål	noun-en	word	C2	cabbage; edible plants of the species Brassica oleracea; more generally any plant in the genus Brassica	long	1.93
+tillförsel	noun-en	word	C2	supply, inflow		1.93
+avskrivning	noun-en	word	C2	a depreciation, a write-off		1.92
+bemanning	noun-en	word	C2	crew		1.92
+pytteliten	adjective	word	C2	tiny, very small		1.92
+cirkulation	noun-en	word	C2	circulation		1.91
+koda	verb	word	C2	to code		1.91
+kämpe	noun-en	word	C2	fighter		1.91
+termisk	adjective	word	C2		none	1.91
+ömtålig	adjective	word	C2	fragile		1.91
+bemanna	verb	word	C2	to man		1.9
+besatthet	noun-en	word	C2	obsession		1.9
+fjärrkontroll	noun-en	word	C2	a remote control, a remote		1.9
+juvel	noun-en	word	C2	a jewel, a gem		1.9
+måtta	noun-en	word	C2	restraint, moderation		1.9
+ponny	noun-en	word	C2	a pony		1.9
+ackumulera	verb	word	C2	to accumulate		1.89
+dekorera	verb	word	C2	to decorate		1.89
+gaffel	noun-en	word	C2	fork; a pronged tool		1.89
+getto	noun-ett	word	C2	ghetto		1.89
+pilgrim	noun-en	word	C2	a pilgrim		1.89
+skorsten	noun-en	word	C2	a chimney		1.89
+antenn	noun-en	word	C2	an antenna		1.88
+montering	noun-en	word	C2		none	1.88
+synbar	adjective	word	C2	apparent, obvious		1.88
+vrå	noun-en	word	C2	an corner of a room or other space		1.88
+assistera	verb	word	C2	to assist		1.87
+bataljon	noun-en	word	C2	a battalion		1.87
+intelligens	noun-en	word	C2	intelligence; capacity of mind or a form of life with such capabilities		1.87
+videokamera	noun-en	word	C2		none	1.87
+diplom	noun-ett	word	C2	diploma		1.86
+efterfölja	verb	word	C2	to follow		1.86
+exemplarisk	adjective	word	C2	exemplary		1.86
+konfiguration	noun-en	word	C2	configuration		1.86
+konsistens	noun-en	word	C2	consistency		1.86
+stelna	verb	word	C2	to solidify		1.86
+amortering	noun-en	word	C2	amortization		1.85
+avskrift	noun-en	word	C2	transcript, copy		1.85
+bläck	noun-ett	word	C2	ink; pigment or dye for writing, printing etc		1.85
+restaurera	verb	word	C2	to restore		1.85
+apelsin	noun-en	word	C2	orange		1.84
+cement	noun-en	word	C2	cement		1.84
+pulver	noun-ett	word	C2	powder; fine particles		1.84
+remsa	noun-en	word	C2	a strip, a tape		1.84
+trailer	noun-en	word	C2	a trailer		1.84
+ljum	adjective	word	C2	lukewarm, tepid		1.83
+pina	noun-en	word	C2	pain, torment		1.83
+sammanstötning	noun-en	word	C2	a collision		1.83
+skift	noun-ett	word	C2	a shift		1.83
+stormig	adjective	word	C2	stormy		1.83
+stöna	verb	word	C2	to moan; to groan		1.83
+elektron	noun-en	word	C2	electron		1.82
+oanvändbar	adjective	word	C2	unusable		1.82
+sömnig	adjective	word	C2	sleepy		1.82
+uppsyn	noun-en	word	C2	a look, a face, countenance, mien		1.82
+återse	verb	word	C2	to see again		1.82
+blixtsnabbt	adverb	word	C2	lightning fast	via-form	1.81
+brevväxling	noun-en	word	C2	correspondence		1.81
+emission	noun-en	word	C2		none	1.81
+omloppsbana	noun-en	word	C2	an orbit		1.81
+ventil	noun-en	word	C2	valve		1.81
+fresta	verb	word	C2	tempt	pos	1.8
+pekfinger	noun-ett	word	C2	index finger		1.8
+sigill	noun-ett	word	C2	a seal		1.8
+armbåge	noun-en	word	C2	elbow		1.79
+ljusblå	adjective	word	C2	light blue, sky blue		1.79
+skaft	noun-ett	word	C2	a handle, a grip, a shaft		1.79
+paviljong	noun-en	word	C2	a pavilion		1.78
+segerrik	adjective	word	C2	victorious		1.77
+skenbar	adjective	word	C2	illusory, apparent, ostensible		1.77
+svartsjuk	adjective	word	C2	jealous		1.77
+kemist	noun-en	word	C2	chemist; person specializing in the science of chemistry		1.76
+mångfaldig	adjective	word	C2	manifold, numerous		1.76
+omlopp	noun-ett	word	C2	orbit, circulation		1.76
+cykelväg	noun-en	word	C2	a bicycle path		1.75
+donator	noun-en	word	C2	a donor		1.75
+dykning	noun-en	word	C2	diving		1.75
+förverkligande	noun-ett	word	C2	to realize	via-form,pos	1.75
+nyck	noun-en	word	C2	fancy, whim		1.75
+orörlig	adjective	word	C2	motionless, immobile		1.75
+tagning	noun-en	word	C2	take		1.75
+gränsområde	noun-ett	word	C2	border area		1.74
+pittoresk	adjective	word	C2	picturesque, idyllic, especially of something rustic or quaint		1.74
+yla	verb	word	C2	to howl		1.74
+disciplinär	adjective	word	C2	disciplinary		1.73
+pånyttfödelse	noun-en	word	C2	rebirth, regeneration, new birth		1.73
+relik	noun-en	word	C2		none	1.73
+arbetslag	noun-ett	word	C2	a team, a gang		1.72
+berättigande	noun-ett	word	C2	justification		1.72
+föresats	noun-en	word	C2	commitment, determination, intention, resolve		1.72
+inbetalning	noun-en	word	C2	cash receipt, deposit, payment		1.72
+lim	noun-ett	word	C2	glue		1.72
+ströva	verb	word	C2	to wander, to roam, to stroll		1.72
+substitut	noun-ett	word	C2		none	1.72
+tjugonde	numeral	word	C2	twentieth		1.72
+animation	noun-en	word	C2	animation		1.71
+läglig	adjective	word	C2	timely, well-timed, fitting, suitable; happening at the right time or occasion		1.71
+nyttighet	noun-en	word	C2	usefulness		1.71
+simhall	noun-en	word	C2	swimming pool		1.71
+väte	noun-ett	word	C2	hydrogen		1.71
+uppskov	noun-ett	word	C2	permissible delay, postponement		1.7
+belägenhet	noun-en	word	C2	position, location		1.69
+sammandrag	noun-ett	word	C2	summary, synopsis		1.69
+bensinstation	noun-en	word	C2	a gas station		1.68
+förmyndare	noun-en	word	C2	a guardian		1.68
+gymnastik	noun-en	word	C2	gymnastics		1.68
+kommissarie	noun-en	word	C2	a superintendent		1.68
+mineral	noun-ett	word	C2	mineral		1.68
+omnämnande	noun-ett	word	C2	a mention, a reference		1.68
+vokal	noun-en	word	C2	vocal, using the voice		1.68
+alarm	noun-ett	word	C2	an alarm		1.67
+allé	noun-en	word	C2	a road with a line of trees on each side		1.67
+bergstopp	noun-en	word	C2		none	1.67
+navigation	noun-en	word	C2	navigation		1.67
+set	noun-ett	word	C2	a set		1.67
+tematisk	adjective	word	C2		none	1.67
+täthet	noun-en	word	C2	density		1.67
+återupptäcka	verb	word	C2	rediscover	pos	1.67
+postkontor	noun-ett	word	C2	a post office		1.66
+residens	noun-ett	word	C2	a residence		1.65
+teleskop	noun-ett	word	C2	a telescope		1.65
+ärm	noun-en	word	C2	sleeve; a part of a garment that covers all or part of an arm		1.65
+drickande	noun-ett	word	C2	to drink	via-form,pos	1.64
+tryckning	noun-en	word	C2	pressing		1.64
+charmerande	adjective	word	C2	charming		1.63
+kabinett	noun-ett	word	C2	a cabinet, a storage closet		1.63
+missfall	noun-ett	word	C2	miscarriage		1.63
+äktenskaplig	adjective	word	C2	marital, conjugal		1.63
+bagatell	noun-en	word	C2	something of very little importance or very easy to deal with; a trifle, a triviality, a trivial task	long	1.62
+bestämdhet	noun-en	word	C2	definiteness		1.62
+emigrant	noun-en	word	C2	an emigrant		1.62
+andedräkt	noun-en	word	C2	breath		1.61
+aveny	noun-en	word	C2	avenue		1.61
+bottenvåning	noun-en	word	C2	ground floor		1.61
+förtrolig	adjective	word	C2	marked by openness and trust, intimate		1.61
+avskedande	noun-ett	word	C2	to fire someone from an employment, dismiss without notice	via-form,pos	1.6
+femtonde	numeral	word	C2	fifteenth		1.6
+avbetalning	noun-en	word	C2	installment		1.59
+fotgängare	noun-en	word	C2	a pedestrian		1.59
+lärarinna	noun-en	word	C2	a female teacher		1.59
+terrass	noun-en	word	C2	a terrace		1.59
+monter	noun-en	word	C2	a display case		1.58
+sylt	noun-en	word	C2	jam		1.58
+kila	verb	word	C2	to leave, especially in a hurry		1.57
+tuggummi	noun-ett	word	C2	chewing gum		1.57
+agentur	noun-en	word	C2	agency		1.56
+bildskärm	noun-en	word	C2	monitor, device similar to a television set		1.56
+eliminering	noun-en	word	C2	elimination		1.56
+kalkylera	verb	word	C2	calculate	pos	1.56
+mellanliggande	adjective	word	C2	intermediary, in-between		1.56
+trosa	noun-en	word	C2	panties, underpants		1.56
+fysiologisk	adjective	word	C2	physiological		1.55
+såg	noun-en	word	C2	a saw		1.55
+uppfödning	noun-en	word	C2	breeding, rearing, farming		1.55
+betinga	verb	word	C2	to condition, to be conditioned		1.54
+farförälder	noun-en	word	C2	a paternal grandparent; either of the parents of one's father		1.54
+ficklampa	noun-en	word	C2	flashlight		1.54
+förorena	verb	word	C2	to pollute, to contaminate, to taint		1.54
+hårig	adjective	word	C2	hairy; having a lot of hair or fur		1.54
+marskalk	noun-en	word	C2	a marshal		1.54
+råolja	noun-en	word	C2	crude oil		1.54
+tvättmedel	noun-ett	word	C2	detergent, laundry detergent		1.54
+böjning	noun-en	word	C2	inflection		1.53
+mentor	noun-en	word	C2	A mentor		1.53
+narkoman	noun-en	word	C2	a drug addict		1.53
+upphetsning	noun-en	word	C2	arousal		1.53
+uppköp	noun-ett	word	C2	a purchase, a procurement		1.53
+differentiering	noun-en	word	C2	differentiation		1.52
+fyrverkeri	noun-ett	word	C2	fireworks		1.52
+infektera	verb	word	C2	to infect		1.52
+kollegium	noun-ett	word	C2	a meeting of colleagues; teaching staff or faculty at a school; doctors at a hospital	long	1.52
+spade	noun-en	word	C2	a shovel		1.52
+veck	noun-ett	word	C2	a more or less sharp fold; a fold, a crease, a pleat, etc.		1.52
+innesluta	verb	word	C2	to completely surround, to enclose, to contain		1.51
+klädesplagg	noun-ett	word	C2	a garment		1.51
+limma	verb	word	C2	to glue		1.51
+musiker	noun-en	word	C2	musician		1.51
+oväsen	noun-ett	word	C2	unpleasant and usually loud noise; din, racket		1.51
+smaklös	adjective	word	C2	tasteless		1.51
+stigning	noun-en	word	C2	ascent		1.51
+bravo	interj	word	C2	bravo		1.5
+hjärtlig	adjective	word	C2	cordial, hearty		1.5
+epos	noun-ett	word	C2	an epic, a narrative poem		1.49
+idrottsman	noun-en	word	C2	a sports practitioner; a sportsman, an athlete		1.49
+koncession	noun-en	word	C2	a concession		1.49
+ofördelaktig	adjective	word	C2	disadvantageous		1.49
+ädel	adjective	word	C2	noble; honourable		1.49
+fasta	noun-en	word	C2	a period of fasting, lent		1.48
+geting	noun-en	word	C2	wasp		1.48
+hedervärd	adjective	word	C2	honorable		1.48
+hjältinna	noun-en	word	C2	heroine, hero		1.48
+densitet	noun-en	word	C2		none	1.47
+eskortera	verb	word	C2	to escort		1.47
+frågeformulär	noun-ett	word	C2		none	1.47
+rankning	noun-en	word	C2	ranking		1.47
+servitör	noun-en	word	C2	a male waiter		1.47
+svägerska	noun-en	word	C2	a sister-in-law; a sister of someone's spouse		1.47
+förbrylla	verb	word	C2	to puzzle, to confuse		1.46
+skattemässig	adjective	word	C2	tax-related		1.46
+tillgivenhet	noun-en	word	C2	devotion; dedication		1.46
+avkomling	noun-en	word	C2	a descendant, an offspring		1.45
+designer	noun-en	word	C2	a designer		1.45
+diagnostisera	verb	word	C2	to diagnose		1.45
+rådman	noun-en	word	C2	a judge at a district court, a judge at a city court		1.45
+sammanfoga	verb	word	C2	to join, to merge		1.45
+ögonkast	noun-ett	word	C2	a glance		1.45
+adressera	verb	word	C2	address	pos	1.44
+bagare	noun-en	word	C2	a baker		1.44
+basilika	noun-en	word	C2	basil		1.44
+lem	noun-en	word	C2	a limb		1.44
+veckoslut	noun-ett	word	C2	a weekend		1.44
+centrera	verb	word	C2	to center; to put in the center		1.43
+fotfolk	noun-ett	word	C2	foot soldiers		1.43
+fästmö	noun-en	word	C2	a fiancée		1.43
+illvilja	noun-en	word	C2	wishing harm or desiring to do harm; malice, spite, ill will		1.43
+inskrivning	noun-en	word	C2	enlistment, enrollment, matriculation		1.43
+omkrets	noun-en	word	C2	circumference, girth		1.42
+självdeklaration	noun-en	word	C2		none	1.42
+trehundra	numeral	word	C2	three hundred		1.42
+logo	noun-en	word	C2	logo		1.41
+fyndighet	noun-en	word	C2	a deposit		1.4
+gästfrihet	noun-en	word	C2	hospitality, hospitableness		1.4
+konfirmation	noun-en	word	C2	a confirmation		1.4
+tillfredsställd	adjective	word	C2	content		1.4
+vindruva	noun-en	word	C2	a grape		1.4
+vårdare	noun-en	word	C2	a caregiver, a carer		1.4
+bakverk	noun-ett	word	C2	a pastry		1.39
+förestå	verb	word	C2	to manage, to lead, to be in charge		1.39
+gratulation	noun-en	word	C2	congratulation		1.39
+handflata	noun-en	word	C2	palm		1.39
+inbillning	noun-en	word	C2	imagination, delusion		1.39
+kapplöpning	noun-en	word	C2	a race		1.39
+logg	noun-en	word	C2		none	1.39
+opponent	noun-en	word	C2		none	1.39
+betydlig	adjective	word	C2	significant		1.38
+matris	noun-en	word	C2	matrix; rectangular arrangement of terms		1.38
+avdela	verb	word	C2		none	1.37
+huvudämne	noun-ett	word	C2	A major		1.37
+komplott	noun-en	word	C2	conspiracy		1.37
+returnera	verb	word	C2	to return		1.37
+stadfästa	verb	word	C2	to confirm, to ratify, to enshrine		1.37
+beslutsamt	adverb	word	C2	decisive, resolute	via-form	1.36
+kupong	noun-en	word	C2	a coupon or voucher		1.36
+massera	verb	word	C2	to massage		1.36
+oavgjord	adjective	word	C2	not concluded, not decided, not settled		1.36
+tändsticka	noun-en	word	C2	a match; device to make fire		1.36
+ädelsten	noun-en	word	C2	a gem		1.36
+kakao	noun	word	C2	cocoa, cacao		1.35
+akvarium	noun-ett	word	C2	aquarium		1.34
+smycke	noun-ett	word	C2	a piece of jewelry		1.34
+frist	noun-en	word	C2	a period within which something must be done, a deadline		1.33
+försvarsadvokat	noun-en	word	C2	defense attorney		1.33
+knytnäve	noun-en	word	C2	a fist		1.33
+optik	noun-en	word	C2	optics		1.33
+skolkamrat	noun-en	word	C2	schoolmate		1.33
+synfält	noun-ett	word	C2	field of vision		1.33
+underlydande	adjective	word	C2	Someone who obeys another; a subordinate.		1.33
+fyllning	noun-en	word	C2	filling, stuffing		1.32
+förvarna	verb	word	C2	forewarn	pos	1.32
+stearinljus	noun-ett	word	C2	a candle made from a mix of stearic acid and palmitic acid		1.32
+enhällig	adjective	word	C2	unanimous		1.31
+insjö	noun-en	word	C2	a lake		1.31
+ledsaga	verb	word	C2	to accompany and show the way; to guide		1.31
+moderskap	noun-ett	word	C2	motherhood, maternity		1.31
+undantagslöst	adverb	word	C2	exceptionless, without exception	via-form	1.31
+alldaglig	adjective	word	C2	everyday, quotidian		1.29
+avslappning	noun-en	word	C2	relaxation		1.29
+glans	noun-en	word	C2	shine, gloss, sheen		1.29
+konduktör	noun-en	word	C2	conductor		1.29
+lågstadium	noun-ett	word	C2	grades 1-3 of grundskolan		1.29
+sportig	adjective	word	C2	sporty		1.29
+utsändning	noun-en	word	C2		none	1.29
+villighet	noun-en	word	C2	willingness		1.29
+arvinge	noun-en	word	C2	heir, heiress, inheritor		1.28
+chockera	verb	word	C2	shock	pos	1.28
+eskort	noun-en	word	C2	an escort		1.28
+häfte	noun-ett	word	C2	Any papers that are stapled or bound together, a pamphlet, a booklet, a notebook.	long	1.28
+mejeri	noun-ett	word	C2	a dairy		1.28
+avdelningschef	noun-en	word	C2	a deputy director-general		1.27
+pilgrimsfärd	noun-en	word	C2	a pilgrimage		1.27
+rättfram	adjective	word	C2	forthright, frank, bluff		1.27
+slaktare	noun-en	word	C2	a butcher		1.27
+betecknande	adjective	word	C2	signifying, characteristic		1.26
+multimedia	noun	word	C2		none	1.26
+patologisk	adjective	word	C2		none	1.26
+frånskild	adjective	word	C2	divorced		1.25
+hök	noun-en	word	C2	a hawk		1.25
+kommendant	noun-en	word	C2	commanding officer		1.25
+krämpa	noun-en	word	C2	a minor ailment, a complaint		1.25
+långsamhet	noun-en	word	C2	slowness		1.25
+mätare	noun-en	word	C2	meter		1.25
+oljud	noun-ett	word	C2	noise; loud and unpleasant sound		1.25
+rugby	noun-en	word	C2	rugby		1.25
+slitage	noun-ett	word	C2	wear and tear		1.25
+snöre	noun-ett	word	C2	string, cord		1.25
+vidröra	verb	word	C2	touch	pos	1.25
+dån	noun-ett	word	C2	din, rumble, roar; a low, loud sound		1.24
+sanitär	adjective	word	C2	sanitary		1.24
+stekpanna	noun-en	word	C2	a frying pan, a skillet		1.24
+idol	noun-en	word	C2	someone greatly admired, or the person someone admires the most; an idol		1.23
+fatal	adjective	word	C2	fatal		1.22
+luftkonditionering	noun-en	word	C2	air conditioning		1.22
+svärson	noun-en	word	C2	a son-in-law; a husband of someone's child		1.22
+tejp	noun-en	word	C2	tape, sticky tape		1.22
+viskning	noun-en	word	C2	whisper		1.22
+arbetsam	adjective	word	C2	diligent, hardworking		1.21
+korporativ	adjective	word	C2		none	1.21
+långfristig	adjective	word	C2	long-term		1.21
+snarka	verb	word	C2	to snore; to make noises while asleep		1.21
+ärta	noun-en	word	C2	pea; edible seed		1.21
+fela	verb	word	C2	a fiddle, a violin	pos	1.2
+kassaskåp	noun-ett	word	C2	a safe		1.2
+maskulin	adjective	word	C2	masculine		1.2
+radie	noun-en	word	C2	radius		1.2
+utväxling	noun-en	word	C2	mutual exchange of goods or people		1.2
+växellåda	noun-en	word	C2	a gearbox, a transmission		1.2
+försyn	noun-en	word	C2	providence		1.19
+glidning	noun-en	word	C2	sliding		1.19
+planlägga	verb	word	C2	to lay out a plan		1.19
+feminin	adjective	word	C2	feminine		1.18
+kodifiera	verb	word	C2	codify	pos	1.18
+kompanjon	noun-en	word	C2	partner		1.18
+poem	noun-ett	word	C2	a poem		1.18
+stygg	adjective	word	C2	naughty, mean, bad		1.18
+anstöt	noun-en	word	C2	moral offense, outrage		1.17
+fadd	adjective	word	C2	tasteless, bland, insipid		1.16
+sittning	noun-en	word	C2		none	1.16
+besk	adjective	word	C2	bitter		1.15
+moster	noun-en	word	C2	maternal aunt		1.15
+rigorös	adjective	word	C2	rigorous		1.15
+gnida	verb	word	C2	to rub		1.14
+gnistra	verb	word	C2	to sparkle, to emit sparks		1.14
+ordningsföljd	noun-en	word	C2	a sequence, an ordering		1.14
+pyjamas	noun-en	word	C2	pajamas, pyjamas		1.14
+ärorik	adjective	word	C2	glorious		1.14
+bergig	adjective	word	C2	mountainous		1.13
+fuktighet	noun-en	word	C2	humidity		1.13
+inkassera	verb	word	C2	collect	pos	1.13
+laglighet	noun-en	word	C2	legality		1.13
+statist	noun-en	word	C2	supernumerary, walk-on, extra		1.13
+beväpning	noun-en	word	C2	arming		1.12
+gymnasist	noun-en	word	C2	A gymnasiast; student at a gymnasium		1.12
+kolossal	adjective	word	C2	colossal		1.12
+nobel	adjective	word	C2	noble		1.12
+stek	noun-en	word	C2	a steak, a roast, a joint		1.12
+uppkalla	verb	word	C2	name after	pos	1.12
+acceptans	noun-en	word	C2	acceptance, approval		1.11
+försegla	verb	word	C2	to seal		1.11
+grammatisk	adjective	word	C2		none	1.11
+kalcium	noun	word	C2	calcium		1.11
+konsortium	noun-ett	word	C2	a consortium		1.11
+strykning	noun-en	word	C2	a deletion, an omission, a cancellation		1.11
+tillfälligtvis	adverb	word	C2	by chance, accidentally		1.1
+hänförelse	noun-en	word	C2	rapture, exultation		1.09
+spårning	noun-en	word	C2	tracking, tracing		1.09
+systerson	noun-en	word	C2	sororal nephew		1.09
+idrottsplats	noun-en	word	C2	stadium		1.08
+ohyra	noun-en	word	C2	vermin		1.08
+opublicerad	adjective	word	C2		none	1.08
+arrest	noun-en	word	C2	a location with holding cells or the like for temporarily detaining people		1.07
+dill	noun-en	word	C2	dill		1.07
+elastisk	adjective	word	C2	elastic		1.07
+pose	noun-en	word	C2		none	1.06
+vax	noun-ett	word	C2	wax		1.06
+bullrig	adjective	word	C2	noisy		1.05
+spröd	adjective	word	C2	brittle		1.05
+tidsskrift	noun-en	word	C2	a periodical	via-form	1.05
+handfat	noun-ett	word	C2	a sink, a washbasin		1.04
+immun	adjective	word	C2	immune		1.04
+inlämna	verb	word	C2		none	1.04
+kork	noun-en	word	C2	cork		1.04
+projektering	noun-en	word	C2		none	1.03
+regelbundenhet	noun-en	word	C2	regularity		1.03
+antikvitet	noun-en	word	C2	an antique; something, in particular furniture, art or cars, which is old, out-of-fashion but possibly becoming…	long	1.02
+genomträngande	adjective	word	C2	penetrating, piercing		1.02
+karavan	noun-en	word	C2	a caravan		1.02
+kemikalie	noun-en	word	C2	chemical; any specific chemical element or compound		1.02
+krabba	noun-en	word	C2	a crab		1.02
+kultiverad	adjective	word	C2	cultivated		1.02
+membran	noun-ett	word	C2	a membrane		1.02
+rumslig	adjective	word	C2	spatial		1.02
+tråkighet	noun-en	word	C2	boringness		1.02
+namnteckning	noun-en	word	C2	a signature		1.01
+personell	adjective	word	C2		none	1.01
+ungkarl	noun-en	word	C2	a bachelor		1.01
+rättfärdigande	noun-ett	word	C2	to justify	via-form,pos	1
+sammankoppla	verb	word	C2	link, connect	via-form,pos	1
+aktivering	noun-en	word	C2	activation		0.99
+decimal	noun-en	word	C2	decimal		0.99
+mellantid	noun-en	word	C2	meantime, meanwhile, interim		0.99
+mosa	verb	word	C2	to turn into a mash or mush through pressure; to mash, to mush, to puree, to squash, etc.	long	0.99
+motorbåt	noun-en	word	C2	a motor boat		0.99
+reglemente	noun-ett	word	C2	regulation, statute		0.99
+olivträd	noun-ett	word	C2	an olive; a tree of the species Olea europaea		0.98
+anskaffning	noun-en	word	C2	acquisition		0.96
+gradera	verb	word	C2	to grade, to rank		0.96
+huva	noun-en	word	C2	a hood, a bonnet, a cap, a tea cosy, a cover		0.96
+lodrät	adjective	word	C2	vertical		0.96
+brodera	verb	word	C2	to embroider		0.95
+socka	noun-en	word	C2	a sock		0.95
+systerdotter	noun-en	word	C2	sororal niece		0.95
+huvudrollsinnehavare	noun-en	word	C2	a/the person playing the lead role; a lead actor, a leading man, a leading lady		0.94
+kraftlös	adjective	word	C2	lacking power; feeble, weak, powerless		0.94
+spann	noun-en	word	C2	a bucket, a pail		0.94
+turkos	noun-en	word	C2	turquoise		0.94
+förbittring	noun-en	word	C2	embitterment		0.93
+metallisk	adjective	word	C2	metallic		0.93
+repertoar	noun-en	word	C2	a repertoire		0.93
+avspänd	adjective	word	C2	relaxed, laid-back, not tense		0.92
+butiksägare	noun-en	word	C2	storeowner, shopowner		0.91
+kännare	noun-en	word	C2	expert, connoisseur		0.91
+samtalspartner	noun-en	word	C2		none	0.91
+överväldiga	verb	word	C2	to overwhelm, inundate		0.91
+diagnostisk	adjective	word	C2		none	0.9
+kontingent	noun-en	word	C2		none	0.9
+ställ	noun-ett	word	C2	a stand		0.9
+avtäcka	verb	word	C2	to unveil		0.89
+iakttagare	noun-en	word	C2	observer, beholder		0.89
+projektil	noun-en	word	C2	a projectile		0.89
+atmosfärisk	adjective	word	C2	atmospheric; related to the atmosphere		0.88
+borttagning	noun-en	word	C2	removal		0.88
+differentiera	verb	word	C2	to differentiate		0.88
+fysiker	noun-en	word	C2	physicist; person who studies or specializes in physics		0.88
+mygga	noun-en	word	C2	A mosquito.		0.88
+orange	noun-en	word	C2	orange		0.88
+silke	noun-ett	word	C2	silk		0.88
+borste	noun-en	word	C2	a brush		0.87
+nittonde	numeral	word	C2	nineteenth		0.87
+sparv	noun-en	word	C2	a sparrow; most commonly the house sparrow, but including various species of small birds in the families sparrows and…	long	0.87
+stränghet	noun-en	word	C2	severity, strictness, sternness		0.87
+i övermorgon	adverb	phrase	C2	in, or during, the day after tomorrow; overmorrow		0.86
+motsägande	adjective	word	C2	to contradict	via-form	0.86
+käring	noun-en	word	C2	old woman		0.85
+blus	noun-en	word	C2	a blouse		0.84
+kärnpunkt	noun-en	word	C2		none	0.84
+laser	noun-en	word	C2	a laser		0.84
+projektera	verb	word	C2	to project, to design as a project		0.84
+utstyrsel	noun-en	word	C2	outfit		0.84
+knippe	noun-ett	word	C2	bunch, bundle		0.83
+kvast	noun-en	word	C2	a broom		0.83
+plommon	noun-ett	word	C2	plum		0.83
+presidium	noun-ett	word	C2	presidium		0.83
+oxe	noun-en	word	C2	an ox		0.82
+snabbköp	noun-ett	word	C2	a grocery store, a supermarket		0.82
+ägarskap	noun-ett	word	C2	ownership		0.82
+tilltugg	noun-ett	word	C2	snack		0.81
+egenartad	adjective	word	C2	peculiar, distinct		0.8
+bulletin	noun-en	word	C2		none	0.79
+högerhand	noun-en	word	C2	a right hand		0.79
+squash	noun-en	word	C2	squash		0.79
+stadsbo	noun-en	word	C2	person who lives in a city, city dweller		0.79
+simmare	noun-en	word	C2	a swimmer, often when referring to professional swimmers		0.78
+inkvartering	noun-en	word	C2		none	0.77
+majs	noun-en	word	C2	corn, maize		0.77
+visare	noun-en	word	C2	hand of clock or gauge		0.77
+oupphörlig	adjective	word	C2	unceasing		0.76
+bönfalla	verb	word	C2	to beg, to implore, to beseech		0.75
+dosering	noun-en	word	C2	dosage		0.75
+kvarlåtenskap	noun-en	word	C2	belongings and possessions left by a deceased person; an estate, assets		0.75
+körsbär	noun-ett	word	C2	a cherry		0.75
+rakning	noun-en	word	C2	shaving		0.75
+studiekamrat	noun-en	word	C2		none	0.75
+tryne	noun-ett	word	C2	a snout		0.75
+ånger	noun-en	word	C2	remorse, regret		0.75
+integral	noun-en	word	C2	an integral		0.74
+klibba	verb	word	C2	to stick, to be sticky		0.74
+sparsamhet	noun-en	word	C2	frugality, thrift		0.74
+tunnland	noun-ett	word	C2	barrel of land		0.74
+formge	verb	word	C2	to design		0.73
+jetplan	noun-ett	word	C2	a jet plane		0.73
+moderlig	adjective	word	C2	motherly, maternal		0.73
+undervärdera	verb	word	C2	underestimate, underrate, undervalue	pos	0.73
+auktorisera	verb	word	C2		none	0.72
+korporation	noun-en	word	C2		none	0.72
+saliv	noun-en	word	C2	saliva		0.72
+strömbrytare	noun-en	word	C2	a switch		0.72
+kurera	verb	word	C2	to cure		0.71
+legering	noun-en	word	C2	alloy		0.71
+smaklig	adjective	word	C2	tasty, savory		0.71
+terroristisk	adjective	word	C2	terroristic		0.71
+avvara	verb	word	C2	to spare		0.7
+förhandsvisning	noun-en	word	C2	preview		0.7
+hemgift	noun-en	word	C2	a dowry		0.7
+marmelad	noun-en	word	C2	marmalade		0.7
+trafikpolis	noun-en	word	C2		none	0.7
+kittel	noun-en	word	C2	a cauldron, a kettle		0.69
+reseledare	noun-en	word	C2	a guide, a courier		0.69
+akustik	noun-en	word	C2	acoustics		0.68
+anträffa	verb	word	C2	to find, to encounter		0.68
+forcerad	adjective	word	C2	forced, cracked, decrypted		0.68
+rutnät	noun-ett	word	C2	grid		0.68
+tidsschema	noun-ett	word	C2	timetable, schedule		0.68
+årtusende	noun-ett	word	C2	a millennium, a period of one thousand years		0.68
+försakelse	noun-en	word	C2	sacrifice, forsaking, forgoing		0.67
+pluton	noun-en	word	C2	a platoon		0.67
+ägarinna	noun-en	word	C2	owneress		0.67
+överräcka	verb	word	C2	hand over	pos	0.67
+artikulera	verb	word	C2	to articulate		0.66
+jordgubbe	noun-en	word	C2	a strawberry, from Fragaria × ananassa		0.66
+sesam	noun-en	word	C2	sesame.		0.66
+aprikos	noun-en	word	C2	apricot		0.64
+krage	noun-en	word	C2	collar		0.64
+reklamera	verb	word	C2	to complain, to reclaim a purchase		0.64
+tekniker	noun-en	word	C2	a technician		0.64
+tempus	noun-ett	word	C2	tense; a grammatical category that provides information about at which point in time a mentioned event takes place.	long	0.64
+upplag	noun-ett	word	C2	a stock, a store		0.64
+avläsning	noun-en	word	C2	scan, detect, take a reading	via-form	0.63
+knall	noun-en	word	C2	a short, sharp bang, like a report		0.63
+molnig	adjective	word	C2	cloudy		0.63
+sårande	adjective	word	C2	to wound	via-form	0.63
+särprägel	noun-en	word	C2	distinctiveness		0.63
+yrkesman	noun-en	word	C2	professional		0.63
+återuppståndelse	noun-en	word	C2	resurrection		0.63
+manöver	noun-en	word	C2	A manoeuvre		0.62
+myr	noun-en	word	C2	a bog, a moor, a wetland		0.62
+överse	verb	word	C2	to overlook, to disregard, to ignore, to tolerate, to forgive		0.62
+atlet	noun-en	word	C2		none	0.61
+atletisk	adjective	word	C2	athletic		0.61
+debitering	noun-en	word	C2	charging		0.61
+huslig	adjective	word	C2		none	0.61
+millennium	noun-ett	word	C2	a millennium		0.61
+postlåda	noun-en	word	C2	a mailbox, a letterbox		0.61
+skolflicka	noun-en	word	C2	schoolgirl		0.61
+armbandsur	noun-ett	word	C2	wristwatch		0.6
+betäckning	noun-en	word	C2	cover		0.6
+brorsdotter	noun-en	word	C2	fraternal niece		0.6
+brutto	adverb	word	C2	gross		0.6
+scarf	noun-en	word	C2		none	0.6
+annullering	noun-en	word	C2	annulment		0.59
+flanera	verb	word	C2	to stroll, saunter, roam about, gallivant		0.59
+läkarvetenskap	noun-en	word	C2	medicine		0.59
+apparatur	noun-en	word	C2	a set of technical equipment, apparatus, gear		0.58
+fosterbarn	noun-ett	word	C2	a foster child		0.58
+förbluffa	verb	word	C2	to baffle, to astound		0.58
+vrist	noun-en	word	C2	ankle		0.58
+avskedsansökan	noun-en	word	C2		none	0.57
+blyertspenna	noun-en	word	C2	a pencil		0.57
+invändig	adjective	word	C2	internal, indoors		0.57
+postulat	noun-ett	word	C2	postulate		0.57
+ytterlig	adjective	word	C2	extreme		0.57
+ungdomstid	noun-en	word	C2		none	0.56
+kabin	noun-en	word	C2	a cabin		0.55
+nödhjälp	noun-en	word	C2	relief, emergency aid, humanitarian assistance		0.55
+hake	noun-en	word	C2	a hook		0.54
+kuriositet	noun-en	word	C2	a curiosity		0.54
+pantsätta	verb	word	C2	synonym of panta	pos	0.54
+renlighet	noun-en	word	C2	cleanliness		0.54
+stjälk	noun-en	word	C2	a stem, a stalk		0.54
+överlämning	noun-en	word	C2	handover		0.53
+bräde	noun-ett	word	C2	the board of a board game		0.52
+hålighet	noun-en	word	C2	a cavity, a hollow		0.52
+olympiad	noun-en	word	C2	olympiad		0.52
+realisering	noun-en	word	C2	a realization, an implementation; the making real		0.52
+tariff	noun-en	word	C2		none	0.52
+bindel	noun-en	word	C2	band		0.51
+sockel	noun-en	word	C2	a socle		0.51
+animering	noun-en	word	C2	animation		0.5
+didaktisk	adjective	word	C2	didactic		0.5
+doktorsgrad	noun-en	word	C2	doctorate		0.5
+husgeråd	noun-ett	word	C2	household items, especially kitchenware		0.5
+klarvaken	adjective	word	C2	wide awake		0.5
+bullra	verb	word	C2	to make unpleasant noise		0.49
+persika	noun-en	word	C2	peach		0.49
+svärdotter	noun-en	word	C2	a daughter-in-law; a wife of someone's child		0.49
+upprepat	adverb	word	C2	to repeat	via-form	0.49
+genomskinlighet	noun-en	word	C2	translucency		0.48
+progression	noun-en	word	C2		none	0.48
+sonson	noun-en	word	C2	a grandson		0.48
+stridslysten	adjective	word	C2	combative, belligerent		0.48
+teatralisk	adjective	word	C2	theatrical		0.48
+tyngdkraft	noun-en	word	C2	gravitation		0.48
+infarkt	noun-en	word	C2		none	0.47
+stadgande	noun-ett	word	C2	steadfastness, steadiness, stability, strength	via-form	0.47
+tesked	noun-en	word	C2	a teaspoon		0.47
+uppdykande	adjective	word	C2		none	0.47
+upphängning	noun-en	word	C2	hanging, suspension		0.47
+dotterdotter	noun-en	word	C2	a granddaughter		0.46
+singularis	noun	word	C2	singular		0.46
+syskonbarn	noun-ett	word	C2	a niece or nephew; a nibling		0.46
+baktala	verb	word	C2	to malign, to slander		0.45
+påskrift	noun-en	word	C2		none	0.45
+slutta	verb	word	C2	to slope, to slant		0.45
+farmaceutisk	adjective	word	C2		none	0.44
+innertak	noun-ett	word	C2	a ceiling		0.44
+knackning	noun-en	word	C2	knocking		0.44
+koffert	noun-en	word	C2	a trunk		0.44
+monitor	noun-en	word	C2		none	0.44
+simbassäng	noun-en	word	C2	a swimming pool		0.44
+trettionde	numeral	word	C2	thirtieth		0.44
+utvändig	adjective	word	C2		none	0.44
+brudgum	noun-en	word	C2	groom, bridegroom		0.43
+inneslutning	noun-en	word	C2	containment		0.43
+genomresa	noun-en	word	C2	to transit, to pass through	pos	0.42
+karakteristik	noun-en	word	C2	characterization		0.42
+mör	adjective	word	C2	tender		0.42
+genomfart	noun-en	word	C2	passage, transit, thoroughfare		0.41
+kameraman	noun-en	word	C2		none	0.41
+dotterson	noun-en	word	C2	a grandson		0.4
+koefficient	noun-en	word	C2	coefficient		0.4
+vägavgift	noun-en	word	C2	toll		0.4
+betjäning	noun-en	word	C2		none	0.39
+fjäder	noun-en	word	C2	a feather		0.39
+himmelsblå	adjective	word	C2	sky blue		0.39
+periodiskt	adverb	word	C2	periodic	via-form	0.39
+trofé	noun-en	word	C2	trophy		0.39
+trådbuss	noun-en	word	C2	a trolley bus		0.39
+födelsemärke	noun-ett	word	C2	birthmark, mole		0.37
+hövlighet	noun-en	word	C2	courtesy, politeness		0.37
+konvergens	noun-en	word	C2	convergence		0.37
+sorgsenhet	noun-en	word	C2	sadness		0.37
+brorson	noun-en	word	C2	fraternal nephew		0.36
+ringklocka	noun-en	word	C2		none	0.36
+vardaglighet	noun-en	word	C2	quotidianness		0.36
+berömdhet	noun-en	word	C2	fame		0.35
+förutbestämma	verb	word	C2	predetermine	pos	0.35
+folie	noun-en	word	C2	a thin sheet of metal or plastic or the like; aluminum foil, plastic wrap, cling film, etc.	long	0.34
+kejsardöme	noun-ett	word	C2	an empire, the realm of an emperor		0.34
+käke	noun-en	word	C2	a jaw		0.34
+rymling	noun-en	word	C2	an escapee, a runaway		0.34
+serum	noun-ett	word	C2		none	0.34
+elektriker	noun-en	word	C2	electrician		0.33
+syrsa	noun-en	word	C2	a cricket		0.33
+äggvita	noun-en	word	C2	egg white		0.33
+hypotekslån	noun-ett	word	C2	mortgage loan		0.32
+invalid	noun-en	word	C2	a disabled person		0.32
+månljus	noun-ett	word	C2	moonlit		0.32
+transplantera	verb	word	C2		none	0.32
+tursam	adjective	word	C2	lucky		0.32
+kvalificering	noun-en	word	C2		none	0.31
+skollov	noun-ett	word	C2		none	0.31
+skolväska	noun-en	word	C2		none	0.31
+utprovning	noun-en	word	C2		none	0.31
+likkista	noun-en	word	C2	a coffin, a casket		0.3
+packe	noun-en	word	C2	pack, bundle, wad		0.3
+svärmor	noun-en	word	C2	a mother-in-law; the mother of someone's spouse		0.3
+bäcken	noun-ett	word	C2	pelvis		0.29
+förbrukare	noun-en	word	C2	consume, exhaust, use up	via-form	0.29
+modus	noun-ett	word	C2		none	0.29
+studenthem	noun-ett	word	C2		none	0.29
+mekaniker	noun-en	word	C2	a mechanic		0.28
+översida	noun-en	word	C2	upper side, topside		0.28
+fullbordande	noun-ett	word	C2	to make complete, to finish	via-form,pos	0.27
+undervåning	noun-en	word	C2		none	0.27
+aritmetisk	adjective	word	C2	arithmetic, arithmetical		0.26
+frisersalong	noun-en	word	C2	a hair salon, a barbershop		0.26
+fönsterbräda	noun-en	word	C2	an interior window sill		0.26
+cirkelformad	adjective	word	C2	circular		0.25
+oföränderligt	adverb	word	C2		none	0.25
+otvivelaktig	adjective	word	C2	unquestionable, undoubted		0.25
+regelvidrig	adjective	word	C2	in violation of the rules		0.25
+skrynkla	verb	word	C2	an undesirable wrinkle	pos	0.25
+sondotter	noun-en	word	C2	a granddaughter		0.25
+ekolog	noun-en	word	C2	an ecologist		0.24
+femtionde	numeral	word	C2	fiftieth		0.22
+fyrtionde	numeral	word	C2	fortieth		0.22
+gravera	verb	word	C2	to engrave		0.22
+konservator	noun-en	word	C2		none	0.22
+ortopedi	noun-en	word	C2	orthopedics		0.22
+tekanna	noun-en	word	C2	a teapot		0.22
+inrikes	adverb	word	C2	in or pertaining to the home country, at home, domestic, national		0.21
+askkopp	noun-en	word	C2	an ashtray		0.19
+fästman	noun-en	word	C2	a fiancé		0.19
+hyvel	noun-en	word	C2	a plane		0.19
+straffspark	noun-en	word	C2	a penalty kick		0.19
+stött	adjective	word	C2	bumped, knocked, chipped		0.19
+subtrahera	verb	word	C2	to subtract		0.19
+dossier	noun-en	word	C2	dossier		0.18
+kakelplatta	noun-en	word	C2		none	0.18
+kasus	noun-ett	word	C2	grammatical case		0.18
+svärfar	noun-en	word	C2	a father-in-law; the father of someone’s spouse		0.18
+dyrkan	noun-en	word	C2	worship, adoration		0.17
+återgälda	verb	word	C2	reciprocate	pos	0.17
+enfamiljshus	noun-ett	word	C2		none	0.16
+förkroppsligande	noun-ett	word	C2	to embody	via-form,pos	0.16
+violin	noun-en	word	C2	violin		0.16
+mottaga	verb	word	C2		none	0.15
+nittionde	numeral	word	C2	ninetieth		0.15
+oregelbundenhet	noun-en	word	C2	irregularity		0.15
+sjukskötare	noun-en	word	C2		none	0.15
+stockning	noun-en	word	C2	congestion, stoppage		0.15
+toffel	noun-en	word	C2	slipper		0.15
+vattenmelon	noun-en	word	C2	watermelon		0.15
+verkställare	noun-en	word	C2	executor		0.15
+vårlig	adjective	word	C2	vernal, springlike		0.15
+metalltråd	noun-en	word	C2		none	0.14
+genetiker	noun-en	word	C2	geneticist		0.13
+sextionde	numeral	word	C2	sixtieth		0.13
+timmerstock	noun-en	word	C2		none	0.13
+bjälke	noun-en	word	C2	a wooden beam		0.12
+excellens	noun-en	word	C2	Excellency		0.12
+koordinator	noun-en	word	C2	a coordinator		0.11
+läsesal	noun-en	word	C2	a reading room		0.11
+poängställning	noun-en	word	C2		none	0.11
+profylax	noun-en	word	C2		none	0.11
+territorial	adjective	word	C2		none	0.09
+grafiker	noun-en	word	C2		none	0.08
+undertröja	noun-en	word	C2	undershirt		0.08
+anfallsspelare	noun-en	word	C2	attacking player		0.07
+förfrågan	noun-en	word	C2	a request		0.07
+raffinera	verb	word	C2	to refine		0.07
+specificitet	noun-en	word	C2		none	0.07
+begeistring	noun-en	word	C2		none	0.06
+bergskam	noun-en	word	C2	mountain ridge, spur		0.06
+okultiverad	adjective	word	C2		none	0.06
+statistiker	noun-en	word	C2	statistician		0.06
+vinäger	noun-en	word	C2	vinegar		0.06
+upphetsa	verb	word	C2	to excite		0.05
+författningsenlig	adjective	word	C2	constitutional		0.04
+kalsong	noun-en	word	C2	underpants		0.04
+klagan	noun-en	word	C2	complaint		0.04
+kvitt	noun	word	C2	get rid of, shake off		0.04
+toppen	adjective	word	C2	great		0.04
+tvåsidig	adjective	word	C2		none	0.04

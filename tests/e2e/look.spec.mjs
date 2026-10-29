@@ -3,14 +3,15 @@ import { test, expect } from '@playwright/test';
 const style = (locator, prop) => locator.evaluate((el, p) => getComputedStyle(el).getPropertyValue(p), prop);
 const rootVar = (page, name) => page.evaluate((n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim(), name);
 
+// Palette 14 (G-09 FR-913 replaces Appendix A.1's colours).
 const TOKENS = {
-  dark: { '--bg': '#0A110E', '--ink': '#E8F0E9', '--accent': '#7FA866', '--accent2': '#A3C487', '--muted': '#93A399', '--wood': '#C79A64', '--amber': '#D9A55B', '--bad': '#EB8A62', '--ok': '#76DB5E' },
-  light: { '--bg': '#F3F0E8', '--ink': '#1E2A22', '--accent': '#4A6B3A', '--accent2': '#6B8F55', '--muted': '#626C61', '--wood': '#9A6B3E', '--amber': '#B7791F', '--bad': '#B4532A', '--ok': '#2F9A2A' },
+  dark: { '--bg': '#0F110E', '--card': '#1A1F1A', '--card2': '#222822', '--ink': '#E9EBE3', '--accent': '#6FA27E', '--accent2': '#97C3A2', '--muted': '#9AA095', '--discover': '#F0C28F', '--review': '#DE9A66', '--master': '#CF7A5E' },
+  light: { '--bg': '#ECE5DA', '--card': '#EEEEE2', '--card2': '#F5F4EC', '--ink': '#26241F', '--accent': '#2F5A40', '--accent2': '#5E8A66', '--muted': '#6A6761', '--discover': '#92592C', '--review': '#74432C', '--master': '#4B2E2B' },
 };
-const RGB = { dark: { bg: 'rgb(10, 17, 14)', ink: 'rgb(232, 240, 233)' }, light: { bg: 'rgb(243, 240, 232)', ink: 'rgb(30, 42, 34)' } };
+const RGB = { dark: { bg: 'rgb(15, 17, 14)', ink: 'rgb(233, 235, 227)' }, light: { bg: 'rgb(236, 229, 218)', ink: 'rgb(38, 36, 31)' } };
 
 for (const scheme of ['dark', 'light']) {
-  test(`FR-026 RQ-306 RQ-334 RQ-335: in ${scheme} mode the page uses the ${scheme === 'dark' ? 'Night forest' : 'Pale birch'} tokens`, async ({ page }) => {
+  test(`FR-026 FR-913 RQ-306 RQ-334 RQ-335 RQ-426: in ${scheme} mode the page uses palette 14's ${scheme} tokens`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: scheme });
     await page.goto('/signin');
     const body = page.locator('body');
@@ -56,12 +57,12 @@ test('FR-028 RQ-314 RQ-338 RQ-339: cards have radius 22px, an 18px backdrop blur
   expect(await style(card, 'box-shadow')).toBe('rgba(0, 0, 0, 0.45) 0px 12px 34px 0px');
 });
 
-test('FR-029 RQ-316 RQ-340: buttons are rounded 14px, main buttons use the accent gradient, and a pressed button shrinks to 97%', async ({ page }) => {
+test('FR-029 FR-913 RQ-316 RQ-340 RQ-426: buttons are rounded 14px, main buttons use the accent gradient, and a pressed button shrinks to 97%', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('/signin');
   const button = page.getByRole('button', { name: 'Sign in' });
   expect(await style(button, 'border-radius')).toBe('14px');
-  expect(await style(button, 'background-image')).toBe('linear-gradient(135deg, rgb(127, 168, 102), rgb(163, 196, 135))');
+  expect(await style(button, 'background-image')).toBe('linear-gradient(135deg, rgb(111, 162, 126), rgb(151, 195, 162))');
   const box = await button.boundingBox();
   await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
   await page.mouse.down();
@@ -75,4 +76,13 @@ test('FR-031 RQ-314 R-15: with reduced motion, cards and the top bar drop the bl
   await page.goto('/signin');
   expect(await style(page.locator('.card').first(), 'backdrop-filter')).toBe('none');
   expect(await style(page.locator('.topbar'), 'backdrop-filter')).toBe('none');
+});
+
+test('FR-029 FR-913 RQ-316 RQ-426: in the light look main buttons are flat dark green, no fade', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'light' });
+  await page.goto('/signin');
+  const button = page.getByRole('button', { name: 'Sign in' });
+  expect(await style(button, 'background-image')).toBe('none');
+  expect(await style(button, 'background-color')).toBe('rgb(47, 90, 64)');
+  expect(await style(button, 'color')).toBe('rgb(255, 255, 255)');
 });

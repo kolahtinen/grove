@@ -5,6 +5,7 @@ import { tokenize } from '../words/tokens.mjs';
 import { createResolver } from '../words/resolve.mjs';
 import { createWordStore } from '../words/store.mjs';
 import { unmarkedOf } from '../drill/marking.mjs';
+import { speechRateFor } from '../drill/progress.mjs';
 import { meaning as dictionaryMeaning } from '../lexicon/lexicon.mjs';
 
 const WORD = /\p{L}+(?:[-’']\p{L}+)*/gu;
@@ -137,12 +138,13 @@ export function buildReading(db, accountId, textId) {
     own: !!text.own,
     kind: text.kind,
     // FR-224: own texts and texts from the learner's AI are beta; the demo's prepared texts aren't.
-    beta: !!text.own || !/^DEMO-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
+    beta: !!text.own || !/^(DEMO|LIB)-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
+    grove: /^LIB-/.test(db.prepare('SELECT code FROM exchanges WHERE id = ?').get(text.exchange_id)?.code ?? ''),
     knownShare: text.own ? text.known_share : null,
     targetShare: settings?.target_share ?? 95,
     copyright: text.own && text.copyright_view ? { view: text.copyright_view, note: text.copyright_note } : null,
     speakWords: settings ? !!settings.speak_words : true,
-    speechRate: settings?.speech_rate ?? 1,
+    speechRate: speechRateFor(db, accountId),
     voiceHelpShown: !!settings?.voice_help_shown,
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },
     lines,

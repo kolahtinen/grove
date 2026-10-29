@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Texts from your AI · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/ai.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
+</div>
+</header>
+<main>
+<section class="card" id="package-card">
+<h2>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
+<ol class="step-list" id="ai-steps" aria-label="Steps"></ol>
+<p class="muted small" id="progress"></p>
+<p class="message" id="package-message" role="status" hidden></p>
+<ul class="problems" id="problems" hidden></ul>
+
+<section class="ai-step" data-step="ai" hidden>
+<h3>Your AI and your topic</h3>
+<div class="row">
+<label>AI<select id="plan-family"><option value="">Choose…</option></select></label>
+<label>Version<select id="plan-product" disabled></select></label>
+</div>
+<fieldset class="tactics" id="tactics" hidden><legend>How grove asks your AI</legend><div id="tactic-options"></div><p class="small" id="tactic-note" hidden></p></fieldset>
+<p class="message" id="plan-message" role="status" hidden></p>
+<p class="topic-line">Topic: <span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>
+<form id="topic-form" hidden>
+<label>Your topic<input type="text" name="topic" maxlength="80" required></label>
+<button type="submit" class="main">Save topic</button>
+</form>
+<div class="row"><button type="button" class="main" id="get-texts">Get texts</button></div>
+</section>
+
+<section class="ai-step" data-step="setup" hidden>
+<h3>Send the setup</h3>
+<p class="small muted">Open a new chat in your AI and send these in order. Your AI replies "OK" to each.</p>
+<ol class="prompt-steps" id="setup-steps"></ol>
+<div class="row"><button type="button" class="main" id="setup-done">I've sent them</button></div>
+</section>
+
+<section class="ai-step" data-step="request" hidden>
+<h3 id="prompt-heading">Copy the request</h3>
+<p class="message" id="new-chat-note" role="status" hidden></p>
+<ol class="prompt-steps" id="prompt-steps"></ol>
+<div class="row"><button type="button" class="main" id="request-done" hidden>Next: paste the answer</button></div>
+</section>
+
+<section class="ai-step" data-step="paste" hidden>
+<h3>Paste the answer</h3>
+<p class="small muted">When your AI has answered, copy its whole answer and paste it here.</p>
+<label>Paste the AI's answer here<textarea id="answer" rows="6"></textarea></label>
+<p class="small muted" id="answer-size"></p>
+<div class="row">
+<button type="button" class="main" id="add-texts">Add texts</button>
+<button type="button" id="new-chat">I'm in a new chat</button>
+</div>
+</section>
+
+<section class="ai-step" data-step="added" hidden>
+<h3>Texts added</h3>
+<ul class="text-list" id="added-list"></ul>
+<div class="row">
+<button type="button" class="main" id="next-part">Next part</button>
+<button type="button" id="new-package" hidden>New package</button>
+<a class="button-link" href="/texts">Your library</a>
+</div>
+</section>
+
+<div class="row step-nav"><button type="button" id="ai-back" hidden>Back</button></div>
+<div id="prompt-area" hidden></div>
+</section>
+</main>
+</body>
+</html>

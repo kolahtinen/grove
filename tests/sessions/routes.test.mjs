@@ -1,0 +1,152 @@
+import { test, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import { startTestGrove } from '../fakes/harness.mjs';
+import { applyDemo } from '../../server/demo/apply.mjs';
+import { readInventory } from '../../server/sessions/inventory.mjs';
+import { plan, fits } from '../../server/sessions/plan.mjs';
+
+// A learner with the demo history (G-07): 4 texts, 2 unread; 6 drilled leaves.
+let t;
+let learner;
+let c;
+before(async () => {
+  t = await startTestGrove();
+  learner = t.seedAccount({ email: 'learner@example.test' });
+  applyDemo({ db: t.grove.db, accountId: learner.id });
+  t.seedAccount({ email: 'other@example.test' });
+  t.seedAccount({ email: 'empty@example.test' });
+  c = t.client();
+  await c.signInAgreed('learner@example.test');
+});
+after(() => t.close());
+
+// Sessions here fill their time (FR-905: without `fill`, a plan that would run short is answered 409 first).
+const start = (body, client = c) => client.post('/api/sessions', { voice: true, fill: true, ...body });
+
+test('FR-903 FR-904 RQ-421: Practise for X min takes 3–60 minutes and starts a session shown one exercise at a time with its label, place and minutes left', async () => {
+  for (const minutes of [2, 61]) assert.equal((await start({ kind: 'time', minutes })).status, 400, `${minutes} minutes`);
+  assert.equal((await start({ kind: 'time', minutes: 10, topic: 'x' })).status, 400, 'a field the kind doesn\'t take');
+  assert.equal((await start({ kind: 'time' })).status, 400, 'a field the kind needs');
+  const r = await start({ kind: 'time', minutes: 10 });
+  assert.equal(r.status, 200, JSON.stringify(r.body));
+  const s = r.body.session;
+  assert.equal(s.label, '10-minute session');
+  assert.equal(s.index, 0);
+  assert.ok(s.total >= 2);
+  assert.ok(s.minutesLeft >= 1);
+  assert.equal(s.exercise.mode, 'review', 'Review comes first');
+  assert.ok(s.exercise.question?.sentence || s.exercise.question?.mode === 'recall', 'the question is built when shown');
+  assert.deepEqual((await c.get('/api/session')).body.session.id, s.id);
+});
+
+test('FR-904 RQ-421: Next moves on once per exercise; a repeated index answers the same state; an older one is stale; the last one finishes with a summary', async () => {
+  let s = (await c.get('/api/session')).body.session;
+  const first = await c.post('/api/session/next', { sessionId: s.id, index: 0 });
+  assert.equal(first.body.session.index, 1);
+  assert.equal((await c.post('/api/session/next', { sessionId: s.id, index: 0 })).body.session.index, 1, 'a double tap doesn\'t skip one');
+  s = first.body.session;
+  for (let i = s.index; i < s.total; i += 1) {
+    const r = await c.post('/api/session/next', { sessionId: s.id, index: i });
+    assert.equal(r.status, 200);
+    s = r.body.session;
+  }
+  assert.equal(s.status, 'finished');
+  assert.equal(s.exercise, null);
+  for (const key of ['minutes', 'textsRead', 'wordsReviewed', 'wordsFell']) assert.equal(typeof s.summary[key], 'number', key);
+  assert.equal((await c.get('/api/session')).body.session, null, 'no Resume once finished');
+  assert.equal((await c.get(`/api/session?id=${s.id}`)).body.session.summary.minutes, s.summary.minutes, 'by id it still shows its summary');
+  assert.equal((await c.post('/api/session/next', { sessionId: s.id, index: 5000 })).status, 400);
+});
+
+test('FR-904 RQ-421: starting another session replaces the going one (the shared account\'s last started wins)', async () => {
+  const a = (await start({ kind: 'time', minutes: 5 })).body.session;
+  const b = (await start({ kind: 'mode', mode: 'master' })).body.session;
+  assert.equal(b.label, 'Master');
+  assert.equal(t.grove.db.prepare('SELECT status FROM practice_sessions WHERE id = ?').get(a.id).status, 'replaced');
+  assert.equal((await c.get('/api/session')).body.session.id, b.id);
+  assert.equal((await c.post('/api/session/next', { sessionId: a.id, index: 0 })).body.session.status, 'replaced');
+});
+
+test('FR-906 FR-908 RQ-423 RQ-424 RQ-20: By skill and Just one mode start; Listening without a voice is refused; nothing to do is said', async () => {
+  const skill = await start({ kind: 'skill', skill: 'reading', form: 'short' });
+  assert.equal(skill.body.session.minutes, 5);
+  const noVoice = await start({ kind: 'skill', skill: 'listening', form: 'short', voice: false });
+  assert.equal(noVoice.status, 409);
+  assert.equal(noVoice.body.error, 'no_voice');
+  assert.equal((await start({ kind: 'skill', skill: 'reading', form: 'long' })).body.session.minutes, 20);
+  assert.equal((await start({ kind: 'skill', skill: 'grammar', form: 'medium' })).body.session.minutes, 10);
+  const review = (await start({ kind: 'mode', mode: 'review' })).body.session;
+  assert.equal(review.label, 'Review');
+  assert.ok(review.total <= 10);
+  const empty = t.client();
+  await empty.signInAgreed('empty@example.test');
+  const none = await start({ kind: 'time', minutes: 5 }, empty);
+  assert.equal(none.status, 409);
+  assert.equal(none.body.error, 'nothing_to_do');
+});
+
+test('FR-907 FR-909 RQ-422: Texts lists topics with their texts, unread first; a topic session draws from that topic', async () => {
+  const { topics } = (await c.get('/api/topics')).body;
+  assert.equal(topics.length, 1);
+  const [topic] = topics;
+  assert.equal(topic.texts.length, 4);
+  assert.deepEqual(topic.texts.map((x) => x.read), [...topic.texts.map((x) => x.read)].sort((a, b) => a - b), 'unread first');
+  const s = (await start({ kind: 'topic', minutes: 5, topic: topic.topic })).body.session;
+  assert.equal(s.label, '5-minute session');
+});
+
+test('FR-914 RQ-155: another account can\'t see, move or list this learner\'s session or texts', async () => {
+  const mine = (await start({ kind: 'time', minutes: 5 })).body.session;
+  const other = t.client();
+  await other.signInAgreed('other@example.test');
+  assert.equal((await other.get('/api/session')).body.session, null);
+  assert.equal((await other.post('/api/session/next', { sessionId: mine.id, index: 0 })).status, 404);
+  assert.equal((await other.get(`/api/session?id=${mine.id}`)).status, 404);
+  assert.deepEqual((await other.get('/api/topics')).body.topics, []);
+});
+
+// SC-001 as amended 2026-10-29: within 20% or 2 minutes, or, where even practice reviews can't fill the
+// length (the demo has six drilled leaves), a plan that says it is shorter and uses every leaf it has.
+// SC-001 as amended (question-pages/78, 3): filled with the mix, within 20% or 2 minutes; where even the mix
+// can't fill a length, every leaf and every read text is used and the plan says it is shorter.
+test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes, filled, are planned within 20% or 2 minutes, or use every leaf and read text and say they are shorter', () => {
+  const inventory = readInventory(t.grove.db, learner.id);
+  for (const minutes of [3, 5, 10, 20]) {
+    const p = plan({ kind: 'time', params: { minutes, voice: true, fill: true }, inventory });
+    const lemmas = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
+    const texts = new Set(p.exercises.filter((e) => e.textId).map((e) => e.textId));
+    const everything = inventory.leaves.every((l) => lemmas.has(l.lemma)) && inventory.texts.filter((x) => x.read).every((x) => texts.has(x.id));
+    assert.ok(fits(p.seconds, minutes * 60) || (p.short && everything), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
+  }
+});
+
+test('FR-905 RQ-421: a practice review answered in a session never changes the leaf\'s schedule, right or wrong (question-pages/76, F1)', async () => {
+  const db = t.grove.db;
+  const leaf = db.prepare("SELECT * FROM words WHERE account_id = ? AND drilled = 1 AND state = 'leaf' ORDER BY id LIMIT 1").get(learner.id);
+  const before = db.prepare('SELECT gap_days, last_review_at, reviews, state FROM words WHERE id = ?').get(leaf.id);
+  const answers = db.prepare('SELECT COUNT(*) AS n FROM review_answers WHERE word_id = ?').get(leaf.id).n;
+  for (const right of [true, false]) {
+    const r = await c.post('/api/review', { lemma: leaf.lemma, kind: leaf.kind, mode: 'remember', right, practice: true });
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    assert.equal(r.body.fell, false);
+  }
+  assert.deepEqual(db.prepare('SELECT gap_days, last_review_at, reviews, state FROM words WHERE id = ?').get(leaf.id), before);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM review_answers WHERE word_id = ?').get(leaf.id).n, answers);
+});
+
+test('FR-904 RQ-421: the summary counts practice reviews among the words reviewed and gives the days practised this week, no streak (PD-05)', async () => {
+  const s = (await start({ kind: 'time', minutes: 3 })).body.session;
+  let view = s;
+  for (let i = 0; i < 40 && view.status === 'going'; i += 1) view = (await c.post('/api/session/next', { sessionId: view.id, index: view.index })).body.session;
+  assert.equal(view.status, 'finished');
+  assert.deepEqual(Object.keys(view.summary).sort(), ['daysThisWeek', 'minutes', 'textsRead', 'wordsFell', 'wordsReviewed']);
+  assert.ok(view.summary.daysThisWeek >= 0 && view.summary.daysThisWeek <= 7);
+});
+
+test('FR-905 FR-920 RQ-421 RQ-434: a session that would run short is answered first with how long it would be, so the learner can add a text or fill the time; filled, it starts', async () => {
+  const short = await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true });
+  assert.equal(short.status, 409);
+  assert.equal(short.body.error, 'short');
+  assert.match(short.body.message, /would only be about \d+ min/);
+  assert.equal((await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true, fill: true })).status, 200);
+});

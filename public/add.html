@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a text · grove</title>
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/grove.css">
+<script type="module" src="/assets/topbar.mjs"></script>
+<script type="module" src="/assets/add.mjs"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="/"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="gl" d="M3 27h26"/><g class="tr t1"><path d="M9 27V19M5 19l4-9 4 9z"/></g><g class="tr t2"><path d="M17 27V15M12 15l5-11 5 11z"/></g><g class="tr t3"><path d="M25 27v-6M22 21l3-7 3 7z"/></g></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a>
+<div class="account" hidden><button type="button" class="bar-button menu-button" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">☰</button></div>
+</div>
+</header>
+<main>
+<section class="card">
+<h2>Add a text</h2>
+<p class="muted">Three ways to get Swedish texts into your library.</p>
+<div class="add-ways">
+<section class="add-way">
+<h3>From the common library</h3>
+<p>grove's own texts by topic and level, from complete beginner up. Pick one and it is in your library at once.</p>
+<a class="button-link main" href="/library">Choose from the common library</a>
+</section>
+<section class="add-way">
+<h3>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h3>
+<p>grove gives you prompts to paste into a free AI chat (ChatGPT, Claude, Gemini or another). You paste its answer back; grove checks it and adds texts at your level, mostly in words you know. About 5 minutes.</p>
+<a class="button-link main" href="/add/ai">Get texts from your AI</a>
+</section>
+<section class="add-way">
+<h3>Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h3>
+<p>Paste a Swedish text you choose, such as an article or a song. It stays private to you. Your AI checks its new words once, then you read it like any other text.</p>
+<a class="button-link main" href="/own">Add your own text</a>
+</section>
+</div>
+<p class="small"><a href="/texts">Back to your library</a></p>
+</section>
+</main>
+</body>
+</html>

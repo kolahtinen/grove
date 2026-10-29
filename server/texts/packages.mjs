@@ -341,9 +341,10 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
       const s = settings(accountId);
       const pkg = openPackage(accountId);
       const waiting = pkg ? waitingOf(accountId, pkg.id) : null;
-      // Beta (FR-224): own texts and texts from the learner's AI; the demo's prepared texts aren't.
+      // Beta (FR-224): own texts and texts from the learner's AI; the demo's prepared texts and grove
+      // texts from the common library (G-09 FR-916, marked "grove text") aren't.
       const texts = db.prepare(`SELECT t.id, t.title, t.kind, t.part_no, t.created_at, t.read_at, t.own, t.ready, r.value,
-          (t.own = 1 OR e.code NOT LIKE 'DEMO-%') AS beta FROM texts t
+          (t.own = 1 OR (e.code NOT LIKE 'DEMO-%' AND e.code NOT LIKE 'LIB-%')) AS beta, (e.code LIKE 'LIB-%') AS grove FROM texts t
         LEFT JOIN ratings r ON r.text_id = t.id LEFT JOIN exchanges e ON e.id = t.exchange_id
         WHERE t.account_id = ? ORDER BY t.created_at DESC, t.id DESC`).all(accountId);
       return {
@@ -355,7 +356,7 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
         package: pkg ? { id: pkg.id, partsAccepted: pkg.parts_accepted, of: pkg.parts_total, status: pkg.status, oneText: !!pkg.one_text, unrated: unratedIn(accountId, pkg.id) } : null,
         waiting: waiting ? { ...view(waiting), newChatSuggested: waiting.kind === 'fix' } : null,
         texts: texts.map((t) => ({
-          id: t.id, title: t.title, kind: t.kind, partNo: t.part_no, own: !!t.own, ready: !!t.ready, beta: !!t.beta, createdAt: t.created_at,
+          id: t.id, title: t.title, kind: t.kind, partNo: t.part_no, own: !!t.own, ready: !!t.ready, beta: !!t.beta, grove: !!t.grove, createdAt: t.created_at,
           state: t.value ? 'rated' : t.read_at ? 'read' : 'new',
         })),
       };

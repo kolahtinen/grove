@@ -1,0 +1,419 @@
+# grove library core list, A1–A2: a stopgap (question-pages/76, F2, F4). Words picked by hand by theme; level from SweLLex (Språkbanken Text, CC BY 4.0) or the Kelly list (Språkbanken, CC BY-SA 3.0 / LGPL 3.0) when either has it at A1–A2, else from the theme; meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-core.mjs.
+sv	level	theme	en	flags	source
+hej	A1	greetings and phrases	hi, hello		Kelly A1; SweLLex A2
+hej då	A1	greetings and phrases	bye, goodbye		theme (in neither list)
+tack	A1	greetings and phrases	thanks, thank you		Kelly A1; SweLLex A2
+tack så mycket	A1	greetings and phrases	thank you very much, thanks a lot		theme (in neither list)
+varsågod	A1	greetings and phrases	here you are, there you are		theme (in neither list)
+ursäkta	A1	greetings and phrases	excuse me!, pardon, I'm sorry!	pos	theme (Kelly B1)
+förlåt	A1	greetings and phrases	I'm sorry		theme (Kelly C2)
+ja tack	A1	greetings and phrases	yes, please, yes, thank you		theme (in neither list)
+nej tack	A1	greetings and phrases	no, thanks, no thank you		theme (in neither list)
+god morgon	A1	greetings and phrases	good morning		theme (in neither list)
+god natt	A1	greetings and phrases	good night		theme (in neither list)
+välkommen	A2	greetings and phrases	welcome		Kelly A2; SweLLex B1
+hur mår du	A1	greetings and phrases	how are you feeling? how are you?		theme (in neither list)
+vi ses	A1	greetings and phrases	see you		theme (in neither list)
+ha det bra	A1	greetings and phrases	goodbye, take care		theme (in neither list)
+ingen orsak	A1	greetings and phrases	it's nothing		theme (in neither list)
+det gör inget	A2	greetings and phrases		none	theme (in neither list)
+okej	A2	greetings and phrases	okay, all right		SweLLex A2; Kelly B1
+noll	A1	numbers	zero		theme (SweLLex C1; Kelly B1)
+en	A1	numbers	object form of the indefinite pronoun man		SweLLex A1; Kelly A1
+ett	A1	numbers	a, an		Kelly A1; SweLLex B1
+två	A1	numbers	two		SweLLex A1; Kelly A1
+tre	A1	numbers	three		SweLLex A1; Kelly A1
+fyra	A1	numbers	four		SweLLex A1; Kelly A1
+fem	A1	numbers	five		SweLLex A1; Kelly A1
+sex	A1	numbers	six		SweLLex A1; Kelly A1
+sju	A1	numbers	seven		SweLLex A1; Kelly A1
+åtta	A1	numbers	eight		SweLLex A1; Kelly A1
+nio	A1	numbers	nine		SweLLex A1; Kelly A1
+tio	A1	numbers	ten		SweLLex A1; Kelly A1
+elva	A1	numbers	eleven		SweLLex A1; Kelly A1
+tolv	A1	numbers	twelve		SweLLex A1; Kelly A1
+tretton	A1	numbers	thirteen		Kelly A1
+fjorton	A1	numbers	fourteen		Kelly A1; SweLLex A2
+femton	A1	numbers	fifteen		SweLLex A1; Kelly A1
+sexton	A1	numbers	sixteen		Kelly A1; SweLLex A2
+sjutton	A1	numbers	seventeen		Kelly A1; SweLLex A2
+arton	A1	numbers	eighteen		Kelly A1; SweLLex A2
+nitton	A1	numbers	nineteen		Kelly A1
+tjugo	A1	numbers	twenty		Kelly A1; SweLLex A2
+trettio	A1	numbers	thirty		Kelly A1; SweLLex C1
+fyrtio	A1	numbers	forty; 40 in Arabic numerals		Kelly A1
+femtio	A1	numbers	fifty; the number 50		Kelly A1; SweLLex B1
+sextio	A1	numbers	sixty; the number 60		Kelly A1; SweLLex C1
+sjuttio	A1	numbers	seventy		Kelly A1; SweLLex C1
+åttio	A1	numbers	eighty		Kelly A1; SweLLex C1
+nittio	A1	numbers	ninety		Kelly A1
+hundra	A1	numbers	hundred; 100 in arabic numerals		Kelly A1; SweLLex B1
+tusen	A1	numbers	thousand		Kelly A1; SweLLex B1
+första	A1	numbers	first		Kelly A1
+andra	A1	numbers	second		Kelly A1; SweLLex A2
+tredje	A1	numbers	third		Kelly A1
+dag	A1	time	a day		SweLLex A1; Kelly A1
+natt	A1	time	night		SweLLex A1; Kelly A1
+morgon	A1	time	morning		Kelly A1; SweLLex A2
+förmiddag	A2	time	forenoon		SweLLex A2; Kelly A2
+eftermiddag	A1	time	afternoon		Kelly A1; SweLLex A2
+kväll	A1	time	evening		Kelly A1; SweLLex A2
+vecka	A1	time	a week, a period of 7 days.		SweLLex A1; Kelly A1
+månad	A1	time	a month		SweLLex A1; Kelly A1
+år	A1	time	a year		SweLLex A1; Kelly A1
+timme	A1	time	an hour		Kelly A1; SweLLex A2
+minut	A1	time	minute		SweLLex A1; Kelly A1
+klocka	A1	time	clock, watch; an instrument used to measure or keep track of time		SweLLex A1; Kelly A1
+helg	A1	time	holiday		Kelly A1; SweLLex A2
+semester	A2	time	a holiday/vacation, especially from work		Kelly A2; SweLLex B1
+födelsedag	A2	time	a birthday		SweLLex A2; Kelly B1
+måndag	A1	time	Monday		SweLLex A1; Kelly A1
+tisdag	A1	time	Tuesday		SweLLex A1; Kelly A1
+onsdag	A1	time	Wednesday		Kelly A1; SweLLex A2
+torsdag	A1	time	Thursday		Kelly A1; SweLLex A2
+fredag	A1	time	Friday		Kelly A1; SweLLex A2
+lördag	A1	time	Saturday		SweLLex A1; Kelly A1
+söndag	A1	time	Sunday		SweLLex A1; Kelly A1
+januari	A1	time	January		Kelly A1; SweLLex B1
+februari	A1	time	February		Kelly A1
+mars	A1	time	March		Kelly A1
+april	A1	time	April		Kelly A1; SweLLex B1
+maj	A1	time	May		Kelly A1
+juni	A1	time	June		Kelly A1; SweLLex A2
+juli	A1	time	July		Kelly A1; SweLLex A2
+augusti	A1	time	August		Kelly A1; SweLLex A2
+september	A1	time	September		Kelly A1
+oktober	A1	time	October		Kelly A1
+november	A1	time	November		Kelly A1; SweLLex A2
+december	A1	time	December		Kelly A1; SweLLex A2
+vår	A1	time	our; belonging to us		Kelly A1; SweLLex A2
+sommar	A1	time	summer		SweLLex A1; Kelly A1
+höst	A1	time	autumn		SweLLex A1; Kelly A1
+vinter	A2	time	winter		SweLLex A2; Kelly A2
+väder	A1	weather	weather		SweLLex A1; Kelly A2
+sol	A1	weather	sun		Kelly A1; SweLLex A2
+regn	A2	weather	rain		SweLLex A2; Kelly A2
+snö	A2	weather	snow; frozen, crystalline water falling as precipitation		SweLLex A2; Kelly A2
+vind	A2	weather	bent, twisted, warped		Kelly A2; SweLLex B1
+moln	A2	weather	a cloud		theme (Kelly B1)
+grad	A1	weather	degree		Kelly A1; SweLLex B1
+regna	A2	weather	to rain		SweLLex A2; Kelly B1
+snöa	A2	weather	to snow; said about weather when snow is falling		SweLLex A2; Kelly C1
+blåsa	A2	weather	a bleb, a bubble	pos	SweLLex A2; Kelly A2
+paraply	A2	weather	an umbrella		theme (Kelly C2)
+mat	A1	food	food		SweLLex A1; Kelly A1
+frukost	A1	food	breakfast		SweLLex A1; Kelly A2
+lunch	A1	food	lunch, a meal eaten around noon		SweLLex A1; Kelly A2
+middag	A2	food	midday, noon		SweLLex A2; Kelly A2
+kaffe	A1	food	coffee		SweLLex A1; Kelly A2
+te	A1	food	tea		SweLLex A1; Kelly A1
+mjölk	A1	food	milk		SweLLex A1; Kelly B1
+vatten	A1	food	water		Kelly A1; SweLLex A2
+juice	A2	food	juice		SweLLex A2; Kelly C2
+bröd	A2	food	bread		SweLLex A2; Kelly A2
+smör	A1	food	butter		theme (Kelly B2)
+ost	A1	food	cheese		Kelly A1; SweLLex A2
+skinka	A2	food	ham		SweLLex A2; Kelly C1
+ägg	A1	food	an egg		Kelly A1
+fisk	A2	food	a fish		SweLLex A2; Kelly A2
+kött	A2	food	meat, flesh		Kelly A2; SweLLex B1
+kyckling	A1	food	a chick		theme (SweLLex B1; Kelly B2)
+korv	A1	food	a sausage		theme (Kelly B2)
+potatis	A2	food	a potato		SweLLex A2; Kelly B1
+ris	A1	food	small shrubs, such as blueberry and lingonberry; bush, scrub, undergrowth, brushwood	long	SweLLex A1; Kelly A1
+pasta	A1	food	pasta		theme (Kelly B1)
+soppa	A1	food	soup		theme (Kelly C1)
+sallad	A2	food	salad		SweLLex A2; Kelly C1
+grönsak	A2	food	a vegetable		SweLLex A2; Kelly B2
+frukt	A2	food	fruit		SweLLex A2; Kelly A2
+äpple	A1	food	an apple		theme (SweLLex B1; Kelly B2)
+banan	A1	food	a banana		theme (Kelly C1)
+apelsin	A1	food	orange		theme (SweLLex B1; Kelly C2)
+tomat	A1	food	tomato		theme (Kelly C1)
+gurka	A2	food	cucumber		theme (Kelly C2)
+lök	A2	food	onion		theme (Kelly C1)
+morot	A2	food	carrot		SweLLex A2; Kelly C1
+socker	A1	food	sugar; sucrose in the form of small crystals		theme (SweLLex B2; Kelly B1)
+salt	A1	food	salty		theme (Kelly B1)
+peppar	A2	food	pepper		theme (Kelly C1)
+kaka	A1	food	a cookie		theme (SweLLex B1; Kelly B1)
+tårta	A2	food	a cake, a torte, a layered cake		SweLLex A2; Kelly C1
+glass	A1	food	ice cream		theme (Kelly B2)
+choklad	A1	food	chocolate		theme (SweLLex B1; Kelly B2)
+godis	A2	food	candy, sweets		SweLLex A2; Kelly B1
+smörgås	A1	food	an sandwich		SweLLex A1; Kelly C2
+pizza	A2	food	pizza		SweLLex A2; Kelly B2
+öl	A1	food	a beer		SweLLex A1; Kelly A2
+vin	A1	food	wine		SweLLex A1; Kelly A2
+sylt	A2	food	jam		theme (Kelly C2)
+mjöl	A2	food	flour; ground or milled grain or cereal, in particular of wheat		theme (Kelly C1)
+kopp	A1	food	a cup		theme (SweLLex B2; Kelly B1)
+glas	A2	food	glass		SweLLex A2; Kelly A2
+tallrik	A1	food	a plate, a dish		theme (Kelly C1)
+kniv	A2	food	a knife		SweLLex A2; Kelly B1
+gaffel	A1	food	fork; a pronged tool		theme (Kelly C2)
+sked	A1	food	a spoon		theme (Kelly C2)
+flaska	A1	food	a bottle		theme (Kelly B1)
+äta	A1	food	to eat		SweLLex A1; Kelly A1
+dricka	A1	food	to drink		SweLLex A1; Kelly A1
+laga	A1	food	to repair		SweLLex A1; Kelly A2
+smaka	A2	food	to taste		Kelly A2; SweLLex B1
+hem	A1	home	home		SweLLex A1; Kelly A1
+hus	A1	home	a house		SweLLex A1; Kelly A1
+lägenhet	A2	home	apartment, flat		SweLLex A2; Kelly A2
+rum	A1	home	a room		SweLLex A1; Kelly A1
+kök	A1	home	a kitchen		SweLLex A1; Kelly A2
+badrum	A1	home	a bathroom		theme (SweLLex B1; Kelly B2)
+sovrum	A2	home	bedroom		SweLLex A2; Kelly B2
+vardagsrum	A2	home	living room		SweLLex A2; Kelly B2
+hall	A2	home	a small room just inside the front door of a residential building, where shoes and outerwear are put on or taken off…	long	SweLLex A2; Kelly B1
+toalett	A1	home	a toilet		theme (SweLLex B1; Kelly B1)
+dusch	A1	home	a shower		SweLLex A1; Kelly B2
+säng	A1	home	a bed		SweLLex A1; Kelly A2
+bord	A2	home	a table		SweLLex A2; Kelly A2
+stol	A1	home	a chair		SweLLex A1; Kelly A1
+soffa	A1	home	a couch, a sofa		theme (SweLLex B1; Kelly B1)
+lampa	A2	home	lamp		SweLLex A2; Kelly B1
+fönster	A2	home	a window		SweLLex A2; Kelly A2
+dörr	A1	home	a door		Kelly A1; SweLLex A2
+golv	A2	home	a floor		SweLLex A2; Kelly A2
+vägg	A2	home	a wall		Kelly A2; SweLLex B1
+tak	A2	home	a roof		Kelly A2
+trappa	A2	home	staircase, stairway, stairs, flight of stairs		theme (SweLLex B1; Kelly B1)
+nyckel	A2	home	a key		SweLLex A2; Kelly A2
+hyra	A2	home	a rent; what is paid in order to rent something	pos	Kelly A2; SweLLex B1
+granne	A2	home	a neighbour		Kelly A2; SweLLex C1
+balkong	A2	home	a balcony		theme (Kelly B2)
+trädgård	A2	home	a garden		Kelly A2; SweLLex C1
+skåp	A2	home	a cabinet, a cupboard, a locker		theme (Kelly B2)
+kylskåp	A2	home	a refrigerator		theme (Kelly C1)
+spis	A2	home	a stove, a cooker		theme (Kelly C1)
+tvättmaskin	A2	home	a washing machine		theme (Kelly C2)
+bo	A1	home	to live, to dwell, to reside		SweLLex A1; Kelly A1
+städa	A2	home	to clean, to tidy		SweLLex A2; Kelly B1
+tvätta	A2	home	to wash, to clean		SweLLex A2; Kelly B1
+duscha	A1	home	to shower; to clean oneself in a shower; take a shower / have a shower		SweLLex A1; Kelly C1
+familj	A1	family	family		SweLLex A1; Kelly A1
+mamma	A1	family	mom, mum, mother		SweLLex A1; Kelly A1
+pappa	A1	family	dad, father		SweLLex A1; Kelly A1
+förälder	A1	family	a parent		Kelly A1; SweLLex A2
+barn	A1	family	a child		SweLLex A1; Kelly A1
+son	A1	family	a son		Kelly A1; SweLLex A2
+dotter	A1	family	a daughter		Kelly A1; SweLLex A2
+bror	A1	family	a brother, a contracted form of broder		SweLLex A1; Kelly A2
+syster	A1	family	a sister		SweLLex A1; Kelly A2
+mormor	A2	family	a maternal grandmother		SweLLex A2; Kelly B1
+morfar	A2	family	a mother's father; a maternal grandfather		SweLLex A2; Kelly B2
+farmor	A1	family	a paternal grandmother		theme (SweLLex B1; Kelly B1)
+farfar	A2	family	a father's father; a paternal grandfather		SweLLex A2; Kelly B2
+kusin	A2	family	a cousin		SweLLex A2; Kelly B1
+man	A1	family	man		SweLLex A1; Kelly A1
+fru	A1	family	wife		Kelly A1; SweLLex B1
+sambo	A1	family	partner with whom one lives, usually not in a common law marriage relationship; cohabitant	long	theme (SweLLex B1; Kelly B1)
+pojkvän	A1	family	a boyfriend		theme (SweLLex B1; Kelly B2)
+flickvän	A1	family	a girlfriend		theme (SweLLex B1; Kelly B2)
+vän	A1	family	fair, beautiful		Kelly A1; SweLLex A2
+kompis	A1	family	pal, friend, mate, buddy		SweLLex A1; Kelly A2
+bebis	A2	family	a baby		SweLLex A2; Kelly C1
+kropp	A1	body and health	a body		Kelly A1; SweLLex A2
+huvud	A1	body and health	head		Kelly A1; SweLLex A2
+hår	A2	body and health	hair		SweLLex A2; Kelly A2
+öga	A1	body and health	eye		Kelly A1; SweLLex A2
+öra	A2	body and health	ear; the part of the body used to hear		Kelly A2; SweLLex B2
+näsa	A2	body and health	nose of a human or other primate		SweLLex A2; Kelly B1
+mun	A1	body and health	a mouth		Kelly A1; SweLLex B1
+tand	A1	body and health	a tooth		SweLLex A1; Kelly A2
+hals	A1	body and health	neck		theme (Kelly B1)
+arm	A2	body and health	arm; the body part		SweLLex A2; Kelly A2
+hand	A1	body and health	a hand		SweLLex A1; Kelly A1
+finger	A2	body and health	finger		Kelly A2
+ben	A2	body and health	leg		Kelly A2
+fot	A1	body and health	a foot		Kelly A1; SweLLex A2
+mage	A2	body and health	stomach		SweLLex A2; Kelly A2
+rygg	A2	body and health	back; the rear of the body; especially the part between the neck and the end of the spine	long	Kelly A2; SweLLex B2
+hjärta	A1	body and health	heart		Kelly A1; SweLLex A2
+sjuk	A1	body and health	sick, ill		Kelly A1; SweLLex A2
+frisk	A2	body and health	healthy; not sick		SweLLex A2; Kelly A2
+ont	A2	body and health	pain		SweLLex A2; Kelly A2
+feber	A2	body and health	fever		theme (Kelly B2)
+läkare	A1	body and health	doctor, physician		SweLLex A1; Kelly A1
+sjukhus	A1	body and health	a hospital		SweLLex A1; Kelly A2
+apotek	A1	body and health	pharmacy		theme (Kelly B2)
+medicin	A2	body and health	medicine		SweLLex A2; Kelly A2
+tandläkare	A2	body and health	a dentist		theme (Kelly B2)
+förkyld	A2	body and health	having a cold		theme (in neither list)
+vila	A2	body and health	rest; relief from work, activity or exertion	pos	SweLLex A2; Kelly A2
+kläder	A1	clothes	clothes, garments, items of clothing		Kelly A1; SweLLex A2
+jacka	A2	clothes	a jacket, a doublet, a jerkin		SweLLex A2; Kelly B2
+tröja	A2	clothes	an upper-body garment, excluding outerwear like jackets, especially one worn for warmth and usually not for example a…	long	SweLLex A2; Kelly B1
+byxa	A2	clothes	pants, trousers		SweLLex A2; Kelly B2
+skjorta	A1	clothes	a shirt		theme (Kelly B2)
+klänning	A1	clothes	a dress		theme (Kelly B1)
+kjol	A2	clothes	a skirt		theme (Kelly C1)
+sko	A2	clothes	a shoe		SweLLex A2; Kelly A2
+strumpa	A2	clothes	a sock		theme (Kelly C1)
+mössa	A2	clothes	a soft cap designed to provide warmth in cold weather; a hat, a cap, a knit cap, a beanie, a toque, etc.	long	theme (SweLLex B1; Kelly B2)
+vante	A2	clothes	a garment worn on the hands for warmth		theme (in neither list)
+halsduk	A2	clothes	scarf		theme (in neither list)
+stad	A1	town and travel	a city, a town		Kelly A1; SweLLex A2
+by	A1	town and travel	hamlet		Kelly A1; SweLLex B1
+gata	A1	town and travel	a street		Kelly A1; SweLLex A2
+väg	A1	town and travel	a road		Kelly A1; SweLLex A2
+affär	A2	town and travel	a shop, a store		SweLLex A2; Kelly A2
+butik	A2	town and travel	a small shop, typically larger than a kiosk but smaller than an affär, but need not restrict itself to foodstuffs	long	Kelly A2; SweLLex B1
+kafé	A1	town and travel	a café, a coffee shop		theme (SweLLex B1; Kelly C1)
+restaurang	A2	town and travel	a restaurant		SweLLex A2; Kelly A2
+bank	A1	town and travel	a bank		Kelly A1
+skola	A1	town and travel	shall, will, be going to expresses intended future; used for plans, promises and decisions [with infinitive].	pos,long	SweLLex A1; Kelly A1
+bibliotek	A2	town and travel	library		Kelly A2; SweLLex B1
+park	A2	town and travel	a park		SweLLex A2; Kelly A2
+torg	A2	town and travel	city square, market, plaza		SweLLex A2; Kelly A2
+station	A1	town and travel	station		theme (Kelly B1)
+buss	A1	town and travel	a bus, a vehicle to transport people		SweLLex A1; Kelly A2
+tåg	A2	town and travel	a train		SweLLex A2; Kelly A2
+bil	A1	town and travel	a car		Kelly A1; SweLLex A2
+cykel	A1	town and travel	a bicycle, a bike		SweLLex A1; Kelly A2
+båt	A1	town and travel	a boat		SweLLex A1; Kelly A1
+flygplan	A2	town and travel	airplane, aeroplane		SweLLex A2; Kelly A2
+biljett	A2	town and travel	ticket; an entitling pass		SweLLex A2; Kelly B1
+hållplats	A2	town and travel	a stop, a station		SweLLex A2; Kelly C2
+tunnelbana	A2	town and travel	subway; underground railway		theme (SweLLex C1; Kelly B1)
+taxi	A1	town and travel	taxi		theme (Kelly B1)
+resa	A1	town and travel	an instance of traveling, "a travel"; a trip, a journey, a voyage, travels, etc.		SweLLex A1; Kelly A1
+åka	A1	town and travel	to go by using something more or other than the human or animal body, for example a vehicle, skis, or skates; to go,…	long	SweLLex A1; Kelly A1
+cykla	A2	town and travel	to cycle, to ride a bike		SweLLex A2; Kelly B1
+köra	A1	town and travel	to drive		SweLLex A1; Kelly A1
+jobb	A1	work and school	job; a task		Kelly A1; SweLLex A2
+arbete	A1	work and school	work, job		Kelly A1; SweLLex A2
+kontor	A2	work and school	office; building or room		Kelly A2; SweLLex B1
+chef	A1	work and school	A boss, manager; person in charge, person who directly oversees the work being done	long	Kelly A1; SweLLex A2
+kollega	A2	work and school	colleague		Kelly A2; SweLLex B2
+lärare	A1	work and school	a teacher		SweLLex A1; Kelly A1
+elev	A1	work and school	a student, a pupil		SweLLex A1; Kelly A1
+student	A1	work and school	a student		Kelly A1; SweLLex B1
+kurs	A2	work and school	course, class		Kelly A2; SweLLex B1
+lektion	A1	work and school	lesson		SweLLex A1; Kelly B1
+läxa	A2	work and school	homework		SweLLex A2; Kelly B2
+bok	A1	work and school	book		SweLLex A1; Kelly A1
+penna	A1	work and school	a contour feather, a penna		SweLLex A1; Kelly B2
+papper	A1	work and school	paper		SweLLex A1; Kelly A2
+dator	A1	work and school	a computer		SweLLex A1; Kelly A1
+telefon	A1	work and school	a phone, a telephone		SweLLex A1; Kelly A2
+mobil	A2	work and school	mobile; capable of being moved		SweLLex A2; Kelly B1
+pengar	A1	work and school	money		theme (in neither list)
+krona	A1	work and school	a crown		Kelly A1; SweLLex C1
+kort	A1	work and school	short		Kelly A1; SweLLex A2
+arbeta	A1	work and school	to work, to be employed to do		SweLLex A1; Kelly A1
+jobba	A1	work and school	to work		SweLLex A1; Kelly A1
+studera	A1	work and school	to study		SweLLex A1; Kelly A1
+läsa	A1	work and school	to read		SweLLex A1; Kelly A1
+skriva	A1	work and school	to write, to type, to copy; to put letters and digits on a surface, using a pen or typewriter	long	SweLLex A1; Kelly A1
+räkna	A1	work and school	to count		Kelly A1; SweLLex B1
+vara	A1	common verbs	to be		SweLLex A1; Kelly A1
+ha	A1	common verbs	To have; to possess, or to have as a property; to come into possession of something concrete or abstract.	long	SweLLex A1; Kelly A1
+göra	A1	common verbs	work, task	pos	SweLLex A1; Kelly A1
+gå	A1	common verbs	to walk		SweLLex A1; Kelly A1
+komma	A1	common verbs	to come		SweLLex A1; Kelly A1
+se	A1	common verbs	to see		SweLLex A1; Kelly A1
+säga	A1	common verbs	to say		SweLLex A1; Kelly A1
+veta	A1	common verbs	to know; to be certain about, to have knowledge or information about		Kelly A1; SweLLex A2
+få	A1	common verbs	few	pos	SweLLex A1; Kelly A1
+ta	A1	common verbs	take; to grab and move to oneself	pos	SweLLex A1; Kelly A1
+ge	A1	common verbs	to give		SweLLex A1; Kelly A1
+vilja	A1	common verbs	will; a person’s intent, volition, decision.	pos	SweLLex A1; Kelly A1
+kunna	A1	common verbs	"to can", to be able to	pos	SweLLex A1; Kelly A1
+ska	A1	common verbs	ska; a style of dance music		theme (in neither list)
+måste	A1	common verbs	must, have to	pos	SweLLex A1; Kelly A1
+heta	A1	common verbs	to be called; to have as one's name, to hight		SweLLex A1; Kelly A1
+sova	A1	common verbs	to sleep		SweLLex A1; Kelly A1
+vakna	A1	common verbs	to wake up		SweLLex A1; Kelly A2
+prata	A1	common verbs	to talk, to speak		SweLLex A1; Kelly A1
+tala	A1	common verbs	to speak, to talk		SweLLex A1; Kelly A1
+lyssna	A1	common verbs	to listen		SweLLex A1; Kelly A1
+höra	A1	common verbs	to hear		Kelly A1; SweLLex A2
+titta	A1	common verbs	to look; keep one's eyes open as to be able to see		SweLLex A1; Kelly A1
+förstå	A1	common verbs	to understand		SweLLex A1; Kelly A1
+fråga	A1	common verbs	a question		SweLLex A1; Kelly A1
+svara	A1	common verbs	to answer, to reply, to respond		Kelly A1; SweLLex B1
+köpa	A1	common verbs	to buy, to purchase		Kelly A1; SweLLex A2
+betala	A1	common verbs	to pay; to give money in exchange for goods or services		Kelly A1; SweLLex A2
+kosta	A1	common verbs	to cost		Kelly A1; SweLLex B1
+öppna	A1	common verbs	to open		Kelly A1; SweLLex B1
+stänga	A1	common verbs	to close, to shut		Kelly A1; SweLLex A2
+börja	A1	common verbs	to begin; to start		Kelly A1; SweLLex A2
+sluta	A1	common verbs	to stop, to end		SweLLex A1; Kelly A1
+springa	A1	common verbs	to run		SweLLex A1; Kelly A1
+spela	A1	common verbs	to play; a game, a tune, a melody, an instrument or a role		SweLLex A1; Kelly A1
+leka	A2	common verbs	to play		SweLLex A2; Kelly A2
+träffa	A1	common verbs	to hit a target		SweLLex A1; Kelly A1
+ringa	A1	common verbs	small, little	pos	SweLLex A1; Kelly A1
+hjälpa	A1	common verbs	to help; give aid or assistance to		SweLLex A1; Kelly A1
+behöva	A1	common verbs	to need		Kelly A1; SweLLex A2
+tycka	A1	common verbs	to be of the opinion, to think		SweLLex A1; Kelly A1
+gilla	A1	common verbs	to like		SweLLex A1; Kelly A1
+älska	A1	common verbs	to love		Kelly A1; SweLLex A2
+tänka	A1	common verbs	to think		SweLLex A1; Kelly A1
+tro	A1	common verbs	belief	pos	Kelly A1; SweLLex A2
+bära	A1	common verbs	to carry; to lift and transport anywhere else		Kelly A1; SweLLex A2
+sitta	A1	common verbs	to sit		SweLLex A1; Kelly A1
+stå	A1	common verbs	stand; be in an upright position	pos	SweLLex A1; Kelly A1
+ligga	A1	common verbs	to lie; be in a horizontal position		SweLLex A1; Kelly A1
+handla	A1	common verbs	to shop, buy		Kelly A1; SweLLex A2
+vänta	A1	common verbs	to wait		SweLLex A1; Kelly A1
+bli	A1	common verbs	to become		SweLLex A1; Kelly A1
+hitta	A1	common verbs	to find		SweLLex A1; Kelly A1
+glömma	A1	common verbs	to forget		Kelly A1; SweLLex A2
+lära	A1	common verbs	teachings	pos	Kelly A1; SweLLex A2
+simma	A1	common verbs	to swim		SweLLex A1; Kelly B1
+dansa	A1	common verbs	to dance		SweLLex A1; Kelly A2
+sjunga	A2	common verbs	to sing		SweLLex A2; Kelly A2
+promenera	A1	common verbs	to walk, to go for a walk, to promenade		SweLLex A1; Kelly B2
+stor	A1	common adjectives	big, large; of large size		SweLLex A1; Kelly A1
+liten	A1	common adjectives	small, little; of small size		SweLLex A1; Kelly A1
+ny	A1	common adjectives	new		Kelly A1; SweLLex A2
+gammal	A1	common adjectives	old		Kelly A1; SweLLex A2
+ung	A1	common adjectives	young		Kelly A1; SweLLex A2
+bra	A1	common adjectives	good		SweLLex A1; Kelly A1
+dålig	A1	common adjectives	bad		SweLLex A1; Kelly A1
+god	A1	common adjectives	good, morally commendable		Kelly A1; SweLLex A2
+fin	A1	common adjectives	nice to look at or listen to or the like, nice, pretty		SweLLex A1; Kelly A1
+vacker	A1	common adjectives	beautiful		Kelly A1; SweLLex A2
+ful	A2	common adjectives	ugly		SweLLex A2; Kelly A2
+glad	A1	common adjectives	happy, glad		Kelly A1; SweLLex A2
+ledsen	A2	common adjectives	sad		SweLLex A2; Kelly B1
+trött	A1	common adjectives	tired		SweLLex A1; Kelly A1
+hungrig	A1	common adjectives	hungry		SweLLex A1; Kelly B1
+törstig	A2	common adjectives	thirsty		theme (in neither list)
+lätt	A1	common adjectives	light; of low weight		Kelly A1; SweLLex A2
+svår	A1	common adjectives	difficult, hard		SweLLex A1; Kelly A1
+dyr	A1	common adjectives	expensive		Kelly A1; SweLLex A2
+billig	A1	common adjectives	cheap; of low price, of little worth		Kelly A1; SweLLex B1
+varm	A1	common adjectives	warm, hot		Kelly A1; SweLLex A2
+kall	A1	common adjectives	cold; having a low temperature.		Kelly A1; SweLLex A2
+lång	A1	common adjectives	long		Kelly A1; SweLLex A2
+hög	A1	common adjectives	high; tall; reaching a great distance from the ground or being found high above it	long	Kelly A1; SweLLex B1
+låg	A1	common adjectives	low, short; having a small height		Kelly A1; SweLLex B2
+snabb	A1	common adjectives	fast, quick		SweLLex A1; Kelly A1
+långsam	A1	common adjectives	slow		theme (SweLLex B1; Kelly B1)
+tidig	A1	common adjectives	early		Kelly A1; SweLLex A2
+sen	A1	common adjectives	late		SweLLex A1; Kelly A1
+ren	A1	common adjectives	reindeer		Kelly A1; SweLLex B1
+smutsig	A2	common adjectives	dirty		SweLLex A2; Kelly B1
+öppen	A1	common adjectives	open		Kelly A1; SweLLex A2
+stängd	A2	common adjectives	closed		theme (Kelly B1)
+trevlig	A1	common adjectives	nice and pleasant towards others, personable		Kelly A1; SweLLex A2
+rolig	A1	common adjectives	funny, fun		SweLLex A1; Kelly A1
+tråkig	A2	common adjectives	unpleasant, unfortunate		SweLLex A2; Kelly A2
+viktig	A1	common adjectives	important		Kelly A1; SweLLex A2
+färdig	A2	common adjectives	finished		Kelly A2; SweLLex B2
+ledig	A2	common adjectives	free, available, not occupied		SweLLex A2; Kelly A2
+färg	A1	colours	colour; the spectral composition of visible light		Kelly A1; SweLLex A2
+röd	A1	colours	red		Kelly A1; SweLLex A2
+blå	A2	colours	blue		SweLLex A2; Kelly A2
+grön	A1	colours	green		Kelly A1; SweLLex A2
+gul	A2	colours	yellow		Kelly A2; SweLLex B1
+svart	A1	colours	black		Kelly A1; SweLLex A2
+vit	A1	colours	white		Kelly A1; SweLLex A2
+grå	A1	colours	grey		theme (Kelly B1)
+brun	A2	colours	brown		SweLLex A2; Kelly B1
+rosa	A1	colours	pink		theme (SweLLex B1; Kelly B1)

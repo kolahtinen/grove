@@ -25,3 +25,7 @@ Asked in Claude Code, one at a time.
 - Offer a new text: as B-03, pick from the common library or add one
 
 **Answer:** Offer a new text. Note: "fill time with a mix." Read as: a session that would run short offers a new text (common library or Add a text), and fills its time with a mix of early reviews, re-reading and listening again rather than one kind only.
+
+## Applied
+
+2026-10-29, on branch `g09-sessions`: 1 → G-09 FR-913 (light main buttons flat `#2F5A40`) and G-01 FR-029; 2 → G-02 FR-223 (all tactics always available, "Recommended" label moves after failures with a line saying so; the offer withdrawn) and G-09 FR-919; 3 → G-09 FR-905 (a plan that would be short offers a new text or Fill the time; the fill mixes practice reviews, re-reading and listening again), FR-920, SC-001.

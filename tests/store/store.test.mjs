@@ -378,3 +378,23 @@ test('FR-418 RQ-415 RQ-412 RQ-411: migration 013 turns every To read mark into T
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-914 RQ-155: migration 014 keeps every row and adds practice_sessions with one going session per account', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 13 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    db.prepare("INSERT INTO words (id, account_id, lemma, kind, state, added_at) VALUES (5, 1, 'kopp', 'word', 'leaf', 1)").run();
+    migrate(db);
+    assert.equal(db.prepare('SELECT lemma FROM words WHERE id = 5').get().lemma, 'kopp');
+    const add = db.prepare("INSERT INTO practice_sessions (account_id, kind, minutes, plan, status, started_at) VALUES (1, 'time', 10, '[]', ?, 1)");
+    add.run('going');
+    assert.throws(() => add.run('going'), 'a second going session');
+    add.run('finished');
+    assert.throws(() => db.prepare("INSERT INTO practice_sessions (account_id, kind, minutes, plan, status, started_at) VALUES (1, 'time', 61, '[]', 'finished', 1)").run());
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
