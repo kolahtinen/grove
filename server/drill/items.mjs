@@ -38,8 +38,9 @@ export function createItems({ db, now = () => Date.now() }) {
     // is gone for Swedish (addendum 003, RQ-415), so it is never set.
     setMarks(item, { remember }) {
       if (remember && !item.drilled) {
-        db.prepare("UPDATE words SET to_read = 0, to_remember = 1, drilled = 1, state = 'leaf', gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
-          .run(START_GAP, now(), item.id);
+        // G-09 FR-925: the first time a leaf is drilled is when it was picked up.
+        db.prepare("UPDATE words SET to_read = 0, to_remember = 1, drilled = 1, state = 'leaf', gap_days = ?, last_review_at = ?, fallen_at = NULL, picked_at = COALESCE(picked_at, ?) WHERE id = ?")
+          .run(START_GAP, now(), now(), item.id);
       } else if (remember) {
         db.prepare('UPDATE words SET to_read = 0, to_remember = 1 WHERE id = ?').run(item.id);
       } else {
@@ -59,8 +60,8 @@ export function createItems({ db, now = () => Date.now() }) {
     // Picked up: a drilled leaf To remember, due now (FR-411).
     pickUp(item) {
       if (item.state !== 'ground') throw new HttpError(409, 'not_ground', 'Only words in your ground can be picked up.');
-      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = 0, to_remember = 1, gap_days = ?, last_review_at = ?, fallen_at = NULL WHERE id = ?")
-        .run(START_GAP, now() - START_GAP * 24 * 60 * 60 * 1000, item.id);
+      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = 0, to_remember = 1, gap_days = ?, last_review_at = ?, fallen_at = NULL, picked_at = COALESCE(picked_at, ?) WHERE id = ?")
+        .run(START_GAP, now() - START_GAP * 24 * 60 * 60 * 1000, now(), item.id);
     },
   };
 }

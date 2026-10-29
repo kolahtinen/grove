@@ -49,11 +49,13 @@ export function applyDemo({ db, accountId, now = () => Date.now() }) {
     }
     for (const d of HISTORY.drilled) {
       words.addLeaf({ accountId, lemma: d.lemma, kind: d.kind });
-      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = ?, to_remember = ?, gap_days = ?, last_review_at = ? WHERE account_id = ? AND lemma = ? AND kind = ?")
-        .run(d.read, d.remember, d.gap, t - d.ago, accountId, d.lemma, d.kind);
+      // picked_at: when it was first drilled, a gap before its last review (G-09 FR-925).
+      db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = ?, to_remember = ?, gap_days = ?, last_review_at = ?, picked_at = ? WHERE account_id = ? AND lemma = ? AND kind = ?")
+        .run(d.read, d.remember, d.gap, t - d.ago, t - d.ago - d.gap * DAY, accountId, d.lemma, d.kind);
     }
     for (const m of HISTORY.minutes) {
-      db.prepare('INSERT OR REPLACE INTO input_days (account_id, day, seconds) VALUES (?, ?, ?)').run(accountId, iso(t - m.ago * DAY), m.seconds);
+      // The demo's minutes were spent on its texts: reading (G-09 FR-925).
+      db.prepare('INSERT OR REPLACE INTO input_days (account_id, day, seconds, read_seconds) VALUES (?, ?, ?, ?)').run(accountId, iso(t - m.ago * DAY), m.seconds, m.seconds);
     }
   });
 }

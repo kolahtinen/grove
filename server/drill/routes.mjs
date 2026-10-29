@@ -72,7 +72,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
   router.add({ method: 'GET', path: '/api/progress', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, progress.progress(ctx.account.id)) });
   router.add({
     method: 'POST', path: '/api/input', access: 'agreed',
-    schema: { seconds: { type: 'integer', min: 1, max: 60 }, day: { type: 'string', min: 10, max: 10 } },
+    schema: { seconds: { type: 'integer', min: 1, max: 60 }, day: { type: 'string', min: 10, max: 10 }, kind: { type: 'enum', values: ['reading', 'listening', 'other'], optional: true } },
     handler: (ctx) => sendJson(ctx.res, 200, progress.addInput(ctx.account.id, ctx.body)),
   });
 }

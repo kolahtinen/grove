@@ -55,7 +55,8 @@ test('FR-705 FR-704 RQ-363 RQ-362: the reviewer skips the starting check, has no
   // The summary is in the setup since G-02 FR-203 changed (2026-10-26).
   assert.match(p.steps[0], /"En kall morgon": understood most/);
   assert.match(p.steps[0], /"Lördag på torget": understood a little/);
-  const days = (await c.get('/api/progress')).body.days.filter((d) => d.minutes > 0);
+  // G-09 FR-924 (B-27): Progress's last 7 days, the demo's minutes counted as reading (FR-925).
+  const days = (await c.get('/api/progress')).body.week.filter((d) => d.read > 0);
   assert.equal(days.length, 3);
 });
 
