@@ -13,9 +13,6 @@
         "Dalarna"
       ],
       "above_level": [
-        "mormor",
-        "soppa",
-        "bakad",
         "älg"
       ],
       "lines": [
@@ -213,12 +210,8 @@
         "Leo"
       ],
       "above_level": [
-        "farmor",
         "träffas",
-        "duka",
-        "vas",
-        "tårta",
-        "present"
+        "duka"
       ],
       "lines": [
         {
@@ -505,14 +498,7 @@
       ],
       "above_level": [
         "pannkaka",
-        "mjöl",
-        "mjölk",
-        "salt",
-        "panna",
-        "spis",
-        "sylt",
-        "socker",
-        "mormor"
+        "panna"
       ],
       "lines": [
         {
@@ -603,9 +589,7 @@
       "names": [
         "Ahmed"
       ],
-      "above_level": [
-        "språkkafé"
-      ],
+      "above_level": [],
       "lines": [
         {
           "sv": "Ahmed går till biblioteket varje lördag.",
@@ -699,10 +683,7 @@
         "Vasamuseet"
       ],
       "above_level": [
-        "stan",
-        "kafé",
-        "promenera",
-        "tunnelbana"
+        "stan"
       ],
       "lines": [
         {
@@ -791,13 +772,10 @@
         "Ellas"
       ],
       "above_level": [
-        "regna",
         "blöt",
         "paus",
-        "tränare",
         "halvlek",
-        "sköt",
-        "smutsig"
+        "sköt"
       ],
       "lines": [
         {

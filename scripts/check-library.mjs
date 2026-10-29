@@ -1,12 +1,15 @@
 // Checks the library's texts (content/library/texts/<level>.json) with grove's own word counting
 // (server/words: the tokenizer, regular and irregular inflections, compounds, fixed phrases): for each
-// text, the words above its level (with the Kelly level they belong to), words in neither Kelly nor the
+// text, the words above its level (with the level they belong to), words in none of the lists nor the
 // word list, the word count and the longest sentence.
 //
-// Kelly's levels are frequency bands from web text, not textbook levels: everyday words a beginner
-// meets first (kaffe, kök, syster A2; mjölk B1; smörgås C2) sit above A1. So a word one band above the
-// text's level is a "stretch" (reported, not limited); words two or more bands above, or not in Kelly,
-// are "far" and limited per level. Each word counts once, whatever its forms.
+// A word's level comes from the core list (content/library/core-a1a2.tsv) first; otherwise it is the
+// lower of SweLLex's (content/library/vocab-graded) and Kelly's. SweLLex only counts essays learners
+// wrote, so a word they didn't write early isn't harder; hence the lower of the two, not SweLLex first.
+// Kelly's levels are frequency bands from web text, so a word one band above the text's level is still
+// a "stretch" (reported, not limited); words two or more bands above, or in no list, are "far" and
+// limited per level. Each word counts once, whatever its forms. CHECK.md also shows each text against
+// Kelly alone ("before"), as the check was until the core and graded lists came.
 //
 // A text fails when it is outside its level's limits, when a word above its level isn't listed in its
 // "above_level", or when its lines and questions don't pass G-02's answer format. Writes
@@ -51,30 +54,65 @@ function readForms() {
 
 const kelly = readKelly();
 const forms = readForms();
-// A counter per level: its ground is every Kelly word at that level or below.
-const counters = new Map();
-function counterFor(level, names) {
-  const at = LEVELS.indexOf(level);
-  const ground = new Set(kelly.filter((r) => LEVELS.indexOf(r.level) <= at && !r.lemma.includes(' ')).map((r) => r.lemma));
-  const phrases = kelly.filter((r) => r.lemma.includes(' ')).map((r) => ({ words: r.lemma.split(' '), lemma: r.lemma, known: LEVELS.indexOf(r.level) <= at }));
-  return createCounter({ ground, forms, phrases, names });
+
+function readTsv(file, levelCol) {
+  const out = new Map();
+  if (!existsSync(file)) return out;
+  for (const line of readFileSync(file, 'utf8').split('\n')) {
+    if (!line || line.startsWith('#') || line.startsWith('sv\t')) continue;
+    const f = line.split('\t');
+    if (!out.has(f[0])) out.set(f[0], f[levelCol]);
+  }
+  return out;
 }
-function levelCounter(level) {
-  if (!counters.has(level)) counters.set(level, counterFor(level, new Set()));
-  return counters.get(level);
+const lower = (a, b) => (!a ? b : !b ? a : LEVELS.indexOf(a) <= LEVELS.indexOf(b) ? a : b);
+
+// lemma → level for a mode: 'kelly' (Kelly alone) or 'graded' (core list, then the lower of SweLLex and Kelly).
+const LEVEL_MAPS = new Map();
+export function levelMap(mode) {
+  if (LEVEL_MAPS.has(mode)) return LEVEL_MAPS.get(mode);
+  const map = new Map();
+  for (const r of kelly) if (!map.has(r.lemma)) map.set(r.lemma, r.level);
+  if (mode === 'graded') {
+    for (const level of LEVELS) {
+      for (const [w, l] of readTsv(join(LIB, 'vocab-graded', `${level}.tsv`), 2)) map.set(w, lower(map.get(w), l));
+    }
+    for (const [w, l] of readTsv(join(LIB, 'core-a1a2.tsv'), 1)) map.set(w, l);
+  }
+  LEVEL_MAPS.set(mode, map);
+  return map;
 }
 
-// The lowest Kelly level at which a word counts as known, or null.
-function kellyLevel(word) {
-  for (const level of LEVELS) if (levelCounter(level).isKnownWord(word)) return level;
+// A counter for a level and mode: its ground is every word at that level or below.
+const counters = new Map();
+function counterFor(level, names, mode) {
+  const at = LEVELS.indexOf(level);
+  const ground = new Set();
+  const phrases = [];
+  for (const [w, l] of levelMap(mode)) {
+    const known = LEVELS.indexOf(l) <= at;
+    if (w.includes(' ')) phrases.push({ words: w.split(' '), lemma: w, known });
+    else if (known) ground.add(w);
+  }
+  return createCounter({ ground, forms, phrases, names });
+}
+function levelCounter(level, mode) {
+  const key = `${mode} ${level}`;
+  if (!counters.has(key)) counters.set(key, counterFor(level, new Set(), mode));
+  return counters.get(key);
+}
+
+// The lowest level at which a word counts as known, or null.
+function wordLevel(word, mode) {
+  for (const level of LEVELS) if (levelCounter(level, mode).isKnownWord(word)) return level;
   return null;
 }
 const inLexicon = (word) => !!meaning(word) || !!regularLemma(word, (l) => !!meaning(l));
 
-export function checkText(text, level) {
+export function checkText(text, level, mode = 'graded') {
   const limits = LIMITS[level];
   const names = new Set((text.names || []).map((n) => n.toLowerCase()));
-  const counter = counterFor(level, names);
+  const counter = counterFor(level, names, mode);
   const problems = [];
   let words = 0;
   let longest = 0;
@@ -87,7 +125,7 @@ export function checkText(text, level) {
       words += counted.total;
       for (const item of counted.items) {
         const key = item.kind === 'phrase' ? item.text : (meaning(item.text)?.lemma ?? item.text);
-        if (!above.has(key)) above.set(key, { forms: new Set(), level: item.kind === 'phrase' ? kellyLevelOfPhrase(item.text) : kellyLevel(item.text) });
+        if (!above.has(key)) above.set(key, { forms: new Set(), level: item.kind === 'phrase' ? (levelMap(mode).get(item.text) ?? null) : wordLevel(item.text, mode) });
         above.get(key).forms.add(item.text);
       }
     }
@@ -107,12 +145,8 @@ export function checkText(text, level) {
   return { id, title: text.title, kind: text.kind, topic, form, words, longest, above, far, unknown, problems };
 }
 
-function kellyLevelOfPhrase(phrase) {
-  return kelly.find((r) => r.lemma === phrase)?.level ?? null;
-}
-
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const report = ['# Library check', '', 'Written by `node scripts/check-library.mjs`: each text counted with grove\'s own word counting against the Kelly words at its level and below (inflections, compounds and Kelly\'s fixed phrases included). "Above" lists the words above the text\'s level with the Kelly level they first count at (— = not in Kelly; * = in neither Kelly nor the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.', ''];
+  const report = ['# Library check', '', 'Written by `node scripts/check-library.mjs`: each text counted with grove\'s own word counting against the words at its level and below: the core list (`core-a1a2.tsv`) first, otherwise the lower of SweLLex (`vocab-graded/`) and Kelly (inflections, compounds and fixed phrases included). "Above" lists the words above the text\'s level with the level they first count at (— = in no list; * = in no list and not in the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.', ''];
   let failed = 0;
   let total = 0;
   for (const level of LEVELS) {
@@ -126,14 +160,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     }
     const l = LIMITS[level];
     report.push(`## ${level} (${texts.length} texts; ${l.min}–${l.max} words, sentences ≤ ${l.sentence} words, ≤ ${l.far} far words)`, '');
-    report.push('| id | title | kind | words | longest | above | result |', '|---|---|---|---|---|---|---|');
+    report.push('| id | title | kind | words | longest | above | far: Kelly alone → now | result |', '|---|---|---|---|---|---|---|---|');
     for (const text of texts) {
       const r = checkText(text, level);
+      const before = checkText(text, level, 'kelly');
       total += 1;
       if (r.problems.length) failed += 1;
       const aboveList = [...r.above.entries()].map(([w, a]) => `${r.far.includes(w) ? `**${w}**` : w} (${a.level ?? '—'}${r.unknown.includes(w) ? '*' : ''})`).join(', ') || '—';
-      report.push(`| ${r.id} | ${r.title} | ${r.kind}${r.form === 'dialogue' ? ', dialogue' : ''} | ${r.words} | ${r.longest} | ${aboveList} | ${r.problems.length ? `**fails**: ${r.problems.join('; ')}` : 'passes'} |`);
-      console.log(`${level} ${r.id} ${r.words}w ${r.longest}max above=${r.above.size} far=${r.far.length} [${r.far.join(' ')}]${r.problems.length ? ` FAIL ${r.problems.join('; ')}` : ''}`);
+      report.push(`| ${r.id} | ${r.title} | ${r.kind}${r.form === 'dialogue' ? ', dialogue' : ''} | ${r.words} | ${r.longest} | ${aboveList} | ${before.far.length} → ${r.far.length}${before.far.length ? ` (${before.far.filter((w) => !r.far.includes(w)).join(', ') || 'none'} no longer far)` : ''} | ${r.problems.length ? `**fails**: ${r.problems.join('; ')}` : 'passes'} |`);
+      console.log(`${level} ${r.id} ${r.words}w ${r.longest}max above=${before.above.size}→${r.above.size} far=${before.far.length}→${r.far.length} [${r.far.join(' ')}]${r.problems.length ? ` FAIL ${r.problems.join('; ')}` : ''}`);
     }
     report.push('');
   }

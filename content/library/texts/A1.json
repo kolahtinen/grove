@@ -15,7 +15,6 @@
         "Måns"
       ],
       "above_level": [
-        "syster",
         "lat"
       ],
       "lines": [
@@ -112,16 +111,8 @@
         "Omar"
       ],
       "above_level": [
-        "vakna",
-        "dusch",
-        "frukost",
-        "kök",
         "bröd",
-        "kaffe",
-        "mjölk",
-        "telefon",
         "jacka",
-        "buss",
         "kontor",
         "stan"
       ],
@@ -215,10 +206,6 @@
         "Lisa"
       ],
       "above_level": [
-        "kopp",
-        "kaffe",
-        "mjölk",
-        "smörgås",
         "skinka"
       ],
       "lines": [
@@ -321,14 +308,10 @@
       ],
       "above_level": [
         "lägenhet",
-        "kök",
-        "våning",
         "vardagsrum",
-        "soffa",
         "bord",
         "lampa",
         "sovrum",
-        "säng",
         "fönster",
         "park",
         "hyra"
@@ -413,11 +396,8 @@
       "title": "I affären",
       "names": [],
       "above_level": [
-        "ursäkta",
-        "mjölk",
         "bröd",
         "kassa",
-        "äpple",
         "kilo",
         "påse"
       ],
@@ -612,8 +592,6 @@
         "Centralstationen"
       ],
       "above_level": [
-        "förlåt",
-        "buss",
         "biljett",
         "app",
         "okej"
@@ -710,7 +688,6 @@
       "above_level": [
         "kock",
         "restaurang",
-        "soppa",
         "fisk",
         "potatis",
         "gäst"
@@ -807,9 +784,7 @@
       "above_level": [
         "bio",
         "pizza",
-        "promenera",
-        "stan",
-        "buss"
+        "stan"
       ],
       "lines": [
         {
@@ -903,8 +878,8 @@
       ],
       "above_level": [
         "åh",
-        "hals",
         "feber",
+        "det gör inget",
         "vila",
         "krya"
       ],

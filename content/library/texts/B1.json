@@ -110,9 +110,6 @@
       "above_level": [
         "stång",
         "löv",
-        "groda",
-        "sill",
-        "krans",
         "kudde"
       ],
       "lines": [
@@ -301,7 +298,6 @@
         "Ivan"
       ],
       "above_level": [
-        "läxa",
         "läxhjälpen"
       ],
       "lines": [
@@ -394,11 +390,8 @@
       "above_level": [
         "femtiofem",
         "kvadratmeter",
-        "balkong",
-        "tvättstuga",
         "källare",
-        "så länge",
-        "busshållplats"
+        "så länge"
       ],
       "lines": [
         {
@@ -513,8 +506,7 @@
         "allemansrätt",
         "svamp",
         "paddla",
-        "kanot",
-        "skräp"
+        "kanot"
       ],
       "lines": [
         {
@@ -603,10 +595,7 @@
       "kind": "listening",
       "title": "Varför sover vi så dåligt?",
       "names": [],
-      "above_level": [
-        "slappna",
-        "sovrum"
-      ],
+      "above_level": [],
       "lines": [
         {
           "sv": "Många vuxna säger att de sover för lite.",
@@ -702,7 +691,6 @@
       ],
       "above_level": [
         "trettiotvå",
-        "körkort",
         "parkera",
         "uppkörningen",
         "skolzon"
@@ -797,16 +785,12 @@
         "Sverige"
       ],
       "above_level": [
-        "sopa",
         "diskbänk",
         "kärl",
         "biogas",
-        "plast",
         "metall",
         "burk",
-        "batteri",
-        "återvinningscentral",
-        "krånglig"
+        "återvinningscentral"
       ],
       "lines": [
         {
@@ -897,8 +881,7 @@
         "Visby"
       ],
       "above_level": [
-        "vandrarhem",
-        "färja"
+        "vandrarhem"
       ],
       "lines": [
         {
