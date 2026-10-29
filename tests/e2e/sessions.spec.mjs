@@ -86,3 +86,21 @@ test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under 
   const after = await page.evaluate(async () => (await (await fetch('/api/session')).json()).session);
   expect(after).toBeNull();
 });
+
+test('FR-909 FR-907 RQ-422: Texts lists the texts by topic, unread first, with Beta badges, and Start a session on a topic starts one', async ({ page }) => {
+  await signIn(page);
+  await addSample(page);
+  const topics = await page.evaluate(async () => (await (await fetch('/api/topics')).json()).topics);
+  const topic = topics.find((t) => t.topic && t.texts.some((x) => !x.read));
+  await page.goto('/texts');
+  const group = page.locator('#texts .topic-group', { has: page.getByRole('heading', { name: topic.label, exact: true }) });
+  await expect(group).toBeVisible();
+  await expect(group.locator('a').first()).toContainText(topic.texts.find((x) => !x.read).title);
+  const demo = page.locator('#texts a', { hasText: 'Brevet i väskan' });
+  await expect(demo).toBeVisible();
+  await expect(demo.locator('.beta')).toHaveCount(0);
+  await group.getByLabel(`Session length for ${topic.label}`).selectOption('5');
+  await group.getByRole('button', { name: `Start a session on ${topic.label}` }).click();
+  await page.waitForURL(/\/session$/);
+  await expect(page.locator('#session-line')).toContainText('5-minute session');
+});

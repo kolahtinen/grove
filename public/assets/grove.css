@@ -466,3 +466,44 @@ label.check { display: flex; gap: .5rem; align-items: center; margin-top: .6rem;
 .summary { list-style: none; padding: 0; margin: 0 0 .8rem; }
 .session-bar-link { display: block; margin-bottom: .6rem; }
 .button-link.main { display: block; text-align: center; padding: .7rem 1rem; border-radius: 14px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--onacc); text-decoration: none; font-weight: 600; }
+
+/* G-09 FR-902: the ☰ menu and the Help bubble. Tap targets at least 44 px (PD-10, provisional). */
+.account { position: relative; }
+button.menu-button { min-width: 44px; min-height: 44px; font-size: 1.15rem; line-height: 1; }
+.menu { position: absolute; right: 0; top: calc(100% + .4rem); z-index: 21; display: flex; flex-direction: column; min-width: 11rem; padding: .35rem; border-radius: 16px; border: 1px solid var(--line); background: var(--card2); box-shadow: var(--shadow); }
+.menu[hidden] { display: none; }
+.menu .menu-item { display: block; min-height: 44px; padding: .65rem .9rem; border: 0; border-radius: 12px; background: transparent; color: var(--ink); font: inherit; text-align: left; text-decoration: none; cursor: pointer; }
+.menu .menu-item:hover, .menu .menu-item:focus-visible { background: var(--soft); }
+.help-pop { position: fixed; z-index: 22; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, calc(100% - 2rem)); max-height: calc(100vh - 3rem); overflow-y: auto; margin: 0; background: var(--card2); }
+.help-pop > section { margin: 0 0 .6rem; box-shadow: none; }
+button.help-close { position: sticky; top: 0; float: right; min-width: 44px; min-height: 44px; z-index: 1; }
+.account:not([hidden]) + .help-link { display: none; }
+
+/* G-09 FR-901: Home's tiles, three per row from 360 px, square, icon only; the opened tile's panel spans
+   the grid below its row. With reduced motion the panel appears at once (PD-11, provisional). */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0 0 1rem; }
+@media (min-width: 520px) { .tiles { gap: .9rem; } }
+button.tile { aspect-ratio: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--accent); box-shadow: var(--shadow); }
+button.tile .icon { width: 42%; height: 42%; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+button.tile[aria-expanded="true"] { border-color: var(--accent); background: var(--soft); }
+button.tile.tile-is-resume { color: var(--onacc); background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+.tile-panel { grid-column: 1 / -1; margin: 0; animation: fade-in .2s ease; }
+.tile-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.tile-head h2 { margin: 0; outline: none; }
+button.tile-close { min-width: 44px; min-height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+button.tile-close .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.tile-way { display: flex; flex-direction: column; gap: .6rem; }
+.minute-choices, .skill-row { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.skill-name { flex: 1 0 100%; font-weight: 600; font-size: .9rem; }
+button.chip-choice { min-height: 44px; padding: .4rem .9rem; border-radius: 999px; }
+button.chip-choice[aria-checked="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+input.minutes-typed { width: 6.5rem; min-height: 44px; }
+button.mode-choice { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; }
+button.mode-choice .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.leaves-link { align-self: flex-start; }
+@media (prefers-reduced-motion: reduce) { .tile-panel { animation: none; } }
+
+/* G-09 FR-909: Texts by topic, each with Start a session. */
+.topic-group + .topic-group { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+.topic-group h3 { margin-bottom: .4rem; }
+.topic-start { margin-bottom: .4rem; }
