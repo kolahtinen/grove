@@ -545,3 +545,8 @@ button.wstep-head[aria-expanded="true"]::after { content: '−'; }
 .lexicon-item .lexicon-en { grid-column: 1; color: var(--muted); font-size: .88rem; }
 .lexicon-meta { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; gap: .4rem; }
 .level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); }
+
+/* G-06 FR-603 (addendum 005): the levels, each with its one-line description. */
+.level-list { display: flex; flex-direction: column; gap: .45rem; margin: .4rem 0 .8rem; }
+.level-list button { display: flex; gap: .6rem; align-items: baseline; text-align: left; min-height: 44px; }
+.level-list button span { font-weight: 400; font-size: .88rem; }

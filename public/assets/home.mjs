@@ -222,13 +222,6 @@ document.addEventListener('keydown', (event) => {
 
 await showAccount();
 await getMe();
-const sessionRes = await fetch('/api/session', { credentials: 'same-origin' });
-if (sessionRes.ok) going = (await sessionRes.json()).session;
-if (going && going.status !== 'going') going = null;
-const topicsRes = await fetch('/api/topics', { credentials: 'same-origin' });
-if (topicsRes.ok) unread = (await topicsRes.json()).topics.reduce((n, t) => n + t.texts.filter((x) => !x.read && x.ready).length, 0);
-renderTiles();
-
 // G-04 FR-416 and G-06 FR-605: the welcome card; a new account goes to the starting check once the
 // welcome is closed.
 async function loadStages() {
@@ -245,6 +238,13 @@ $('welcome-close').addEventListener('click', async () => {
   $('welcome').hidden = true;
   await loadStages();
 });
+
+const sessionRes = await fetch('/api/session', { credentials: 'same-origin' });
+if (sessionRes.ok) going = (await sessionRes.json()).session;
+if (going && going.status !== 'going') going = null;
+const topicsRes = await fetch('/api/topics', { credentials: 'same-origin' });
+if (topicsRes.ok) unread = (await topicsRes.json()).topics.reduce((n, t) => n + t.texts.filter((x) => !x.read && x.ready).length, 0);
+renderTiles();
 
 // G-08 FR-802: once after agreeing to the terms, the leaves-and-ground scene in a card at the top of
 // Home (kept until Home is reached, so a learner sent to the starting check first still sees it).

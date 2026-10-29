@@ -33,6 +33,8 @@ test('FR-605 FR-604 FR-606 RQ-248 RQ-114 RQ-252: a new account goes from the wel
     await expect(page).toHaveURL(/\/start$/);
   }
   await page.locator('#levels button[data-level="A2"]').click();
+  // G-06 FR-603 as amended (addendum 005): after picking, Check my level shows the sample.
+  await page.getByRole('button', { name: 'Check my level' }).click();
   await expect(page.locator('#sample li')).toHaveCount(30);
   await page.locator('#sample input').nth(0).check();
   await page.locator('#sample input').nth(1).check();
@@ -53,4 +55,19 @@ test('FR-606 FR-605 RQ-252 RQ-248: the reviewer goes to Home with no starting ch
   await expect(page).toHaveURL(/\/$/);
   await page.goto('/settings');
   await expect(page.locator('#restart')).toBeHidden();
+});
+
+test('FR-603 FR-605 RQ-433 RQ-113: a learner can pick a level and use it as it is; each level has a one-line description', async ({ page }) => {
+  await signIn(page, OWNER);
+  await page.waitForURL(/\/(start)?$/);
+  await page.goto('/start');
+  for (const level of ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']) {
+    await expect(page.locator(`#levels button[data-level="${level}"] span`)).not.toBeEmpty();
+  }
+  await page.locator('#levels button[data-level="B1"]').click();
+  await expect(page.getByRole('heading', { name: 'Level B1' })).toBeVisible();
+  await page.getByRole('button', { name: 'Use this level' }).click();
+  await page.waitForURL(/\/$/);
+  await page.goto('/progress');
+  await expect(page.locator('#progress-level')).toContainText('Your level: B1');
 });
