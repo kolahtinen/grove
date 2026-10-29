@@ -1,5 +1,6 @@
 // What a learner has to practise, for the planner (G-09 research R2, R4): drilled leaves with their
-// strength (G-04's schedule), the texts with kind, topic, word count, read or not, and, when asked, the
+// strength (G-04's schedule), the texts with kind, topic, word count, read or not, when created (the fill
+// bars, FR-920), and, when asked, the
 // share of known words now; reading and listening done in the last 7 days.
 import { strength, isDue, MASTER_GAP } from '../drill/schedule.mjs';
 import { tokenize } from '../words/tokens.mjs';
@@ -28,8 +29,8 @@ export function readInventory(db, accountId, { now = Date.now(), knownShares = f
     }
   }
   const places = new Map(db.prepare('SELECT text_id, COUNT(*) AS n FROM pattern_places WHERE account_id = ? GROUP BY text_id').all(accountId).map((r) => [r.text_id, r.n]));
-  const texts = db.prepare('SELECT id, kind, topic, own, read_at FROM texts WHERE account_id = ? AND ready = 1 ORDER BY id').all(accountId)
-    .map((t) => ({ id: t.id, kind: t.kind, topic: t.own ? '' : t.topic, read: !!t.read_at, readAt: t.read_at ?? null, words: words.get(t.id) ?? 0, patternPlaces: places.get(t.id) ?? 0 }));
+  const texts = db.prepare('SELECT id, kind, topic, own, read_at, created_at FROM texts WHERE account_id = ? AND ready = 1 ORDER BY id').all(accountId)
+    .map((t) => ({ id: t.id, kind: t.kind, topic: t.own ? '' : t.topic, read: !!t.read_at, readAt: t.read_at ?? null, createdAt: t.created_at, words: words.get(t.id) ?? 0, patternPlaces: places.get(t.id) ?? 0 }));
 
   if (knownShares) {
     // Counted now with G-02's counter (research R4): only unread texts are candidates.

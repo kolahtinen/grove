@@ -37,8 +37,9 @@ const BODIES = {
   '/api/leaf-delete': { lemma: 'zzz' },
   '/api/input': { seconds: 1, day: '2026-10-24' },
   '/api/start': { level: 'beginner', unknown: [] },
-  '/api/sessions': { kind: 'time', minutes: 5, voice: true },
+  '/api/sessions': { kind: 'time', tile: 'mix', skill: 'mix', minutes: 5, voice: true },
   '/api/session/next': { sessionId: 999999, index: 0 },
+  '/api/session/plan': { sessionId: 999999, fill: true },
   '/api/library/add': { id: 'Z9-99' },
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);

@@ -4,6 +4,7 @@ import { startTestGrove } from '../fakes/harness.mjs';
 import { applyDemo } from '../../server/demo/apply.mjs';
 import { readInventory } from '../../server/sessions/inventory.mjs';
 import { plan, fits } from '../../server/sessions/plan.mjs';
+import { durationsFor, textSeconds } from '../../server/sessions/durations.mjs';
 
 // A learner with the demo history (G-07): 4 texts, 2 unread; 6 drilled leaves.
 let t;
@@ -21,16 +22,20 @@ before(async () => {
 after(() => t.close());
 
 // Sessions here fill their time (FR-905: without `fill`, a plan that would run short is answered 409 first).
-const start = (body, client = c) => client.post('/api/sessions', { voice: true, fill: true, ...body });
+const start = (body, client = c) => client.post('/api/sessions', { kind: 'time', tile: 'mix', skill: 'mix', minutes: 10, voice: true, fill: true, ...body });
 
-test('FR-903 FR-904 RQ-421: Practise for X min takes 3–60 minutes and starts a session shown one exercise at a time with its label, place and minutes left', async () => {
-  for (const minutes of [2, 61]) assert.equal((await start({ kind: 'time', minutes })).status, 400, `${minutes} minutes`);
-  assert.equal((await start({ kind: 'time', minutes: 10, topic: 'x' })).status, 400, 'a field the kind doesn\'t take');
-  assert.equal((await start({ kind: 'time' })).status, 400, 'a field the kind needs');
-  const r = await start({ kind: 'time', minutes: 10 });
+test('FR-903 FR-904 RQ-440: a tile session takes a tile, a skill and 5, 10, 20 or 30 minutes, and is shown one exercise at a time with its label, place and minutes left', async () => {
+  for (const minutes of [3, 15, 60]) assert.equal((await start({ minutes })).status, 400, `${minutes} minutes`);
+  assert.equal((await start({ topic: 'x' })).status, 400, 'a field the kind doesn\'t take');
+  assert.equal((await start({ tile: undefined })).status, 400, 'a field the kind needs');
+  assert.equal((await start({ hardOnly: true })).status, 400, 'Harder questions only is Review\'s');
+  assert.equal((await start({ kind: 'topic', topic: 'x', tile: 'review' })).status, 400, 'a topic session is a Mix');
+  assert.equal((await start({ skill: 'speaking' })).status, 400);
+  const r = await start({});
   assert.equal(r.status, 200, JSON.stringify(r.body));
   const s = r.body.session;
-  assert.equal(s.label, '10-minute session');
+  assert.equal(s.label, '10-minute Mix');
+  assert.deepEqual([s.tile, s.skill, s.hardOnly, s.offer], ['mix', 'mix', false, null]);
   assert.equal(s.index, 0);
   assert.ok(s.total >= 2);
   assert.ok(s.minutesLeft >= 1);
@@ -58,65 +63,75 @@ test('FR-904 RQ-421: Next moves on once per exercise; a repeated index answers t
   assert.equal((await c.post('/api/session/next', { sessionId: s.id, index: 5000 })).status, 400);
 });
 
-test('FR-904 RQ-421: starting another session replaces the going one (the shared account\'s last started wins)', async () => {
-  const a = (await start({ kind: 'time', minutes: 5 })).body.session;
-  const b = (await start({ kind: 'mode', mode: 'master' })).body.session;
-  assert.equal(b.label, 'Master');
+test('FR-904 RQ-442: starting another session replaces the going one (the shared account\'s last started wins)', async () => {
+  const a = (await start({ minutes: 5 })).body.session;
+  const b = (await start({ tile: 'review', minutes: 5 })).body.session;
+  assert.equal(b.label, '5-minute Review');
   assert.equal(t.grove.db.prepare('SELECT status FROM practice_sessions WHERE id = ?').get(a.id).status, 'replaced');
   assert.equal((await c.get('/api/session')).body.session.id, b.id);
   assert.equal((await c.post('/api/session/next', { sessionId: a.id, index: 0 })).body.session.status, 'replaced');
 });
 
-test('FR-906 FR-908 RQ-423 RQ-424 RQ-20: By skill and Just one mode start; Listening without a voice is refused; nothing to do is said', async () => {
-  const skill = await start({ kind: 'skill', skill: 'reading', form: 'short' });
-  assert.equal(skill.body.session.minutes, 5);
-  const noVoice = await start({ kind: 'skill', skill: 'listening', form: 'short', voice: false });
+test('FR-903 FR-905 FR-906 RQ-440 RQ-441 RQ-20: Discover, Review and Harder questions only start; Listening without a voice is refused; nothing to do is said', async () => {
+  const review = (await start({ tile: 'review', minutes: 5 })).body.session;
+  assert.equal(review.label, '5-minute Review');
+  assert.ok(review.exercise.mode === 'review');
+  const discover = (await start({ tile: 'discover', minutes: 5, skill: 'reading' })).body.session;
+  assert.equal(discover.label, '5-minute Discover');
+  const noVoice = await start({ skill: 'listening', voice: false });
   assert.equal(noVoice.status, 409);
   assert.equal(noVoice.body.error, 'no_voice');
-  assert.equal((await start({ kind: 'skill', skill: 'reading', form: 'long' })).body.session.minutes, 20);
-  assert.equal((await start({ kind: 'skill', skill: 'grammar', form: 'medium' })).body.session.minutes, 10);
-  const review = (await start({ kind: 'mode', mode: 'review' })).body.session;
-  assert.equal(review.label, 'Review');
-  assert.ok(review.total <= 10);
+  const hard = await start({ tile: 'review', minutes: 5, hardOnly: true, fill: false, asIs: true });
+  assert.ok(hard.status === 200 || hard.body.error === 'nothing_to_do', JSON.stringify(hard.body));
+  if (hard.status === 200) assert.equal(hard.body.session.hardOnly, true);
   const empty = t.client();
   await empty.signInAgreed('empty@example.test');
-  const none = await start({ kind: 'time', minutes: 5 }, empty);
+  const none = await start({ tile: 'review', minutes: 5 }, empty);
   assert.equal(none.status, 409);
   assert.equal(none.body.error, 'nothing_to_do');
 });
 
-test('FR-907 FR-909 RQ-422: Texts lists topics with their texts, unread first; a topic session draws from that topic', async () => {
+test('FR-907 FR-915 RQ-443: Your library lists topics with their texts, unread first; Practise this topic is a Mix drawing from that topic', async () => {
   const { topics } = (await c.get('/api/topics')).body;
   assert.equal(topics.length, 1);
   const [topic] = topics;
   assert.equal(topic.texts.length, 4);
   assert.deepEqual(topic.texts.map((x) => x.read), [...topic.texts.map((x) => x.read)].sort((a, b) => a - b), 'unread first');
-  const s = (await start({ kind: 'topic', minutes: 5, topic: topic.topic })).body.session;
-  assert.equal(s.label, '5-minute session');
+  const s = (await start({ kind: 'topic', topic: topic.topic })).body.session;
+  assert.equal(s.label, `10-minute Mix: ${topic.label}`);
+  assert.equal(s.topic, topic.topic);
 });
 
-test('FR-914 RQ-155: another account can\'t see, move or list this learner\'s session or texts', async () => {
-  const mine = (await start({ kind: 'time', minutes: 5 })).body.session;
+test('FR-914 FR-923 RQ-155 T-23: another account can\'t see, move, plan or list this learner\'s session or texts', async () => {
+  const mine = (await start({ minutes: 5 })).body.session;
   const other = t.client();
   await other.signInAgreed('other@example.test');
   assert.equal((await other.get('/api/session')).body.session, null);
   assert.equal((await other.post('/api/session/next', { sessionId: mine.id, index: 0 })).status, 404);
+  assert.equal((await other.post('/api/session/plan', { sessionId: mine.id, fill: true })).status, 404);
   assert.equal((await other.get(`/api/session?id=${mine.id}`)).status, 404);
   assert.deepEqual((await other.get('/api/topics')).body.topics, []);
 });
 
-// SC-001 as amended 2026-10-29: within 20% or 2 minutes, or, where even practice reviews can't fill the
-// length (the demo has six drilled leaves), a plan that says it is shorter and uses every leaf it has.
-// SC-001 as amended (question-pages/78, 3): filled with the mix, within 20% or 2 minutes; where even the mix
-// can't fill a length, every leaf and every read text is used and the plan says it is shorter.
-test('FR-905 SC-001 RQ-421 R-24: on the demo learner, sessions of 3, 5, 10 and 20 minutes, filled, are planned within 20% or 2 minutes, or use every leaf and read text and say they are shorter', () => {
+// SC-001 as amended by addendum 006: every tile, skill and length, filled, is planned within 20% or 2
+// minutes, or uses every leaf and read text it may and says it is shorter.
+test('FR-905 SC-001 RQ-440 R-32: on the demo learner, Mix, Discover and Review of 5, 10, 20 and 30 minutes with each skill, filled, are planned within 20% or 2 minutes, or use all they may and say they are shorter', () => {
   const inventory = readInventory(t.grove.db, learner.id);
-  for (const minutes of [3, 5, 10, 20]) {
-    const p = plan({ kind: 'time', params: { minutes, voice: true, fill: true }, inventory });
-    const lemmas = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
-    const texts = new Set(p.exercises.filter((e) => e.textId).map((e) => e.textId));
-    const everything = inventory.leaves.every((l) => lemmas.has(l.lemma)) && inventory.texts.filter((x) => x.read).every((x) => texts.has(x.id));
-    assert.ok(fits(p.seconds, minutes * 60) || (p.short && everything), `${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
+  for (const tile of ['mix', 'discover', 'review']) {
+    for (const skill of ['mix', 'reading', 'listening', 'words', 'grammar']) {
+      for (const minutes of [5, 10, 20, 30]) {
+        const p = plan({ params: { kind: 'time', tile, skill, minutes, voice: true, fill: true }, inventory });
+        const lemmas = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
+        const texts = new Set(p.exercises.filter((e) => e.textId).map((e) => e.textId));
+        const kinds = { reading: ['reading'], listening: ['listening'] }[skill] ?? ['reading', 'listening'];
+        const leafKinds = skill === 'words' ? ['word', 'phrase'] : null;
+        const leavesUsed = tile === 'discover' || inventory.leaves.filter((l) => !leafKinds || leafKinds.includes(l.kind)).every((l) => lemmas.has(l.lemma));
+        // A read text left out only because it would run past the length is not one it may use.
+        const room = minutes * 60 - p.seconds;
+        const textsUsed = tile === 'review' || inventory.texts.filter((x) => x.read && kinds.includes(x.kind) && textSeconds(x, durationsFor(inventory.belowB1)) <= room).every((x) => texts.has(x.id));
+        assert.ok(fits(p.seconds, minutes * 60) || (p.short && leavesUsed && textsUsed), `${tile} ${skill} ${minutes} min planned ${(p.seconds / 60).toFixed(1)}`);
+      }
+    }
   }
 });
 
@@ -135,7 +150,7 @@ test('FR-905 RQ-421: a practice review answered in a session never changes the l
 });
 
 test('FR-904 RQ-421: the summary counts practice reviews among the words reviewed and gives the days practised this week, no streak (PD-05)', async () => {
-  const s = (await start({ kind: 'time', minutes: 3 })).body.session;
+  const s = (await start({ minutes: 5 })).body.session;
   let view = s;
   for (let i = 0; i < 40 && view.status === 'going'; i += 1) view = (await c.post('/api/session/next', { sessionId: view.id, index: view.index })).body.session;
   assert.equal(view.status, 'finished');
@@ -143,10 +158,47 @@ test('FR-904 RQ-421: the summary counts practice reviews among the words reviewe
   assert.ok(view.summary.daysThisWeek >= 0 && view.summary.daysThisWeek <= 7);
 });
 
-test('FR-905 FR-920 RQ-421 RQ-434: a session that would run short is answered first with how long it would be, so the learner can add a text or fill the time; filled, it starts', async () => {
-  const short = await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true });
+test('FR-905 RQ-441: a Review that would run short is answered first with how long it would be; filled or as is, it starts', async () => {
+  const short = await start({ tile: 'review', minutes: 30, fill: false });
   assert.equal(short.status, 409);
   assert.equal(short.body.error, 'short');
   assert.match(short.body.message, /would only be about \d+ min/);
-  assert.equal((await c.post('/api/sessions', { kind: 'time', minutes: 20, voice: true, fill: true })).status, 200);
+  assert.equal((await start({ tile: 'review', minutes: 30, fill: false, asIs: true })).status, 200);
+  assert.equal((await start({ tile: 'review', minutes: 30 })).status, 200);
+});
+
+test('FR-920 FR-923 SC-006 RQ-444 R-34: a Mix short of new texts keeps a going session with its offer; the bars count texts added since, wherever; full, Start plans it at its length; Practise without fills it', async () => {
+  const r = await start({ minutes: 30, fill: false });
+  assert.equal(r.status, 200, JSON.stringify(r.body));
+  let s = r.body.session;
+  assert.equal(s.exercise, null);
+  assert.equal(s.total, 0);
+  assert.deepEqual(s.offer.needs.sort(), ['listening', 'reading']);
+  assert.deepEqual(s.offer.added, { reading: 0, listening: 0 });
+  assert.equal(s.offer.full, false);
+  assert.equal((await c.get('/api/session')).body.session.offer.full, false, 'the offer is kept on the server');
+  const stillShort = (await c.post('/api/session/plan', { sessionId: s.id, fill: false })).body.session;
+  assert.equal(stillShort.total, 0);
+  assert.deepEqual(stillShort.offer.missing, s.offer.missing, 'the missing minutes stay as at the offer');
+  const library = (await c.get('/api/library')).body.texts.filter((x) => x.added === null).sort((a, b) => a.level.localeCompare(b.level) || a.id.localeCompare(b.id));
+  for (const kind of ['reading', 'listening']) {
+    for (const x of library.filter((y) => y.kind === kind)) {
+      if ((await c.get('/api/session')).body.session.offer.added[kind] >= s.offer.missing[kind]) break;
+      assert.equal((await c.post('/api/library/add', { id: x.id })).status, 200);
+    }
+  }
+  s = (await c.get('/api/session')).body.session;
+  assert.equal(s.offer.full, true, JSON.stringify(s.offer));
+  const planned = (await c.post('/api/session/plan', { sessionId: s.id, fill: false })).body.session;
+  assert.equal(planned.offer, null, 'the offer (and the way back) is gone once planned');
+  assert.ok(planned.total > 0);
+  const seconds = planned.minutesLeft * 60;
+  assert.ok(seconds >= 0.8 * 30 * 60 - 120, `planned about ${planned.minutesLeft} min of 30`);
+  assert.equal((await c.post('/api/session/plan', { sessionId: s.id, fill: true })).status, 409, 'no offer to answer');
+  const again = (await start({ minutes: 30, fill: false, skill: 'listening' })).body.session;
+  if (again.offer) {
+    const filled = (await c.post('/api/session/plan', { sessionId: again.id, fill: true })).body.session;
+    assert.equal(filled.offer, null);
+    assert.ok(filled.total > 0);
+  }
 });

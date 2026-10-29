@@ -79,7 +79,7 @@ test('FR-220 FR-319 FR-419 RQ-54 RQ-155: export includes texts, words, flags, re
   await c.post('/api/review', { lemma: 'kopp', mode: 'remember', right: true });
   await c.post('/api/input', { seconds: 30, day: new Date().toISOString().slice(0, 10) });
   // G-09 data: a practice session.
-  assert.equal((await c.post('/api/sessions', { kind: 'time', minutes: 5, voice: true })).status, 200);
+  assert.equal((await c.post('/api/sessions', { kind: 'time', tile: 'mix', skill: 'mix', minutes: 5, voice: true })).status, 200);
 
   const data = exportAccount({ ...deps, email: 'texts@example.test' });
   for (const table of ['words', 'texts', 'text_lines', 'questions', 'sentences', 'ratings', 'packages', 'exchanges', 'learner_settings', 'names', 'word_meanings', 'explain_flags', 'reports', 'review_answers', 'input_days', 'practice_sessions']) {

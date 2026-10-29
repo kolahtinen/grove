@@ -7,7 +7,8 @@ let nextId = 1;
 const leaf = (over = {}) => ({ id: nextId++, lemma: `ord${nextId}`, kind: 'word', strength: 0.4, due: true, fading: false, gap: 1, masterReady: false, textIds: [], ...over });
 const text = (over = {}) => ({ id: nextId++, kind: 'reading', topic: 'café', read: false, words: 200, patternPlaces: 0, ...over });
 const inventory = (over = {}) => ({ leaves: [], texts: [], recent: { reading: 0, listening: 0 }, targetShare: 95, ...over });
-const time = (minutes, inv, voice = true) => plan({ kind: 'time', params: { minutes, voice }, inventory: inv });
+const session = (over, inv) => plan({ params: { kind: 'time', tile: 'mix', skill: 'mix', minutes: 10, voice: true, ...over }, inventory: inv });
+const harder = (n, from = 2) => Array.from({ length: n }, (_, i) => leaf({ due: false, masterReady: true, gap: from + i }));
 
 test('FR-905 RQ-421: durations are reading 100 words a minute from B1 and 70 below (PD-02), listening 80, Review 20 s, Master 25 s, and a marking step 30 s after a first reading', () => {
   assert.deepEqual(DURATIONS, { readingWordsPerMinute: 100, readingWordsPerMinuteBelowB1: 70, listeningWordsPerMinute: 80, review: 20, master: 25, marking: 30 });
@@ -18,117 +19,129 @@ test('FR-905 RQ-421: durations are reading 100 words a minute from B1 and 70 bel
   assert.equal(textSeconds({ kind: 'reading', words: 200, read: true }), 120);
 });
 
-test('FR-905 RQ-421: Review of fading then due leaves first, at most 40% of the length; then one text that fits; then Master to fill', () => {
+test('FR-905 RQ-440 RQ-441: Mix plans Review first (fading, due, then harder questions; at most 40%), then new texts of both kinds for the rest, never longer than the session', () => {
   const fading = leaf({ fading: true, strength: 0.1 });
   const due = Array.from({ length: 30 }, (_, i) => leaf({ strength: 0.3 + i / 100 }));
-  const masters = Array.from({ length: 30 }, (_, i) => leaf({ due: false, masterReady: true, gap: 2 + i }));
-  const long = text({ words: 2000 });
-  const fit = text({ words: 300 });
-  const p = time(10, inventory({ leaves: [...due, fading, ...masters], texts: [long, fit] }));
-  const modes = p.exercises.map((e) => e.mode);
+  const reading = [text({ words: 2000 }), text({ words: 300 }), text({ words: 250 })];
+  const listening = [text({ kind: 'listening', words: 200 }), text({ kind: 'listening', words: 160 })];
+  const inv = inventory({ leaves: [...due, fading, ...harder(10)], texts: [...reading, ...listening] });
+  const p = session({}, inv);
   assert.equal(p.exercises[0].lemma, fading.lemma, 'the fading leaf first');
   const reviews = p.exercises.filter((e) => e.mode === 'review');
-  assert.ok(reviews.length * 20 <= 0.4 * 600);
-  assert.deepEqual(modes.slice(0, reviews.length), reviews.map(() => 'review'));
-  const t = p.exercises.find((e) => e.type === 'text');
-  assert.equal(t.textId, fit.id, 'a text longer than what is left is never planned');
-  assert.equal(modes.indexOf('discover'), reviews.length, 'the text comes after the reviews');
-  assert.ok(modes.slice(reviews.length + 1).every((m) => m === 'master'));
-  assert.equal(p.exercises.filter((e) => e.mode === 'master')[0].lemma, masters.at(-1).lemma, 'Master takes the longest gaps first');
-  assert.ok(fits(p.seconds, 600), `${p.seconds} s planned`);
-  assert.deepEqual(time(10, inventory({ leaves: [...due, fading, ...masters], texts: [long, fit] })).exercises, p.exercises, 'the same inventory gives the same plan');
+  assert.ok(reviews.reduce((s, e) => s + e.seconds, 0) <= 0.4 * 600);
+  assert.deepEqual(p.exercises.slice(0, reviews.length).map((e) => e.mode), reviews.map(() => 'review'), 'Review comes first');
+  const texts = p.exercises.filter((e) => e.type === 'text');
+  assert.ok(texts.some((e) => listening.some((x) => x.id === e.textId)) && texts.some((e) => reading.some((x) => x.id === e.textId)), 'both kinds');
+  assert.ok(!texts.some((e) => e.textId === reading[0].id), 'a text longer than the session is never planned');
+  assert.ok(p.seconds <= 600 && fits(p.seconds, 600), `${p.seconds} s planned`);
+  assert.equal(p.offer, null);
+  assert.deepEqual(session({}, inv).exercises, p.exercises, 'the same inventory gives the same plan');
 });
 
-test('FR-905 RQ-421: the text is of the kind the learner did less of in the last 7 days; without a voice, no listening', () => {
-  const r = text({ kind: 'reading' });
-  const l = text({ kind: 'listening', words: 160 });
-  const inv = inventory({ texts: [r, l], recent: { reading: 900, listening: 100 } });
-  assert.equal(time(10, inv).exercises.find((e) => e.type === 'text').textId, l.id);
-  assert.equal(time(10, inv, false).exercises.find((e) => e.type === 'text').textId, r.id);
+test('FR-905 FR-912 RQ-441 R-33: a harder question is a Review exercise of a well-known word, the longest gap first, and never takes a due or fading leaf\'s place', () => {
+  const due = Array.from({ length: 5 }, () => leaf());
+  const well = harder(20);
+  const p = session({ tile: 'review' }, inventory({ leaves: [...due, ...well] }));
+  const hard = p.exercises.filter((e) => e.type === 'master');
+  assert.ok(hard.length > 0);
+  assert.ok(hard.every((e) => e.mode === 'review'), 'shown as Review');
+  assert.equal(hard[0].lemma, well.at(-1).lemma, 'the longest gap first');
+  const dueLemmas = new Set(due.map((l) => l.lemma));
+  assert.ok(p.exercises.filter((e) => dueLemmas.has(e.lemma)).length === due.length, 'every due leaf is planned');
+  assert.ok(p.exercises.findIndex((e) => e.type === 'master') > p.exercises.findLastIndex((e) => dueLemmas.has(e.lemma)), 'after the due ones');
+  const many = Array.from({ length: 60 }, () => leaf());
+  const crowded = session({ tile: 'review' }, inventory({ leaves: [...many, ...well] }));
+  assert.ok(crowded.exercises.filter((e) => e.type === 'master').reduce((s, e) => s + e.seconds, 0) <= 600 / 3, 'at most a third while due leaves remain');
+  assert.ok(crowded.exercises.filter((e) => e.type === 'review').length >= 600 * (2 / 3) / 20 - 1);
 });
 
-test('FR-905 RQ-421: with nothing that fits, the plan is shorter and says so; with nothing at all, nothing_to_do', () => {
-  const p = time(20, inventory({ leaves: [leaf()], texts: [text({ words: 5000 })] }));
-  assert.equal(p.exercises.length, 1);
-  assert.equal(p.short, true);
-  assert.equal(p.reason, 'not_enough');
-  assert.equal(time(5, inventory()).reason, 'nothing_to_do');
+test('FR-903 FR-905 RQ-441: Review plans no texts; Harder questions only plans only harder questions of well-known words', () => {
+  const inv = inventory({ leaves: [...Array.from({ length: 10 }, () => leaf()), ...harder(30)], texts: [text(), text({ kind: 'listening' })] });
+  const review = session({ tile: 'review', minutes: 5 }, inv);
+  assert.ok(review.exercises.every((e) => e.mode === 'review' && e.type !== 'text'));
+  const hard = session({ tile: 'review', minutes: 5, hardOnly: true }, inv);
+  assert.ok(hard.exercises.length > 0 && hard.exercises.every((e) => e.type === 'master'));
+  assert.ok(fits(hard.seconds, 300));
 });
 
-test('FR-906 RQ-423: By skill picks the text by its share of known words: Short the lowest, Long the highest, Medium nearest the target', () => {
-  const texts = [text({ knownShare: 91 }), text({ knownShare: 99 }), text({ knownShare: 95.5 }), text({ kind: 'listening', knownShare: 80 })];
-  const pick = (form) => plan({ kind: 'skill', params: { skill: 'reading', form, voice: true }, inventory: inventory({ texts }) }).exercises.find((e) => e.type === 'text').textId;
-  assert.equal(pick('short'), texts[0].id);
-  assert.equal(pick('long'), texts[1].id);
-  assert.equal(pick('medium'), texts[2].id);
-  const listening = plan({ kind: 'skill', params: { skill: 'listening', form: 'short', voice: true }, inventory: inventory({ texts, leaves: [leaf()] }) });
-  assert.equal(listening.exercises.find((e) => e.type === 'text').textId, texts[3].id);
-  assert.ok(listening.exercises.filter((e) => e.mode === 'review').every((e) => e.spoken), 'Listening reviews play their sentence first');
-  assert.equal(listening.length, 5 * 60, 'Short is 5 minutes');
+test('FR-905 FR-920 RQ-440 RQ-444: Discover plans only new texts; short of texts, it plans nothing and says how many minutes of each kind are missing', () => {
+  const r = text({ words: 300 });
+  const full = session({ tile: 'discover', minutes: 5 }, inventory({ leaves: [leaf()], texts: [text({ words: 100 }), text({ words: 110 }), text({ kind: 'listening', words: 80 }), text({ kind: 'listening', words: 90 })] }));
+  assert.ok(full.exercises.length && full.exercises.every((e) => e.type === 'text' && e.mode === 'discover'));
+  assert.equal(full.offer, null);
+  const short = session({ tile: 'discover', minutes: 10 }, inventory({ texts: [r] }));
+  assert.equal(short.wouldBeShort, true);
+  assert.deepEqual(short.exercises, []);
+  assert.deepEqual(Object.keys(short.offer.missing).sort(), ['listening', 'reading']);
+  assert.equal(short.offer.missing.reading, 300 - textSeconds(r));
+  assert.equal(short.offer.missing.listening, 300);
 });
 
-test('FR-906 RQ-423: Grammar reviews pattern leaves first and picks the text with the most pattern places; Words and phrases the shortest text', () => {
-  const word = leaf({ strength: 0.1, fading: true });
-  const pattern = leaf({ kind: 'pattern', strength: 0.45 });
+test('FR-905 FR-906 RQ-440 RQ-444: the skill decides the kinds: Reading only reading, Listening only listening, the others half each; without a voice, no listening', () => {
+  const texts = [text({ words: 120 }), text({ words: 130 }), text({ kind: 'listening', words: 100 }), text({ kind: 'listening', words: 110 })];
+  const kinds = (skill, voice = true) => new Set(session({ tile: 'discover', skill, minutes: 5, voice, fill: true }, inventory({ texts })).exercises.map((e) => texts.find((x) => x.id === e.textId).kind));
+  assert.deepEqual(kinds('reading'), new Set(['reading']));
+  assert.deepEqual(kinds('listening'), new Set(['listening']));
+  assert.deepEqual(kinds('mix'), new Set(['reading', 'listening']));
+  assert.deepEqual(kinds('mix', false), new Set(['reading']));
+  const reading = session({ tile: 'discover', skill: 'reading', minutes: 10 }, inventory({ texts: [texts[2]] }));
+  assert.deepEqual(Object.keys(reading.offer.missing), ['reading'], 'a Reading session misses only reading');
+  const noVoice = session({ tile: 'discover', skill: 'mix', minutes: 10, voice: false }, inventory());
+  assert.deepEqual(Object.keys(noVoice.offer.missing), ['reading'], 'without a voice only reading is missing');
+});
+
+test('FR-906 RQ-440: new texts: the one nearest the target share first; Grammar the most pattern places; Words the shortest; reviews lean to the skill', () => {
+  const texts = [text({ knownShare: 80, words: 120 }), text({ knownShare: 95.5, words: 120 }), text({ knownShare: 99, words: 120 })];
+  const first = (skill, list) => session({ tile: 'discover', skill, minutes: 5, fill: true }, inventory({ texts: list })).exercises[0].textId;
+  assert.equal(first('reading', texts), texts[1].id);
   const few = text({ patternPlaces: 1, words: 100 });
   const many = text({ patternPlaces: 4, words: 300 });
-  const g = plan({ kind: 'skill', params: { skill: 'grammar', form: 'medium', voice: true }, inventory: inventory({ leaves: [word, pattern], texts: [few, many] }) });
-  assert.equal(g.exercises[0].lemma, pattern.lemma);
-  assert.equal(g.exercises.find((e) => e.type === 'text').textId, many.id);
-  const w = plan({ kind: 'skill', params: { skill: 'words', form: 'medium', voice: true }, inventory: inventory({ leaves: [word], texts: [few, many] }) });
-  assert.equal(w.exercises.find((e) => e.type === 'text').textId, few.id);
+  assert.equal(first('grammar', [few, many]), many.id);
+  assert.equal(first('words', [many, few]), few.id);
+  const word = leaf({ strength: 0.1, fading: true });
+  const pattern = leaf({ kind: 'pattern', strength: 0.45 });
+  const phrase = leaf({ kind: 'phrase', strength: 0.3 });
+  const g = session({ tile: 'review', skill: 'grammar', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
+  assert.equal(g.exercises[0].lemma, pattern.lemma, 'Grammar: pattern leaves first');
+  const w = session({ tile: 'review', skill: 'words', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
+  assert.deepEqual(new Set(w.exercises.map((e) => e.kind)), new Set(['word', 'phrase']), 'Words: words and phrases only');
+  const l = session({ tile: 'review', skill: 'listening', minutes: 5 }, inventory({ leaves: [word, phrase] }));
+  assert.ok(l.exercises.every((e) => e.spoken), 'Listening: each sentence played first');
 });
 
-test('FR-906 RQ-423: each skill comes Short 5, Medium 10 or Long 20 minutes; Words and phrases fills with Review and Master, phrases included; no text longer than the session', () => {
-  const phrase = leaf({ kind: 'phrase', strength: 0.2 });
-  const words = Array.from({ length: 20 }, () => leaf());
-  const masters = Array.from({ length: 40 }, (_, i) => leaf({ due: false, masterReady: true, gap: 3 + i }));
-  const short = text({ words: 150 });
-  const huge = text({ words: 3000 });
-  const inv = inventory({ leaves: [phrase, ...words, ...masters], texts: [short, huge] });
-  for (const [form, minutes] of [['short', 5], ['medium', 10], ['long', 20]]) {
-    for (const skill of ['reading', 'listening', 'words', 'grammar']) {
-      const p = plan({ kind: 'skill', params: { skill, form, voice: true }, inventory: inv });
-      assert.equal(p.length, minutes * 60, `${skill} ${form}`);
-      assert.ok(p.exercises.every((e) => e.seconds <= minutes * 60), `${skill} ${form}: no exercise longer than the session`);
-      assert.ok(!p.exercises.some((e) => e.textId === huge.id), `${skill} ${form}: the 3,000-word text never planned`);
+test('FR-903 RQ-440: every tile and skill comes in 5, 10, 20 and 30 minutes, and no exercise is longer than the session', () => {
+  const inv = inventory({ leaves: [...Array.from({ length: 20 }, () => leaf()), ...harder(40)], texts: [text({ words: 150 }), text({ words: 3000 }), text({ kind: 'listening', words: 120 })] });
+  for (const tile of ['discover', 'review', 'mix']) {
+    for (const skill of ['mix', 'reading', 'listening', 'words', 'grammar']) {
+      for (const minutes of [5, 10, 20, 30]) {
+        const p = session({ tile, skill, minutes, fill: true }, inv);
+        assert.equal(p.length, minutes * 60, `${tile} ${skill} ${minutes}`);
+        assert.ok(p.exercises.every((e) => e.seconds <= minutes * 60), `${tile} ${skill} ${minutes}: no exercise longer than the session`);
+        assert.ok(p.seconds <= minutes * 60 + 1, `${tile} ${skill} ${minutes}: never over`);
+      }
     }
   }
-  const w = plan({ kind: 'skill', params: { skill: 'words', form: 'medium', voice: true }, inventory: inv });
-  const modes = new Set(w.exercises.map((e) => e.mode));
-  assert.ok(modes.has('review') && modes.has('master'), 'Review and Master');
-  assert.ok(w.exercises.some((e) => e.mode === 'review' && e.kind === 'phrase'), 'phrases are reviewed too');
-  assert.ok(fits(w.seconds, 600), `${w.seconds} s planned`);
 });
 
-test('FR-907 RQ-422: a topic session takes Discover from that topic\'s texts and Review from leaves met in them', () => {
-  const café = text({ topic: 'café' });
+test('FR-907 RQ-443: a topic session is a Mix from that topic\'s texts and the leaves met in them, then any due ones', () => {
+  const café = text({ topic: 'café', words: 150 });
+  const café2 = text({ topic: 'café', kind: 'listening', words: 120 });
   const sea = text({ topic: 'havet' });
   const inCafé = leaf({ textIds: [café.id] });
-  const elsewhere = leaf({ textIds: [sea.id], strength: 0.1, fading: true });
-  const p = plan({ kind: 'topic', params: { minutes: 5, topic: 'café', voice: true }, inventory: inventory({ leaves: [inCafé, elsewhere], texts: [café, sea] }) });
-  assert.ok(p.exercises.every((e) => e.textId === undefined || e.textId === café.id));
-  assert.deepEqual(p.exercises.filter((e) => e.mode === 'review').map((e) => e.lemma), [inCafé.lemma]);
+  const elsewhere = leaf({ textIds: [sea.id], strength: 0.3 });
+  const p = plan({ params: { kind: 'topic', tile: 'mix', skill: 'mix', minutes: 5, topic: 'café', voice: true }, inventory: inventory({ leaves: [inCafé, elsewhere], texts: [café, café2, sea] }) });
+  assert.ok(p.exercises.filter((e) => e.textId).every((e) => e.textId === café.id || e.textId === café2.id));
+  assert.equal(p.exercises.filter((e) => e.mode === 'review')[0].lemma, inCafé.lemma, 'the topic\'s leaves first');
 });
 
-test('FR-908 RQ-424: Just one mode: Review the due leaves (at most 10), Master its 10, Discover the next unread text', () => {
-  const leaves = [...Array.from({ length: 12 }, () => leaf()), ...Array.from({ length: 12 }, () => leaf({ due: false, masterReady: true }))];
-  const texts = [text({ read: true }), text(), text()];
-  const one = (mode) => plan({ kind: 'mode', params: { mode, voice: true }, inventory: inventory({ leaves, texts }) });
-  assert.equal(one('review').exercises.length, 10);
-  assert.ok(one('review').exercises.every((e) => e.mode === 'review'));
-  assert.equal(one('master').exercises.length, 10);
-  assert.deepEqual(one('discover').exercises.map((e) => e.textId), [texts[1].id]);
-});
-
-test('FR-905 RQ-421: a plan under 80% says it would be short; filled, it mixes practice reviews, re-reading and listening again in turn, each once, until 80% (PD-28; question-pages/78, 3)', () => {
+test('FR-905 RQ-421: filled (Practise without), a Mix mixes practice reviews, re-reading and listening again in turn, each once, until 80% (PD-28; question-pages/78, 3); Discover fills only with texts again', () => {
   const notDue = Array.from({ length: 20 }, (_, i) => leaf({ due: false, strength: 0.9 - i / 100 }));
   const readTexts = [text({ read: true, words: 100, readAt: 3 }), text({ read: true, words: 100, readAt: 1 }), text({ kind: 'listening', read: true, words: 80, readAt: 2 })];
   const inv = inventory({ leaves: notDue, texts: readTexts });
-  const unfilled = plan({ kind: 'time', params: { minutes: 10, voice: true }, inventory: inv });
+  const unfilled = session({}, inv);
   assert.equal(unfilled.wouldBeShort, true);
   assert.equal(unfilled.exercises.length, 0);
-  const p = plan({ kind: 'time', params: { minutes: 10, voice: true, fill: true }, inventory: inv });
+  const p = session({ fill: true }, inv);
   const kinds = p.exercises.map((e) => (e.practice ? 'practice' : e.again));
   assert.deepEqual(kinds.slice(0, 3), ['practice', 'reread', 'listen'], 'taken in turn');
   assert.equal(p.exercises.find((e) => e.again === 'reread').textId, readTexts[1].id, 'the longest ago first');
@@ -136,29 +149,24 @@ test('FR-905 RQ-421: a plan under 80% says it would be short; filled, it mixes p
   assert.equal(new Set(p.exercises.map((e) => e.lemma ?? `t${e.textId}`)).size, p.exercises.length, 'each at most once');
   assert.equal(p.exercises.filter((e) => e.practice)[0].lemma, notDue.at(-1).lemma, 'the soonest due first');
   assert.ok(p.seconds >= 0.8 * 600 && p.seconds <= 600, `planned ${p.seconds} s`);
-  // Without a voice, no listening again.
-  assert.ok(!plan({ kind: 'time', params: { minutes: 10, voice: false, fill: true }, inventory: inv }).exercises.some((e) => e.again === 'listen'));
-  // A leaf already planned as due or Master isn't planned again as practice.
-  const both = plan({ kind: 'time', params: { minutes: 5, voice: true, fill: true }, inventory: inventory({ leaves: [leaf({ due: true }), leaf({ due: false, masterReady: true, gap: 3 })] }) });
-  assert.equal(both.exercises.filter((e) => e.practice).length, 0);
+  assert.ok(!session({ fill: true, voice: false }, inv).exercises.some((e) => e.again === 'listen'), 'without a voice, no listening again');
+  assert.ok(session({ tile: 'discover', fill: true }, inv).exercises.every((e) => e.again), 'Discover fills with texts again only');
+});
+
+test('FR-905 RQ-441: a Review plan under 80% says so; filled it adds practice reviews; with nothing at all, nothing_to_do', () => {
+  const p = session({ tile: 'review', minutes: 20 }, inventory({ leaves: [leaf()] }));
+  assert.equal(p.wouldBeShort, true);
+  assert.equal(p.offer, null, 'Review never sends the learner to add texts');
+  assert.equal(p.exercises.length, 1, 'as is, the one due leaf');
+  const filled = session({ tile: 'review', minutes: 5, fill: true }, inventory({ leaves: [leaf(), ...Array.from({ length: 20 }, () => leaf({ due: false }))] }));
+  assert.ok(filled.exercises.some((e) => e.practice));
+  assert.equal(session({ tile: 'review', minutes: 5, fill: true }, inventory()).reason, 'nothing_to_do');
 });
 
 test('FR-905 RQ-421: below B1 a reading text is planned at 70 words a minute; from B1 at 100 (PD-02)', () => {
-  const t1 = text({ words: 140, read: true });
-  const below = plan({ kind: 'time', params: { minutes: 5, voice: true }, inventory: inventory({ texts: [{ ...t1, read: false }], belowB1: true }) });
-  const from = plan({ kind: 'time', params: { minutes: 5, voice: true }, inventory: inventory({ texts: [{ ...t1, read: false }], belowB1: false }) });
+  const t1 = text({ words: 140 });
+  const below = session({ tile: 'discover', skill: 'reading', minutes: 5, fill: true }, inventory({ texts: [t1], belowB1: true }));
+  const from = session({ tile: 'discover', skill: 'reading', minutes: 5, fill: true }, inventory({ texts: [t1], belowB1: false }));
   assert.equal(below.exercises.find((e) => e.type === 'text').seconds, 120 + 30);
   assert.equal(from.exercises.find((e) => e.type === 'text').seconds, 84 + 30);
-});
-
-test('FR-906 RQ-423: Short takes a text with 90–94% known words, Long 98% or more, Medium nearest the target; the nearest when none is in the band, and the plan says so (PD-04)', () => {
-  const texts = [text({ knownShare: 80 }), text({ knownShare: 92 }), text({ knownShare: 97 }), text({ knownShare: 99.5 })];
-  const run = (form, list = texts) => plan({ kind: 'skill', params: { skill: 'reading', form, voice: true }, inventory: inventory({ texts: list }) });
-  assert.equal(run('short').exercises.find((e) => e.type === 'text').textId, texts[1].id);
-  assert.equal(run('short').note, null);
-  assert.equal(run('long').exercises.find((e) => e.type === 'text').textId, texts[3].id);
-  assert.equal(run('medium').exercises.find((e) => e.type === 'text').textId, texts[2].id);
-  const outside = run('long', [texts[0], texts[2]]);
-  assert.equal(outside.exercises.find((e) => e.type === 'text').textId, texts[2].id, 'the nearest to the band');
-  assert.equal(outside.note, 'out_of_band');
 });
