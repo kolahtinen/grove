@@ -390,6 +390,12 @@ Phase 2 (`/pre.combine`, 2026-10-20). The requirements of p0 and p1 (neither rej
 
 Requirements added after the freeze (RQ-380 on) are in the addenda: [001](addenda/001-requirements-without-rq.md) RQ-380…389, [002](addenda/002-prompts-and-meanings.md) RQ-390…402, [003](addenda/003-reading-and-word-menu.md), [004](addenda/004-home-and-sessions.md), [005](addenda/005-home-groups-libraries.md) RQ-429…439, [006](addenda/006-learning-tiles-and-way-back.md) RQ-440…447.
 
+Requirements from sketches (`docs/sketching.md`; small UI changes need no addendum, question-pages/84, 39):
+
+| ID | Requirement | Sources | Rewords or merges? | Needs | Feasibility | Priority | Status |
+|---|---|---|---|---|---|---|---|
+| RQ-448 | **Progress** shows, from the picked sketch (version B): the level started at against the level now, and today's minutes; four cards for minutes read and listened in the last 7 days (words underneath), the leaves being drilled now and the ground (words and grammar patterns apart); the last 7 days day by day, read and listened apart; and since the start: read, listened, ever picked up, and the ground with how many came from the starting level. Reading and listening minutes are recorded apart. | B-27; question-pages/85 (2), 87 | yes (RQ-48, RQ-71: Progress's 14 day bars, ground size and drilled count) | N-29, N-36, N-42 | easy | should | active |
+
 ## Open: implicit requirements still undecided
 
 None: every implicit requirement in p0 and p1 is decided.

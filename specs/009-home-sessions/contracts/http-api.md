@@ -38,3 +38,11 @@ Every signed-in page's top bar: the logo (a link to `/`) and ☰ (Account, Setti
 `Summary` = `{minutes, textsRead, wordsReviewed, wordsFell}` (pending PD-05: `daysThisWeek`).
 
 Answers to Review and Master questions go to G-04's `POST /api/review` unchanged.
+
+## Progress (B-27; FR-924, FR-925)
+
+| Method, path | Body | Responses |
+|---|---|---|
+| `POST /api/input` | `{seconds: 30, day: "YYYY-MM-DD", kind?: "reading"\|"listening"\|"other"}` (G-04's route; `kind` defaults to `other`) | `200 {todayMinutes}` |
+| `GET /api/progress` | – | `200 {today: {minutes}, level: {start, startAt, now, nowAt, coverage: [[level, percent]]}, week: [{day, read, listen, readWords, listenWords}] (7, ending today), last7: {read, listen, readWords, listenWords}, leaves: {words, patterns, weekWords, weekPatterns, everWords, everPatterns, recent: [{lemma, en, kind, at}]}, ground: {words, patterns, weekWords, weekPatterns, fromStart, fromReading, fell, recent: [{lemma, en, kind, at}]}, ever: {read, listen, readWords, listenWords, since}}` — minutes whole, words whole; `recent` at most 10 |
+

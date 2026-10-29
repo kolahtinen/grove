@@ -174,7 +174,7 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 **Level and progress**
 
 - **FR-414** (RQ-03, RQ-253; N-29, N-36, N-16): Home MUST show one overall level: the highest CEFR level that has, with every level below it, 90% of its own words in the ground, using level word lists (filled by G-06 from the Kelly list); none reached → "below A1"; no lists yet → "Set your starting level".
-- **FR-415** (RQ-48, RQ-71; N-29, N-42): Grove MUST count minutes of input: while a text is in view and the learner active (a tap or scroll within the last 2 minutes), the page reports each half minute and grove adds it to today; Home shows today's minutes; **Progress** shows minutes per day for the last 14 days, the ground's size and the number of drilled leaves.
+- **FR-415** (RQ-48, RQ-71; N-29, N-42): Grove MUST count minutes of input: while a text is in view and the learner active (a tap or scroll within the last 2 minutes), the page reports each half minute and grove adds it to today; Home shows today's minutes; **Progress** is as G-09 FR-924 says, and the minutes are also recorded per kind (reading, listening, other) as G-09 FR-925 says (B-27, question-pages/87; was: minutes per day for the last 14 days, the ground's size and the number of drilled leaves).
 
 **Welcome and saving**
 
