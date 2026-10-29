@@ -1,0 +1,779 @@
+# grove library vocabulary (graded), level B2. Words and levels from SweLLex (Volodina, Pilán, Llozhi, Degryse & François 2016; Språkbanken Text, https://doi.org/10.23695/6h3v-zw25), CC BY 4.0: the first CEFR level whose learner essays use the word; misspellings left out. SweLLex_v1.tsv sha256 3491b1a51c004b58b0bd6ddd72909f42ad7bcf13f400212e0584606387ae5980. Meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-graded.mjs.
+sv	pos	level	en	flags	suc
+abort	noun-en	B2	abort, abortion		NN_UTR
+absorbera	verb	B2	to absorb		VB
+abstrakt	adverb	B2	abstract, i.e. not concrete		AB,JJ
+acceptans	noun-en	B2	acceptance, approval		NN_UTR
+adrenalin	noun-en	B2	adrenaline		NN_NEU,NN_UTR
+advokat	noun-en	B2	a lawyer, an attorney		NN_UTR
+affärsman	noun-en	B2	a businessman		NN_UTR
+alarmera	participle	B2	to alarm		PC
+allmän	adjective	B2	general		JJ
+alltsammans	pronoun	B2	all of it		PN
+an	particle	B2	used as a verb particle, similar to German preposition an		PL,AB
+analys	noun-en	B2	an analysis		NN_UTR
+analysera	verb	B2	to analyze		VB
+anda	noun-en	B2	spirit		NN_UTR
+andel	noun-en	B2	a share; someone's part of something		NN_UTR
+ange	verb	B2	to indicate; to point out		VB
+angå	participle	B2	to concern		PC
+angående	prep	B2	about, concerning		PP
+anhörig	adjective	B2	a close relative		JJ
+anknytning	noun-en	B2	connection, relation		NN_UTR
+anmälan	noun-en	B2	a registration		NN_UTR
+anonym	adjective	B2	anonymous		JJ
+ansats	noun-en	B2	an approach, an attempt, an onset		NN_UTR
+anstränga	verb	B2	to strain, to exert		VB
+anställa	verb	B2	to hire, to employ		VB
+anställd	noun-en	B2	employed, hired		NN_UTR
+anställning	noun-en	B2	an employment		NN_UTR
+anställningsskydd	noun-ett	B2		none	NN_NEU
+antagligen	adverb	B2	probably		AB
+antigen	noun-en	B2		none	NN_UTR
+apati	noun-en	B2	apathy		NN_UTR
+app	noun-en	B2	an app		NN_UTR
+apparat	noun-en	B2	an apparatus, a device; a complex machine or instrument, often run by electricity	long	NN_UTR
+applicera	verb	B2	to apply		VB
+applikation	noun-en	B2	a application		NN_UTR
+arab	noun-en	B2	Arab		NN_UTR
+arbetande	noun-en	B2	to work, to be employed to do	via-form,pos	NN_UTR
+arbetare	noun-en	B2	a worker; one who does work, often as part of an employment.		NN_UTR
+arbetsam	adjective	B2	diligent, hardworking		JJ
+arbetsamhet	noun-en	B2	diligence, hardworkingness		NN_UTR
+arbetsbrist	noun-en	B2	redundancy		NN_UTR
+arbetsdag	noun-en	B2	workday		NN_UTR
+arbetsliv	noun-ett	B2	working life, work life		NN_NEU
+arbetslös	adjective	B2	unemployed		JJ
+arbetsmarknad	noun-en	B2	labor market		NN_UTR
+arbetsmiljö	noun-en	B2	work environment		NN_UTR
+arbetsområde	noun-ett	B2	field of work, speciality, specialization, trade		NN_NEU
+arbetsplats	noun-en	B2	workplace		NN_UTR
+arbetsrelaterad	participle	B2		none	PC
+arbetsskada	noun-en	B2	occupational injury		NN_UTR
+arbetsskadad	participle	B2		none	PC
+arbetstakt	noun-en	B2		none	NN_UTR
+arbetstid	noun-en	B2	working hours, office hours		NN_UTR
+arbetstidsförkortning	noun-en	B2	reduction in working hours		NN_UTR
+arbetstimme	noun-en	B2	work hour		NN_UTR
+arbetsvecka	noun-en	B2	working week, workweek		NN_UTR
+argumentera	verb	B2	to argue		VB
+arrangemang	noun-ett	B2	a arranged social event or function		NN_NEU
+artist	noun-en	B2	an artist		NN_UTR
+arve	noun-en	B2		none	NN_UTR
+association	noun-en	B2	association		NN_UTR
+attityd	noun-en	B2	attitude		NN_UTR
+auktoritet	noun-en	B2	authority		NN_UTR
+avancera	verb	B2	to advance		VB
+avdrag	noun-ett	B2	a deduction		NN_NEU
+avgift	noun-en	B2	a cost		NN_UTR
+avgöra	verb	B2	to determine, to decide		VB
+avlida	verb	B2	to die		VB
+avsevärd	adverb	B2	considerable, substantial		AB
+avskaffa	verb	B2	to abolish		VB
+avskeda	verb	B2	to fire someone from an employment, dismiss without notice		VB
+avslappnad	adjective	B2	relaxed		JJ
+avsluta	verb	B2	to close, cancel, terminate		VB
+avsöndring	noun-en	B2		none	NN_UTR
+bakomkulisserna	particle	B2		none	PL
+baksida	noun-en	B2	a backside; a rear		NN_UTR
+balansgång	noun-en	B2	the act of walking along something narrow		NN_UTR
+band	noun-ett	B2	band		NN_NEU
+bedriva	verb	B2	to operate, to run, to manage		VB
+bedöma	verb	B2	to assess		VB
+begrepp	noun-ett	B2	a concept		NN_NEU
+behandla	verb	B2	to treat, to process		VB
+bekräftelse	noun-en	B2	a confirmation		NN_UTR
+bekymmer	noun-ett	B2	trouble, difficulty; something which causes worry		NN_NEU
+bekämpa	verb	B2	to fight and thus get rid of; to combat, to fight		VB
+belastning	noun-en	B2	a load		NN_UTR
+belöning	noun-en	B2	reward		NN_UTR
+bereda	verb	B2	to prepare		VB
+berättare	noun-en	B2	storyteller		NN_UTR
+berättelse	noun-en	B2	a story, a narrative, an account		NN_UTR
+besegra	verb	B2	to defeat		VB
+beskrivning	noun-en	B2	description		NN_UTR
+bestämmelse	noun-en	B2	a provision; a stipulation, a proviso		NN_UTR
+bestämning	noun-en	B2		none	NN_UTR
+besvär	noun-ett	B2	a trouble, a problem		NN_NEU
+besvärlig	adjective	B2	difficult, troublesome		JJ
+betning	noun-en	B2		none	NN_UTR
+betona	verb	B2	to emphasize		VB
+betrakta	verb	B2	to regard		VB
+betyg	noun-ett	B2	a grade		NN_NEU
+bevis	noun-ett	B2	a proof		NN_NEU
+bidrag	noun-ett	B2	a contribution		NN_NEU
+bifoga	verb	B2	to append, to attach		VB
+blodtryck	noun-ett	B2	blood pressure		NN_NEU
+bloggare	noun-en	B2	blogger		NN_UTR
+bokstavligen	adverb	B2	literally		AB
+bonde	noun-en	B2	a farmer		NN_UTR
+bostadsområde	noun-ett	B2	a residential area		NN_NEU
+bransch	noun-en	B2	a sector of business, a trade, an industry		NN_UTR
+brist	noun-en	B2	lack		NN_UTR
+brista	verb	B2	to break, to burst		VB
+bråttom	adjective	B2	urgency due to lack of time, hurry		JJ
+bröllopsyra	noun-en	B2		none	NN_UTR
+burnus	noun-en	B2		none	NN_UTR
+bussig	adjective	B2	nice, helpful		JJ
+byrå	noun-en	B2	a bureau, a dresser, a chest of drawers		NN_UTR
+bytesbalans	noun-en	B2	current account		NN_UTR
+bök	noun-ett	B2		none	NN_NEU
+centralbyrå	noun-en	B2	a central bureau, a central office, a headquarter		NN_UTR
+centrera	verb	B2	to center; to put in the center		VB
+champagne	noun-en	B2	champagne		NN_UTR
+chilla	verb	B2	to kick back		VB
+cigarett	noun-en	B2	a cigarette		NN_UTR
+civilisation	noun-en	B2	civilization		NN_UTR
+collie	noun-en	B2	collie		NN_UTR
+cykelväg	noun-en	B2	a bicycle path		NN_UTR
+daglig	adjective	B2	daily, day-to-day		JJ
+dataspel	noun-ett	B2	a computer game		NN_NEU
+debattera	verb	B2	to debate		VB
+definiera	verb	B2	to define		VB
+dejt	noun-en	B2	a date		NN_UTR
+deltid	noun-en	B2	part-time		NN_UTR
+deppig	adjective	B2	depressed, down		JJ
+depreciering	noun-en	B2	depreciation		NN_UTR
+depression	noun-en	B2	depression		NN_UTR
+deprimerad	adjective	B2	depressed		JJ
+deprimerande	participle	B2	depressing		PC
+desorienterad	participle	B2		none	PC
+diabetes	noun-en	B2	diabetes		NN_UTR
+diet	noun-en	B2	a diet		NN_UTR
+diktatur	noun-en	B2	dictatorship		NN_UTR
+diverse	adjective	B2	various, miscellaneous		JJ
+djurplågeri	noun-ett	B2	cruelty to animals, animal cruelty		NN_NEU
+dofta	verb	B2	to smell		VB
+dramatik	noun-en	B2	dramatics, drama		NN_UTR
+dramatisk	adjective	B2	dramatic		JJ
+drog	noun-en	B2	a drug, a narcotic		NN_UTR
+dryck	noun-en	B2	any liquid consumed; beverage, drink		NN_UTR
+dubbel	adjective	B2	double		JJ
+dynamisk	adjective	B2	dynamic		JJ
+därifrån	adverb	B2	from there		AB
+därute	adverb	B2	out there		AB
+därutöver	adverb	B2	thereover, additionally		AB
+döpa	verb	B2	to baptize, to christen		VB
+e-brev	noun-ett	B2	a message sent electronically; an email.		NN_NEU
+effektivitet	noun-en	B2	efficacy, effectivity		NN_UTR
+efteråt	adverb	B2	afterwards, after which, thereafter, whereupon		AB
+egenskap	noun-en	B2	attribute, property		NN_UTR
+egoistisk	adjective	B2	egotistic		JJ
+element	noun-ett	B2	element; basic building block of matter in ancient philosophy		NN_NEU
+emellertid	adverb	B2	meanwhile, during the same time		AB
+enhet	noun-en	B2	a unit		NN_UTR
+enorm	adjective	B2	enormous, immense, vast		JJ
+ensamhet	noun-en	B2	solitude, loneliness		NN_UTR
+ensamkommande	participle	B2		none	PC
+erhålla	verb	B2	to obtain, to receive		VB
+erinra	verb	B2	to remind, to point out, to reiterate		VB
+ersätta	verb	B2	to replace		VB
+etnisk	adjective	B2	ethnic		JJ
+eu-land	noun-ett	B2		none	NN_NEU
+evalvera	verb	B2		none	VB
+evenemang	noun-ett	B2	event		NN_NEU
+exotisk	adjective	B2	exotic		JJ
+experimentell	adjective	B2	experimental		JJ
+extra	adjective	B2	extra		JJ,AB
+extrem	adjective	B2	extreme		JJ
+facklig	adjective	B2	of or pertaining to a trade union		JJ
+faktura	noun-en	B2	an invoice		NN_UTR
+familjeform	noun-en	B2		none	NN_UTR
+fastanställd	participle	B2		none	PC
+fastland	noun-ett	B2	mainland		NN_NEU
+fastna	verb	B2	to get stuck, to stick		VB
+fattigdom	noun-en	B2	poverty		NN_UTR
+feg	adjective	B2	cowardly		JJ
+fenomen	noun-ett	B2	a phenomenon		NN_NEU
+festa	verb	B2	to party		VB
+fetma	noun-en	B2	obesity		NN_UTR
+flertal	noun-ett	B2	plural		NN_NEU
+flexibilitet	noun-en	B2	flexibility, versatility		NN_UTR
+flight	noun-en	B2	a flight		NN_UTR
+flyktingbarn	noun-ett	B2	child refugee		NN_NEU
+fodral	noun-ett	B2	a protective case		NN_NEU
+folksjukdom	noun-en	B2		none	NN_UTR
+folkvandring	noun-en	B2		none	NN_UTR
+formulering	noun-en	B2	wording, formulation		NN_UTR
+forska	verb	B2	to research		VB
+forskare	noun-en	B2	a researcher		NN_UTR
+fortis	adjective	B2		none	JJ
+frambringa	verb	B2	bring forth, produce	pos	VB
+framförallt	adverb	B2	above all		AB
+framgå	verb	B2	to be derivable, to be possible to perceive or infer		VB
+framgång	noun-en	B2	progress; a success		NN_UTR
+framgångsrik	adjective	B2	successful		JJ
+framkalla	verb	B2	to cause the emergence of; to induce, to cause, to evoke, to generate, etc.		VB
+framställa	verb	B2	to produce, to manufacture		VB
+framåt	adverb	B2	forward, progressive, full of initiative, entrepreneurial, active		AB
+fransk	adjective	B2	French		JJ
+fransman	noun-en	B2	a Frenchman		NN_UTR
+friskvård	noun-en	B2	preventive healthcare		NN_UTR
+fritidsaktivitet	noun-en	B2		none	NN_UTR
+friår	noun-ett	B2		none	NN_NEU
+frustration	noun-en	B2	frustration		NN_UTR
+främlingsfientlig	adjective	B2	xenophobic		JJ
+främst	adjective	B2	mainly, primarily		AB,JJ
+fräsch	adjective	B2	fresh		JJ
+fullkomlig	adjective	B2	perfect		JJ
+fundering	noun-en	B2	thinking; thought; consideration		NN_UTR
+fur	noun-en	B2	pinewood		NN_UTR
+fågel	noun-en	B2	a high placed object		NN_UTR
+fånga	verb	B2	to catch		VB
+får	noun-ett	B2	sheep		NN_NEU
+fängelse	noun-ett	B2	a prison, a jail		NN_NEU
+färdig	adjective	B2	finished		JJ
+färsk	adjective	B2	fresh		JJ
+fäste	noun-ett	B2	a fix point, a hold, an attachment, an abutment		NN_NEU
+följaktligen	adverb	B2	for that reason, consequently, thus, hence		AB
+fördelning	noun-en	B2	a distribution		NN_UTR
+fördjupa	verb	B2	to deepen, immerse		VB
+fördubbla	verb	B2	to double.		VB
+fördubbling	noun-en	B2	reduplication		NN_UTR
+förebild	noun-en	B2	a role model		NN_UTR
+förekomma	verb	B2	to occur, to exist		VB
+föreställning	noun-en	B2	an idea, a notion, a conception		NN_UTR
+förgripelse	noun-en	B2	abuse		NN_UTR
+förklara	verb	B2	to explain		VB
+förklaring	noun-en	B2	explanation		NN_UTR
+förkorta	verb	B2	to abbreviate, to shorten, to make shorter		VB
+förkortning	noun-en	B2	abbreviation		NN_UTR
+förkylning	noun-en	B2	cold		NN_UTR
+förlust	noun-en	B2	a loss		NN_UTR
+förmodligen	adverb	B2	probably		AB
+förmåga	noun-en	B2	ability, skill		NN_UTR
+förmögenhet	noun-en	B2	wealth, fortune		NN_UTR
+förnedra	verb	B2	humiliate	pos	VB
+förorening	noun-en	B2	pollution, contamination, tainting		NN_UTR
+förorsaka	verb	B2	to cause		VB
+förskjuta	verb	B2	to shift, to displace		VB
+försorg	noun-en	B2	care, concern, responsible supervision		NN_UTR
+förstärka	verb	B2	to amplify, to fortify, to emphasize, to strengthen		VB
+försäkringskassa	noun-en	B2	a social insurance office		NN_UTR
+försämra	verb	B2	worsen; make worse	pos	VB
+försörja	verb	B2	to support, to provide for		VB
+försörjning	noun-en	B2	provision of someone's basic needs on a continuous basis, livelihood		NN_UTR
+förtidspensionering	noun-en	B2		none	NN_UTR
+förtryck	noun-ett	B2	oppression		NN_NEU
+förtvivla	verb	B2	to despair, to lose hope		VB
+förvalta	verb	B2	to administer, to administrate, to manage		VB
+förälskad	adjective	B2	in love		JJ
+gammaldags	adjective	B2	old-fashioned		JJ
+gemenskap	noun-en	B2	a fellowship, a community		NN_UTR
+genomsnitt	noun-ett	B2	average		NN_NEU
+gjord	participle	B2	made, done		PC
+globaliserad	participle	B2	to globalize	via-form	PC
+grand	noun-en	B2	a mote, a speck, something very small and unimportant		NN_UTR
+grov	adjective	B2	coarse; composed of relatively large particles or pieces		JJ
+grund	adjective	B2	shallow		JJ,NN_UTR
+grundlig	adjective	B2	thorough, meticulous, careful		JJ
+grundlägga	verb	B2	to lay the foundation		VB
+grundsats	noun-en	B2	a principle, a founding sentence		NN_UTR
+gränsa	verb	B2	march; to have common borders or frontiers	pos	VB
+gymm	noun-ett	B2		none	NN_NEU
+halvfärdig	adjective	B2		none	JJ
+hamburgare	noun-en	B2	a hamburger		NN_UTR
+hantering	noun-en	B2	handling, management		NN_UTR
+helhet	noun-en	B2	a whole, an entirety		NN_UTR
+heller	adverb	B2	either		AB
+heltid	noun-en	B2	full-time		NN_UTR
+hemifrån	adverb	B2	from home		AB
+hemmafru	noun-en	B2	housewife		NN_UTR
+hemmagjord	adjective	B2	homemade		JJ
+herr	noun-en	B2	Mr., Mister, gentleman, sir		NN_UTR
+hittills	adverb	B2	so far, heretofore, until now, until this point in time; yet		AB
+hjälpmedel	noun-ett	B2	something that facilitates some work or the like; an aid, a tool, a means		NN_NEU
+hjärncell	noun-en	B2	a brain cell		NN_UTR
+hjärnskada	noun-en	B2	brain damage, brain injury		NN_UTR
+homosexualitet	noun-en	B2	homosexuality		NN_UTR
+horunge	noun-en	B2	often used as a term of abuse: a bastard; an illegitimate or misbegotten child born of unwed parents	long	NN_UTR
+humanitet	noun-en	B2	humanity, humaneness		NN_UTR
+humör	noun-ett	B2	mood, temper		NN_NEU
+hundratal	noun-ett	B2	around one hundred		NN_NEU
+husa	noun-en	B2	maidservant		NN_UTR
+hushåll	noun-ett	B2	a household, a home		NN_NEU
+hushållsarbete	noun-ett	B2	housework		NN_NEU
+huvudorsak	noun-en	B2		none	NN_UTR
+håna	verb	B2	to mock, deride, make fun of		VB
+hädelse	noun-en	B2	blasphemy		NN_UTR
+hälsoeffekt	noun-en	B2		none	NN_UTR
+händelse	noun-en	B2	an occurrence		NN_UTR
+höja	verb	B2	to raise; make something higher		VB
+icke-rökare	noun-en	B2	non-smoker		NN_UTR
+iförtidx	noun-en	B2		none	NN_UTR
+illamående	noun-ett	B2	nausea, feeling sick		NN_NEU
+illustratör	noun-en	B2	a person who makes illustrations; an illustrator		NN_UTR
+immigrera	verb	B2	to immigrate		VB
+implementera	verb	B2	to implement		VB
+indikera	verb	B2	to indicate		VB
+införa	verb	B2	to introduce		VB
+initiativ	noun-ett	B2	initiative		NN_NEU
+inlägg	noun-ett	B2	an insert		NN_NEU
+inre	adjective	B2	inner, internal, kept inside		JJ
+inrikta	verb	B2	to direct, to set the direction, to focus, to specialize		VB
+inspirera	verb	B2	to inspire		VB
+institut	noun-ett	B2	institute		NN_NEU
+institution	noun-en	B2	an institution		NN_UTR
+instämma	verb	B2	to agree		VB
+insättning	noun-en	B2	a deposit		NN_UTR
+intervju	noun-en	B2	interview		NN_UTR
+invandra	verb	B2	to immigrate		VB
+irriterad	adjective	B2	to irritate	via-form	JJ
+islam	noun-en	B2	Islam		NN_UTR
+islamisk	adjective	B2	Islamic		JJ
+isär	particle	B2	apart, asunder; into two or more pieces		PL
+iväg	particle	B2	away, off		PL
+japansk	adjective	B2	Japanese		JJ
+jämlikhet	noun-en	B2	equality, equal opportunity		NN_UTR
+jämn	adverb	B2	smooth, even		AB,JJ
+jämställd	adjective	B2	having equal opportunity between genders		JJ
+jämställdhet	noun-en	B2	gender equality		NN_UTR
+jättegärna	adverb	B2		none	AB
+jättejobbig	adjective	B2		none	JJ
+jättelycklig	adjective	B2		none	JJ
+kamp	noun-en	B2	a struggling for one's interests; a struggle, a fight		NN_UTR
+kamrat	noun-en	B2	friend, mate, companion		NN_UTR
+kant	noun-en	B2	an edge; border; rim		NN_UTR
+kapacitet	noun-en	B2	capacity		NN_UTR
+karensdag	noun-en	B2	initial sick day for which sick pay is reduced		NN_UTR
+karolinsk	adjective	B2	Carolean		JJ
+karosseri	noun-ett	B2	body, bodywork, auto body, coachwork		NN_NEU
+kilo	noun-ett	B2	kilo, clipping of kilogram		NN_NEU
+klara	verb	B2	to manage, to succeed in doing		VB
+kolesterol	noun-ett	B2	cholesterol		NN_NEU
+kollega	noun-en	B2	colleague		NN_UTR
+kollektiv	noun-ett	B2	collective		NN_NEU,JJ
+kombination	noun-en	B2	a combination		NN_UTR
+kommaifrånx	adverb	B2		none	AB
+kommersiell	adjective	B2	commercial		JJ
+kommunal	adjective	B2	relating to a municipality		JJ,AB
+kommunicera	verb	B2	to communicate		VB
+kompensation	noun-en	B2	compensation		NN_UTR
+kompetens	noun-en	B2	competence		NN_UTR
+komposition	noun-en	B2	composition		NN_UTR
+koncentration	noun-en	B2	concentration		NN_UTR
+koncentrera	verb	B2	to concentrate		VB
+konditionera	verb	B2		none	VB
+konkurrens	noun-en	B2	competition, rivalry		NN_UTR
+konservativ	adjective	B2	conservative		JJ
+konst	noun-en	B2	an art		NN_UTR
+konstverk	noun-ett	B2	a work of art, especially one in the visual arts		NN_NEU
+konsumera	verb	B2	to consume		VB
+kontroversiell	adjective	B2	controversial		JJ
+kopp	noun-en	B2	a cup		NN_UTR
+kopplasamman	participle	B2		none	PC
+korg	noun-en	B2	a basket		NN_UTR
+korridor	noun-en	B2	corridor; a narrow hall or passage with rooms leading off it		NN_UTR
+korrupt	adverb	B2	corrupt		AB
+kreativitet	noun-en	B2	creativity		NN_UTR
+kristendom	noun-en	B2	Christianity		NN_UTR
+kritiker	noun-en	B2	critic; person who criticizes; person who points out flaws		NN_UTR
+kroppslig	adjective	B2	corporal, pertaining to the body		JJ,AB
+kränka	verb	B2	to attack or violate someone's personal honor; to violate, to disrespect, to insult, etc.	long	VB
+kränkning	noun-en	B2	violation		NN_UTR
+kunskapsmässig	adjective	B2	with respect to knowledge		JJ
+kvalité	noun-en	B2	quality	via-form	NN_UTR
+kvantitet	noun-en	B2	a quantity		NN_UTR
+kvarvarande	adjective	B2	remaining, residual, extant		JJ
+kvotering	noun-en	B2	quotas		NN_UTR
+kyl	noun-en	B2	a fridge, a refrigerator		NN_UTR
+kyla	noun-en	B2	cold, coldness		NN_UTR
+kyssa	verb	B2	to kiss passionately or with great affection, to snog		VB
+käka	verb	B2	to eat		VB
+kändis	noun-en	B2	a celebrity		NN_UTR
+känneteckna	verb	B2	to characterize		VB
+känslighet	noun-en	B2	sensitivity		NN_UTR
+kärleksliv	noun-ett	B2	love life		NN_NEU
+kärlsjukdom	noun-en	B2	vascular disease		NN_UTR
+kön	noun-ett	B2	sex, gender		NN_NEU
+köp	noun-ett	B2	purchase		NN_NEU
+lagga	verb	B2	to lag		VB
+laglig	adjective	B2	legal		JJ
+lagstadgad	participle	B2		none	PC
+ledighet	noun-en	B2	freeness; availability		NN_UTR
+lek	noun-en	B2	play; typically denotes pleasurable and less rule-bound games and activities – "play" more in the sense of "engage in…	long	NN_UTR
+lidande	noun-ett	B2	suffering, misery, hurt		NN_NEU
+liga	noun-en	B2	a gang		NN_UTR
+liksom	adverb	B2	sort of, kind of		AB
+lisa	noun-en	B2	a female given name		NN_UTR
+litteratur	noun-en	B2	literature		NN_UTR
+livsfara	noun-en	B2	danger of life, mortal danger		NN_UTR
+livsfråga	noun-en	B2		none	NN_UTR
+livsglädje	noun-en	B2	joie de vivre		NN_UTR
+livsmedelsindustri	noun-en	B2	food industry		NN_UTR
+livsstil	noun-en	B2	lifestyle		NN_UTR
+livstid	noun-en	B2	age, a lifetime		NN_UTR
+logisk	adjective	B2	logical		JJ
+lufta	verb	B2	to air		VB
+lyxig	adjective	B2	luxurious		JJ
+låg	adjective	B2	low, short; having a small height		JJ
+långtifrån	adverb	B2	far from		AB
+läggning	noun-en	B2	disposition		NN_UTR
+lämplig	adjective	B2	suitable, appropriate, apposite		JJ
+lätta	verb	B2	to ease, to lighten, to loosen		VB
+lättnad	noun-en	B2	a relief		NN_UTR
+lögn	noun-en	B2	a lie		NN_UTR
+lös	adjective	B2	loose; not tightened, able to move		JJ
+manager	noun-en	B2		none	NN_UTR
+manskör	noun-en	B2	a male choir, a men's choir		NN_UTR
+marknad	noun-en	B2	market		NN_UTR
+marknadsföring	noun-en	B2	marketing		NN_UTR
+maskin	noun-en	B2	machine		NN_UTR
+massmedium	noun-ett	B2	mass medium		NN_NEU
+matkultur	noun-en	B2	food culture		NN_UTR
+medbroder	noun-en	B2	comrade		NN_UTR
+medium	noun-ett	B2	medium		NN_NEU,NN_UTR
+medvetande	noun-ett	B2	consciousness		NN_NEU
+meningsfull	adverb	B2		none	AB,JJ
+meningslös	adjective	B2	meaningless		JJ
+mental	adjective	B2	mental, pertaining to the mind		JJ
+merpart	noun-en	B2		none	NN_UTR
+meter	noun-en	B2	a metre; the SI-unit		NN_UTR
+minskning	noun-en	B2	a reduction, a decrease		NN_UTR
+missförstå	verb	B2	to misunderstand		VB
+missnöjd	adjective	B2	unhappy; displeased, dissatisfied		JJ
+misstolka	verb	B2	to misinterpret		VB
+misstänksam	adjective	B2	suspicious		JJ
+mobbning	noun-en	B2	bullying		NN_UTR
+mothugg	noun-ett	B2		none	NN_NEU
+motion	noun-en	B2	exercise		NN_UTR
+motivation	noun-en	B2	motivation		NN_UTR
+motivering	noun-en	B2	a justification		NN_UTR
+motsäga	participle	B2	to contradict		PC
+motta	verb	B2	to receive, to accept	via-form	VB
+mottaglig	adjective	B2	susceptible, receptive		JJ
+mållös	adverb	B2	speechless, dumbfounded		AB
+måltid	noun-en	B2	a meal		NN_UTR
+mått	noun-ett	B2	a measure		NN_NEU
+mänsklig	adjective	B2	human		JJ
+mässa	noun-en	B2	a mass		NN_UTR
+möglig	adjective	B2	mouldy		JJ
+mötesplats	noun-en	B2	A meeting point; a venue or area at which people meet-up or meet for socialising, discussion, dining, etc.	long	NN_UTR
+nagga	verb	B2	to break off one or more small pieces from; to chip, to chip away, to gnaw		VB
+nationalekonom	noun-en	B2	economist		NN_UTR
+nationalistisk	adjective	B2	nationalist, nationalistic		JJ
+negotiera	verb	B2		none	VB
+njutning	noun-en	B2	pleasure, enjoyment, indulgence		NN_UTR
+noggrann	adjective	B2	careful, scrupulous		JJ
+nonchalant	adjective	B2	nonchalant, flippant, cavalier, careless, reckless		JJ
+not	noun-en	B2	note.		NN_UTR
+nuvarande	adjective	B2	present; relating to now		JJ
+nybliven	adjective	B2	new		JJ
+nykomling	noun-en	B2	a newcomer, a new arrival		NN_UTR
+nyttig	adjective	B2	useful		JJ
+någonsin	adverb	B2	ever		AB
+närhet	noun-en	B2	closeness		NN_UTR
+närminne	noun-ett	B2	short-term memory		NN_NEU
+närområde	noun-ett	B2	vicinity, local area		NN_NEU
+närvara	verb	B2	to be present; to be located in the immediate vicinity.		VB
+oacceptabel	adjective	B2	unacceptable		JJ
+oavsedd	adjective	B2		none	JJ
+obehaglig	adjective	B2	unpleasant, uncomfortable, uneasy, "mentally unpleasant"		JJ
+observera	verb	B2	to watch		VB
+oerhörd	adjective	B2	unheard-of		JJ
+offer	noun-ett	B2	a sacrifice		NN_NEU
+offra	verb	B2	to sacrifice		VB
+ohälsa	noun-en	B2	ill health		NN_UTR
+ohälsosam	adjective	B2	unhealthy		JJ
+okänd	adjective	B2	unknown, unfamiliar		JJ
+olycka	noun-en	B2	an accident		NN_UTR
+olöst	adjective	B2	unsolved		JJ
+omedelbar	adjective	B2	immediate, direct		JJ
+omfatta	verb	B2	to comprise, to span, to include		VB
+omständighet	noun-en	B2	circumstance		NN_UTR
+omtala	verb	B2	to tell	via-form	VB
+omänsklig	adjective	B2	inhuman		JJ
+onormal	adjective	B2	abnormal		JJ
+onödig	adjective	B2	unnecessary, not needed		JJ
+optimism	noun-en	B2	optimism		NN_UTR
+ordbok	noun-en	B2	a dictionary		NN_UTR
+ordna	verb	B2	to order, to sort, to put in order, to arrange, to fix		VB
+orenhet	noun-en	B2	impurity		NN_UTR
+originell	adjective	B2	original, peculiar		JJ
+osäker	adjective	B2	unsafe, insecure		JJ
+osäkerhet	noun-en	B2	uncertainty		NN_UTR
+otillräcklig	adjective	B2	insufficient, inadequate		JJ
+oundviklig	adjective	B2	inevitable, unavoidable		JJ
+ouppmärksam	adjective	B2	inattentive		JJ
+ovan	adjective	B2	unaccustomed; not used to, inexperienced, lacking practice		JJ,AB
+ovanstående	adjective	B2	aforementioned, above		JJ
+overall	noun-en	B2	a pair of coveralls / overalls		NN_UTR
+ovilja	noun-en	B2	unwillingness		NN_UTR
+palm	noun-en	B2	palm		NN_UTR
+pappaledig	adjective	B2		none	JJ
+pappersark	noun-ett	B2	a sheet of paper		NN_NEU
+paradox	noun-en	B2	a paradox		NN_UTR
+part	noun-en	B2	part, piece		NN_UTR
+paus	noun-en	B2	a pause, a break		NN_UTR
+pensionsålder	noun-en	B2		none	NN_UTR
+pensionär	noun-en	B2	a pensioner, a retiree		NN_UTR
+per	prep	B2	For each; for every		PP
+permanent	adjective	B2	permanent		JJ
+perspektiv	noun-ett	B2	a perspective		NN_NEU
+pinne	noun-en	B2	a stick		NN_UTR
+plugg	noun-en	B2	a plug		NN_UTR,NN_NEU
+pochera	verb	B2	to poach		VB
+potentiell	adjective	B2	potential		AB,JJ
+pr	noun	B2	PR, public relations		NN
+president	noun-en	B2	a chairman, presiding member of an assembly, e.g. a court of law		NN_UTR
+pressa	verb	B2	to press		VB
+prestation	noun-en	B2	performance, achievement; what one has managed to perform or do		NN_UTR
+prestationskrav	noun-ett	B2		none	NN_NEU
+prestationsångest	noun-en	B2	performance anxiety		NN_UTR
+prestige	noun-en	B2	prestige		NN_UTR
+princip	noun-en	B2	principle		NN_UTR
+prioritera	verb	B2	to prioritize		VB
+privatliv	noun-ett	B2	private life, privacy		NN_NEU
+problematisk	adjective	B2	problematic		JJ
+processa	verb	B2		none	VB
+produkt	noun-en	B2	product; commodities offered for sale, a result of manufacturing		NN_UTR
+produktion	noun-en	B2	production or manufacture		NN_UTR
+produktiv	adjective	B2	productive		JJ
+produktivitet	noun-en	B2	productivity		NN_UTR
+profitera	verb	B2	to profit, to benefit, to exploit		VB
+projekt	noun-ett	B2	project		NN_NEU,NN_UTR
+projektanställd	participle	B2		none	PC
+projektor	noun-en	B2	a projector		NN_UTR
+provanställning	noun-en	B2		none	NN_UTR
+prägla	verb	B2	to stamp, to dent, to make an impression		VB
+psykisk	adjective	B2	mental		JJ
+psykosocial	adjective	B2	psychosocial		JJ
+påfrestning	noun-en	B2	a source of stress or strain		NN_UTR
+påminna	verb	B2	to remind		VB
+påpeka	verb	B2	to point out, to note		VB
+påstå	verb	B2	to claim, to state		VB
+rasistisk	adjective	B2	racist		JJ
+rationalism	noun-en	B2		none	NN_UTR
+rea	noun-en	B2	a sale; short for realisation		NN_UTR
+reagera	verb	B2	to react		VB
+reaktion	noun-en	B2	a reaction		NN_UTR
+realistisk	adjective	B2	realistic		JJ
+reda	noun-en	B2	ready		NN_UTR
+redigering	noun-en	B2	editing		NN_UTR
+redovisa	verb	B2	to show, to display, to present, to produce, to account		VB
+reducera	verb	B2	to reduce		VB
+reflektera	verb	B2	to reflect		VB
+regim	noun-en	B2	a regime, a government		NN_UTR
+regional	adjective	B2	regional; pertaining to a region or regions		JJ
+registrera	verb	B2	to register		VB
+rekommendation	noun-en	B2	a recommendation		NN_UTR
+relatera	verb	B2	to relate		VB
+religiös	adjective	B2	religious; concerning religion		JJ
+rengöra	verb	B2	to clean		VB
+reservera	verb	B2	to reserve		VB
+respektive	conj	B2	respectively		KN
+resurs	noun-en	B2	a resource		NN_UTR
+retorik	noun-en	B2	rhetoric		NN_UTR
+riktning	noun-en	B2	a direction		NN_UTR
+rimlig	adjective	B2	reasonable, fair		JJ,AB
+rottweiler	noun-en	B2	a rottweiler		NN_UTR
+rugby	noun-en	B2	rugby		NN_UTR
+rush	noun-en	B2		none	NN_UTR
+rutin	noun-en	B2	a routine		NN_UTR
+rygg	noun-en	B2	back; the rear of the body; especially the part between the neck and the end of the spine	long	NN_UTR
+rykte	noun-ett	B2	a rumor		NN_NEU
+ryss	noun-en	B2	a Russian, male person from Russia		NN_UTR
+rå	verb	B2	raw	pos	VB
+rädsla	noun-en	B2	fear		NN_UTR
+rätta	verb	B2	to correct, to rectify		VB
+rö	noun-ett	B2	a pipe, a tube	via-form	NN_NEU
+röst	noun-en	B2	voice		NN_UTR
+saker	adjective	B2	a thing	via-form	JJ
+sala	verb	B2		none	VB
+same	noun-en	B2	a Sami		NN_UTR
+samisk	adjective	B2	Sami		JJ
+sammanfatta	verb	B2	to summarize, to conclude		VB
+sammansatt	adjective	B2	compounded; put together of different pieces		JJ
+sankt	adjective	B2	Saint: title given to a saint.		JJ
+sannolik	adjective	B2	probable; of high probability		JJ
+sapfisk	adjective	B2	sapphic		JJ
+separera	verb	B2	to separate		VB
+sexuell	adjective	B2	sexual		JJ
+sittande	noun-ett	B2	to sit	via-form,pos	NN_NEU
+sjukdag	noun-en	B2	sick day		NN_UTR
+sjukdomsfall	noun-ett	B2		none	NN_NEU
+sjukförsäkring	noun-en	B2	income protection insurance		NN_UTR
+sjukskriva	verb	B2	to report being sick, which limits the opportunity to work or to study; to be on sick leave	long	VB
+sjukskrivning	noun-en	B2	sick leave		NN_UTR
+sjunka	verb	B2	to sink		VB
+självmord	noun-ett	B2	suicide		NN_NEU
+skalv	noun-ett	B2	a quake, a shaking		NN_NEU
+skandal	noun-en	B2	scandal		NN_UTR
+skattepeng	noun-en	B2		none	NN_UTR
+skildra	verb	B2	to depict, to portray, to describe		VB
+skoj	adjective	B2	fun		JJ
+skolsystem	noun-ett	B2		none	NN_NEU
+skott	noun-ett	B2	a shot		NN_NEU
+skrin	noun-ett	B2	a small box		NN_NEU
+skrivande	noun-ett	B2	to write, to type, to copy; to put letters and digits on a surface, using a pen or typewriter	via-form,pos,long	NN_NEU
+skräck	noun-en	B2	fear, terror, horror.		NN_UTR
+skuldsanering	noun-en	B2		none	NN_UTR
+skvallra	verb	B2	to tell on		VB
+skyddsnät	noun-ett	B2	a protective net		NN_NEU
+skäll	adjective	B2	barking		JJ
+skämt	noun-ett	B2	a joke		NN_NEU
+sköta	verb	B2	to manage, to take care of, to care for, to nurse		VB
+slagen	participle	B2	to hit, punch or beat; to give a blow.	via-form	PC
+slappna	verb	B2	to become less tense or firm, to loosen, to go limp, to start to sag		VB
+slita	verb	B2	to wear		VB
+slogan	noun-en	B2		none	NN_UTR
+slutlig	adjective	B2	final		JJ
+snack	noun-ett	B2	talk, speech		NN_NEU
+socialbidrag	noun-ett	B2	welfare		NN_NEU
+socialekonomisk	adjective	B2		none	JJ
+socialist	noun-en	B2	a socialist		NN_UTR
+socialstyrelse	noun-en	B2		none	NN_UTR
+socker	noun-ett	B2	sugar; sucrose in the form of small crystals		NN_NEU
+somlig	pronoun	B2	some		JJ,PN
+sona	verb	B2	to atone		VB
+sortera	verb	B2	to sort		VB
+sparka	verb	B2	to kick; to strike with the foot or leg		VB
+specialist	noun-en	B2	a specialist		NN_UTR
+spegla	verb	B2	to reflect		VB
+spekulera	verb	B2	to speculate		VB
+speleman	noun-en	B2	a folk musician	via-form	NN_UTR
+spirituell	adjective	B2	witty, ingenious, sharp, bright, quickwitted, funny		JJ
+sporta	verb	B2	to perform a sport or athletics, to train, to exercise		VB
+sportbil	noun-en	B2	a sports car		NN_UTR
+språkkunskap	noun-en	B2	language proficiency		NN_UTR
+språkkurs	noun-en	B2		none	NN_UTR
+spänna	verb	B2	to tighten, to tense		VB
+spörja	verb	B2	to ask		VB
+start	noun-en	B2	a start; a beginning		NN_UTR
+statisk	adjective	B2	static		JJ
+statistiker	noun-en	B2	statistician		NN_UTR
+statistisk	adjective	B2	statistical		JJ
+statsobligation	noun-en	B2	government bond		NN_UTR
+stereotyp	noun-en	B2	stereotypic, stereotypical, banal, conventional		NN_UTR,JJ
+stiftelse	noun-en	B2	a foundation, a self-owning corporation where board members appoint their own successors	long	NN_UTR
+still	particle	B2	still		PL,AB
+stimulera	verb	B2	to stimulate		VB
+stimulus	noun-ett	B2	stimulus		NN_NEU
+stopp	noun-ett	B2	n a stop		NN_NEU
+storlek	noun-en	B2	size		NN_UTR
+storskalig	adjective	B2	large-scale		JJ
+stress	noun-en	B2	stress		NN_UTR
+stressa	verb	B2	to hurry under heavy stress; to move quickly or do things quickly because of being pressured to do so	long	VB
+stressig	adjective	B2		none	JJ
+stressrelaterad	participle	B2		none	PC
+strof	noun-en	B2	a stanza		NN_UTR
+sträva	verb	B2	a strut, a brace	pos	VB
+stygg	adjective	B2	naughty, mean, bad		JJ
+styra	verb	B2	govern, rule, control	pos	VB
+styrka	noun-en	B2	strength		NN_UTR,VB
+styrsystem	noun-ett	B2	a control system		NN_NEU
+stämning	noun-en	B2	ambiance		NN_UTR
+stötta	verb	B2	a support, a pillar	pos	VB
+subjekt	noun-ett	B2	a subject		NN_NEU
+sverigedemokrat	noun-en	B2	the Sweden Democrats		NN_UTR
+svischa	verb	B2	to swish, to swoosh		VB
+syfte	noun-ett	B2	intention		NN_NEU
+symfoniorkester	noun-en	B2	symphony orchestra		NN_UTR
+symptom	noun-ett	B2	symptom	via-form	NN_NEU
+symtom	noun-ett	B2	symptom		NN_NEU
+synonym	noun-en	B2	synonymous		NN_UTR
+sångare	noun-en	B2	singer		NN_UTR
+såra	verb	B2	to wound		VB
+sänka	verb	B2	to lower; move downwards		VB
+sönderstressad	participle	B2		none	PC
+tacksam	adjective	B2	grateful		JJ
+tackvarex	conj	B2		none	KN
+tecken	noun-ett	B2	A visible indication; a sign.		NN_NEU
+television	noun-en	B2	television		NN_UTR
+tempo	noun-ett	B2	pace, tempo		NN_NEU
+tendens	noun-en	B2	a tendency, a trend		NN_UTR
+teori	noun-en	B2	theory; an unproven conjecture		NN_UTR
+terapeutisk	adjective	B2	therapeutic		JJ
+term	noun-en	B2	a term		NN_UTR
+terminologi	noun-en	B2	terminology		NN_UTR
+tillitsfull	adjective	B2	trusting		JJ
+tillstånd	noun-ett	B2	condition, state		NN_NEU
+tillverka	verb	B2	to manufacture, to produce, to make		VB
+tillväxa	verb	B2	to grow		VB
+tillägg	noun-ett	B2	an addition, an appendix, an amendment		NN_NEU
+tjuv	noun-en	B2	a thief		NN_UTR
+tolka	verb	B2	to interpret; as of translating orally between languages		VB
+tolkning	noun-en	B2	an interpretation		NN_UTR
+tomhet	noun-en	B2	emptiness		NN_UTR
+ton	noun-en	B2	tonne, metric ton		NN_UTR
+tryck	noun-ett	B2	pressure; force per unit of area		NN_NEU
+träffpunkt	noun-en	B2		none	NN_UTR
+ty	conj	B2	for		KN
+tydning	noun-en	B2		none	NN_UTR
+tänkare	noun-en	B2	a thinker		NN_UTR
+tävla	verb	B2	to compete, to contend, to race		VB
+underlätta	verb	B2	to facilitate		VB
+undervisa	verb	B2	to teach, to educate, to tutor; to act as a teacher, to pass on knowledge		VB
+undervisning	noun-en	B2	education, training, schooling		NN_UTR
+undgå	verb	B2	to evade, to escape		VB
+uppe	adverb	B2	up		AB
+uppfattning	noun-en	B2	an opinion, a standpoint, a understanding		NN_UTR
+uppfylla	verb	B2	fulfill; to fill up	pos	VB
+uppkomma	verb	B2	to originate		VB
+uppmuntra	verb	B2	encourage; to mentally support	pos	VB
+uppmärksamhet	noun-en	B2	attention, attentiveness		NN_UTR
+upprätthålla	verb	B2	to maintain, uphold		VB
+uppskatta	verb	B2	to appreciate		VB
+ur	prep	B2	out of, from		PP
+ursprungligen	adverb	B2	originally		AB
+utav	prep	B2	synonym of av		PP
+utbränd	adjective	B2	burned out		JJ
+utforma	verb	B2	to draft, to design, to shape		VB
+utföra	verb	B2	to perform, to carry out, to execute, to do		VB
+utläsa	verb	B2	to pronounce		VB
+utreda	verb	B2	to investigate		VB
+utrymme	noun-ett	B2	space		NN_NEU
+utse	verb	B2	to appoint, to choose, to elect		VB
+utsikt	noun-en	B2	a view		NN_UTR
+utsträckning	noun-en	B2	extent, width, reach, stretch		NN_UTR
+utstöta	verb	B2	to utter, to emit, to let out		VB
+uttrycksmedel	noun-ett	B2	means of expression		NN_NEU
+utöver	prep	B2	in addition to, apart from		PP
+vagn	noun-en	B2	a four-wheeled, unpowered conveyance		NN_UTR
+vaktare	noun-en	B2	to guard	via-form,pos	NN_UTR
+vantrivas	verb	B2	to be unhappy		VB
+vapen	noun-ett	B2	weapon		NN_NEU
+vardaglig	adjective	B2	everyday; casual; mundane		JJ
+vardagsliv	noun-ett	B2	everyday life		NN_NEU
+varelse	noun-en	B2	a creature, a being		NN_UTR
+varifrån	adverb	B2	from which place; from which direction; from where; wherefrom; whence		HA
+varken	adverb	B2	neither		AB
+varna	verb	B2	to warn; to issue a warning		VB
+vart	adverb	B2	to where, to which place, whither, whereto?		HA
+vegetarisk	adjective	B2	vegetarian		JJ
+vetenskaplig	adverb	B2	scientific		JJ,AB
+vikarie	noun-en	B2	temp, alternate, substitute		NN_UTR
+villkor	noun-ett	B2	a condition, a precondition		NN_NEU
+vinst	noun-en	B2	a win		NN_UTR
+virus	noun-ett	B2	virus		NN_NEU
+vitaktig	adjective	B2	whitish; of a color resembling white		JJ
+våld	noun-ett	B2	violence		NN_NEU
+väcka	verb	B2	to wake up, to wake, to awaken		VB
+väga	verb	B2	weigh	pos	VB
+väl	adverb	B2	well		AB
+välde	noun-ett	B2	a power, an empire, a realm, a reign		NN_NEU
+välutbildad	adjective	B2	well-educated		JJ
+värdefull	adjective	B2	valuable, precious, useful		JJ
+värdering	noun-en	B2	an appraisal		NN_UTR
+väsentlig	adjective	B2	essential		JJ
+x-årig	adjective	B2		none	JJ
+ytterlig	adjective	B2	extreme		JJ
+åldersgrupp	noun-en	B2	age group		NN_UTR
+ångest	noun-en	B2	anxiety		NN_UTR
+åsiktsfrihet	noun-en	B2	freedom of opinion		NN_UTR
+återspegla	verb	B2	reflect	pos	VB
+återställa	verb	B2	to restore		VB
+ädel	adjective	B2	noble; honourable		JJ
+äktenskapsliknande	adjective	B2		none	JJ
+änsålänge	conj	B2		none	KN
+ögonblick	noun-ett	B2	a moment, an instant, a blink of an eye		NN_NEU
+ögondroppar	noun-en	B2		none	NN_UTR
+öra	noun-ett	B2	ear; the part of the body used to hear		NN_NEU
+överarbete	noun-ett	B2		none	NN_NEU
+överens	adverb	B2	in agreement, in accord		AB
+överensstämma	verb	B2	to coincide, to agree, to be similar, to fit		VB
+överleva	verb	B2	to survive		VB
+överlevnad	noun-en	B2	survival		NN_UTR
+överraska	verb	B2	to surprise		VB
+övertryck	noun-ett	B2	overpressure		NN_NEU
+övertyga	verb	B2	to convince		VB

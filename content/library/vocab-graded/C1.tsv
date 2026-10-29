@@ -1,0 +1,1269 @@
+# grove library vocabulary (graded), level C1. Words and levels from SweLLex (Volodina, Pilán, Llozhi, Degryse & François 2016; Språkbanken Text, https://doi.org/10.23695/6h3v-zw25), CC BY 4.0: the first CEFR level whose learner essays use the word; misspellings left out. SweLLex_v1.tsv sha256 3491b1a51c004b58b0bd6ddd72909f42ad7bcf13f400212e0584606387ae5980. Meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-graded.mjs.
+sv	pos	level	en	flags	suc
+absurd	adjective	C1	absurd		JJ
+acceptabel	adjective	C1	acceptable		JJ
+aerobics	noun-en	C1	aerobics		NN_UTR
+afrikansk	adjective	C1	African		JJ
+aids	noun-en	C1	AIDS		NN_UTR
+akademiker	noun-en	C1	academic		NN_UTR
+akademisk	adjective	C1	academic		JJ
+akta	verb	C1	to be careful with, to watch, to mind		VB
+alkoholmissbruk	noun-ett	C1	alcohol abuse		NN_NEU
+allmänbildning	noun-en	C1	An acquired body of knowledge generally accepted as necessary for versed person, particularly in humanities.	long	NN_UTR
+allmängiltig	adjective	C1	which is valid everywhere, everywhen and for everyone		JJ
+allmänhet	noun-en	C1	public		NN_UTR
+alltför	adverb	C1	too		AB
+alltmera	adverb	C1	increasingly, more and more	via-form	AB
+alltsedan	prep	C1	since		PP
+allvar	noun-ett	C1	seriousness, earnestness, serious business		NN_NEU
+almanacka	noun-en	C1	a calendar		NN_UTR
+ambition	noun-en	C1	ambition		NN_UTR
+ambitiös	adjective	C1	ambitious; possessing ambition		JJ
+amfibolit	noun-en	C1		none	NN_UTR
+amfora	noun-en	C1	amphora		NN_UTR
+andas	verb	C1	to breathe		VB
+angelägen	adjective	C1	important, urgent		JJ
+ankomst	noun-en	C1	arrival; the act of arriving		NN_UTR
+annanstans	adverb	C1	elsewhere; in another place		AB
+anordna	verb	C1	to arrange, to organize		VB
+anpassa	verb	C1	adapt, adjust	pos	VB
+anstalt	noun-en	C1	an institution		NN_UTR
+anställningsavtal	noun-ett	C1	employment contract		NN_NEU
+anställningstrygghet	noun-en	C1	job security		NN_UTR
+ansvara	verb	C1	to be responsible, to take responsibility, to be in charge		VB
+ansvarighet	noun-en	C1		none	NN_UTR
+ansöka	verb	C1	to apply		VB
+antropologisk	adjective	C1	anthropological		JJ
+anvisning	noun-en	C1	instruction		NN_UTR
+användare	noun-en	C1	user		NN_UTR
+användbar	adjective	C1	useful		JJ
+användbarhet	noun-en	C1	usefulness		NN_UTR
+användning	noun-en	C1	use, usage, application		NN_UTR
+arabiska	noun-en	C1	Arabic		NN_UTR
+arbetsbelastning	noun-en	C1		none	NN_UTR
+arbetsbörda	noun-en	C1		none	NN_UTR
+arbetsförhållande	noun-ett	C1		none	NN_NEU
+arbetsglädje	noun-en	C1		none	NN_UTR
+arbetskapacitet	noun-en	C1		none	NN_UTR
+arbetslivserfarenhet	noun-en	C1	work experience		NN_UTR
+arbetsmängd	noun-en	C1		none	NN_UTR
+arbetsmänniska	noun-en	C1		none	NN_UTR
+arbetsnarkoman	noun-en	C1	a workaholic		NN_UTR
+arbetssökande	adjective	C1	jobseeking		JJ
+arbetstagare	noun-en	C1	an employee, a worker		NN_UTR
+arbetstempo	noun-ett	C1		none	NN_NEU
+arbetstillfälle	noun-ett	C1	job opportunity		NN_NEU
+arbetsuppgift	noun-en	C1	a task, a chore, a duty, an item in a job description		NN_UTR
+arbetsvillig	adjective	C1		none	JJ
+arbetsvillkor	noun-ett	C1	working condition, work environment		NN_NEU
+arkeolog	noun-en	C1	an archaeologist		NN_UTR
+armé	noun-en	C1	army		NN_UTR
+arv	noun-ett	C1	inheritance; the passing of titles, property etc upon someone's death		NN_NEU
+asiatisk	adjective	C1	Asian		JJ
+assistans	noun-en	C1	assistance		NN_UTR
+attribut	noun-ett	C1	an attribute		NN_NEU
+auktionist	noun-en	C1		none	NN_UTR
+automatisering	noun-en	C1	automation		NN_UTR
+automatisk	adjective	C1	automatic		JJ
+avdelning	noun-en	C1	department		NN_UTR
+avel	noun-en	C1	selective breeding		NN_UTR
+avigsida	noun-en	C1	wrong side		NN_UTR
+avkoppla	verb	C1		none	VB
+avlösa	verb	C1	to change, to relieve, to take over		VB
+avsaknad	noun-en	C1	lack, absence		NN_UTR
+avse	verb	C1	to intend; to fix the mind upon		VB
+avseende	noun-ett	C1	an aspect		NN_NEU
+avsked	noun-ett	C1	a farewell, parting		NN_NEU
+avslappning	noun-en	C1	relaxation		NN_UTR
+avsnitt	noun-ett	C1	paragraph; piece of text		NN_NEU
+avstå	verb	C1	to abstain		VB
+avsätta	verb	C1	to dethrone, to oust, to remove; to get rid of		VB
+avtala	participle	C1	to come to a deal or an agreement, to prearrange		PC
+bakåt	adverb	C1	back, backwards, in reverse, towards the rear		AB
+balanserad	adjective	C1	balanced		JJ
+bana	noun-en	C1	a trajectory, a course, a path		NN_UTR
+barnbarn	noun-ett	C1	a grandchild		NN_NEU
+barnfamilj	noun-en	C1	family with children		NN_UTR
+barnomsorg	noun-en	C1	childcare		NN_UTR
+bearbeta	verb	C1	to work, process		VB
+bedra	verb	C1	to deceive		VB
+befalla	verb	C1	to order, to command		VB
+befria	vB	C1	to liberate, to free, to make free		vB
+begränsning	noun-en	C1	limitation, restriction, limit		NN_UTR
+behandling	noun-en	C1	treatment, processing		NN_UTR
+behärska	verb	C1	to master, to command, to rule, to control		VB
+bejaka	verb	C1	to answer a question with "yes"		VB
+bekanta	verb	C1	acquaint, familiarize, make familiar	pos	VB
+bekantskapskrets	noun-en	C1	a circle of acquaintances		NN_UTR
+bekostnad	noun-en	C1	expense		NN_UTR
+bekräfta	verb	C1	to confirm, to acknowledge		VB
+bekvämlighet	noun-en	C1	comfort, convenience		NN_UTR
+bekymmersam	adjective	C1	worrying, troubling		JJ
+bekymra	verb	C1	to worry		VB
+belasta	participle	C1	to subject to a load		PC
+belopp	noun-ett	C1	a sum; an amount		NN_NEU
+belysa	verb	C1	to light, to light up, to illuminate		VB
+belägg	noun-ett	C1	a piece of evidence		NN_NEU
+bemärkelse	noun-en	C1	sense, meaning		NN_UTR
+bemöta	verb	C1	to respond to someone's argument or criticism		VB
+berättiga	verb	C1	to give the right, to entitle		VB
+beröm	noun-ett	C1	praise, commendation, kudos, laudation		NN_NEU
+beröra	verb	C1	to touch		VB
+beröva	verb	C1	to deprive		VB
+beskydda	verb	C1	to protect		VB
+beständig	adjective	C1	constant, enduring		JJ
+besvara	verb	C1	to reply		VB
+besvära	verb	C1	to bother, to trouble, to inconvenience		VB
+beteckna	verb	C1	to characterize, to signify, to designate		VB
+beträffande	prep	C1	concerning		PP
+betydelsefull	adjective	C1	meaningful, significant		JJ
+betydlig	adjective	C1	significant		JJ
+bevaka	verb	C1	to watch, to guard		VB
+bevisligen	adverb	C1	provably, demonstrably		AB
+bevisning	noun-en	C1	evidence, proof		NN_UTR
+bidragsberoende	noun-ett	C1	dependent on welfare, dependent on benefits		NN_NEU
+bieffekt	noun-en	C1	side effect		NN_UTR
+bigami	noun-en	C1	bigamy		NN_UTR
+bilkö	noun-en	C1	a tailback, a backup		NN_UTR
+biologisk	adjective	C1	biological		JJ
+bisexuell	adjective	C1	bisexual		JJ
+bistånd	noun-ett	C1	aid, support		NN_NEU
+bitterhet	noun-en	C1	bitterness		NN_UTR
+biverkning	noun-en	C1	side effect		NN_UTR
+björntjänst	noun-en	C1	a disservice, a mistaken kindness, a misguided helpfulness, an attempted favor which turns out to be detrimental, or…	long	NN_UTR
+blick	noun-en	C1	look		NN_UTR
+blues	noun-en	C1	blues		NN_UTR
+blunda	verb	C1	to shut one's eyes		VB
+boendekostnad	noun-en	C1		none	NN_UTR
+boka	verb	C1	to book, to reserve		VB
+boklig	adjective	C1	bookish, bookly		JJ
+boning	noun-en	C1	an abode, a dwelling		NN_UTR
+bortglömd	adjective	C1	forgotten		JJ
+bota	verb	C1	to cure, heal; to restore to good health; to relieve from a disease		VB
+bottna	verb	C1	to be able to stand on the bottom of a body of water and have one's head above water	long	VB
+bov	noun-en	C1	a criminal, chiefly a thief or robber		NN_UTR
+brandkår	noun-en	C1	fire brigade, fire department		NN_UTR
+bredda	verb	C1	to widen		VB
+brevbärare	noun-en	C1	a mailman, a letter carrier		NN_UTR
+brinna	verb	C1	to burn, to be on fire		VB
+brottare	noun-en	C1	a wrestler		NN_UTR
+brottas	verb	C1	to wrestle		VB
+brottslig	adjective	C1	criminal		JJ
+brottslighet	noun-en	C1	crime, criminality		NN_UTR
+bruk	noun-ett	C1	use, usage		NN_NEU
+bråk	noun-ett	C1	brawl, row, racket; trouble		NN_NEU
+budget	noun-en	C1	a budget		NN_UTR
+business	noun-en	C1		none	NN_UTR
+byråkratisk	adverb	C1	bureaucratic		AB
+bälte	noun-ett	C1	a belt		NN_NEU
+bärbar	adjective	C1	portable		JJ
+bön	noun-en	C1	prayer		NN_UTR
+börskurs	noun-en	C1		none	NN_UTR
+börsnotera	participle	C1		none	PC
+ca	adverb	C1	circa; abbreviation of cirka; alternative form of c:a		AB
+cancer	noun-en	C1	cancer		NN_UTR
+chock	noun-en	C1	shock		NN_UTR
+cirkel	noun-en	C1	a circle		NN_UTR
+dagenefterx	adverb	C1		none	AB
+dagligen	adverb	C1	daily, every day		AB
+dagsläge	noun-ett	C1	today's situation, the current situation		NN_NEU
+dagspress	noun-en	C1		none	NN_UTR
+dal	noun-en	C1	valley, dale		NN_UTR
+dalkarl	noun-en	C1	a man from the province Dalarna		NN_UTR
+dalkulla	noun-en	C1	a female Dalecarlian		NN_UTR
+dalmål	noun-ett	C1		none	NN_NEU
+dansk	adjective	C1	Danish; of or pertaining to Denmark		JJ
+datorskärm	noun-en	C1	computer screen		NN_UTR
+deadline	noun-en	C1	a deadline		NN_UTR
+debattartikel	noun-en	C1	an opinion piece		NN_UTR
+deduktion	noun-en	C1	deduction		NN_UTR
+definition	noun-en	C1	a definition		NN_UTR
+definitiv	adjective	C1	definitive		JJ
+delaktig	adjective	C1	involved, taking part		JJ
+delaktighet	noun-en	C1	participation, involvement		NN_UTR
+delegera	verb	C1	to delegate		VB
+dels	conj	C1	part, partly, in part, both ... and		KN
+deltagande	noun-ett	C1	sympathetic, condoling		NN_NEU
+deltidsanställd	participle	C1	employ parttime	via-form	PC
+deltidsarbeta	verb	C1		none	VB
+deltidsarbete	noun-ett	C1		none	NN_NEU
+demens	noun-en	C1	dementia		NN_UTR
+demografisk	adjective	C1	demographical or demographic; related to demography		JJ
+demonstrera	verb	C1	to demonstrate		VB
+desperat	adjective	C1	desperate		JJ
+dessvärre	adverb	C1	unfortunately		AB
+detalj	noun-en	C1	detail		NN_UTR
+dialekt	noun-en	C1	a dialect		NN_UTR
+diktatorisk	adjective	C1	dictatorial		JJ
+diplomera	participle	C1		none	PC
+direktiv	noun-ett	C1	a directive		NN_NEU
+direktsändning	noun-en	C1	a live broadcast		NN_UTR
+disk	noun-en	C1	counter; table on which business is transacted		NN_UTR
+dokument	noun-ett	C1	a document		NN_NEU
+dokumentation	noun-en	C1	documentation		NN_UTR
+dokumentera	verb	C1	to document		VB
+domän	noun-en	C1	domain		NN_UTR
+donera	verb	C1	to donate		VB
+drama	noun-ett	C1	a drama		NN_NEU
+dressing	noun-en	C1	dressing		NN_UTR
+drogmissbruk	noun-ett	C1	drug abuse		NN_NEU
+drunkna	verb	C1	to drown		VB
+dröja	verb	C1	to not occur or do immediately; to linger, to wait, to last, to hold		VB
+dugga	verb	C1	to rain lightly, to drizzle		VB
+duglig	adjective	C1	capable, able		JJ
+dygn	noun-ett	C1	day, nychthemeron		NN_NEU
+dämpa	verb	C1	to damp		VB
+därav	adverb	C1	thereof		AB
+därigenom	adverb	C1	thereby, because of this		AB
+därpå	adverb	C1	afterwards, thereafter, subsequently		AB
+dödsfall	noun-ett	C1	a death		NN_NEU
+dölja	verb	C1	to conceal, to hide; to put out of sight or to keep secret		VB
+e-post	noun-en	C1	e-mail		NN_UTR
+effektfull	adjective	C1	potent, efficacious		JJ
+effektivisera	verb	C1	to make something more efficient		VB
+efterfråga	verb	C1	to ask for, to request		VB
+efterlängtad	adjective	C1	longed-for		JJ
+eftersätta	participle	C1	to not give due time and attention, to neglect		PC
+eftertrakta	participle	C1	to covet, desire		PC
+egentlig	adjective	C1	real, actual		JJ
+ekonom	noun-en	C1	an economist		NN_UTR
+eldsjäl	noun-en	C1	someone very passionate, an enthusiast		NN_UTR
+emellanåt	adverb	C1	occasionally, sometimes, from time to time		AB
+emotionell	adjective	C1	emotional		JJ
+engagemang	noun-ett	C1	commitment, interest, enthusiasm, involvement, the degree of voluntary participation	long	NN_NEU
+enig	adjective	C1	agreeing, in agreement		JJ
+enkelrikta	verb	C1	to make one-way		VB
+ensamförälder	noun-en	C1		none	NN_UTR
+enspråkig	adjective	C1	monolingual		JJ
+enstaka	adjective	C1	unique		JJ
+erbjudande	noun-ett	C1	offer; a proposal that has been made.		NN_NEU
+erfordra	verb	C1	to require		VB
+ergonomi	noun-en	C1	ergonomics		NN_UTR
+ersättare	noun-en	C1	a replacement, a substitute		NN_UTR
+ersättning	noun-en	C1	a replacement		NN_UTR
+esperanto	noun-ett	C1	Esperanto		NN_NEU
+essentiell	adjective	C1	essential, crucial		JJ
+etnicitet	noun-en	C1	ethnicity, ethnos		NN_UTR
+europaråd	noun-ett	C1		none	NN_NEU
+evig	adjective	C1	eternal, never-ending		JJ
+evolution	noun-en	C1	evolution; development		NN_UTR
+evolutionsprocess	noun-en	C1		none	NN_UTR
+existens	noun-en	C1	existence; the state of being		NN_UTR
+existentiell	adjective	C1	existential		JJ
+experiment	noun-ett	C1	experiment		NN_NEU
+expert	noun-en	C1	expert		NN_UTR
+exportera	verb	C1	to export		VB
+extern	adjective	C1	external		JJ
+extraknäcka	verb	C1	to moonlight, to have a second job		VB
+fackförening	noun-en	C1	a trade union, a labor union		NN_UTR
+familjedaghem	noun-ett	C1		none	NN_NEU
+farlighet	noun-en	C1	danger		NN_UTR
+fastlägga	participle	C1		none	PC
+fastställa	verb	C1	to establish, to determine		VB
+fax	noun-en	C1	a fax c		NN_UTR
+feedback	noun-en	C1		none	NN_UTR
+fett	noun-ett	C1	a positive intensifier		NN_NEU
+fia	noun-en	C1	a diminutive of the female given name Sofia		NN_UTR
+fientlig	adjective	C1	hostile		JJ
+fikarast	noun-en	C1	coffee break		NN_UTR
+finansiell	adjective	C1	financial, pertaining to finance		JJ
+finländare	noun-en	C1	Finn; person from Finland		NN_UTR
+finsk	adjective	C1	Finnish; of, or pertaining to Finland, the Finnish language or Finns.		JJ
+flerspråkig	adjective	C1	multilingual, plurilingual		JJ
+flerspråkighet	noun-en	C1	multilingualism, plurilingualism		NN_UTR
+flexa	verb	C1	to be on or make use of flexitime		VB
+flextid	noun-en	C1	flexitime		NN_UTR
+flock	noun-ett	C1	a flock		NN_NEU
+flyta	verb	C1	to float; of an object or substance, to be supported by a fluid of greater density	long	VB
+folkbokföring	noun-en	C1	national registration, civil registry, civil registration		NN_UTR
+folkgrupp	noun-en	C1	population group, ethnic group		NN_UTR
+folkhälsa	noun-en	C1	public health		NN_UTR
+folkminne	noun-ett	C1	folklore		NN_NEU
+folkmängd	noun-en	C1	population		NN_UTR
+fordran	noun-en	C1	a credit, a demand, a requirement		NN_UTR
+forma	verb	C1	to shape, give form		VB
+formel	noun-en	C1	formula; an expression formulated by the use of symbols		NN_UTR
+formell	adjective	C1	formal		JJ
+forskarvärld	noun-en	C1		none	NN_UTR
+forskningsområde	noun-ett	C1		none	NN_NEU
+forskningsresultat	noun-ett	C1	a result of research, a finding		NN_NEU
+fortsättningsvis	adverb	C1	in the continuation, henceforth, for the future		AB
+fotbollsmatch	noun-en	C1	a football match		NN_UTR
+fotomontage	noun-ett	C1		none	NN_NEU
+framhäva	verb	C1	highlight, emphasize, hold up	pos	VB
+framkomma	verb	C1	to emerge, to be revealed		VB
+framtida	adjective	C1	relating to something which may happen in the future		JJ
+framtidsutsikt	noun-en	C1	outlook		NN_UTR
+framträda	verb	C1	to appear, to reveal oneself		VB
+franc	noun-en	C1		none	NN_UTR
+fredagseftermiddag	noun-en	C1		none	NN_UTR
+fredagskväll	noun-en	C1	a Friday evening		NN_UTR
+frekvent	adjective	C1		none	JJ
+fresta	verb	C1	tempt	pos	VB
+frilans	noun-en	C1	freelance		NN_UTR
+friskhet	noun-en	C1	freshness; pluckiness		NN_UTR
+frita	verb	C1	rescue, free, liberate from captivity	pos	VB
+fritidshus	noun-ett	C1		none	NN_NEU
+fritidsintresse	noun-ett	C1		none	NN_NEU
+frivillig	adjective	C1	voluntary		JJ
+frodas	verb	C1	to thrive, to flourish		VB
+frustrera	verb	C1	to frustrate		VB
+frysa	verb	C1	feel cold, to the point of discomfort	pos	VB
+frågetecken	noun-ett	C1	a question mark		NN_NEU
+frånvaro	noun-en	C1	absence		NN_UTR
+främja	verb	C1	to promote, to support		VB
+fröken	noun-en	C1	Miss		NN_UTR
+fullbokad	participle	C1	fully booked		PC
+fullständig	adjective	C1	complete		JJ
+fundersam	adjective	C1	pensive, thoughtful, contemplative		JJ
+funktion	noun-en	C1	function; what something does or is used for		NN_UTR
+funktionsduglig	adjective	C1	operational, functional		JJ
+fusionera	verb	C1		none	VB
+fysiologisk	adjective	C1	physiological		JJ
+fågelinfluensa	noun-en	C1	avian influenza, bird flu		NN_UTR
+fåtal	noun-ett	C1	a few		NN_NEU
+fäst	adjective	C1	fast		JJ
+förakt	noun-ett	C1	contempt		NN_NEU
+förankra	verb	C1	to anchor		VB
+förbise	verb	C1	to overlook, to miss		VB
+förbjuden	adjective	C1	forbidden		JJ
+fördela	verb	C1	to distribute, to divide		VB
+fördöma	verb	C1	to condemn, denounce		VB
+förebygga	verb	C1	to prevent		VB
+förefalla	verb	C1	to seem		VB
+förefinnas	verb	C1		none	VB
+föregående	adjective	C1	preceding, previous		JJ
+föremål	noun-ett	C1	an object, an item		NN_NEU
+förespråka	verb	C1	to advocate		VB
+föreställa	verb	C1	to present, to show, to depict		VB
+företagare	noun-en	C1	a business owner; an entrepreneur		NN_UTR
+företagschef	noun-en	C1		none	NN_UTR
+företräda	verb	C1	to represent, to advocate		VB
+förfader	noun-en	C1	an ancestor, a forefather		NN_UTR
+förflyttning	noun-en	C1	movement		NN_UTR
+förgäves	adverb	C1	in vain, for nothing		AB
+förhandla	verb	C1	to negotiate, to bargain		VB
+förhålla	verb	C1	to behave, to conduct		VB
+förlänga	verb	C1	to expand, to elongate, to extend, to make longer		VB
+förmedla	verb	C1	to mediate, to act as a proxy, to make a deal		VB
+förmenande	noun-ett	C1		none	NN_NEU
+förminska	verb	C1	to shrink, to diminish, to reduce		VB
+förmå	verb	C1	to be capable, be able to		VB
+förmån	noun-en	C1	a benefit		NN_UTR
+förneka	verb	C1	to deny		VB
+förnimma	verb	C1	to perceive		VB
+förnybar	adjective	C1	renewable		JJ
+förolämpad	participle	C1	insult, affront, offend	via-form	PC
+förordning	noun-en	C1	an ordinance, a resolution, a decree, an instruction		NN_UTR
+förplikta	participle	C1	obligate		PC
+förse	verb	C1	to provide, to equip, to supply		VB
+förstahandserfarenhet	noun-en	C1		none	NN_UTR
+förstasida	noun-en	C1	a front page		NN_UTR
+förstora	verb	C1	to enlarge; to magnify		VB
+förstådd	adjective	C1	to understand	via-form	JJ
+försvinnande	noun-ett	C1	to disappear, to vanish	via-form,pos	NN_NEU
+försäkring	noun-en	C1	insurance		NN_UTR
+försäljning	noun-en	C1	selling		NN_UTR
+försämring	noun-en	C1	worsening		NN_UTR
+förtidig	adjective	C1		none	JJ
+förtidspension	noun-en	C1		none	NN_UTR
+förtidspensionera	participle	C1		none	PC
+förtrycka	verb	C1	to oppress		VB
+förutsätta	verb	C1	to presume		VB
+förvara	verb	C1	to store		VB
+förverkliga	verb	C1	to realize		VB
+förvisso	adverb	C1	for sure, no doubt		AB
+förvåning	noun-en	C1	surprise		NN_UTR
+förväntning	noun-en	C1	an expectation		NN_UTR
+föräldraledighet	noun-en	C1		none	NN_UTR
+föräldraskap	noun-ett	C1	parenthood		NN_NEU
+förödmjuka	verb	C1	to humiliate		VB
+gardin	noun-en	C1	a curtain		NN_UTR
+generera	verb	C1	to generate		VB
+genomgå	verb	C1	go through, undergo, suffer, experience	pos	VB
+gentemot	prep	C1	towards, against		PP
+genuin	adjective	C1	genuine, real, authentic		JJ
+geopolitisk	adjective	C1	geopolitical		JJ
+gestalta	verb	C1	to portray		VB
+glömska	noun-en	C1	forgetting, forgetfulness		NN_UTR
+gnagare	noun-en	C1	a rodent, a gnawer		NN_UTR
+gnäll	noun-ett	C1	whining		NN_NEU
+gradvis	adverb	C1	gradual		AB
+granne	noun-en	C1	a neighbour		NN_UTR
+granska	verb	C1	to scrutinize, to inspect, to audit		VB
+grekiska	noun-en	C1	a woman from Greece		NN_UTR
+grotta	noun-en	C1	a cave		NN_UTR
+grundregel	noun-en	C1		none	NN_UTR
+grundskola	noun-en	C1	primary school or elementary school; in Sweden a 10-year compulsory school generally from late-August that year the…	long	NN_UTR
+gräva	verb	C1	to dig		VB
+gubbe	noun-en	C1	an older or elderly man		NN_UTR
+gymkort	noun-ett	C1		none	NN_NEU
+gynnsam	adjective	C1	beneficial		JJ
+gåtfull	adjective	C1	enigmatic, inscrutable, secretive, mysterious		JJ
+halka	verb	C1	slippery conditions	pos	VB
+halvsanning	noun-en	C1	half-truth		NN_UTR
+handling	noun-en	C1	an act, a deed		NN_UTR
+harmonisk	adjective	C1		none	JJ
+hastighet	noun-en	C1	velocity		NN_UTR
+hatt	noun-en	C1	a hat		NN_UTR
+hebreisk	adjective	C1		none	JJ
+heltidsanställd	participle	C1	employ fulltime	via-form	PC
+heltidsjobb	noun-ett	C1		none	NN_NEU
+helvete	noun-ett	C1	Hell		NN_NEU
+hemliv	noun-ett	C1		none	NN_NEU
+hetsig	adjective	C1	heated, hot-blooded, irascible		JJ
+hierarki	noun-en	C1	hierarchy		NN_UTR
+himla	adverb	C1	awfully, terribly, very		AB
+historik	noun-en	C1	a history, a historical account		NN_UTR
+hjärnkontor	noun-ett	C1		none	NN_NEU
+holländare	noun-en	C1	Dutch; person, chiefly male, from the Netherlands		NN_UTR
+homo	noun-en	C1	a homo		NN_UTR
+homogen	adjective	C1	homogeneous		JJ
+homogenisera	participle	C1	homogenize		PC
+hormon	noun-ett	C1	hormone		NN_NEU
+horn	noun-ett	C1	horn		NN_NEU
+humor	noun-en	C1	humor		NN_UTR
+hurtig	adjective	C1	full of energy, pep, and endurance, working hard and tirelessly		JJ
+husfru	noun-en	C1		none	NN_UTR
+huvudsakligen	adverb	C1	mainly		AB
+hybrid	adjective	C1	a hybrid		JJ
+hypotes	noun-en	C1	hypothesis		NN_UTR
+hårfin	adjective	C1	very thin		JJ
+hälsofarlig	adjective	C1	dangerous to health		JJ
+hälsofarlighet	noun-en	C1	dangerousness to health		NN_UTR
+hälsomässig	adverb	C1		none	AB
+hälsoproblem	noun-ett	C1		none	NN_NEU
+hälsorisk	noun-en	C1		none	NN_UTR
+hälsotillstånd	noun-ett	C1	health state		NN_NEU
+hälsovådlig	adjective	C1	unhealthy		JJ
+hämma	participle	C1	to inhibit		PC
+häng	noun-ett	C1	hanging out		NN_NEU
+hänsyn	noun-en	C1	respect, consideration		NN_UTR
+hänvisa	verb	C1	to reference, to redirect		VB
+härkomst	noun-en	C1	origin, descent, extraction		NN_UTR
+högpresterande	participle	C1		none	PC
+högst	adverb	C1	at most, not more than		AB
+högutbildad	participle	C1		none	PC
+höjning	noun-en	C1	a raise		NN_UTR
+hörselskada	noun-en	C1		none	NN_UTR
+i-land	noun-ett	C1	an industrialized country, a first-world country		NN_NEU
+iakttagelse	noun-en	C1	observation		NN_UTR
+icke	adverb	C1	not; negation of the verb in a sentence.		AB
+idelig	adverb	C1	ever, perpetual, incessant		AB
+identifiera	verb	C1	to identify		VB
+idrotta	verb	C1		none	VB
+igång	particle	C1	in motion, moving, running		PL
+ihjäl	particle	C1	to death		PL
+ilska	noun-en	C1	anger		NN_UTR
+immateriell	adjective	C1	immaterial		JJ
+inbegripa	participle	C1	to include, to involve		PC
+indirekt	adjective	C1	indirect		JJ
+individualism	noun-en	C1	individualism		NN_UTR
+individualitet	noun-en	C1	individuality		NN_UTR
+industrialisera	verb	C1	industrialize	pos	VB
+industriell	adjective	C1	industrial		JJ
+industriland	noun-ett	C1	an industrialized country, a first-world country		NN_NEU
+infallsvinkel	noun-en	C1	angle of incidence		NN_UTR
+influens	noun-en	C1		none	NN_UTR
+inflytelse	noun-en	C1		none	NN_UTR
+inflyttande	noun-ett	C1	to move in	via-form,pos	NN_NEU
+informationsflöde	noun-ett	C1		none	NN_NEU
+inför	prep	C1	in front of, before; while having the attention of		PP
+införande	noun-ett	C1	introduction		NN_NEU
+ingenjör	noun-en	C1	engineer		NN_UTR
+ingenstans	adverb	C1	nowhere		AB
+ingrepp	noun-ett	C1	intervention		NN_NEU
+inköp	noun-ett	C1	a purchase		NN_NEU
+innefatta	verb	C1	to include, to involve		VB
+inofficiell	adjective	C1	unofficial		JJ
+inreda	verb	C1	to furnish		VB
+insikt	noun-en	C1	knowledge		NN_UTR
+inslag	noun-ett	C1	a segment, a feature		NN_NEU
+inspela	verb	C1		none	VB
+inspelning	noun-en	C1	recording, filming		NN_UTR
+inställning	noun-en	C1	attitude, position		NN_UTR
+integritet	noun-en	C1	integrity		NN_UTR
+international	noun-en	C1		none	NN_UTR
+interpretera	verb	C1	to interpret		VB
+intressent	noun-en	C1	stakeholder		NN_UTR
+intrigera	verb	C1	scheme, connive, plot	pos	VB
+introducera	verb	C1	to introduce		VB
+inträda	verb	C1	to step in, to enter		VB
+inträffa	verb	C1	to happen, to occur, especially at a specific time		VB
+intuitiv	adjective	C1	intuitive		JJ
+invandring	noun-en	C1	immigration		NN_UTR
+inverkan	noun-en	C1	influence		NN_UTR
+investera	verb	C1	to invest		VB
+investering	noun-en	C1	an investment		NN_UTR
+irisk	adjective	C1	Irish		JJ
+isberg	noun-ett	C1	iceberg		NN_NEU
+ishockey	noun-en	C1	ice hockey		NN_UTR
+islutändanx	noun-en	C1		none	NN_UTR
+islutändenx	noun-en	C1		none	NN_UTR
+isolera	verb	C1	to isolate, to insulate		VB
+isolering	noun-en	C1		none	NN_UTR
+it	noun	C1		none	NN
+iåtankex	noun-en	C1		none	NN_UTR
+jaha	interj	C1	Expression of understanding; aha, OK, alright		IN
+jakt	noun-en	C1	hunting		NN_UTR
+jfr	verb	C1	cf, cf., confer, compare, see also; abbreviation of jämför	pos	VB
+jobbintervju	noun-en	C1		none	NN_UTR
+jäkta	participle	C1	to hurry; to do something as quickly as possible		PC
+jämförelsevis	adverb	C1	comparatively, relatively		AB
+jämlik	adjective	C1	equal		JJ
+jämt	adverb	C1	always, all the time		AB
+jämvikt	noun-en	C1	equilibrium, balance		NN_UTR
+jättelätt	adjective	C1		none	JJ
+kajak	noun-en	C1	a kayak		NN_UTR
+kalas	noun-ett	C1	a party, especially a more festive party focused more on eating than drinking alcohol	long	NN_NEU
+kalender	noun-en	C1	a calendar		NN_UTR
+kallelse	noun-en	C1	notice, summons		NN_UTR
+kandidatur	noun-en	C1		none	NN_UTR
+kaos	noun-ett	C1	chaos		NN_NEU
+kapabel	adjective	C1	capable		JJ
+karakteristisk	adjective	C1	characteristic		JJ
+katalansk	adjective	C1	Catalan		JJ
+katalanska	noun-en	C1	Catalan, the language spoken in Catalonia		NN_UTR
+kategori	noun-en	C1	a category		NN_UTR
+kedja	noun-en	C1	chain		NN_UTR
+kick	noun-en	C1	kick		NN_UTR
+klarspråk	noun-ett	C1	plain and clear language		NN_NEU
+klassificera	verb	C1	to classify, to categorize		VB
+klassklyfta	noun-en	C1	a gap between social classes		NN_UTR
+klient	noun-en	C1	client		NN_UTR
+klistra	verb	C1	to glue, to paste		VB
+klockren	adjective	C1	spot on, amazing, great, brilliant		JJ
+klyfta	noun-en	C1	a clove; a separate bulb of a garlic		NN_UTR
+klåda	noun-en	C1	itching		NN_UTR
+knappain	verb	C1		none	VB
+knark	noun-ett	C1	narcotics, illegal drugs		NN_NEU
+knarkhandel	noun-en	C1	drug trafficking		NN_UTR
+knep	noun-ett	C1	a trick		NN_NEU
+knippa	noun-en	C1	bunch		NN_UTR
+knut	noun-en	C1	a male given name		NN_UTR
+knuten	participle	C1	a male given name	via-form	PC
+knyta	verb	C1	to tie		VB
+knäcka	verb	C1	to crack, to break, to snap		VB
+knäppa	verb	C1	to button, to button up		VB
+koefficient	noun-en	C1	coefficient		NN_UTR
+kol	noun-ett	C1	carbon		NN_NEU
+kolonial	adjective	C1	colonial, pertaining to colonies and colonial rule		JJ
+kolonisation	noun-en	C1	colonization		NN_UTR
+kolonisera	verb	C1	to colonize		VB
+komfort	noun-en	C1	comfort		NN_UTR
+kommunikationsmedel	noun-ett	C1	means of transportation		NN_NEU
+komparativ	adjective	C1	comparative		JJ
+kompensera	verb	C1	to compensate		VB
+kompetent	adjective	C1	competent		JJ
+komplettera	participle	C1	to complete, to make complete		PC
+komplimang	noun-en	C1	a compliment		NN_UTR
+komponent	noun-en	C1	a component		NN_UTR
+koncentrationsförmåga	noun-en	C1		none	NN_UTR
+konferens	noun-en	C1	a conference		NN_UTR
+konjunktion	noun-en	C1	a conjunction		NN_UTR
+konkurrenskraftig	adjective	C1	competitive		JJ
+konkurrera	verb	C1	to compete		VB
+konservering	noun-en	C1		none	NN_UTR
+konstnärlig	adjective	C1	artistic		JJ
+konsult	noun-en	C1	a consultant		NN_UTR
+konsumism	noun-en	C1		none	NN_UTR
+kontext	noun-en	C1	a context		NN_UTR
+kontorshus	noun-ett	C1	office building		NN_NEU
+kontrakt	noun-ett	C1	a contract		NN_NEU
+konvention	noun-en	C1	a convention		NN_UTR
+kornettist	noun-en	C1		none	NN_UTR
+korta	verb	C1	to shorten		VB
+kortfattad	adjective	C1	brief, terse, concise		JJ
+kortison	noun-ett	C1		none	NN_NEU,NN_UTR
+kortsiktig	adjective	C1	short-term		JJ
+kost	noun-en	C1	diet, food		NN_UTR
+kostlig	adjective	C1		none	JJ
+kraft	noun-en	C1	force		NN_UTR
+krascha	verb	C1	to crash		VB
+kravlös	adjective	C1	undemanding, unconditional, no-strings-attached		JJ
+kreolspråk	noun-ett	C1		none	NN_NEU
+kretsa	verb	C1	to revolve		VB
+kriterium	noun-ett	C1	a criterion, a characteristic, a sign, a requirement, a test		NN_NEU
+krocka	verb	C1	to collide, to crash		VB
+krona	noun-en	C1	a crown		NN_UTR
+kronisk	adjective	C1	chronic		JJ
+krydda	noun-en	C1	seasoning		NN_UTR
+kräkas	verb	C1	to throw up, to vomit		VB
+kräsen	adjective	C1	picky, choosy		JJ
+kulturarv	noun-ett	C1	cultural heritage		NN_NEU
+kulör	noun-en	C1	non-greyscale color		NN_UTR
+kunnighet	noun-en	C1	knowledge, know-how, proficiency		NN_UTR
+kurera	verb	C1	to cure		VB
+kvalificera	verb	C1	to qualify		VB
+kvalitetstid	noun-en	C1		none	NN_UTR
+kvarstå	verb	C1	to continue		VB
+kvitta	verb	C1	to not matter		VB
+kynne	noun-ett	C1	character, nature, disposition		NN_NEU
+kännaefterx	particle	C1		none	PL
+kännedom	noun-en	C1	lore, learning, teaching, doctrine		NN_UTR
+känslomässig	adjective	C1	emotional		JJ
+lagra	verb	C1	to store		VB
+lagstiftning	noun-en	C1	legislation		NN_UTR
+landsdel	noun-ett	C1	a part of a country		NN_NEU
+lapp	noun-en	C1	a patch, a piece of any flexible material, used to cover a hole in something; such as a piece of fabric used over a…	long	NN_UTR
+lathet	noun-en	C1	laziness		NN_UTR
+latin	noun-ett	C1	Latin language		NN_NEU
+ledning	noun-en	C1	lead		NN_UTR
+leende	noun-ett	C1	smiling		NN_NEU
+lekman	noun-en	C1	laity		NN_UTR
+levnad	noun-en	C1	life, livelihood, conduct		NN_UTR
+levnadsstandard	noun-en	C1		none	NN_UTR
+levnadsvillkor	noun-ett	C1	living condition		NN_NEU
+likvärdig	adjective	C1	equal, equivalent, tantamount		JJ
+lingul	adjective	C1	flaxen		JJ
+linje	noun-en	C1	line		NN_UTR
+list	noun-en	C1	smartness, trick, cunning		NN_UTR
+lista	noun-en	C1	a list; a register or roll of paper consisting of an enumeration or compilation of a set of possible items.	long	NN_UTR
+livscykel	noun-en	C1	life cycle		NN_UTR
+livshållning	noun-en	C1		none	NN_UTR
+livskvalitet	noun-en	C1	quality of life		NN_UTR
+livslust	noun-en	C1	joie de vivre		NN_UTR
+livslängd	noun-en	C1	age; the measure of how long something exists or lives		NN_UTR
+livsviktig	adjective	C1		none	JJ
+ljud	noun-ett	C1	sound		NN_NEU
+locka	verb	C1	to attract, to lure, to entice		VB
+lokalisera	verb	C1	to find, to determine the location of		VB
+lopp	noun-ett	C1	a race		NN_NEU
+loss	particle	C1	to a no longer attached or stuck state; loose, off, untied		PL
+lunchrast	noun-en	C1	lunch break		NN_UTR
+lura	verb	C1	to trick, to fool, to deceive, to lure		VB
+luta	verb	C1	lute	pos	VB
+lyda	verb	C1	to obey		VB
+lyhörd	adverb	C1	with a keen ear		AB
+lysten	adjective	C1	covetous, desirous		JJ
+lystnad	noun-en	C1	lust, desire		NN_UTR
+lyxliv	noun-ett	C1		none	NN_NEU
+lågstadium	noun-ett	C1	grades 1-3 of grundskolan		NN_NEU
+långfristig	adjective	C1	long-term		JJ
+långtidsarbetslös	adjective	C1	long-term unemployed		JJ
+långtidsminne	noun-ett	C1	long-term memory		NN_NEU
+långtidssjukskriven	adjective	C1		none	JJ
+långvarig	adjective	C1	lengthy, prolonged		JJ
+lånord	noun-ett	C1	a loanword		NN_NEU
+låtsa	participle	C1		none	PC
+lättillgänglig	adjective	C1	easily accessible, readily available		JJ
+löjeväckande	adjective	C1	ridiculous, causing ridicule		JJ
+löneförhöjning	noun-en	C1	a pay raise		NN_UTR
+lönsam	adjective	C1	profitable		JJ
+lönsamhet	noun-en	C1	profitability		NN_UTR
+löshet	noun-en	C1	looseness		NN_UTR
+mach	noun-en	C1		none	NN_UTR
+maktlös	adjective	C1	powerless		JJ
+mall	noun-en	C1	a template		NN_UTR
+mandarin	noun-ett	C1	mandarin, mandarin orange		NN_NEU
+maorisk	adjective	C1	Maori		JJ
+maraton	noun-en	C1	marathon		NN_UTR
+markant	adjective	C1	striking, prominent		JJ
+marknadsföra	verb	C1	to market		VB
+marshmallow	noun-en	C1	marshmallow		NN_UTR
+massage	noun-en	C1	massage		NN_UTR
+massaker	noun-en	C1	a massacre		NN_UTR
+materialistisk	adjective	C1	materialistic		JJ
+materiell	adjective	C1	material		JJ
+matvana	noun-en	C1	eating habit		NN_UTR
+medarbetare	noun-en	C1	coworker, colleague		NN_UTR
+meddela	verb	C1	to communicate, to notify		VB
+mede	noun-en	C1	runner		NN_UTR
+medge	verb	C1	to admit; to concede as true		VB
+medhåll	noun-ett	C1	agreement, concurrence		NN_NEU
+medicinsk	adjective	C1	medical		JJ
+meditation	noun-en	C1	meditation		NN_UTR
+meditera	verb	C1	to meditate		VB
+medmänsklig	adjective	C1	related to relations between people		JJ
+medvetenhet	noun-en	C1	consciousness, awareness		NN_UTR
+mellanrum	noun-ett	C1	a gap, an opening		NN_NEU
+mellanväg	noun-en	C1		none	NN_UTR
+meningslöshet	noun-en	C1	meaninglessness, pointlessness, futility		NN_UTR
+meningsskiljaktighet	noun-en	C1	a difference of opinion, a difference, a disagreement		NN_UTR
+mestadels	adverb	C1	mostly, for the most part		AB
+mikrovågsugn	noun-en	C1	a microwave oven		NN_UTR
+mineral	noun-ett	C1	mineral		NN_NEU
+minimal	adjective	C1	minimal; the smallest possible amount, quantity, or degree; as small as possible		JJ
+minoritetsspråk	noun-ett	C1	minority language		NN_NEU
+mirakulös	adjective	C1		none	JJ
+misslyckande	noun-ett	C1	failure		NN_NEU
+misstag	noun-ett	C1	a mistake		NN_NEU
+mjuk	adjective	C1	soft		JJ
+mobbing	noun-en	C1		none	NN_UTR
+mobilisera	verb	C1	to mobilize; to assemble troops and prepare for war		VB
+mobiltelefoni	noun-en	C1		none	NN_UTR
+modersmålstalare	noun-en	C1		none	NN_UTR
+monokultur	noun-en	C1		none	NN_UTR
+mord	noun-ett	C1	murder		NN_NEU
+motarbeta	verb	C1	counteract	pos	VB
+motsatt	adjective	C1	opposite		JJ
+motstridig	adjective	C1	contradictory, conflicting		JJ
+motstå	participle	C1		none	PC
+motstånd	noun-ett	C1	resistance, opposition		NN_NEU
+motsvara	verb	C1	to correspond, to meet		VB
+motsägelsefull	adjective	C1	contradictory		JJ
+motverka	verb	C1	to remedy		VB
+multinationell	adjective	C1	multinational		JJ
+museum	noun-ett	C1	a museum		NN_NEU
+my	noun-ett	C1	The Greek letter μ		NN_NEU
+mysig	adjective	C1	cosy		JJ
+mystik	noun-en	C1	mystique, mysteriousness, mystery		NN_UTR
+myt	noun-en	C1	a myth; a story of great but unknown age		NN_UTR
+måltavla	noun-en	C1	a target		NN_UTR
+mångfald	noun-en	C1	diversity, variety		NN_UTR
+mångfaldig	adjective	C1	manifold, numerous		JJ
+mångkulturell	adjective	C1	multicultural		JJ
+måtta	noun-en	C1	restraint, moderation		NN_UTR
+märkbar	adjective	C1	noticeable, perceptible		JJ
+märkeskläder	noun-en	C1		none	NN_UTR
+märklig	adjective	C1	strange, peculiar		JJ
+mästare	noun-en	C1	a master		NN_UTR
+möbel	noun-en	C1	a piece of furniture		NN_UTR
+möjligen	adverb	C1	possibly		AB
+möjliggöra	verb	C1	to enable, to make possible		VB
+möjligtvis	adverb	C1	possibly		AB
+mönster	noun-ett	C1	pattern; that from which a copy is made		NN_NEU
+naken	adjective	C1	naked		JJ
+naprapat	noun-en	C1	a naprapath		NN_UTR
+nationalekonomi	noun-en	C1	economics		NN_UTR
+naturvetenskap	noun-en	C1	science		NN_UTR
+nederländare	noun-en	C1	a Dutchman		NN_UTR
+nedgång	noun-en	C1	a descent		NN_UTR
+nedlåtande	adjective	C1	condescending		JJ
+nervositet	noun-en	C1	nervousness		NN_UTR
+neutral	adjective	C1	neutral		JJ
+njutbar	adjective	C1	enjoyable, pleasurable		JJ
+noll	numeral	C1	zero		RG
+nordbo	noun-en	C1	person from the Nordic countries		NN_UTR
+norm	noun-en	C1	norm		NN_UTR
+nyanställa	verb	C1	recruit	pos	VB
+nyckelord	noun-ett	C1	keyword		NN_NEU
+nyligen	adverb	C1	recently, newly		AB
+nyttja	verb	C1	to use, to make use of for benefit		VB
+nyutexaminerad	adjective	C1		none	JJ
+någorlunda	adverb	C1	somewhat, fairly		AB
+nämnare	noun-en	C1	denominator		NN_UTR
+näringsrik	adjective	C1	nutritious, nutrient-rich		JJ
+närvaro	noun-en	C1	presence		NN_UTR
+nödbroms	noun-en	C1	emergency brake		NN_UTR
+nödig	adjective	C1	synonym of nödvändig		JJ
+nödvändighet	noun-en	C1	necessity; the quality or state of being necessary		NN_UTR
+nödvändigtvis	adverb	C1	necessarily		AB
+nöjdhet	noun-en	C1	contentment, contentedness		NN_UTR
+oandlig	adjective	C1		none	JJ
+oansenlig	adverb	C1	inconspicuous, unremarkable		AB
+oartig	adjective	C1	impolite		JJ
+obalanserad	adjective	C1	imbalanced, not balanced		JJ
+obegränsad	adjective	C1	unlimited, unrestricted		JJ,AB
+objektiv	adjective	C1	objective		JJ
+obligatorisk	adjective	C1	compulsory, obligatory, mandatory		JJ
+obrytbar	adjective	C1		none	JJ
+oenig	adjective	C1	disagreeing, not in agreement		JJ
+oenighet	noun-en	C1	disagreement		NN_UTR
+officiell	adjective	C1	official		JJ
+ofrivillig	adjective	C1	involuntary		JJ
+oförmåga	noun-en	C1	incapability		NN_UTR
+ohälsotal	noun-ett	C1		none	NN_NEU
+ojämförbar	adjective	C1	incomparable		JJ
+okunnighet	noun-en	C1	ignorance		NN_UTR
+olikhet	noun-en	C1	an inequality		NN_UTR
+olycklig	adjective	C1	unhappy, sad, discontented		JJ
+olägenhet	noun-en	C1	inconvenience, nuisance		NN_UTR
+olösbar	adjective	C1	unsolvable		JJ
+omdiskuterad	participle	C1	debated, questioned, controversial		PC
+omedveten	adjective	C1	unaware		JJ
+omfattning	noun-en	C1	extent		NN_UTR
+omfördela	verb	C1	to redistribute		VB
+omge	verb	C1	to surround		VB
+omgående	adverb	C1	immediately, at once, without delay		AB
+omnämna	verb	C1	to mention		VB
+omvärld	noun-en	C1	environment, surroundings		NN_UTR
+omåttlig	adjective	C1	immoderate, excessive		JJ
+onaturlig	adjective	C1	unnatural		JJ
+onekligen	adverb	C1	undeniably		AB
+onyttig	adjective	C1	unuseful, useless		JJ
+opinion	noun-en	C1	opinion		NN_UTR
+opportunism	noun-en	C1		none	NN_UTR
+optimal	adverb	C1		none	AB,JJ
+optimistisk	adverb	C1	optimistic		AB
+ordinarie	adjective	C1	regular, ordinary		JJ
+ordlista	noun-en	C1	a word list		NN_UTR
+orealistisk	adjective	C1	unrealistic		JJ
+oregano	noun-en	C1	oregano		NN_UTR
+oregelbunden	adjective	C1	irregular		JJ
+organism	noun-en	C1	an organism		NN_UTR
+orimlig	adjective	C1	unreasonable, absurd		JJ,AB
+orm	noun-en	C1	serpent, snake, or therof slithering legless animal		NN_UTR
+oroa	verb	C1	to worry		VB
+oroväckande	adjective	C1	worrisome, alarming		JJ
+orörlig	adjective	C1	motionless, immobile		JJ
+os	noun-ett	C1	operating system; initialism of operativsystem		NN_NEU
+ostadig	adjective	C1	unsteady		JJ
+otalig	adjective	C1	countless, innumerable		JJ
+otydlig	adjective	C1	unclear, fuzzy, indistinct		JJ
+otänkbar	adjective	C1	unthinkable, unimaginable, inconceivable		JJ
+oumbärlig	adjective	C1	indispensable; absolutely necessary or requisite		JJ
+outbildad	participle	C1	uneducated		PC
+outhärdlig	adjective	C1	unbearable		JJ
+ovanför	prep	C1	above; located close by but at a higher level		PP
+overklighet	noun-en	C1	unreality		NN_UTR
+ovillig	adjective	C1	unwilling		JJ
+ovälkommen	participle	C1	unwelcome		PC
+oändlig	adjective	C1	infinite		JJ
+paddla	verb	C1	paddle	pos	VB
+panna	noun-en	C1	forehead, brow		NN_UTR
+pannkaka	noun-en	C1	a pancake		NN_UTR
+paradoxal	adverb	C1	paradoxical		AB
+parallell	adjective	C1	parallel		JJ
+passande	adjective	C1	fitting, appropriate; suitable for a certain situation		JJ
+passera	participle	C1	to pass		PC
+passiviserande	noun-ett	C1	passivize	via-form	NN_NEU
+patient	noun-en	C1	a patient		NN_UTR
+pendla	verb	C1	to swing like a pendulum; to pendulate		VB
+pension	noun-en	C1	retirement		NN_UTR
+pensionera	verb	C1	to retire		VB
+pensionering	noun-en	C1	the act of retiring; retirement		NN_UTR
+pensionssystem	noun-ett	C1		none	NN_NEU
+perfektionist	noun-en	C1	a perfectionist		NN_UTR
+physalis	noun-en	C1		none	NN_UTR
+pilot	noun-en	C1	a pilot		NN_UTR
+placering	noun-en	C1	placement, place, location		NN_UTR
+pling	noun-ett	C1	a ding or a ringing sound		NN_NEU
+plus	prep	C1	and, plus		PP
+plåga	verb	C1	a pain, a plague, a torment	pos	VB,NN_UTR
+poesi	noun-en	C1	poetry		NN_UTR
+politisera	participle	C1	politicize		PC
+portugisiska	noun-en	C1	Portuguese language		NN_UTR
+position	noun-en	C1	a place, a location, a position. A description of where something is located with respect to the surroundings, e.g.…	long	NN_UTR
+post	noun-en	C1	postal office; an organization delivering mail and parcels		NN_UTR
+praktikplats	noun-en	C1		none	NN_UTR
+pressetisk	adjective	C1		none	JJ
+prestera	verb	C1	to perform well; in particular in a competitive environment		VB
+primär	adjective	C1	primary		JJ
+privatdetektiv	noun-en	C1	a private investigator, a private eye		NN_UTR
+privilegiera	verb	C1	privilege	pos	VB
+problematik	noun-en	C1	problem, group of cohesive issues		NN_UTR
+procent	noun-en	C1	percent		NN_UTR
+processor	noun-en	C1		none	NN_UTR
+produktutveckling	noun-en	C1	product development		NN_UTR
+professionell	adjective	C1	professional		JJ
+projektarbete	noun-ett	C1		none	NN_NEU
+proportionell	adverb	C1	proportional		AB
+prostitution	noun-en	C1	prostitution		NN_UTR
+protestera	verb	C1	to protest		VB
+provanställningstid	noun-en	C1		none	NN_UTR
+pryl	noun-en	C1	a gadget, a widget		NN_UTR
+pröva	verb	C1	to test, to try		VB
+psykolog	noun-en	C1	a psychologist		NN_UTR
+psykoterapi	noun-en	C1	psychotherapy		NN_UTR
+pyknisk	adjective	C1		none	JJ,AB
+pyramidformad	participle	C1		none	PC
+påfrestande	adjective	C1	irritating, stressful, taxing		JJ
+påföljd	noun-en	C1	result, consequence		NN_UTR
+påg	noun-en	C1	a boy, lad		NN_UTR
+påtryckning	noun-en	C1	pressure		NN_UTR
+päron	noun-ett	C1	pear		NN_NEU
+rad	noun-en	C1	a row; a line of entries in a table, or a line of objects		NN_UTR
+rapport	noun-en	C1	a report		NN_UTR
+raseriutbrott	noun-ett	C1	a fit of rage, a tantrum		NN_NEU
+rastlöshet	noun-en	C1	restlessness		NN_UTR
+realitet	noun-en	C1	a reality, a real fact		NN_UTR
+recension	noun-en	C1	a review		NN_UTR
+recept	noun-ett	C1	a recipe		NN_NEU
+redogöra	verb	C1	to go over, to explain		VB
+redogörelse	noun-en	C1	account		NN_UTR
+redovisning	noun-en	C1	accounting, report		NN_UTR
+redskap	noun-ett	C1	a tool, an instrument		NN_NEU
+reformera	verb	C1	to reform		VB
+regelbunden	adjective	C1	regular, periodic		JJ
+regelsystem	noun-ett	C1		none	NN_NEU
+regenerera	verb	C1		none	VB
+reglering	noun-en	C1	regulation		NN_UTR
+regnskog	noun-en	C1	rainforest		NN_UTR
+reguljär	adjective	C1	regular, ordinary		JJ
+rejäl	adjective	C1	considerable in extent; hefty, big, strong, etc.		JJ
+rekommendera	verb	C1	to recommend		VB
+relevant	adjective	C1	relevant		JJ
+remiss	noun-en	C1	a referral, especially as a general practitioner refers a patient to another medical specialist	long	NN_UTR
+renovera	verb	C1	to renovate		VB
+representera	verb	C1	represent	pos	VB
+reserv	noun-en	C1	a reserve, a spare		NN_UTR
+resultera	verb	C1	to result		VB
+resursbrist	noun-en	C1	shortage of resources		NN_UTR
+resväg	noun-en	C1		none	NN_UTR
+rikedom	noun-en	C1	wealth, riches		NN_UTR
+rikssvensk	adjective	C1	of or relating to Sweden		JJ
+riskfaktor	noun-en	C1	risk factor, source of danger		NN_UTR
+robot	noun-en	C1	a robot		NN_UTR
+romantisk	adjective	C1	romantic		JJ
+rot	noun-en	C1	root; the part of a plant that anchors the plant body		NN_UTR
+rubba	verb	C1	to move slightly; to nudge, to dislodge		VB
+runalfabet	noun-ett	C1		none	NN_NEU
+råka	verb	C1	rook	pos	VB
+räddare	noun-en	C1	savior, rescuer, saver		NN_UTR
+räkning	noun-en	C1	counting		NN_UTR
+rättvisa	noun-en	C1	justice, fairness		NN_UTR
+räv	noun-en	C1	fox		NN_UTR
+röra	verb	C1	a mess, a disorder	pos	VB
+rörlighet	noun-en	C1	mobility		NN_UTR
+saknad	noun-en	C1	missing		NN_UTR
+samhällelig	adjective	C1	societal		JJ
+samhällsdebatt	noun-en	C1	public debate		NN_UTR
+samhällsproblem	noun-ett	C1	societal problem		NN_NEU
+samhällsutveckling	noun-en	C1		none	NN_UTR
+samhörighet	noun-en	C1	togetherness and belonging		NN_UTR
+sammanboende	noun-ett	C1		none	NN_NEU
+sammanhållning	noun-en	C1	cohesion		NN_UTR
+sammanhänga	verb	C1	to be connected, to be linked		VB
+samtalspartner	noun-en	C1		none	NN_UTR
+sanmarinesisk	adjective	C1		none	JJ
+satsning	noun-en	C1	a going for, an investment, a bet, a venture		NN_UTR
+schema	noun-ett	C1	a schedule		NN_NEU
+sekelskifte	noun-ett	C1	turn of the century		NN_NEU
+semesterdag	noun-en	C1		none	NN_UTR
+semestertid	noun-en	C1	vacation time		NN_UTR
+servera	verb	C1	to serve, to wait on		VB
+service	noun-en	C1	service, the level of comfort offered by assistants and servants		NN_UTR
+sexism	noun-en	C1	sexism		NN_UTR
+sextio	numeral	C1	sixty; the number 60		RG
+sfär	noun-en	C1	a sphere		NN_UTR
+siesta	noun-en	C1		none	NN_UTR
+simskola	noun-en	C1	swim school		NN_UTR
+sinne	noun-ett	C1	a sense		NN_NEU
+sjukersättning	noun-en	C1	sickness compensation		NN_UTR
+sjukledighet	noun-en	C1		none	NN_UTR
+sjuttio	numeral	C1	seventy		RG
+självbild	noun-en	C1	self-image		NN_UTR
+självförtroende	noun-ett	C1	confidence, self-confidence		NN_NEU
+självklarhet	noun-en	C1	something which is obvious or self-explanatory		NN_UTR
+självkänsla	noun-en	C1	self-esteem		NN_UTR
+självskriven	participle	C1		none	PC
+skalle	noun-en	C1	skull		NN_UTR
+skanna	verb	C1	scan	via-form,pos	VB
+skap	noun-ett	C1		none	NN_NEU
+skidsemester	noun-en	C1	ski vacation		NN_UTR
+skiljedom	noun-en	C1	award		NN_UTR
+skolbarn	noun-ett	C1	a schoolchild		NN_NEU
+skolutbildning	noun-en	C1		none	NN_UTR
+skrivare	noun-en	C1	a scribe; one who writes		NN_UTR
+skräckhistoria	noun-en	C1	horror story		NN_UTR
+skrämma	verb	C1	to scare, to frighten		VB
+skugga	noun-en	C1	a shadow; shade; the darkness that follows		NN_UTR
+skydd	noun-ett	C1	protection		NN_NEU
+skyldig	adjective	C1	guilty		JJ
+skyldighet	noun-en	C1	duty, obligation		NN_UTR
+skylla	verb	C1	to blame		VB
+skylt	noun-en	C1	a sign		NN_UTR
+skymf	noun-en	C1	a grave insult, an affront		NN_UTR
+skälla	participle	C1	bell		PC
+skälva	verb	C1	great fear, especially in the expression "stora skälvan"	pos	VB
+skärgård	noun-en	C1	coastal archipelago		NN_UTR
+slav	noun-en	C1	A person of Slavic origins, a Slav		NN_UTR
+slitage	noun-ett	C1	wear and tear		NN_NEU
+slump	noun-en	C1	chance, randomness, happenstance		NN_UTR
+slutmål	noun-ett	C1	final destination		NN_NEU
+slutsats	noun-en	C1	conclusion		NN_UTR
+slåss	verb	C1	to fistfight, to fight		VB
+slösa	verb	C1	to waste, to be wasteful		VB
+smidig	adjective	C1	flexible and in good control of one's body		JJ
+småbarn	noun-ett	C1	a young child		NN_NEU
+snabbmat	noun-en	C1	fast food		NN_UTR
+snitt	noun-ett	C1	a cut		NN_NEU
+snopen	adjective	C1	surprised and disappointed		JJ
+snäv	adjective	C1	narrow, tight		JJ
+socialdemokrat	noun-en	C1	a social democrat		NN_UTR
+socialisera	verb	C1	to socialize		VB
+soffbord	noun-ett	C1		none	NN_NEU
+somkorvspadx	participle	C1		none	PC
+sommarledighet	noun-en	C1		none	NN_UTR
+sommarstuga	noun-en	C1	a cottage used as a summer residence, a summer house, a summer cottage		NN_UTR
+spanjor	noun-en	C1	a Spaniard		NN_UTR
+spanska	noun-en	C1	Spanish		NN_UTR
+spansktalande	adjective	C1	Spanish-speaking, Hispanophone		JJ
+sparpengar	noun-en	C1		none	NN_UTR
+spets	noun-en	C1	point, tip		NN_UTR
+sponsra	verb	C1	to sponsor		VB
+språkbehandling	noun-en	C1		none	NN_UTR
+språkinlärning	noun-en	C1	language learning; language acquisition		NN_UTR
+språklig	adjective	C1	linguistic, relating to language		JJ
+språkområde	noun-ett	C1	language area		NN_NEU
+språkutveckling	noun-en	C1		none	NN_UTR
+spänd	adjective	C1	stretched, spanning		JJ
+stadga	noun-en	C1	steadfastness, steadiness, stability, strength		NN_UTR
+statlig	adjective	C1	owned by or pertaining to the state		JJ
+stenålder	noun-en	C1	Stone Age		NN_UTR
+stifta	verb	C1	to create or establish		VB
+stilla	adjective	C1	still, calm		JJ
+storstad	noun-en	C1	metropolis; large, busy city		NN_UTR
+strategi	noun-en	C1	a strategy		NN_UTR
+streck	noun-ett	C1	a short line; a line, a dash		NN_NEU
+stresstålig	adjective	C1		none	JJ
+strikt	adjective	C1	strict		JJ
+struktur	noun-en	C1	a structure		NN_UTR
+strunta	verb	C1	only used in strunta i	pos	VB
+stryka	verb	C1	to strike, to erase, to delete, to remove		VB
+stråla	verb	C1	to radiate; to emit rays		VB
+sträck	noun-ett	C1	row, straight		NN_NEU
+ström	noun-en	C1	having strong currents, "currenty"		NN_UTR
+ställning	noun-en	C1	a stand		NN_UTR
+stärka	verb	C1	to strengthen		VB
+stöta	verb	C1	to hit with a short, sharp impact; to bump, etc.		VB
+successiv	adjective	C1	gradual		JJ
+sudda	verb	C1	to erase marks from a pencil by using an eraser		VB
+suggestion	noun-en	C1		none	NN_UTR
+sund	adjective	C1	sound, healthy		JJ
+svaghet	noun-en	C1	weakness; condition of being weak		NN_UTR
+svartvit	adjective	C1	black-and-white		JJ
+svida	verb	C1	to sting, to burn		VB
+sydeuropeisk	adjective	C1	Southern European		JJ
+syndabock	noun-en	C1	a scapegoat		NN_UTR
+syndrom	noun-ett	C1	syndrome		NN_NEU
+synvinkel	noun-en	C1	a point of view, a perspective		NN_UTR
+sysselsatt	adjective	C1	occupied		JJ
+sysselsätta	verb	C1	to occupy		VB
+sysselsättning	noun-en	C1	an occupation, a profession, a job		NN_UTR
+sysselsättningspolitik	noun-en	C1		none	NN_UTR
+således	adverb	C1	thus, therefore		AB
+såning	noun-en	C1		none	NN_UTR
+säkerligen	adverb	C1	surely		AB
+säkerställa	verb	C1	to secure, to make sure, to ascertain, to verify		VB
+säkra	verb	C1	to secure, to guarantee		VB
+sällsynt	adjective	C1	scarce, rare, uncommon		JJ
+sömnproblem	noun-ett	C1		none	NN_NEU
+talang	noun-en	C1	talent		NN_UTR
+talare	noun-en	C1	speaker; someone who makes a speech		NN_UTR
+tatillvarax	adverb	C1		none	AB
+teckna	verb	C1	to draw		VB
+teknisk	adjective	C1	technical, engineering, technological, technology; of or pertaining to mechanics, engineering, technology	long	JJ
+telefoni	noun-en	C1	telephony; the use of the telephone, the transmission of spoken words between two people by electrical signals in wires	long	NN_UTR
+temperament	noun-ett	C1		none	NN_NEU
+terapi	noun-en	C1	therapy		NN_UTR
+testa	verb	C1	to try, to attempt		VB
+testamente	noun-ett	C1	a will		NN_NEU
+tidsbrist	noun-en	C1		none	NN_UTR
+tidskrift	noun-en	C1	a periodical		NN_UTR
+tidsrymd	noun-en	C1	a period of time, a space of time		NN_UTR
+tilldela	verb	C1	to assign		VB
+tillfoga	verb	C1	add, enclose	pos	VB
+tillfreds	adjective	C1	content, satisfied		JJ
+tillfredsställa	verb	C1	satisfy	pos	VB
+tillfällig	adjective	C1	temporary; valid for a brief period of time		JJ
+tillgodose	verb	C1	accommodate, satisfy, fulfill	pos	VB
+tillgänglig	adjective	C1	available, accessible		JJ
+tillhandahålla	verb	C1	to provide, to supply		VB
+tillhörighet	noun-en	C1	a belonging		NN_UTR
+tillit	noun-en	C1	trust, confidence		NN_UTR
+tillspetsa	participle	C1		none	PC
+tillsvidare	adverb	C1	until further notice		AB
+tillta	verb	C1	to grow, to increase, to become more intense		VB
+tilltro	noun-en	C1	confidence		NN_UTR
+tillträda	verb	C1	to accede, to enter an office or mission		VB
+tillvaro	noun-en	C1	everyday life, existence		NN_UTR
+tillverkningsprocess	noun-en	C1		none	NN_UTR
+tillväxt	noun-en	C1	growth, expansion		NN_UTR
+tillägga	verb	C1	to add, to amend		VB
+tiotal	noun-ett	C1	around ten, some ten		NN_NEU
+tonårig	adjective	C1	teenage		JJ
+trafikolycka	noun-en	C1	a traffic accident		NN_UTR
+tragisk	adjective	C1	tragic		JJ
+trailer	noun-en	C1	a trailer		NN_UTR
+trans	noun-en	C1	trance		NN_UTR
+transaktion	noun-en	C1	transaction		NN_UTR
+tredjeplats	noun-en	C1	third place		NN_UTR
+trendig	adjective	C1	trendy		JJ
+trettio	numeral	C1	thirty		RG
+trolig	adjective	C1	probable, plausible		JJ
+troligtvis	adverb	C1	probably, most likely		AB
+trovärdig	adjective	C1	credible, trustworthy		JJ
+trumf	noun-en	C1		none	NN_UTR
+tryckfrihet	noun-en	C1	freedom of the press		NN_UTR
+trädgård	noun-en	C1	a garden		NN_UTR
+träff	noun-en	C1	a meeting, a date, an appointment		NN_UTR
+tuff	adjective	C1	tuff		JJ
+tunnelbana	noun-en	C1	subway; underground railway		NN_UTR
+tuss	noun-en	C1	a wad		NN_UTR
+tveka	verb	C1	to hesitate, to waver		VB
+tvekan	noun-en	C1	hesitation		NN_UTR
+tvivla	verb	C1	to doubt		VB
+tvång	noun-ett	C1	compulsion, coercion		NN_NEU
+tvåspråkig	adjective	C1	bilingual		JJ
+tvåspråkighet	noun-en	C1	bilingualism		NN_UTR
+tvärtemot	adverb	C1	in the opposite manner		AB
+tyda	verb	C1	to interpret; to understand the meaning of		VB
+tydligen	adverb	C1	apparently		AB
+tynga	verb	C1	to weigh, to burden		VB
+tysta	verb	C1	to mute, to silence, to make quiet		VB
+tystna	verb	C1	to cease to make a sound, to fall silent		VB
+tåla	verb	C1	to be able to tolerate, to stand, to bear, to endure		VB
+täcka	verb	C1	to cover		VB
+tämligen	adverb	C1	rather, quite		AB
+tänkbar	adjective	C1	imaginable, conceivable		JJ
+tära	verb	C1	to wear on		VB
+tävling	noun-en	C1	a competition, a contest		NN_UTR
+tävlingsinstinkt	noun-en	C1		none	NN_UTR
+u-land	noun-ett	C1	a developing country, a third-world country		NN_NEU
+undan	particle	C1	away		PL
+undantag	noun-ett	C1	an exception		NN_NEU
+underkänd	participle	C1	not approved, rejected		PC
+underläge	noun-ett	C1	disadvantage		NN_NEU
+underrepresenterad	participle	C1	underrepresented		PC
+underskatta	verb	C1	to underestimate		VB
+underteckna	verb	C1	to undersign, to underwrite		VB
+uppdrag	noun-ett	C1	a commission, an assignment		NN_NEU
+uppehålla	verb	C1	to stay; to stay, to reside		VB
+uppfostran	noun-en	C1	the teaching of desirable behavior, upbringing		NN_UTR
+uppge	verb	C1	to give as a fact; to state		VB
+uppgivenhet	noun-en	C1	resignation, despair, dejection		NN_UTR
+upphov	noun-ett	C1	origin, beginning		NN_NEU
+upplysa	verb	C1	to enlighten, to inform		VB
+uppmana	verb	C1	to urge, to ask		VB
+uppmärksam	adjective	C1	attentive		JJ
+uppmärksamma	verb	C1	to notice		VB
+uppnå	verb	C1	to reach		VB
+uppseendeväckande	participle	C1	startling, striking, sensational, attention-grabbing		PC
+uppsjö	noun-en	C1	plethora, flurry, myriad		NN_UTR
+uppskattning	noun-en	C1	an estimate, an approximation		NN_UTR
+uppåt	adverb	C1	upwards, up		AB
+urminnes	adjective	C1	immemorial		JJ
+urskilja	verb	C1	to discern, to distinguish, to tell apart		VB
+urval	noun-ett	C1	choice, selection		NN_NEU
+utarbeta	verb	C1	to draw up, to develop		VB
+utbildningslinje	noun-en	C1	an education program		NN_UTR
+utbildningsnivå	noun-en	C1	level of education		NN_UTR
+utbre	verb	C1		none	VB
+utbredning	noun-en	C1	propagation		NN_UTR
+utbrändhet	noun-en	C1	burnout, fatigue, exhaustion		NN_UTR
+utbud	noun-ett	C1	supply, range		NN_NEU
+utbyta	verb	C1	to exchange, to replace		VB
+utesluta	verb	C1	to expel or exclude		VB
+utestänga	verb	C1	shut out, exclude	pos	VB
+utformning	noun-en	C1	design, shape		NN_UTR
+utförlig	adjective	C1	detailed, thorough, exhaustive		JJ
+utgift	noun-en	C1	an expense		NN_UTR
+utgå	verb	C1	to assume, to base, to start		VB
+utgångspunkt	noun-en	C1	origin, starting point, point of departure		NN_UTR
+utifrån	adverb	C1	from the outside		AB,PP
+utlösa	verb	C1	to trigger, to set off		VB
+utmatta	verb	C1	exhaust, wear out	pos	VB
+utmattning	noun-en	C1	fatigue, exhaustion		NN_UTR
+utplåning	noun-en	C1	obliteration, erasure		NN_UTR
+utredning	noun-en	C1	an investigation		NN_UTR
+utrota	verb	C1	wipe out, eradicate, root out	pos	VB
+utrotning	noun-en	C1	eradication, extirpation, extinction		NN_UTR
+utrotningshotad	adjective	C1		none	JJ
+utsagd	adjective	C1		none	JJ
+utstött	adjective	C1	shunned, pushed out, outcast		JJ
+utsätta	verb	C1	to expose		VB
+uttag	noun-ett	C1	an outlet		NN_NEU
+uttalande	noun-ett	C1	a statement, a declaration		NN_NEU
+utvecklingssamtal	noun-ett	C1	a parent-teacher conference		NN_NEU
+utvidga	verb	C1	to extend, to expand		VB
+utvilad	adjective	C1	rested, well-rested		JJ
+utväg	noun-en	C1	a way out		NN_UTR
+utöka	verb	C1	to increase, expand, enlarge		VB
+utöva	verb	C1	to exercise, to practise, to execute		VB
+v	noun	C1	The twenty-second letter of the Swedish alphabet, written in the Latin script.		NN
+valkampanj	noun-en	C1	an election campaign		NN_UTR
+valspråk	noun-ett	C1	a motto		NN_NEU
+vandalisering	noun-en	C1	vandalization, vandalism		NN_UTR
+vanligen	adverb	C1	commonly		AB
+vanligtvis	adverb	C1	commonly, usually		AB
+variation	noun-en	C1	variation		NN_UTR
+varietet	noun-en	C1		none	NN_UTR
+varsla	verb	C1	to forebode, to harbinger		VB
+verbal	adjective	C1		none	JJ
+verk	noun-ett	C1	a work; something which has been accomplished		NN_NEU
+verksam	adjective	C1	active, busy, working in some area		JJ
+verksamhet	noun-en	C1	goal-oriented activity		NN_UTR
+verktyg	noun-ett	C1	a tool		NN_NEU
+vetenskap	noun-en	C1	science, scholarly knowledge, scholarship		NN_UTR
+vetenskapsman	noun-en	C1	a scientist		NN_UTR
+vetskap	noun-en	C1	knowledge		NN_UTR
+vidförstaögonkastetx	numeral	C1		none	RO
+vidhålla	verb	C1	to maintain		VB
+vidta	verb	C1	to take		VB
+vikt	noun-en	C1	weight		NN_UTR
+vilorum	noun-ett	C1		none	NN_NEU
+vitamin	noun-ett	C1	vitamin		NN_NEU
+vittne	noun-ett	C1	a witness		NN_NEU
+vågrörelse	noun-en	C1		none	NN_UTR
+våldsamhet	noun-en	C1	violentness		NN_UTR
+våldsbrott	noun-ett	C1	violent crime		NN_NEU
+vårda	verb	C1	to provide medical care		VB
+vårdnad	noun-en	C1	custody		NN_UTR
+vårdpersonal	noun-en	C1	healthcare staff		NN_UTR
+vägra	verb	C1	to refuse		VB
+vägspärr	noun-en	C1	roadblock		NN_UTR
+väja	verb	C1	to change direction or course to avoid colliding with something		VB
+välbehag	noun-ett	C1	a state of mental and physical satisfaction; pleasure, delight		NN_NEU
+välbehövlig	adjective	C1	much needed		JJ
+välbekant	adverb	C1	well-known, familiar, famous		AB
+väld	noun-en	C1	unfairness, injustice, bias		NN_UTR
+välfärd	noun-en	C1	welfare		NN_UTR
+välfärdssamhälle	noun-ett	C1		none	NN_NEU
+välgörare	noun-en	C1	a benefactor		NN_UTR
+välmående	adjective	C1	well-off		JJ
+vältränad	participle	C1		none	PC
+värdelös	adjective	C1	worthless, lousy, useless		JJ
+värdelöshet	noun-en	C1	worthlessness		NN_UTR
+värdera	verb	C1	to value, to appreciate, to like		VB
+värdesätta	verb	C1	to value		VB
+världsledande	participle	C1	of a company or a product: the best of the world; the leading		PC
+världsmarknad	noun-en	C1	world market, international market		NN_UTR
+världsmästerskap	noun-ett	C1	a world championship		NN_NEU
+världspolitik	noun-en	C1	world politics, global politics		NN_UTR
+västerländsk	adjective	C1	Western		JJ
+västlig	adjective	C1	west, western		JJ
+yoga	noun-en	C1		none	NN_UTR
+yrkesgrupp	noun-en	C1	a profession, a trade		NN_UTR
+ytlig	adjective	C1	superficial		JJ
+ytterst	adverb	C1	outermost, farthest away		AB
+yttrandefrihetslag	noun-en	C1		none	NN_UTR
+åkomma	noun-en	C1	a condition, an affliction		NN_UTR
+ålderdomshem	noun-ett	C1	an old people's home, care home, nursing home		NN_NEU
+århundrade	noun-ett	C1	a century		NN_NEU
+årtal	noun-ett	C1	reckoning by years		NN_NEU
+årtusende	noun-ett	C1	a millennium, a period of one thousand years		NN_NEU
+åstadkomma	verb	C1	to achieve, to accomplish		VB
+åsyfta	verb	C1	to refer to, to reference		VB
+återfinna	verb	C1	to refind, to find		VB
+återföring	noun-en	C1		none	NN_UTR
+återgå	verb	C1	to get back		VB
+återigen	adverb	C1	once again, yet again		AB
+återskapa	verb	C1	reproduce, reenact, recreate	pos	VB
+återstå	verb	C1	to remain		VB
+återta	verb	C1	to take back, to regain, to reclaim		VB
+återupprätta	verb	C1	to restore, to re-establish		VB
+åtgärda	verb	C1	to fix, remedy, make measures		VB
+åtnjuta	verb	C1	to enjoy; to have the benefit of		VB
+åttio	numeral	C1	eighty		RG
+ägare	noun-en	C1	owner		NN_UTR
+äkta	adjective	C1	genuine, authentic; not faked or counterfeit		JJ
+äldreomsorg	noun-en	C1	elderly care		NN_UTR
+älgkött	noun-ett	C1		none	NN_NEU
+ängslan	noun-en	C1	deep worry; anxiety		NN_UTR
+ärende	noun-ett	C1	a matter, an errand, an issue, a task, a work item		NN_NEU
+ärvd	adjective	C1	to inherit	via-form	JJ
+äventyra	verb	C1	jeopardize	pos	VB
+ögonkast	noun-ett	C1	a glance		NN_NEU
+önskemål	noun-ett	C1	request, wish		NN_NEU
+önskvärd	adjective	C1	desirable		JJ
+öppettid	noun-en	C1	opening hours		NN_UTR
+överansträngning	noun-en	C1		none	NN_UTR
+överarbeta	verb	C1	to work over, to revise		VB
+överbelastning	noun-en	C1	overload, overburdening		NN_UTR
+överblick	noun-en	C1	an overview, a perspective		NN_UTR
+överdrift	noun-en	C1	exaggeration		NN_UTR
+överdriva	verb	C1	to exaggerate		VB
+överflödig	adjective	C1	superfluous		JJ
+övergripande	adjective	C1	comprehensive, overarching, overall		JJ
+övergå	verb	C1	to exceed, to surpass		VB
+överhuvudtagetx	noun-ett	C1		none	NN_NEU
+överlägsen	adjective	C1	superior		JJ
+övernattningsrum	noun-ett	C1		none	NN_NEU
+överraskning	noun-en	C1	a surprise		NN_UTR
+överskatta	verb	C1	overestimate	pos	VB
+översättare	noun-en	C1	a translator		NN_UTR
+övertid	noun-en	C1	overtime		NN_UTR
+överträffa	verb	C1	to be greater in some respect; to exceed, to surpass, to outdo, to one up		VB
+övervägande	adjective	C1	predominant		JJ

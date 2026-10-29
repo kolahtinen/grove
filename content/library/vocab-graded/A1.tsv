@@ -1,0 +1,367 @@
+# grove library vocabulary (graded), level A1. Words and levels from SweLLex (Volodina, Pilán, Llozhi, Degryse & François 2016; Språkbanken Text, https://doi.org/10.23695/6h3v-zw25), CC BY 4.0: the first CEFR level whose learner essays use the word; misspellings left out. SweLLex_v1.tsv sha256 3491b1a51c004b58b0bd6ddd72909f42ad7bcf13f400212e0584606387ae5980. Meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-graded.mjs.
+sv	pos	level	en	flags	suc
+aldrig	adverb	A1	never		AB
+all	pronoun	A1	all		PN,DT
+allt	adverb	A1	everything, all		AB
+ana	verb	A1	to have a feeling that something will happen, has happened or is in a certain way, without really having firm reason…	long	VB
+annan	pronoun	A1	other, else,other one		PN
+ansikte	noun-ett	A1	a face; front side of the head		NN_NEU
+ar	noun-en	A1	are		NN_UTR,NN_NEU
+arbeta	verb	A1	to work, to be employed to do		VB
+arg	adjective	A1	angry, mad		JJ
+art	noun-en	A1	species		NN_UTR
+assistera	verb	A1	to assist		VB
+att	subj	A1	Used to indicate the infinitive form of a verb; compare English to.		SN
+badminton	noun-en	A1	badminton		NN_UTR
+baka	verb	A1	to bake; to cook in an oven.		VB
+ball	adjective	A1	cool		JJ
+ban	noun-en	A1		none	NN_UTR
+bara	adverb	A1	just, only		AB,SN
+barn	noun-ett	A1	a child		NN_NEU
+basket	noun-en	A1	basketball		NN_UTR
+berika	verb	A1	to enrich		VB
+berätta	verb	A1	to tell		VB
+betyda	verb	A1	to mean		VB
+bevisa	verb	A1	to prove		VB
+bild	noun-en	A1	picture		NN_UTR
+biljard	noun-en	A1	pool, billiards, snooker		NN_UTR
+bit	noun-en	A1	a piece		NN_UTR
+bli	verb	A1	to become		VB
+blomma	noun-en	A1	a flower		NN_UTR,VB
+bo	verb	A1	to live, to dwell, to reside		VB,NN_NEU
+bok	noun-en	A1	book		NN_UTR
+bomba	verb	A1	to bomb		VB
+bortse	verb	A1	to disregard, to neglect; not to include something in one's deliberations		VB
+bot	noun-en	A1	fine		NN_UTR
+bovete	noun-ett	A1	buckwheat, Fagopyrum esculentum		NN_NEU
+bra	adverb	A1	good		AB,JJ
+bror	noun-en	A1	a brother, a contracted form of broder		NN_UTR
+buss	noun-en	A1	a bus, a vehicle to transport people		NN_UTR
+båt	noun-en	A1	a boat		NN_UTR
+böra	verb	A1	should, ought to	pos	VB
+centralstation	noun-en	A1	a main station; the principal station of a city, typically located near the city centre	long	NN_UTR
+cykel	noun-en	A1	a bicycle, a bike		NN_UTR
+dag	noun-en	A1	a day		NN_UTR
+dansa	verb	A1	to dance		VB
+dator	noun-en	A1	a computer		NN_UTR
+de	pronoun	A1	they		PN
+dedikera	participle	A1		none	PC
+den	pronoun	A1	it		PN,DT
+denna	pronoun	A1	this, that.		DT,PN
+diska	verb	A1	to wash		VB
+dricka	verb	A1	to drink		NN_UTR,VB
+du	pronoun	A1	you		PN
+duktig	adjective	A1	good; talented; capable		JJ
+duns	noun-en	A1	a thump, a thud, a sound of something falling to the ground		NN_UTR
+dusch	noun-en	A1	a shower		NN_UTR
+duscha	verb	A1	to shower; to clean oneself in a shower; take a shower / have a shower		VB
+dålig	adjective	A1	bad		JJ
+där	adverb	A1	there; at that place		AB,HA
+död	adjective	A1	dead		NN_UTR,JJ
+efter	prep	A1	slow		PP
+elev	noun-en	A1	a student, a pupil		NN_UTR
+eller	conj	A1	or		KN
+elva	numeral	A1	eleven		RG
+en	det	A1	object form of the indefinite pronoun man		RG,DT
+engelsk	adjective	A1	English; of or pertaining to England.		JJ
+ensam	adjective	A1	alone		JJ
+espresso	noun-en	A1		none	NN_UTR
+eter	noun-en	A1	ether		NN_UTR
+etta	noun-en	A1	one; the digit or figure "1".		NN_UTR
+faktum	noun-ett	A1	a fact		NN_NEU
+familj	noun-en	A1	family		NN_UTR
+fara	verb	A1	to go, to travel		VB,NN_UTR
+felaktig	adjective	A1	wrong, incorrect, faulty, erroneous		JJ
+fem	numeral	A1	five		RG
+femton	numeral	A1	fifteen		RG
+fin	adjective	A1	nice to look at or listen to or the like, nice, pretty		JJ
+finna	verb	A1	to find, to locate, to discover		VB
+fotboll	noun-en	A1	soccer, football; a team sport		NN_UTR
+foto	noun-ett	A1	photo		NN_NEU
+frukost	noun-en	A1	breakfast		NN_UTR
+fråga	noun-en	A1	a question		NN_UTR,VB
+från	prep	A1	from		PP
+fungera	verb	A1	function; to be in action	pos	VB
+futural	adjective	A1		none	JJ
+fyra	numeral	A1	four		RG
+få	verb	A1	few	pos	JJ,VB
+för	prep	A1	too		PP,AB,PL,KN,NN_UTR
+förstå	verb	A1	to understand		VB
+ge	verb	A1	to give		VB
+geograf	noun-en	A1	geographer		NN_UTR
+gift	adjective	A1	poison, venom, toxin		JJ,NN_NEU
+gilla	verb	A1	to like		VB
+gitarr	noun-en	A1	a guitar		NN_UTR
+grammatik	noun-en	A1	grammar		NN_UTR
+gratis	adverb	A1	free, without charge		JJ,AB
+gym	noun-ett	A1	gym; a sporting facility specialized on exercising strength, lifting weights.		NN_NEU
+gå	verb	A1	to walk		VB
+gäng	noun-ett	A1	a gang		NN_NEU
+göra	verb	A1	work, task	pos	VB
+ha	verb	A1	To have; to possess, or to have as a property; to come into possession of something concrete or abstract.	long	VB
+halv	adjective	A1	half, ½; with one of two equal parts		JJ
+han	pronoun	A1	he, the third person singular, masculine, nominative case.		PN
+hand	noun-en	A1	a hand		NN_UTR
+hane	noun-en	A1	a male		NN_UTR
+hem	noun-ett	A1	home		NN_NEU,AB,PL
+hemland	noun-ett	A1	homeland		NN_NEU
+hemma	adverb	A1	at home; at one’s place of residence		PL,AB
+hertiginna	noun-en	A1	a duchess		NN_UTR
+heta	verb	A1	to be called; to have as one's name, to hight		VB
+hipp	adjective	A1	hip		JJ
+hitta	verb	A1	to find		VB
+hjälpa	verb	A1	to help; give aid or assistance to		VB
+ho	noun-en	A1	a trough; a long container for feeding or watering animals.		NN_UTR
+hon	pronoun	A1	she; the third-person, singular, feminine pronoun in the nominative case		PN
+hungrig	adjective	A1	hungry		JJ
+hur	adverb	A1	how		HA
+hus	noun-ett	A1	a house		NN_NEU
+hämta	verb	A1	to get, to fetch, to retrieve		VB
+hända	verb	A1	to happen; chiefly what happens quickly or for a short time		VB
+höst	noun-en	A1	autumn		NN_UTR
+i	prep	A1	The ninth letter of the Swedish alphabet, written in the Latin script.		PP
+idiot	noun-en	A1	an idiot		NN_UTR
+idrott	noun-en	A1	any athletic activity that uses physical skills		NN_UTR
+igår	adverb	A1	yesterday		AB
+imorgon	adverb	A1	tomorrow	via-form	AB
+in	adverb	A1	into, to in		PL,AB
+inge	verb	A1	a male given name, short form of Old Norse male given names beginning with Ing-	pos	VB
+ingen	det	A1	no		DT,PN
+ingenting	pronoun	A1	nothing		PN
+innan	subj	A1	before		PP,SN,AB
+inte	adverb	A1	not		AB
+internet	noun-ett	A1	internet		NN_NEU
+ja	interj	A1	yes		IN
+jag	pronoun	A1	I		PN
+jobba	verb	A1	to work		VB
+just	adverb	A1	just		AB
+jätte	noun-en	A1	jotun; a mythical humanoid creature, originally human-sized but later associated with great size	long	AB,NN_UTR
+kaffe	noun-ett	A1	coffee		NN_NEU
+kamera	noun-en	A1	camera		NN_UTR
+klar	adjective	A1	ready, finished, done		JJ
+klass	noun-en	A1	class		NN_UTR
+klassrum	noun-ett	A1	classroom		NN_NEU
+klocka	noun-en	A1	clock, watch; an instrument used to measure or keep track of time		NN_UTR
+klok	adjective	A1	wise, intelligent, prudent		JJ
+klubb	noun-en	A1	a club		NN_UTR
+ko	noun-en	A1	cow; female cattle		NN_UTR
+koka	verb	A1	to boil		VB
+kola	noun-en	A1	toffee		NN_UTR
+komiker	noun-en	A1	a comedian		NN_UTR
+komma	verb	A1	to come		VB
+kompass	noun-en	A1	a compass		NN_UTR
+kompis	noun-en	A1	pal, friend, mate, buddy		NN_UTR
+kopia	noun-en	A1	a copy, a reproduction, a duplicate		NN_UTR
+kunna	verb	A1	"to can", to be able to	pos	VB
+kvar	adverb	A1	left, remaining		PL,AB
+känna	verb	A1	to feel, to sense		VB
+kök	noun-ett	A1	a kitchen		NN_NEU
+köra	verb	A1	to drive		VB
+lacka	verb	A1	lacquer, paint, varnish	pos	VB
+lag	noun-en	A1	law		NN_NEU,NN_UTR
+laga	verb	A1	to repair		JJ,VB
+land	noun-ett	A1	a country, a land		NN_NEU
+laptop	noun-en	A1	a laptop		NN_UTR
+lektion	noun-en	A1	lesson		NN_UTR
+leta	verb	A1	search; look throughout for something	pos	VB
+leverne	noun-ett	A1	a way of living one's life		NN_NEU
+lexikon	noun-ett	A1	a dictionary, a lexicon		NN_NEU
+ligga	verb	A1	to lie; be in a horizontal position		VB
+lite	adverb	A1	little, some; a small amount		AB
+liten	adjective	A1	small, little; of small size		JJ
+loggbok	noun-en	A1		none	NN_UTR
+lunch	noun-en	A1	lunch, a meal eaten around noon		NN_UTR
+lyckligen	adverb	A1		none	AB
+lyssna	verb	A1	to listen		VB
+läkare	noun-en	A1	doctor, physician		NN_UTR
+län	noun-ett	A1	fief, fiefdom		NN_NEU
+länd	noun-en	A1	loin		NN_UTR
+länge	adverb	A1	a long time, during a long time, long		AB
+lärare	noun-en	A1	a teacher		NN_UTR
+läsa	verb	A1	to read		VB
+lördag	noun-en	A1	Saturday		NN_UTR
+macka	noun-en	A1	an sandwich		NN_UTR
+makaroner	noun-en	A1	a piece of macaroni	via-form	NN_UTR
+mamma	noun-en	A1	mom, mum, mother		NN_UTR
+man	pronoun	A1	man		PN,NN_UTR
+maner	noun-en	A1		none	NN_UTR
+mat	noun-en	A1	food		NN_UTR
+matematik	noun-en	A1	mathematics		NN_UTR
+matt	adverb	A1	weak, listless		AB
+med	prep	A1	also, as well, too		AB,PL,PP
+men	conj	A1	but; introducing a clause that contrasts with the preceding clause, sentence or common belief.	long	KN
+mg	noun	A1		none	NN
+mick	noun-en	A1	mike; short form for mikrofon		NN_UTR
+miljon	noun-en	A1	A million, 10⁶.		NN_UTR
+mina	noun-en	A1	mine; a device intended to explode when stepped upon, touched, or in proximity to a ship or vehicle.	long	NN_UTR
+minut	noun-en	A1	minute		NN_UTR
+mjölk	noun-en	A1	milk		NN_UTR
+mo	noun-en	A1	sandy soil		NN_UTR
+monitor	noun-en	A1		none	NN_UTR
+munk	noun-en	A1	a monk		NN_UTR
+musik	noun-en	A1	music		NN_UTR
+mycken	pronoun	A1	much		PN,JJ
+mycket	adverb	A1	much, a lot		AB
+månad	noun-en	A1	a month		NN_UTR
+måndag	noun-en	A1	Monday		NN_UTR
+mången	adjective	A1	many a		PN,JJ
+måste	verb	A1	must, have to	pos	NN_NEU,VB
+mäta	verb	A1	to measure		VB
+namn	noun-ett	A1	name		NN_NEU
+natt	noun-en	A1	night		NN_UTR
+nia	noun-en	A1	nine; the digit "9"		NN_UTR
+niga	verb	A1	to bow, curtsey, sink down		VB
+nio	numeral	A1	nine		RG
+noppa	verb	A1	a pill, a bobble	pos	VB
+nu	adverb	A1	now		AB
+när	adverb	A1	when		HA
+nästa	adjective	A1	next; following in a sequence		JJ
+och	conj	A1	and; used to connect two homogeneous words or phrases		KN
+också	adverb	A1	too, as well, also		AB
+ok	noun-ett	A1	OK, okay		NN_NEU
+olik	adjective	A1	unlike, different, dissimilar		JJ
+om	prep	A1	if		PL,SN,PP
+operera	verb	A1	to operate, to work, to function		VB
+pappa	noun-en	A1	dad, father		NN_UTR
+papper	noun-ett	A1	paper		NN_NEU
+paprika	noun-en	A1	pepper, bell pepper		NN_UTR
+penna	noun-en	A1	a contour feather, a penna		NN_UTR
+persisk	adjective	A1		none	JJ
+person	noun-en	A1	a person, people		NN_UTR
+piano	noun-ett	A1	piano		NN_NEU
+prata	verb	A1	to talk, to speak		VB
+promenera	verb	A1	to walk, to go for a walk, to promenade		VB
+prov	noun-ett	A1	a test, a trial		NN_NEU
+på	prep	A1	on, on top of; touching from above		PP,PL
+rak	adjective	A1	straight; unbent		JJ
+ras	noun-en	A1	a race, a breed		NN_UTR
+rast	noun-en	A1	a break		NN_UTR
+resa	noun-en	A1	an instance of traveling, "a travel"; a trip, a journey, a voyage, travels, etc.		VB,NN_UTR
+resenär	noun-en	A1	traveler, traveller		NN_UTR
+riktig	adjective	A1	right, correct, proper		JJ
+ringa	verb	A1	small, little	pos	VB
+ris	noun-ett	A1	small shrubs, such as blueberry and lingonberry; bush, scrub, undergrowth, brushwood	long	NN_NEU
+rit	noun-en	A1	rite		NN_UTR
+rolig	adjective	A1	funny, fun		JJ
+rum	noun-ett	A1	a room		NN_NEU
+rus	noun-ett	A1	a mental state of intoxication brought on by alcohol or other drugs		NN_NEU
+röntga	verb	A1	X-ray	pos	VB
+sakna	verb	A1	to miss, to lack, to want, to be without		VB
+samma	det	A1	same		JJ,DT
+sand	noun-en	A1	sand		NN_UTR
+sate	noun-en	A1	someone pitiable		NN_UTR
+se	verb	A1	to see		VB
+sed	noun-en	A1	custom		NN_UTR
+sedan	subj	A1	then, after this, afterwards; next in order		SN,PP,AB
+sen	adverb	A1	late		PP,JJ,AB,SN
+sex	numeral	A1	six		RG
+sig	pronoun	A1	reflexive case of han, hon, den, det, de or man; compare himself, herself, itself, themselves, oneself	long	PN
+simma	verb	A1	to swim		VB
+sims	noun-en	A1		none	NN_UTR
+sinnelag	noun-ett	A1	mental disposition; disposition, spirit, temperament, etc.		NN_NEU
+sitar	noun-en	A1	sitar		NN_UTR
+sitta	verb	A1	to sit		VB
+sju	numeral	A1	seven		RG
+sjukhus	noun-ett	A1	a hospital		NN_NEU
+skada	verb	A1	scathe; damage, an injury, a harm, a wound	pos	NN_UTR,VB
+skelett	noun-ett	A1	a skeleton		NN_NEU
+skeppning	noun-en	A1		none	NN_UTR
+skola	verb	A1	shall, will, be going to expresses intended future; used for plans, promises and decisions [with infinitive].	pos,long	VB,NN_UTR
+skratt	noun-ett	A1	laughter		NN_NEU
+skratta	verb	A1	to laugh		VB
+skriva	verb	A1	to write, to type, to copy; to put letters and digits on a surface, using a pen or typewriter	long	VB
+skuld	noun-en	A1	debt		NN_UTR
+skynke	noun-ett	A1	a larger piece of cloth to cover something; a curtain, a cloth		NN_NEU
+skäl	noun-ett	A1	reason		NN_NEU
+sluta	verb	A1	to stop, to end		VB
+smörgås	noun-en	A1	an sandwich		NN_UTR
+snabb	adjective	A1	fast, quick		JJ
+snabel	noun-en	A1	a trunk		NN_UTR
+soja	noun-en	A1	soy sauce		NN_UTR
+som	adverb	A1	at its/his/hers		HA
+somalisk	adjective	A1		none	JJ
+sommar	noun-en	A1	summer		NN_UTR
+somna	verb	A1	to fall asleep		VB
+sova	verb	A1	to sleep		VB
+sparbank	noun-en	A1	savings bank		NN_UTR
+spela	verb	A1	to play; a game, a tune, a melody, an instrument or a role		VB
+spring	noun-ett	A1	a running		NN_NEU
+springa	verb	A1	to run		VB,NN_UTR
+spruta	noun-en	A1	something that emits a jet of liquid; a sprayer, a squirt		NN_UTR
+spårvagn	noun-en	A1	a tram		NN_UTR
+stanna	verb	A1	to stay; to remain at a place		VB
+stol	noun-en	A1	a chair		NN_UTR
+stomme	noun-en	A1	a frame, a structure		NN_UTR
+stor	adjective	A1	big, large; of large size		JJ
+studera	verb	A1	to study		VB
+stå	verb	A1	stand; be in an upright position	pos	VB
+suddgummi	noun-ett	A1	an eraser; something used to remove marks		NN_NEU
+svanka	verb	A1	to have inward curvature of the lower back		VB
+svensk	adjective	A1	Swedish; of or pertaining to Sweden or the Swedish language		JJ,NN_UTR
+svenska	noun-en	A1	Swedish		NN_UTR
+svår	adjective	A1	difficult, hard		JJ
+syskon	noun-ett	A1	a sibling		NN_NEU
+syster	noun-en	A1	a sister		NN_UTR
+säga	verb	A1	to say		VB
+sända	verb	A1	to send, to transmit		VB
+säng	noun-en	A1	a bed		NN_UTR
+säsong	noun-en	A1	a season		NN_UTR
+söndag	noun-en	A1	Sunday		NN_UTR
+ta	verb	A1	take; to grab and move to oneself	pos	VB
+tala	verb	A1	to speak, to talk		VB
+tand	noun-en	A1	a tooth		NN_UTR
+te	noun-ett	A1	tea		NN_NEU,NN_UTR
+telefon	noun-en	A1	a phone, a telephone		NN_UTR
+test	noun-ett	A1	a test, an examination, a trial		NN_NEU
+teve	noun-en	A1	television		NN_UTR
+till	prep	A1	to		PP,PL,AB
+tillbaka	adverb	A1	back, in return		AB,PL
+tills	subj	A1	until		PP,SN
+tio	numeral	A1	ten		RG
+tisdag	noun-en	A1	Tuesday		NN_UTR
+titel	noun-en	A1	a title		NN_UTR
+titta	verb	A1	to look; keep one's eyes open as to be able to see		VB
+tolv	numeral	A1	twelve		RG
+tonsur	noun-en	A1		none	NN_UTR
+tre	numeral	A1	three		RG
+tryta	verb	A1	to run out		VB
+trä	verb	A1	wood	pos	VB
+träffa	verb	A1	to hit a target		VB
+trött	adjective	A1	tired		JJ
+tv	noun-en	A1	TV		NN_UTR
+tv-spel	noun-ett	A1	a video game		NN_NEU
+två	numeral	A1	two		RG
+tvåa	noun-en	A1	two; the digit "2"		NN_UTR
+tycka	verb	A1	to be of the opinion, to think		VB
+tåt	noun-en	A1	short string		NN_UTR
+tänka	verb	A1	to think		VB
+undersöka	verb	A1	to investigate, to examine, to explore, to survey		VB
+uppsats	noun-en	A1	article, paper		NN_UTR
+ut	particle	A1	out		AB,PL
+utan	prep	A1	without		PP,KN
+ute	adverb	A1	outside, outdoors		AB,PL
+vad	HP	A1	what		HP,NN_UTR,HA
+vag	adjective	A1	vague		JJ
+vakna	verb	A1	to wake up		VB
+vana	noun-en	A1	habit; a regularly done action		NN_UTR
+vara	verb	A1	to be		NN,NN_UTR,NN_NEU,VB
+varför	adverb	A1	why		HA,AB
+vecka	noun-en	A1	a week, a period of 7 days.		NN_UTR
+vesir	noun-en	A1	vizier		NN_UTR
+vi	pronoun	A1	we		PN
+vilja	verb	A1	will; a person’s intent, volition, decision.	pos	VB,NN_UTR
+vin	noun-ett	A1	wine		NN_NEU
+vise	noun-en	A1	a queen bee		NN_UTR
+våning	noun-en	A1	apartment		NN_UTR
+vårgrön	adjective	A1		none	JJ
+väder	noun-ett	A1	weather		NN_NEU
+vänta	verb	A1	to wait		VB
+åka	verb	A1	to go by using something more or other than the human or animal body, for example a vehicle, skis, or skates; to go,…	long	VB
+år	noun-ett	A1	a year		NN_NEU
+åter	adverb	A1	again		AB
+åtta	numeral	A1	eight		RG
+älvstrand	noun-en	A1		none	NN_UTR
+ärt	noun-en	A1	Any species in the Fabacea family		NN_UTR
+äta	verb	A1	to eat		VB
+öl	noun-en	A1	a beer		NN_UTR,NN_NEU
+över	prep	A1	over; above; more than		PP,PL,AB
