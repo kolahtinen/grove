@@ -10,4 +10,10 @@ Made up for the sketch, not in the spec: C's rule that dropping a word you just 
 
 ## Your pick and comments
 
-(filled in when the owner says done)
+Said done 2026-10-29.
+
+- **Pick:** B (one button showing only the action you can take now, flipping after a tap, Undo in a toast). No comments.
+- Undo → **for both, for a few seconds** (Pick up, and a fall after a right answer).
+- A wrong answer in the meaning check → **offer "Let it fall anyway"** (not the default; today a wrong answer keeps the leaf, G-04 FR-410).
+- A state label on each row → **yes**.
+- In A, what is lit → default (does not apply to B).

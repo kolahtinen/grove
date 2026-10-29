@@ -10,4 +10,18 @@ Read as: Mix keeps Review first at 40% and splits the rest among the ticked skil
 
 ## Your pick and comments
 
-(filled in when the owner says done)
+Said done 2026-10-29.
+
+- **Pick:** B (a sheet-style Options page with skill chips and a split bar; one word per card; learn and spot in one Grammar exercise). No comments.
+- The Options page's top link → **‹ Home** (not the default).
+- A ticked skill with too little for its share → **its time goes to the other ticked skills**.
+- Words and phrases shown in Discover become leaves → **only on + Pick up**.
+- Spot it → left blank with a note: "what do you mean by 'finding a place'?" Explained in Claude Code (a place is where the pattern shows, sometimes several words, e.g. "har ätit") and asked again:
+
+### Q4 again. A place can be several words. When you tap, what counts as finding it? (default: any of its words)
+
+- Any of its words (Recommended)
+- Every word of it
+- Mark it by dragging
+
+**Answer:** (Other) "any of its words, but have the word menu have a separate 'patterns' section that lists any patterns it is part of." Read as: a tap on any word of a place finds it; and the word menu (G-03 FR-305) gets its own **Patterns** section listing every grammar pattern the tapped word is part of (today patterns share a list with phrases only when the AI named them).
