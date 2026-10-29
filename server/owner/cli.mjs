@@ -8,7 +8,7 @@ import { createSeclog } from '../seclog/seclog.mjs';
 import { createFirebase } from '../firebase/client.mjs';
 import { createAccount } from './setup.mjs';
 import { exportAccount, deleteAccount } from './data.mjs';
-import { formatLog, formatAvailability } from './log.mjs';
+import { formatLog, formatAvailability, showReports } from './log.mjs';
 import { backupNow, restoreBackup } from '../store/backup.mjs';
 
 export function parseArgs(argv) {
@@ -84,6 +84,8 @@ export async function run(command, argv) {
         const days = args.days === undefined ? 7 : Number(args.days);
         return formatAvailability(db.prepare('SELECT * FROM availability_checks WHERE at >= ? ORDER BY at').all(Date.now() - days * 86400000));
       }
+      case 'reports:show':
+        return showReports(db);
       case 'backup:now': {
         const { file } = backupNow({ db, backupDir: config.backupDir });
         return `Backup written and checked: ${file}`;

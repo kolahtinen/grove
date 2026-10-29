@@ -10,6 +10,7 @@ Run on the owner's computer as user `grove` (`sudo -u grove npm run <command> --
 | `learner:delete` | `--email <address> --yes` | Deletes the Firebase user first (one that no longer exists counts as deleted), then the account, its sessions and all its data in grove (FR-017). If Firebase fails, nothing in grove is deleted and the command can be run again. |
 | `log:show` | `[--since <hours>] [--event <name>]` | Prints the security log. |
 | `availability:show` | `[--days <n>]` | Prints the hourly checks and the share answered per day (SC-004). |
+| `reports:show` | – | G-09 FR-931 (B-26): prints the open reports on grove's learning content (`content/learning/`), oldest first: when, the item ID, what it is, the reason and the note. |
 | `backup:now` | – | Writes and checks a backup immediately (same as the hourly job). |
 | `backup:restore` | `--file <backup> --yes` | Stops if grove is running; replaces the database with the backup (for the by-hand restore test, SC-005). |
 
