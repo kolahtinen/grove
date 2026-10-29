@@ -17,3 +17,8 @@ Said done 2026-10-29.
 - A wrong answer in the meaning check → **offer "Let it fall anyway"** (not the default; today a wrong answer keeps the leaf, G-04 FR-410).
 - A state label on each row → **yes**.
 - In A, what is lit → default (does not apply to B).
+
+## Applied
+
+RQ-449 (requirements from sketches); G-09 FR-926 (the one-sided button, version B; state labels; the toast with Undo), FR-927 (Undo puts the word back, 15 s, server memory); G-04 FR-410 (Keep it or Let it fall anyway after a wrong answer), FR-411 (Pick up in both dictionaries, also a word not yet the learner's). Next: regen(drill, client).
+
