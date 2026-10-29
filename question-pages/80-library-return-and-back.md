@@ -59,4 +59,4 @@ Asked 2026-10-29 in Claude Code, one at a time. Notes: [docs/reviews/2026-10-29-
 
 ## Applied
 
-(filled in when the specs change)
+Addendum 006 (RQ-444…446, N-46), accepted on question-pages/81. Specs: to change in G-09.

@@ -51,6 +51,7 @@ Format: `N-01: [Who] needs [something].` In plain, everyday words.
 | N-43 | Learners need to trust what they learn from. | N-p0-12, N-p1-39 | RQ-41, RQ-63, RQ-68, RQ-89, RQ-92, RQ-93 … (39) | active (question-pages/45) |
 | N-44 | Learners need help with input and practice that are above their level. | N-p1-64 | RQ-11 | active (question-pages/45) |
 | N-45 | Learners need help with what they don't understand. | N-p0-18 | RQ-12, RQ-18, RQ-297, RQ-298, RQ-299, RQ-300 … (8) | active (question-pages/45) |
+| N-46 | Learners need to find their way around grove and back to what they were doing without getting lost. | B-15, B-16, B-17 (owner's branch test, 2026-10-29) | RQ-442, RQ-444, RQ-445, RQ-446 (addendum 006) | active (question-pages/81) |
 
 **Withdrawn in the prototypes** (not carried): see docs/discovery/p1/needs.md and docs/discovery/p0/needs.md.
 

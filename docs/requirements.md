@@ -388,6 +388,8 @@ Phase 2 (`/pre.combine`, 2026-10-20). The requirements of p0 and p1 (neither rej
 | RQ-378 | A text with clearly fewer new words than the target is still accepted; grove's next prompt asks more firmly for new words. | PR-p1-303 | yes (new, question-pages/52) | N-15, N-11 | F-366: easy | should | active |
 | RQ-379 | Grove finds new words in an AI answer itself; new words the AI didn't list are not a reason to reject it, and grove gives one short prompt for the meanings of those not in its dictionary. | PR-p1-304 | yes (new, question-pages/52) | N-15, N-12 | F-367: easy | must | active; changed 2026-10-26 (question-pages/66, addendum 002): the meanings prompt is withdrawn, replaced by RQ-396–398 and RQ-400 |
 
+Requirements added after the freeze (RQ-380 on) are in the addenda: [001](addenda/001-requirements-without-rq.md) RQ-380…389, [002](addenda/002-prompts-and-meanings.md) RQ-390…402, [003](addenda/003-reading-and-word-menu.md), [004](addenda/004-home-and-sessions.md), [005](addenda/005-home-groups-libraries.md) RQ-429…439, [006](addenda/006-learning-tiles-and-way-back.md) RQ-440…447.
+
 ## Open: implicit requirements still undecided
 
 None: every implicit requirement in p0 and p1 is decided.
