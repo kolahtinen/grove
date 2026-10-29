@@ -77,6 +77,28 @@ test('FR-906 RQ-423: Grammar reviews pattern leaves first and picks the text wit
   assert.equal(w.exercises.find((e) => e.type === 'text').textId, few.id);
 });
 
+test('FR-906 RQ-423: each skill comes Short 5, Medium 10 or Long 20 minutes; Words and phrases fills with Review and Master, phrases included; no text longer than the session', () => {
+  const phrase = leaf({ kind: 'phrase', strength: 0.2 });
+  const words = Array.from({ length: 20 }, () => leaf());
+  const masters = Array.from({ length: 40 }, (_, i) => leaf({ due: false, masterReady: true, gap: 3 + i }));
+  const short = text({ words: 150 });
+  const huge = text({ words: 3000 });
+  const inv = inventory({ leaves: [phrase, ...words, ...masters], texts: [short, huge] });
+  for (const [form, minutes] of [['short', 5], ['medium', 10], ['long', 20]]) {
+    for (const skill of ['reading', 'listening', 'words', 'grammar']) {
+      const p = plan({ kind: 'skill', params: { skill, form, voice: true }, inventory: inv });
+      assert.equal(p.length, minutes * 60, `${skill} ${form}`);
+      assert.ok(p.exercises.every((e) => e.seconds <= minutes * 60), `${skill} ${form}: no exercise longer than the session`);
+      assert.ok(!p.exercises.some((e) => e.textId === huge.id), `${skill} ${form}: the 3,000-word text never planned`);
+    }
+  }
+  const w = plan({ kind: 'skill', params: { skill: 'words', form: 'medium', voice: true }, inventory: inv });
+  const modes = new Set(w.exercises.map((e) => e.mode));
+  assert.ok(modes.has('review') && modes.has('master'), 'Review and Master');
+  assert.ok(w.exercises.some((e) => e.mode === 'review' && e.kind === 'phrase'), 'phrases are reviewed too');
+  assert.ok(fits(w.seconds, 600), `${w.seconds} s planned`);
+});
+
 test('FR-907 RQ-422: a topic session takes Discover from that topic\'s texts and Review from leaves met in them', () => {
   const café = text({ topic: 'café' });
   const sea = text({ topic: 'havet' });

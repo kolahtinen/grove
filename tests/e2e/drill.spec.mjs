@@ -90,6 +90,8 @@ test('FR-908 FR-406 RQ-424 RQ-415: Just one mode → Review shows a due leaf in 
   // The sentence is shown, with Play (addendum 003, question-pages/73, 2).
   if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#exercise-box').getByRole('button', { name: 'Play' })).toBeVisible();
   for (let i = 0; i < 12; i += 1) {
+    // Wait for the next card (or the end) before answering it.
+    await expect(page.locator('#session-end, #exercise-box button.option:not([disabled]), #exercise-box button:text-is("Show")').first()).toBeVisible();
     if (await page.locator('#session-end').isVisible()) break;
     const option = page.locator('#exercise-box button.option:not([disabled])').first();
     if (await option.isVisible()) { await option.click(); await page.getByRole('button', { name: 'Next' }).click(); continue; }

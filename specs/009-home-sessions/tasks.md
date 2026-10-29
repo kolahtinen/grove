@@ -106,18 +106,18 @@ description: "Tasks for G-09: Home, sessions and the new look"
 
 - [ ] T830 [P] [US3] Tests in `tests/sessions/topics.test.mjs`: `FR-909 RQ-422:` `GET /api/topics` groups texts by topic, unread first, own texts under "My own texts", with kind, read and Beta; another account's texts never appear. `FR-907 RQ-422:` a topic session takes Discover from that topic's unread texts and Review and Master from leaves met in its texts; with no unread text, the session says so
 - [ ] T831 [US3] Change `tests/e2e/texts.spec.mjs`'s FR-201 FR-203 FR-219, FR-223 (3 tests), FR-224 and FR-218 to take the same steps on `/texts` instead of Home (rule replaced by FR-909); **only after the other session's work in that file is committed**
-- [ ] T832 [P] [US3] Tests in `tests/e2e/sessions.spec.mjs`: `FR-909 RQ-422 RQ-418:` Texts lists the demo topic and its texts; New texts shows the AI and version dropdowns above the wizard card, one step open at a time, tactic tabs on the card; Your own text shows G-03's form; Start a session on the topic starts one
+- [x] T832 [P] [US3] Tests in `tests/e2e/sessions.spec.mjs`: `FR-909 RQ-422 RQ-418:` Texts lists the demo topic and its texts; New texts shows the AI and version dropdowns above the wizard card, one step open at a time, tactic tabs on the card; Your own text shows G-03's form; Start a session on the topic starts one
 
 ### Implementation
 
 - [ ] T833 [US3] `server/sessions/topics.mjs` and `GET /api/topics`; topic sessions in `plan.mjs` (FR-907)
-- [ ] T834 [US3] `public/texts.html` and `public/assets/texts.mjs`: topics (text titles via `textContent`), Start a session with a length, New texts (the prompting moved from Home in T814, laid out as two dropdowns over the wizard card), Your own text (G-03 FR-318, FR-321's page folded in); the Texts tile links here. **PD-17**'s library per topic only when the library is built
+- [x] T834 [US3] `public/texts.html` and `public/assets/texts.mjs`: topics (text titles via `textContent`), Start a session with a length, New texts (the prompting moved from Home in T814, laid out as two dropdowns over the wizard card), Your own text (G-03 FR-318, FR-321's page folded in); the Texts tile links here. **PD-17**'s library per topic only when the library is built
 
 ---
 
 ## Phase 6: User Story 4 — By skill (P2) — PD-04
 
-- [ ] T835 [P] [US4] Tests in `tests/sessions/plan.test.mjs`: `FR-906 RQ-423:` each skill and form: Short 5, Medium 10, Long 20 minutes; Discover picks among the skill's texts by known share now (**PD-04**: Short 90–94%, Medium nearest the target, Long ≥ 98%; nearest when none is in the band, and the session says so); Listening reviews spoken first; Words and phrases fills with Review and Master; Grammar reviews pattern leaves first; Listening without a voice → 409 `no_voice`. And in `tests/e2e/sessions.spec.mjs`: `FR-906 RQ-423:` By skill → Listening → Short starts a session whose first text is a listening text
+- [x] T835 [P] [US4] Tests in `tests/sessions/plan.test.mjs`: `FR-906 RQ-423:` each skill and form: Short 5, Medium 10, Long 20 minutes; Discover picks among the skill's texts by known share now (**PD-04**: Short 90–94%, Medium nearest the target, Long ≥ 98%; nearest when none is in the band, and the session says so); Listening reviews spoken first; Words and phrases fills with Review and Master; Grammar reviews pattern leaves first; Listening without a voice → 409 `no_voice`. And in `tests/e2e/sessions.spec.mjs`: `FR-906 RQ-423:` By skill → Listening → Short starts a session whose first text is a listening text
 - [ ] T836 [US4] Skill sessions in `server/sessions/plan.mjs` with the known share from `words.counterFor` (research R4); the By skill tile's panel (four skills × three forms) in `public/assets/home.mjs`
 
 ---

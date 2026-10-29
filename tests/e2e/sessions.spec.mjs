@@ -103,3 +103,49 @@ test('FR-909 FR-907 RQ-422: Texts lists the texts by topic, unread first, with B
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('5-minute session');
 });
+
+test('FR-909 RQ-422 RQ-418: New texts shows the AI and version above a wizard card with the tactic tabs on top and one step open at a time; Your own text is on Texts', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await signIn(page);
+  await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'steps' });
+  await page.goto('/texts');
+  await expect(page.locator('#progress')).not.toBeEmpty();
+  const [plan, wizard] = [await page.locator('#plan').boundingBox(), await page.locator('#wizard').boundingBox()];
+  expect(plan.y + plan.height).toBeLessThanOrEqual(wizard.y + 1);
+  await expect(page.locator('#wizard #tactic-tabs')).toBeVisible();
+  const tabs = await page.locator('#tactic-tabs').boundingBox();
+  const next = page.locator('#step-next');
+  expect(tabs.y).toBeLessThan((await next.boundingBox()).y);
+  // A fresh package in a new chat: setup is the open step, the others closed.
+  // With nothing waiting, Next part is the open step; with a prompt waiting, its heading opens it.
+  if (await page.locator('#prompt-area').isHidden()) await expect(page.locator('#step-next-body')).toBeVisible();
+  else await page.locator('#step-next .wstep-head').click();
+  await expect(page.locator('#step-next-body')).toBeVisible();
+  await page.locator(await page.locator('#new-package').isVisible() ? '#new-package' : '#get-texts').click();
+  await expect(page.locator('#prompt-area')).toBeVisible();
+  const heads = page.locator('#wizard .wstep-head[aria-expanded="true"]');
+  await expect(heads).toHaveCount(1);
+  await expect(page.locator('#step-setup-body')).toBeVisible();
+  await expect(page.locator('#step-prompt-body')).toBeHidden();
+  await expect(page.locator('#step-paste-body')).toBeHidden();
+  const setup = page.locator('#setup-steps .prompt-step');
+  const n = await setup.count();
+  expect(n).toBeGreaterThan(0);
+  for (let i = 0; i < n; i += 1) await setup.nth(i).getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(page.locator('#step-prompt-body')).toBeVisible();
+  await expect(page.locator('#step-setup-body')).toBeHidden();
+  await page.locator('#prompt-steps .prompt-step').getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(page.locator('#step-paste-body')).toBeVisible();
+  await expect(page.getByLabel("Paste the AI's answer here")).toBeVisible();
+  await expect(heads).toHaveCount(1);
+  // A step's heading opens it and closes the one open.
+  await page.locator('#step-setup .wstep-head').click();
+  await expect(page.locator('#step-setup-body')).toBeVisible();
+  await expect(page.locator('#step-paste-body')).toBeHidden();
+  // Your own text: G-03 FR-318's form, here on Texts.
+  const own = page.locator('#own-card');
+  await own.getByLabel('Title').fill('Min lista');
+  await own.getByLabel('Swedish text').fill('Jag läser en bok.');
+  await own.getByRole('button', { name: 'Save text' }).click();
+  await page.waitForURL(/\/text\?id=\d+$/);
+});

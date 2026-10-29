@@ -69,7 +69,11 @@ test('FR-904 RQ-421: starting another session replaces the going one (the shared
 test('FR-906 FR-908 RQ-423 RQ-424 RQ-20: By skill and Just one mode start; Listening without a voice is refused; nothing to do is said', async () => {
   const skill = await start({ kind: 'skill', skill: 'reading', form: 'short' });
   assert.equal(skill.body.session.minutes, 5);
-  assert.equal((await start({ kind: 'skill', skill: 'listening', form: 'short', voice: false })).body.error, 'no_voice');
+  const noVoice = await start({ kind: 'skill', skill: 'listening', form: 'short', voice: false });
+  assert.equal(noVoice.status, 409);
+  assert.equal(noVoice.body.error, 'no_voice');
+  assert.equal((await start({ kind: 'skill', skill: 'reading', form: 'long' })).body.session.minutes, 20);
+  assert.equal((await start({ kind: 'skill', skill: 'grammar', form: 'medium' })).body.session.minutes, 10);
   const review = (await start({ kind: 'mode', mode: 'review' })).body.session;
   assert.equal(review.label, 'Review');
   assert.ok(review.total <= 10);

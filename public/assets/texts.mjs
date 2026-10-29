@@ -9,6 +9,7 @@ import { hasSwedish } from './speech.mjs';
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
 let waiting = null;
+let shownExchange;
 let plan = { family: null, product: null, tactic: 'steps', recommended: null, families: [] };
 let shownTactic = 'steps';
 
@@ -86,13 +87,14 @@ async function savePlan(tactic) {
 }
 
 // Copy prompt: "Copied to clipboard"; only when copying fails is the prompt shown, selected (FR-201).
-async function copyStep(text, item) {
+async function copyStep(text, item, after) {
   const note = item.querySelector('.copied');
   const box = item.querySelector('textarea');
   try {
     await navigator.clipboard.writeText(text);
     box.hidden = true;
     note.textContent = 'Copied to clipboard';
+    after?.();
   } catch {
     box.hidden = false;
     box.focus();
@@ -102,7 +104,7 @@ async function copyStep(text, item) {
   note.hidden = false;
 }
 
-function stepItem(label, text) {
+function stepItem(label, text, after) {
   const li = document.createElement('li');
   li.className = 'prompt-step';
   const head = document.createElement('span');
@@ -122,19 +124,33 @@ function stepItem(label, text) {
   box.value = text;
   box.hidden = true;
   box.setAttribute('aria-label', label);
-  button.addEventListener('click', () => copyStep(text, li));
+  button.addEventListener('click', () => copyStep(text, li, after));
   li.append(head, button, note, box);
   return li;
 }
 
 const HEADINGS = { part: 'Prompt', package: 'Prompt for the whole package', redo: 'Ask again for one text', fix: 'Fix-it prompt', meanings_fix: 'Meanings prompt' };
 
+// G-09 FR-909: the prompting phases as a wizard card, one step open at a time (setup, copy prompt,
+// paste answer, next part); copying a step opens the next one.
+function openStep(name) {
+  for (const step of document.querySelectorAll('#wizard .wstep')) {
+    const open = step.dataset.step === name;
+    step.querySelector('.wstep-head').setAttribute('aria-expanded', String(open));
+    step.querySelector('.wstep-body').hidden = !open;
+    step.classList.toggle('open', open);
+  }
+}
+
 function renderSteps(w) {
+  const setup = $('setup-steps');
   const list = $('prompt-steps');
+  setup.replaceChildren();
   list.replaceChildren();
   const total = w.steps.length + 1;
-  w.steps.forEach((step, i) => list.append(stepItem(`${i + 1} of ${total}: setup (your AI replies "OK")`, step)));
-  list.append(stepItem(total > 1 ? `${total} of ${total}: the request; paste its answer below` : 'Copy this into the same chat; paste its answer below', w.prompt));
+  w.steps.forEach((step, i) => setup.append(stepItem(`${i + 1} of ${total}: setup (your AI replies "OK")`, step, i === w.steps.length - 1 ? () => openStep('prompt') : null)));
+  $('step-setup').hidden = !w.steps.length;
+  list.append(stepItem(total > 1 ? `${total} of ${total}: the request; paste its answer below` : 'Copy this into the same chat; paste its answer below', w.prompt, () => openStep('paste')));
   $('new-chat-note').hidden = !(w.steps.length || w.newChatSuggested);
   $('new-chat-note').textContent = w.steps.length
     ? 'Open a new chat in your AI first, then send these prompts in order.'
@@ -152,6 +168,10 @@ function render(home) {
     $('prompt-heading').textContent = waiting.kind === 'package' ? heading : `${heading} (part ${waiting.part} of ${waiting.of})`;
     renderSteps(waiting);
   }
+  // A new prompt opens its first step; the same one keeps the step the learner is on.
+  const shown = waiting ? waiting.exchangeId : null;
+  if (shown !== shownExchange) openStep(!waiting ? 'next' : waiting.steps.length ? 'setup' : 'prompt');
+  shownExchange = shown;
   renderPlan(home.plan);
   const offer = home.offer && home.offer !== home.plan.tactic ? home.offer : null;
   $('offer').hidden = !offer;
@@ -168,6 +188,8 @@ function render(home) {
   getButton.hidden = !!waiting;
   getButton.textContent = pkg && pkg.partsAccepted > 0 && pkg.partsAccepted < pkg.of ? 'Next part' : 'Get texts';
   $('new-package').hidden = !pkg;
+  $('step-next').hidden = !!waiting && !pkg;
+  $('step-next-head').textContent = waiting ? 'New package' : getButton.textContent;
   // After a finished package, Texts suggests My own texts (G-03 FR-321; addendum 003; on Home until G-09).
   $('own-suggest').hidden = !(pkg && pkg.partsAccepted >= pkg.of);
 
@@ -361,4 +383,24 @@ $('add-texts').addEventListener('click', async () => {
     $('new-chat-note').hidden = false;
     $('new-chat-note').textContent = 'Your AI may have lost track of the setup. If so, tap “I\'m in a new chat”.';
   }
+});
+
+for (const head of document.querySelectorAll('#wizard .wstep-head')) {
+  head.addEventListener('click', () => {
+    const step = head.closest('.wstep');
+    openStep(head.getAttribute('aria-expanded') === 'true' ? null : step.dataset.step);
+  });
+}
+
+// G-09 FR-909: Your own text (G-03 FR-318) on Texts; a saved text opens on the reading page for its AI round.
+$('own-form').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const form = event.target;
+  const title = form.elements.title.value.trim();
+  const text = form.elements.text.value.trim();
+  if (!title || !text) return;
+  const result = await post('/api/own-text', { title, text });
+  if (!result.ok) { showMessage($('own-message'), result.message); return; }
+  form.reset();
+  window.location.assign(`/text?id=${result.data.id}`);
 });
