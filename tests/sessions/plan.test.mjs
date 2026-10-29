@@ -10,8 +10,8 @@ const inventory = (over = {}) => ({ leaves: [], texts: [], recent: { reading: 0,
 const session = (over, inv) => plan({ params: { kind: 'time', tile: 'mix', skill: 'mix', minutes: 10, voice: true, ...over }, inventory: inv });
 const harder = (n, from = 2) => Array.from({ length: n }, (_, i) => leaf({ due: false, masterReady: true, gap: from + i }));
 
-test('FR-905 RQ-421: durations are reading 100 words a minute from B1 and 70 below (PD-02), listening 80, Review 20 s, Master 25 s, and a marking step 30 s after a first reading', () => {
-  assert.deepEqual(DURATIONS, { readingWordsPerMinute: 100, readingWordsPerMinuteBelowB1: 70, listeningWordsPerMinute: 80, review: 20, master: 25, marking: 30 });
+test('FR-905 RQ-421 RQ-452 RQ-453: durations are reading 100 words a minute from B1 and 70 below (PD-02), listening 80, Review 20 s, Master 25 s, a marking step 30 s after a first reading, a word card 30 s, a phrase 150 s, a pattern of the day 300 s, a Spot it 150 s', () => {
+  assert.deepEqual(DURATIONS, { readingWordsPerMinute: 100, readingWordsPerMinuteBelowB1: 70, listeningWordsPerMinute: 80, review: 20, master: 25, marking: 30, word: 30, phrase: 150, pattern: 300, spot: 150 });
   assert.equal(textSeconds({ kind: 'reading', words: 140, read: true }, durationsFor(true)), 120);
   assert.equal(textSeconds({ kind: 'listening', words: 160, read: true }, durationsFor(true)), 120);
   assert.equal(textSeconds({ kind: 'reading', words: 200, read: false }), 120 + 30);
@@ -90,31 +90,88 @@ test('FR-905 FR-906 RQ-440 RQ-444: the skill decides the kinds: Reading only rea
   assert.deepEqual(Object.keys(noVoice.offer.missing), ['reading'], 'without a voice only reading is missing');
 });
 
-test('FR-906 RQ-440: new texts: the one nearest the target share first; Grammar the most pattern places; Words the shortest; reviews lean to the skill', () => {
+test('FR-906 RQ-440 RQ-451: new texts: the one nearest the target share first; Words and Grammar plan grove\'s own exercises, not texts; reviews lean to the ticked skills', () => {
   const texts = [text({ knownShare: 80, words: 120 }), text({ knownShare: 95.5, words: 120 }), text({ knownShare: 99, words: 120 })];
   const first = (skill, list) => session({ tile: 'discover', skill, minutes: 5, fill: true }, inventory({ texts: list })).exercises[0].textId;
   assert.equal(first('reading', texts), texts[1].id);
-  const few = text({ patternPlaces: 1, words: 100 });
-  const many = text({ patternPlaces: 4, words: 300 });
-  assert.equal(first('grammar', [few, many]), many.id);
-  assert.equal(first('words', [many, few]), few.id);
+  const learning = { words: ['W-a', 'W-b'], phrases: ['P-A1-01'], patterns: { day: 'G-A1-01', earlier: [] } };
+  const w = session({ tile: 'discover', skills: ['words'], minutes: 5 }, inventory({ texts, learning }));
+  assert.ok(w.exercises.length && w.exercises.every((e) => e.type === 'words' || e.type === 'phrase'), 'Words: no texts');
+  const g = session({ tile: 'discover', skills: ['grammar'], minutes: 5 }, inventory({ texts, learning }));
+  assert.deepEqual(g.exercises.map((e) => e.type), ['grammar']);
   const word = leaf({ strength: 0.1, fading: true });
   const pattern = leaf({ kind: 'pattern', strength: 0.45 });
   const phrase = leaf({ kind: 'phrase', strength: 0.3 });
-  const g = session({ tile: 'review', skill: 'grammar', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
-  assert.equal(g.exercises[0].lemma, pattern.lemma, 'Grammar: pattern leaves first');
-  const w = session({ tile: 'review', skill: 'words', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
-  assert.deepEqual(new Set(w.exercises.map((e) => e.kind)), new Set(['word', 'phrase']), 'Words: words and phrases only');
-  const l = session({ tile: 'review', skill: 'listening', minutes: 5 }, inventory({ leaves: [word, phrase] }));
-  assert.ok(l.exercises.every((e) => e.spoken), 'Listening: each sentence played first');
+  const gr = session({ tile: 'review', skills: ['grammar'], minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
+  assert.equal(gr.exercises[0].lemma, pattern.lemma, 'Grammar ticked: pattern leaves first');
+  assert.equal(session({ tile: 'review', skills: ['grammar', 'reading'], minutes: 5 }, inventory({ leaves: [word, pattern, phrase] })).exercises[0].lemma, pattern.lemma);
+  assert.equal(session({ tile: 'review', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] })).exercises[0].lemma, word.lemma, 'all skills: as G-04');
+  const wr = session({ tile: 'review', skills: ['words'], minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
+  assert.deepEqual(new Set(wr.exercises.map((e) => e.kind)), new Set(['word', 'phrase']), 'only Words: words and phrases only');
+  const l = session({ tile: 'review', skills: ['listening'], minutes: 5 }, inventory({ leaves: [word, phrase] }));
+  assert.ok(l.exercises.every((e) => e.spoken), 'only Listening: each sentence played first');
+  assert.ok(!session({ tile: 'review', skills: ['listening', 'reading'], minutes: 5 }, inventory({ leaves: [word, phrase] })).exercises.some((e) => e.spoken));
+  const old = session({ tile: 'review', skill: 'grammar', minutes: 5 }, inventory({ leaves: [word, pattern, phrase] }));
+  assert.equal(old.exercises[0].lemma, pattern.lemma, 'an old single skill counts as that one ticked');
+});
+
+test('FR-905 FR-906 RQ-451: the ticked skills share the time equally, taken in turns; none ticked is all four', () => {
+  const texts = Array.from({ length: 12 }, (_, i) => text({ kind: i % 2 ? 'listening' : 'reading', words: 100 + i }));
+  const learning = { words: Array.from({ length: 40 }, (_, i) => `W-${i}`), phrases: Array.from({ length: 10 }, (_, i) => `P-${i}`), patterns: { day: 'G-A1-03', earlier: ['G-A1-01', 'G-A1-02'] } };
+  const inv = inventory({ texts, learning });
+  const by = (p) => { const m = {}; for (const e of p.exercises) { const k = e.type === 'text' ? texts.find((x) => x.id === e.textId).kind : e.type === 'phrase' ? 'words' : e.type; m[k] = (m[k] ?? 0) + e.seconds; } return m; };
+  const two = session({ tile: 'discover', skills: ['reading', 'grammar'], minutes: 20 }, inv);
+  const m = by(two);
+  assert.deepEqual(Object.keys(m).sort(), ['grammar', 'reading']);
+  assert.ok(Math.abs(m.reading - m.grammar) <= 300, `about equal: ${JSON.stringify(m)}`);
+  const kinds = two.exercises.map((e) => (e.type === 'text' ? 'reading' : 'grammar'));
+  assert.deepEqual(kinds.slice(0, 2), ['reading', 'grammar'], 'in turns');
+  assert.equal(two.exercises.find((e) => e.type === 'grammar').item, 'G-A1-03', 'the pattern of the day first');
+  assert.equal(two.exercises.find((e) => e.type === 'grammar').learn, true);
+  assert.ok(fits(two.seconds, 1200));
+  const all = by(session({ tile: 'discover', minutes: 30 }, inv));
+  assert.deepEqual(Object.keys(all).sort(), ['grammar', 'listening', 'reading', 'words'], 'none ticked: all four');
+  assert.deepEqual(Object.keys(by(session({ tile: 'discover', skills: [], minutes: 30 }, inv))).sort(), ['grammar', 'listening', 'reading', 'words']);
+  assert.ok(!Object.keys(by(session({ tile: 'discover', minutes: 30, voice: false }, inv))).includes('listening'), 'no voice, no Listening');
+  const mix = session({ tile: 'mix', skills: ['words', 'grammar'], minutes: 10 }, inventory({ texts, learning, leaves: Array.from({ length: 30 }, () => leaf()) }));
+  const reviews = mix.exercises.filter((e) => e.mode === 'review');
+  assert.ok(reviews.length && reviews.reduce((n, e) => n + e.seconds, 0) <= 240, 'Mix keeps Review first, at most 40%');
+  assert.deepEqual(mix.exercises.slice(0, reviews.length).map((e) => e.mode), reviews.map(() => 'review'));
+  assert.equal(mix.offer, null, 'no Reading or Listening ticked: no text target, no offer');
+});
+
+test('FR-905 FR-928 FR-929 RQ-451 RQ-452 RQ-453: a ticked skill with too little gives its time to the others; Words alternates 4 words and a phrase; Grammar the day\'s pattern then earlier ones', () => {
+  const texts = Array.from({ length: 10 }, () => text({ words: 150 }));
+  const few = { words: [], phrases: [], patterns: { day: 'G-A1-01', earlier: [] } };
+  const p = session({ tile: 'discover', skills: ['reading', 'grammar'], minutes: 20 }, inventory({ texts, learning: few }));
+  const grammar = p.exercises.filter((e) => e.type === 'grammar');
+  assert.equal(grammar.length, 1, 'one pattern only');
+  assert.ok(fits(p.seconds, 1200), 'reading took the rest');
+  const learning = { words: Array.from({ length: 9 }, (_, i) => `W-${i}`), phrases: ['P-1', 'P-2'], patterns: { day: null, earlier: ['G-A1-02', 'G-A1-01'] } };
+  const w = session({ tile: 'discover', skills: ['words'], minutes: 10 }, inventory({ learning }));
+  assert.deepEqual(w.exercises.map((e) => e.type), ['words', 'phrase', 'words', 'phrase', 'words']);
+  assert.deepEqual(w.exercises[0].items, ['W-0', 'W-1', 'W-2', 'W-3']);
+  assert.equal(w.exercises[0].seconds, 120);
+  assert.equal(w.exercises.at(-1).items.length, 1);
+  const g = session({ tile: 'discover', skills: ['grammar'], minutes: 5 }, inventory({ learning }));
+  assert.deepEqual(g.exercises.map((e) => [e.item, e.learn, e.seconds]), [['G-A1-02', false, 150], ['G-A1-01', false, 150]], 'no new pattern: Spot it of earlier ones, the longest ago first');
+  const nothing = session({ tile: 'discover', skills: ['words'], minutes: 5 }, inventory({ learning: { words: [], phrases: [], patterns: { day: null, earlier: [] } } }));
+  assert.equal(nothing.reason, 'nothing_to_do');
+  const shortTexts = session({ tile: 'discover', skills: ['reading', 'words'], minutes: 10 }, inventory({ texts: [text({ words: 100 })], learning }));
+  assert.ok(shortTexts.offer && shortTexts.offer.missing.reading > 0, 'short of texts: the offer first');
+  assert.deepEqual(shortTexts.exercises, []);
+  const without = session({ tile: 'discover', skills: ['reading', 'words'], minutes: 10, fill: true }, inventory({ texts: [text({ words: 100 })], learning }));
+  assert.ok(without.exercises.filter((e) => e.type !== 'text').reduce((n, e) => n + e.seconds, 0) > 300, 'Practise without: the texts\' time goes to Words');
 });
 
 test('FR-903 RQ-440: every tile and skill comes in 5, 10, 20 and 30 minutes, and no exercise is longer than the session', () => {
-  const inv = inventory({ leaves: [...Array.from({ length: 20 }, () => leaf()), ...harder(40)], texts: [text({ words: 150 }), text({ words: 3000 }), text({ kind: 'listening', words: 120 })] });
+  const inv = inventory({ leaves: [...Array.from({ length: 20 }, () => leaf()), ...harder(40)], texts: [text({ words: 150 }), text({ words: 3000 }), text({ kind: 'listening', words: 120 })], learning: { words: ['W-a', 'W-b', 'W-c', 'W-d', 'W-e'], phrases: ['P-1'], patterns: { day: 'G-A1-01', earlier: ['G-A1-02'] } } });
   for (const tile of ['discover', 'review', 'mix']) {
     for (const skill of ['mix', 'reading', 'listening', 'words', 'grammar']) {
       for (const minutes of [5, 10, 20, 30]) {
         const p = session({ tile, skill, minutes, fill: true }, inv);
+        const q = session({ tile, skills: skill === 'mix' ? [] : [skill, 'grammar'], minutes, fill: true }, inv);
+        assert.ok(q.exercises.every((e) => e.seconds <= minutes * 60) && q.seconds <= minutes * 60 + 1, `${tile} ${skill}+grammar ${minutes}`);
         assert.equal(p.length, minutes * 60, `${tile} ${skill} ${minutes}`);
         assert.ok(p.exercises.every((e) => e.seconds <= minutes * 60), `${tile} ${skill} ${minutes}: no exercise longer than the session`);
         assert.ok(p.seconds <= minutes * 60 + 1, `${tile} ${skill} ${minutes}: never over`);

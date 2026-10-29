@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { applyDemo } from '../../server/demo/apply.mjs';
 import { readInventory } from '../../server/sessions/inventory.mjs';
-import { plan, fits } from '../../server/sessions/plan.mjs';
+import { plan, fits, tickedSkills } from '../../server/sessions/plan.mjs';
+import { importLearningContent } from '../../server/learning/learning.mjs';
 import { durationsFor, textSeconds } from '../../server/sessions/durations.mjs';
 
 // A learner with the demo history (G-07): 4 texts, 2 unread; 6 drilled leaves.
@@ -12,6 +13,7 @@ let learner;
 let c;
 before(async () => {
   t = await startTestGrove();
+  importLearningContent(t.grove.db);
   learner = t.seedAccount({ email: 'learner@example.test' });
   applyDemo({ db: t.grove.db, accountId: learner.id });
   t.seedAccount({ email: 'other@example.test' });
@@ -113,17 +115,20 @@ test('FR-914 FR-923 RQ-155 T-23: another account can\'t see, move, plan or list 
   assert.deepEqual((await other.get('/api/topics')).body.topics, []);
 });
 
-// SC-001 as amended by addendum 006: every tile, skill and length, filled, is planned within 20% or 2
-// minutes, or uses every leaf and read text it may and says it is shorter.
-test('FR-905 SC-001 RQ-440 R-32: on the demo learner, Mix, Discover and Review of 5, 10, 20 and 30 minutes with each skill, filled, are planned within 20% or 2 minutes, or use all they may and say they are shorter', () => {
-  const inventory = readInventory(t.grove.db, learner.id);
+// SC-001 as amended by addendum 006 and B-25: every tile, set of ticked skills and length, filled, is
+// planned within 20% or 2 minutes, or uses every leaf and read text it may and says it is shorter.
+test('FR-905 SC-001 RQ-440 RQ-451 R-32: on the demo learner, Mix, Discover and Review of 5, 10, 20 and 30 minutes with each skill and pairs of skills, filled, are planned within 20% or 2 minutes, or use all they may and say they are shorter', () => {
+  const inventory = readInventory(t.grove.db, learner.id, { learning: true });
+  assert.ok(inventory.learning.words.length && inventory.learning.patterns.day, 'grove\'s learning content');
+  const sets = [[], ['reading'], ['listening'], ['words'], ['grammar'], ['reading', 'grammar'], ['listening', 'words'], ['words', 'grammar']];
   for (const tile of ['mix', 'discover', 'review']) {
-    for (const skill of ['mix', 'reading', 'listening', 'words', 'grammar']) {
+    for (const skills of sets) {
+      const skill = skills.join('+') || 'all';
       for (const minutes of [5, 10, 20, 30]) {
-        const p = plan({ params: { kind: 'time', tile, skill, minutes, voice: true, fill: true }, inventory });
+        const p = plan({ params: { kind: 'time', tile, skills, minutes, voice: true, fill: true }, inventory });
         const lemmas = new Set(p.exercises.filter((e) => e.lemma).map((e) => e.lemma));
         const texts = new Set(p.exercises.filter((e) => e.textId).map((e) => e.textId));
-        const kinds = { reading: ['reading'], listening: ['listening'] }[skill] ?? ['reading', 'listening'];
+        const kinds = tickedSkills({ skills }).filter((k) => k === 'reading' || k === 'listening');
         const leafKinds = skill === 'words' ? ['word', 'phrase'] : null;
         const leavesUsed = tile === 'discover' || inventory.leaves.filter((l) => !leafKinds || leafKinds.includes(l.kind)).every((l) => lemmas.has(l.lemma));
         // A read text left out only because it would run past the length is not one it may use.
@@ -201,4 +206,37 @@ test('FR-920 FR-923 SC-006 RQ-444 R-34: a Mix short of new texts keeps a going s
     assert.equal(filled.offer, null);
     assert.ok(filled.total > 0);
   }
+});
+
+test('FR-903 FR-905 FR-906 RQ-450 RQ-451: a session takes the ticked skills (none = all); both skill and skills, or a skill twice, is refused; an old single skill reads as one ticked', async () => {
+  assert.equal((await start({ skill: undefined, skills: ['words', 'words'] })).status, 400);
+  assert.equal((await start({ skills: ['words'] })).status, 400, 'skill and skills');
+  assert.equal((await start({ skill: undefined, skills: ['speaking'] })).status, 400);
+  const two = await start({ tile: 'discover', skill: undefined, skills: ['grammar', 'words'], minutes: 10 });
+  assert.equal(two.status, 200, JSON.stringify(two.body));
+  assert.deepEqual([two.body.session.skill, two.body.session.skills], ['mix', ['words', 'grammar']]);
+  const none = await start({ skill: undefined, skills: [] });
+  assert.deepEqual([none.body.session.skill, none.body.session.skills], ['mix', []]);
+  const one = await start({ tile: 'discover', skill: undefined, skills: ['grammar'], minutes: 5 });
+  assert.equal(one.status, 200, JSON.stringify(one.body));
+  assert.deepEqual([one.body.session.skill, one.body.session.skills], ['grammar', ['grammar']]);
+  const old = await start({ skill: 'reading' });
+  assert.deepEqual(old.body.session.skills, ['reading']);
+});
+
+test('FR-928 FR-929 RQ-452 RQ-453: a Words session shows next words one per card and phrase spotlights; a Grammar session the pattern of the day with its text and places', async () => {
+  const words = (await start({ tile: 'discover', skill: undefined, skills: ['words'], minutes: 10 })).body.session;
+  assert.equal(words.exercise.type, 'words');
+  assert.equal(words.exercise.mode, 'discover');
+  assert.ok(words.exercise.words.length >= 1 && words.exercise.words.length <= 4);
+  const card = words.exercise.words[0];
+  assert.ok(card.id.startsWith('W-') && card.lemma && card.en && card.example.sv && card.level);
+  const moved = (await c.post('/api/session/next', { sessionId: words.id, index: 0 })).body.session;
+  assert.equal(moved.exercise.type, 'phrase');
+  assert.ok(moved.exercise.phrase.choices.length === 3 && moved.exercise.phrase.examples.length === 2);
+  const grammar = (await start({ tile: 'discover', skill: undefined, skills: ['grammar'], minutes: 5 })).body.session;
+  assert.equal(grammar.exercise.type, 'grammar');
+  assert.equal(grammar.exercise.learn, true);
+  const p = grammar.exercise.pattern;
+  assert.ok(p.id.startsWith('G-') && p.name && p.explain && p.howToSpot && p.examples.length && p.text.lines.length && p.spot.length);
 });

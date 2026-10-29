@@ -1,15 +1,17 @@
 // What a learner has to practise, for the planner (G-09 research R2, R4): drilled leaves with their
 // strength (G-04's schedule), the texts with kind, topic, word count, read or not, when created (the fill
 // bars, FR-920), and, when asked, the
-// share of known words now; reading and listening done in the last 7 days.
+// share of known words now; reading and listening done in the last 7 days; and, when asked, what Discover's
+// Words and Grammar can show next (FR-928, FR-929).
 import { strength, isDue, MASTER_GAP } from '../drill/schedule.mjs';
 import { tokenize } from '../words/tokens.mjs';
 import { createWordStore } from '../words/store.mjs';
 import { levelFor, isBelowB1 } from '../drill/progress.mjs';
+import { learningInventory } from '../learning/learning.mjs';
 
 const DAY = 24 * 60 * 60 * 1000;
 
-export function readInventory(db, accountId, { now = Date.now(), knownShares = false } = {}) {
+export function readInventory(db, accountId, { now = Date.now(), knownShares = false, learning = false } = {}) {
   const leaves = db.prepare("SELECT * FROM words WHERE account_id = ? AND drilled = 1 AND state = 'leaf'").all(accountId).map((w) => {
     const s = strength(w, now);
     return { id: w.id, lemma: w.lemma, kind: w.kind, strength: s, due: isDue(w, now), fading: s < 0.2, gap: w.gap_days, masterReady: w.gap_days >= MASTER_GAP, textIds: [] };
@@ -57,5 +59,5 @@ export function readInventory(db, accountId, { now = Date.now(), knownShares = f
     recent[t.kind] += words.get(t.id) ?? 0;
   }
   const targetShare = db.prepare('SELECT target_share FROM learner_settings WHERE account_id = ?').get(accountId)?.target_share ?? 95;
-  return { leaves, texts, recent, targetShare, belowB1: isBelowB1(levelFor(db, accountId)) };
+  return { leaves, texts, recent, targetShare, belowB1: isBelowB1(levelFor(db, accountId)), ...(learning ? { learning: learningInventory(db, accountId, { now }) } : {}) };
 }

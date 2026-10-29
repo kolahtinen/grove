@@ -8,6 +8,11 @@ export const DURATIONS = {
   review: 20,
   master: 25,
   marking: 30,
+  // Discover's Words and Grammar (FR-928, FR-929; the picked sketch's times, question-pages/89).
+  word: 30,
+  phrase: 150,
+  pattern: 300,
+  spot: 150,
 };
 
 // The durations for a learner: below B1, reading is planned at the slower rate.

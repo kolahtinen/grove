@@ -1,28 +1,37 @@
-// The session planner (G-09 FR-905…FR-907, addendum 006; research R2): a pure function from what the
-// learner has (an inventory) to an ordered list of exercises with their planned seconds, for a Learning
-// tile (Discover, Review, Mix), a skill and a length. Review is the due and fading leaves, then harder
-// questions (Master's, for well-known words); Discover is new texts of the skill's kinds; Mix is Review
-// (at most 40%) then new texts. A Mix or Discover whose new texts cover under 80% of their target says
-// what is missing per kind (`offer`, FR-920); filled (`fill`), a plan gets the mix of fillMix below.
+// The session planner (G-09 FR-905…FR-907, addendum 006, B-25, B-26; research R2): a pure function from
+// what the learner has (an inventory) to an ordered list of exercises with their planned seconds, for a
+// Learning tile (Discover, Review, Mix), the ticked skills and a length. Review is the due and fading
+// leaves, then harder questions (Master's, for well-known words); Discover is the ticked skills sharing the
+// time equally, in turns (new reading and listening texts, Words and phrase exercises, Grammar exercises);
+// Mix is Review (at most 40%) then the same for the rest. A ticked skill with too little gives its time to
+// the others; new texts count as plenty until the short-session offer is answered: a Mix or Discover whose
+// new texts cover under 80% of their target says what is missing per kind (`offer`, FR-920); filled
+// (`fill`), the texts' missing time goes to the other ticked skills, then to the mix of fillMix below.
 // Ties are broken by id, so the same inventory always gives the same plan.
 import { DURATIONS, durationsFor, textSeconds } from './durations.mjs';
 
 export const TILES = ['discover', 'review', 'mix'];
 export const SKILLS = ['mix', 'reading', 'listening', 'words', 'grammar'];
+export const TICKS = ['reading', 'listening', 'words', 'grammar'];
 export const LENGTHS = [5, 10, 20, 30];
+export const WORDS_PER_EXERCISE = 4;
 const MAX_EXERCISES = 80;
+const TEXT_SKILLS = ['reading', 'listening'];
 
 // Whether the planned seconds are close enough to the length: within 20% or 2 minutes (FR-905).
 export function fits(seconds, length) {
   return Math.abs(seconds - length) <= Math.max(0.2 * length, 120);
 }
 
-// The text kinds a skill uses (FR-905): Reading and Listening one each, the others both; no voice, no
-// listening.
-export function kindsFor(skill, voice) {
-  const kinds = skill === 'reading' ? ['reading'] : skill === 'listening' ? ['listening'] : ['reading', 'listening'];
-  return voice ? kinds : kinds.filter((k) => k !== 'listening');
+// The ticked skills (FR-903, B-25): `skills` as ticked ([] = all four), else an old single skill (Mix =
+// all); without a voice no Listening; a topic session takes its texts only (FR-907).
+export function tickedSkills({ skills, skill, voice = true, kind } = {}) {
+  let ticked = Array.isArray(skills) ? TICKS.filter((s) => skills.includes(s)) : (!skill || skill === 'mix' ? [] : [skill]);
+  if (!ticked.length) ticked = [...TICKS];
+  if (kind === 'topic') ticked = [...TEXT_SKILLS];
+  return voice ? ticked : ticked.filter((s) => s !== 'listening');
 }
+const isAll = (ticked, voice) => ticked.length === (voice ? 4 : 3);
 
 const byStrength = (a, b) => (b.fading - a.fading) || (a.strength - b.strength) || (a.id - b.id);
 const byGap = (a, b) => (b.gap - a.gap) || (a.id - b.id);
@@ -38,18 +47,19 @@ function textExercise(text, durations) {
   return { mode: 'discover', type: 'text', textId: text.id, seconds: textSeconds(text, durations) };
 }
 
-// The leaves a skill reviews, in the order it reviews them (FR-906): Words only words and phrases;
-// Grammar pattern leaves first.
-function skillLeaves(leaves, skill) {
-  const own = skill === 'words' ? leaves.filter((l) => l.kind === 'word' || l.kind === 'phrase') : leaves;
-  const first = skill === 'grammar' ? (a, b) => (b.kind === 'pattern') - (a.kind === 'pattern') : () => 0;
+// The leaves the ticked skills review, in the order they review them (FR-906): only Words ticked, words
+// and phrases only; Grammar ticked (not all), pattern leaves first.
+function skillLeaves(leaves, ticked, voice) {
+  const all = isAll(ticked, voice);
+  const own = ticked.every((s) => s === 'words') ? leaves.filter((l) => l.kind === 'word' || l.kind === 'phrase') : leaves;
+  const first = !all && ticked.includes('grammar') ? (a, b) => (b.kind === 'pattern') - (a.kind === 'pattern') : () => 0;
   return { own, first };
 }
 
 // Review within `budget` seconds: the due and fading leaves (fading first), then harder questions, at
 // most a third of the length while due or fading leaves are left out (R-33). `hardOnly`: harder only.
-function planReview({ leaves, skill, budget, length, hardOnly, spoken, preferred = () => 0 }) {
-  const { own, first } = skillLeaves(leaves, skill);
+function planReview({ leaves, ticked, voice, budget, length, hardOnly, spoken, preferred = () => 0 }) {
+  const { own, first } = skillLeaves(leaves, ticked, voice);
   const exercises = [];
   const planned = new Set();
   let used = 0;
@@ -73,40 +83,91 @@ function planReview({ leaves, skill, budget, length, hardOnly, spoken, preferred
   return { exercises, seconds: used, planned };
 }
 
-// The order new texts are taken in (FR-906): Grammar the most pattern places, Words the shortest, the
-// others the one nearest the learner's target share of known words.
-function textOrder(skill, target) {
-  if (skill === 'grammar') return (a, b) => (b.patternPlaces - a.patternPlaces) || (a.id - b.id);
-  if (skill === 'words') return (a, b) => (a.words - b.words) || (a.id - b.id);
+// New texts of a kind (FR-906): unfinished first is the inventory's order; then the one nearest the
+// learner's target share of known words.
+function textQueue(texts, kind, target, durations) {
   const off = (t) => Math.abs((t.knownShare ?? 100) - target);
-  return (a, b) => (off(a) - off(b)) || (a.id - b.id);
+  return texts.filter((t) => !t.read && t.kind === kind).sort((a, b) => (off(a) - off(b)) || (a.id - b.id)).map((t) => textExercise(t, durations));
 }
 
-// New texts for a `target` of seconds, split between the kinds; taken in turn, one kind then the other,
-// while that kind is under its share and the text fits in what is left of the session.
-function planTexts({ texts, kinds, target, room, skill, targetShare, durations }) {
-  const share = kinds.length ? target / kinds.length : 0;
-  const order = textOrder(skill, targetShare);
-  const queues = Object.fromEntries(kinds.map((k) => [k, texts.filter((t) => !t.read && t.kind === k).sort(order)]));
-  const byKind = Object.fromEntries(kinds.map((k) => [k, 0]));
-  const exercises = [];
-  let used = 0;
-  for (let progress = true; progress && exercises.length < MAX_EXERCISES;) {
-    progress = false;
-    for (const k of kinds) {
-      if (byKind[k] >= share) continue;
-      const i = queues[k].findIndex((t) => textSeconds(t, durations) <= room - used);
-      if (i < 0) continue;
-      const [text] = queues[k].splice(i, 1);
-      const ex = textExercise(text, durations);
-      exercises.push(ex);
-      byKind[k] += ex.seconds;
-      used += ex.seconds;
-      progress = true;
-    }
+// Words (FR-928): a Words exercise of up to 4 next words and a phrase spotlight, alternately; Grammar
+// (FR-929): the pattern of the day, Learn then Spot it, then Spot it of earlier patterns.
+function wordsQueue(learning, durations) {
+  const sets = [];
+  for (let i = 0; i < (learning?.words ?? []).length; i += WORDS_PER_EXERCISE) {
+    const items = learning.words.slice(i, i + WORDS_PER_EXERCISE);
+    sets.push({ mode: 'discover', type: 'words', items, seconds: items.length * durations.word });
   }
-  const missing = Object.fromEntries(kinds.filter((k) => byKind[k] < share).map((k) => [k, Math.round(share - byKind[k])]));
-  return { exercises, seconds: used, missing };
+  const phrases = (learning?.phrases ?? []).map((item) => ({ mode: 'discover', type: 'phrase', item, seconds: durations.phrase }));
+  const out = [];
+  for (let i = 0; i < Math.max(sets.length, phrases.length); i += 1) {
+    if (sets[i]) out.push(sets[i]);
+    if (phrases[i]) out.push(phrases[i]);
+  }
+  return out;
+}
+function grammarQueue(learning, durations) {
+  const p = learning?.patterns ?? {};
+  return [
+    ...(p.day ? [{ mode: 'discover', type: 'grammar', item: p.day, learn: true, seconds: durations.pattern }] : []),
+    ...(p.earlier ?? []).map((item) => ({ mode: 'discover', type: 'grammar', item, learn: false, seconds: durations.spot })),
+  ];
+}
+
+// Equal shares of `room` for the ticked skills, a skill with less than its share (its `cap`) giving the
+// rest to the others (question-pages/89).
+function shareOut(room, ticked, caps) {
+  const shares = {};
+  let left = room;
+  let open = [...ticked];
+  for (;;) {
+    const share = open.length ? left / open.length : 0;
+    const small = open.filter((s) => caps[s] < share);
+    if (!small.length) { for (const s of open) shares[s] = share; return shares; }
+    for (const s of small) { shares[s] = caps[s]; left -= caps[s]; }
+    open = open.filter((s) => !small.includes(s));
+  }
+}
+
+// The ticked skills' exercises: first each skill while under its share (the skill with the longest next
+// exercise first, so a long one still fits), then any that still fit the time left (a short share's time
+// goes to the others); then put in turns, one of each ticked skill a round, in the ticked order.
+function takeInTurns({ ticked, queues, shares, room }) {
+  const q = Object.fromEntries(ticked.map((s) => [s, [...queues[s]]]));
+  const used = Object.fromEntries(ticked.map((s) => [s, 0]));
+  const picked = Object.fromEntries(ticked.map((s) => [s, []]));
+  let total = 0;
+  let count = 0;
+  const take = (s) => {
+    const i = q[s].findIndex((ex) => ex.seconds <= room - total);
+    if (i < 0 || count >= MAX_EXERCISES) return false;
+    const [ex] = q[s].splice(i, 1);
+    picked[s].push(ex);
+    used[s] += ex.seconds;
+    total += ex.seconds;
+    count += 1;
+    return true;
+  };
+  const nextSize = (s) => q[s].find((ex) => ex.seconds <= room - total)?.seconds ?? 0;
+  for (let progress = true; progress;) {
+    progress = false;
+    const order = ticked.filter((s) => used[s] < shares[s] - 1).sort((a, b) => nextSize(b) - nextSize(a));
+    for (const s of order) if (used[s] < shares[s] - 1 && take(s)) progress = true;
+  }
+  for (let progress = true; progress;) {
+    progress = false;
+    for (const s of ticked) if (take(s)) progress = true;
+  }
+  const exercises = [];
+  for (let round = 0; exercises.length < count; round += 1) for (const s of ticked) if (picked[s][round]) exercises.push(picked[s][round]);
+  return { exercises, seconds: total, used };
+}
+
+function planNew({ ticked, queues, room, plentyOfTexts }) {
+  const sum = (list) => list.reduce((n, ex) => n + ex.seconds, 0);
+  const caps = Object.fromEntries(ticked.map((s) => [s, TEXT_SKILLS.includes(s) && plentyOfTexts ? Infinity : Math.min(room, sum(queues[s]))]));
+  const shares = shareOut(room, ticked, caps);
+  return { ...takeInTurns({ ticked, queues, shares, room }), shares };
 }
 
 // FR-905 (question-pages/78, 3): a plan is filled, when the learner asks, with a mix taken in turn from
@@ -135,15 +196,16 @@ function fillMix(base, { length, leaves, texts, voice, kinds, reviews = true, sp
   return { exercises, seconds: used };
 }
 
-// params: { kind: time | topic, tile, skill, minutes, hardOnly, topic, voice, fill }.
+// params: { kind: time | topic, tile, skills | skill, minutes, hardOnly, topic, voice, fill }.
 export function plan({ params, inventory, durations: rates = DURATIONS }) {
   const durations = durationsFor(inventory.belowB1 ?? false, rates);
-  const { tile, skill = 'mix', hardOnly = false, fill = false } = params;
+  const { tile, hardOnly = false, fill = false } = params;
   const voice = params.voice !== false;
   const length = params.minutes * 60;
-  const kinds = kindsFor(skill, voice);
+  const ticked = tickedSkills({ ...params, voice });
+  const kinds = ticked.filter((s) => TEXT_SKILLS.includes(s));
   let texts = inventory.texts.filter((t) => voice || t.kind !== 'listening');
-  let leaves = inventory.leaves;
+  const leaves = inventory.leaves;
   let preferred = () => 0;
   if (params.kind === 'topic') {
     // FR-907: the topic's texts; the leaves met in them first, then any due ones.
@@ -152,11 +214,11 @@ export function plan({ params, inventory, durations: rates = DURATIONS }) {
     const inTopic = (l) => (l.textIds || []).some((id) => ids.has(id));
     preferred = (a, b) => inTopic(b) - inTopic(a);
   }
-  const spoken = skill === 'listening';
+  const spoken = ticked.length === 1 && ticked[0] === 'listening';
 
   let review = { exercises: [], seconds: 0, planned: new Set() };
   if (tile === 'review' || tile === 'mix') {
-    review = planReview({ leaves, skill, budget: tile === 'review' ? length : 0.4 * length, length, hardOnly: tile === 'review' && hardOnly, spoken, preferred });
+    review = planReview({ leaves, ticked, voice, budget: tile === 'review' ? length : 0.4 * length, length, hardOnly: tile === 'review' && hardOnly, spoken, preferred });
   }
   let base = review;
   let offer = null;
@@ -164,27 +226,41 @@ export function plan({ params, inventory, durations: rates = DURATIONS }) {
   if (tile === 'review') {
     wouldBeShort = review.seconds < 0.8 * length;
   } else {
-    const target = length - review.seconds;
-    const news = planTexts({ texts, kinds, target, room: length - review.seconds, skill, targetShare: inventory.targetShare ?? 95, durations });
-    wouldBeShort = news.seconds < 0.8 * target;
+    const room = length - review.seconds;
+    const target = inventory.targetShare ?? 95;
+    const queues = {
+      reading: textQueue(texts, 'reading', target, durations),
+      listening: textQueue(texts, 'listening', target, durations),
+      words: wordsQueue(inventory.learning, durations),
+      grammar: grammarQueue(inventory.learning, durations),
+    };
+    // New texts count as plenty while the offer decides; filled, they are what there is.
+    let news = planNew({ ticked, queues, room, plentyOfTexts: true });
+    const textTarget = kinds.reduce((n, k) => n + news.shares[k], 0);
+    const textUsed = kinds.reduce((n, k) => n + news.used[k], 0);
+    // Without Reading or Listening ticked there is no text target: a plan under 80% says so, as Review's.
+    wouldBeShort = kinds.length > 0 ? textUsed < 0.8 * textTarget : review.seconds + news.seconds < 0.8 * length;
+    if (wouldBeShort && kinds.length) {
+      offer = { missing: Object.fromEntries(kinds.filter((k) => news.used[k] < news.shares[k]).map((k) => [k, Math.round(news.shares[k] - news.used[k])])) };
+      if (fill) news = planNew({ ticked, queues, room, plentyOfTexts: false });
+    }
     let exercises = [...review.exercises, ...news.exercises];
     let seconds = review.seconds + news.seconds;
     if (tile === 'mix' && !wouldBeShort) {
-      // What is left of a Mix after its texts: more harder questions, while they fit.
-      const more = planReview({ leaves: leaves.filter((l) => !review.planned.has(l.id)), skill, budget: length - seconds, length, hardOnly: true, spoken, preferred });
+      // What is left of a Mix after its new things: more harder questions, while they fit.
+      const more = planReview({ leaves: leaves.filter((l) => !review.planned.has(l.id)), ticked, voice, budget: length - seconds, length, hardOnly: true, spoken, preferred });
       exercises = [...exercises, ...more.exercises];
       seconds += more.seconds;
       for (const id of more.planned) review.planned.add(id);
     }
     base = { exercises, seconds, planned: review.planned };
-    if (wouldBeShort) offer = { missing: news.missing };
   }
 
   const reviews = tile !== 'discover' && !(tile === 'review' && hardOnly);
   let result = { exercises: base.exercises, seconds: base.seconds };
   if (wouldBeShort && fill) {
-    result = hardOnly && tile === 'review' ? result : fillMix(base, { length, leaves: skillLeaves(leaves, skill).own, texts, voice, kinds, reviews, spoken, durations });
-  } else if (wouldBeShort && tile !== 'review') {
+    result = hardOnly && tile === 'review' ? result : fillMix(base, { length, leaves: skillLeaves(leaves, ticked, voice).own, texts, voice, kinds, reviews, spoken, durations });
+  } else if (wouldBeShort && offer) {
     // Short of new texts and not filled: nothing is planned until the learner answers the offer.
     result = { exercises: [], seconds: 0 };
   }

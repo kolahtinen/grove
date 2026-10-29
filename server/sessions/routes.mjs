@@ -3,7 +3,7 @@
 import { sendJson, HttpError } from '../web/http.mjs';
 import { createSessions } from './store.mjs';
 import { listTopics } from './topics.mjs';
-import { TILES, SKILLS, LENGTHS } from './plan.mjs';
+import { TILES, SKILLS, TICKS, LENGTHS } from './plan.mjs';
 
 export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
   const sessions = createSessions({ db, now });
@@ -12,7 +12,8 @@ export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
     schema: {
       kind: { type: 'enum', values: ['time', 'topic'] },
       tile: { type: 'enum', values: TILES },
-      skill: { type: 'enum', values: SKILLS },
+      skill: { type: 'enum', values: SKILLS, optional: true },
+      skills: { type: 'list', max: TICKS.length, item: { type: 'enum', values: TICKS }, optional: true },
       minutes: { type: 'integer', min: Math.min(...LENGTHS), max: Math.max(...LENGTHS) },
       hardOnly: { type: 'boolean', optional: true },
       topic: { type: 'string', min: 0, max: 120, optional: true },
@@ -26,7 +27,9 @@ export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
       const wrong = !LENGTHS.includes(b.minutes)
         || ((b.topic !== undefined) !== (b.kind === 'topic'))
         || (b.kind === 'topic' && b.tile !== 'mix')
-        || (b.hardOnly !== undefined && b.tile !== 'review');
+        || (b.hardOnly !== undefined && b.tile !== 'review')
+        || (b.skill !== undefined && b.skills !== undefined)
+        || (b.skills && new Set(b.skills).size !== b.skills.length);
       if (wrong) throw new HttpError(400, 'bad_request', 'That isn’t a session grove can plan.');
       sendJson(ctx.res, 200, { session: sessions.start(ctx.account.id, b) });
     },
