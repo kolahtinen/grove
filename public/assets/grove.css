@@ -1,45 +1,46 @@
 /* The forest look, from Appendix A of docs/middle-steps.md (FR-026…FR-031). */
 @import url('/fonts/fonts.css');
 
-/* A.1 Night forest (dark) by default; Pale birch (light) follows the device's setting (FR-026). */
+/* Palette 14 (G-09 FR-913, replacing Appendix A.1's colours): dark by default; light follows the device's
+   setting (FR-026). Every colour in this file is a token here. The word, ok, bad and Beta colours are
+   re-picked from the same family (PD-13, PD-14, provisional); the mode colours are FR-913's as written
+   (PD-12's contrast adjustment still to confirm). */
 :root {
   color-scheme: dark;
-  --bg: #0A110E;
-  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(98,140,80,.22), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(199,154,100,.14), transparent 60%), radial-gradient(700px 520px at 50% 115%, rgba(60,110,90,.16), transparent 60%);
-  --card: rgba(255,255,255,.05);
-  --card2: rgba(255,255,255,.08);
-  --ink: #E8F0E9;
-  --muted: #93A399;
-  --line: rgba(255,255,255,.09);
-  --accent: #7FA866;
-  --accent2: #A3C487;
-  --onacc: #0C160A;
-  --soft: rgba(127,168,102,.16);
-  --ok: #76DB5E;
-  --ok-bg: rgba(102,214,86,.15);
-  --bad: #EB8A62;
-  --bad-bg: rgba(214,110,70,.17);
-  --amber: #D9A55B;
-  --wood: #C79A64;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A;
+  --card2: #222822;
+  --ink: #E9EBE3;
+  --muted: #9AA095;
+  --line: rgba(233,235,227,.10);
+  --accent: #6FA27E;
+  --accent2: #97C3A2;
+  --onacc: #0F110E;
+  --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40;
+  --onbanner: #FFFFFF;
+  --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E;
+  --ok-bg: rgba(143,203,126,.14);
+  --bad: #E07A6E;
+  --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66;
+  --wood: #C9A27E;
   --shadow: 0 12px 34px rgba(0,0,0,.45);
-  --glow: 0 0 0 1px rgba(127,168,102,.45), 0 6px 22px rgba(127,168,102,.28);
-  --pbg: #121C16;
-  --pink: #E8F0E9;
-  --pbord: #7FA866;
-  --phtx: #0C160A;
-  --okb: #5FC54B;
-  --cw: #7CB4FF;
-  --rlc: #D59BFF;
-  --cb: #4FD1C5;
-  --gpk: #FF6FB0;
-  --rw: #5E7697;
-  --rr: #83679A;
-  --rb: #A08B6A;
-  --t1: #FF8A80;
-  --t2: #7FD68A;
-  --t3: #8FB4FF;
-  --t4: #D7A3E6;
-  --t5: #A8A8A8;
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --pbg: #222822;
+  --pink: #E9EBE3;
+  --pbord: #6FA27E;
+  --phtx: #0F110E;
+  --cw: #7CC2B0;
+  --gpk: #E3A46E;
+  --rw: #B9BDB2;
+  --rr: #B9BDB2;
+  --rb: #B9BDB2;
+  --discover: #E3A46E;
+  --review: #C27A52;
+  --master: #9C5745;
   --size-factor: 1;
   --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
 }
@@ -47,42 +48,40 @@
 @media (prefers-color-scheme: light) {
   :root {
     color-scheme: light;
-    --bg: #F3F0E8;
-    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(150,180,120,.30), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(214,190,150,.38), transparent 60%), radial-gradient(700px 500px at 50% 120%, rgba(225,215,190,.55), transparent 60%);
-    --card: rgba(255,255,255,.72);
-    --card2: rgba(255,255,255,.92);
-    --ink: #1E2A22;
-    --muted: #626C61;
-    --line: rgba(30,42,34,.10);
-    --accent: #4A6B3A;
-    --accent2: #6B8F55;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2;
+    --card2: #F5F4EC;
+    --ink: #26241F;
+    --muted: #74706A;
+    --line: rgba(38,36,31,.12);
+    --accent: #2F5A40;
+    --accent2: #5E8A66;
     --onacc: #FFFFFF;
-    --soft: rgba(74,107,58,.11);
-    --ok: #2F9A2A;
-    --ok-bg: #E3F5DF;
-    --bad: #B4532A;
-    --bad-bg: #F8E5DC;
-    --amber: #B7791F;
-    --wood: #9A6B3E;
-    --shadow: 0 10px 30px rgba(70,60,40,.12);
-    --glow: 0 0 0 1px rgba(74,107,58,.35), 0 6px 20px rgba(74,107,58,.22);
-    --pbg: #FFFFFF;
-    --pink: #1C2130;
-    --pbord: #4A6B3A;
+    --soft: rgba(47,90,64,.10);
+    --banner: #2F5A40;
+    --onbanner: #FFFFFF;
+    --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738;
+    --ok-bg: #E1EBD9;
+    --bad: #A14646;
+    --bad-bg: #F3E1DC;
+    --amber: #74432C;
+    --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12);
+    --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --pbg: #F5F4EC;
+    --pink: #26241F;
+    --pbord: #2F5A40;
     --phtx: #FFFFFF;
-    --okb: #3E9B35;
-    --cw: #2563EB;
-    --rlc: #9333EA;
-    --cb: #0F8F86;
-    --gpk: #DB2777;
-    --rw: #94A7C6;
-    --rr: #B89AC6;
-    --rb: #A48A62;
-    --t1: #D0342C;
-    --t2: #2E8B3A;
-    --t3: #2563C9;
-    --t4: #8A3B9E;
-    --t5: #7A7A7A;
+    --cw: #2E6B5E;
+    --gpk: #92592C;
+    --rw: #4F4C46;
+    --rr: #4F4C46;
+    --rb: #4F4C46;
+    --discover: #C08552;
+    --review: #8C5A3C;
+    --master: #4B2E2B;
   }
 }
 
@@ -275,7 +274,7 @@ button.w:active { transform: none; background: var(--soft); }
 .lines .sv { margin: 0; }
 .lines li.reported .sv { opacity: .6; }
 .reading-tools { margin: 0 0 .6rem; }
-.sheet-backdrop { position: fixed; inset: 0; background: rgba(5,8,14,.35); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 20; }
+.sheet-backdrop { position: fixed; inset: 0; background: var(--backdrop); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 20; }
 .sheet {
   position: fixed; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 21;
   width: min(560px, 100%); max-height: 80vh; overflow-y: auto;
@@ -456,13 +455,10 @@ label.check { display: flex; gap: .5rem; align-items: center; margin-top: .6rem;
 /* G-09 sessions (FR-904, FR-912): the session line and bar; an exercise card with a plain green banner
    and two chips in the card's colour, text and icon in the mode's colour, sentence case. Mode colours as
    FR-913 says now (PD-12's contrast adjustment still to confirm). */
-:root { --discover: #E3A46E; --review: #C27A52; --master: #9C5745; }
-@media (prefers-color-scheme: light) { :root { --discover: #C08552; --review: #8C5A3C; --master: #4B2E2B; } }
 .session-line { margin: 0 0 .4rem; font-weight: 600; }
 #session-bar { width: 100%; height: 8px; }
 .mode-card { padding: 0; overflow: hidden; }
-.mode-banner { display: flex; justify-content: space-between; align-items: center; padding: .55rem .7rem; background: #2E5A40; }
-@media (prefers-color-scheme: light) { .mode-banner { background: var(--accent); } }
+.mode-banner { display: flex; justify-content: space-between; align-items: center; padding: .55rem .7rem; background: var(--banner); }
 .chip { display: inline-flex; align-items: center; gap: .35rem; height: 26px; padding: 0 .7rem; border-radius: 999px; background: var(--card); line-height: 1; font-size: .78rem; font-weight: 700; }
 .chip .icon { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; display: block; }
 .chip.discover { color: var(--discover); } .chip.review { color: var(--review); } .chip.master { color: var(--master); }
