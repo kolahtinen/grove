@@ -1,0 +1,3716 @@
+{
+  "about": "Grammar pattern ladder by CEFR level (B-26). Draft, not approved by the owner. See content/learning/README.md.",
+  "status": "draft",
+  "patterns": [
+    {
+      "id": "G-A1-01",
+      "level": "A1",
+      "name": "Present tense: verbs end in -r",
+      "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+      "how_to_spot": "Look for the verb ending in -r near the start of each sentence.",
+      "examples": [
+        {
+          "sv": "Jag bor i Malmö.",
+          "en": "I live in Malmö.",
+          "mark": "bor"
+        },
+        {
+          "sv": "Hon talar svenska.",
+          "en": "She speaks Swedish.",
+          "mark": "talar"
+        },
+        {
+          "sv": "Vi äter frukost klockan sju.",
+          "en": "We have breakfast at seven.",
+          "mark": "äter"
+        },
+        {
+          "sv": "Barnen leker i parken.",
+          "en": "The children are playing in the park.",
+          "mark": "leker"
+        },
+        {
+          "sv": "Du dricker mycket kaffe.",
+          "en": "You drink a lot of coffee.",
+          "mark": "dricker"
+        }
+      ],
+      "text": {
+        "title": "En vanlig morgon",
+        "lines": [
+          {
+            "sv": "Jag vaknar klockan sex.",
+            "en": "I wake up at six."
+          },
+          {
+            "sv": "Sedan duschar jag.",
+            "en": "Then I have a shower."
+          },
+          {
+            "sv": "Min man gör kaffe.",
+            "en": "My husband makes coffee."
+          },
+          {
+            "sv": "Vi äter frukost i köket.",
+            "en": "We have breakfast in the kitchen."
+          },
+          {
+            "sv": "Barnen dricker mjölk.",
+            "en": "The children drink milk."
+          },
+          {
+            "sv": "Klockan halv åtta går vi ut.",
+            "en": "At half past seven we go out."
+          },
+          {
+            "sv": "Jag cyklar till jobbet.",
+            "en": "I cycle to work."
+          },
+          {
+            "sv": "Barnen tar bussen till skolan.",
+            "en": "The children take the bus to school."
+          },
+          {
+            "sv": "Det är en bra morgon.",
+            "en": "It is a good morning."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "vaknar"
+        },
+        {
+          "line": 1,
+          "mark": "duschar"
+        },
+        {
+          "line": 2,
+          "mark": "gör"
+        },
+        {
+          "line": 3,
+          "mark": "äter"
+        },
+        {
+          "line": 4,
+          "mark": "dricker"
+        },
+        {
+          "line": 5,
+          "mark": "går"
+        },
+        {
+          "line": 6,
+          "mark": "cyklar"
+        },
+        {
+          "line": 7,
+          "mark": "tar"
+        },
+        {
+          "line": 8,
+          "mark": "är"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-02",
+      "level": "A1",
+      "name": "Two kinds of nouns: en and ett",
+      "explain_en": "Every Swedish noun is either an en-word or an ett-word, and \"a/an\" is en or ett to match. Most nouns are en-words, so learn each new noun together with its en or ett.",
+      "how_to_spot": "Look for en or ett right before a noun.",
+      "examples": [
+        {
+          "sv": "Jag har en bil.",
+          "en": "I have a car.",
+          "mark": "en bil"
+        },
+        {
+          "sv": "Vi bor i ett hus.",
+          "en": "We live in a house.",
+          "mark": "ett hus"
+        },
+        {
+          "sv": "Hon köper en tröja.",
+          "en": "She is buying a sweater.",
+          "mark": "en tröja"
+        },
+        {
+          "sv": "Han äter ett äpple.",
+          "en": "He is eating an apple.",
+          "mark": "ett äpple"
+        },
+        {
+          "sv": "De har ett barn.",
+          "en": "They have a child.",
+          "mark": "ett barn"
+        }
+      ],
+      "text": {
+        "title": "Mitt rum",
+        "lines": [
+          {
+            "sv": "Jag bor i ett rum i Lund.",
+            "en": "I live in a room in Lund."
+          },
+          {
+            "sv": "Rummet har ett fönster.",
+            "en": "The room has a window."
+          },
+          {
+            "sv": "I rummet finns en säng.",
+            "en": "In the room there is a bed."
+          },
+          {
+            "sv": "Det finns också ett bord och en stol.",
+            "en": "There is also a table and a chair."
+          },
+          {
+            "sv": "På bordet står en lampa.",
+            "en": "On the table there is a lamp."
+          },
+          {
+            "sv": "Jag har en katt.",
+            "en": "I have a cat."
+          },
+          {
+            "sv": "Katten sover på sängen.",
+            "en": "The cat sleeps on the bed."
+          },
+          {
+            "sv": "Det är ett bra rum.",
+            "en": "It is a good room."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "ett rum"
+        },
+        {
+          "line": 1,
+          "mark": "ett fönster"
+        },
+        {
+          "line": 2,
+          "mark": "en säng"
+        },
+        {
+          "line": 3,
+          "mark": "ett bord"
+        },
+        {
+          "line": 3,
+          "mark": "en stol"
+        },
+        {
+          "line": 4,
+          "mark": "en lampa"
+        },
+        {
+          "line": 5,
+          "mark": "en katt"
+        },
+        {
+          "line": 7,
+          "mark": "ett bra rum"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-03",
+      "level": "A1",
+      "name": "\"The\" goes on the end: bilen, huset",
+      "explain_en": "Swedish puts \"the\" at the end of the noun. En-words add -en or -n (bilen, flickan) and ett-words add -et or -t (huset, äpplet).",
+      "how_to_spot": "Look for nouns ending in -en, -n, -et or -t that mean \"the …\".",
+      "examples": [
+        {
+          "sv": "Bilen är ny.",
+          "en": "The car is new.",
+          "mark": "Bilen"
+        },
+        {
+          "sv": "Huset är stort.",
+          "en": "The house is big.",
+          "mark": "Huset"
+        },
+        {
+          "sv": "Var är boken?",
+          "en": "Where is the book?",
+          "mark": "boken"
+        },
+        {
+          "sv": "Flickan sover.",
+          "en": "The girl is sleeping.",
+          "mark": "Flickan"
+        },
+        {
+          "sv": "Barnet leker.",
+          "en": "The child is playing.",
+          "mark": "Barnet"
+        }
+      ],
+      "text": {
+        "title": "I köket",
+        "lines": [
+          {
+            "sv": "Köket är litet.",
+            "en": "The kitchen is small."
+          },
+          {
+            "sv": "Kylskåpet står vid dörren.",
+            "en": "The fridge is by the door."
+          },
+          {
+            "sv": "Mjölken är i kylskåpet.",
+            "en": "The milk is in the fridge."
+          },
+          {
+            "sv": "Brödet ligger på bordet.",
+            "en": "The bread is on the table."
+          },
+          {
+            "sv": "Pappa dricker kaffe.",
+            "en": "Dad is drinking coffee."
+          },
+          {
+            "sv": "Flickan äter frukost.",
+            "en": "The girl is having breakfast."
+          },
+          {
+            "sv": "Katten sitter under bordet.",
+            "en": "The cat is sitting under the table."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Köket"
+        },
+        {
+          "line": 1,
+          "mark": "Kylskåpet"
+        },
+        {
+          "line": 1,
+          "mark": "dörren"
+        },
+        {
+          "line": 2,
+          "mark": "Mjölken"
+        },
+        {
+          "line": 2,
+          "mark": "kylskåpet"
+        },
+        {
+          "line": 3,
+          "mark": "Brödet"
+        },
+        {
+          "line": 3,
+          "mark": "bordet"
+        },
+        {
+          "line": 5,
+          "mark": "Flickan"
+        },
+        {
+          "line": 6,
+          "mark": "Katten"
+        },
+        {
+          "line": 6,
+          "mark": "bordet"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-04",
+      "level": "A1",
+      "name": "More than one: plural endings -or, -ar, -er",
+      "explain_en": "Swedish nouns form the plural with an ending: -or (flickor), -ar (bilar), -er (katter), -n (äpplen) or no ending at all (barn, hus). Learn the plural together with the word.",
+      "how_to_spot": "Look for nouns that mean more than one, often after a number or många.",
+      "examples": [
+        {
+          "sv": "Två flickor leker i parken.",
+          "en": "Two girls are playing in the park.",
+          "mark": "flickor"
+        },
+        {
+          "sv": "Det finns många bilar här.",
+          "en": "There are a lot of cars here.",
+          "mark": "bilar"
+        },
+        {
+          "sv": "Vi har tre katter.",
+          "en": "We have three cats.",
+          "mark": "katter"
+        },
+        {
+          "sv": "Hon köper fem äpplen.",
+          "en": "She buys five apples.",
+          "mark": "äpplen"
+        },
+        {
+          "sv": "Han har två barn.",
+          "en": "He has two children.",
+          "mark": "barn"
+        }
+      ],
+      "text": {
+        "title": "På torget",
+        "lines": [
+          {
+            "sv": "Det är lördag.",
+            "en": "It is Saturday."
+          },
+          {
+            "sv": "Vi går till torget.",
+            "en": "We go to the market square."
+          },
+          {
+            "sv": "Där finns många människor.",
+            "en": "There are a lot of people there."
+          },
+          {
+            "sv": "Mamma köper sex äpplen.",
+            "en": "Mum buys six apples."
+          },
+          {
+            "sv": "Pappa köper två bröd.",
+            "en": "Dad buys two loaves of bread."
+          },
+          {
+            "sv": "Jag tittar på blommor.",
+            "en": "I look at flowers."
+          },
+          {
+            "sv": "Min bror vill ha tre bullar.",
+            "en": "My brother wants three buns."
+          },
+          {
+            "sv": "Vi köper också fem tomater.",
+            "en": "We also buy five tomatoes."
+          },
+          {
+            "sv": "Sedan går vi hem med fyra påsar.",
+            "en": "Then we go home with four bags."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 2,
+          "mark": "människor"
+        },
+        {
+          "line": 3,
+          "mark": "äpplen"
+        },
+        {
+          "line": 4,
+          "mark": "bröd"
+        },
+        {
+          "line": 5,
+          "mark": "blommor"
+        },
+        {
+          "line": 6,
+          "mark": "bullar"
+        },
+        {
+          "line": 7,
+          "mark": "tomater"
+        },
+        {
+          "line": 8,
+          "mark": "påsar"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-05",
+      "level": "A1",
+      "name": "Verb second: I dag regnar det",
+      "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+      "how_to_spot": "Look for sentences that start with a time or place; the verb comes before the subject.",
+      "examples": [
+        {
+          "sv": "I dag regnar det.",
+          "en": "Today it is raining.",
+          "mark": "regnar det"
+        },
+        {
+          "sv": "På måndag börjar skolan.",
+          "en": "School starts on Monday.",
+          "mark": "börjar skolan"
+        },
+        {
+          "sv": "Sedan äter vi middag.",
+          "en": "Then we have dinner.",
+          "mark": "äter vi"
+        },
+        {
+          "sv": "I Sverige dricker man mycket kaffe.",
+          "en": "In Sweden people drink a lot of coffee.",
+          "mark": "dricker man"
+        },
+        {
+          "sv": "Ibland spelar jag fotboll.",
+          "en": "Sometimes I play football.",
+          "mark": "spelar jag"
+        }
+      ],
+      "text": {
+        "title": "Min vecka",
+        "lines": [
+          {
+            "sv": "På måndag arbetar jag.",
+            "en": "On Monday I work."
+          },
+          {
+            "sv": "På tisdag tränar jag.",
+            "en": "On Tuesday I train."
+          },
+          {
+            "sv": "På onsdag träffar jag Ali.",
+            "en": "On Wednesday I meet Ali."
+          },
+          {
+            "sv": "Vi dricker kaffe på ett kafé.",
+            "en": "We drink coffee at a café."
+          },
+          {
+            "sv": "På fredag kväll lagar jag mat.",
+            "en": "On Friday evening I cook."
+          },
+          {
+            "sv": "På lördag sover jag länge.",
+            "en": "On Saturday I sleep late."
+          },
+          {
+            "sv": "På söndag ringer min mamma.",
+            "en": "On Sunday my mum calls."
+          },
+          {
+            "sv": "Sedan läser jag en bok.",
+            "en": "Then I read a book."
+          },
+          {
+            "sv": "Jag tycker om helger.",
+            "en": "I like weekends."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "arbetar jag"
+        },
+        {
+          "line": 1,
+          "mark": "tränar jag"
+        },
+        {
+          "line": 2,
+          "mark": "träffar jag"
+        },
+        {
+          "line": 4,
+          "mark": "lagar jag"
+        },
+        {
+          "line": 5,
+          "mark": "sover jag"
+        },
+        {
+          "line": 6,
+          "mark": "ringer min mamma"
+        },
+        {
+          "line": 7,
+          "mark": "läser jag"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-06",
+      "level": "A1",
+      "name": "Questions: the verb comes first",
+      "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+      "how_to_spot": "Look for a sentence ending in ?, and the verb at the start or right after the question word.",
+      "examples": [
+        {
+          "sv": "Talar du svenska?",
+          "en": "Do you speak Swedish?",
+          "mark": "Talar du"
+        },
+        {
+          "sv": "Har du en penna?",
+          "en": "Do you have a pen?",
+          "mark": "Har du"
+        },
+        {
+          "sv": "Var bor du?",
+          "en": "Where do you live?",
+          "mark": "Var bor du"
+        },
+        {
+          "sv": "Vad heter du?",
+          "en": "What is your name?",
+          "mark": "Vad heter du"
+        },
+        {
+          "sv": "När börjar filmen?",
+          "en": "When does the film start?",
+          "mark": "När börjar filmen"
+        },
+        {
+          "sv": "Hur mår du?",
+          "en": "How are you?",
+          "mark": "Hur mår du"
+        }
+      ],
+      "text": {
+        "title": "På kaféet",
+        "lines": [
+          {
+            "sv": "Hej! Är du ny här?",
+            "en": "Hi! Are you new here?"
+          },
+          {
+            "sv": "Ja, jag heter Omar. Vad heter du?",
+            "en": "Yes, my name is Omar. What is your name?"
+          },
+          {
+            "sv": "Jag heter Lisa. Var bor du?",
+            "en": "My name is Lisa. Where do you live?"
+          },
+          {
+            "sv": "Jag bor på Storgatan. Arbetar du här?",
+            "en": "I live on Storgatan. Do you work here?"
+          },
+          {
+            "sv": "Nej, jag studerar. Vad gör du?",
+            "en": "No, I study. What do you do?"
+          },
+          {
+            "sv": "Jag arbetar på ett sjukhus. Vill du ha kaffe?",
+            "en": "I work at a hospital. Would you like coffee?"
+          },
+          {
+            "sv": "Ja, tack! Hur mycket kostar det?",
+            "en": "Yes, please! How much does it cost?"
+          },
+          {
+            "sv": "Det kostar trettio kronor.",
+            "en": "It costs thirty kronor."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Är du"
+        },
+        {
+          "line": 1,
+          "mark": "Vad heter du"
+        },
+        {
+          "line": 2,
+          "mark": "Var bor du"
+        },
+        {
+          "line": 3,
+          "mark": "Arbetar du"
+        },
+        {
+          "line": 4,
+          "mark": "Vad gör du"
+        },
+        {
+          "line": 5,
+          "mark": "Vill du"
+        },
+        {
+          "line": 6,
+          "mark": "Hur mycket kostar det"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-07",
+      "level": "A1",
+      "name": "Not: inte comes after the verb",
+      "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+      "how_to_spot": "Look for inte and the verb just before it.",
+      "examples": [
+        {
+          "sv": "Jag dricker inte kaffe.",
+          "en": "I don't drink coffee.",
+          "mark": "dricker inte"
+        },
+        {
+          "sv": "Hon talar inte engelska.",
+          "en": "She doesn't speak English.",
+          "mark": "talar inte"
+        },
+        {
+          "sv": "Det är inte kallt i dag.",
+          "en": "It isn't cold today.",
+          "mark": "är inte"
+        },
+        {
+          "sv": "Han kommer inte i kväll.",
+          "en": "He isn't coming tonight.",
+          "mark": "kommer inte"
+        },
+        {
+          "sv": "I dag arbetar jag inte.",
+          "en": "I'm not working today.",
+          "mark": "arbetar jag inte"
+        }
+      ],
+      "text": {
+        "title": "En lugn söndag",
+        "lines": [
+          {
+            "sv": "Det är söndag.",
+            "en": "It is Sunday."
+          },
+          {
+            "sv": "Jag arbetar inte i dag.",
+            "en": "I am not working today."
+          },
+          {
+            "sv": "Jag går inte upp klockan sex.",
+            "en": "I don't get up at six."
+          },
+          {
+            "sv": "Det regnar. Vi går inte ut.",
+            "en": "It is raining. We don't go out."
+          },
+          {
+            "sv": "Barnen är inte glada.",
+            "en": "The children aren't happy."
+          },
+          {
+            "sv": "De tycker inte om regn.",
+            "en": "They don't like rain."
+          },
+          {
+            "sv": "Min man lagar mat, men han äter inte fisk.",
+            "en": "My husband cooks, but he doesn't eat fish."
+          },
+          {
+            "sv": "I kväll tittar vi inte på tv.",
+            "en": "Tonight we aren't watching TV."
+          },
+          {
+            "sv": "Vi spelar kort.",
+            "en": "We play cards."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "arbetar inte"
+        },
+        {
+          "line": 2,
+          "mark": "går inte"
+        },
+        {
+          "line": 3,
+          "mark": "går inte"
+        },
+        {
+          "line": 4,
+          "mark": "är inte"
+        },
+        {
+          "line": 5,
+          "mark": "tycker inte"
+        },
+        {
+          "line": 6,
+          "mark": "äter inte"
+        },
+        {
+          "line": 7,
+          "mark": "tittar vi inte"
+        }
+      ]
+    },
+    {
+      "id": "G-A1-08",
+      "level": "A1",
+      "name": "My and your: min, mitt, mina",
+      "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+      "how_to_spot": "Look for min, mitt, mina, din, ditt, dina, vår, vårt or våra before a noun.",
+      "examples": [
+        {
+          "sv": "Min bror heter Erik.",
+          "en": "My brother's name is Erik.",
+          "mark": "Min bror"
+        },
+        {
+          "sv": "Mitt hus är gult.",
+          "en": "My house is yellow.",
+          "mark": "Mitt hus"
+        },
+        {
+          "sv": "Mina föräldrar bor i Umeå.",
+          "en": "My parents live in Umeå.",
+          "mark": "Mina föräldrar"
+        },
+        {
+          "sv": "Var är din telefon?",
+          "en": "Where is your phone?",
+          "mark": "din telefon"
+        },
+        {
+          "sv": "Är det ditt kaffe?",
+          "en": "Is that your coffee?",
+          "mark": "ditt kaffe"
+        },
+        {
+          "sv": "Vårt barn är tre år.",
+          "en": "Our child is three years old.",
+          "mark": "Vårt barn"
+        }
+      ],
+      "text": {
+        "title": "Min familj",
+        "lines": [
+          {
+            "sv": "Det här är min familj.",
+            "en": "This is my family."
+          },
+          {
+            "sv": "Min mamma heter Eva.",
+            "en": "My mum's name is Eva."
+          },
+          {
+            "sv": "Min pappa heter Johan.",
+            "en": "My dad's name is Johan."
+          },
+          {
+            "sv": "Mina bröder heter Leo och Max.",
+            "en": "My brothers are called Leo and Max."
+          },
+          {
+            "sv": "Vi bor i ett hus i Gävle.",
+            "en": "We live in a house in Gävle."
+          },
+          {
+            "sv": "Mitt rum är litet.",
+            "en": "My room is small."
+          },
+          {
+            "sv": "Våra katter sover i mitt rum.",
+            "en": "Our cats sleep in my room."
+          },
+          {
+            "sv": "Har din familj ett djur?",
+            "en": "Does your family have a pet?"
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "min familj"
+        },
+        {
+          "line": 1,
+          "mark": "Min mamma"
+        },
+        {
+          "line": 2,
+          "mark": "Min pappa"
+        },
+        {
+          "line": 3,
+          "mark": "Mina bröder"
+        },
+        {
+          "line": 5,
+          "mark": "Mitt rum"
+        },
+        {
+          "line": 6,
+          "mark": "Våra katter"
+        },
+        {
+          "line": 6,
+          "mark": "mitt rum"
+        },
+        {
+          "line": 7,
+          "mark": "din familj"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-01",
+      "level": "A2",
+      "name": "Past tense: -ade, -de, -te and strong verbs",
+      "explain_en": "The past tense is the same for every person. Regular verbs end in -ade, -de or -te (pratade, stängde, köpte); strong verbs change their vowel instead (gick, åt, drack, var).",
+      "how_to_spot": "Look for verbs ending in -ade, -de or -te, or short forms like var, gick, åt, kom.",
+      "examples": [
+        {
+          "sv": "I går arbetade jag hela dagen.",
+          "en": "Yesterday I worked all day.",
+          "mark": "arbetade"
+        },
+        {
+          "sv": "Vi köpte en ny soffa.",
+          "en": "We bought a new sofa.",
+          "mark": "köpte"
+        },
+        {
+          "sv": "Hon stängde fönstret.",
+          "en": "She closed the window.",
+          "mark": "stängde"
+        },
+        {
+          "sv": "Han drack två koppar te.",
+          "en": "He drank two cups of tea.",
+          "mark": "drack"
+        },
+        {
+          "sv": "Förra sommaren var vi i Norge.",
+          "en": "Last summer we were in Norway.",
+          "mark": "var"
+        }
+      ],
+      "text": {
+        "title": "En dag i Göteborg",
+        "lines": [
+          {
+            "sv": "I lördags åkte vi till Göteborg.",
+            "en": "Last Saturday we went to Gothenburg."
+          },
+          {
+            "sv": "Tåget gick klockan åtta.",
+            "en": "The train left at eight."
+          },
+          {
+            "sv": "Först promenerade vi längs kanalen.",
+            "en": "First we walked along the canal."
+          },
+          {
+            "sv": "Sedan åt vi lunch på en restaurang.",
+            "en": "Then we had lunch at a restaurant."
+          },
+          {
+            "sv": "Jag beställde fisk och min fru tog en sallad.",
+            "en": "I ordered fish and my wife had a salad."
+          },
+          {
+            "sv": "På eftermiddagen besökte vi ett museum.",
+            "en": "In the afternoon we visited a museum."
+          },
+          {
+            "sv": "Det regnade lite, men det gjorde inget.",
+            "en": "It rained a little, but that didn't matter."
+          },
+          {
+            "sv": "Vi kom hem sent på kvällen.",
+            "en": "We got home late in the evening."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "åkte"
+        },
+        {
+          "line": 1,
+          "mark": "gick"
+        },
+        {
+          "line": 2,
+          "mark": "promenerade"
+        },
+        {
+          "line": 3,
+          "mark": "åt"
+        },
+        {
+          "line": 4,
+          "mark": "beställde"
+        },
+        {
+          "line": 4,
+          "mark": "tog"
+        },
+        {
+          "line": 5,
+          "mark": "besökte"
+        },
+        {
+          "line": 6,
+          "mark": "regnade"
+        },
+        {
+          "line": 6,
+          "mark": "gjorde"
+        },
+        {
+          "line": 7,
+          "mark": "kom"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-02",
+      "level": "A2",
+      "name": "Perfect tense: har + supine (har ätit)",
+      "explain_en": "The perfect tense is har plus the supine form of the verb: jag har ätit, vi har bott. As in English, it is for things that happened at no stated time or are still going on. With a past time like i går, use the past tense.",
+      "how_to_spot": "Look for har followed by a verb ending in -at, -t or -it (sometimes with inte or redan in between).",
+      "examples": [
+        {
+          "sv": "Jag har bott här i fem år.",
+          "en": "I have lived here for five years.",
+          "mark": "har bott"
+        },
+        {
+          "sv": "Har du sett filmen?",
+          "en": "Have you seen the film?",
+          "mark": "Har du sett"
+        },
+        {
+          "sv": "Vi har redan ätit.",
+          "en": "We have already eaten.",
+          "mark": "har redan ätit"
+        },
+        {
+          "sv": "Hon har aldrig varit i Paris.",
+          "en": "She has never been to Paris.",
+          "mark": "har aldrig varit"
+        },
+        {
+          "sv": "De har köpt ett nytt hus.",
+          "en": "They have bought a new house.",
+          "mark": "har köpt"
+        }
+      ],
+      "text": {
+        "title": "Ett nytt jobb",
+        "lines": [
+          {
+            "sv": "Sara har fått ett nytt jobb.",
+            "en": "Sara has got a new job."
+          },
+          {
+            "sv": "Hon har arbetat där i två veckor.",
+            "en": "She has worked there for two weeks."
+          },
+          {
+            "sv": "Hon har redan träffat alla kollegor.",
+            "en": "She has already met all her colleagues."
+          },
+          {
+            "sv": "Chefen har varit snäll mot henne.",
+            "en": "The boss has been kind to her."
+          },
+          {
+            "sv": "Men Sara har inte lärt sig systemet än.",
+            "en": "But Sara hasn't learned the system yet."
+          },
+          {
+            "sv": "Det har varit mycket nytt.",
+            "en": "There has been a lot that is new."
+          },
+          {
+            "sv": "Har du bytt jobb någon gång?",
+            "en": "Have you ever changed jobs?"
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "har fått"
+        },
+        {
+          "line": 1,
+          "mark": "har arbetat"
+        },
+        {
+          "line": 2,
+          "mark": "har redan träffat"
+        },
+        {
+          "line": 3,
+          "mark": "har varit"
+        },
+        {
+          "line": 4,
+          "mark": "har inte lärt"
+        },
+        {
+          "line": 5,
+          "mark": "har varit"
+        },
+        {
+          "line": 6,
+          "mark": "Har du bytt"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-03",
+      "level": "A2",
+      "name": "The future: ska and kommer att",
+      "explain_en": "Swedish often just uses the present tense for the future. Ska shows a plan or an intention: Jag ska resa. Kommer att says what will happen anyway: Det kommer att regna.",
+      "how_to_spot": "Look for ska or kommer att before a verb in its basic form.",
+      "examples": [
+        {
+          "sv": "Jag ska resa till Italien i sommar.",
+          "en": "I am going to travel to Italy this summer.",
+          "mark": "ska resa"
+        },
+        {
+          "sv": "Vi ska äta hos Anna i kväll.",
+          "en": "We are having dinner at Anna's tonight.",
+          "mark": "ska äta"
+        },
+        {
+          "sv": "Ska du följa med?",
+          "en": "Are you coming along?",
+          "mark": "Ska du följa"
+        },
+        {
+          "sv": "Det kommer att bli kallt i natt.",
+          "en": "It is going to be cold tonight.",
+          "mark": "kommer att bli"
+        },
+        {
+          "sv": "Hon kommer att bli en bra lärare.",
+          "en": "She will be a good teacher.",
+          "mark": "kommer att bli"
+        }
+      ],
+      "text": {
+        "title": "Planer för sommaren",
+        "lines": [
+          {
+            "sv": "I sommar ska vi hyra en stuga i Dalarna.",
+            "en": "This summer we are going to rent a cottage in Dalarna."
+          },
+          {
+            "sv": "Vi ska bo där i två veckor.",
+            "en": "We are going to stay there for two weeks."
+          },
+          {
+            "sv": "Barnen ska bada i sjön varje dag.",
+            "en": "The children are going to swim in the lake every day."
+          },
+          {
+            "sv": "Jag ska läsa många böcker.",
+            "en": "I am going to read lots of books."
+          },
+          {
+            "sv": "Min man ska fiska, säger han.",
+            "en": "My husband is going to fish, he says."
+          },
+          {
+            "sv": "Det kommer nog att bli varmt.",
+            "en": "It will probably be warm."
+          },
+          {
+            "sv": "Barnen kommer att vara trötta varje kväll.",
+            "en": "The children will be tired every evening."
+          },
+          {
+            "sv": "Det kommer att bli en fin sommar.",
+            "en": "It is going to be a lovely summer."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "ska vi hyra"
+        },
+        {
+          "line": 1,
+          "mark": "ska bo"
+        },
+        {
+          "line": 2,
+          "mark": "ska bada"
+        },
+        {
+          "line": 3,
+          "mark": "ska läsa"
+        },
+        {
+          "line": 4,
+          "mark": "ska fiska"
+        },
+        {
+          "line": 5,
+          "mark": "kommer nog att bli"
+        },
+        {
+          "line": 6,
+          "mark": "kommer att vara"
+        },
+        {
+          "line": 7,
+          "mark": "kommer att bli"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-04",
+      "level": "A2",
+      "name": "Can, want, must: modal verb + infinitive",
+      "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+      "how_to_spot": "Look for kan, vill, måste or får followed by a verb in its basic form (often ending in -a).",
+      "examples": [
+        {
+          "sv": "Jag kan tala tre språk.",
+          "en": "I can speak three languages.",
+          "mark": "kan tala"
+        },
+        {
+          "sv": "Vill du ha mer kaffe?",
+          "en": "Would you like more coffee?",
+          "mark": "Vill du ha"
+        },
+        {
+          "sv": "Vi måste gå nu.",
+          "en": "We have to go now.",
+          "mark": "måste gå"
+        },
+        {
+          "sv": "Här får man inte röka.",
+          "en": "You are not allowed to smoke here.",
+          "mark": "får man inte röka"
+        },
+        {
+          "sv": "Kan du hjälpa mig?",
+          "en": "Can you help me?",
+          "mark": "Kan du hjälpa"
+        }
+      ],
+      "text": {
+        "title": "Hos läkaren",
+        "lines": [
+          {
+            "sv": "Jag har ont i ryggen. Kan du hjälpa mig?",
+            "en": "My back hurts. Can you help me?"
+          },
+          {
+            "sv": "Ja. Kan du visa var det gör ont?",
+            "en": "Yes. Can you show me where it hurts?"
+          },
+          {
+            "sv": "Här. Jag kan inte sova på natten.",
+            "en": "Here. I can't sleep at night."
+          },
+          {
+            "sv": "Du måste vila i en vecka.",
+            "en": "You must rest for a week."
+          },
+          {
+            "sv": "Får jag arbeta?",
+            "en": "Am I allowed to work?"
+          },
+          {
+            "sv": "Nej, du får inte arbeta just nu.",
+            "en": "No, you mustn't work right now."
+          },
+          {
+            "sv": "Men du ska promenera lite varje dag.",
+            "en": "But you should walk a little every day."
+          },
+          {
+            "sv": "Vill du ha ett recept på medicin?",
+            "en": "Would you like a prescription for medicine?"
+          },
+          {
+            "sv": "Ja, gärna.",
+            "en": "Yes, please."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Kan du hjälpa"
+        },
+        {
+          "line": 1,
+          "mark": "Kan du visa"
+        },
+        {
+          "line": 2,
+          "mark": "kan inte sova"
+        },
+        {
+          "line": 3,
+          "mark": "måste vila"
+        },
+        {
+          "line": 4,
+          "mark": "Får jag arbeta"
+        },
+        {
+          "line": 5,
+          "mark": "får inte arbeta"
+        },
+        {
+          "line": 6,
+          "mark": "ska promenera"
+        },
+        {
+          "line": 7,
+          "mark": "Vill du ha"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-05",
+      "level": "A2",
+      "name": "Adjectives match the noun: stor, stort, stora",
+      "explain_en": "An adjective changes to match its noun. With en-words it has no ending (en stor bil), with ett-words it adds -t (ett stort hus), and in the plural it adds -a (stora bilar). This also happens after är: huset är stort.",
+      "how_to_spot": "Look for adjectives before a noun or after är, and check for the ending -t or -a.",
+      "examples": [
+        {
+          "sv": "Vi har en stor trädgård.",
+          "en": "We have a big garden.",
+          "mark": "stor trädgård"
+        },
+        {
+          "sv": "De bor i ett stort hus.",
+          "en": "They live in a big house.",
+          "mark": "stort hus"
+        },
+        {
+          "sv": "Jag köpte nya skor.",
+          "en": "I bought new shoes.",
+          "mark": "nya skor"
+        },
+        {
+          "sv": "Vattnet är kallt.",
+          "en": "The water is cold.",
+          "mark": "kallt"
+        },
+        {
+          "sv": "Rummen är ljusa.",
+          "en": "The rooms are bright.",
+          "mark": "ljusa"
+        }
+      ],
+      "text": {
+        "title": "En ny lägenhet",
+        "lines": [
+          {
+            "sv": "Vi har flyttat till en ny lägenhet.",
+            "en": "We have moved to a new flat."
+          },
+          {
+            "sv": "Den har ett stort kök och tre små rum.",
+            "en": "It has a big kitchen and three small rooms."
+          },
+          {
+            "sv": "Köket är ljust och fint.",
+            "en": "The kitchen is bright and nice."
+          },
+          {
+            "sv": "Vi har ett gammalt bord från min mormor.",
+            "en": "We have an old table from my grandmother."
+          },
+          {
+            "sv": "I vardagsrummet står en grön soffa.",
+            "en": "In the living room there is a green sofa."
+          },
+          {
+            "sv": "Fönstren är höga.",
+            "en": "The windows are tall."
+          },
+          {
+            "sv": "Grannarna är trevliga.",
+            "en": "The neighbours are nice."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "ny lägenhet"
+        },
+        {
+          "line": 1,
+          "mark": "stort kök"
+        },
+        {
+          "line": 1,
+          "mark": "små rum"
+        },
+        {
+          "line": 2,
+          "mark": "ljust"
+        },
+        {
+          "line": 2,
+          "mark": "fint"
+        },
+        {
+          "line": 3,
+          "mark": "gammalt bord"
+        },
+        {
+          "line": 4,
+          "mark": "grön soffa"
+        },
+        {
+          "line": 5,
+          "mark": "höga"
+        },
+        {
+          "line": 6,
+          "mark": "trevliga"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-06",
+      "level": "A2",
+      "name": "The big car: den stora bilen",
+      "explain_en": "When an adjective comes before a noun in the definite form, Swedish marks \"the\" twice: den, det or de comes first, the adjective ends in -a, and the noun has its ending too: den stora bilen, det stora huset, de stora bilarna.",
+      "how_to_spot": "Look for den, det or de, then an adjective ending in -a, then a noun ending in -en, -et or -na.",
+      "examples": [
+        {
+          "sv": "Den röda bilen är min.",
+          "en": "The red car is mine.",
+          "mark": "Den röda bilen"
+        },
+        {
+          "sv": "Vi bor i det gula huset.",
+          "en": "We live in the yellow house.",
+          "mark": "det gula huset"
+        },
+        {
+          "sv": "De nya grannarna är trevliga.",
+          "en": "The new neighbours are nice.",
+          "mark": "De nya grannarna"
+        },
+        {
+          "sv": "Jag gillar den gamla kyrkan.",
+          "en": "I like the old church.",
+          "mark": "den gamla kyrkan"
+        },
+        {
+          "sv": "Var är det stora rummet?",
+          "en": "Where is the big room?",
+          "mark": "det stora rummet"
+        }
+      ],
+      "text": {
+        "title": "I butiken",
+        "lines": [
+          {
+            "sv": "Hej! Jag letar efter en jacka.",
+            "en": "Hi! I'm looking for a jacket."
+          },
+          {
+            "sv": "Vi har den svarta jackan här.",
+            "en": "We have the black jacket here."
+          },
+          {
+            "sv": "Den är fin, men jag gillar den gröna jackan mer.",
+            "en": "It's nice, but I like the green jacket more."
+          },
+          {
+            "sv": "Den gröna jackan kostar 900 kronor.",
+            "en": "The green jacket costs 900 kronor."
+          },
+          {
+            "sv": "Okej. Har ni också den vita tröjan?",
+            "en": "Okay. Do you also have the white sweater?"
+          },
+          {
+            "sv": "Ja, den ligger i det stora skåpet.",
+            "en": "Yes, it's in the big cupboard."
+          },
+          {
+            "sv": "Jag tar den gröna jackan och de svarta byxorna.",
+            "en": "I'll take the green jacket and the black trousers."
+          },
+          {
+            "sv": "Vill du ha en påse?",
+            "en": "Would you like a bag?"
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "den svarta jackan"
+        },
+        {
+          "line": 2,
+          "mark": "den gröna jackan"
+        },
+        {
+          "line": 3,
+          "mark": "Den gröna jackan"
+        },
+        {
+          "line": 4,
+          "mark": "den vita tröjan"
+        },
+        {
+          "line": 5,
+          "mark": "det stora skåpet"
+        },
+        {
+          "line": 6,
+          "mark": "den gröna jackan"
+        },
+        {
+          "line": 6,
+          "mark": "de svarta byxorna"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-07",
+      "level": "A2",
+      "name": "Comparing: större, störst and mer, mest",
+      "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+      "how_to_spot": "Look for adjectives ending in -are, -ast, -re or -st, or mer/mest before an adjective, often with än.",
+      "examples": [
+        {
+          "sv": "Tåget är snabbare än bussen.",
+          "en": "The train is faster than the bus.",
+          "mark": "snabbare"
+        },
+        {
+          "sv": "Stockholm är större än Göteborg.",
+          "en": "Stockholm is bigger than Gothenburg.",
+          "mark": "större"
+        },
+        {
+          "sv": "Det här är den billigaste telefonen.",
+          "en": "This is the cheapest phone.",
+          "mark": "billigaste"
+        },
+        {
+          "sv": "Vem är bäst i klassen?",
+          "en": "Who is best in the class?",
+          "mark": "bäst"
+        },
+        {
+          "sv": "Den här boken är mer spännande.",
+          "en": "This book is more exciting.",
+          "mark": "mer spännande"
+        }
+      ],
+      "text": {
+        "title": "Två städer",
+        "lines": [
+          {
+            "sv": "Lisa bor i Malmö och hennes bror bor i Umeå.",
+            "en": "Lisa lives in Malmö and her brother lives in Umeå."
+          },
+          {
+            "sv": "Malmö är större än Umeå.",
+            "en": "Malmö is bigger than Umeå."
+          },
+          {
+            "sv": "I Umeå är vintern längre och kallare.",
+            "en": "In Umeå the winter is longer and colder."
+          },
+          {
+            "sv": "Men Lisas bror tycker att Umeå är vackrare.",
+            "en": "But Lisa's brother thinks Umeå is more beautiful."
+          },
+          {
+            "sv": "Där är naturen närmare.",
+            "en": "Nature is closer there."
+          },
+          {
+            "sv": "Hyrorna är också lägre i Umeå.",
+            "en": "The rents are also lower in Umeå."
+          },
+          {
+            "sv": "Lisa tycker att Malmö är mer spännande.",
+            "en": "Lisa thinks Malmö is more exciting."
+          },
+          {
+            "sv": "Det bästa är att de kan träffas på sommaren.",
+            "en": "The best thing is that they can meet in the summer."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "större"
+        },
+        {
+          "line": 2,
+          "mark": "längre"
+        },
+        {
+          "line": 2,
+          "mark": "kallare"
+        },
+        {
+          "line": 3,
+          "mark": "vackrare"
+        },
+        {
+          "line": 4,
+          "mark": "närmare"
+        },
+        {
+          "line": 5,
+          "mark": "lägre"
+        },
+        {
+          "line": 6,
+          "mark": "mer spännande"
+        },
+        {
+          "line": 7,
+          "mark": "bästa"
+        }
+      ]
+    },
+    {
+      "id": "G-A2-08",
+      "level": "A2",
+      "name": "Reflexive verbs: tvätta sig, känna sig",
+      "explain_en": "Some verbs take a pronoun that points back to the subject: jag tvättar mig, du tvättar dig, hon tvättar sig, vi tvättar oss. Sig is for han, hon, den, det and de. Often English has no \"self\": känna sig means \"feel\".",
+      "how_to_spot": "Look for mig, dig, sig, oss or er after a verb, pointing back to the subject.",
+      "examples": [
+        {
+          "sv": "Jag känner mig trött.",
+          "en": "I feel tired.",
+          "mark": "känner mig"
+        },
+        {
+          "sv": "Barnen klär på sig.",
+          "en": "The children are getting dressed.",
+          "mark": "klär på sig"
+        },
+        {
+          "sv": "Vi måste skynda oss.",
+          "en": "We have to hurry.",
+          "mark": "skynda oss"
+        },
+        {
+          "sv": "Hon sätter sig vid bordet.",
+          "en": "She sits down at the table.",
+          "mark": "sätter sig"
+        },
+        {
+          "sv": "Lägg dig nu!",
+          "en": "Go to bed now!",
+          "mark": "Lägg dig"
+        }
+      ],
+      "text": {
+        "title": "En stressig morgon",
+        "lines": [
+          {
+            "sv": "Jonas vaknar sent och skyndar sig upp.",
+            "en": "Jonas wakes up late and hurries out of bed."
+          },
+          {
+            "sv": "Han tvättar sig snabbt.",
+            "en": "He has a quick wash."
+          },
+          {
+            "sv": "Han klär på sig och sätter sig i köket.",
+            "en": "He gets dressed and sits down in the kitchen."
+          },
+          {
+            "sv": "Hans dotter har redan klätt på sig.",
+            "en": "His daughter has already got dressed."
+          },
+          {
+            "sv": "Vi måste skynda oss, säger Jonas.",
+            "en": "We have to hurry, says Jonas."
+          },
+          {
+            "sv": "I bussen lugnar han sig.",
+            "en": "On the bus he calms down."
+          },
+          {
+            "sv": "Han känner sig lite bättre.",
+            "en": "He feels a little better."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "skyndar sig"
+        },
+        {
+          "line": 1,
+          "mark": "tvättar sig"
+        },
+        {
+          "line": 2,
+          "mark": "klär på sig"
+        },
+        {
+          "line": 2,
+          "mark": "sätter sig"
+        },
+        {
+          "line": 3,
+          "mark": "klätt på sig"
+        },
+        {
+          "line": 4,
+          "mark": "skynda oss"
+        },
+        {
+          "line": 5,
+          "mark": "lugnar han sig"
+        },
+        {
+          "line": 6,
+          "mark": "känner sig"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-01",
+      "level": "B1",
+      "name": "Subordinate clauses: att han inte kommer",
+      "explain_en": "In a subordinate clause (after att, som, när, om, eftersom…) words like inte, aldrig and alltid come before the verb: Jag vet att han inte kommer. In a main clause they come after it: Han kommer inte.",
+      "how_to_spot": "After att, som, när, om or eftersom, look for inte, aldrig, alltid, ofta or snart right before the verb.",
+      "examples": [
+        {
+          "sv": "Jag vet att hon inte röker.",
+          "en": "I know that she doesn't smoke.",
+          "mark": "hon inte röker"
+        },
+        {
+          "sv": "Han säger att han aldrig dricker kaffe.",
+          "en": "He says that he never drinks coffee.",
+          "mark": "han aldrig dricker"
+        },
+        {
+          "sv": "Det är synd att du inte kan komma.",
+          "en": "It's a pity that you can't come.",
+          "mark": "du inte kan"
+        },
+        {
+          "sv": "Vi åker hem om det inte slutar regna.",
+          "en": "We'll go home if it doesn't stop raining.",
+          "mark": "det inte slutar"
+        },
+        {
+          "sv": "Hon är en person som alltid hjälper till.",
+          "en": "She is someone who always helps out.",
+          "mark": "som alltid hjälper"
+        }
+      ],
+      "text": {
+        "title": "Ett nytt språk",
+        "lines": [
+          {
+            "sv": "Amir har bott i Sverige i ett år.",
+            "en": "Amir has lived in Sweden for a year."
+          },
+          {
+            "sv": "Han tycker att svenska inte är så svårt längre.",
+            "en": "He thinks Swedish isn't so hard any more."
+          },
+          {
+            "sv": "Men han märker att folk ofta talar mycket snabbt.",
+            "en": "But he notices that people often speak very fast."
+          },
+          {
+            "sv": "Ibland säger han att han inte förstår.",
+            "en": "Sometimes he says that he doesn't understand."
+          },
+          {
+            "sv": "Hans lärare säger att man aldrig ska vara rädd för att göra fel.",
+            "en": "His teacher says that you should never be afraid of making mistakes."
+          },
+          {
+            "sv": "Amir har en granne som alltid pratar med honom.",
+            "en": "Amir has a neighbour who always talks to him."
+          },
+          {
+            "sv": "Det är bra, eftersom han inte har så många svenska vänner än.",
+            "en": "That is good, because he doesn't have many Swedish friends yet."
+          },
+          {
+            "sv": "Han hoppas att han snart kan arbeta som sjuksköterska.",
+            "en": "He hopes that he can soon work as a nurse."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "svenska inte är"
+        },
+        {
+          "line": 2,
+          "mark": "folk ofta talar"
+        },
+        {
+          "line": 3,
+          "mark": "han inte förstår"
+        },
+        {
+          "line": 4,
+          "mark": "man aldrig ska"
+        },
+        {
+          "line": 5,
+          "mark": "som alltid pratar"
+        },
+        {
+          "line": 6,
+          "mark": "han inte har"
+        },
+        {
+          "line": 7,
+          "mark": "han snart kan"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-02",
+      "level": "B1",
+      "name": "Starting with när or om: När jag kom hem, åt jag",
+      "explain_en": "A whole subordinate clause can be the first part of a sentence. The main clause then starts with its verb, and the subject follows: När jag kom hem, åt jag middag. Om det regnar, stannar vi inne.",
+      "how_to_spot": "Look for a sentence that starts with när, om, eftersom or innan; after that clause the verb comes before the subject.",
+      "examples": [
+        {
+          "sv": "När jag kom hem, åt jag middag.",
+          "en": "When I got home, I had dinner.",
+          "mark": "åt jag"
+        },
+        {
+          "sv": "Om det regnar i morgon, stannar vi hemma.",
+          "en": "If it rains tomorrow, we'll stay at home.",
+          "mark": "stannar vi"
+        },
+        {
+          "sv": "Eftersom bussen var sen, kom hon för sent.",
+          "en": "Because the bus was late, she was late.",
+          "mark": "kom hon"
+        },
+        {
+          "sv": "Innan du går, måste du stänga fönstret.",
+          "en": "Before you leave, you must close the window.",
+          "mark": "måste du"
+        },
+        {
+          "sv": "Om du vill, kan jag hjälpa dig.",
+          "en": "If you like, I can help you.",
+          "mark": "kan jag"
+        }
+      ],
+      "text": {
+        "title": "Midsommar i regnet",
+        "lines": [
+          {
+            "sv": "När vi vaknade på midsommarafton, regnade det.",
+            "en": "When we woke up on Midsummer Eve, it was raining."
+          },
+          {
+            "sv": "Eftersom vi hade bjudit tjugo gäster, blev vi lite oroliga.",
+            "en": "Because we had invited twenty guests, we got a little worried."
+          },
+          {
+            "sv": "När gästerna kom vid tolv, var himlen fortfarande grå.",
+            "en": "When the guests arrived at twelve, the sky was still grey."
+          },
+          {
+            "sv": "Om det regnar hela dagen, får vi äta inne, sa min man.",
+            "en": "If it rains all day, we'll have to eat inside, my husband said."
+          },
+          {
+            "sv": "Innan vi åt sill och potatis, dansade vi runt midsommarstången i regnet.",
+            "en": "Before we ate herring and potatoes, we danced round the maypole in the rain."
+          },
+          {
+            "sv": "Alla blev blöta, men ingen klagade.",
+            "en": "Everyone got wet, but nobody complained."
+          },
+          {
+            "sv": "När maten var slut, slutade det plötsligt att regna.",
+            "en": "When the food was finished, it suddenly stopped raining."
+          },
+          {
+            "sv": "Vi hoppas på sol nästa år.",
+            "en": "We are hoping for sun next year."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "regnade det"
+        },
+        {
+          "line": 1,
+          "mark": "blev vi"
+        },
+        {
+          "line": 2,
+          "mark": "var himlen"
+        },
+        {
+          "line": 3,
+          "mark": "får vi"
+        },
+        {
+          "line": 4,
+          "mark": "dansade vi"
+        },
+        {
+          "line": 6,
+          "mark": "slutade det"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-03",
+      "level": "B1",
+      "name": "som: who, which, that",
+      "explain_en": "Som starts a clause that tells you more about a noun: Mannen som bor här är läkare. It is used for people and things alike. When som is the object of its clause, it can be left out: boken (som) jag läser.",
+      "how_to_spot": "Look for som right after a noun, starting a clause that describes that noun.",
+      "examples": [
+        {
+          "sv": "Mannen som bor här är läkare.",
+          "en": "The man who lives here is a doctor.",
+          "mark": "Mannen som"
+        },
+        {
+          "sv": "Jag har en vän som spelar i ett band.",
+          "en": "I have a friend who plays in a band.",
+          "mark": "en vän som"
+        },
+        {
+          "sv": "Det är filmen som alla pratar om.",
+          "en": "It's the film that everyone is talking about.",
+          "mark": "filmen som"
+        },
+        {
+          "sv": "Var är boken som låg på bordet?",
+          "en": "Where is the book that was on the table?",
+          "mark": "boken som"
+        },
+        {
+          "sv": "De köpte huset som vi tittade på.",
+          "en": "They bought the house that we looked at.",
+          "mark": "huset som"
+        }
+      ],
+      "text": {
+        "title": "Grannarna",
+        "lines": [
+          {
+            "sv": "Jag bor i ett hus med tolv lägenheter.",
+            "en": "I live in a building with twelve flats."
+          },
+          {
+            "sv": "Kvinnan som bor under mig är pensionerad lärare.",
+            "en": "The woman who lives below me is a retired teacher."
+          },
+          {
+            "sv": "Hon har en hund som skäller varje morgon.",
+            "en": "She has a dog that barks every morning."
+          },
+          {
+            "sv": "Familjen som bor bredvid har tre små barn.",
+            "en": "The family who live next door have three small children."
+          },
+          {
+            "sv": "Högst upp bor en man som spelar piano.",
+            "en": "At the very top lives a man who plays the piano."
+          },
+          {
+            "sv": "Musiken som hörs genom väggen är ofta vacker.",
+            "en": "The music you can hear through the wall is often beautiful."
+          },
+          {
+            "sv": "Det är en granne som jag gärna träffar.",
+            "en": "He is a neighbour I like to meet."
+          },
+          {
+            "sv": "Jag tror att det är ett hus som man trivs i.",
+            "en": "I think it's a building people feel at home in."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "Kvinnan som"
+        },
+        {
+          "line": 2,
+          "mark": "en hund som"
+        },
+        {
+          "line": 3,
+          "mark": "Familjen som"
+        },
+        {
+          "line": 4,
+          "mark": "en man som"
+        },
+        {
+          "line": 5,
+          "mark": "Musiken som"
+        },
+        {
+          "line": 6,
+          "mark": "en granne som"
+        },
+        {
+          "line": 7,
+          "mark": "ett hus som"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-04",
+      "level": "B1",
+      "name": "Questions inside sentences: Jag undrar om hon kommer",
+      "explain_en": "A question inside a sentence is a subordinate clause, so the subject comes before the verb. Yes/no questions start with om (\"if, whether\"): Jag undrar om hon kommer. Others keep their question word: Vet du var han bor?",
+      "how_to_spot": "After words like undra, veta, fråga or förstå, look for om or a question word, then the subject, then the verb.",
+      "examples": [
+        {
+          "sv": "Jag undrar om hon kommer i kväll.",
+          "en": "I wonder if she is coming tonight.",
+          "mark": "om hon kommer"
+        },
+        {
+          "sv": "Vet du var stationen ligger?",
+          "en": "Do you know where the station is?",
+          "mark": "var stationen ligger"
+        },
+        {
+          "sv": "Han frågade när filmen börjar.",
+          "en": "He asked when the film starts.",
+          "mark": "när filmen börjar"
+        },
+        {
+          "sv": "Jag förstår inte varför du inte ringde.",
+          "en": "I don't understand why you didn't call.",
+          "mark": "varför du inte ringde"
+        },
+        {
+          "sv": "Kan du säga hur mycket det kostar?",
+          "en": "Can you tell me how much it costs?",
+          "mark": "hur mycket det kostar"
+        }
+      ],
+      "text": {
+        "title": "Första dagen",
+        "lines": [
+          {
+            "sv": "Det var Elins första dag på det nya jobbet.",
+            "en": "It was Elin's first day at the new job."
+          },
+          {
+            "sv": "Hon visste inte var hon skulle sitta.",
+            "en": "She didn't know where she should sit."
+          },
+          {
+            "sv": "Hon frågade en kollega om det fanns kaffe.",
+            "en": "She asked a colleague if there was any coffee."
+          },
+          {
+            "sv": "Kollegan visade henne var köket låg.",
+            "en": "The colleague showed her where the kitchen was."
+          },
+          {
+            "sv": "Senare undrade Elin vem som var hennes chef.",
+            "en": "Later Elin wondered who her boss was."
+          },
+          {
+            "sv": "Ingen kunde säga när chefen skulle komma.",
+            "en": "Nobody could say when the boss would come."
+          },
+          {
+            "sv": "På eftermiddagen förstod hon varför alla var så glada.",
+            "en": "In the afternoon she understood why everyone was so happy."
+          },
+          {
+            "sv": "Chefen hade bakat en tårta och frågade om Elin gillade choklad.",
+            "en": "The boss had baked a cake and asked if Elin liked chocolate."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "var hon skulle sitta"
+        },
+        {
+          "line": 2,
+          "mark": "om det fanns"
+        },
+        {
+          "line": 3,
+          "mark": "var köket låg"
+        },
+        {
+          "line": 4,
+          "mark": "vem som var"
+        },
+        {
+          "line": 5,
+          "mark": "när chefen skulle komma"
+        },
+        {
+          "line": 6,
+          "mark": "varför alla var"
+        },
+        {
+          "line": 7,
+          "mark": "om Elin gillade"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-05",
+      "level": "B1",
+      "name": "The passive with -s: byggs, byggdes",
+      "explain_en": "Adding -s to a verb makes it passive: Huset byggdes 1920 (\"was built\"). It is common in news, signs and instructions: Här talas svenska. If the doer is named, it comes after av.",
+      "how_to_spot": "Look for verbs ending in -s where something is done to the subject (not verbs like finns or hoppas).",
+      "examples": [
+        {
+          "sv": "Huset byggdes år 1920.",
+          "en": "The house was built in 1920.",
+          "mark": "byggdes"
+        },
+        {
+          "sv": "Här talas svenska.",
+          "en": "Swedish is spoken here.",
+          "mark": "talas"
+        },
+        {
+          "sv": "Brevet skickas i morgon.",
+          "en": "The letter will be sent tomorrow.",
+          "mark": "skickas"
+        },
+        {
+          "sv": "Boken har översatts till tio språk.",
+          "en": "The book has been translated into ten languages.",
+          "mark": "har översatts"
+        },
+        {
+          "sv": "Dörren måste stängas.",
+          "en": "The door must be closed.",
+          "mark": "stängas"
+        }
+      ],
+      "text": {
+        "title": "Stockholms tunnelbana",
+        "lines": [
+          {
+            "sv": "Stockholms tunnelbana öppnades år 1950.",
+            "en": "The Stockholm metro was opened in 1950."
+          },
+          {
+            "sv": "Sedan dess har den byggts ut många gånger.",
+            "en": "Since then it has been extended many times."
+          },
+          {
+            "sv": "I dag används den av mer än en miljon människor varje dag.",
+            "en": "Today it is used by more than a million people every day."
+          },
+          {
+            "sv": "Många stationer har målats av konstnärer.",
+            "en": "Many stations have been painted by artists."
+          },
+          {
+            "sv": "Därför kallas tunnelbanan ibland världens längsta konstutställning.",
+            "en": "That is why the metro is sometimes called the world's longest art exhibition."
+          },
+          {
+            "sv": "Biljetter kan köpas i en app eller i automater.",
+            "en": "Tickets can be bought in an app or from machines."
+          },
+          {
+            "sv": "Just nu byggs en ny linje.",
+            "en": "A new line is being built right now."
+          },
+          {
+            "sv": "Den ska enligt planen öppnas om några år.",
+            "en": "According to the plan it will open in a few years."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "öppnades"
+        },
+        {
+          "line": 1,
+          "mark": "byggts"
+        },
+        {
+          "line": 2,
+          "mark": "används"
+        },
+        {
+          "line": 3,
+          "mark": "målats"
+        },
+        {
+          "line": 4,
+          "mark": "kallas"
+        },
+        {
+          "line": 5,
+          "mark": "köpas"
+        },
+        {
+          "line": 6,
+          "mark": "byggs"
+        },
+        {
+          "line": 7,
+          "mark": "öppnas"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-06",
+      "level": "B1",
+      "name": "His own: sin, sitt, sina",
+      "explain_en": "Sin, sitt and sina mean \"his, her, its, their\" when the owner is the subject of the same clause: Anna ringer sin mamma (her own mother). Hennes or hans means someone else's: Anna ringer hennes mamma (another woman's mother).",
+      "how_to_spot": "Look for sin, sitt or sina; the owner is always the subject of that clause.",
+      "examples": [
+        {
+          "sv": "Erik målar sitt hus.",
+          "en": "Erik is painting his house.",
+          "mark": "sitt hus"
+        },
+        {
+          "sv": "De besöker sina föräldrar varje jul.",
+          "en": "They visit their parents every Christmas.",
+          "mark": "sina föräldrar"
+        },
+        {
+          "sv": "Hon glömde sin väska på bussen.",
+          "en": "She left her bag on the bus.",
+          "mark": "sin väska"
+        },
+        {
+          "sv": "Barnen städade sina rum.",
+          "en": "The children tidied their rooms.",
+          "mark": "sina rum"
+        }
+      ],
+      "text": {
+        "title": "Flytten",
+        "lines": [
+          {
+            "sv": "Maja flyttar från sin lägenhet i Uppsala.",
+            "en": "Maja is moving out of her flat in Uppsala."
+          },
+          {
+            "sv": "Hon har packat alla sina saker i lådor.",
+            "en": "She has packed all her things in boxes."
+          },
+          {
+            "sv": "Hennes bror Olle hjälper till med sin bil.",
+            "en": "Her brother Olle helps out with his car."
+          },
+          {
+            "sv": "Majas pappa bär hennes säng.",
+            "en": "Maja's dad carries her bed."
+          },
+          {
+            "sv": "Olle glömmer sin jacka i den gamla lägenheten.",
+            "en": "Olle forgets his jacket in the old flat."
+          },
+          {
+            "sv": "Maja hittar den och ger honom hans jacka.",
+            "en": "Maja finds it and gives him his jacket."
+          },
+          {
+            "sv": "På kvällen äter alla pizza i hennes nya kök.",
+            "en": "In the evening everyone eats pizza in her new kitchen."
+          },
+          {
+            "sv": "Maja tackar sin familj för hjälpen.",
+            "en": "Maja thanks her family for the help."
+          },
+          {
+            "sv": "Nu börjar hon sitt nya liv i Lund.",
+            "en": "Now she begins her new life in Lund."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "sin lägenhet"
+        },
+        {
+          "line": 1,
+          "mark": "sina saker"
+        },
+        {
+          "line": 2,
+          "mark": "sin bil"
+        },
+        {
+          "line": 4,
+          "mark": "sin jacka"
+        },
+        {
+          "line": 7,
+          "mark": "sin familj"
+        },
+        {
+          "line": 8,
+          "mark": "sitt nya liv"
+        }
+      ]
+    },
+    {
+      "id": "G-B1-07",
+      "level": "B1",
+      "name": "Particle verbs: tycka om, komma ihåg, ge upp",
+      "explain_en": "Many verbs have a small stressed word, a particle, that changes the meaning: tycka om (like), komma ihåg (remember), hälsa på (visit), ge upp (give up). The particle follows the verb, after the subject if that comes after the verb, and it carries the stress.",
+      "how_to_spot": "Look for a verb followed by a short word like om, upp, ut, på, av, fram or ihåg that changes its meaning.",
+      "examples": [
+        {
+          "sv": "Jag tycker om att dansa.",
+          "en": "I like dancing.",
+          "mark": "tycker om"
+        },
+        {
+          "sv": "Kom ihåg att ringa mamma!",
+          "en": "Remember to call Mum!",
+          "mark": "Kom ihåg"
+        },
+        {
+          "sv": "Vi ska hälsa på mormor i helgen.",
+          "en": "We are going to visit Grandma at the weekend.",
+          "mark": "hälsa på"
+        },
+        {
+          "sv": "Stäng av datorn nu.",
+          "en": "Turn off the computer now.",
+          "mark": "Stäng av"
+        },
+        {
+          "sv": "Hon ser trött ut.",
+          "en": "She looks tired.",
+          "mark": "ser trött ut"
+        },
+        {
+          "sv": "Han gav upp efter en timme.",
+          "en": "He gave up after an hour.",
+          "mark": "gav upp"
+        }
+      ],
+      "text": {
+        "title": "En misslyckad utflykt",
+        "lines": [
+          {
+            "sv": "I söndags gick vi upp tidigt.",
+            "en": "Last Sunday we got up early."
+          },
+          {
+            "sv": "Vi skulle hälsa på mina kusiner på landet.",
+            "en": "We were going to visit my cousins in the country."
+          },
+          {
+            "sv": "Men vi kom inte iväg förrän klockan tio.",
+            "en": "But we didn't get away until ten o'clock."
+          },
+          {
+            "sv": "Barnen började bråka, så jag satte på musik.",
+            "en": "The children started to quarrel, so I put some music on."
+          },
+          {
+            "sv": "När vi kom fram, kom jag ihåg att jag hade glömt presenten.",
+            "en": "When we arrived, I remembered that I had forgotten the present."
+          },
+          {
+            "sv": "Det såg ut att bli regn.",
+            "en": "It looked as if it was going to rain."
+          },
+          {
+            "sv": "Barnen ville inte gå ut, så vi spelade kort.",
+            "en": "The children didn't want to go out, so we played cards."
+          },
+          {
+            "sv": "Till slut gav vi upp.",
+            "en": "In the end we gave up."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "gick vi upp"
+        },
+        {
+          "line": 1,
+          "mark": "hälsa på"
+        },
+        {
+          "line": 2,
+          "mark": "kom inte iväg"
+        },
+        {
+          "line": 3,
+          "mark": "satte på"
+        },
+        {
+          "line": 4,
+          "mark": "kom fram"
+        },
+        {
+          "line": 4,
+          "mark": "kom jag ihåg"
+        },
+        {
+          "line": 5,
+          "mark": "såg ut"
+        },
+        {
+          "line": 6,
+          "mark": "gå ut"
+        },
+        {
+          "line": 7,
+          "mark": "gav vi upp"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-01",
+      "level": "B2",
+      "name": "Pluperfect: hade + supine (hade ätit)",
+      "explain_en": "The pluperfect is hade plus the supine: Vi hade redan ätit när de kom. It shows that something happened before another event in the past, just like English \"had eaten\".",
+      "how_to_spot": "Look for hade followed by a supine (-at, -t, -it), sometimes with a word in between.",
+      "examples": [
+        {
+          "sv": "När vi kom fram hade tåget redan gått.",
+          "en": "When we got there, the train had already left.",
+          "mark": "hade tåget redan gått"
+        },
+        {
+          "sv": "Hon hade aldrig sett snö förut.",
+          "en": "She had never seen snow before.",
+          "mark": "hade aldrig sett"
+        },
+        {
+          "sv": "Jag insåg att jag hade glömt nycklarna.",
+          "en": "I realised that I had forgotten the keys.",
+          "mark": "hade glömt"
+        },
+        {
+          "sv": "De hade bott i Kiruna i tio år innan de flyttade söderut.",
+          "en": "They had lived in Kiruna for ten years before they moved south.",
+          "mark": "hade bott"
+        },
+        {
+          "sv": "Han var trött eftersom han inte hade sovit.",
+          "en": "He was tired because he hadn't slept.",
+          "mark": "inte hade sovit"
+        }
+      ],
+      "text": {
+        "title": "Brevet",
+        "lines": [
+          {
+            "sv": "När Karin kom hem från resan hade någon lagt ett brev på hennes bord.",
+            "en": "When Karin came home from her trip, someone had put a letter on her table."
+          },
+          {
+            "sv": "Hon kände genast igen handstilen.",
+            "en": "She recognised the handwriting at once."
+          },
+          {
+            "sv": "Det var från hennes gamla vän Lena, som hon inte hade träffat på tjugo år.",
+            "en": "It was from her old friend Lena, whom she hadn't seen for twenty years."
+          },
+          {
+            "sv": "De hade gått i samma klass och hade varit oskiljaktiga hela gymnasiet.",
+            "en": "They had been in the same class and had been inseparable all through upper secondary school."
+          },
+          {
+            "sv": "Men efter studenten hade Lena flyttat till Kanada, och kontakten hade långsamt dött ut.",
+            "en": "But after leaving school Lena had moved to Canada, and the contact had slowly died out."
+          },
+          {
+            "sv": "I brevet skrev Lena att hon nyligen hade flyttat tillbaka till Sverige.",
+            "en": "In the letter Lena wrote that she had recently moved back to Sweden."
+          },
+          {
+            "sv": "Hon hade hittat Karins adress genom en gemensam bekant.",
+            "en": "She had found Karin's address through a mutual acquaintance."
+          },
+          {
+            "sv": "Karin satt länge med brevet i handen innan hon ringde.",
+            "en": "Karin sat for a long time with the letter in her hand before she called."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "hade någon lagt"
+        },
+        {
+          "line": 2,
+          "mark": "inte hade träffat"
+        },
+        {
+          "line": 3,
+          "mark": "hade gått"
+        },
+        {
+          "line": 3,
+          "mark": "hade varit"
+        },
+        {
+          "line": 4,
+          "mark": "hade Lena flyttat"
+        },
+        {
+          "line": 4,
+          "mark": "hade långsamt dött"
+        },
+        {
+          "line": 5,
+          "mark": "hade flyttat"
+        },
+        {
+          "line": 6,
+          "mark": "hade hittat"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-02",
+      "level": "B2",
+      "name": "If it were so: skulle + infinitive",
+      "explain_en": "For things that are unreal or unlikely, Swedish uses the past tense in the om-clause and skulle in the main clause: Om jag hade mer tid, skulle jag lära mig piano. About the past: Om jag hade vetat, skulle jag ha ringt.",
+      "how_to_spot": "Look for skulle + a verb, often with an om-clause in the past tense nearby.",
+      "examples": [
+        {
+          "sv": "Om jag hade mer tid, skulle jag lära mig spela piano.",
+          "en": "If I had more time, I would learn to play the piano.",
+          "mark": "skulle jag lära"
+        },
+        {
+          "sv": "Vad skulle du göra om du vann en miljon?",
+          "en": "What would you do if you won a million?",
+          "mark": "skulle du göra"
+        },
+        {
+          "sv": "Jag skulle aldrig flytta härifrån.",
+          "en": "I would never move away from here.",
+          "mark": "skulle aldrig flytta"
+        },
+        {
+          "sv": "Om hon hade vetat det, skulle hon ha ringt.",
+          "en": "If she had known, she would have called.",
+          "mark": "skulle hon ha ringt"
+        },
+        {
+          "sv": "Det skulle vara skönt med lite sol.",
+          "en": "A bit of sun would be nice.",
+          "mark": "skulle vara"
+        }
+      ],
+      "text": {
+        "title": "Drömmen om en gård",
+        "lines": [
+          {
+            "sv": "Om jag fick välja, skulle jag bo på landet.",
+            "en": "If I could choose, I would live in the country."
+          },
+          {
+            "sv": "Jag skulle ha en liten gård med höns och några getter.",
+            "en": "I would have a small farm with hens and a few goats."
+          },
+          {
+            "sv": "På morgnarna skulle jag dricka kaffe på trappan och lyssna på fåglarna.",
+            "en": "In the mornings I would drink coffee on the steps and listen to the birds."
+          },
+          {
+            "sv": "Mina vänner säger att jag skulle tröttna efter en vecka.",
+            "en": "My friends say that I would get tired of it after a week."
+          },
+          {
+            "sv": "De har kanske rätt; jag har aldrig ens skött en krukväxt.",
+            "en": "Maybe they are right; I have never even looked after a pot plant."
+          },
+          {
+            "sv": "Om jag hade vuxit upp på en gård, skulle jag kanske tänka annorlunda.",
+            "en": "If I had grown up on a farm, I might think differently."
+          },
+          {
+            "sv": "Men om ingen någonsin provade sina drömmar, skulle världen vara ganska tråkig.",
+            "en": "But if nobody ever tried out their dreams, the world would be rather dull."
+          },
+          {
+            "sv": "Så en dag kanske jag tar steget.",
+            "en": "So one day I may take the plunge."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "skulle jag bo"
+        },
+        {
+          "line": 1,
+          "mark": "skulle ha"
+        },
+        {
+          "line": 2,
+          "mark": "skulle jag dricka"
+        },
+        {
+          "line": 3,
+          "mark": "skulle tröttna"
+        },
+        {
+          "line": 5,
+          "mark": "skulle jag kanske tänka"
+        },
+        {
+          "line": 6,
+          "mark": "skulle världen vara"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-03",
+      "level": "B2",
+      "name": "The passive with bli: blev stulen",
+      "explain_en": "Besides the -s passive, Swedish forms a passive with bli plus a past participle: Cykeln blev stulen. It often stresses a change or a single event. The participle agrees with the subject: huset blev sålt, cyklarna blev stulna.",
+      "how_to_spot": "Look for bli, blir, blev or blivit followed by a past participle (-ad, -d, -t, -en, or plural -na/-a).",
+      "examples": [
+        {
+          "sv": "Min cykel blev stulen i natt.",
+          "en": "My bike was stolen last night.",
+          "mark": "blev stulen"
+        },
+        {
+          "sv": "Han blev påkörd av en bil.",
+          "en": "He was hit by a car.",
+          "mark": "blev påkörd"
+        },
+        {
+          "sv": "Huset blev sålt för tre miljoner.",
+          "en": "The house was sold for three million.",
+          "mark": "blev sålt"
+        },
+        {
+          "sv": "Vi blev bjudna på middag.",
+          "en": "We were invited to dinner.",
+          "mark": "blev bjudna"
+        },
+        {
+          "sv": "Hon har blivit vald till ordförande.",
+          "en": "She has been elected chair.",
+          "mark": "har blivit vald"
+        }
+      ],
+      "text": {
+        "title": "En inställd konsert",
+        "lines": [
+          {
+            "sv": "Konserten i parken blev inställd i sista minuten.",
+            "en": "The concert in the park was cancelled at the last minute."
+          },
+          {
+            "sv": "Scenen hade blivit skadad av stormen under natten.",
+            "en": "The stage had been damaged by the storm during the night."
+          },
+          {
+            "sv": "Publiken blev informerad via högtalare och sociala medier.",
+            "en": "The audience was informed over loudspeakers and on social media."
+          },
+          {
+            "sv": "Många var ledsna, men de flesta förstod.",
+            "en": "Many were sad, but most people understood."
+          },
+          {
+            "sv": "Biljetterna kommer att bli återbetalda inom en månad.",
+            "en": "The tickets will be refunded within a month."
+          },
+          {
+            "sv": "Bandet blev intervjuat av lokaltidningen samma kväll.",
+            "en": "The band was interviewed by the local paper the same evening."
+          },
+          {
+            "sv": "De lovade att konserten skulle bli flyttad till augusti.",
+            "en": "They promised that the concert would be moved to August."
+          },
+          {
+            "sv": "Förhoppningsvis blir den inte inställd igen.",
+            "en": "Hopefully it won't be cancelled again."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "blev inställd"
+        },
+        {
+          "line": 1,
+          "mark": "blivit skadad"
+        },
+        {
+          "line": 2,
+          "mark": "blev informerad"
+        },
+        {
+          "line": 4,
+          "mark": "bli återbetalda"
+        },
+        {
+          "line": 5,
+          "mark": "blev intervjuat"
+        },
+        {
+          "line": 6,
+          "mark": "bli flyttad"
+        },
+        {
+          "line": 7,
+          "mark": "blir den inte inställd"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-04",
+      "level": "B2",
+      "name": "Words in -ande and -ende: spännande, sovande",
+      "explain_en": "The present participle ends in -ande, or -ende after a long vowel (gående, leende). It works mostly as an adjective (en spännande film), as a noun (ett leende) or after verbs of movement (hon kom springande). Swedish never uses it like English \"I am reading\".",
+      "how_to_spot": "Look for words ending in -ande or -ende.",
+      "examples": [
+        {
+          "sv": "Det var en spännande film.",
+          "en": "It was an exciting film.",
+          "mark": "spännande"
+        },
+        {
+          "sv": "Barnen kom springande.",
+          "en": "The children came running.",
+          "mark": "springande"
+        },
+        {
+          "sv": "Hon svarade med ett leende.",
+          "en": "She answered with a smile.",
+          "mark": "leende"
+        },
+        {
+          "sv": "Vi ses på det kommande mötet.",
+          "en": "See you at the coming meeting.",
+          "mark": "kommande"
+        },
+        {
+          "sv": "Han satt tyst med en sovande katt i knät.",
+          "en": "He sat quietly with a sleeping cat on his lap.",
+          "mark": "sovande"
+        }
+      ],
+      "text": {
+        "title": "Tågresan",
+        "lines": [
+          {
+            "sv": "Resan till Kiruna var lång men spännande.",
+            "en": "The journey to Kiruna was long but exciting."
+          },
+          {
+            "sv": "Utanför fönstret syntes glittrande sjöar och oändliga skogar.",
+            "en": "Outside the window you could see glittering lakes and endless forests."
+          },
+          {
+            "sv": "Mittemot mig satt en man med en sovande hund i knät.",
+            "en": "Opposite me sat a man with a sleeping dog on his lap."
+          },
+          {
+            "sv": "Ett skrikande barn sprang fram och tillbaka i gången.",
+            "en": "A screaming child ran back and forth in the aisle."
+          },
+          {
+            "sv": "Mamman kom springande efter med ett trött leende.",
+            "en": "The mother came running after it with a tired smile."
+          },
+          {
+            "sv": "Vid varje station steg nya resande på.",
+            "en": "At every station new passengers got on."
+          },
+          {
+            "sv": "Den sista timmen var den mest avslappnande.",
+            "en": "The last hour was the most relaxing."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "spännande"
+        },
+        {
+          "line": 1,
+          "mark": "glittrande"
+        },
+        {
+          "line": 2,
+          "mark": "sovande"
+        },
+        {
+          "line": 3,
+          "mark": "skrikande"
+        },
+        {
+          "line": 4,
+          "mark": "springande"
+        },
+        {
+          "line": 4,
+          "mark": "leende"
+        },
+        {
+          "line": 5,
+          "mark": "resande"
+        },
+        {
+          "line": 6,
+          "mark": "avslappnande"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-05",
+      "level": "B2",
+      "name": "Putting one part in focus: Det var Lisa som ringde",
+      "explain_en": "To stress one part of a sentence, Swedish puts it between det är or det var and som: Det var Lisa som ringde (Lisa, not someone else). It is also very common in questions: Vem är det som har ätit upp kakorna?",
+      "how_to_spot": "Look for det är or det var, then the part in focus, then som.",
+      "examples": [
+        {
+          "sv": "Det var Lisa som ringde.",
+          "en": "It was Lisa who called.",
+          "mark": "Det var Lisa som"
+        },
+        {
+          "sv": "Det är inte pengarna som är problemet.",
+          "en": "It's not the money that's the problem.",
+          "mark": "Det är inte pengarna som"
+        },
+        {
+          "sv": "Vem var det som vann matchen?",
+          "en": "Who was it that won the match?",
+          "mark": "Vem var det som"
+        },
+        {
+          "sv": "Det var först i maj som snön smälte.",
+          "en": "It was not until May that the snow melted.",
+          "mark": "Det var först i maj som"
+        }
+      ],
+      "text": {
+        "title": "Vem tog kakorna?",
+        "lines": [
+          {
+            "sv": "Någon har ätit upp alla kakor! Vem var det som gjorde det?",
+            "en": "Someone has eaten all the biscuits! Who was it that did it?"
+          },
+          {
+            "sv": "Det var inte jag som åt dem, jag lovar.",
+            "en": "It wasn't me who ate them, I promise."
+          },
+          {
+            "sv": "Det var kanske hunden som hittade burken.",
+            "en": "Maybe it was the dog that found the jar."
+          },
+          {
+            "sv": "Hunden kan inte öppna ett lock. Det är du som har smulor på tröjan.",
+            "en": "The dog can't open a lid. You're the one with crumbs on your sweater."
+          },
+          {
+            "sv": "Okej, det var jag som tog den första kakan.",
+            "en": "Okay, it was me who took the first biscuit."
+          },
+          {
+            "sv": "Men det var faktiskt pappa som åt resten.",
+            "en": "But actually it was Dad who ate the rest."
+          },
+          {
+            "sv": "Det är alltid samma sak i det här huset.",
+            "en": "It's always the same in this house."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Vem var det som"
+        },
+        {
+          "line": 1,
+          "mark": "Det var inte jag som"
+        },
+        {
+          "line": 2,
+          "mark": "Det var kanske hunden som"
+        },
+        {
+          "line": 3,
+          "mark": "Det är du som"
+        },
+        {
+          "line": 4,
+          "mark": "det var jag som"
+        },
+        {
+          "line": 5,
+          "mark": "det var faktiskt pappa som"
+        }
+      ]
+    },
+    {
+      "id": "G-B2-06",
+      "level": "B2",
+      "name": "Verbs that always end in -s: hoppas, minnas, träffas",
+      "explain_en": "Some verbs end in -s without being passive. A few only exist with -s (hoppas, minnas, lyckas, finnas), and some add it to mean \"each other\": vi träffas (\"we meet\"), de kramades (\"they hugged\").",
+      "how_to_spot": "Look for verbs ending in -s where nobody is doing anything to the subject.",
+      "examples": [
+        {
+          "sv": "Jag hoppas att du mår bra.",
+          "en": "I hope you are well.",
+          "mark": "hoppas"
+        },
+        {
+          "sv": "Det finns ingen mjölk kvar.",
+          "en": "There is no milk left.",
+          "mark": "finns"
+        },
+        {
+          "sv": "Vi ses i morgon!",
+          "en": "See you tomorrow!",
+          "mark": "ses"
+        },
+        {
+          "sv": "Minns du vår första semester?",
+          "en": "Do you remember our first holiday?",
+          "mark": "Minns"
+        },
+        {
+          "sv": "Hon lyckades till slut.",
+          "en": "She succeeded in the end.",
+          "mark": "lyckades"
+        },
+        {
+          "sv": "De träffades på en fest.",
+          "en": "They met at a party.",
+          "mark": "träffades"
+        }
+      ],
+      "text": {
+        "title": "Ett återseende",
+        "lines": [
+          {
+            "sv": "Anna och Petra träffades första gången på universitetet.",
+            "en": "Anna and Petra first met at university."
+          },
+          {
+            "sv": "Efter examen tappade de kontakten, och åren gick.",
+            "en": "After graduating they lost touch, and the years went by."
+          },
+          {
+            "sv": "Förra veckan möttes de av en slump på Centralstationen.",
+            "en": "Last week they met by chance at the Central Station."
+          },
+          {
+            "sv": "De kramades länge och skrattade.",
+            "en": "They hugged for a long time and laughed."
+          },
+          {
+            "sv": "”Minns du vår gamla korridor?” frågade Anna.",
+            "en": "\"Do you remember our old corridor?\" Anna asked."
+          },
+          {
+            "sv": "Petra mindes allt, till och med grannens hemska musik.",
+            "en": "Petra remembered everything, even the neighbour's awful music."
+          },
+          {
+            "sv": "Det fanns så mycket att prata om.",
+            "en": "There was so much to talk about."
+          },
+          {
+            "sv": "Innan de skildes åt lovade de att höras snart.",
+            "en": "Before they parted, they promised to be in touch soon."
+          },
+          {
+            "sv": "”Jag hoppas att vi ses snart igen”, sa Petra.",
+            "en": "\"I hope we see each other again soon,\" said Petra."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "träffades"
+        },
+        {
+          "line": 2,
+          "mark": "möttes"
+        },
+        {
+          "line": 3,
+          "mark": "kramades"
+        },
+        {
+          "line": 4,
+          "mark": "Minns"
+        },
+        {
+          "line": 5,
+          "mark": "mindes"
+        },
+        {
+          "line": 6,
+          "mark": "fanns"
+        },
+        {
+          "line": 7,
+          "mark": "skildes"
+        },
+        {
+          "line": 7,
+          "mark": "höras"
+        },
+        {
+          "line": 8,
+          "mark": "hoppas"
+        },
+        {
+          "line": 8,
+          "mark": "ses"
+        }
+      ]
+    },
+    {
+      "id": "G-C1-01",
+      "level": "C1",
+      "name": "Conditions without om: Hade jag vetat det…",
+      "explain_en": "In formal or written Swedish, om can be dropped and the verb put first instead: Hade jag vetat det, hade jag stannat (\"Had I known…\"). Other verbs work the same way: Skulle du få problem, ring oss.",
+      "how_to_spot": "Look for a clause that starts with a verb (hade, skulle, är, har, blir…) but is not a question, followed by a comma.",
+      "examples": [
+        {
+          "sv": "Hade jag vetat det, hade jag stannat hemma.",
+          "en": "Had I known, I would have stayed at home.",
+          "mark": "Hade jag vetat"
+        },
+        {
+          "sv": "Skulle du få problem, ring oss genast.",
+          "en": "Should you have any problems, call us at once.",
+          "mark": "Skulle du få"
+        },
+        {
+          "sv": "Vill du veta mer, kan du läsa rapporten.",
+          "en": "If you want to know more, you can read the report.",
+          "mark": "Vill du veta"
+        },
+        {
+          "sv": "Blir det regn, flyttar vi festen inomhus.",
+          "en": "If it rains, we'll move the party indoors.",
+          "mark": "Blir det regn"
+        },
+        {
+          "sv": "Hade det inte varit för henne, hade företaget gått under.",
+          "en": "Had it not been for her, the company would have gone under.",
+          "mark": "Hade det inte varit"
+        }
+      ],
+      "text": {
+        "title": "Till hyresgästerna",
+        "lines": [
+          {
+            "sv": "Bästa hyresgäster!",
+            "en": "Dear tenants,"
+          },
+          {
+            "sv": "Under vecka 12 byts alla fönster i fastigheten.",
+            "en": "During week 12 all the windows in the building will be replaced."
+          },
+          {
+            "sv": "Skulle tiden inte passa er, kontakta förvaltningen senast den 10 mars.",
+            "en": "Should the time not suit you, contact the management by 10 March."
+          },
+          {
+            "sv": "Är ni inte hemma, öppnar fastighetsskötaren med huvudnyckel.",
+            "en": "If you are not at home, the caretaker will open with the master key."
+          },
+          {
+            "sv": "Har ni husdjur, ber vi er att hålla dem i ett stängt rum.",
+            "en": "If you have pets, we ask you to keep them in a closed room."
+          },
+          {
+            "sv": "Önskar ni skydda möbler eller mattor, finns plastskydd att hämta i tvättstugan.",
+            "en": "Should you wish to protect furniture or rugs, plastic covers can be collected from the laundry room."
+          },
+          {
+            "sv": "Hade vi kunnat göra arbetet utan att störa, hade vi naturligtvis gjort det.",
+            "en": "Had we been able to do the work without disturbing you, we would of course have done so."
+          },
+          {
+            "sv": "Uppstår det skador i samband med bytet, ersätts de av entreprenören.",
+            "en": "Should any damage occur in connection with the replacement, it will be compensated by the contractor."
+          },
+          {
+            "sv": "Med vänliga hälsningar, styrelsen",
+            "en": "Kind regards, the board"
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 2,
+          "mark": "Skulle tiden inte passa"
+        },
+        {
+          "line": 3,
+          "mark": "Är ni inte hemma"
+        },
+        {
+          "line": 4,
+          "mark": "Har ni husdjur"
+        },
+        {
+          "line": 5,
+          "mark": "Önskar ni skydda"
+        },
+        {
+          "line": 6,
+          "mark": "Hade vi kunnat"
+        },
+        {
+          "line": 7,
+          "mark": "Uppstår det skador"
+        }
+      ]
+    },
+    {
+      "id": "G-C1-02",
+      "level": "C1",
+      "name": "Nominal style: actions turned into nouns",
+      "explain_en": "Formal Swedish often packs actions into nouns: minska becomes minskningen, genomföra becomes genomförandet. Official texts are full of this style; in everyday speech a verb usually sounds better.",
+      "how_to_spot": "Look for nouns ending in -ning, -ande, -ende or -else that stand for an action.",
+      "examples": [
+        {
+          "sv": "Minskningen av utsläppen har gått långsamt.",
+          "en": "The reduction in emissions has been slow.",
+          "mark": "Minskningen"
+        },
+        {
+          "sv": "Genomförandet av projektet försenades.",
+          "en": "The implementation of the project was delayed.",
+          "mark": "Genomförandet"
+        },
+        {
+          "sv": "Nedläggningen av skolan väckte protester.",
+          "en": "The closure of the school led to protests.",
+          "mark": "Nedläggningen"
+        },
+        {
+          "sv": "Användandet av mobiltelefoner är förbjudet under provet.",
+          "en": "The use of mobile phones is forbidden during the exam.",
+          "mark": "Användandet"
+        },
+        {
+          "sv": "Förändringen kräver tid.",
+          "en": "The change takes time.",
+          "mark": "Förändringen"
+        }
+      ],
+      "text": {
+        "title": "Kommunens beslut",
+        "lines": [
+          {
+            "sv": "Kommunfullmäktige har fattat beslut om en utbyggnad av cykelnätet.",
+            "en": "The municipal council has decided to extend the cycle network."
+          },
+          {
+            "sv": "Syftet är en minskning av biltrafiken i centrum.",
+            "en": "The aim is to reduce car traffic in the centre."
+          },
+          {
+            "sv": "Genomförandet beräknas ta tre år.",
+            "en": "The work is expected to take three years."
+          },
+          {
+            "sv": "Under byggandet kan vissa gator stängas av tillfälligt.",
+            "en": "During construction some streets may be closed temporarily."
+          },
+          {
+            "sv": "Finansieringen sker delvis med statliga bidrag.",
+            "en": "It is partly financed by state grants."
+          },
+          {
+            "sv": "Kritiker menar att planeringen har tagit för lite hänsyn till handlarna.",
+            "en": "Critics say the planning has taken too little account of the shopkeepers."
+          },
+          {
+            "sv": "En utvärdering av resultatet ska göras efter fem år.",
+            "en": "The results will be evaluated after five years."
+          },
+          {
+            "sv": "Medborgarna uppmanas att lämna synpunkter före den 1 maj.",
+            "en": "Residents are asked to give their views before 1 May."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "utbyggnad"
+        },
+        {
+          "line": 1,
+          "mark": "minskning"
+        },
+        {
+          "line": 2,
+          "mark": "Genomförandet"
+        },
+        {
+          "line": 3,
+          "mark": "byggandet"
+        },
+        {
+          "line": 4,
+          "mark": "Finansieringen"
+        },
+        {
+          "line": 5,
+          "mark": "planeringen"
+        },
+        {
+          "line": 6,
+          "mark": "utvärdering"
+        }
+      ]
+    },
+    {
+      "id": "G-C1-03",
+      "level": "C1",
+      "name": "The object first: Den filmen har jag sett",
+      "explain_en": "Almost any part of a Swedish sentence can come first, to link to what was just said or to stress it, and the verb still comes second: Den filmen har jag redan sett. A preposition then often stays at the end: Det tror jag inte på.",
+      "how_to_spot": "Look for a sentence that starts with an object (often den, det or det där), followed directly by the verb and then the subject.",
+      "examples": [
+        {
+          "sv": "Den filmen har jag redan sett.",
+          "en": "I have already seen that film.",
+          "mark": "Den filmen har jag"
+        },
+        {
+          "sv": "Det tror jag inte på.",
+          "en": "I don't believe that.",
+          "mark": "Det tror jag"
+        },
+        {
+          "sv": "Kaffe dricker hon aldrig.",
+          "en": "Coffee is something she never drinks.",
+          "mark": "Kaffe dricker hon"
+        },
+        {
+          "sv": "Sådana människor står jag inte ut med.",
+          "en": "People like that I can't stand.",
+          "mark": "Sådana människor står jag"
+        },
+        {
+          "sv": "Det där minns jag mycket väl.",
+          "en": "That I remember very well.",
+          "mark": "Det där minns jag"
+        }
+      ],
+      "text": {
+        "title": "Ett samtal om böcker",
+        "lines": [
+          {
+            "sv": "Har du läst Lena Bergs nya roman?",
+            "en": "Have you read Lena Berg's new novel?"
+          },
+          {
+            "sv": "Den har jag faktiskt köpt, men jag har inte hunnit börja på den.",
+            "en": "I have actually bought it, but I haven't had time to start it."
+          },
+          {
+            "sv": "Hennes förra bok läste jag på två dagar.",
+            "en": "Her last book I read in two days."
+          },
+          {
+            "sv": "Den kan jag inte påstå att jag förstod.",
+            "en": "I can't say I understood that one."
+          },
+          {
+            "sv": "Slutet har jag fortfarande inte riktigt smält.",
+            "en": "I still haven't quite digested the ending."
+          },
+          {
+            "sv": "Det håller jag med om. Det var konstigt.",
+            "en": "I agree with that. It was strange."
+          },
+          {
+            "sv": "Men språket kommer jag aldrig att glömma.",
+            "en": "But the language I will never forget."
+          },
+          {
+            "sv": "Den första meningen kan jag nästan utantill.",
+            "en": "I almost know the first sentence by heart."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 1,
+          "mark": "Den har jag"
+        },
+        {
+          "line": 2,
+          "mark": "Hennes förra bok läste jag"
+        },
+        {
+          "line": 3,
+          "mark": "Den kan jag"
+        },
+        {
+          "line": 4,
+          "mark": "Slutet har jag"
+        },
+        {
+          "line": 5,
+          "mark": "Det håller jag"
+        },
+        {
+          "line": 6,
+          "mark": "språket kommer jag"
+        },
+        {
+          "line": 7,
+          "mark": "Den första meningen kan jag"
+        }
+      ]
+    },
+    {
+      "id": "G-C1-04",
+      "level": "C1",
+      "name": "Long phrases before the noun: den nyligen renoverade stationen",
+      "explain_en": "Written Swedish can put a whole participle phrase in front of a noun, where English uses a clause after it: den av kommunen renoverade stationen (\"the station renovated by the council\"). It is compact but formal.",
+      "how_to_spot": "Look for den, det, de, en or ett followed by several words and a participle before the noun.",
+      "examples": [
+        {
+          "sv": "Den nyligen renoverade stationen öppnar i dag.",
+          "en": "The recently renovated station opens today.",
+          "mark": "Den nyligen renoverade stationen"
+        },
+        {
+          "sv": "En av regeringen tillsatt utredning ska se över frågan.",
+          "en": "An inquiry appointed by the government will look into the matter.",
+          "mark": "En av regeringen tillsatt utredning"
+        },
+        {
+          "sv": "De under helgen insamlade pengarna går till välgörenhet.",
+          "en": "The money collected over the weekend goes to charity.",
+          "mark": "De under helgen insamlade pengarna"
+        },
+        {
+          "sv": "Det sedan länge planerade mötet ställdes in.",
+          "en": "The long-planned meeting was cancelled.",
+          "mark": "Det sedan länge planerade mötet"
+        }
+      ],
+      "text": {
+        "title": "Nyheter i korthet",
+        "lines": [
+          {
+            "sv": "Den sedan länge omdiskuterade bron över älven invigs i helgen.",
+            "en": "The long-debated bridge over the river will be opened this weekend."
+          },
+          {
+            "sv": "Det av kommunen beställda konstverket på torget har fått blandad kritik.",
+            "en": "The artwork on the square commissioned by the council has had mixed reviews."
+          },
+          {
+            "sv": "Den i förra veckan försvunna hunden har hittats välbehållen.",
+            "en": "The dog that went missing last week has been found safe and sound."
+          },
+          {
+            "sv": "De under sommaren uppmätta temperaturerna var de högsta på femtio år.",
+            "en": "The temperatures measured during the summer were the highest in fifty years."
+          },
+          {
+            "sv": "En av grannarna startad insamling har redan gett över hundra tusen kronor.",
+            "en": "A collection started by the neighbours has already raised over a hundred thousand kronor."
+          },
+          {
+            "sv": "Det länge efterlängtade badhuset öppnar först nästa år.",
+            "en": "The long-awaited swimming pool will not open until next year."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Den sedan länge omdiskuterade bron"
+        },
+        {
+          "line": 1,
+          "mark": "Det av kommunen beställda konstverket"
+        },
+        {
+          "line": 2,
+          "mark": "Den i förra veckan försvunna hunden"
+        },
+        {
+          "line": 3,
+          "mark": "De under sommaren uppmätta temperaturerna"
+        },
+        {
+          "line": 4,
+          "mark": "En av grannarna startad insamling"
+        },
+        {
+          "line": 5,
+          "mark": "Det länge efterlängtade badhuset"
+        }
+      ]
+    },
+    {
+      "id": "G-C2-01",
+      "level": "C2",
+      "name": "Old wish forms: vore, må, leve",
+      "explain_en": "A few old subjunctive forms survive in formal and fixed language. Vore means \"would be\": Det vore bra om … Others live on in set phrases and toasts: Leve brudparet!, Gud bevare oss, Må bästa lag vinna.",
+      "how_to_spot": "Look for vore, må, leve or bevare used to express a wish or something unreal.",
+      "examples": [
+        {
+          "sv": "Det vore dumt att tacka nej.",
+          "en": "It would be foolish to say no.",
+          "mark": "vore"
+        },
+        {
+          "sv": "Om jag vore du, skulle jag vänta.",
+          "en": "If I were you, I would wait.",
+          "mark": "vore"
+        },
+        {
+          "sv": "Vore det inte enklare att fråga?",
+          "en": "Wouldn't it be easier to ask?",
+          "mark": "Vore"
+        },
+        {
+          "sv": "Må bästa lag vinna!",
+          "en": "May the best team win!",
+          "mark": "Må"
+        },
+        {
+          "sv": "Leve brudparet!",
+          "en": "Long live the bride and groom!",
+          "mark": "Leve"
+        },
+        {
+          "sv": "Gud bevare oss för sådana idéer.",
+          "en": "God save us from ideas like that.",
+          "mark": "bevare"
+        }
+      ],
+      "text": {
+        "title": "Tal på bröllopet",
+        "lines": [
+          {
+            "sv": "Kära Johan och Sofia, det vore omöjligt att sammanfatta er historia på fem minuter.",
+            "en": "Dear Johan and Sofia, it would be impossible to sum up your story in five minutes."
+          },
+          {
+            "sv": "Om jag vore lite modigare, skulle jag berätta om er första dejt.",
+            "en": "If I were a little braver, I would tell you about your first date."
+          },
+          {
+            "sv": "Den slutade, som ni vet, på akuten.",
+            "en": "It ended, as you know, in A&E."
+          },
+          {
+            "sv": "Gud bevare oss för fler sådana dejter!",
+            "en": "God save us from any more dates like that!"
+          },
+          {
+            "sv": "Men ni hittade varandra, och det vore svårt att tänka sig ett bättre par.",
+            "en": "But you found each other, and it would be hard to imagine a better couple."
+          },
+          {
+            "sv": "Må ni alltid skratta lika mycket som i kväll.",
+            "en": "May you always laugh as much as tonight."
+          },
+          {
+            "sv": "Må era gräl vara korta och era försoningar långa.",
+            "en": "May your quarrels be short and your reconciliations long."
+          },
+          {
+            "sv": "Höj nu era glas: leve brudparet!",
+            "en": "Now raise your glasses: long live the bride and groom!"
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "vore"
+        },
+        {
+          "line": 1,
+          "mark": "vore"
+        },
+        {
+          "line": 3,
+          "mark": "bevare"
+        },
+        {
+          "line": 4,
+          "mark": "vore"
+        },
+        {
+          "line": 5,
+          "mark": "Må"
+        },
+        {
+          "line": 6,
+          "mark": "Må"
+        },
+        {
+          "line": 7,
+          "mark": "leve"
+        }
+      ]
+    },
+    {
+      "id": "G-C2-02",
+      "level": "C2",
+      "name": "Dropping har and hade: som han skrivit",
+      "explain_en": "In written Swedish, the helper verb har or hade is often left out in subordinate clauses, leaving just the supine: Hon sa att hon redan ätit (\"had already eaten\"). It is never left out in a main clause.",
+      "how_to_spot": "In a clause after att, som, när, eftersom or sedan, look for a supine (-at, -t, -it) with no har or hade before it.",
+      "examples": [
+        {
+          "sv": "Hon sa att hon redan ätit.",
+          "en": "She said she had already eaten.",
+          "mark": "redan ätit"
+        },
+        {
+          "sv": "Boken, som först getts ut 1945, blev en klassiker.",
+          "en": "The book, first published in 1945, became a classic.",
+          "mark": "först getts ut"
+        },
+        {
+          "sv": "Eftersom vi inte hunnit packa, fick vi skynda oss.",
+          "en": "Since we hadn't had time to pack, we had to hurry.",
+          "mark": "inte hunnit"
+        },
+        {
+          "sv": "När han väl bestämt sig, ändrade han sig aldrig.",
+          "en": "Once he had made up his mind, he never changed it.",
+          "mark": "väl bestämt"
+        },
+        {
+          "sv": "Det är det bästa jag någonsin läst.",
+          "en": "It is the best thing I have ever read.",
+          "mark": "någonsin läst"
+        }
+      ],
+      "text": {
+        "title": "Fyren",
+        "lines": [
+          {
+            "sv": "Fyren på Stora Ören, som stått tom sedan sextiotalet, ska nu bli vandrarhem.",
+            "en": "The lighthouse on Stora Ören, which has stood empty since the sixties, is now to become a hostel."
+          },
+          {
+            "sv": "Föreningen som köpt den har länge sökt pengar till en renovering.",
+            "en": "The association that has bought it has long been looking for money for a renovation."
+          },
+          {
+            "sv": "Sedan kommunen till slut beviljat ett bidrag, kunde arbetet börja i våras.",
+            "en": "Once the council had finally granted funding, the work could start this spring."
+          },
+          {
+            "sv": "Snickarna berättar att de aldrig sett så välbevarade golv.",
+            "en": "The carpenters say they have never seen such well-preserved floors."
+          },
+          {
+            "sv": "Den siste fyrvaktaren, som bott här i trettio år, lämnade efter sig dagböcker.",
+            "en": "The last lighthouse keeper, who had lived here for thirty years, left diaries behind."
+          },
+          {
+            "sv": "Av dem framgår att han ofta varit ensam i veckor.",
+            "en": "They show that he had often been alone for weeks."
+          },
+          {
+            "sv": "Den som övernattat i fyren säger sig förstå honom.",
+            "en": "Anyone who has spent a night in the lighthouse says they understand him."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "stått tom"
+        },
+        {
+          "line": 1,
+          "mark": "som köpt"
+        },
+        {
+          "line": 2,
+          "mark": "beviljat"
+        },
+        {
+          "line": 3,
+          "mark": "aldrig sett"
+        },
+        {
+          "line": 4,
+          "mark": "som bott"
+        },
+        {
+          "line": 5,
+          "mark": "ofta varit"
+        },
+        {
+          "line": 6,
+          "mark": "övernattat"
+        }
+      ]
+    },
+    {
+      "id": "G-C2-03",
+      "level": "C2",
+      "name": "No matter how: hur … än, vad … än",
+      "explain_en": "To say \"however, whatever, whoever\", Swedish frames a clause with a question word and än: Hur mycket jag än försöker, lyckas jag inte. Vad du än gör, ring inte honom.",
+      "how_to_spot": "Look for hur, vad, vem, var, vart or när followed later in the same clause by än.",
+      "examples": [
+        {
+          "sv": "Hur mycket jag än försöker, lyckas jag inte.",
+          "en": "However hard I try, I don't succeed.",
+          "mark": "Hur mycket jag än försöker"
+        },
+        {
+          "sv": "Vad du än gör, ring inte honom.",
+          "en": "Whatever you do, don't call him.",
+          "mark": "Vad du än gör"
+        },
+        {
+          "sv": "Vem du än frågar, får du olika svar.",
+          "en": "Whoever you ask, you get a different answer.",
+          "mark": "Vem du än frågar"
+        },
+        {
+          "sv": "Var hon än bodde, saknade hon havet.",
+          "en": "Wherever she lived, she missed the sea.",
+          "mark": "Var hon än bodde"
+        },
+        {
+          "sv": "Hur det än går, är jag stolt över dig.",
+          "en": "Whatever happens, I'm proud of you.",
+          "mark": "Hur det än går"
+        }
+      ],
+      "text": {
+        "title": "Om att skriva",
+        "lines": [
+          {
+            "sv": "Hur länge jag än sitter vid skrivbordet, kommer det ibland inga ord.",
+            "en": "However long I sit at my desk, sometimes no words come."
+          },
+          {
+            "sv": "Vad jag än skriver, låter det som något jag läst förut.",
+            "en": "Whatever I write sounds like something I have read before."
+          },
+          {
+            "sv": "Min gamla lärare brukade säga att man ska skriva varje dag, hur dåligt det än blir.",
+            "en": "My old teacher used to say you should write every day, however bad it turns out."
+          },
+          {
+            "sv": "Vem man än frågar bland författare, får man samma svar.",
+            "en": "Whichever writer you ask, you get the same answer."
+          },
+          {
+            "sv": "Inspiration är en lyx; arbete är en vana.",
+            "en": "Inspiration is a luxury; work is a habit."
+          },
+          {
+            "sv": "Så jag skriver, hur trött jag än är och vart tankarna än vill ta vägen.",
+            "en": "So I write, however tired I am and wherever my thoughts want to go."
+          },
+          {
+            "sv": "Hur det än går med boken, har jag åtminstone försökt.",
+            "en": "Whatever happens with the book, I will at least have tried."
+          }
+        ]
+      },
+      "spot": [
+        {
+          "line": 0,
+          "mark": "Hur länge jag än sitter"
+        },
+        {
+          "line": 1,
+          "mark": "Vad jag än skriver"
+        },
+        {
+          "line": 2,
+          "mark": "hur dåligt det än blir"
+        },
+        {
+          "line": 3,
+          "mark": "Vem man än frågar"
+        },
+        {
+          "line": 5,
+          "mark": "hur trött jag än är"
+        },
+        {
+          "line": 5,
+          "mark": "vart tankarna än vill"
+        },
+        {
+          "line": 6,
+          "mark": "Hur det än går"
+        }
+      ]
+    }
+  ]
+}
