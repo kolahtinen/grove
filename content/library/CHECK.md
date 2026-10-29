@@ -32,4 +32,19 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-09 | Fotbollsmatchen | reading | 82 | 9 | regna (B1), **blöt** (B2), paus (B1), tränare (B1), **halvlek** (B2), **sköt** (—), smutsig (B1) | passes |
 | A2-10 | Ett rum för två nätter | listening, dialogue | 92 | 8 | **familjerum** (—*), **parkering** (C1) | passes |
 
-20 of 20 texts pass.
+## B1 (10 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
+
+| id | title | kind | words | longest | above | result |
+|---|---|---|---|---|---|---|
+| B1-01 | Att jobba hemifrån | reading | 123 | 13 | **arbetsrum** (C2) | passes |
+| B1-02 | Midsommar | reading | 130 | 16 | **stång** (C2), löv (B2), **groda** (C1), **sill** (—), **krans** (C2), **kudde** (C1) | passes |
+| B1-03 | Tåget är försenat | reading, dialogue | 129 | 15 | **signalfel** (—), **åh** (—) | passes |
+| B1-04 | Läxhjälp på fritiden | reading | 128 | 18 | läxa (B2), **läxhjälpen** (—*) | passes |
+| B1-05 | Visning av en lägenhet | listening, dialogue | 130 | 11 | **femtiofem** (—), **kvadratmeter** (C1), balkong (B2), **tvättstuga** (C1), källare (B2), så länge (B2), **busshållplats** (C2) | passes |
+| B1-06 | Allemansrätten | reading | 129 | 17 | **allemansrätt** (—), svamp (B2), **paddla** (—), **kanot** (—), skräp (B2) | passes |
+| B1-07 | Varför sover vi så dåligt? | listening | 121 | 14 | **slappna** (C1), sovrum (B2) | passes |
+| B1-08 | Körkortet | reading | 123 | 17 | **trettiotvå** (—), körkort (B2), **parkera** (C1), **uppkörningen** (C1), **skolzon** (—*) | passes |
+| B1-09 | Sopsortering | reading | 122 | 18 | **sopa** (C1), diskbänk (B2), **kärl** (C1), **biogas** (—*), plast (B2), metall (B2), burk (B2), **batteri** (C1), **återvinningscentral** (C1), krånglig (B2) | passes |
+| B1-10 | Planer för sommaren | listening, dialogue | 125 | 13 | **vandrarhem** (C2), **färja** (C1) | passes |
+
+30 of 30 texts pass.
