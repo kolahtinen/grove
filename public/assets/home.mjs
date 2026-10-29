@@ -28,7 +28,7 @@ const TILES = [
   { id: 'mix', group: 'learning', label: 'Mix', name: 'Mix', line: 'Review first, then new texts, in one session.', body: () => sessionBody('mix') },
   { id: 'common', group: 'library', label: 'Common library', name: 'Common library', line: 'grove’s shared texts by topic, and the dictionary of every Swedish word.', body: () => [link('/library', 'Open the common library', 'button-link main')] },
   { id: 'yours', group: 'library', label: 'Your library', name: 'Your library', line: 'Your texts by topic, Add a text, your dictionary and your leaves.', body: yoursBody },
-  { id: 'progress', group: 'progress', label: 'Progress', name: 'Progress', line: 'Your level, today’s minutes and the last 14 days.', body: () => [link('/progress', 'Open Progress', 'button-link main')] },
+  { id: 'progress', group: 'progress', label: 'Progress', name: 'Progress', line: 'What you’ve read and heard, your words, and your level since you started.', body: () => [link('/progress', 'Open Progress', 'button-link main')] },
 ];
 const GROUPS = [['learning', 'Learning'], ['library', 'Library'], ['progress', 'Progress']];
 

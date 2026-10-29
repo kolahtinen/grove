@@ -20,4 +20,4 @@ Said done 2026-10-29.
 
 ## Applied
 
-RQ-448 (requirements from sketches, docs/requirements.md); G-09 FR-924 (Progress as version B, "this week" as the last 7 days), FR-925 (minutes per kind, picked-up time), user story 9, SC-009, FR-910; G-04 FR-415 points to them; data model migration 019; contract for `/api/progress` and `/api/input`'s kind. Next: regen(store, drill, client).
+RQ-448 (requirements from sketches, docs/requirements.md); G-09 FR-924 (Progress as version B, "this week" as the last 7 days), FR-925 (minutes per kind, picked-up time), user story 9, SC-009, FR-910; G-04 FR-415 points to them; data model migration 019; contract for `/api/progress` and `/api/input`'s kind. Built 2026-10-29: regen(store, drill, demo, client).

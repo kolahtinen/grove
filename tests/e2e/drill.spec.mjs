@@ -165,14 +165,33 @@ test('FR-413 RQ-294 RQ-413 RQ-415 RQ-426: To remember words are teal-green with 
   await expect(page.locator('button.w.other-reading')).toHaveCount(0);
 });
 
-test('FR-414 FR-415 FR-910 RQ-03 RQ-71 RQ-427: Progress shows the level line, today\'s minutes and 14 day bars', async ({ page }) => {
+test('FR-924 FR-414 RQ-448 RQ-03: Progress shows started → now with today\'s minutes, four cards that open their details, the last 7 days and since you started', async ({ page }) => {
   await signIn(page);
-  // With level word lists present (G-06), the line shows the level; without them, "Set your starting level" (FR-414, FR-608).
   await page.goto('/progress');
   await expect(page.locator('#progress-level')).toContainText(/Your level: |Set your starting level/);
-  await expect(page.locator('#progress-level')).toContainText('min of input today');
-  await expect(page.locator('#bars .bar')).toHaveCount(14);
-  await expect(page.locator('#progress-counts')).toContainText('words in your ground');
+  await expect(page.locator('#progress-today')).toHaveText(/^today \d+ min$/);
+  await expect(page.locator('#progress-levels .lv .k').first()).toHaveText('Started');
+  const cards = page.locator('#progress-stats a.stat');
+  await expect(cards).toHaveCount(4);
+  await expect(cards.locator('.k')).toHaveText(['Read this week', 'Listened this week', 'Leaves (drilling)', 'In your ground']);
+  await expect(cards.first().locator('.v')).toHaveText(/^\d+ min$/);
+  await expect(cards.first().locator('.w')).toHaveText(/words$/);
+  await expect(page.locator('#week-chart .week-bar')).toHaveCount(7);
+  await expect(page.locator('#week-chart .legend')).toContainText('Listened');
+  await expect(page.locator('#since')).toContainText('from your starting level');
+  // The demo learner's minutes, read in the last 7 days (G-07), are on the bars.
+  const read = await page.evaluate(async () => (await (await fetch('/api/progress')).json()).last7.read);
+  await expect(cards.first().locator('.v')).toHaveText(`${read} min`);
+  await cards.nth(3).click();
+  await expect(page).toHaveURL(/#ground$/);
+  await expect(page.locator('#view-words')).toBeVisible();
+  await expect(page.locator('#words-body')).toContainText('Where your words came from');
+  await expect(page.locator('.way-back a')).toHaveText('‹ Progress');
+  await page.locator('#tab-leaves').click();
+  await expect(page.locator('#words-body h2')).toHaveText('Picked up for drilling');
+  await page.locator('.way-back a').click();
+  await expect(page.locator('#view-main')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
 test('FR-416 RQ-73: the welcome card shows on a first visit and stays gone after closing', async ({ page }, info) => {

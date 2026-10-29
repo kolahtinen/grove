@@ -531,7 +531,8 @@ document.getElementById('ratings').addEventListener('click', (event) => {
   if (event.target.closest('button')) setTimeout(offerMarking, 300);
 });
 if (data?.rating && data?.marking > 0) offerMarking();
-startHeartbeat();
+// G-09 FR-925: listening while listening mode is open, reading otherwise.
+startHeartbeat(() => ($('listening-card') && !$('listening-card').hidden ? 'listening' : 'reading'));
 
 // G-05: listening mode (FR-501…FR-508): blurred text, Play with highlighting, replay with count, loop,
 // speed, the one-time voice help, then the questions.

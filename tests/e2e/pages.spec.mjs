@@ -25,10 +25,10 @@ test('FR-910 RQ-427: Settings holds the speech speed with its note and the voice
   await expect(page.locator('#no-restart')).toBeVisible();
 });
 
-test('FR-910 RQ-427 RQ-229: Account shows the email, Sign out and how to ask for an export or deletion; Progress shows the level and today\'s minutes', async ({ page }) => {
+test('FR-910 FR-924 RQ-427 RQ-229 RQ-448: Account shows the email, Sign out and how to ask for an export or deletion; Progress shows the level and today\'s minutes', async ({ page }) => {
   await signIn(page);
   await page.goto('/progress');
-  await expect(page.locator('#progress-level')).toContainText('min of input today');
+  await expect(page.locator('#progress-today')).toHaveText(/^today \d+ min$/);
   await page.goto('/profile');
   await expect(page.locator('#account-email-page')).toHaveText(REVIEWER.email);
   await expect(page.locator('main')).toContainText('To get a copy of your data, or to have it deleted, ask the owner.');

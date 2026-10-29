@@ -96,7 +96,8 @@ export function createProgress({ db, now = () => Date.now() }) {
       const firstText = texts.length ? texts.map((x) => x.day).sort()[0] : null;
       return {
         today: { minutes: minutes(accountId, iso(t)) },
-        level: { start: settings?.start_level ?? null, startAt: settings?.start_at ?? null, now: computeLevel(db, accountId), coverage },
+        // Now: the ground's level once it gives one, else the one picked or checked (G-06 FR-605).
+        level: { start: settings?.start_level ?? null, startAt: settings?.start_at ?? null, now: levelFor(db, accountId), coverage },
         week,
         last7: { read: sumOf('read'), listen: sumOf('listen'), readWords: sumOf('readWords'), listenWords: sumOf('listenWords') },
         leaves: {

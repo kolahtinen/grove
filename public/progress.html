@@ -17,14 +17,23 @@
 </div>
 </header>
 <main>
-<section class="card">
-<h2>Progress</h2>
+<div id="view-main">
+<section class="card progress-head">
+<div class="card-head"><h2>Progress</h2><span class="small muted" id="progress-today"></span></div>
+<div class="levels" id="progress-levels"></div>
 <p id="progress-level"></p>
-<h3 class="small">Minutes of reading and listening, last 14 days</h3>
-<div class="bars" id="bars"></div>
-<p class="small muted" id="progress-counts"></p>
-<p><a href="/">Back to Home</a></p>
+<p class="small"><a href="#level" id="to-level">How your level is found ›</a></p>
 </section>
+<div class="stat-grid" id="progress-stats"></div>
+<section class="card"><h2>Last 7 days, each day</h2><div id="week-chart"></div></section>
+<section class="card"><h2>Since you started <span class="small muted" id="since-date"></span></h2><dl class="stat-rows" id="since"></dl></section>
+</div>
+<div id="view-days" hidden><section class="card"><h2>Last 7 days, day by day</h2><ul class="day-list" id="day-list"></ul></section></div>
+<div id="view-words" hidden><section class="card">
+<div class="switch-group" role="group" aria-label="Which words"><button type="button" id="tab-leaves" aria-pressed="true">Leaves</button><button type="button" id="tab-ground" aria-pressed="false">Ground</button></div>
+<div id="words-body"></div></section></div>
+<div id="view-level" hidden><section class="card"><h2>Your level</h2><div id="level-body"></div></section></div>
 </main>
+
 </body>
 </html>
