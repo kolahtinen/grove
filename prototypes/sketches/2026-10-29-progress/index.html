@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Progress</title>
+<!-- A UI sketch (docs/sketching.md). Throwaway: never copied into the build. Made-up data only, nothing saved.
+     Colours, font and parts copied from public/assets/grove.css (palette 14, G-09 FR-913) on 2026-10-29. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+/* ---- grove's tokens (copied from grove.css): dark by default, light by the device or the switch ---- */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A;
+  --card2: #222822;
+  --ink: #E9EBE3;
+  --muted: #9AA095;
+  --line: rgba(233,235,227,.10);
+  --accent: #6FA27E;
+  --accent2: #97C3A2;
+  --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2;
+  --muted-strong: #B9BDB2;
+  --onacc: #0F110E;
+  --soft: rgba(111,162,126,.16);
+  --bad: #E07A6E;
+  --bad-bg: rgba(224,122,110,.15);
+  --ok: #8FCB7E;
+  --wood: #C9A27E;
+  --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0;
+  --gpk: #E3A46E;
+  --skel: rgba(233,235,227,.08);
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --bad: #A14646; --bad-bg: #F3E1DC; --ok: #3C7738; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --skel: rgba(38,36,31,.08);
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --bad: #A14646; --bad-bg: #F3E1DC; --ok: #3C7738; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --skel: rgba(38,36,31,.08);
+}
+
+/* ---- base type (grove A.2) ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+h3 { font-size: .95rem; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+textarea { display: block; width: 100%; margin: .3rem 0 .6rem; font: inherit; font-size: .9rem; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; resize: vertical; }
+
+/* ---- the sketch's own frame around the app ---- */
+.sk { max-width: 1040px; margin: 0 auto; padding: 1rem 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-note { border-left: 3px solid var(--accent); background: var(--soft); border-radius: 6px; padding: .5rem .7rem; font-size: .9rem; margin: .4rem 0 .8rem; }
+.sk-head ul { margin: .2rem 0 .8rem; padding-left: 1.2rem; font-size: .9rem; }
+.sk-head li + li { margin-top: .2rem; }
+.sk-brief { font-size: .92rem; }
+.sk-controls { position: static; z-index: 30; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); padding: .5rem 0; margin: 0 -16px 1rem; padding-left: 16px; padding-right: 16px; display: flex; flex-direction: column; gap: .4rem; }
+.seg-row { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .5rem; }
+.seg-row > .seg-label { font-size: .75rem; color: var(--muted); min-width: 3.6rem; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: .25rem; }
+.seg button { padding: .3rem .65rem; font-size: .82rem; border-radius: 999px; min-height: 34px; }
+.seg button[aria-selected="true"], .seg button[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--link); font-weight: 700; }
+@media (min-width: 700px) and (min-height: 700px) { .sk-controls { position: sticky; top: 0; } }
+.version-line { font-size: .88rem; margin: 0 0 .7rem; }
+.stage { display: flex; justify-content: center; }
+.frame { width: 380px; max-width: 100%; border: 1px solid var(--line); border-radius: 28px; overflow: hidden; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); container-type: inline-size; min-height: 640px; }
+.frame.desktop { width: 1000px; border-radius: 14px; }
+.sk-pick { margin-top: 2rem; }
+.sk-pick fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 .9rem; }
+.sk-pick legend { font-weight: 700; padding: 0 .3rem; }
+.opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 40px; font-size: .92rem; }
+.opt input { margin-top: .35rem; accent-color: var(--accent); flex: none; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+.qhelp { font-size: .84rem; color: var(--muted); margin: 0 0 .3rem; }
+pre.answers { white-space: pre-wrap; word-break: break-word; font-size: .78rem; background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+
+/* ---- grove's app parts (copied from grove.css) ---- */
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .62rem; color: var(--muted); line-height: 1.15; }
+.menu-button { margin-left: auto; min-width: 44px; min-height: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.app main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 3rem; }
+.way-back { margin: 0 0 .5rem; }
+.way-back a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--link); text-decoration: none; cursor: pointer; }
+.group-title { font-size: .95rem; margin: .4rem 0 .5rem; color: var(--ink); }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0 0 1rem; }
+button.tile { aspect-ratio: 1; display: flex; flex-direction: column; gap: .35rem; align-items: center; justify-content: center; padding: 0; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--accent); box-shadow: var(--shadow); }
+button.tile .icon { width: 36%; height: 36%; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+button.tile[aria-expanded="true"] { border-color: var(--accent); background: var(--soft); }
+.tile-label { font-size: .78rem; font-weight: 600; line-height: 1.15; color: var(--ink); text-align: center; padding: 0 .3rem; }
+.tile-panel { grid-column: 1 / -1; margin: 0; }
+.tile-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.tile-head h2 { margin: 0; }
+button.tile-close { min-width: 44px; min-height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+button.tile-close .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.welcome { border-color: var(--accent); }
+.level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); }
+
+/* ---- new parts for this sketch ---- */
+.stat-rows { display: grid; grid-template-columns: auto 1fr; gap: .25rem .9rem; margin: 0 0 .7rem; align-items: baseline; }
+.stat-rows dt { color: var(--muted); font-size: .85rem; }
+.stat-rows dd { margin: 0; }
+.mw b { font-size: 1.02rem; }
+.mw .w { display: block; font-size: .8rem; color: var(--muted); }
+.mw.inline .w { display: inline; }
+.more { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--link); text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; }
+.card-head { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
+.card-head h2 { margin-bottom: .3rem; }
+.levels { display: flex; align-items: center; gap: .6rem; }
+.lv { display: flex; flex-direction: column; align-items: center; padding: .4rem .8rem; border-radius: 16px; background: var(--card2); border: 1px solid var(--line); min-width: 4.6rem; }
+.lv .k { font-size: .7rem; color: var(--muted); }
+.lv .v { font-size: 1.35rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+.lv.now { border-color: var(--accent); background: var(--soft); }
+.lv-arrow { color: var(--muted); font-size: 1.1rem; }
+.today { font-size: .9rem; }
+.stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin: 0 0 .9rem; }
+@container (min-width: 600px) { .stat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+button.stat { text-align: left; display: flex; flex-direction: column; gap: .1rem; padding: .7rem .8rem; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); min-height: 44px; }
+button.stat .k { font-size: .75rem; color: var(--muted); font-weight: 500; }
+button.stat .v { font-size: 1.25rem; font-weight: 700; line-height: 1.25; }
+button.stat .w { font-size: .78rem; color: var(--muted); }
+button.stat .go { font-size: .75rem; color: var(--link); font-weight: 700; margin-top: .2rem; }
+.hero { font-size: 2rem; font-weight: 700; line-height: 1.1; margin: .2rem 0 .1rem; }
+.hero-sub { color: var(--muted); font-size: .88rem; margin: 0 0 .6rem; }
+.chart { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--font); }
+.chart .hit { fill: transparent; cursor: pointer; }
+.chart .col.dim .mark { opacity: .55; }
+.readout { min-height: 2.6em; font-size: .84rem; color: var(--muted-strong); margin: .2rem 0 .6rem; }
+.legend { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .8rem; color: var(--muted-strong); margin: 0 0 .3rem; padding: 0; list-style: none; }
+.legend li { display: inline-flex; align-items: center; gap: .35rem; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.sw.read { background: var(--accent); }
+.sw.listen { background: repeating-linear-gradient(45deg, var(--gpk) 0 3px, color-mix(in srgb, var(--gpk) 55%, var(--card)) 3px 4.5px); }
+.sw.start { background: var(--muted); }
+.sw.known { background: var(--accent); }
+.sw.fell { background: var(--gpk); }
+.switch { display: inline-flex; gap: 0; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--card2); margin: 0 0 .8rem; }
+.switch button { border: 0; border-radius: 999px; padding: .4rem .95rem; min-height: 40px; background: transparent; font-size: .88rem; }
+.switch button[aria-pressed="true"] { background: var(--soft); color: var(--link); font-weight: 700; box-shadow: inset 0 0 0 1px var(--accent); }
+.day-list, .item-list { list-style: none; margin: 0; padding: 0; }
+.day-list li, .item-list li { padding: .5rem 0; border-top: 1px solid var(--line); }
+.day-list .d { font-weight: 700; }
+.day-list .today-tag { font-size: .7rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--link); margin-left: .35rem; }
+.day-list .parts { display: flex; flex-wrap: wrap; gap: .1rem 1rem; font-size: .86rem; }
+.item-list li { display: flex; justify-content: space-between; gap: .6rem; align-items: baseline; }
+.item-list .sv { font-weight: 700; }
+.item-list .en { color: var(--muted); font-size: .86rem; }
+.item-list .when { color: var(--muted); font-size: .75rem; white-space: nowrap; }
+.kind { font-size: .7rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; border: 1px solid var(--gpk); color: var(--gpk); margin-left: .3rem; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin: 0 0 .6rem; }
+.box { padding: .6rem .7rem; border-radius: 16px; background: var(--card2); border: 1px solid var(--line); }
+.box .k { font-size: .75rem; color: var(--muted); display: block; }
+.box .v { font-size: 1rem; white-space: nowrap; font-weight: 700; display: block; line-height: 1.3; }
+.box .d { font-size: .78rem; color: var(--muted-strong); display: block; }
+.empty-chart { border: 1px dashed var(--line); border-radius: 16px; padding: .9rem; text-align: center; color: var(--muted); font-size: .88rem; margin: .4rem 0 .8rem; }
+.skel { background: var(--skel); border-radius: 12px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) { .skel { animation: none; } button { transition: none; } }
+.skel.line { height: .9rem; margin: .45rem 0; }
+.skel.block { height: 130px; margin: .6rem 0; }
+.skel.tile { aspect-ratio: 1; border-radius: 22px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="sk">
+
+<header class="sk-head">
+  <h1>Sketch: Progress</h1>
+  <p class="small muted">29 Oct 2026 · round 1 · a sketch (docs/sketching.md): made-up data, nothing is saved, never copied into grove.</p>
+  <p class="small"><b>The note it answers, B-27:</b></p>
+  <p class="sk-note">"Progress page should have: 1) how much you've read a) ever b) this week c) on each day this week 2) how much you listened 3) how many words/grammar patterns you've picked up for drilling 4) how many words/grammar patterns you've gotten in your ground 5) your starting level vs your current level"</p>
+  <p class="small"><b>Questions it settles</b></p>
+  <ul>
+    <li>How the Progress page is laid out: one long page (A), a summary row with details below (B), or this week first with Ever behind a switch (C).</li>
+    <li>Which details open from it (the week's days, your words and patterns, your level) and how they look.</li>
+    <li>What happens to today's parts (the level line, today's minutes, the 14 day bars) — and the four questions under the sketch.</li>
+    <li>Already decided (question-pages/85, 2): reading and listening count as <b>minutes first, words underneath</b>; day bars in minutes.</li>
+  </ul>
+  <p class="small"><b>Brief</b></p>
+  <p class="sk-brief">Home → the Progress tile → the Progress page, with three details behind it: this week day by day, your words and patterns (leaves and ground), and your level from start to now.<br>
+  Kept from today: the level line (now "started at A1, now A2") and today's minutes. Moved: the leaves and ground counts become their own section with words and patterns apart. Dropped: the 14 day bars, replaced by this week's days Mon–Sun (C's Ever shows one bar per week instead).<br>
+  Open: which layout, the four questions at the bottom, and anything you'd change in your own words.</p>
+</header>
+
+<div class="sk-controls" id="controls">
+  <div class="seg-row"><span class="seg-label">Version</span><div class="seg" role="tablist" aria-label="Version" id="seg-version"></div></div>
+  <div class="seg-row"><span class="seg-label">State</span><div class="seg" role="tablist" aria-label="State" id="seg-state"></div></div>
+  <div class="seg-row"><span class="seg-label">Screen</span><div class="seg" role="tablist" aria-label="Screen" id="seg-screen"></div></div>
+  <div class="seg-row"><span class="seg-label">View</span><div class="seg" aria-label="Width" id="seg-width"></div><div class="seg" aria-label="Look" id="seg-theme"></div></div>
+</div>
+
+<p class="version-line" id="version-line"></p>
+<div class="stage"><div class="frame" id="frame"><div class="app" id="app"></div></div></div>
+
+<section class="sk-pick" aria-labelledby="pick-title">
+  <h2 id="pick-title">Your pick</h2>
+  <p class="small muted">Pick a version, say what you'd change in your own words, then answer what you like below; blanks take the default. Say "done" in Claude Code when finished. Nothing here is saved by the page.</p>
+  <fieldset>
+    <legend>Which version?</legend>
+    <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"> <span><b>A</b> — one long page, sections in the note's order</span></label>
+    <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"> <span><b>B</b> — summary cards on top, the week and Ever below</span></label>
+    <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"> <span><b>C</b> — this week first, Ever behind a switch</span></label>
+  </fieldset>
+  <fieldset>
+    <legend>Comments</legend>
+    <label class="small" for="comment-A">On A</label><textarea id="comment-A" rows="3"></textarea>
+    <label class="small" for="comment-B">On B</label><textarea id="comment-B" rows="3"></textarea>
+    <label class="small" for="comment-C">On C</label><textarea id="comment-C" rows="3"></textarea>
+  </fieldset>
+  <div id="questions"></div>
+  <button type="button" class="main" id="show-answers">Show my answers</button>
+  <pre class="answers" id="answers" hidden></pre>
+</section>
+</div>
+
+<script>
+'use strict';
+// ---------- made-up data: an A2 learner a month in (started 29 Sep 2026 at A1; today Thu 29 Oct) ----------
+const LEARNER = {
+  since: '29 Sep',
+  level: { start: 'A1', startHow: 'picked, then checked: 7 of 30 sample words unknown', startDate: '29 Sep', now: 'A2', nowSince: '22 Oct',
+    coverage: [['A1', 97], ['A2', 91], ['B1', 6], ['B2', 1], ['C1', 0], ['C2', 0]] },
+  week: [
+    { d: 'Mon', date: '26 Oct', read: 14, readW: 980, listen: 6, listenW: 540 },
+    { d: 'Tue', date: '27 Oct', read: 9, readW: 610, listen: 4, listenW: 350 },
+    { d: 'Wed', date: '28 Oct', read: 0, readW: 0, listen: 0, listenW: 0 },
+    { d: 'Thu', date: '29 Oct', read: 12, readW: 850, listen: 7, listenW: 610, today: true },
+    { d: 'Fri', date: '30 Oct', future: true },
+    { d: 'Sat', date: '31 Oct', future: true },
+    { d: 'Sun', date: '1 Nov', future: true },
+  ],
+  weeks: [
+    { d: '29 Sep', date: 'week of 29 Sep', read: 58, readW: 3600, listen: 20, listenW: 1700 },
+    { d: '6 Oct', date: 'week of 6 Oct', read: 81, readW: 5300, listen: 31, listenW: 2700 },
+    { d: '13 Oct', date: 'week of 13 Oct', read: 104, readW: 7100, listen: 52, listenW: 4500 },
+    { d: '20 Oct', date: 'week of 20 Oct', read: 134, readW: 9460, listen: 66, listenW: 5900 },
+    { d: '27 Oct', date: 'this week, so far', read: 35, readW: 2440, listen: 17, listenW: 1500, today: true },
+  ],
+  ever: { read: 412, readW: 27900, listen: 186, listenW: 16300 },
+  leaves: { words: 64, patterns: 9, weekWords: 23, weekPatterns: 3, everWords: 287, everPatterns: 14 },
+  ground: { words: 2742, patterns: 5, weekWords: 41, weekPatterns: 1, fromStart: 1362, fromReading: 1157, fell: 223 },
+  recentLeaves: [
+    ['försenad', 'delayed', 'today'], ['ändå', 'anyway', 'today'], ['hyresvärd', 'landlord', 'Tue'],
+    ['påminna', 'remind', 'Tue'], ['bekväm', 'comfortable', 'Mon'], ['ska + infinitive', 'future: Jag ska läsa', 'Mon', true],
+    ['inverted order after time words', 'Idag läser jag', 'Mon', true], ['tvätta', 'wash', 'Mon'],
+  ],
+  recentGround: [
+    ['kanske', 'maybe', 'today'], ['trött', 'tired', 'today'], ['fönster', 'window', 'Tue'],
+    ['glömma', 'forget', 'Tue'], ['-t on adjectives with ett-words', 'ett stort hus', 'Mon', true], ['grannar', 'neighbours', 'Mon'],
+  ],
+};
+const NEWCOMER = {
+  since: 'today',
+  level: { start: null, startHow: 'I\'m a complete beginner', startDate: '29 Oct', now: null, nowSince: null,
+    coverage: [['A1', 0], ['A2', 0], ['B1', 0], ['B2', 0], ['C1', 0], ['C2', 0]] },
+  week: LEARNER.week.map((d) => (d.future ? d : { ...d, read: 0, readW: 0, listen: 0, listenW: 0 })),
+  weeks: [{ d: '27 Oct', date: 'this week, so far', read: 0, readW: 0, listen: 0, listenW: 0, today: true }],
+  ever: { read: 0, readW: 0, listen: 0, listenW: 0 },
+  leaves: { words: 0, patterns: 0, weekWords: 0, weekPatterns: 0, everWords: 0, everPatterns: 0 },
+  ground: { words: 0, patterns: 0, weekWords: 0, weekPatterns: 0, fromStart: 0, fromReading: 0, fell: 0 },
+  recentLeaves: [], recentGround: [],
+};
+
+// ---------- the sketch's state (in memory only) ----------
+const S = { version: 'A', status: 'normal', screen: 'home', width: 'phone', theme: 'auto', tileOpen: false, cTab: 'week', wordsTab: 'leaves', sel: {} };
+const VERSIONS = {
+  A: 'A — one long page: Level, then Reading, Listening, and Words and patterns, each a card with its own week bars, in the order of the note.',
+  B: 'B — a summary: your level, then four cards (read, listened, leaves, ground) that open their details; one combined week chart and an Ever table below.',
+  C: 'C — this week first: a big total, the week\'s bars and this week\'s words; a switch shows Ever (one bar per week since you started).',
+};
+const STATES = [['normal', 'Normal'], ['empty', 'Empty (new learner)'], ['error', 'Error'], ['loading', 'Loading']];
+const SCREENS = [['home', 'Home'], ['progress', 'Progress'], ['days', 'Week by day'], ['words', 'Words and patterns'], ['level', 'Level']];
+
+const fmt = (n) => n.toLocaleString('en-US');
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const data = () => (S.status === 'empty' ? NEWCOMER : LEARNER);
+const sum = (arr, k) => arr.reduce((a, d) => a + (d[k] || 0), 0);
+const mw = (min, words, verb) => `<span class="mw"><b>${fmt(min)} min</b>${verb ? ` ${verb}` : ''}<span class="w">${fmt(words)} words</span></span>`;
+const go = (screen, label, cls = 'more') => `<button type="button" class="${cls}" data-go="${screen}">${label}</button>`;
+
+// ---------- icons (paths from icons.mjs) ----------
+const PATHS = {
+  discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
+  review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  mix: ['M12 21v-7', 'M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5z', 'M4.5 14A8 8 0 0 1 17 5.3', 'M17.5 2v4h-4'],
+  common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
+  yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
+  progress: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20v-10'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+};
+const icon = (n) => `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${PATHS[n].map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+
+// ---------- charts (SVG, to scale, labels in the theme's text tokens) ----------
+let chartN = 0;
+function niceStep(max) {
+  for (const s of [5, 10, 20, 25, 50, 100]) if (max / s <= 4) return s;
+  return 200;
+}
+function topRounded(x, y, w, h, r) {
+  r = Math.min(r, h, w / 2);
+  return `M${x},${y + h}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h}Z`;
+}
+// cats: [{d, date, read, listen, future, today}]; keys: which series to stack, bottom first.
+function barChart(id, cats, keys) {
+  const n = ++chartN;
+  const W = 320, H = 170, L = 30, R = 6, T = 18, B = 34;
+  const pw = W - L - R, ph = H - T - B;
+  const totals = cats.map((c) => (c.future ? 0 : keys.reduce((a, k) => a + c[k], 0)));
+  const step = niceStep(Math.max(10, ...totals));
+  const max = Math.ceil(Math.max(10, ...totals) / step) * step;
+  const y = (v) => T + ph - (v / max) * ph;
+  const colW = pw / cats.length, bw = Math.min(30, colW * 0.62);
+  let g = `<defs><pattern id="hatch${n}" patternUnits="userSpaceOnUse" width="4.5" height="4.5" patternTransform="rotate(45)"><rect width="4.5" height="4.5" style="fill:var(--gpk)"/><rect width="1.5" height="4.5" style="fill:var(--card);opacity:.45"/></pattern></defs>`;
+  for (let v = 0; v <= max; v += step) {
+    g += `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" style="stroke:var(--line);stroke-width:1"/>`;
+    g += `<text x="${L - 6}" y="${y(v) + 3.5}" text-anchor="end" style="fill:var(--muted);font-size:10px">${v}</text>`;
+  }
+  g += `<text x="${L - 6}" y="${T - 7}" text-anchor="end" style="fill:var(--muted);font-size:9px">min</text>`;
+  cats.forEach((c, i) => {
+    const cx = L + colW * i + colW / 2, x = cx - bw / 2;
+    const sel = S.sel[id] === i;
+    g += `<g class="col${sel ? ' sel' : ''}${S.sel[id] !== undefined && !sel ? ' dim' : ''}">`;
+    if (c.future) {
+      g += `<line x1="${x}" x2="${x + bw}" y1="${y(0)}" y2="${y(0)}" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:2 3"/>`;
+    } else {
+      let base = 0;
+      const live = keys.filter((k) => c[k] > 0);
+      live.forEach((k, j) => {
+        const top = base + c[k];
+        const y0 = y(base), y1 = y(top);
+        const hgt = Math.max(0, y0 - y1 - (j > 0 ? 2 : 0));
+        const fill = k === 'read' ? 'fill:var(--accent)' : `fill:url(#hatch${n})`;
+        const shape = j === live.length - 1 ? `<path class="mark" d="${topRounded(x, y1, bw, hgt, 4)}" style="${fill}"/>` : `<rect class="mark" x="${x}" y="${y1}" width="${bw}" height="${hgt}" style="${fill}"/>`;
+        g += shape;
+        base = top;
+      });
+      const t = totals[i];
+      g += `<text x="${cx}" y="${y(t) - 5}" text-anchor="middle" style="fill:var(--muted-strong);font-size:10px;font-weight:700">${t}</text>`;
+    }
+    g += `<text x="${cx}" y="${H - B + 15}" text-anchor="middle" style="fill:var(--${c.today ? 'ink' : 'muted'});font-size:10.5px;font-weight:${c.today ? 700 : 400}">${esc(c.d)}</text>`;
+    if (c.today) g += `<text x="${cx}" y="${H - B + 28}" text-anchor="middle" style="fill:var(--link);font-size:9px;font-weight:700">${cats.length > 5 ? 'today' : 'now'}</text>`;
+    g += `<rect class="hit" data-chart="${id}" data-i="${i}" x="${L + colW * i}" y="${T}" width="${colW}" height="${H - T}"><title>${esc(c.date)}</title></rect>`;
+    g += '</g>';
+  });
+  const names = { read: 'Read', listen: 'Listened' };
+  const legend = keys.length > 1 ? `<ul class="legend">${keys.map((k) => `<li><span class="sw ${k}"></span>${names[k]}</li>`).join('')}</ul>` : '';
+  const sel = S.sel[id];
+  const readout = sel === undefined ? 'Tap a bar to see its minutes and words.' : readoutText(cats[sel], keys);
+  return `${legend}<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(keys.map((k) => names[k]).join(' and '))} minutes per ${cats.length > 5 ? 'day' : 'week'}">${g}</svg><p class="readout" aria-live="polite">${readout}</p>`;
+}
+function readoutText(c, keys) {
+  if (c.future) return `<b>${esc(c.d)} ${esc(c.date)}</b> · still to come`;
+  const parts = keys.map((k) => (k === 'read' ? `read ${c.read} min · ${fmt(c.readW)} words` : `listened ${c.listen} min · ${fmt(c.listenW)} words`));
+  return `<b>${esc(c.d.length <= 3 ? `${c.d} ${c.date}` : c.date)}</b>${c.today && c.d.length <= 3 ? ' (today)' : ''}: ${parts.join('; ')}`;
+}
+function levelChart(cov, start, now) {
+  const W = 320, rowH = 24, T = 20, L = 30, R = 44, H = T + rowH * cov.length + 6;
+  const pw = W - L - R;
+  const x = (p) => L + (p / 100) * pw;
+  let g = `<line x1="${x(90)}" x2="${x(90)}" y1="${T - 6}" y2="${H - 4}" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 3"/>`;
+  g += `<text x="${x(90)}" y="${T - 9}" text-anchor="end" style="fill:var(--muted);font-size:9.5px">90% reaches a level</text>`;
+  cov.forEach(([lv, p], i) => {
+    const yy = T + i * rowH;
+    g += `<text x="0" y="${yy + 14}" style="fill:var(--${lv === now ? 'ink' : 'muted-strong'});font-size:11px;font-weight:${lv === now ? 700 : 400}">${lv}</text>`;
+    g += `<rect x="${L}" y="${yy + 4}" width="${pw}" height="12" rx="4" style="fill:var(--line)"/>`;
+    if (p > 0) g += `<rect x="${L}" y="${yy + 4}" width="${Math.max(4, (p / 100) * pw)}" height="12" rx="4" style="fill:var(--${p >= 90 ? 'accent' : 'accent2'});opacity:${p >= 90 ? 1 : .6}"/>`;
+    const tag = lv === now && lv === start ? ' start, now' : lv === now ? ' now' : lv === start ? ' start' : '';
+    g += `<text x="${W - R + 6}" y="${yy + 14}" style="fill:var(--muted-strong);font-size:10.5px;font-weight:700">${p}%</text>`;
+    if (tag) g += `<text x="${L + 6}" y="${yy + 14}" style="fill:var(--onacc);font-size:9px;font-weight:700">${tag.trim()}</text>`;
+  });
+  return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Share of each level's words in your ground">${g}</svg>`;
+}
+function groundBar(g) {
+  const total = g.fromStart + g.fromReading + g.fell;
+  if (!total) return '<div class="empty-chart">Your ground is empty for now. Words join it when you read them and know them, and when your leaves fall.</div>';
+  const W = 320, pw = W, parts = [['start', g.fromStart, 'var(--muted)'], ['known', g.fromReading, 'var(--accent)'], ['fell', g.fell, 'var(--gpk)']];
+  let x = 0, s = '';
+  parts.forEach(([, v, c], i) => {
+    const w = (v / total) * pw - (i < parts.length - 1 ? 2 : 0);
+    s += `<rect x="${x}" y="0" width="${Math.max(0, w)}" height="16" rx="3" style="fill:${c}"/>`;
+    x += (v / total) * pw;
+  });
+  return `<svg class="chart" viewBox="0 0 ${W} 16" role="img" aria-label="Where your ground's words came from">${s}</svg>
+  <ul class="legend" style="margin-top:.5rem"><li><span class="sw start"></span>${fmt(g.fromStart)} from your starting level</li><li><span class="sw known"></span>${fmt(g.fromReading)} known when you read</li><li><span class="sw fell"></span>${fmt(g.fell)} fell from your leaves</li></ul>`;
+}
+
+// ---------- shared pieces ----------
+const topbar = () => `<header class="topbar"><div class="topbar-inner">
+  <span class="brand"><svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg><span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span>
+  <button type="button" class="menu-button" aria-label="Menu (not part of this sketch)">☰</button></div></header>`;
+const back = (to, label) => `<p class="way-back"><a data-go="${to}" role="button" tabindex="0">‹ ${label}</a></p>`;
+function levelText(d) {
+  if (!d.level.start) return 'Your level: below A1 · you started as a complete beginner';
+  return `Your level: ${d.level.now} · you started at ${d.level.start}`;
+}
+function todayMin(d) { const t = d.week.find((x) => x.today); return t.read + t.listen; }
+function levelBoxes(d, big) {
+  const st = d.level.start || 'Beginner', nw = d.level.now || 'below A1';
+  const fs = (t) => (t.length > 3 ? ' style="font-size:1rem"' : big ? '' : ' style="font-size:1.15rem"');
+  return `<div class="levels"><div class="lv"><span class="k">Started</span><span class="v"${fs(st)}>${st}</span><span class="k">${d.level.startDate}</span></div><span class="lv-arrow" aria-hidden="true">→</span><div class="lv now"><span class="k">Now</span><span class="v"${fs(nw)}>${nw}</span><span class="k">${d.level.nowSince ? `since ${d.level.nowSince}` : 'today'}</span></div></div>`;
+}
+const nothingYet = (what) => `<div class="empty-chart">No ${what} yet this week. ${go('home', 'Start from Discover ›')}</div>`;
+const isEmpty = (d) => d.ever.read + d.ever.listen === 0;
+
+// ---------- screens ----------
+function homeScreen() {
+  const d = data();
+  const tiles = (group, list) => `<section><h2 class="group-title">${group}</h2><div class="tiles">${list.map(([id, label]) =>
+    `<button type="button" class="tile" id="tile-${id}" ${id === 'progress' ? `data-tile="progress" aria-expanded="${S.tileOpen}"` : 'aria-disabled="true" title="Not part of this sketch"'}>${icon(id)}<span class="tile-label">${label}</span></button>`).join('')}
+    ${group === 'Progress' && S.tileOpen ? `<section class="card tile-panel"><div class="tile-head"><h2>Progress</h2><button type="button" class="bar-button tile-close" data-tile="progress" aria-label="Close">${icon('close')}</button></div>
+      <p class="muted">${isEmpty(d) ? 'What you read and hear, your words and your level will show here.' : 'What you\'ve read and heard, your words, and your level since you started.'}</p>
+      <button type="button" class="main" data-go="progress">Open Progress</button></section>` : ''}</div></section>`;
+  const welcome = S.status === 'empty' ? '<section class="card welcome"><h2>Welcome to grove</h2><p class="small">Words you save become leaves; leaves you know fall into your ground. (Today\'s welcome card, unchanged.)</p><button type="button" class="main">Got it</button></section>' : '';
+  return welcome + tiles('Learning', [['discover', 'Discover'], ['review', 'Review'], ['mix', 'Mix']]) + tiles('Library', [['common', 'Common library'], ['yours', 'Your library']]) + tiles('Progress', [['progress', 'Progress']])
+    + '<p class="small muted">The Progress tile\'s line changes from "Your level, today\'s minutes and the last 14 days" to the one above.</p>';
+}
+
+function progressA(d) {
+  const w = d.week, e = isEmpty(d);
+  const rw = sum(w, 'read'), rww = sum(w, 'readW'), lw = sum(w, 'listen'), lww = sum(w, 'listenW');
+  return `<section class="card"><h2>Progress</h2>${levelBoxes(d)}<p class="today" style="margin-top:.6rem"><b>${todayMin(d)} min</b> of reading and listening today</p></section>
+  <section class="card"><div class="card-head"><h2>Reading</h2></div>
+    <dl class="stat-rows"><dt>Ever</dt><dd>${mw(d.ever.read, d.ever.readW)}</dd><dt>This week</dt><dd>${mw(rw, rww)}</dd></dl>
+    <h3 class="small muted" style="margin:0">Each day this week, minutes</h3>${e ? nothingYet('reading') : barChart('a-read', w, ['read'])}
+    ${go('days', 'Week day by day ›')}</section>
+  <section class="card"><div class="card-head"><h2>Listening</h2></div>
+    <dl class="stat-rows"><dt>Ever</dt><dd>${mw(d.ever.listen, d.ever.listenW)}</dd><dt>This week</dt><dd>${mw(lw, lww)}</dd></dl>
+    <h3 class="small muted" style="margin:0">Each day this week, minutes</h3>${e ? nothingYet('listening') : barChart('a-listen', w, ['listen'])}
+    ${go('days', 'Week day by day ›')}</section>
+  <section class="card"><h2>Words and grammar patterns</h2>
+    <div class="two"><div class="box"><span class="k">Picked up for drilling (leaves)</span><span class="v">${fmt(d.leaves.words)} words</span><span class="v">${d.leaves.patterns} patterns</span>${d.leaves.weekWords ? `<span class="d">+${d.leaves.weekWords} words, +${d.leaves.weekPatterns} patterns this week</span>` : ''}</div>
+    <div class="box"><span class="k">In your ground</span><span class="v">${fmt(d.ground.words)} words</span><span class="v">${d.ground.patterns} patterns</span>${d.ground.weekWords ? `<span class="d">+${d.ground.weekWords} words, +${d.ground.weekPatterns} pattern${d.ground.weekPatterns === 1 ? '' : 's'} this week</span>` : ''}</div></div>
+    ${e ? '<p class="small muted">Tap a word while you read to pick it up as a leaf.</p>' : ''}${go('words', 'See your words and patterns ›')}</section>
+  <section class="card"><h2>Level</h2><p>${levelText(d)}</p>${go('level', 'How your level is found ›')}</section>`;
+}
+
+function progressB(d) {
+  const w = d.week, e = isEmpty(d);
+  const rw = sum(w, 'read'), rww = sum(w, 'readW'), lw = sum(w, 'listen'), lww = sum(w, 'listenW');
+  const stat = (k, v, sub, to, tab) => `<button type="button" class="stat" data-go="${to}"${tab ? ` data-tab="${tab}"` : ''}><span class="k">${k}</span><span class="v">${v}</span><span class="w">${sub}</span><span class="go">Details ›</span></button>`;
+  return `<section class="card"><div class="card-head"><h2>Progress</h2><span class="small muted">today ${todayMin(d)} min</span></div>${levelBoxes(d, true)}<p style="margin:.6rem 0 0">${go('level', 'How your level is found ›')}</p></section>
+  <div class="stat-grid">
+    ${stat('Read this week', `${rw} min`, `${fmt(rww)} words`, 'days')}
+    ${stat('Listened this week', `${lw} min`, `${fmt(lww)} words`, 'days')}
+    ${stat('Leaves (drilling)', `${fmt(d.leaves.words)} words`, `${d.leaves.patterns} grammar patterns`, 'words', 'leaves')}
+    ${stat('In your ground', `${fmt(d.ground.words)} words`, `${d.ground.patterns} grammar patterns`, 'words', 'ground')}
+  </div>
+  <section class="card"><h2>This week, each day</h2>${e ? nothingYet('reading or listening') : barChart('b-week', w, ['read', 'listen'])}</section>
+  <section class="card"><h2>Since you started <span class="small muted">(${d.since})</span></h2>
+    <dl class="stat-rows"><dt>Read</dt><dd>${mw(d.ever.read, d.ever.readW)}</dd><dt>Listened</dt><dd>${mw(d.ever.listen, d.ever.listenW)}</dd>
+    <dt>Picked up</dt><dd><b>${fmt(d.leaves.everWords)} words</b> <span class="muted small">· ${d.leaves.everPatterns} patterns</span></dd>
+    <dt>Ground</dt><dd><b>${fmt(d.ground.words)} words</b> <span class="muted small">· ${d.ground.patterns} patterns</span><span class="mw"><span class="w">${fmt(d.ground.fromStart)} of them from your starting level</span></span></dd></dl></section>`;
+}
+
+function progressC(d) {
+  const w = d.week, e = isEmpty(d);
+  const rw = sum(w, 'read'), rww = sum(w, 'readW'), lw = sum(w, 'listen'), lww = sum(w, 'listenW');
+  const sw = `<div class="switch" role="group" aria-label="Period"><button type="button" data-ctab="week" aria-pressed="${S.cTab === 'week'}">This week</button><button type="button" data-ctab="ever" aria-pressed="${S.cTab === 'ever'}">Ever</button></div>`;
+  if (S.cTab === 'week') {
+    return `${sw}<section class="card"><h2>This week</h2><p class="hero">${rw + lw} min</p><p class="hero-sub">of reading and listening · ${fmt(rww + lww)} words · today ${todayMin(d)} min</p>
+      <dl class="stat-rows"><dt>Read</dt><dd>${mw(rw, rww)}</dd><dt>Listened</dt><dd>${mw(lw, lww)}</dd></dl>
+      ${e ? nothingYet('reading or listening') : barChart('c-week', w, ['read', 'listen'])}${go('days', 'Day by day ›')}</section>
+    <section class="card"><h2>Your words this week</h2><div class="two">
+      <div class="box"><span class="k">Picked up</span><span class="v">+${d.leaves.weekWords} words</span><span class="v">+${d.leaves.weekPatterns} patterns</span><span class="d">${fmt(d.leaves.words)} leaves now</span></div>
+      <div class="box"><span class="k">Fell into your ground</span><span class="v">+${d.ground.weekWords} words</span><span class="v">+${d.ground.weekPatterns} pattern${d.ground.weekPatterns === 1 ? '' : 's'}</span><span class="d">${fmt(d.ground.words)} in your ground</span></div></div>
+      ${go('words', 'See them ›')}</section>
+    <section class="card"><p style="margin:0">${levelText(d)}</p>${go('level', 'Level ›')}</section>`;
+  }
+  const wk = d.weeks;
+  return `${sw}<section class="card"><h2>Since you started <span class="small muted">(${d.since})</span></h2><p class="hero">${fmt(d.ever.read + d.ever.listen)} min</p><p class="hero-sub">of reading and listening · ${fmt(d.ever.readW + d.ever.listenW)} words</p>
+      <dl class="stat-rows"><dt>Read</dt><dd>${mw(d.ever.read, d.ever.readW)}</dd><dt>Listened</dt><dd>${mw(d.ever.listen, d.ever.listenW)}</dd></dl>
+      <h3 class="small muted" style="margin:0">Each week, minutes</h3>${e ? nothingYet('reading or listening') : barChart('c-ever', wk, ['read', 'listen'])}</section>
+    <section class="card"><h2>Your words</h2><div class="two">
+      <div class="box"><span class="k">Leaves now</span><span class="v">${fmt(d.leaves.words)} words</span><span class="v">${d.leaves.patterns} patterns</span><span class="d">${fmt(d.leaves.everWords)} words ever picked up</span></div>
+      <div class="box"><span class="k">In your ground</span><span class="v">${fmt(d.ground.words)} words</span><span class="v">${d.ground.patterns} patterns</span><span class="d">${fmt(d.ground.fromStart)} from your starting level</span></div></div>
+      ${go('words', 'See them ›')}</section>
+    <section class="card"><h2>Level</h2>${levelBoxes(d, true)}<p style="margin:.6rem 0 0">${go('level', 'How your level is found ›')}</p></section>`;
+}
+
+function daysScreen() {
+  const d = data(), w = d.week;
+  const rows = w.map((x) => `<li><span class="d">${x.d} ${x.date}</span>${x.today ? '<span class="today-tag">today</span>' : ''}
+    <div class="parts">${x.future ? '<span class="muted">still to come</span>' : x.read + x.listen === 0 ? '<span class="muted">nothing that day</span>' : `<span>Read ${mw(x.read, x.readW).replace('class="mw"', 'class="mw inline"').replace('<span class="w">', ' <span class="w">· ')}</span><span>Listened ${mw(x.listen, x.listenW).replace('class="mw"', 'class="mw inline"').replace('<span class="w">', ' <span class="w">· ')}</span>`}</div></li>`).join('');
+  return `${back('progress', 'Progress')}<section class="card"><h2>This week, day by day</h2><p class="small muted">Monday 26 Oct to Sunday 1 Nov. Minutes first, words underneath.</p>
+    ${isEmpty(d) ? nothingYet('reading or listening') : barChart('days', w, ['read', 'listen'])}
+    <ul class="day-list">${rows}</ul>
+    <p class="small muted" style="margin-top:.6rem">Week total: read ${sum(w, 'read')} min · ${fmt(sum(w, 'readW'))} words; listened ${sum(w, 'listen')} min · ${fmt(sum(w, 'listenW'))} words.</p></section>`;
+}
+
+function wordsScreen() {
+  const d = data(), leaves = S.wordsTab === 'leaves';
+  const sw = `<div class="switch" role="group" aria-label="Which words"><button type="button" data-wtab="leaves" aria-pressed="${leaves}">Leaves</button><button type="button" data-wtab="ground" aria-pressed="${!leaves}">Ground</button></div>`;
+  const list = (items, verb) => (items.length ? `<ul class="item-list">${items.map(([sv, en, when, pat]) => `<li><span><span class="sv">${esc(sv)}</span>${pat ? '<span class="kind">pattern</span>' : ''}<br><span class="en">${esc(en)}</span></span><span class="when">${verb} ${when}</span></li>`).join('')}</ul>` : '');
+  if (leaves) {
+    return `${back('progress', 'Progress')}${sw}<section class="card"><h2>Picked up for drilling</h2>
+      <div class="two"><div class="box"><span class="k">Words</span><span class="v">${fmt(d.leaves.words)}</span><span class="d">+${d.leaves.weekWords} this week · ${fmt(d.leaves.everWords)} ever</span></div>
+      <div class="box"><span class="k">Grammar patterns</span><span class="v">${d.leaves.patterns}</span><span class="d">+${d.leaves.weekPatterns} this week · ${d.leaves.everPatterns} ever</span></div></div>
+      ${d.recentLeaves.length ? `<h3 class="small muted">Picked up lately</h3>${list(d.recentLeaves, 'picked up')}<p style="margin:.6rem 0 0"><span class="more">All your leaves ›</span> <span class="small muted">(today's Leaves page)</span></p>` : '<div class="empty-chart">No leaves yet. Tap a word while you read and pick it up to drill it.</div>'}</section>`;
+  }
+  return `${back('progress', 'Progress')}${sw}<section class="card"><h2>In your ground</h2>
+    <div class="two"><div class="box"><span class="k">Words</span><span class="v">${fmt(d.ground.words)}</span><span class="d">+${d.ground.weekWords} this week</span></div>
+    <div class="box"><span class="k">Grammar patterns</span><span class="v">${d.ground.patterns}</span><span class="d">+${d.ground.weekPatterns} this week</span></div></div>
+    <h3 class="small muted">Where your words came from</h3>${groundBar(d.ground)}
+    ${d.recentGround.length ? `<h3 class="small muted" style="margin-top:.8rem">Fell lately</h3>${list(d.recentGround, 'fell')}` : ''}</section>`;
+}
+
+function levelScreen() {
+  const d = data();
+  return `${back('progress', 'Progress')}<section class="card"><h2>Your level</h2>${levelBoxes(d, true)}
+    <p class="small muted" style="margin-top:.6rem">Started: ${esc(d.level.startHow)} (${d.level.startDate}).</p>
+    <h3 class="small muted">Share of each level's words in your ground</h3>${levelChart(d.level.coverage, d.level.start, d.level.now)}
+    <p class="small muted" style="margin-top:.4rem">You reach a level when 90% of its words, and of every level below, are in your ground.${d.level.now ? ` B1 is next: ${d.level.coverage[2][1]}% so far.` : ' A1 is first.'}</p></section>`;
+}
+
+function loading() {
+  const S1 = '<div class="skel line" style="width:40%"></div>';
+  if (S.screen === 'home') return `<div class="skel line" style="width:30%"></div><div class="tiles">${'<div class="skel tile"></div>'.repeat(3)}</div><div class="skel line" style="width:30%"></div><div class="tiles">${'<div class="skel tile"></div>'.repeat(2)}</div>`;
+  const card = (n) => `<section class="card" aria-hidden="true">${S1}${'<div class="skel line"></div>'.repeat(n)}<div class="skel block"></div></section>`;
+  const head = S.screen === 'progress' ? '' : back('progress', 'Progress');
+  if (S.screen === 'progress' && S.version === 'B') return `<section class="card">${S1}<div class="skel line"></div></section><div class="stat-grid">${'<div class="skel" style="height:96px;border-radius:18px"></div>'.repeat(4)}</div>${card(1)}`;
+  return `${head}<p class="visually-hidden" aria-live="polite">Loading your progress…</p>${card(2)}${card(1)}`;
+}
+function errorView() {
+  const where = S.screen === 'home' ? 'Home' : 'your progress';
+  const head = S.screen === 'progress' || S.screen === 'home' ? '' : back('progress', 'Progress');
+  return `${head}<div class="message bad" role="alert">Couldn't load ${where}. Check your connection and try again.</div><button type="button" data-retry>Try again</button>`;
+}
+
+function render() {
+  const app = document.getElementById('app');
+  let body;
+  if (S.status === 'loading') body = loading();
+  else if (S.status === 'error') body = errorView();
+  else if (S.screen === 'home') body = homeScreen();
+  else if (S.screen === 'progress') body = ({ A: progressA, B: progressB, C: progressC })[S.version](data());
+  else if (S.screen === 'days') body = daysScreen();
+  else if (S.screen === 'words') body = wordsScreen();
+  else body = levelScreen();
+  if ((S.status === 'normal' || S.status === 'empty') && S.screen === 'progress') body = back('home', 'Home') + body;
+  app.innerHTML = `${topbar()}<main>${body}</main>`;
+  document.getElementById('frame').classList.toggle('desktop', S.width === 'desktop');
+  document.getElementById('version-line').textContent = VERSIONS[S.version];
+  renderControls();
+}
+
+// ---------- the sketch's controls ----------
+function segButtons(id, items, current, key, role = 'tab') {
+  const box = document.getElementById(id);
+  box.innerHTML = items.map(([v, label]) => `<button type="button" ${role === 'tab' ? 'role="tab"' : ''} ${role === 'tab' ? 'aria-selected' : 'aria-pressed'}="${current === v}" data-set="${key}" data-val="${v}">${label}</button>`).join('');
+}
+function renderControls() {
+  segButtons('seg-version', [['A', 'A'], ['B', 'B'], ['C', 'C']], S.version, 'version');
+  segButtons('seg-state', STATES, S.status, 'status');
+  segButtons('seg-screen', SCREENS, S.screen, 'screen');
+  segButtons('seg-width', [['phone', 'Phone'], ['desktop', 'Desktop']], S.width, 'width', 'toggle');
+  segButtons('seg-theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']], S.theme, 'theme', 'toggle');
+}
+function setTheme(t) {
+  S.theme = t;
+  if (t === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t);
+}
+
+document.getElementById('controls').addEventListener('click', (ev) => {
+  const b = ev.target.closest('[data-set]');
+  if (!b) return;
+  const k = b.dataset.set, v = b.dataset.val;
+  if (k === 'theme') setTheme(v); else S[k] = v;
+  if (k === 'screen' && v === 'home') S.tileOpen = false;
+  render();
+});
+
+document.getElementById('app').addEventListener('click', (ev) => {
+  const t = ev.target;
+  const hit = t.closest('.hit');
+  if (hit) { const id = hit.dataset.chart, i = Number(hit.dataset.i); S.sel[id] = S.sel[id] === i ? undefined : i; render(); return; }
+  const goEl = t.closest('[data-go]');
+  if (goEl) {
+    S.screen = goEl.dataset.go;
+    if (goEl.dataset.tab) S.wordsTab = goEl.dataset.tab;
+    if (S.screen === 'home') S.tileOpen = false;
+    render();
+    document.getElementById('frame').scrollIntoView({ block: 'start', behavior: 'smooth' });
+    return;
+  }
+  const tile = t.closest('[data-tile]');
+  if (tile) { S.tileOpen = !S.tileOpen; render(); return; }
+  const ct = t.closest('[data-ctab]');
+  if (ct) { S.cTab = ct.dataset.ctab; render(); return; }
+  const wt = t.closest('[data-wtab]');
+  if (wt) { S.wordsTab = wt.dataset.wtab; render(); return; }
+  if (t.closest('[data-retry]')) { S.status = 'loading'; render(); setTimeout(() => { S.status = 'normal'; render(); }, 900); }
+});
+document.getElementById('app').addEventListener('keydown', (ev) => {
+  if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches('a[data-go]')) { ev.preventDefault(); ev.target.click(); }
+});
+
+// ---------- questions the sketch raises (page UI only; blanks take the default, the first option) ----------
+const QUESTIONS = [
+  { id: 'q-week', text: 'What is "this week"?', help: 'The days the week bars and "this week" numbers cover.',
+    options: [['calendar', 'Monday to Sunday', 'Resets on Monday; days still to come show as dashes (as sketched).'], ['rolling', 'The last 7 days', 'Always seven full bars, ending today.']] },
+  { id: 'q-picked', text: 'The "picked up for drilling" number shows…', help: 'Leaves fall into the ground when you know them, so the two numbers differ.',
+    options: [['now', 'The leaves you have now', 'For example 64 words, with "+23 this week" underneath.'], ['ever', 'Every word ever picked up', 'For example 287 words, including the ones that have fallen since.']] },
+  { id: 'q-ground', text: 'The ground number includes the words from your starting level?', help: 'An A1 start puts about 1,360 words in your ground at once.',
+    options: [['split', 'Yes, with the split shown underneath', '"2,742 words · 1,362 from your starting level".'], ['earned', 'No, only what you\'ve grown in grove', 'Read as known or fallen from leaves: 1,380 words here.']] },
+  { id: 'q-today', text: 'Today\'s minutes on the Progress page?', help: 'Home already shows them.',
+    options: [['keep', 'Keep them on Progress', 'A small "today 19 min" near the top (as sketched).'], ['home', 'Only on Home', 'Progress starts with the week.']] },
+];
+function renderQuestions() {
+  document.getElementById('questions').innerHTML = QUESTIONS.map((q, n) => `<fieldset><legend>${n + 1}. ${esc(q.text)}</legend><p class="qhelp">${esc(q.help)}</p>${q.options.map(([v, label, ex], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"> <span><b>${esc(label)}</b>${i === 0 ? '<span class="def">default</span>' : ''}<br><span class="small muted">${esc(ex)}</span></span></label>`).join('')}</fieldset>`).join('');
+}
+
+function collectAnswers() {
+  const picked = document.querySelector('input[name="pick"]:checked');
+  const answers = {
+    sketch: 'Sketch: Progress', note: 'B-27', round: 1,
+    pick: picked ? picked.value : null,
+    comments: { A: document.getElementById('comment-A').value.trim(), B: document.getElementById('comment-B').value.trim(), C: document.getElementById('comment-C').value.trim() },
+    questions: {},
+  };
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    const opt = q.options.find(([v]) => v === (c ? c.value : q.options[0][0]));
+    answers.questions[q.id] = { question: q.text, answer: opt[0], label: opt[1], defaulted: !c };
+  }
+  return answers;
+}
+window.collectAnswers = collectAnswers;
+document.getElementById('show-answers').addEventListener('click', () => {
+  const pre = document.getElementById('answers');
+  pre.hidden = false;
+  pre.textContent = JSON.stringify(collectAnswers(), null, 2);
+});
+
+renderQuestions();
+render();
+</script>
+</body>
+</html>
