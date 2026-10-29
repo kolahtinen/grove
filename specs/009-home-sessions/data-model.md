@@ -19,9 +19,22 @@ Migration `014-sessions.sql` (012 and 013 were taken by the Dictionary and adden
 
 Indexes: `UNIQUE (account_id) WHERE status = 'going'` (one going session per account; the reviewer's "last started wins"); `(account_id, started_at)`.
 
+## Migration 017 (addendum 006): tile, skill, harder questions only, the short-session offer
+
+`017-session-tiles.sql` adds four columns to `practice_sessions` (no table rebuild; `kind` keeps its four values) and fills them for the rows already there; it changes no other row.
+
+| Column | Type | Notes |
+|---|---|---|
+| `tile` | TEXT | `discover` \| `review` \| `mix` (FR-903). New sessions: `kind` `time` (from a tile) or `topic` (Practise this topic, always `mix`). Filled for old rows: `time`, `topic`, `skill` → `mix`; `mode` → `discover` for Discover, `review` for Review and Master |
+| `skill` | TEXT | `mix` \| `reading` \| `listening` \| `words` \| `grammar` (FR-906). Filled for old rows: `skill` sessions their `params.skill`, `words` for `words` (Words and phrases), all others `mix` |
+| `hard_only` | INTEGER NOT NULL DEFAULT 0 | 0 \| 1: Review's Harder questions only (FR-905). Filled 1 for old `mode` sessions of Master |
+| `offer` | TEXT | JSON or NULL: `{ missing: { reading: seconds, listening: seconds }, at: ms }`, the short-session offer's minutes missing per text kind and its time (FR-920, FR-923); the fill bars count texts added to the learner's library after `at`. NULL when no offer was made |
+
+The return link (FR-923) is this row: a page shows "‹ Back to your session" only while the learner's own going session has an `offer`.
+
 ## Exercise (inside `plan`)
 
-`{ mode: discover|review|master, type: text|reread|listen|review|master, seconds, textId?, lemma?, kind?, done: bool }`
+`{ mode: discover|review|master, type: text|reread|listen|review|master, seconds, textId?, lemma?, kind?, done: bool }` (addendum 006: new plans write a harder question as `mode: review, type: master`; old plans' `mode: master` items are shown as Review, FR-912)
 
 - `text`: read or hear an unread or unfinished text (the reading page; marking step after a first reading).
 - `reread`, `listen`: a text already read, read again or heard (pending PD-28).
