@@ -181,6 +181,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const report = ['# Library check', '', 'Written by `node scripts/check-library.mjs`: each text counted with grove\'s own word counting against the words at its level and below: the core list (`core-a1a2.tsv`) first, otherwise the lower of SweLLex (`vocab-graded/`) and Kelly (inflections, compounds and fixed phrases included). "Above" lists the words above the text\'s level with the level they first count at (— = in no list; * = in no list and not in the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.', ''];
   let failed = 0;
   let total = 0;
+  const byTopic = new Map(TOPICS.map((t) => [t, {}]));
+  const kinds = {};
   for (const level of LEVELS) {
     const file = join(LIB, 'texts', `${level}.json`);
     if (!existsSync(file)) continue;
@@ -196,6 +198,11 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     for (const text of texts) {
       const r = checkText(text, level);
       const before = checkText(text, level, 'kelly');
+      if (byTopic.has(text.topic)) byTopic.get(text.topic)[level] = (byTopic.get(text.topic)[level] ?? 0) + 1;
+      kinds[level] ??= { listening: 0, dialogue: 0, all: 0 };
+      kinds[level].all += 1;
+      if (text.kind === 'listening') kinds[level].listening += 1;
+      if (text.form === 'dialogue') kinds[level].dialogue += 1;
       total += 1;
       if (r.problems.length) failed += 1;
       const aboveList = [...r.above.entries()].map(([w, a]) => `${r.far.includes(w) ? `**${w}**` : w} (${a.level ?? '—'}${r.unknown.includes(w) ? '*' : ''})`).join(', ') || '—';
@@ -206,6 +213,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   report.push(`${total - failed} of ${total} texts pass.`, '');
   writeFileSync(join(LIB, 'CHECK.md'), report.join('\n'));
+
+  // TOPICS.md: the shared topics with texts per level (question-pages/77: the library is browsed by topic).
+  const used = LEVELS.filter((l) => kinds[l]);
+  const topics = ['# Library topics', '', 'The shared topics the library is browsed by (question-pages/77), with the number of texts at each level. Every text has one topic from this list and a level; the check fails a text that hasn\'t. Written by `node scripts/check-library.mjs`.', '',
+    `| Topic | ${used.join(' | ')} | All |`, `|---|${used.map(() => '---|').join('')}---|`];
+  for (const [topic, counts] of byTopic) topics.push(`| ${topic} | ${used.map((l) => counts[l] ?? 0).join(' | ')} | ${used.reduce((n, l) => n + (counts[l] ?? 0), 0)} |`);
+  topics.push(`| **All** | ${used.map((l) => kinds[l].all).join(' | ')} | ${total} |`, '', `| | ${used.join(' | ')} |`, `|---|${used.map(() => '---|').join('')}`,
+    `| Listening texts | ${used.map((l) => kinds[l].listening).join(' | ')} |`, `| Dialogues | ${used.map((l) => kinds[l].dialogue).join(' | ')} |`, '');
+  writeFileSync(join(LIB, 'TOPICS.md'), topics.join('\n'));
   console.log(`${total - failed}/${total} pass`);
   process.exit(failed ? 1 : 0);
 }

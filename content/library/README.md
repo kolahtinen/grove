@@ -42,19 +42,21 @@ Columns: `sv`, `pos` (Kelly's part of speech), `kind` (word or phrase), `level`,
 
 ## Texts: `texts/<level>.json`
 
-30 texts so far, written by Claude in the owner's absence and **not yet read by a Swedish speaker**:
+50 texts so far, written by Claude and **not yet read by a Swedish speaker**. They join the library only once the owner has approved them (question-pages/77). Every text has a `level` and one `topic` from the shared set in `TOPICS.md`; the library is browsed by topic, and the level filter shows all levels up to the chosen one.
 
 | Level | Texts | Words each | Listening | Dialogues | Topics |
 |---|---|---|---|---|---|
 | A1 | 10 | 54–66, present tense, sentences ≤ 8 words | 3 | 4 | me and my family, daily life, food and drink, home, shopping, weather, getting around, work, free time, health |
 | A2 | 10 | 82–92, past tense and simple clauses | 4 | 3 | travel, work, celebrations, health, home, food, culture, free time |
 | B1 | 10 | 121–130, longer sentences and reasons | 3 | 3 | work, culture, getting around, society, home, nature, health, everyday life, environment, free time |
+| B2 | 10 | 181–198, mixed tenses, opinions, a few idioms | 4 | 3 | one per shared topic (late parenthood, a cashless society, fika, flatmates, a four-day week, night trains, a book circle, children and screens, the wolf, a first election) |
+| C1 | 10 | 261–281, complex syntax, idioms in moderation | 3 | 3 | one per shared topic (loneliness, lagom, food waste, a mortgage meeting, changing career, a car-free centre, Astrid Lindgren, burnout, the forest debate, trust) |
 
 Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with `sv` and `en`, `questions` with `q`, `options`, `answer`), so it passes `validateAnswer`. It also has library fields that an import would read and drop: `id`, `topic`, `form` (prose or dialogue), `names` (names the counting should skip) and `above_level`. `above_level` is the text's glossary: every word above its level, written by `node scripts/check-library.mjs --fill` from what the check finds. Its forms come from the word list's lookup and want a look (e.g. "bakat" is listed as "bakad").
 
 ## The check: `CHECK.md`
 
-`node scripts/check-library.mjs` counts each text with grove's own word counting (`server/words`: the tokenizer, regular and irregular inflections, compounds, fixed phrases) against the words at its level and below. A word's level comes from the core list first, otherwise the lower of SweLLex and Kelly. CHECK.md also shows each text's far words against Kelly alone (before) and now. Because of the frequency bands above, a word **one band up** is a stretch (reported, not limited). Words **two or more bands up, or not in Kelly**, are "far" and limited: A1 ≤ 4, A2 ≤ 5, B1 ≤ 7 per text, each word counted once. A text also fails outside its word range (A1 50–80, A2 80–120, B1 120–180), with a sentence over the level's length (10, 14, 20 words), with an unlisted word above its level, or when it fails G-02's answer format. **All 30 pass.**
+`node scripts/check-library.mjs` counts each text with grove's own word counting (`server/words`: the tokenizer, regular and irregular inflections, compounds, fixed phrases) against the words at its level and below. A word's level comes from the core list first, otherwise the lower of SweLLex and Kelly. CHECK.md also shows each text's far words against Kelly alone (before) and now. Because of the frequency bands above, a word **one band up** is a stretch (reported, not limited). Words **two or more bands up, or not in Kelly**, are "far" and limited: A1 ≤ 4, A2 ≤ 5, B1 ≤ 7 per text, each word counted once. A text also fails outside its word range (A1 50–80, A2 80–120, B1 120–180, B2 180–250, C1 250–350, C2 300–400; counted words, names left out), with a sentence over the level's length (10, 14, 20 words), with an unlisted word above its level, or when it fails G-02's answer format. **All 30 pass.**
 
 ## To decide (owner)
 
@@ -62,4 +64,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2. **Where the library lives in grove**: PD-17 (inside Texts, by topic with a level filter) and PD-18 (your lessons first, published with "Publish to library").
 3. **Who reviews the texts**: PD-23 proposes that Claude drafts and you read each text once. These 30 are ready for that read.
 4. **The `pos` and `none` gaps** (537 words): fill by hand, by a meanings prompt to the learner's AI (as G-02 does for words the list lacks), or leave out.
-5. **More levels**: B2–C2 texts weren't started; the limits are in the checker.
+5. **C2** texts weren't started; the limits are in the checker. A2 has no text yet in four topics (TOPICS.md).
+6. **Glossaries**: `above_level` uses each word's dictionary form, with a short hand-checked table for irregular forms (`GLOSSARY_FORMS` in the checker). Long words no list knows get their commonest ending undone by rule, so a few may still be off.
