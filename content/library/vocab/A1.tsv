@@ -1,0 +1,1354 @@
+# grove library vocabulary, level A1. Words from the Swedish Kelly list (Språkbanken, CC BY-SA 3.0 / LGPL 3.0); meanings from the English Wiktionary via kaikki.org (CC BY-SA 4.0). Built by scripts/build-library-vocab.mjs; see content/library/README.md.
+sv	pos	kind	level	en	flags	wpm
+andra	numeral	word	A1	second		1000000
+arton	numeral	word	A1	eighteen		1000000
+bakre	adjective	word	A1	rear; located at the end of something, or at the back of something		1000000
+brunch	noun-en	word	A1	brunch		1000000
+decimeter	noun-en	word	A1	a decimetre		1000000
+elva	numeral	word	A1	eleven		1000000
+ett	numeral	word	A1	a, an		1000000
+europa	proper name	word	A1	Europe		1000000
+fem	numeral	word	A1	five		1000000
+femte	numeral	word	A1	fifth		1000000
+femtio	numeral	word	A1	fifty; the number 50		1000000
+femton	numeral	word	A1	fifteen		1000000
+fjorton	numeral	word	A1	fourteen		1000000
+fjärde	numeral	word	A1	fourth		1000000
+främre	adjective	word	A1	located at the front or nearer the front; front, anterior, forward		1000000
+fyra	numeral	word	A1	four		1000000
+fyrtio	numeral	word	A1	forty; 40 in Arabic numerals		1000000
+första	numeral	word	A1	first		1000000
+grekland	proper name	word	A1	Greece		1000000
+göteborg	proper name	word	A1	Gothenburg		1000000
+hekto	noun-ett	word	A1	hectogram		1000000
+hela	noun-en	word	A1	to heal; especially through faith	pos	1000000
+hundra	numeral	word	A1	hundred; 100 in arabic numerals		1000000
+hundratusen	numeral	word	A1	hundred thousand		1000000
+hörsel	noun-en	word	A1	hearing		1000000
+inrikesminister	noun-en	word	A1	interior minister		1000000
+inrikespolitik	noun-en	word	A1	domestic policy		1000000
+italien	proper name	word	A1	Italy		1000000
+kina	proper name	word	A1	China		1000000
+kvällsmål	noun-ett	word	A1	evening meal		1000000
+känsel	noun-en	word	A1	touch, the sense used to detect physical contact		1000000
+mellanmål	noun-ett	word	A1	snack		1000000
+miljard	numeral	word	A1	A thousand million, 10⁹, a milliard.		1000000
+miljon	numeral	word	A1	A million, 10⁶.		1000000
+milligram	noun-ett	word	A1		none	1000000
+millimeter	noun-en	word	A1	millimetre		1000000
+morbror	noun-en	word	A1	maternal uncle		1000000
+månadsskifte	noun-ett	word	A1	a turn of the month		1000000
+nia	noun-en	word	A1	nine; the digit "9"		1000000
+nio	numeral	word	A1	nine		1000000
+nionde	numeral	word	A1	ninth		1000000
+nittio	numeral	word	A1	ninety		1000000
+nitton	numeral	word	A1	nineteen		1000000
+nordost	noun	word	A1	northeast		1000000
+norge	proper name	word	A1	Norway		1000000
+pingst	noun-en	word	A1	Pentecost		1000000
+polen	proper name	word	A1	Poland		1000000
+ryssland	proper name	word	A1	Russia		1000000
+sex	numeral	word	A1	six		1000000
+sexa	noun-en	word	A1	Number six.		1000000
+sextio	numeral	word	A1	sixty; the number 60		1000000
+sexton	numeral	word	A1	sixteen		1000000
+sju	numeral	word	A1	seven		1000000
+sjua	noun-en	word	A1	seven; the digit "7"		1000000
+sjunde	numeral	word	A1	seventh		1000000
+sjuttio	numeral	word	A1	seventy		1000000
+sjutton	numeral	word	A1	seventeen		1000000
+sjätte	numeral	word	A1	sixth		1000000
+stockholm	proper name	word	A1	Stockholm		1000000
+storasyster	noun-en	word	A1	a big sister, an older sister		1000000
+storbritannien	proper name	word	A1	Great Britain		1000000
+syd	noun	word	A1	towards south, southward		1000000
+sydväst	noun	word	A1	southwest		1000000
+sydöst	noun	word	A1	southeast		1000000
+syssling	noun-en	word	A1	second cousin		1000000
+tia	noun-en	word	A1	a number 10		1000000
+tio	numeral	word	A1	ten		1000000
+tionde	numeral	word	A1	tenth		1000000
+tiotusen	numeral	word	A1	ten thousand		1000000
+tjugo	numeral	word	A1	twenty		1000000
+tolv	numeral	word	A1	twelve		1000000
+tre	numeral	word	A1	three		1000000
+tredje	numeral	word	A1	third		1000000
+trettio	numeral	word	A1	thirty		1000000
+tretton	numeral	word	A1	thirteen		1000000
+tusen	numeral	word	A1	thousand		1000000
+två	numeral	word	A1	two		1000000
+utbildningsminister	noun-en	word	A1	a minister of education		1000000
+veckodag	noun-en	word	A1	weekday		1000000
+åtta	noun-en	word	A1	eight		1000000
+åttio	numeral	word	A1	eighty		1000000
+åttonde	numeral	word	A1	eighth		1000000
+änkeman	noun-en	word	A1	widower		1000000
+änkling	noun-en	word	A1	a widower		1000000
+ögonlock	noun-ett	word	A1	an eyelid		1000000
+och	conj	word	A1	and; used to connect two homogeneous words or phrases		26019.68
+vara	verb	word	A1	to be		23017.26
+i	prep	word	A1	The ninth letter of the Swedish alphabet, written in the Latin script.		19272.89
+ha	verb	word	A1	To have; to possess, or to have as a property; to come into possession of something concrete or abstract.	long	15983.31
+dess	pronoun	word	A1	its		15935.58
+det	pronoun	word	A1	it; third-person singular, referring to nouns of neuter gender. Nominative, accusative or dative	long	14582.21
+en	det	word	A1	object form of the indefinite pronoun man		14511.22
+som	pronoun	word	A1	at its/his/hers		12734.7
+på	prep	word	A1	on, on top of; touching from above		12591.15
+å	prep	word	A1	The third to last letter of the Swedish alphabet, called å and written in the Latin script.	long	12462.73
+av	prep	word	A1	from		11540.13
+för	prep	word	A1	too		11408.82
+att	subj	word	A1	Used to indicate the infinitive form of a verb; compare English to.		11271.57
+kunna	verb	word	A1	"to can", to be able to	pos	11119.08
+skola	aux verb	word	A1	shall, will, be going to expresses intended future; used for plans, promises and decisions [with infinitive].	pos,long	10411.19
+jag	pronoun	word	A1	I		9390.67
+inte	adverb	word	A1	not		9073.55
+med	prep	word	A1	also, as well, too		8790.85
+till	prep	word	A1	to		8662.68
+liten	adjective	word	A1	small, little; of small size		8654.67
+den	det	word	A1	it		6896.18
+analog	adjective	word	A1	analogue		5649
+unna	verb	word	A1	to allow oneself to have something, to indulge		5559.15
+om	prep	word	A1	if		5278.24
+vi	pronoun	word	A1	we		4723.57
+men	conj	word	A1	but; introducing a clause that contrasts with the preceding clause, sentence or common belief.	long	4545.97
+man	pronoun	word	A1	man		4446.34
+de	det	word	A1	they		4437.26
+få	verb	word	A1	few	pos	4060.39
+så	adverb	word	A1	so, like that, in such a way		4004.97
+sig	pronoun	word	A1	reflexive case of han, hon, den, det, de or man; compare himself, herself, itself, themselves, oneself	long	3469.03
+han	pronoun	word	A1	he, the third person singular, masculine, nominative case.		3380.88
+bli	verb	word	A1	to become		3293.35
+komma	verb	word	A1	to come		3224.74
+sin	pronoun	word	A1	Dryness, the state of having run dry.		3217.3
+eller	conj	word	A1	or		3138.92
+från	prep	word	A1	from		3117.46
+mycket	adverb	word	A1	much, a lot		3112.13
+vilja	verb	word	A1	will; a person’s intent, volition, decision.	pos	3004.91
+all	pronoun	word	A1	all		2975.47
+göra	verb	word	A1	work, task	pos	2942.04
+annan	pronoun	word	A1	other, else,other one		2624.2
+du	pronoun	word	A1	you		2581.46
+någon	pronoun	word	A1	any		2565.69
+finna	verb	word	A1	to find, to locate, to discover		2465.41
+ta	verb	word	A1	take; to grab and move to oneself	pos	2452.4
+när	adverb	word	A1	when		2386.89
+se	verb	word	A1	to see		2253.32
+måste	aux verb	word	A1	must, have to	pos	2214.95
+detta	pronoun	word	A1	this, that.	via-form	2200.74
+stor	adjective	word	A1	big, large; of large size		2046.73
+nu	adverb	word	A1	now		2033.06
+gå	verb	word	A1	to walk		2001.14
+säga	verb	word	A1	to say		1998.46
+vad	pronoun	word	A1	what		1911.2
+år	noun-ett	word	A1	a year		1886.72
+äga	verb	word	A1	an estate, grounds, property, land	pos	1867.88
+under	prep	word	A1	under; below; beneath		1851.63
+betyda	verb	word	A1	to mean		1811.72
+också	adverb	word	A1	too, as well, also		1797.39
+där	adverb	word	A1	there; at that place		1790.68
+då	adverb	word	A1	then; at that time		1788.93
+min	pronoun	word	A1	min; minute		1757.18
+böra	aux verb	word	A1	should, ought to	pos	1743.31
+hur	adverb	word	A1	how		1690.32
+mig	pronoun	word	A1	me		1622.7
+mot	prep	word	A1	A point where two or more objects meet.		1592.42
+bara	adverb	word	A1	just, only		1582.15
+vilken	pronoun	word	A1	which		1512.84
+ut	adverb	word	A1	out		1481.5
+ny	adjective	word	A1	new		1446.08
+vid	prep	word	A1	wide		1439.02
+än	conj	word	A1	still, yet		1428.89
+bra	adjective	word	A1	good		1428.27
+ingen	pronoun	word	A1	no		1350.9
+dem	pronoun	word	A1	them; accusative/dative of de		1341.39
+efter	prep	word	A1	slow		1323.97
+upp	particle	word	A1	up		1322.38
+hon	pronoun	word	A1	she; the third-person, singular, feminine pronoun in the nominative case		1291.75
+lite	adverb	word	A1	little, some; a small amount		1288.09
+denna	pronoun	word	A1	this, that.		1279.97
+in	adverb	word	A1	into, to in		1274.61
+över	prep	word	A1	over; above; more than		1267.18
+ge	verb	word	A1	to give		1208.51
+vår	pronoun	word	A1	our; belonging to us		1206.78
+del	noun-en	word	A1	part; share		1202.45
+här	adverb	word	A1	here; at this time or at this place		1194.91
+även	adverb	word	A1	also		1191.77
+skriva	verb	word	A1	to write, to type, to copy; to put letters and digits on a surface, using a pen or typewriter	long	1141.32
+tid	noun-en	word	A1	time		1127.59
+ju	adverb	word	A1	Indicates an expectation of shared understanding, or that what is said is an obvious fact – "as you well know," "of…	long	1119.58
+sedan	adverb	word	A1	then, after this, afterwards; next in order		1115.12
+te sig	verb	phrase	A1		none	1115.09
+riva	verb	word	A1	to tear, to rip		1088.02
+börja	verb	word	A1	to begin; to start		1039.45
+hel	adjective	word	A1	whole		1034.76
+dag	noun-en	word	A1	a day		1033.61
+själv	pronoun	word	A1	oneself, myself, yourself, himself, herself, itself		1033.19
+människa	noun-en	word	A1	a human, a human being		1030.33
+land	noun-ett	word	A1	a country, a land		949.12
+svensk	adjective	word	A1	Swedish; of or pertaining to Sweden or the Swedish language		948.52
+fråga	noun-en	word	A1	a question		938.78
+oss	pronoun	word	A1	us		934.32
+tro	verb	word	A1	belief	pos	928.39
+el	noun-en	word	A1	electricity, electric current or power; clipping of elektricitet or elektrisk		925.85
+tycka	verb	word	A1	to be of the opinion, to think		924.85
+kommentar	noun-en	word	A1	a comment		924.68
+veta	verb	word	A1	to know; to be certain about, to have knowledge or information about		894.31
+idag	adverb	word	A1	today		865.13
+försöka	verb	word	A1	to attempt, to try		859.72
+behöva	verb	word	A1	to need		858.16
+samma	pronoun	word	A1	same		844.13
+mellan	prep	word	A1	between		841.51
+känna	verb	word	A1	to feel, to sense		840.25
+läsa	verb	word	A1	to read		823.05
+ro	verb	word	A1	to row; to transport oneself in a small boat, with help of oars		816.02
+kanske	adverb	word	A1	maybe, perhaps, possibly		809.75
+lik	adjective	word	A1	looking like, resembling		808.09
+låta	verb	word	A1	to make sound		807.17
+olik	adjective	word	A1	unlike, different, dissimilar		790.47
+sådan	pronoun	word	A1	such, such a		788.97
+sätt	noun-ett	word	A1	a manner		784.91
+hans	pronoun	word	A1	his		774.6
+din	pronoun	word	A1	your, yours		771.62
+gång	noun-en	word	A1	walking		763.39
+stå	verb	word	A1	stand; be in an upright position	pos	761.8
+inom	prep	word	A1	within		758.15
+visa	verb	word	A1	a song, a tune, particularly one with a simple melody, where the primary focus is the lyrics	pos,long	757.44
+använda	verb	word	A1	to use		749.26
+vända	verb	word	A1	to turn		749.26
+hålla	verb	word	A1	to hold		739.42
+genom	prep	word	A1	through		733.74
+helt	adverb	word	A1	entirely, absolutely, wholly, completely		721.67
+fler	adjective	word	A1	more and most		717.99
+utan	prep	word	A1	without		707.53
+väl	adverb	word	A1	well		705.75
+barn	noun-ett	word	A1	a child		700.31
+enligt	prep	word	A1	according to		680.22
+tänka	verb	word	A1	to think		666.7
+ni	pronoun	word	A1	you		665.01
+viktig	adjective	word	A1	important		662.11
+ring	noun-en	word	A1	ring; a circular piece of material		658.84
+eftersom	subj	word	A1	because, since, as		652
+liv	noun-ett	word	A1	life		624.66
+deras	pronoun	word	A1	their; belonging to them		623.86
+värld	noun-en	word	A1	world		617.89
+viss	adjective	word	A1	certain, convinced		614.61
+dock	adverb	word	A1	though, however, still, nevertheless		614.54
+egen	adjective	word	A1	peculiar, eccentric, odd, unique, personal, individualistic		612.48
+folk	noun-ett	word	A1	people		606.98
+regering	noun-en	word	A1	government; the executive body of a country's governmental system		603.37
+fram	particle	word	A1	forth, forward, out		600.53
+honom	pronoun	word	A1	him; oblique of han		597.56
+söka	verb	word	A1	to search, to seek		596.07
+dig	pronoun	word	A1	you		590.81
+sak	noun-en	word	A1	a thing		581.51
+hög	adjective	word	A1	high; tall; reaching a great distance from the ground or being found high above it	long	578.03
+länge	adverb	word	A1	a long time, during a long time, long		568.83
+person	noun-en	word	A1	a person, people		568.43
+ligga	verb	word	A1	to lie; be in a horizontal position		566.6
+son	noun-en	word	A1	a son		560.93
+både	conj	word	A1	both; each of		554.95
+just	adverb	word	A1	just		545.57
+lägga	verb	word	A1	to place lying somewhere, to place/put in a lying position; in particular used like the English put for things that…	long	545.17
+antal	noun-ett	word	A1	number, quantity, amount		542.86
+redan	adverb	word	A1	already		533.67
+kvinna	noun-en	word	A1	a woman		521.11
+problem	noun-ett	word	A1	a problem, an issue		520.62
+fall	noun-ett	word	A1	a fall		520.07
+aldrig	adverb	word	A1	never		511.81
+ofta	adverb	word	A1	often		501.79
+varje	det	word	A1	each; every		501.7
+artikel	noun-en	word	A1	an article		501.28
+anse	verb	word	A1	to be of an opinion, to think, to believe, to feel		500.58
+öva	verb	word	A1	to practice, to train to do something, to exercise		496.12
+lag	noun-ett	word	A1	law		489.85
+slag	noun-ett	word	A1	A hit; punch.		487.59
+tal	noun-ett	word	A1	number		485.93
+åt	prep	word	A1	for		484.56
+nog	adverb	word	A1	enough, sufficient		482.6
+bok	noun-en	word	A1	book		478.59
+varför	adverb	word	A1	why		475.84
+handla	verb	word	A1	to shop, buy		475.07
+gammal	adjective	word	A1	old		470.38
+bild	noun-en	word	A1	picture		468.8
+sida	noun-en	word	A1	side; a bounding straight edge or surface		466.09
+öka	verb	word	A1	to increase		462.83
+därför	adverb	word	A1	therefore		461.58
+sen	adjective	word	A1	late		459.09
+god	adjective	word	A1	good, morally commendable		453.87
+hos	prep	word	A1	at someone's place or building, usually their home or workplace. Same as Icelandic hjá.	long	453.15
+alltid	adverb	word	A1	always		446.85
+skapa	verb	word	A1	to create; to make, to manufacture; to put into existence, chiefly by a creative act	long	445.51
+arbete	noun-ett	word	A1	work, job		441.9
+kapa	verb	word	A1	to hijack; to seize control over something		435.8
+samt	conj	word	A1	and, and also, plus, as well as		435.23
+blogg	noun-en	word	A1	blog		430.91
+innan	subj	word	A1	before		429.65
+ur	prep	word	A1	out of, from		427
+gälla	verb	word	A1	to be valid; to be correct or proper, to apply		426.9
+verka	verb	word	A1	to work, to act		423.62
+tala	verb	word	A1	to speak, to talk		423.1
+bära	verb	word	A1	to carry; to lift and transport anywhere else		422.35
+väg	noun-en	word	A1	a road		420.51
+samhälle	noun-ett	word	A1	a society; a long-standing group of people sharing cultural aspects		420.38
+alltså	adverb	word	A1	therefore, thus, consequently		419.06
+stat	noun-en	word	A1	A state; a nation.		416.16
+stad	noun-en	word	A1	a city, a town		413.66
+höra	verb	word	A1	to hear		412.78
+innebära	verb	word	A1	to imply, to mean		412.65
+genom att	subj	phrase	A1	by; using the means of; by means of		412.39
+företag	noun-ett	word	A1	a venture, an enterprise, a company		412.18
+möjlighet	noun-en	word	A1	possibility, opportunity		411.21
+ord	noun-ett	word	A1	a word		410.3
+politisk	adjective	word	A1	political, having to do with politics		409.23
+välja	verb	word	A1	to choose		403.72
+er	pronoun	word	A1	you		403.6
+förstå	verb	word	A1	to understand		403.12
+inlägg	noun-ett	word	A1	an insert		403.03
+ägg	noun-ett	word	A1	an egg		403.03
+te	noun-ett	word	A1	tea		401.97
+spela	verb	word	A1	to play; a game, a tune, a melody, an instrument or a role		401.87
+så att	subj	phrase	A1	so that		400.31
+lika	adverb	word	A1	to the same degree, as, equally		394.25
+hitta	verb	word	A1	to find		390.73
+tag	noun-ett	word	A1	a grip, a hold		390.12
+dra	verb	word	A1	to pull		389.89
+leda	verb	word	A1	to lead; to guide, to conduct		388.53
+gärna	adverb	word	A1	gladly, happily, with keenness, willingly/readily		387.27
+ändå	adverb	word	A1	still, yet		386.11
+förslag	noun-ett	word	A1	a proposal, an estimate, a nomination		385.31
+lyckas	verb	word	A1	to manage		384.14
+dessutom	adverb	word	A1	besides, moreover, furthermore, in addition		381.45
+område	noun-ett	word	A1	a sphere		380.95
+svår	adjective	word	A1	difficult, hard		379.67
+lära	verb	word	A1	teachings	pos	376.66
+sätta	verb	word	A1	to sit; to move oneself into a sitting position		375.3
+plats	noun-en	word	A1	place; any geographical position a little larger than just a point, such as a village, city or just a "nowhere"	long	374.33
+lång	adjective	word	A1	long		372
+lämna	verb	word	A1	to leave; to not take away with oneself but leave as available for others; to deposit	long	369.7
+bygga	verb	word	A1	to build; to construct		368.34
+politik	noun-en	word	A1	politics		367.14
+tidigare	adverb	word	A1	early	via-form	366.98
+kalla	verb	word	A1	to call, denote, refer to; to give as a name		365.74
+peng	noun-en	word	A1	a coin		365.1
+väldigt	adverb	word	A1	very, really		363.6
+leva	verb	word	A1	to live, to be alive		363.55
+ställa	verb	word	A1	to place upright somewhere, to place in a standing position		361.06
+följa	verb	word	A1	to follow; to go after		359.7
+vecka	noun-en	word	A1	a week, a period of 7 days.		357.71
+ja	interj	word	A1	yes		353.15
+ske	verb	word	A1	to happen; in particular what happens during some extended period of time		351.8
+parti	noun-ett	word	A1	party		348.11
+kräva	verb	word	A1	crop, craw	pos	347.5
+utveckling	noun-en	word	A1	development		341.81
+faktiskt	adverb	word	A1	actually, for real		341.44
+ena	verb	word	A1	one; definite of en	pos	340.46
+svara	verb	word	A1	to answer, to reply, to respond		339.8
+ner	particle	word	A1	down; in a direction downwards		339.66
+fortsätta	verb	word	A1	to continue, to proceed		337.29
+bruka	verb	word	A1	to use to; to be in the habit of		334.18
+mål	noun-ett	word	A1	language; dialect		331.84
+par	noun-ett	word	A1	a pair, a couple		331.61
+sent	adverb	word	A1	late		330.39
+ekonomisk	adjective	word	A1	economic, economical		327.88
+kl.	noun-en	word	A1	o'clock; abbreviation of klockan		325.82
+dålig	adjective	word	A1	bad		323.94
+namn	noun-ett	word	A1	name		323.21
+igen	adverb	word	A1	again		321.76
+verkligen	adverb	word	A1	really, truly		321.76
+mena	verb	word	A1	to mean; to convey, or to want to convey		320.45
+fortfarande	adverb	word	A1	continuing, continuous, ongoing		319.39
+grupp	noun-en	word	A1	group		315.91
+beslut	noun-ett	word	A1	decision, resolution		315.74
+även om	subj	phrase	A1		none	314.71
+enda	adjective	word	A1	only, sole; also in the masculine form ende		314.53
+bort	particle	word	A1	away, off		313.64
+slå	verb	word	A1	to hit, punch or beat; to give a blow.		312.71
+möjlig	adjective	word	A1	possible		310.72
+många	pronoun	word	A1	many; plural of mången		310.01
+hända	verb	word	A1	to happen; chiefly what happens quickly or for a short time		307.66
+ämna	aux verb	word	A1	to intend to, to purpose		307.66
+endast	adverb	word	A1	only		302.17
+vidare	adverb	word	A1	further		297.7
+ganska	adverb	word	A1	pretty, quite, rather		295.35
+svar	noun-ett	word	A1	answer, response, reply		291.65
+varenda	det	word	A1	every single		291.39
+istället	adverb	word	A1	instead		291.38
+först	adverb	word	A1	first, firstly; having no predecessor		290.35
+arbeta	verb	word	A1	to work, to be employed to do		289.93
+heller	adverb	word	A1	either		288.81
+riktigt	adverb	word	A1	really		288.62
+hand	noun-en	word	A1	a hand		288.6
+uppgift	noun-en	word	A1	a task		287.98
+fungera	verb	word	A1	function; to be in action	pos	287.4
+beta	verb	word	A1	beta; the Greek letter Β, β	pos	286.58
+köpa	verb	word	A1	to buy, to purchase		284.11
+nästan	adverb	word	A1	almost		284
+bland	prep	word	A1	among		282.47
+december	noun	word	A1	December		280.83
+sitta	verb	word	A1	to sit		280.32
+precis	adverb	word	A1	precise, made with great precision		277.18
+hennes	pronoun	word	A1	her		275.94
+åta sig	verb	phrase	A1		none	275.39
+bland annat	adverb	phrase	A1	among other things; inter alia		275.2
+krig	noun-ett	word	A1	war		275.09
+till exempel	adverb	phrase	A1	for example; e.g.		274.97
+tillsammans	adverb	word	A1	together		274.88
+henne	pronoun	word	A1	her; object form of hon		272.82
+intressant	adjective	word	A1	interesting		272.16
+val	noun-ett	word	A1	a whale		269.93
+kyrka	noun-en	word	A1	a church		268.45
+egentligen	adverb	word	A1	actually, really, in truth, "in actual reality"		267.44
+inför	prep	word	A1	in front of, before; while having the attention of		267.33
+historia	noun-en	word	A1	history		267.25
+jobb	noun-ett	word	A1	job; a task		266.97
+berätta	verb	word	A1	to tell		266.34
+vanlig	adjective	word	A1	common, usual		265.84
+rätta	verb	word	A1	to correct, to rectify		265.36
+januari	noun	word	A1	January		264.41
+information	noun-en	word	A1	information		264.14
+flest	adjective	word	A1	more and most	via-form	262.77
+ung	adjective	word	A1	young		260.53
+tillbaka	particle	word	A1	back, in return		259.58
+film	noun-en	word	A1	film; a thin layer		258.67
+ibland	adverb	word	A1	sometimes		258.58
+medan	subj	word	A1	while; during the same time that		257.43
+slut	noun-ett	word	A1	over, finished; which has come to an end		256.6
+massa	noun-en	word	A1	a mass		255.87
+tanke	noun-en	word	A1	a thought		251.61
+akt	noun-en	word	A1	act; a division of a theatrical performance		251.45
+procent	noun-en	word	A1	percent		251.21
+månad	noun-en	word	A1	a month		251.14
+sista	adjective	word	A1	last		250.04
+ätt	noun-en	word	A1	a family, a house		249.91
+sluta	verb	word	A1	to stop, to end		249.47
+verksamhet	noun-en	word	A1	goal-oriented activity		249.2
+rätt	noun-en	word	A1	right, correct		249.15
+samtidigt	adverb	word	A1	at the same time, simultaneously, concurrently		247.54
+emot	prep	word	A1	towards, against		247.28
+stöd	noun-ett	word	A1	support		244.26
+familj	noun-en	word	A1	family		244.19
+vem	pronoun	word	A1	who, whom		243.27
+åka	verb	word	A1	to go by using something more or other than the human or animal body, for example a vehicle, skis, or skates; to go,…	long	243.14
+betala	verb	word	A1	to pay; to give money in exchange for goods or services		242.04
+kommun	noun-en	word	A1	municipality, city, commune		242.01
+resultat	noun-ett	word	A1	A result, an effect.		241.96
+utveckla	verb	word	A1	to develop		241.91
+föra	verb	word	A1	to move something or someone; to bring, to take		240.44
+hjälpa	verb	word	A1	to help; give aid or assistance to		238.92
+nästa	adjective	word	A1	next; following in a sequence		237.94
+nära	adverb	word	A1	near, close		237.62
+nej	interj	word	A1	no; a negative answer		237.61
+text	noun-en	word	A1	text		234.6
+exempel	noun-ett	word	A1	an example		232.43
+särskilt	adverb	word	A1	particularly; in particular		232.35
+debatt	noun-en	word	A1	a debate		232.07
+när det gäller	prep	phrase	A1		none	230.03
+på grund av	adverb	phrase	A1	because of		229.03
+situation	noun-en	word	A1	a situation		229.02
+europeisk	adjective	word	A1	European		228.56
+form	noun-en	word	A1	a form, a shape		228.11
+orm	noun-en	word	A1	serpent, snake, or therof slithering legless animal		228.11
+råd	noun-ett	word	A1	a piece of advice, counsel		228.07
+november	noun	word	A1	November		228.05
+makt	noun-en	word	A1	power, might		228.02
+social	adjective	word	A1	social, pertaining to living conditions and society		226.91
+vinna	verb	word	A1	to win, to defeat, to beat		226.63
+kvar	particle	word	A1	left, remaining		226.35
+system	noun-ett	word	A1	a system, a way or method of organizing items and knowledge		225.72
+vänta	verb	word	A1	to wait		225.55
+tidig	adjective	word	A1	early		225.46
+åtgärd	noun-en	word	A1	an action, a measure		223.86
+krav	noun-ett	word	A1	a requirement, a necessity		223.66
+skillnad	noun-en	word	A1	difference		223.65
+riksdag	noun-en	word	A1	a session of parliament		223.14
+internationell	adjective	word	A1	international		222.66
+nationell	adjective	word	A1	national		222.66
+jobba	verb	word	A1	to work		221.99
+klara	verb	word	A1	to manage, to succeed in doing		218.16
+typ	noun-en	word	A1	a type		217.75
+kring	prep	word	A1	around, about; same as omkring		217.05
+båda	pronoun	word	A1	both; either, each of two		217
+cirka	adverb	word	A1	circa, roughly, about, approximately		216.97
+tur	noun-en	word	A1	a tour; a journey through a building, estate, country etc.		216.52
+polis	noun-en	word	A1	police		216.42
+medium	noun-ett	word	A1	medium		215.79
+låg	adjective	word	A1	low, short; having a small height		214.24
+varandra	pronoun	word	A1	each other, one another		214.16
+mun	noun-en	word	A1	a mouth		213.93
+ansvar	noun-ett	word	A1	responsibility		213.48
+roll	noun-en	word	A1	role		213.39
+regel	noun-en	word	A1	A rule or regulation		211.92
+oktober	noun	word	A1	October		211.56
+prata	verb	word	A1	to talk, to speak		211.06
+organisation	noun-en	word	A1	organization		210.61
+medlem	noun-en	word	A1	a member		210.54
+anmäla	verb	word	A1	to report, to notify authorities about		209.8
+nå	verb	word	A1	to reach, attain		209.69
+bo	verb	word	A1	to live, to dwell, to reside		209.48
+krona	noun-en	word	A1	a crown		207.79
+rättighet	noun-en	word	A1	a right		207.42
+stämma	verb	word	A1	a voice	pos	207.42
+bakom	prep	word	A1	slow		206.72
+efter att	subj	phrase	A1		none	206.69
+därmed	adverb	word	A1	thereby		206.58
+hus	noun-ett	word	A1	a house		206.57
+vän	noun-en	word	A1	fair, beautiful		205.79
+dela	verb	word	A1	to deal, share; divide something between recipients		205.43
+februari	noun	word	A1	February		205.04
+kort	adjective	word	A1	short		204.59
+grund	noun-en	word	A1	shallow		204.34
+runt	prep	word	A1	around; aimlessly		203.5
+framtid	noun-en	word	A1	future		203.16
+köra	verb	word	A1	to drive		203.16
+etikett	noun-en	word	A1	label, tag		202.31
+fri	adjective	word	A1	free		201.84
+behov	noun-ett	word	A1	a need, a requirement		201.71
+timme	noun-en	word	A1	an hour		201.49
+september	noun	word	A1	September		201.31
+hoppas	verb	word	A1	to hope; to want something to happen		200.99
+ensam	adjective	word	A1	alone		200.63
+snart	adverb	word	A1	soon; within a short time		199.9
+förklara	verb	word	A1	to explain		198.04
+ledning	noun-en	word	A1	lead		197.93
+intresse	noun-ett	word	A1	interest		197.41
+tvinga	verb	word	A1	to force		196.99
+påverka	verb	word	A1	to affect, to influence		196.4
+anledning	noun-en	word	A1	reason; cause		195.88
+titta	verb	word	A1	to look; keep one's eyes open as to be able to see		195.79
+minska	verb	word	A1	to reduce		195.42
+i alla fall	adverb	phrase	A1	anyhow, anyway		195.28
+däremot	adverb	word	A1	on the other hand, however		194.9
+direkt	adverb	word	A1	direct		194.63
+ekonomi	noun-en	word	A1	economy		194.28
+bestämma	verb	word	A1	to decide		192.88
+skicka	verb	word	A1	send	pos	192.84
+trots	prep	word	A1	in spite of, despite		192.43
+åsikt	noun-en	word	A1	an opinion, a view		192.3
+diskussion	noun-en	word	A1	argument, discussion		192.14
+rad	noun-en	word	A1	a row; a line of entries in a table, or a line of objects		192.14
+faktum	noun-ett	word	A1	a fact		192.11
+tidning	noun-en	word	A1	a newspaper		191.91
+mening	noun-en	word	A1	a purpose, a point		191.16
+utanför	prep	word	A1	outside		190.63
+gemensam	adjective	word	A1	common, joint, mutual		189.45
+klar	adjective	word	A1	ready, finished, done		187.9
+juni	noun	word	A1	June		186.95
+is	noun-en	word	A1	ice		186.84
+bil	noun-en	word	A1	a car		186.44
+myndighet	noun-en	word	A1	authority		186.22
+nummer	noun-ett	word	A1	a number		186
+allmän	adjective	word	A1	general		185.28
+musik	noun-en	word	A1	music		185.07
+ändra	verb	word	A1	to change, to alter		184.81
+träffa	verb	word	A1	to hit a target		184.74
+ihop	particle	word	A1	together		183.73
+diskutera	verb	word	A1	to discuss		183.54
+driva	verb	word	A1	a drift	pos	183.3
+sälja	verb	word	A1	to sell		182.71
+sakna	verb	word	A1	to miss, to lack, to want, to be without		182.57
+program	noun-ett	word	A1	a program		182.39
+ifrån	prep	word	A1	from		181.44
+länka	verb	word	A1	to link		179.35
+kunskap	noun-en	word	A1	knowledge		179.19
+snabbt	adverb	word	A1	quickly; in a fast manner		178.68
+maj	noun	word	A1	May		177.76
+amerikansk	adjective	word	A1	American; of or pertaining to the Americas.		177.66
+tyda	verb	word	A1	to interpret; to understand the meaning of		177.46
+särskild	adjective	word	A1	distinct, special		177.43
+början	noun-en	word	A1	beginning, start		176.59
+naturligtvis	adverb	word	A1	of course		176.31
+skäl	noun-ett	word	A1	reason		175.99
+fin	adjective	word	A1	nice to look at or listen to or the like, nice, pretty		174.99
+genomföra	verb	word	A1	carry out, realize, accomplish, execute, complete	pos	174.86
+liksom	adverb	word	A1	sort of, kind of		174.75
+via	prep	word	A1	via, over, by, through		174.12
+före	prep	word	A1	in front of; ahead of		173.85
+dom	noun-en	word	A1	conviction, judgement of court, sentence, verdict, doom		173.6
+risk	noun-en	word	A1	risk		173.27
+enkel	adjective	word	A1	simple, easy		173.1
+alls	adverb	word	A1	at all		173.06
+pris	noun-ett	word	A1	a price		172.92
+räkna	verb	word	A1	to count		172.91
+beskriva	verb	word	A1	to describe		172.36
+hem	particle	word	A1	home		172.22
+möta	verb	word	A1	to meet		172.02
+såsom	subj	word	A1	as, like		171.86
+idé	noun-en	word	A1	an idea		171.57
+gram	noun-ett	word	A1	gram		171.53
+förra	adjective	word	A1	former, last, previous		170.92
+tjänst	noun-en	word	A1	a favor		170.63
+heta	verb	word	A1	to be called; to have as one's name, to hight		170.22
+kultur	noun-en	word	A1	culture		170.1
+äta	verb	word	A1	to eat		169.74
+syfte	noun-ett	word	A1	intention		168.82
+princip	noun-en	word	A1	principle		167.86
+flytta	verb	word	A1	to move; to relocate something		167.68
+ute	adverb	word	A1	outside, outdoors		167.61
+utgöra	verb	word	A1	constitute, consist	pos	167.61
+politiker	noun-en	word	A1	politician		167.43
+lätt	adjective	word	A1	light; of low weight		167.41
+förälder	noun-en	word	A1	a parent		167
+marknad	noun-en	word	A1	market		166.13
+nämligen	adverb	word	A1	namely, that is to say		165.98
+tydlig	adjective	word	A1	clear		165.93
+utbildning	noun-en	word	A1	education		165.87
+röra	verb	word	A1	a mess, a disorder	pos	165.68
+nivå	noun-en	word	A1	level		165.64
+april	noun	word	A1	April		165.36
+mängd	noun-en	word	A1	an amount; a quantity or a volume		165.27
+betydelse	noun-en	word	A1	meaning, sense		165.2
+kristen	adjective	word	A1	Christian		164.51
+dö	verb	word	A1	to die		164.3
+mars	noun	word	A1	March		164.22
+allt	adverb	word	A1	everything, all		163.95
+kväll	noun-en	word	A1	evening		163.87
+bildning	noun-en	word	A1	a formation, a buildup		163.82
+länk	noun-en	word	A1	a link		163.54
+växa	verb	word	A1	grow; increase in size	pos	162.65
+per	prep	word	A1	For each; for every		162.15
+offentlig	adjective	word	A1	public		161.83
+såväl	conj	word	A1	as well		161.72
+våga	verb	word	A1	to dare, to have enough courage		161.66
+vatten	noun-ett	word	A1	water		161.3
+håll	noun-ett	word	A1	a direction		161.22
+mänsklig	adjective	word	A1	human		160.58
+demokrati	noun-en	word	A1	democracy; a nation which is ruled by a democratically elected government		160.56
+fatta	verb	word	A1	to grasp, take; the concrete meaning of grasp		160.43
+jord	noun-en	word	A1	earth, soil; a rock- or sand-based unconsolidated material in which land plants grow	long	159.88
+känsla	noun-en	word	A1	feeling		159.45
+förändring	noun-en	word	A1	transformation, change		159.43
+nämna	verb	word	A1	to mention, to name		159.17
+tyvärr	adverb	word	A1	unfortunately		159.15
+enskild	adjective	word	A1	regarded separately; individual, separate, single, etc.		159.02
+be	verb	word	A1	to ask for, request someone else to do something		158.82
+punkt	noun-en	word	A1	a period, a full stop		158.58
+ändring	noun-en	word	A1	a change, a modification, an alteration		158.58
+mission	noun-en	word	A1	a mission; a purpose or duty, a task set by an employer		158.08
+igår	adverb	word	A1	yesterday		157.53
+kommission	noun-en	word	A1	a commission		157.33
+ort	noun-en	word	A1	locality, place, location; a group of houses		156.85
+anta	verb	word	A1	to assume, to suppose		156.58
+trots att	subj	phrase	A1		none	156.41
+spel	noun-ett	word	A1	a play, a game; a person's or animal's happy, joyous movement or entertainment; activity for amusement only; a pursuit…	long	156.33
+språk	noun-ett	word	A1	language		156.31
+föreslå	verb	word	A1	to suggest; to ask for without demanding		156.27
+igenom	prep	word	A1	through		154.93
+undra	verb	word	A1	to wonder		154.38
+eget	adjective	word	A1	personally, individualistically, uniquely, oddly, peculiarly		154.19
+möte	noun-ett	word	A1	a meeting		153.97
+mat	noun-en	word	A1	food		153.94
+gräns	noun-en	word	A1	bound, boundary; the border of a territory		153.55
+lyssna	verb	word	A1	to listen		152.94
+delta	verb	word	A1	the Greek letter Δ, δ	pos	152.8
+samarbete	noun-ett	word	A1	collaboration, cooperation		152.7
+annars	adverb	word	A1	otherwise, or else		152.6
+falla	verb	word	A1	to fall		152.58
+rum	noun-ett	word	A1	a room		152.07
+ungefär	adverb	word	A1	about, approximately		151.93
+starta	verb	word	A1	to begin, to start; to get something going; as in, to start an engine, to start a trip, to start a race; to start a…	long	151.68
+inse	verb	word	A1	to realize; to become aware of		151.51
+internet	noun	word	A1	internet		151.38
+hov	noun-ett	word	A1	a hoof		150.99
+öppen	adjective	word	A1	open		150.86
+bidra	verb	word	A1	to contribute		150.84
+död	noun-en	word	A1	dead		150.59
+luta	verb	word	A1	lute	pos	150.2
+öga	noun-ett	word	A1	eye		150.07
+säkert	adverb	word	A1	safely		149.46
+ämne	noun-ett	word	A1	a substance		149.25
+augusti	noun	word	A1	August		148.76
+socialdemokrat	noun-en	word	A1	a social democrat		148.49
+projekt	noun-ett	word	A1	project		148.31
+övrig	adjective	word	A1	other, remaining		148.21
+dels	conj	word	A1	part, partly, in part, both ... and		148.09
+framför allt	adverb	phrase	A1	above all		147.43
+positiv	adjective	word	A1	positive		147.36
+rolig	adjective	word	A1	funny, fun		147.33
+port	noun-en	word	A1	a larger entrance		146.95
+bero	verb	word	A1	to depend		146.68
+kropp	noun-en	word	A1	a body		145.82
+minnas	verb	word	A1	to remember, to recall		145.43
+handling	noun-en	word	A1	an act, a deed		145.37
+rösta	verb	word	A1	to vote		145.06
+riktig	adjective	word	A1	right, correct, proper		144.98
+rapport	noun-en	word	A1	a report		144.86
+lösning	noun-en	word	A1	solution		144.58
+personlig	adjective	word	A1	personal		143.81
+kommentera	verb	word	A1	to comment		142.95
+som att	subj	phrase	A1		none	142.78
+gilla	verb	word	A1	to like		142.42
+bryta	verb	word	A1	to break; to end abruptly		142.11
+hjälp	noun-en	word	A1	help		142.06
+juli	noun	word	A1	July		142.01
+innehålla	verb	word	A1	to contain, to include		141.45
+liknande	adjective	word	A1	similar		140.93
+tillfälle	noun-ett	word	A1	opportunity		140.9
+inte ens	adverb	phrase	A1	not even		140.79
+känd	adjective	word	A1	known		140.65
+forskning	noun-en	word	A1	scientific research		140.49
+kraft	noun-en	word	A1	force		140.46
+helt enkelt	adverb	phrase	A1	simply, just, plain and simple		140.11
+brott	noun-ett	word	A1	a break, a snap; an instance of something breaking		139.94
+exempelvis	adverb	word	A1	for example		139.94
+röst	noun-en	word	A1	voice		139.89
+bjuda	verb	word	A1	to offer, to give as a gift		139.86
+till och med	adverb	phrase	A1	even		139.7
+hävda	verb	word	A1	to claim		139.57
+hamna	verb	word	A1	to land, to end up, to be placed		139.4
+effekt	noun-en	word	A1	effect		138.78
+enhet	noun-en	word	A1	a unit		138.39
+det vill säga	adverb	phrase	A1	that is, that is to say, as in		138.07
+kontakt	noun-en	word	A1	contact		137.86
+takt	noun-en	word	A1	tact, pace, rhythm		137.86
+värde	noun-ett	word	A1	value, worth		137.82
+förutsättning	noun-en	word	A1	precondition		137.72
+sats	noun-en	word	A1	theorem, proposition		137.65
+medlemsstat	noun-en	word	A1	a member state of an international organization or similar.		137.58
+hinna	verb	word	A1	to have time, to have the time, to make it		137.35
+sanning	noun-en	word	A1	truth		136.75
+religion	noun-en	word	A1	religion		136.55
+källa	noun-en	word	A1	a source		136.13
+må	verb	word	A1	may	pos	135.98
+kostnad	noun-en	word	A1	cost		135.72
+medborgare	noun-en	word	A1	a citizen		135.65
+förhållande	noun-ett	word	A1	condition, circumstance		135.64
+far	noun-en	word	A1	father		135.06
+ungdom	noun-en	word	A1	youth; young person; teenager, youngster		134.37
+släppa	verb	word	A1	to let go; release		134.32
+drag	noun-ett	word	A1	feature, trait, characteristic		134.15
+enbart	adverb	word	A1	only, alone, just, solely		134.15
+verklighet	noun-en	word	A1	reality		133.94
+författare	noun-en	word	A1	an author, a writer		133.87
+tillgång	noun-en	word	A1	supply		133.5
+nödvändig	adjective	word	A1	necessary		133.42
+full	adjective	word	A1	full		133.12
+frihet	noun-en	word	A1	freedom, liberty		132.47
+passa	verb	word	A1	fit, suit; be suitable	pos	132.39
+lokal	adjective	word	A1	local		132.16
+ytterligare	adverb	word	A1	additional		131.58
+öppna	verb	word	A1	to open		131.53
+införa	verb	word	A1	to introduce		130.26
+ledare	noun-en	word	A1	a leader; ruler		129.98
+mamma	noun-en	word	A1	mom, mum, mother		129.87
+sammanhang	noun-ett	word	A1	a context		129.67
+hemma	adverb	word	A1	at home; at one’s place of residence		129.59
+produkt	noun-en	word	A1	product; commodities offered for sale, a result of manufacturing		129.58
+därefter	adverb	word	A1	thereafter		129.33
+match	noun-en	word	A1	match		129.11
+alldeles	adverb	word	A1	quite, perfectly, very		128.37
+sann	adjective	word	A1	true; according to the truth		128.33
+uppfattning	noun-en	word	A1	an opinion, a standpoint, a understanding		128.3
+demokrat	noun-en	word	A1	democrat		128.13
+bolag	noun-ett	word	A1	a company, corporation		128.01
+erfarenhet	noun-en	word	A1	experience		127.97
+kritik	noun-en	word	A1	criticism		127.81
+grad	noun-en	word	A1	degree		127.76
+jude	noun-en	word	A1	a Jew		127.57
+vacker	adjective	word	A1	beautiful		127.57
+erbjuda	verb	word	A1	to offer		127.44
+kamp	noun-en	word	A1	a struggling for one's interests; a struggle, a fight		127.43
+period	noun-en	word	A1	a period, a limited amount of time		127.37
+modern	adjective	word	A1	modern		127.04
+spelare	noun-en	word	A1	a player		127.02
+elev	noun-en	word	A1	a student, a pupil		127.01
+utredning	noun-en	word	A1	an investigation		126.93
+ingå	verb	word	A1	to be included, to join, to belong, to follow without extra cost		126.92
+kung	noun-en	word	A1	a king		126.7
+bestå	verb	word	A1	to consist, to be made of		126.46
+katt	noun-en	word	A1	a cat		126.45
+konstatera	verb	word	A1	to note		126.41
+dit	adverb	word	A1	to there, thither, there		126.29
+klart	adverb	word	A1	clearly		126.22
+nuvarande	adjective	word	A1	present; relating to now		126.21
+styra	verb	word	A1	govern, rule, control	pos	126.2
+förlora	verb	word	A1	to lose		126.19
+vit	adjective	word	A1	white		126.15
+klocka	noun-en	word	A1	clock, watch; an instrument used to measure or keep track of time		125.96
+påstå	verb	word	A1	to claim, to state		125.75
+skatt	noun-en	word	A1	tax		125.65
+besluta	verb	word	A1	to decide, to make a decision		125.13
+befolkning	noun-en	word	A1	population		125.01
+avse	verb	word	A1	to intend; to fix the mind upon		124.91
+privat	adjective	word	A1	private		124.48
+steg	noun-ett	word	A1	a step		124.22
+art	noun-en	word	A1	species		123.8
+stödja	verb	word	A1	to support		123.76
+ond	adjective	word	A1	evil, wicked		123.18
+plan	noun-en	word	A1	plane		122.73
+resa	noun-en	word	A1	an instance of traveling, "a travel"; a trip, a journey, a voyage, travels, etc.		122.43
+utom	prep	word	A1	except for, but, beyond		122.27
+hund	noun-en	word	A1	a dog, a hound		122.24
+syn	noun-en	word	A1	sight, vision		122.2
+glömma	verb	word	A1	to forget		122.09
+avtal	noun-ett	word	A1	agreement, contract		121.92
+lek	noun-en	word	A1	play; typically denotes pleasurable and less rule-bound games and activities – "play" more in the sense of "engage in…	long	121.7
+kul	adjective	word	A1	fun		121.6
+natt	noun-en	word	A1	night		121.51
+förändra	verb	word	A1	to change, to alter		121.43
+ange	verb	word	A1	to indicate; to point out		121.39
+någonting	pronoun	word	A1	something, anything		121.12
+förstås	adverb	word	A1	of course, naturally		121.03
+individ	noun-en	word	A1	an individual		120.93
+älska	verb	word	A1	to love		120.93
+motion	noun-en	word	A1	exercise		120.87
+glad	adjective	word	A1	happy, glad		120.57
+ned	particle	word	A1	down		120.5
+dator	noun-en	word	A1	a computer		120.28
+miljö	noun-en	word	A1	environment		120.16
+ek	noun-en	word	A1	oak		119.87
+åtminstone	adverb	word	A1	at least		119.86
+presentera	verb	word	A1	to present		119.78
+stanna	verb	word	A1	to stay; to remain at a place		119.33
+byta	verb	word	A1	to switch; to exchange		119.29
+alternativ	noun-ett	word	A1	alternate, other, alternative		118.94
+minut	noun-en	word	A1	minute		118.87
+ingenting	pronoun	word	A1	nothing		118.79
+uppleva	verb	word	A1	to experience		118.65
+samla	verb	word	A1	to collect, to gather, to organize		118.53
+svart	adjective	word	A1	black		118.26
+bakgrund	noun-en	word	A1	ground		118.12
+skott	noun-ett	word	A1	a shot		118.07
+ö	noun-en	word	A1	The last letter of the Swedish alphabet, pronounced /øː/ when long, /œ/ when short, [œ̞ː] when long and before r, and…	long	118.02
+kärlek	noun-en	word	A1	love		118
+metod	noun-en	word	A1	a method		117.61
+äldre	adjective	word	A1	elderly		117.18
+säker	adjective	word	A1	safe		117.08
+borgare	noun-en	word	A1	a member of the bourgeoisie, a town-dweller, a citizen		117.01
+gud	noun-en	word	A1	God		116.98
+insats	noun-en	word	A1	an inset		116.63
+tysk	adjective	word	A1	German		116.47
+kontroll	noun-en	word	A1	control		116.35
+lösa	verb	word	A1	to solve		116.34
+kolla	verb	word	A1	to look, to watch		116.13
+fylla	verb	word	A1	a state of drunkenness	pos	116
+bestämmelse	noun-en	word	A1	a provision; a stipulation, a proviso		115.66
+ris	noun-ett	word	A1	small shrubs, such as blueberry and lingonberry; bush, scrub, undergrowth, brushwood	long	115.66
+drabba	verb	word	A1	to strike, to affect, to hit, to befall		115.55
+nät	noun-ett	word	A1	net; a mesh of string, cord, or rope.		115.48
+teknik	noun-en	word	A1	a technique		115.08
+resurs	noun-en	word	A1	a resource		115.04
+försök	noun-ett	word	A1	attempt, try, go		114.85
+fara	verb	word	A1	to go, to travel		114.82
+tjäna	verb	word	A1	to earn		114.8
+argument	noun-ett	word	A1	an argument supporting a stance		114.69
+behandla	verb	word	A1	to treat, to process		114.58
+ren	adjective	word	A1	reindeer		114.14
+fru	noun-en	word	A1	wife		114
+sjuk	adjective	word	A1	sick, ill		113.46
+istället för	prep	phrase	A1		none	113.32
+våld	noun-ett	word	A1	violence		113.28
+utföra	verb	word	A1	to perform, to carry out, to execute, to do		113.17
+ställning	noun-en	word	A1	a stand		113.06
+främst	adverb	word	A1	mainly, primarily		112.96
+räcka	verb	word	A1	a long row of things, or sequence of events	pos	112.94
+bättre	adverb	word	A1	good	via-form	112.92
+fundera	verb	word	A1	to ponder		112.8
+visst	adverb	word	A1	sure		112.62
+sommar	noun-en	word	A1	summer		112.48
+rörelse	noun-en	word	A1	movement		112.44
+kund	noun-en	word	A1	customer		112.31
+villkor	noun-ett	word	A1	a condition, a precondition		112.19
+högt	adverb	word	A1	loudly		112.04
+president	noun-en	word	A1	a chairman, presiding member of an assembly, e.g. a court of law		111.99
+emellertid	adverb	word	A1	meanwhile, during the same time		111.59
+händelse	noun-en	word	A1	an occurrence		111.44
+uppstå	verb	word	A1	to stand up, to rise		111.37
+acceptera	verb	word	A1	to accept, to approve, to receive		111.33
+huvud	noun-ett	word	A1	head		111.17
+sök	noun-ett	word	A1	to search, to seek	via-form,pos	110.86
+snabb	adjective	word	A1	fast, quick		110.8
+framför	prep	word	A1	in front of		110.51
+så kallad	adverb	phrase	A1	so-called		110.51
+ande	noun-en	word	A1	a spirit		110.42
+bilda	verb	word	A1	to form, to create		110.42
+orsak	noun-en	word	A1	cause		110.42
+försvinna	verb	word	A1	to disappear, to vanish		110.33
+fel	noun-ett	word	A1	wrong, incorrect, erroneous		110.16
+innehåll	noun-ett	word	A1	content		110.12
+natur	noun-en	word	A1	nature		110.01
+begrepp	noun-ett	word	A1	a concept		109.99
+för att	subj	phrase	A1	to, in order to		109.47
+konflikt	noun-en	word	A1	conflict		109.19
+tack	interj	word	A1	thanks, thank you		108.87
+djur	noun-ett	word	A1	animal		108.73
+chans	noun-en	word	A1	a chance		108.16
+samtidigt som	subj	phrase	A1	at the same time as; while		108.12
+demokratisk	adjective	word	A1	democratic		107.94
+läge	noun-ett	word	A1	a position; a location, a site		107.77
+sprida	verb	word	A1	to distribute, to spread, to disseminate		107.63
+växt	noun-en	word	A1	a plant		107.37
+förutom	prep	word	A1	except		106.41
+i samband med	prep	phrase	A1		none	106.3
+styck	noun	word	A1	apiece, each		106.25
+utskott	noun-ett	word	A1	a committee, a parliamentary committee		106.04
+muslim	noun-en	word	A1	a Muslim		105.98
+ordning	noun-en	word	A1	order		105.89
+uppdrag	noun-ett	word	A1	a commission, an assignment		105.87
+mark	noun-en	word	A1	ground		105.63
+säkerhet	noun-en	word	A1	safety, security		105.63
+linje	noun-en	word	A1	line		105.51
+bank	noun-en	word	A1	a bank		105.47
+önska	verb	word	A1	to wish		105.47
+givetvis	adverb	word	A1	of course, naturally		105.17
+studie	noun-en	word	A1	A study, an investigation, a report.		105.12
+fredag	noun-en	word	A1	Friday		104.7
+lärare	noun-en	word	A1	a teacher		104.69
+statlig	adjective	word	A1	owned by or pertaining to the state		104.45
+söndag	noun-en	word	A1	Sunday		104.44
+speciellt	adverb	word	A1	especially		104.35
+röd	adjective	word	A1	red		104.34
+television	noun-en	word	A1	television		104.3
+hot	noun-ett	word	A1	threat		104.27
+verk	noun-ett	word	A1	a work; something which has been accomplished		104
+publicera	verb	word	A1	to publish		103.98
+stund	noun-en	word	A1	while		103.98
+tillhöra	verb	word	A1	to belong to		103.16
+omfatta	verb	word	A1	to comprise, to span, to include		103.14
+material	noun-ett	word	A1	a material		102.94
+pelare	noun-en	word	A1	pillar		102.91
+hjärta	noun-ett	word	A1	heart		102.88
+knappast	adverb	word	A1	hardly, scarcely		102.76
+befinna	verb	word	A1	to be located; to be at		102.66
+part	noun-en	word	A1	part, piece		102.65
+trevlig	adjective	word	A1	nice and pleasant towards others, personable		102.64
+höst	noun-en	word	A1	autumn		102.61
+skilja	verb	word	A1	to separate; to cause to be separate		102.57
+ens	adverb	word	A1	even		102.09
+förmåga	noun-en	word	A1	ability, skill		102.02
+döda	verb	word	A1	to kill		101.92
+stånd	noun-ett	word	A1	existence		101.76
+peka	verb	word	A1	to point		101.73
+bedömning	noun-en	word	A1	an assessment, a judgement, an estimate, an opinion, an evaluation		101.49
+ringa	verb	word	A1	small, little	pos	101.34
+betrakta	verb	word	A1	to regard		101.05
+by	noun-en	word	A1	hamlet		100.93
+utifrån	prep	word	A1	from the outside		100.69
+brist	noun-en	word	A1	lack		100.59
+hänga	verb	word	A1	to hang		100.43
+tillräckligt	adverb	word	A1	sufficiently, enough		100.4
+måndag	noun-en	word	A1	Monday		100.12
+aktuell	adjective	word	A1	currently of interest or valid; current, topical, up-to-date, timely, etc.		99.75
+någonsin	adverb	word	A1	ever		99.71
+tillåta	verb	word	A1	to allow, to permit		99.66
+universitet	noun-ett	word	A1	university		99.16
+konsekvens	noun-en	word	A1	a consequence		99.15
+ställe	noun-ett	word	A1	a place, a location, a position		98.93
+hård	adjective	word	A1	hard; inflexible; rigid; unbending		98.66
+majoritet	noun-en	word	A1	majority		98.59
+domstol	noun-en	word	A1	a court of law, a court of justice		98.49
+ordförande	noun-en	word	A1	a chairman; chairperson		98.46
+lördag	noun-en	word	A1	Saturday		98.43
+låt	noun-en	word	A1	a song, a tune, a track, a musical piece		98.35
+herr	noun	word	A1	Mr., Mister, gentleman, sir		98.28
+sekvens	noun-en	word	A1		none	98.23
+förekomma	verb	word	A1	to occur, to exist		98.18
+stoppa	verb	word	A1	to stop		98.15
+nyhet	noun-en	word	A1	a piece of news		97.8
+journalist	noun-en	word	A1	a journalist		97.73
+kris	noun-en	word	A1	crisis		97.59
+rycka	verb	word	A1	to yank, to jerk, to pull quickly		97.44
+trycka	verb	word	A1	to press, to push		97.44
+betydligt	adverb	word	A1	significant	via-form	97.4
+kosta	verb	word	A1	to cost		97.1
+band	noun-ett	word	A1	band		97.09
+numera	adverb	word	A1	nowadays; in the present time or era		97.08
+tillstånd	noun-ett	word	A1	condition, state		97.07
+värd	adjective	word	A1	worth; worthy; having a value		97.06
+imorgon	adverb	word	A1	tomorrow	via-form	96.53
+klass	noun-en	word	A1	class		96.49
+uttrycka	verb	word	A1	to express, to utter, to voice		96.1
+slutsats	noun-en	word	A1	conclusion		95.99
+global	adjective	word	A1	global, spanning the entire globe, the whole world, international, universal		95.78
+mitt	adverb	word	A1	in the middle, right		95.61
+stol	noun-en	word	A1	a chair		95.52
+effektiv	adjective	word	A1	efficient		95.24
+förbättra	verb	word	A1	improve, enhance, make better	pos	95.1
+rädda	verb	word	A1	to save		95.09
+list	noun-en	word	A1	smartness, trick, cunning		94.89
+relation	noun-en	word	A1	relation; how two things may be associated		94.81
+agera	verb	word	A1	to act		94.6
+central	adjective	word	A1	central, centralized, situated at the centre		94.56
+flera	pronoun	word	A1	multiple, many, several		94.49
+undersökning	noun-en	word	A1	an investigation, an examination, a survey		94.27
+uppnå	verb	word	A1	to reach		94.18
+perspektiv	noun-ett	word	A1	a perspective		94.04
+plötsligt	adverb	word	A1	suddenly; without forewarning		93.95
+naturlig	adjective	word	A1	natural		93.87
+ålder	noun-en	word	A1	age; how old something or someone is		93.87
+process	noun-en	word	A1	process		93.76
+uttryck	noun-ett	word	A1	expression; a particular way of phrasing an idea.		93.7
+lista	noun-en	word	A1	a list; a register or roll of paper consisting of an enumeration or compilation of a set of possible items.	long	93.66
+allra	adverb	word	A1	the very, to the highest degree, most of all		93.57
+sökning	noun-en	word	A1	a search		93.56
+ökning	noun-en	word	A1	an increase		93.56
+därför att	subj	phrase	A1	for the reason that ...; because, since, as		93.55
+rysk	adjective	word	A1	Russian; of or pertaining to Russia or the Russian language		93.55
+jämföra	verb	word	A1	to compare; to assess similarities and differences between		93.52
+tills	subj	word	A1	until		93.48
+intresserad	adjective	word	A1	to interest	via-form	93.21
+totalt	adverb	word	A1	totally		92.97
+hantera	verb	word	A1	to handle, to manage		92.87
+förvänta	verb	word	A1	to expect		92.79
+medel	noun-ett	word	A1	a means		92.73
+vika	verb	word	A1	to fold		92.39
+döma	verb	word	A1	to sentence, to judge		92.38
+besöka	verb	word	A1	to visit		92.36
+var	adverb	word	A1	where; at which place		92.16
+täcka	verb	word	A1	to cover		92.1
+borgerlig	adjective	word	A1	bourgeois, middle-class		92.09
+inleda	verb	word	A1	to begin, to introduce, to open		92.09
+helg	noun-en	word	A1	holiday		92.06
+undvika	verb	word	A1	to avoid		92.02
+ryck	noun-ett	word	A1	a short, intense movement; a tug, a yank, a jerk, a jolt, etc.		91.76
+tryck	noun-ett	word	A1	pressure; force per unit of area		91.76
+tydligen	adverb	word	A1	apparently		91.69
+aktiv	adjective	word	A1	active		91.62
+höja	verb	word	A1	to raise; make something higher		91.58
+pappa	noun-en	word	A1	dad, father		91.48
+varkeneller	conj	word	A1		none	91.32
+religiös	adjective	word	A1	religious; concerning religion		91.15
+råka	verb	word	A1	rook	pos	91
+verklig	adjective	word	A1	actual, real; existing in act or reality		90.87
+rent	adverb	word	A1	cleanly		90.85
+fantastisk	adjective	word	A1	fantastic		90.78
+grundläggande	adjective	word	A1	basic, fundamental		90.73
+upptäcka	verb	word	A1	to discover		90.72
+erkänna	verb	word	A1	to admit		90.67
+helig	adjective	word	A1	holy		90.59
+lön	noun-en	word	A1	reward, something given to someone for a deed or achievement		90.42
+historisk	adjective	word	A1	historic		90.34
+rest	noun-en	word	A1	remainder, rest		90.27
+halv	adjective	word	A1	half, ½; with one of two equal parts		90.13
+andel	noun-en	word	A1	a share; someone's part of something		90.06
+besök	noun-ett	word	A1	a visit		90.06
+teknisk	adjective	word	A1	technical, engineering, technological, technology; of or pertaining to mechanics, engineering, technology	long	90.04
+kasta	verb	word	A1	to throw		89.78
+hemsida	noun-en	word	A1	a home page, a web page, a web site		89.75
+bedöma	verb	word	A1	to assess		89.72
+torsdag	noun-en	word	A1	Thursday		89.68
+tillväxt	noun-en	word	A1	growth, expansion		89.64
+läsare	noun-en	word	A1	a reader		89.59
+forskare	noun-en	word	A1	a researcher		89.52
+bidrag	noun-ett	word	A1	a contribution		89.28
+onsdag	noun-en	word	A1	Wednesday		89.16
+sol	noun-en	word	A1	sun		89.1
+inte minst	adverb	phrase	A1		none	89.08
+analys	noun-en	word	A1	an analysis		88.93
+ovan	adverb	word	A1	unaccustomed; not used to, inexperienced, lacking practice		88.85
+lagstiftning	noun-en	word	A1	legislation		88.83
+militär	adjective	word	A1	military		88.82
+toppa	verb	word	A1	to top		88.72
+sort	noun-en	word	A1	kind, sort		88.57
+fördel	noun-en	word	A1	advantage; conditions favorable for success		88.33
+skydda	verb	word	A1	protect	pos	88.3
+nyttja	verb	word	A1	to use, to make use of for benefit		88.29
+utnyttja	verb	word	A1	to use, to make use of, to take advantage of		88.29
+teori	noun-en	word	A1	theory; an unproven conjecture		88.16
+fransk	adjective	word	A1	French		88.02
+pågå	verb	word	A1	to proceed, to go on, to continue		87.99
+samling	noun-en	word	A1	collection		87.94
+flertal	noun-ett	word	A1	plural		87.89
+snarare	adverb	word	A1	rather, sooner, more likely, better		87.88
+försvara	verb	word	A1	to defend		87.72
+modell	noun-en	word	A1	a model, a miniature, a simplified or smaller depiction		87.56
+skön	adjective	word	A1	fair, beautiful		87.52
+vapen	noun-ett	word	A1	weapon		87.52
+således	adverb	word	A1	thus, therefore		87.49
+förening	noun-en	word	A1	an association		87.48
+lyfta	verb	word	A1	to lift; to move something upwards		87.39
+eftermiddag	noun-en	word	A1	afternoon		87.36
+soldat	noun-en	word	A1	a soldier		87.29
+märka	verb	word	A1	to notice		87.24
+gemenskap	noun-en	word	A1	a fellowship, a community		87.17
+ösa	verb	word	A1	to scoop, pour, serve		87.12
+fast	conj	word	A1	caught, captured		87.09
+styrka	noun-en	word	A1	strength		86.87
+ersätta	verb	word	A1	to replace		86.51
+kille	noun-en	word	A1	a boy		86.47
+vård	noun-en	word	A1	care		86.44
+fullt	adverb	word	A1	fully		86.4
+ägna	verb	word	A1	to engage oneself, to spend time		86.39
+oavsett	prep	word	A1	independent of, regardless of		86.16
+poäng	noun-en	word	A1	a point, a score		86.13
+satsa	verb	word	A1	to go for, to invest, to bet		86.11
+moderat	noun-en	word	A1	moderate		86.02
+rida	verb	word	A1	to ride		85.96
+jo	interj	word	A1	yes; used as a disagreement to a negative statement or a negatively phrased question	long	85.95
+tisdag	noun-en	word	A1	Tuesday		85.94
+allmänt	adverb	word	A1	generally		85.48
+avsluta	verb	word	A1	to close, cancel, terminate		85.39
+sova	verb	word	A1	to sleep		85.26
+inne	adverb	word	A1	inside, indoors		85.1
+flicka	noun-en	word	A1	a girl		85.02
+total	adjective	word	A1	total		84.78
+allvarlig	adjective	word	A1	serious		84.74
+ljus	noun-ett	word	A1	light, bright		84.31
+sjukdom	noun-en	word	A1	disease, illness		84.27
+unge	noun-en	word	A1	a young, a baby		84.16
+i form av	prep	phrase	A1		none	84.01
+vikt	noun-en	word	A1	weight		83.95
+rik	adjective	word	A1	rich, wealthy		83.8
+region	noun-en	word	A1	region, area		83.76
+samtal	noun-ett	word	A1	a conversation		83.69
+negativ	adjective	word	A1	less than zero		83.54
+i år	adverb	phrase	A1	this year		83.52
+igång	particle	word	A1	in motion, moving, running		83.49
+vändning	noun-en	word	A1	turn, pivot		83.42
+antingeneller	conj	word	A1		none	83.19
+föda	verb	word	A1	food; sustenance	pos	83.1
+åter	adverb	word	A1	again		83.06
+arbetare	noun-en	word	A1	a worker; one who does work, often as part of an employment.		83.02
+skjuta	verb	word	A1	to shoot, to fire		83.01
+tradition	noun-en	word	A1	tradition		82.91
+hämta	verb	word	A1	to get, to fetch, to retrieve		82.84
+församling	noun-en	word	A1	an assembly, assemblage		82.73
+hav	noun-ett	word	A1	sea, ocean		82.66
+energi	noun-en	word	A1	energy		82.37
+bred	adjective	word	A1	wide, broad		82.28
+vad gäller	prep	phrase	A1		none	82.23
+påpeka	verb	word	A1	to point out, to note		82.21
+bättra	verb	word	A1	to improve		82.19
+skaffa	verb	word	A1	to get, to acquire, to procure		82.09
+utgå	verb	word	A1	to assume, to base, to start		82.08
+samtlig	adjective	word	A1		none	81.95
+stärka	verb	word	A1	to strengthen		81.95
+läkare	noun-en	word	A1	doctor, physician		81.81
+fattig	adjective	word	A1	poor		81.56
+grepp	noun-ett	word	A1	a grip		81.5
+hej	interj	word	A1	hi, hello		81.45
+utsätta	verb	word	A1	to expose		81.45
+spännande	adjective	word	A1	exciting		81.2
+fort	adverb	word	A1	quickly/quick, fast		81.07
+sikt	noun-en	word	A1	visibility		81.06
+revolution	noun-en	word	A1	a revolution		81.03
+brev	noun-ett	word	A1	a letter		80.95
+personal	noun-en	word	A1	staff		80.84
+skada	noun-en	word	A1	scathe; damage, an injury, a harm, a wound		80.74
+illa	adverb	word	A1	badly		80.73
+kämpa	verb	word	A1	to fight		80.69
+alltför	adverb	word	A1	too		80.65
+tecken	noun-ett	word	A1	A visible indication; a sign.		80.61
+siffra	noun-en	word	A1	a single digit		80.59
+tydligt	adverb	word	A1	clear	via-form	80.52
+hårt	adverb	word	A1	in a hard manner; inflexibly, unyieldingly		80.46
+absolut	adverb	word	A1	absolute, full, complete		80.27
+eka	verb	word	A1	a kind of small wooden rowing- or sailing boat	pos	80.26
+engelsk	adjective	word	A1	English; of or pertaining to England.		80.2
+praktik	noun-en	word	A1	practice, actual operation		79.79
+förmodligen	adverb	word	A1	probably		79.75
+hoppa	verb	word	A1	to jump		79.72
+morgon	noun-en	word	A1	morning		79.54
+tjej	noun-en	word	A1	a girl		79.44
+konstig	adjective	word	A1	weird, strange		79.43
+union	noun-en	word	A1	union		79.39
+kommande	adjective	word	A1	coming, future, arriving		79.27
+avgöra	verb	word	A1	to determine, to decide		79.23
+chef	noun-en	word	A1	A boss, manager; person in charge, person who directly oversees the work being done	long	79.17
+vis	noun-ett	word	A1	wise		79.11
+strid	noun-en	word	A1	rapid, swift, rich		78.98
+sända	verb	word	A1	to send, to transmit		78.93
+missa	verb	word	A1	to miss; to fail to hit		78.88
+bedriva	verb	word	A1	to operate, to run, to manage		78.64
+etcetera	adverb	word	A1	et cetera		78.45
+anföra	verb	word	A1	lead, command	pos	78.34
+varm	adjective	word	A1	warm, hot		78.22
+hit	adverb	word	A1	to here, hither, here		78.19
+berättelse	noun-en	word	A1	a story, a narrative, an account		78.05
+produktion	noun-en	word	A1	production or manufacture		77.86
+kapitel	noun-ett	word	A1	a chapter		77.76
+hindra	verb	word	A1	to prevent, restrain, hinder, impede, constrain		77.58
+konst	noun-en	word	A1	an art		77.53
+speciell	adjective	word	A1	special		77.45
+allvar	noun-ett	word	A1	seriousness, earnestness, serious business		77.42
+grön	adjective	word	A1	green		77.31
+meddela	verb	word	A1	to communicate, to notify		77.16
+omöjlig	adjective	word	A1	impossible		77.05
+tillämpa	verb	word	A1	to apply, to use, to make use of		77.02
+skydd	noun-ett	word	A1	protection		76.99
+hittills	adverb	word	A1	so far, heretofore, until now, until this point in time; yet		76.96
+sällan	adverb	word	A1	seldom, rarely		76.95
+position	noun-en	word	A1	a place, a location, a position. A description of where something is located with respect to the surroundings, e.g.…	long	76.89
+behandling	noun-en	word	A1	treatment, processing		76.64
+omfattande	adjective	word	A1	comprehensive, large		76.54
+skog	noun-en	word	A1	forest, wood		76.52
+kritisera	verb	word	A1	to criticize		76.46
+förklaring	noun-en	word	A1	explanation		76.39
+springa	verb	word	A1	to run		76.39
+oerhört	adverb	word	A1	unheard-of	via-form	76.26
+uppfatta	verb	word	A1	to understand correctly; to read in a communication		76.24
+foto	noun-ett	word	A1	photo		76.14
+islam	noun-en	word	A1	Islam		76.13
+stänga	verb	word	A1	to close, to shut		76.1
+aning	noun-en	word	A1	a suspicion, an idea, a notion		76.09
+försvar	noun-ett	word	A1	a defence		76.08
+meter	noun-en	word	A1	a metre; the SI-unit		76.04
+evolution	noun-en	word	A1	evolution; development		75.98
+funktion	noun-en	word	A1	function; what something does or is used for		75.88
+dotter	noun-en	word	A1	a daughter		75.82
+värdering	noun-en	word	A1	an appraisal		75.62
+råda	verb	word	A1	to advise		75.56
+ersättning	noun-en	word	A1	a replacement		75.51
+slippa	verb	word	A1	to not have to experience, to not have to deal with		75.51
+självklart	adverb	word	A1	of course, self-evident, obviously		75.31
+lämplig	adjective	word	A1	suitable, appropriate, apposite		75.27
+ting	noun-ett	word	A1	a thing, an individual object		75.13
+minne	noun-ett	word	A1	memory; component used in computers etc. store information		75.11
+strategi	noun-en	word	A1	a strategy		75.1
+dyka	verb	word	A1	to dive		75.09
+orka	verb	word	A1	to have strength, will, or stamina enough		75.09
+kontrollera	verb	word	A1	to check		74.97
+planera	verb	word	A1	to plan		74.86
+färg	noun-en	word	A1	colour; the spectral composition of visible light		74.81
+lova	verb	word	A1	to promise		74.62
+citera	verb	word	A1	to cite, to quote		74.41
+finansiell	adjective	word	A1	financial, pertaining to finance		74.34
+ständigt	adverb	word	A1	steadily, always		74.22
+spår	noun-ett	word	A1	a trail or trace; a mark left by something that has passed along or happened, also figuratively	long	74.17
+kall	adjective	word	A1	cold; having a low temperature.		74.14
+vuxen	adjective	word	A1	adult		74.07
+allians	noun-en	word	A1	alliance		74.06
+faktor	noun-en	word	A1	a printer, the manager of a print shop		73.95
+kvalitet	noun-en	word	A1	quality		73.93
+utländsk	adjective	word	A1	foreign; concerning a foreign country		73.89
+svag	adjective	word	A1	weak; lacking in force or ability		73.87
+sköta	verb	word	A1	to manage, to take care of, to care for, to nurse		73.72
+vägra	verb	word	A1	to refuse		73.64
+rike	noun-ett	word	A1	a realm, kingdom, empire, nation		73.5
+framgå	verb	word	A1	to be derivable, to be possible to perceive or infer		73.41
+judisk	adjective	word	A1	Jewish		73.26
+studera	verb	word	A1	to study		73.17
+farlig	adjective	word	A1	dangerous		73.07
+framgång	noun-en	word	A1	progress; a success		73.07
+billig	adjective	word	A1	cheap; of low price, of little worth		73.02
+tolka	verb	word	A1	to interpret; as of translating orally between languages		73.02
+iväg	particle	word	A1	away, off		72.74
+student	noun-en	word	A1	a student		72.69
+och så vidare	adverb	phrase	A1	and so on, et cetera, and so forth		72.62
+visserligen	adverb	word	A1	surely, certainly, admittedly Signals a concession and in the following clause a counterpoint usually headed by men,…	long	72.58
+undantag	noun-ett	word	A1	an exception		72.4
+tillgänglig	adjective	word	A1	available, accessible		72.31
+enorm	adjective	word	A1	enormous, immense, vast		72.24
+behålla	verb	word	A1	to keep; to maintain possession of		72.2
+dricka	verb	word	A1	to drink		72.16
+aktion	noun-en	word	A1	an operation, an intervention		72.14
+bry sig	verb	phrase	A1	to care		72.13
+relativt	adverb	word	A1	relatively		72.06
+tung	adjective	word	A1	heavy		72.04
+arbetsgivare	noun-en	word	A1	an employer		71.89
+med hjälp av	prep	phrase	A1		none	71.84
+tvärtom	adverb	word	A1	on the contrary; in the opposite manner		71.67
+notera	verb	word	A1	to note; to notice		71.48
+nation	noun-en	word	A1	nation, country, state		71.44
+sänka	verb	word	A1	to lower; move downwards		71.42
+ärende	noun-ett	word	A1	a matter, an errand, an issue, a task, a work item		71.39
+givare	noun-en	word	A1	a giver		71.09
+kull	noun-en	word	A1	litter		71.03
+nyligen	adverb	word	A1	recently, newly		71.03
+rättelse	noun-en	word	A1	a correction, an erratum		71
+delvis	adverb	word	A1	partially, in part		70.94
+medföra	verb	word	A1	to imply		70.92
+ifrågasätta	verb	word	A1	to question, to call in question, to cast into doubt		70.79
+för övrigt	adverb	phrase	A1		none	70.76
+län	noun-ett	word	A1	fief, fiefdom		70.61
+gata	noun-en	word	A1	a street		70.48
+medveten	adjective	word	A1	conscious, aware; having knowledge of		70.44
+serie	noun-en	word	A1	a sequence of things or events.		70.44
+rimlig	adjective	word	A1	reasonable, fair		70.42
+invandrare	noun-en	word	A1	an immigrant		70.38
+ty	conj	word	A1	for		70.38
+dörr	noun-en	word	A1	a door		70.02
+direktiv	noun-ett	word	A1	a directive		69.99
+stiga	verb	word	A1	to step; to move the foot in walking		69.91
+tiga	verb	word	A1	to refrain from saying anything, to keep silent, to stay silent		69.91
+begränsad	adjective	word	A1	limited, small, narrow		69.9
+fot	noun-en	word	A1	a foot		69.9
+vag	adjective	word	A1	vague		69.88
+äntligen	adverb	word	A1	at last, finally		69.88
+vänster	adjective	word	A1	left		69.77
+väcka	verb	word	A1	to wake up, to wake, to awaken		69.65
+leta	verb	word	A1	search; look throughout for something	pos	69.52
+häst	noun-en	word	A1	a horse; a large mammal, Equus caballus		69.47
+kategori	noun-en	word	A1	a category		69.47
+brittisk	adjective	word	A1	British		69.43
+följd	noun-en	word	A1	series, sequence; a number of things that follow on one after the other		69.24
+ed	noun-en	word	A1	an oath		69.22
+fred	noun-en	word	A1	peace		69.22
+traditionell	adjective	word	A1	traditional		69.22
+användning	noun-en	word	A1	use, usage, application		69.21
+riskera	verb	word	A1	to risk		69.16
+tappa	verb	word	A1	to drop		69.16
+inkomst	noun-en	word	A1	income; money one earns by working or capitalising off other people's work		69.04
+nöjd	adjective	word	A1	pleased; satisfied		69.02
+kläder	noun	word	A1	clothes, garments, items of clothing		69
+spara	verb	word	A1	to save, to store for future use		68.81
+styrelse	noun-en	word	A1	council; board; a committee		68.79
+intervju	noun-en	word	A1	interview		68.72
+starkt	adverb	word	A1	strongly		68.69
+slutligen	adverb	word	A1	eventually		68.46
+bit	noun-en	word	A1	a piece		68.3
+muslimsk	adjective	word	A1	Muslim		68.24
+vetenskaplig	adjective	word	A1	scientific		68.23
+överens	adverb	word	A1	in agreement, in accord		67.86
+framtida	adjective	word	A1	relating to something which may happen in the future		67.84
+bevis	noun-ett	word	A1	a proof		67.69
+sexuell	adjective	word	A1	sexual		67.49
+exakt	adverb	word	A1	exact		67.27
+arbetsmarknad	noun-en	word	A1	labor market		67.26
+underbar	adjective	word	A1	wonderful, marvelous		67.23
+post	noun-en	word	A1	postal office; an organization delivering mail and parcels		67.02
+extra	adjective	word	A1	extra		66.9
+offer	noun-ett	word	A1	a sacrifice		66.85
+sektor	noun-en	word	A1	a sector		66.75
+vinst	noun-en	word	A1	a win		66.65
+england	proper name	word	A1	England		66.6
+inflytande	noun-ett	word	A1	incoming, received		66.6
+budskap	noun-ett	word	A1	a message		66.59
+klicka	verb	word	A1	to click		66.58
+tips	noun-ett	word	A1	a tip, as a small amount of information		66.37
+världskrig	noun-ett	word	A1	a world war, the Great War		66.36
+med tanke på	prep	phrase	A1		none	66.31
+självklar	adjective	word	A1	obvious, self-explanatory		66.24
+båt	noun-en	word	A1	a boat		66.17
+borta	adverb	word	A1	away, gone, lost		66.14
+regional	adjective	word	A1	regional; pertaining to a region or regions		66.06
+framåt	adverb	word	A1	forward, progressive, full of initiative, entrepreneurial, active		66.04
+karaktär	noun-en	word	A1	a character		66
+skiva	noun-en	word	A1	a relatively thin, flat object		66
+omkring	adverb	word	A1	around		65.97
+ansikte	noun-ett	word	A1	a face; front side of the head		65.96
+i början	prep	phrase	A1		none	65.88
+aktivitet	noun-en	word	A1	an activity		65.76
+ost	noun-en	word	A1	cheese		65.67
+fängelse	noun-ett	word	A1	a prison, a jail		65.6
+motsvarande	adjective	word	A1	corresponding		65.56
+synas	verb	word	A1	to be visible		65.54
+mor	noun-en	word	A1	mother		65.46
+an	particle	word	A1	used as a verb particle, similar to German preposition an		65.44
+samman	particle	word	A1	together		65.44
+ända	adverb	word	A1	all the way		65.38
+ledamot	noun-en	word	A1	body part; limb		65.34
+i enlighet med	prep	phrase	A1		none	65.2
+civil	adjective	word	A1	civil, civilian; having to do with people and organizations outside military or police, sometimes also outside…	long	65.17
+uppenbar	adjective	word	A1	obvious, apparent, in plain sight		65.12
+skull	noun	word	A1	sake		65.07
+arbetslöshet	noun-en	word	A1	unemployment		65
+fysisk	adjective	word	A1	physical; having to do with the body or the material world		64.96
+generation	noun-en	word	A1	a generation		64.92
+återigen	adverb	word	A1	once again, yet again		64.84
+djup	adjective	word	A1	deep		64.61
+initiativ	noun-ett	word	A1	initiative		64.56
+fastställa	verb	word	A1	to establish, to determine		64.47
+parlament	noun-ett	word	A1	parliament		64.38
+säsong	noun-en	word	A1	a season		64.38
+levande	adjective	word	A1	living, live		64.27
+tacka	verb	word	A1	to thank		64.24
+hota	verb	word	A1	to threaten		64.07
+tusentals	adverb	word	A1	thousands of		64.02
+eventuell	adjective	word	A1	possible, potential, hypothetical		64
+pojke	noun-en	word	A1	a boy		63.91
+version	noun-en	word	A1	version		63.9
+existera	verb	word	A1	to exist		63.72
+trött	adjective	word	A1	tired		63.63
+himmel	noun-en	word	A1	sky		63.39
+reaktion	noun-en	word	A1	a reaction		63.39
+dyr	adjective	word	A1	expensive		63.35
