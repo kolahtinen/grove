@@ -41,6 +41,7 @@ const BODIES = {
   '/api/session/next': { sessionId: 999999, index: 0 },
   '/api/session/plan': { sessionId: 999999, fill: true },
   '/api/library/add': { id: 'Z9-99' },
+  '/api/undo': { lemma: 'kopp', kind: 'word' },
 };
 const BLOCKING = new Set(['signed_out', 'terms_needed', 'forbidden']);
 

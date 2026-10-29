@@ -5,7 +5,8 @@ import { drillGrove, word } from './helpers.mjs';
 let t;
 let learner;
 let c;
-before(async () => { ({ t, learner, c } = await drillGrove()); });
+let clock;
+before(async () => { ({ t, learner, c, clock } = await drillGrove()); });
 after(() => t.close());
 
 test('FR-409 RQ-07 RQ-415: the To remember switch marks a ground word, creates a leaf for a word grove hasn\'t got, and off unmarks; there is no To read', async () => {
@@ -58,3 +59,51 @@ test('FR-419 RQ-155: marks, Let it fall and Pick up act only on the learner\'s o
   assert.equal((await other.post('/api/let-it-fall', { lemma: 'tolv', right: true })).status, 404);
   assert.equal(word(t, learner.id, 'tolv').state, 'leaf');
 });
+
+test('FR-411 FR-926 RQ-449: Pick up in the common dictionary adds a word that is not yet the learner\'s as a drilled leaf, due now', async () => {
+  assert.equal(word(t, learner.id, 'pingvin'), undefined);
+  assert.deepEqual((await c.post('/api/pick-up', { lemma: 'pingvin' })).body, { result: 'picked_up' });
+  const p = word(t, learner.id, 'pingvin');
+  assert.deepEqual([p.state, p.drilled, p.to_remember], ['leaf', 1, 1]);
+});
+
+test('FR-410 RQ-449: after a wrong answer, Let it fall anyway lets the leaf fall; the wrong answer is kept', async () => {
+  await c.post('/api/marks', { lemma: 'kaka', remember: true });
+  assert.deepEqual((await c.post('/api/let-it-fall', { lemma: 'kaka', right: false })).body, { fell: false });
+  assert.deepEqual((await c.post('/api/let-it-fall', { lemma: 'kaka', confirmed: true })).body, { fell: true });
+  assert.equal(word(t, learner.id, 'kaka').state, 'ground');
+  const id = word(t, learner.id, 'kaka').id;
+  assert.equal(t.grove.db.prepare("SELECT COUNT(*) AS n FROM review_answers WHERE word_id = ? AND mode = 'fall_check' AND right = 0").get(id).n, 1);
+});
+
+test('FR-927 RQ-449: Undo puts the word back exactly as it was after Pick up or a fall, within 15 seconds and only if it has not changed since; a picked-up new word is removed', async () => {
+  const cols = 'state, drilled, to_remember, to_read, gap_days, last_review_at, fallen_at, fell_marks, picked_at';
+  const snap = (lemma) => ({ ...t.grove.db.prepare(`SELECT ${cols} FROM words WHERE account_id = ? AND lemma = ? AND kind = 'word'`).get(learner.id, lemma) });
+  const before = snap('bord');
+  await c.post('/api/pick-up', { lemma: 'bord' });
+  assert.equal(snap('bord').state, 'leaf');
+  assert.deepEqual((await c.post('/api/undo', { lemma: 'bord', kind: 'word' })).body, { undone: true });
+  assert.deepEqual(snap('bord'), before);
+  assert.equal((await c.post('/api/undo', { lemma: 'bord', kind: 'word' })).status, 409, 'nothing left to undo');
+  await c.post('/api/marks', { lemma: 'stol', remember: true });
+  const leaf = snap('stol');
+  await c.post('/api/let-it-fall', { lemma: 'stol', confirmed: true });
+  assert.equal(snap('stol').state, 'ground');
+  await c.post('/api/undo', { lemma: 'stol', kind: 'word' });
+  assert.deepEqual(snap('stol'), leaf);
+  await c.post('/api/pick-up', { lemma: 'flamingo' });
+  await c.post('/api/undo', { lemma: 'flamingo', kind: 'word' });
+  assert.equal(word(t, learner.id, 'flamingo'), undefined, 'a word that was not the learner\'s is removed again');
+  await c.post('/api/pick-up', { lemma: 'bord' });
+  clock.now += 16000;
+  assert.equal((await c.post('/api/undo', { lemma: 'bord', kind: 'word' })).status, 409, 'too late');
+  await c.post('/api/let-it-fall', { lemma: 'bord', confirmed: true });
+  await c.post('/api/pick-up', { lemma: 'bord' });
+  await c.post('/api/marks', { lemma: 'bord', remember: false });
+  assert.equal((await c.post('/api/undo', { lemma: 'bord', kind: 'word' })).status, 409, 'changed since');
+  const other = t.client();
+  await other.signInAgreed('other@example.test');
+  await c.post('/api/pick-up', { lemma: 'soffa' });
+  assert.equal((await other.post('/api/undo', { lemma: 'soffa', kind: 'word' })).status, 409, 'only the learner\'s own last action');
+});
+

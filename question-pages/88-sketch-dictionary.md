@@ -20,5 +20,5 @@ Said done 2026-10-29.
 
 ## Applied
 
-RQ-449 (requirements from sketches); G-09 FR-926 (the one-sided button, version B; state labels; the toast with Undo), FR-927 (Undo puts the word back, 15 s, server memory); G-04 FR-410 (Keep it or Let it fall anyway after a wrong answer), FR-411 (Pick up in both dictionaries, also a word not yet the learner's). Next: regen(drill, client).
+RQ-449 (requirements from sketches); G-09 FR-926 (the one-sided button, version B; state labels; the toast with Undo), FR-927 (Undo puts the word back, 15 s, server memory); G-04 FR-410 (Keep it or Let it fall anyway after a wrong answer), FR-411 (Pick up in both dictionaries, also a word not yet the learner's). Built 2026-10-29: regen(drill, client).
 

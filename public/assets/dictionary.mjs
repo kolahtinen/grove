@@ -1,8 +1,10 @@
 // The dictionary (FR-316, FR-317; research R9): four tabs, 100 entries at a time with More, a search
-// on the server 0.3 s after typing stops (an older search's answer is dropped), and Pick up on ground
-// words (G-04 FR-411). All text via textContent.
-import { getMe, post, showMessage } from './api.mjs';
+// on the server 0.3 s after typing stops (an older search's answer is dropped), and on every row but a
+// name's the one-sided Pick up / Let it fall button with the row's state (G-09 FR-926, FR-927). All text
+// via textContent.
+import { getMe, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
+import { wordButton, stateLabel } from './wordbutton.mjs';
 
 const $ = (id) => document.getElementById(id);
 const PAUSE = 300;
@@ -23,38 +25,32 @@ await getMe();
 
 function entry(item) {
   const li = document.createElement('li');
+  const row = document.createElement('div');
+  row.className = 'drow';
+  const main = document.createElement('div');
+  main.className = 'dmain';
   const head = document.createElement('p');
   const lemma = document.createElement('strong');
   lemma.textContent = item.lemma;
   head.append(lemma);
-  if (tab !== 'names') {
-    const state = document.createElement('span');
-    state.className = `text-state ${item.state}`;
-    state.textContent = item.state;
-    head.append(document.createTextNode(` — ${item.en || 'meaning missing'} `), state);
-    if (item.state === 'ground') {
-      const pick = document.createElement('button');
-      pick.type = 'button';
-      pick.className = 'bar-button';
-      pick.textContent = 'Pick up';
-      pick.addEventListener('click', async () => {
-        pick.disabled = true;
-        const r = await post('/api/pick-up', { lemma: item.lemma, kind: item.kind });
-        if (!r.ok) { pick.disabled = false; showMessage(message, r.message); return; }
-        state.className = 'text-state leaf';
-        state.textContent = 'leaf';
-        pick.remove();
-      });
-      head.append(document.createTextNode(' '), pick);
-    }
-  }
-  li.append(head);
+  main.append(head);
   if (item.example) {
     const ex = document.createElement('p');
     ex.className = 'small muted example';
     ex.textContent = item.example;
-    li.append(ex);
+    main.append(ex);
   }
+  row.append(main);
+  if (tab !== 'names') {
+    let label = stateLabel(item.state);
+    head.append(document.createTextNode(` — ${item.en || 'meaning missing'} `), label);
+    const b = wordButton(item, (state) => { const next = stateLabel(state); label.replaceWith(next); label = next; });
+    const act = document.createElement('div');
+    act.className = 'dact';
+    act.append(b);
+    row.append(act);
+  }
+  li.append(row);
   return li;
 }
 

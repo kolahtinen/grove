@@ -57,6 +57,7 @@ export function registerDrillRoutes(router, { db, now = () => Date.now() }) {
     handler: (ctx) => sendJson(ctx.res, 200, marks.letItFall(ctx.account.id, ctx.body)),
   });
   router.add({ method: 'POST', path: '/api/pick-up', access: 'agreed', schema: { lemma, kind }, handler: (ctx) => sendJson(ctx.res, 200, marks.pickUp(ctx.account.id, ctx.body)) });
+  router.add({ method: 'POST', path: '/api/undo', access: 'agreed', schema: { lemma, kind }, handler: (ctx) => sendJson(ctx.res, 200, marks.undo(ctx.account.id, ctx.body)) });
   router.add({
     method: 'GET', path: '/api/review', access: 'agreed',
     handler: (ctx) => sendJson(ctx.res, 200, review.session(ctx.account.id, ctx.url.searchParams.get('mode') === 'master' ? 'master' : 'review')),

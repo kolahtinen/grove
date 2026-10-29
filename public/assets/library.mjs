@@ -1,4 +1,4 @@
-// The Common library (G-09 FR-916, FR-917, FR-920; addendum 006): grove texts by topic, each with its
+// The Common library (G-09 FR-916, FR-917, FR-920, FR-926; addendum 006): grove texts by topic, each with its
 // level, kind and minutes, a filter that shows every level up to the chosen one (the learner's level
 // first), + Add on each row (added without leaving the list) and the title opening the full text; each
 // topic has Practise this topic. Sent by a session's offer (`?from=session`), the list shows only the
@@ -10,6 +10,7 @@ import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { hasSwedish } from './speech.mjs';
 import { offer, kindsStillNeeded, refresh, session, onOfferChange } from './way.mjs';
+import { wordButton, stateLabel } from './wordbutton.mjs';
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
@@ -94,31 +95,25 @@ renderLibrary();
 let asked = 0;
 let timer = null;
 
-function stateLine(r) {
-  if (r.state === 'leaf') return el('span', 'text-state', 'a leaf');
-  if (r.state === 'ground') return el('span', 'text-state', 'in your ground');
-  const b = el('button', 'bar-button', 'Add as a leaf');
-  b.type = 'button';
-  b.setAttribute('aria-label', `Add ${r.lemma} as a leaf`);
-  b.addEventListener('click', async () => {
-    b.disabled = true;
-    const result = await post('/api/leaves', { text: r.lemma, kind: 'word', en: r.en.slice(0, 200) });
-    b.replaceWith(el('span', 'text-state', result.ok ? 'added as a leaf' : 'couldn’t add it'));
-  });
-  return b;
-}
-
 function show(results, q) {
   const list = $('lexicon-results');
   list.replaceChildren();
   $('lexicon-status').textContent = results.length ? `${results.length === 50 ? 'The first 50' : results.length} for “${q}”` : `No word in the list matches “${q}”.`;
   for (const r of results) {
+    // G-09 FR-926: the state label and the one-sided Pick up / Let it fall button at the row's right.
     const li = el('li', 'lexicon-item');
-    const word = el('span', 'text-title', r.lemma);
+    const row = el('div', 'drow');
+    const main = el('div', 'dmain');
     const meta = el('span', 'lexicon-meta');
     if (r.level) meta.append(el('span', 'level-badge', r.level));
-    meta.append(stateLine(r));
-    li.append(word, el('span', 'lexicon-en', r.en), meta);
+    let label = stateLabel(r.state);
+    meta.append(label);
+    main.append(el('span', 'text-title', r.lemma), el('span', 'lexicon-en', r.en), meta);
+    const item = { lemma: r.lemma, kind: 'word', state: r.state === 'leaf' || r.state === 'ground' ? r.state : 'new' };
+    const act = el('div', 'dact');
+    act.append(wordButton(item, (state) => { const next = stateLabel(state); label.replaceWith(next); label = next; }));
+    row.append(main, act);
+    li.append(row);
     list.append(li);
   }
 }

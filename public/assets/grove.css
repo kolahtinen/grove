@@ -659,3 +659,20 @@ button.week-bar { display: flex; flex-direction: column; justify-content: flex-e
 .week-bar .bar-label.today { font-weight: 700; color: var(--ink); }
 .week-bar .today-tag { font-size: .68rem; font-weight: 700; }
 .week-readout { margin: .3rem 0 0; }
+
+/* The dictionary button (G-09 FR-926, the picked sketch's version B) and its message. */
+.drow { display: flex; align-items: center; gap: .6rem; }
+.dmain { flex: 1; min-width: 0; }
+.dmain p { margin: 0; }
+.dact { flex: none; }
+button.flip { min-height: 44px; min-width: 7.5rem; padding: .35rem .8rem; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+button.flip.to-up { background: var(--accent); border: 1px solid var(--accent); color: var(--onacc); }
+button.flip.to-fall { background: transparent; border: 1.5px solid var(--amber); color: var(--ink); }
+@media (prefers-reduced-motion: no-preference) { button.flip.turned { animation: flip-turn .35s ease; } }
+@keyframes flip-turn { from { transform: rotateX(90deg); } to { transform: none; } }
+.rowmsg { margin: .3rem 0 0; font-size: .88rem; }
+.toast { position: fixed; left: max(16px, env(safe-area-inset-left, 0px)); right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: .6rem; max-width: 560px; margin: 0 auto; padding: .6rem .9rem; border-radius: 14px; background: var(--ink); color: var(--bg); box-shadow: var(--shadow); }
+.toast .bar-button { color: var(--ink); }
+.fall-sheet .fall-body { display: grid; gap: .5rem; }
+.fall-sheet button.option.right { border-color: var(--ok); }
+.fall-sheet button.option.wrong { border-color: var(--bad); }

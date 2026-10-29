@@ -435,8 +435,21 @@ $('menu-fall').addEventListener('click', async () => {
       current.token.marks = { remember: false };
       showMessage($('menu-message'), 'It fell to your ground.', 'ok');
       renderLines($('lines'));
-    } else showMessage($('menu-message'), 'Not quite — it stays a leaf for now.');
-    box.hidden = true;
+      box.hidden = true;
+    } else if (payload.right === false) {
+      // G-04 FR-410 (B-28): after a wrong answer, Keep it or Let it fall anyway.
+      box.replaceChildren(el('p', 'message bad', 'Not quite. Keep it as a leaf, or let it fall anyway if you know it.'));
+      const row = el('div', 'row');
+      const keep = el('button', '', 'Keep it');
+      keep.type = 'button';
+      keep.addEventListener('click', () => { box.hidden = true; });
+      const anyway = el('button', 'main', 'Let it fall anyway');
+      anyway.type = 'button';
+      anyway.addEventListener('click', () => done({ confirmed: true }));
+      row.append(keep, anyway);
+      box.append(row);
+      return;
+    } else box.hidden = true;
     $('menu-fall').hidden = current.token.status !== 'leaf';
   };
   if (!question) {

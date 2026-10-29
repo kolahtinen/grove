@@ -201,7 +201,7 @@ test('FR-916 RQ-431 RQ-438 RQ-445: the Common library lists grove texts by topic
   await expect(page.locator('#beta')).toBeHidden();
 });
 
-test('FR-917 RQ-432: the common dictionary searches grove\'s whole word list as you type, with meanings and levels; a word can be added as a leaf', async ({ page }) => {
+test('FR-917 FR-926 RQ-432 RQ-449: the common dictionary searches grove\'s whole word list as you type, with meanings and levels; Pick up makes a word a leaf, Let it fall asks its meaning, and a wrong answer offers Let it fall anyway', async ({ page }) => {
   await signIn(page);
   await page.goto('/library');
   await page.getByLabel('Search').fill('p');
@@ -211,13 +211,27 @@ test('FR-917 RQ-432: the common dictionary searches grove\'s whole word list as 
   const item = page.locator('#lexicon-results li', { has: page.locator('.text-title', { hasText: new RegExp(`^${word}$`) }) });
   await expect(item).toBeVisible();
   await expect(item.locator('.lexicon-en')).not.toBeEmpty();
-  const add = item.getByRole('button', { name: `Add ${word} as a leaf` });
-  if (await add.isVisible()) {
-    await add.click();
-    await expect(item).toContainText('added as a leaf');
-  } else {
-    await expect(item.locator('.text-state')).toHaveText(/a leaf|in your ground/);
+  const pick = item.getByRole('button', { name: `Pick up ${word}` });
+  if (await pick.isVisible()) {
+    await pick.click();
+    await expect(item.locator('.text-state')).toHaveText('leaf');
+    await expect(page.locator('.toast')).toContainText(word);
   }
+  await item.getByRole('button', { name: `Let ${word} fall` }).click();
+  const sheet = page.getByRole('dialog', { name: `Let ${word} fall` });
+  await expect(sheet).toBeVisible();
+  const options = sheet.locator('button.option');
+  if (await options.count()) {
+    const right = await page.evaluate(async (w) => (await (await fetch(`/api/fall-check?lemma=${w}&kind=word`)).json()).question.right, word);
+    await options.nth(right === 0 ? 1 : 0).click();
+    await expect(sheet).toContainText('Not quite');
+    await sheet.getByRole('button', { name: 'Let it fall anyway' }).click();
+  } else {
+    await sheet.getByRole('button', { name: 'Yes, let it fall' }).click();
+  }
+  await expect(sheet).toHaveCount(0);
+  await expect(item.locator('.text-state')).toHaveText('ground');
+  await expect(page.locator('.toast')).toContainText('fell to your ground');
 });
 
 test('FR-920 FR-923 SC-006 RQ-444 RQ-445 B-20 B-23: a Reading session short of new texts offers Add a text or Practise without; the library then lists only reading texts with a Reading bar that fills as texts are added, ‹ Back to your session at the top, and ▶ Start your session when full', async ({ page }) => {

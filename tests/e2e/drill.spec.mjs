@@ -130,7 +130,14 @@ test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember swi
   await expect(page.locator('#fall-check')).toBeVisible();
   const option = page.locator('#fall-check button.option').first();
   if (await option.isVisible()) await option.click(); else await page.getByRole('button', { name: 'Yes, let it fall' }).click();
-  await expect(page.locator('#menu-message')).toHaveText(/fell to your ground|stays a leaf/);
+  // G-04 FR-410 (B-28): a wrong answer offers Keep it or Let it fall anyway.
+  const anyway = page.locator('#fall-check').getByRole('button', { name: 'Let it fall anyway' });
+  await expect(anyway.or(page.locator('#menu-message', { hasText: 'fell to your ground' }))).toBeVisible();
+  if (await anyway.isVisible()) {
+    await expect(page.locator('#fall-check').getByRole('button', { name: 'Keep it' })).toBeVisible();
+    await anyway.click();
+  }
+  await expect(page.locator('#menu-message')).toHaveText(/fell to your ground/);
   await setState(page, 'servitör');
   const word = `kanel${Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5)}`;
   await page.goto('/leaves');
