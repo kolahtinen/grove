@@ -53,6 +53,14 @@ export function listLibrary(db, accountId) {
   return { level: LEVELS.includes(level) ? level : 'A1', texts };
 }
 
+// One grove text in full, for reading before adding it (FR-916): its lines and what the list shows.
+export function libraryText(db, accountId, id) {
+  const row = db.prepare('SELECT id, data FROM library_texts WHERE id = ?').get(id);
+  if (!row) throw new HttpError(404, 'not_found', 'There is no such text in the library.');
+  const listed = listLibrary(db, accountId).texts.find((x) => x.id === id);
+  return { ...listed, lines: JSON.parse(row.data).lines.map((l) => ({ sv: l.sv, en: l.en })) };
+}
+
 // Adds a grove text to the learner's library through G-02's accept path; adding it again opens the copy.
 // Only an ID in library_texts is accepted, so no other text can be copied this way (T-24).
 export function addToLibrary({ db, accountId, id, now = () => Date.now() }) {

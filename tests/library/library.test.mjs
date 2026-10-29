@@ -89,3 +89,15 @@ test('FR-916 FR-905 RQ-445 R-34: every library text shows its kind and its minut
   const lengths = new Set(texts.map((x) => x.minutes));
   assert.ok(lengths.size > 1, 'texts differ in length');
 });
+
+test('FR-916 RQ-445: a grove text not yet added can be read in full (its lines, level, topic, kind and minutes), with whether the learner has a copy; an unknown id is 404', async () => {
+  const one = FILE.find((x) => x.level === 'A2');
+  const r = await c.get(`/api/library/text?id=${one.id}`);
+  assert.equal(r.status, 200);
+  assert.equal(r.body.title, one.title);
+  assert.deepEqual(r.body.lines.map((l) => l.sv), one.lines.map((l) => l.sv));
+  for (const key of ['level', 'topic', 'kind', 'minutes']) assert.ok(r.body[key], key);
+  assert.equal(r.body.added, null);
+  assert.equal((await c.get('/api/library/text?id=Z9-99')).status, 404);
+  assert.equal((await t.client().get(`/api/library/text?id=${one.id}`)).status, 401);
+});
