@@ -398,3 +398,38 @@ test('FR-914 RQ-155: migration 014 keeps every row and adds practice_sessions wi
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-903 FR-905 FR-920 RQ-440 RQ-441 RQ-444: migration 017 keeps every session and adds tile, skill, hard_only and offer', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 16 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 1)").run();
+    const old = db.prepare("INSERT INTO practice_sessions (id, account_id, kind, minutes, params, plan, status, started_at) VALUES (?, 1, ?, ?, ?, '[]', ?, 1)");
+    old.run(1, 'time', 10, '{}', 'going');
+    old.run(2, 'topic', 10, '{"topic":"Mat"}', 'finished');
+    old.run(3, 'skill', 5, '{"skill":"listening","form":"short"}', 'finished');
+    old.run(4, 'skill', 5, '{"skill":"words","form":"long"}', 'finished');
+    old.run(5, 'mode', null, '{"mode":"discover"}', 'finished');
+    old.run(6, 'mode', null, '{"mode":"review"}', 'finished');
+    old.run(7, 'mode', null, '{"mode":"master"}', 'finished');
+    migrate(db);
+    const row = (id) => db.prepare('SELECT kind, minutes, params, status, tile, skill, hard_only, offer FROM practice_sessions WHERE id = ?').get(id);
+    assert.deepEqual({ ...row(1) }, { kind: 'time', minutes: 10, params: '{}', status: 'going', tile: 'mix', skill: 'mix', hard_only: 0, offer: null });
+    assert.equal(row(2).tile, 'mix');
+    assert.equal(row(2).params, '{"topic":"Mat"}');
+    assert.deepEqual([row(3).tile, row(3).skill], ['mix', 'listening']);
+    assert.deepEqual([row(4).tile, row(4).skill], ['mix', 'words']);
+    assert.deepEqual([row(5).tile, row(5).skill, row(5).hard_only], ['discover', 'mix', 0]);
+    assert.deepEqual([row(6).tile, row(6).hard_only], ['review', 0]);
+    assert.deepEqual([row(7).tile, row(7).hard_only], ['review', 1]);
+    const add = db.prepare("INSERT INTO practice_sessions (account_id, kind, minutes, plan, status, started_at, tile, skill, hard_only, offer) VALUES (1, 'time', 10, '[]', 'finished', 1, ?, ?, ?, ?)");
+    add.run('review', 'reading', 1, '{"missing":{"reading":180,"listening":0},"at":5}');
+    assert.throws(() => add.run('master', 'mix', 0, null), 'tile is discover, review or mix');
+    assert.throws(() => add.run('mix', 'speaking', 0, null), 'skill is one of five');
+    assert.throws(() => add.run('mix', 'mix', 2, null), 'hard_only is 0 or 1');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});

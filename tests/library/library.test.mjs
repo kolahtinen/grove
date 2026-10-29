@@ -1,6 +1,6 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { GROVE_TEXTS_FILE, importGroveTexts } from '../../server/library/library.mjs';
 import { validateAnswer } from '../../server/texts/schema.mjs';
@@ -18,10 +18,14 @@ before(async () => {
 after(() => t.close());
 
 const FILE = JSON.parse(readFileSync(GROVE_TEXTS_FILE, 'utf8'));
+const CONTENT = new URL('../../content/library/texts/', import.meta.url);
+const SOURCE = readdirSync(CONTENT).filter((f) => f.endsWith('.json')).sort()
+  .flatMap((f) => { const j = JSON.parse(readFileSync(new URL(f, CONTENT), 'utf8')); return Array.isArray(j) ? j : j.texts; });
 
-test('FR-916 RQ-438: the 50 approved grove texts are in the build, ten per level A1–C1, each with a topic and level and in G-02\'s answer format', () => {
-  assert.equal(FILE.length, 50);
-  for (const level of ['A1', 'A2', 'B1', 'B2', 'C1']) assert.equal(FILE.filter((x) => x.level === level).length, 10, level);
+test('FR-916 RQ-438: every grove text in content/library is in the build, each with a topic and a level A1–C2 and in G-02\'s answer format', () => {
+  assert.ok(FILE.length >= 50);
+  assert.deepEqual(FILE.map((x) => x.id).sort(), SOURCE.map((x) => x.id).sort());
+  for (const x of FILE) assert.ok(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].includes(x.level), x.id);
   for (const x of FILE) {
     assert.ok(x.topic && x.id && ['reading', 'listening'].includes(x.kind), x.id);
     const checked = validateAnswer({ part: `LIB-${x.id}`, texts: [{ kind: x.kind, title: x.title, lines: x.lines, questions: x.questions }], new_words: [], new_phrases: [], inflections: [], names: x.names });
@@ -31,7 +35,7 @@ test('FR-916 RQ-438: the 50 approved grove texts are in the build, ten per level
 
 test('FR-916 RQ-438: grove imports them at start-up into library_texts, belonging to no learner, and again only when the file changes', () => {
   const db = t.grove.db;
-  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM library_texts').get().n, 50);
+  assert.equal(db.prepare('SELECT COUNT(*) AS n FROM library_texts').get().n, FILE.length);
   assert.equal(db.prepare("PRAGMA table_info(library_texts)").all().some((col) => col.name === 'account_id'), false);
   assert.equal(importGroveTexts(db), 'unchanged');
 });
@@ -40,7 +44,7 @@ test('FR-916 RQ-438 RQ-431: GET /api/library lists every grove text by topic wit
   const r = await c.get('/api/library');
   assert.equal(r.status, 200);
   assert.equal(r.body.level, 'A1');
-  assert.equal(r.body.texts.length, 50);
+  assert.equal(r.body.texts.length, FILE.length);
   assert.ok(r.body.texts.every((x) => x.topic && x.level && x.title && x.added === null));
   assert.equal((await t.client().get('/api/library')).status, 401);
 });
