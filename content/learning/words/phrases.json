@@ -1,0 +1,1720 @@
+{
+  "about": "Phrase spotlight: common multi-word expressions per CEFR level (B-26). Draft, not approved by the owner. See content/learning/README.md.",
+  "status": "draft",
+  "phrases": [
+    {
+      "id": "P-A1-01",
+      "level": "A1",
+      "phrase": "tycka om",
+      "en": "like",
+      "note": "Om is stressed. Tycka alone means \"think, have an opinion\".",
+      "examples": [
+        {
+          "sv": "Jag tycker om kaffe.",
+          "en": "I like coffee."
+        },
+        {
+          "sv": "Tycker du om att läsa?",
+          "en": "Do you like reading?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-02",
+      "level": "A1",
+      "phrase": "hur mår du?",
+      "en": "how are you?",
+      "note": "The usual answer is \"Bra, tack!\" (Fine, thanks!).",
+      "examples": [
+        {
+          "sv": "Hej Ali, hur mår du?",
+          "en": "Hi Ali, how are you?"
+        },
+        {
+          "sv": "Jag mår bra, tack. Hur mår du?",
+          "en": "I'm fine, thanks. How are you?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-03",
+      "level": "A1",
+      "phrase": "ha det bra",
+      "en": "take care, goodbye",
+      "note": "Said when you leave. \"Ha det så bra!\" is a little warmer.",
+      "examples": [
+        {
+          "sv": "Hej då, ha det bra!",
+          "en": "Bye, take care!"
+        },
+        {
+          "sv": "Ha det så bra i Spanien!",
+          "en": "Have a great time in Spain!"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-04",
+      "level": "A1",
+      "phrase": "vi ses",
+      "en": "see you",
+      "examples": [
+        {
+          "sv": "Vi ses i morgon!",
+          "en": "See you tomorrow!"
+        },
+        {
+          "sv": "Vi ses på lördag.",
+          "en": "See you on Saturday."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-05",
+      "level": "A1",
+      "phrase": "tack så mycket",
+      "en": "thank you very much",
+      "examples": [
+        {
+          "sv": "Tack så mycket för maten!",
+          "en": "Thank you very much for the meal!"
+        },
+        {
+          "sv": "Tack så mycket, det är snällt av dig.",
+          "en": "Thanks a lot, that's kind of you."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-06",
+      "level": "A1",
+      "phrase": "ingen orsak",
+      "en": "you're welcome, don't mention it",
+      "note": "A reply to tack.",
+      "examples": [
+        {
+          "sv": "Tack för hjälpen! – Ingen orsak.",
+          "en": "Thanks for your help! – Don't mention it."
+        },
+        {
+          "sv": "Ingen orsak, det var roligt.",
+          "en": "You're welcome, it was fun."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-07",
+      "level": "A1",
+      "phrase": "god morgon",
+      "en": "good morning",
+      "examples": [
+        {
+          "sv": "God morgon! Har du sovit gott?",
+          "en": "Good morning! Did you sleep well?"
+        },
+        {
+          "sv": "God morgon, alla!",
+          "en": "Good morning, everyone!"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-08",
+      "level": "A1",
+      "phrase": "ursäkta mig",
+      "en": "excuse me",
+      "note": "Also just \"ursäkta\".",
+      "examples": [
+        {
+          "sv": "Ursäkta mig, var är stationen?",
+          "en": "Excuse me, where is the station?"
+        },
+        {
+          "sv": "Ursäkta mig, jag förstår inte.",
+          "en": "Excuse me, I don't understand."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-09",
+      "level": "A1",
+      "phrase": "jag heter",
+      "en": "my name is",
+      "note": "Heter is the verb \"to be called\".",
+      "examples": [
+        {
+          "sv": "Hej, jag heter Lisa.",
+          "en": "Hi, my name is Lisa."
+        },
+        {
+          "sv": "Vad heter du?",
+          "en": "What is your name?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-10",
+      "level": "A1",
+      "phrase": "det finns",
+      "en": "there is, there are",
+      "note": "Used for things that exist somewhere.",
+      "examples": [
+        {
+          "sv": "Det finns en affär här.",
+          "en": "There is a shop here."
+        },
+        {
+          "sv": "Finns det mjölk?",
+          "en": "Is there any milk?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-11",
+      "level": "A1",
+      "phrase": "vad är klockan?",
+      "en": "what time is it?",
+      "note": "The answer starts \"Den är …\" or \"Klockan är …\".",
+      "examples": [
+        {
+          "sv": "Vad är klockan? – Den är tre.",
+          "en": "What time is it? – It's three."
+        },
+        {
+          "sv": "Ursäkta, vad är klockan?",
+          "en": "Excuse me, what time is it?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-12",
+      "level": "A1",
+      "phrase": "hur mycket kostar det?",
+      "en": "how much does it cost?",
+      "examples": [
+        {
+          "sv": "Hur mycket kostar det?",
+          "en": "How much does it cost?"
+        },
+        {
+          "sv": "Hur mycket kostar en kaffe?",
+          "en": "How much is a coffee?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-13",
+      "level": "A1",
+      "phrase": "ha ont i",
+      "en": "have a pain in, hurt",
+      "note": "Ha ont i huvudet is \"have a headache\".",
+      "examples": [
+        {
+          "sv": "Jag har ont i huvudet.",
+          "en": "I have a headache."
+        },
+        {
+          "sv": "Har du ont i magen?",
+          "en": "Do you have a stomach ache?"
+        }
+      ]
+    },
+    {
+      "id": "P-A1-14",
+      "level": "A1",
+      "phrase": "jag förstår inte",
+      "en": "I don't understand",
+      "examples": [
+        {
+          "sv": "Förlåt, jag förstår inte.",
+          "en": "Sorry, I don't understand."
+        },
+        {
+          "sv": "Jag förstår inte det här ordet.",
+          "en": "I don't understand this word."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-15",
+      "level": "A1",
+      "phrase": "en gång till",
+      "en": "once more, again",
+      "examples": [
+        {
+          "sv": "Kan du säga det en gång till?",
+          "en": "Can you say that again?"
+        },
+        {
+          "sv": "Vi läser texten en gång till.",
+          "en": "We read the text once more."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-16",
+      "level": "A1",
+      "phrase": "hur säger man … på svenska?",
+      "en": "how do you say … in Swedish?",
+      "examples": [
+        {
+          "sv": "Hur säger man \"apple\" på svenska?",
+          "en": "How do you say \"apple\" in Swedish?"
+        },
+        {
+          "sv": "Jag vet inte hur man säger det på svenska.",
+          "en": "I don't know how to say it in Swedish."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-17",
+      "level": "A1",
+      "phrase": "på jobbet",
+      "en": "at work",
+      "note": "Swedish says på jobbet but i skolan.",
+      "examples": [
+        {
+          "sv": "Jag är på jobbet nu.",
+          "en": "I'm at work now."
+        },
+        {
+          "sv": "Hon äter lunch på jobbet.",
+          "en": "She has lunch at work."
+        }
+      ]
+    },
+    {
+      "id": "P-A1-18",
+      "level": "A1",
+      "phrase": "gå och lägga sig",
+      "en": "go to bed",
+      "note": "Both verbs take the same form: jag går och lägger mig.",
+      "examples": [
+        {
+          "sv": "Jag går och lägger mig klockan tio.",
+          "en": "I go to bed at ten."
+        },
+        {
+          "sv": "Nu går vi och lägger oss.",
+          "en": "Now we're going to bed."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-01",
+      "level": "A2",
+      "phrase": "hälsa på",
+      "en": "visit (someone)",
+      "note": "Stress på. Without på, hälsa means \"greet\".",
+      "examples": [
+        {
+          "sv": "Vi ska hälsa på mormor i helgen.",
+          "en": "We're going to visit Grandma at the weekend."
+        },
+        {
+          "sv": "Kom och hälsa på oss!",
+          "en": "Come and visit us!"
+        }
+      ]
+    },
+    {
+      "id": "P-A2-02",
+      "level": "A2",
+      "phrase": "hålla med",
+      "en": "agree",
+      "note": "The person you agree with comes after med: Jag håller med dig.",
+      "examples": [
+        {
+          "sv": "Jag håller med dig.",
+          "en": "I agree with you."
+        },
+        {
+          "sv": "Håller du med om det?",
+          "en": "Do you agree with that?"
+        }
+      ]
+    },
+    {
+      "id": "P-A2-03",
+      "level": "A2",
+      "phrase": "det beror på",
+      "en": "it depends",
+      "note": "Add what it depends on after på.",
+      "examples": [
+        {
+          "sv": "Kommer du i kväll? – Det beror på vädret.",
+          "en": "Are you coming tonight? – It depends on the weather."
+        },
+        {
+          "sv": "Det beror på hur mycket det kostar.",
+          "en": "It depends on how much it costs."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-04",
+      "level": "A2",
+      "phrase": "ha lust att",
+      "en": "feel like (doing)",
+      "note": "Ingen lust means \"don't feel like it\".",
+      "examples": [
+        {
+          "sv": "Har du lust att gå på bio?",
+          "en": "Do you feel like going to the cinema?"
+        },
+        {
+          "sv": "Jag har ingen lust att städa.",
+          "en": "I don't feel like cleaning."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-05",
+      "level": "A2",
+      "phrase": "komma ihåg",
+      "en": "remember",
+      "note": "Stress ihåg.",
+      "examples": [
+        {
+          "sv": "Kommer du ihåg hennes namn?",
+          "en": "Do you remember her name?"
+        },
+        {
+          "sv": "Kom ihåg att köpa mjölk!",
+          "en": "Remember to buy milk!"
+        }
+      ]
+    },
+    {
+      "id": "P-A2-06",
+      "level": "A2",
+      "phrase": "ta hand om",
+      "en": "take care of, look after",
+      "examples": [
+        {
+          "sv": "Vem tar hand om hunden?",
+          "en": "Who looks after the dog?"
+        },
+        {
+          "sv": "Ta hand om dig!",
+          "en": "Take care of yourself!"
+        }
+      ]
+    },
+    {
+      "id": "P-A2-07",
+      "level": "A2",
+      "phrase": "ta det lugnt",
+      "en": "take it easy, relax",
+      "examples": [
+        {
+          "sv": "Ta det lugnt, vi har tid.",
+          "en": "Take it easy, we have time."
+        },
+        {
+          "sv": "I helgen tar vi det lugnt.",
+          "en": "This weekend we're taking it easy."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-08",
+      "level": "A2",
+      "phrase": "det gör inget",
+      "en": "it doesn't matter, never mind",
+      "note": "A friendly reply to an apology.",
+      "examples": [
+        {
+          "sv": "Förlåt att jag är sen! – Det gör inget.",
+          "en": "Sorry I'm late! – Never mind."
+        },
+        {
+          "sv": "Det gör inget om du inte kan komma.",
+          "en": "It doesn't matter if you can't come."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-09",
+      "level": "A2",
+      "phrase": "det spelar ingen roll",
+      "en": "it doesn't matter",
+      "examples": [
+        {
+          "sv": "Det spelar ingen roll vad du väljer.",
+          "en": "It doesn't matter what you choose."
+        },
+        {
+          "sv": "Te eller kaffe? – Det spelar ingen roll.",
+          "en": "Tea or coffee? – I don't mind."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-10",
+      "level": "A2",
+      "phrase": "ha bråttom",
+      "en": "be in a hurry",
+      "examples": [
+        {
+          "sv": "Förlåt, jag har bråttom.",
+          "en": "Sorry, I'm in a hurry."
+        },
+        {
+          "sv": "Skynda dig, vi har bråttom!",
+          "en": "Hurry up, we're in a hurry!"
+        }
+      ]
+    },
+    {
+      "id": "P-A2-11",
+      "level": "A2",
+      "phrase": "ha rätt",
+      "en": "be right",
+      "note": "The opposite is ha fel, \"be wrong\".",
+      "examples": [
+        {
+          "sv": "Du har rätt, det är för dyrt.",
+          "en": "You're right, it's too expensive."
+        },
+        {
+          "sv": "Hon hade rätt hela tiden.",
+          "en": "She was right all along."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-12",
+      "level": "A2",
+      "phrase": "fylla år",
+      "en": "have a birthday",
+      "examples": [
+        {
+          "sv": "Jag fyller år på lördag.",
+          "en": "It's my birthday on Saturday."
+        },
+        {
+          "sv": "Min son fyller tio i maj.",
+          "en": "My son turns ten in May."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-13",
+      "level": "A2",
+      "phrase": "hålla på med",
+      "en": "be busy with, be doing",
+      "note": "Also \"hålla på att\" + verb: be in the middle of.",
+      "examples": [
+        {
+          "sv": "Vad håller du på med?",
+          "en": "What are you doing?"
+        },
+        {
+          "sv": "Vi håller på att måla köket.",
+          "en": "We're in the middle of painting the kitchen."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-14",
+      "level": "A2",
+      "phrase": "gå sönder",
+      "en": "break (down)",
+      "note": "Used for things: telefonen gick sönder.",
+      "examples": [
+        {
+          "sv": "Min telefon gick sönder i går.",
+          "en": "My phone broke yesterday."
+        },
+        {
+          "sv": "Tvättmaskinen har gått sönder igen.",
+          "en": "The washing machine has broken down again."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-15",
+      "level": "A2",
+      "phrase": "i alla fall",
+      "en": "anyway, at least",
+      "examples": [
+        {
+          "sv": "Det regnade, men vi hade roligt i alla fall.",
+          "en": "It rained, but we had fun anyway."
+        },
+        {
+          "sv": "Jag kan i alla fall försöka.",
+          "en": "I can at least try."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-16",
+      "level": "A2",
+      "phrase": "hela tiden",
+      "en": "all the time",
+      "examples": [
+        {
+          "sv": "Han pratar hela tiden.",
+          "en": "He talks all the time."
+        },
+        {
+          "sv": "Det regnade hela tiden.",
+          "en": "It rained the whole time."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-17",
+      "level": "A2",
+      "phrase": "på väg",
+      "en": "on the way",
+      "examples": [
+        {
+          "sv": "Jag är på väg hem.",
+          "en": "I'm on my way home."
+        },
+        {
+          "sv": "Vi är på väg till stationen nu.",
+          "en": "We're on our way to the station now."
+        }
+      ]
+    },
+    {
+      "id": "P-A2-18",
+      "level": "A2",
+      "phrase": "ha tråkigt",
+      "en": "be bored",
+      "note": "Ha roligt is \"have fun\".",
+      "examples": [
+        {
+          "sv": "Barnen har tråkigt när det regnar.",
+          "en": "The children are bored when it rains."
+        },
+        {
+          "sv": "Hade du roligt eller tråkigt på festen?",
+          "en": "Did you have fun or were you bored at the party?"
+        }
+      ]
+    },
+    {
+      "id": "P-B1-01",
+      "level": "B1",
+      "phrase": "se fram emot",
+      "en": "look forward to",
+      "note": "Often with att: Jag ser fram emot att träffa dig.",
+      "examples": [
+        {
+          "sv": "Jag ser fram emot sommaren.",
+          "en": "I'm looking forward to the summer."
+        },
+        {
+          "sv": "Vi ser fram emot att träffa er.",
+          "en": "We look forward to meeting you."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-02",
+      "level": "B1",
+      "phrase": "lägga märke till",
+      "en": "notice",
+      "examples": [
+        {
+          "sv": "Lade du märke till hans nya bil?",
+          "en": "Did you notice his new car?"
+        },
+        {
+          "sv": "Ingen lade märke till att hon gick.",
+          "en": "Nobody noticed that she left."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-03",
+      "level": "B1",
+      "phrase": "hur som helst",
+      "en": "anyway; any old way",
+      "note": "At the start of a sentence it means \"anyway\".",
+      "examples": [
+        {
+          "sv": "Hur som helst, vi ses i morgon.",
+          "en": "Anyway, see you tomorrow."
+        },
+        {
+          "sv": "Du kan inte göra det hur som helst.",
+          "en": "You can't do it any old way."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-04",
+      "level": "B1",
+      "phrase": "för det mesta",
+      "en": "mostly, most of the time",
+      "examples": [
+        {
+          "sv": "För det mesta cyklar jag till jobbet.",
+          "en": "Most of the time I cycle to work."
+        },
+        {
+          "sv": "Vädret var för det mesta fint.",
+          "en": "The weather was mostly fine."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-05",
+      "level": "B1",
+      "phrase": "ta reda på",
+      "en": "find out",
+      "examples": [
+        {
+          "sv": "Kan du ta reda på när tåget går?",
+          "en": "Can you find out when the train leaves?"
+        },
+        {
+          "sv": "Jag ska ta reda på vad det kostar.",
+          "en": "I'll find out what it costs."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-06",
+      "level": "B1",
+      "phrase": "komma överens",
+      "en": "get on; agree",
+      "note": "Med someone, om something.",
+      "examples": [
+        {
+          "sv": "Jag kommer bra överens med min chef.",
+          "en": "I get on well with my boss."
+        },
+        {
+          "sv": "Vi kom överens om ett pris.",
+          "en": "We agreed on a price."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-07",
+      "level": "B1",
+      "phrase": "ha råd med",
+      "en": "afford",
+      "note": "Ha råd att + verb: Vi har inte råd att resa.",
+      "examples": [
+        {
+          "sv": "Vi har inte råd med en ny bil.",
+          "en": "We can't afford a new car."
+        },
+        {
+          "sv": "Har du råd att åka på semester i år?",
+          "en": "Can you afford to go on holiday this year?"
+        }
+      ]
+    },
+    {
+      "id": "P-B1-08",
+      "level": "B1",
+      "phrase": "vara tvungen att",
+      "en": "have to, be forced to",
+      "note": "Stronger than måste; common in the past: jag var tvungen att.",
+      "examples": [
+        {
+          "sv": "Jag var tvungen att jobba över.",
+          "en": "I had to work late."
+        },
+        {
+          "sv": "Du är inte tvungen att svara.",
+          "en": "You don't have to answer."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-09",
+      "level": "B1",
+      "phrase": "gå ut på",
+      "en": "be about, consist in",
+      "note": "Vad går det ut på? = What is it about?",
+      "examples": [
+        {
+          "sv": "Vad går spelet ut på?",
+          "en": "What is the game about?"
+        },
+        {
+          "sv": "Jobbet går ut på att hjälpa nya kunder.",
+          "en": "The job is about helping new customers."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-10",
+      "level": "B1",
+      "phrase": "tycka synd om",
+      "en": "feel sorry for",
+      "examples": [
+        {
+          "sv": "Jag tycker synd om honom.",
+          "en": "I feel sorry for him."
+        },
+        {
+          "sv": "Hon tyckte synd om den lilla hunden.",
+          "en": "She felt sorry for the little dog."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-11",
+      "level": "B1",
+      "phrase": "ha svårt att",
+      "en": "find it hard to",
+      "note": "Ha lätt att is \"find it easy to\".",
+      "examples": [
+        {
+          "sv": "Jag har svårt att sova på natten.",
+          "en": "I find it hard to sleep at night."
+        },
+        {
+          "sv": "Många har svårt att förstå skånska.",
+          "en": "Many people find the Scanian dialect hard to understand."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-12",
+      "level": "B1",
+      "phrase": "ställa upp",
+      "en": "help out, be there for; take part",
+      "note": "Ställa upp för någon = be there for someone.",
+      "examples": [
+        {
+          "sv": "Mina vänner ställde upp när jag flyttade.",
+          "en": "My friends helped out when I moved."
+        },
+        {
+          "sv": "Hon ställer upp i loppet i år.",
+          "en": "She is taking part in the race this year."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-13",
+      "level": "B1",
+      "phrase": "få tag på",
+      "en": "get hold of",
+      "examples": [
+        {
+          "sv": "Jag har inte fått tag på honom i dag.",
+          "en": "I haven't managed to get hold of him today."
+        },
+        {
+          "sv": "Var fick du tag på biljetterna?",
+          "en": "Where did you get hold of the tickets?"
+        }
+      ]
+    },
+    {
+      "id": "P-B1-14",
+      "level": "B1",
+      "phrase": "i stället för",
+      "en": "instead of",
+      "note": "Also written istället för.",
+      "examples": [
+        {
+          "sv": "Vi tog tåget i stället för bilen.",
+          "en": "We took the train instead of the car."
+        },
+        {
+          "sv": "Kan jag få te i stället för kaffe?",
+          "en": "Could I have tea instead of coffee?"
+        }
+      ]
+    },
+    {
+      "id": "P-B1-15",
+      "level": "B1",
+      "phrase": "på grund av",
+      "en": "because of",
+      "note": "Followed by a noun; before a clause use eftersom.",
+      "examples": [
+        {
+          "sv": "Tåget var sent på grund av snön.",
+          "en": "The train was late because of the snow."
+        },
+        {
+          "sv": "Skolan var stängd på grund av sjukdom.",
+          "en": "The school was closed because of illness."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-16",
+      "level": "B1",
+      "phrase": "bry sig om",
+      "en": "care about",
+      "note": "Jag bryr mig inte = I don't care.",
+      "examples": [
+        {
+          "sv": "Han bryr sig mycket om miljön.",
+          "en": "He cares a lot about the environment."
+        },
+        {
+          "sv": "Jag bryr mig inte om vad de säger.",
+          "en": "I don't care what they say."
+        }
+      ]
+    },
+    {
+      "id": "P-B1-17",
+      "level": "B1",
+      "phrase": "hitta på",
+      "en": "make up; think of something to do",
+      "examples": [
+        {
+          "sv": "Barnen hittade på en ny lek.",
+          "en": "The children made up a new game."
+        },
+        {
+          "sv": "Vad ska vi hitta på i helgen?",
+          "en": "What shall we do this weekend?"
+        }
+      ]
+    },
+    {
+      "id": "P-B1-18",
+      "level": "B1",
+      "phrase": "stå ut med",
+      "en": "put up with, stand",
+      "note": "Usually with a negative.",
+      "examples": [
+        {
+          "sv": "Jag står inte ut med det här bullret.",
+          "en": "I can't stand this noise."
+        },
+        {
+          "sv": "Hur står du ut med honom?",
+          "en": "How do you put up with him?"
+        }
+      ]
+    },
+    {
+      "id": "P-B2-01",
+      "level": "B2",
+      "phrase": "ta ställning till",
+      "en": "take a position on, decide about",
+      "examples": [
+        {
+          "sv": "Vi måste ta ställning till förslaget före fredag.",
+          "en": "We have to decide on the proposal before Friday."
+        },
+        {
+          "sv": "Hon vill inte ta ställning i frågan än.",
+          "en": "She doesn't want to take a position on the issue yet."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-02",
+      "level": "B2",
+      "phrase": "komma fram till",
+      "en": "reach (a conclusion), arrive at",
+      "note": "Also literally \"reach a place\".",
+      "examples": [
+        {
+          "sv": "Vad kom ni fram till på mötet?",
+          "en": "What did you conclude at the meeting?"
+        },
+        {
+          "sv": "Utredningen kom fram till att skolan behövs.",
+          "en": "The inquiry concluded that the school is needed."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-03",
+      "level": "B2",
+      "phrase": "ta upp",
+      "en": "bring up, raise (a topic)",
+      "note": "Also \"pick up\" and \"take up space\".",
+      "examples": [
+        {
+          "sv": "Jag vill ta upp en sak innan vi slutar.",
+          "en": "I want to raise one thing before we finish."
+        },
+        {
+          "sv": "Frågan togs upp på det senaste mötet.",
+          "en": "The question was brought up at the last meeting."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-04",
+      "level": "B2",
+      "phrase": "gå med på",
+      "en": "agree to, accept",
+      "note": "Gå med i = join (a club).",
+      "examples": [
+        {
+          "sv": "Chefen gick med på att jag jobbar hemma på fredagar.",
+          "en": "The boss agreed to me working from home on Fridays."
+        },
+        {
+          "sv": "Jag går inte med på de villkoren.",
+          "en": "I won't accept those terms."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-05",
+      "level": "B2",
+      "phrase": "ta för givet",
+      "en": "take for granted",
+      "examples": [
+        {
+          "sv": "Vi tar ofta rent vatten för givet.",
+          "en": "We often take clean water for granted."
+        },
+        {
+          "sv": "Man ska inte ta något för givet.",
+          "en": "You shouldn't take anything for granted."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-06",
+      "level": "B2",
+      "phrase": "ta hänsyn till",
+      "en": "take into account, show consideration for",
+      "examples": [
+        {
+          "sv": "Planen tar ingen hänsyn till de äldre.",
+          "en": "The plan takes no account of older people."
+        },
+        {
+          "sv": "Vi måste ta hänsyn till grannarna.",
+          "en": "We have to consider the neighbours."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-07",
+      "level": "B2",
+      "phrase": "hålla koll på",
+      "en": "keep track of, keep an eye on",
+      "note": "Informal; ha koll på = know about, be on top of.",
+      "examples": [
+        {
+          "sv": "Kan du hålla koll på barnen en stund?",
+          "en": "Can you keep an eye on the children for a while?"
+        },
+        {
+          "sv": "Hon har bra koll på ekonomin.",
+          "en": "She is on top of the finances."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-08",
+      "level": "B2",
+      "phrase": "utgå från",
+      "en": "assume; start from",
+      "examples": [
+        {
+          "sv": "Jag utgår från att du kommer.",
+          "en": "I assume you're coming."
+        },
+        {
+          "sv": "Diskussionen utgick från en artikel i tidningen.",
+          "en": "The discussion started from an article in the paper."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-09",
+      "level": "B2",
+      "phrase": "stå för",
+      "en": "stand for; answer for, pay for",
+      "note": "Jag står för maten = I'll provide/pay for the food.",
+      "examples": [
+        {
+          "sv": "Vad står förkortningen för?",
+          "en": "What does the abbreviation stand for?"
+        },
+        {
+          "sv": "Jag står för det jag sa.",
+          "en": "I stand by what I said."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-10",
+      "level": "B2",
+      "phrase": "dra sig ur",
+      "en": "pull out, back out",
+      "examples": [
+        {
+          "sv": "Två sponsorer har dragit sig ur projektet.",
+          "en": "Two sponsors have pulled out of the project."
+        },
+        {
+          "sv": "Det är för sent att dra sig ur nu.",
+          "en": "It's too late to back out now."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-11",
+      "level": "B2",
+      "phrase": "komma undan",
+      "en": "get away (with), escape",
+      "examples": [
+        {
+          "sv": "Han kom undan med en varning.",
+          "en": "He got away with a warning."
+        },
+        {
+          "sv": "Det går inte att komma undan skatten.",
+          "en": "You can't escape the tax."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-12",
+      "level": "B2",
+      "phrase": "gå ihop",
+      "en": "add up, work out; merge",
+      "note": "Informal for budgets and timetables.",
+      "examples": [
+        {
+          "sv": "Det går inte ihop ekonomiskt.",
+          "en": "It doesn't add up financially."
+        },
+        {
+          "sv": "Hur får du livet att gå ihop med tre barn?",
+          "en": "How do you make life work with three children?"
+        }
+      ]
+    },
+    {
+      "id": "P-B2-13",
+      "level": "B2",
+      "phrase": "vara ute efter",
+      "en": "be after, be looking for",
+      "examples": [
+        {
+          "sv": "Vad är du egentligen ute efter?",
+          "en": "What are you really after?"
+        },
+        {
+          "sv": "Företaget är ute efter erfarna utvecklare.",
+          "en": "The company is looking for experienced developers."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-14",
+      "level": "B2",
+      "phrase": "i och för sig",
+      "en": "in itself, admittedly",
+      "note": "Often followed by men.",
+      "examples": [
+        {
+          "sv": "Idén är i och för sig bra, men den är för dyr.",
+          "en": "The idea is fine in itself, but it's too expensive."
+        },
+        {
+          "sv": "Det har du i och för sig rätt i.",
+          "en": "You're right about that, admittedly."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-15",
+      "level": "B2",
+      "phrase": "å andra sidan",
+      "en": "on the other hand",
+      "note": "Å ena sidan … å andra sidan = on the one hand … on the other.",
+      "examples": [
+        {
+          "sv": "Staden är dyr, men å andra sidan finns allt här.",
+          "en": "The city is expensive, but on the other hand everything is here."
+        },
+        {
+          "sv": "Å andra sidan har vi inte så bråttom.",
+          "en": "On the other hand, we're not in such a hurry."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-16",
+      "level": "B2",
+      "phrase": "i längden",
+      "en": "in the long run",
+      "examples": [
+        {
+          "sv": "I längden lönar det sig att laga mat själv.",
+          "en": "In the long run it pays to cook yourself."
+        },
+        {
+          "sv": "Det håller inte i längden.",
+          "en": "It won't last in the long run."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-17",
+      "level": "B2",
+      "phrase": "med andra ord",
+      "en": "in other words",
+      "examples": [
+        {
+          "sv": "Med andra ord har vi inga pengar kvar.",
+          "en": "In other words, we have no money left."
+        },
+        {
+          "sv": "Han kom inte, med andra ord var han inte intresserad.",
+          "en": "He didn't come; in other words, he wasn't interested."
+        }
+      ]
+    },
+    {
+      "id": "P-B2-18",
+      "level": "B2",
+      "phrase": "det är ingen idé",
+      "en": "there's no point",
+      "note": "Followed by att + verb.",
+      "examples": [
+        {
+          "sv": "Det är ingen idé att ringa, hon svarar inte.",
+          "en": "There's no point calling, she won't answer."
+        },
+        {
+          "sv": "Det är ingen idé att vänta längre.",
+          "en": "There's no point waiting any longer."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-01",
+      "level": "C1",
+      "phrase": "sätta käppar i hjulet",
+      "en": "put a spoke in someone's wheel, obstruct",
+      "note": "Literally \"put sticks in the wheel\".",
+      "examples": [
+        {
+          "sv": "Byråkratin satte käppar i hjulet för projektet.",
+          "en": "Bureaucracy obstructed the project."
+        },
+        {
+          "sv": "Jag vill inte sätta käppar i hjulet, men har vi råd?",
+          "en": "I don't want to throw a spanner in the works, but can we afford it?"
+        }
+      ]
+    },
+    {
+      "id": "P-C1-02",
+      "level": "C1",
+      "phrase": "ta sig vatten över huvudet",
+      "en": "bite off more than you can chew",
+      "note": "Literally \"take water over your head\".",
+      "examples": [
+        {
+          "sv": "Med tre jobb har hon tagit sig vatten över huvudet.",
+          "en": "With three jobs she has bitten off more than she can chew."
+        },
+        {
+          "sv": "Jag tror att vi tar oss vatten över huvudet med det här huset.",
+          "en": "I think we're taking on too much with this house."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-03",
+      "level": "C1",
+      "phrase": "gå som smort",
+      "en": "go like clockwork",
+      "note": "Literally \"go as if greased\".",
+      "examples": [
+        {
+          "sv": "Flytten gick som smort.",
+          "en": "The move went like clockwork."
+        },
+        {
+          "sv": "Om allt går som smort är vi klara i maj.",
+          "en": "If everything goes smoothly, we'll be done in May."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-04",
+      "level": "C1",
+      "phrase": "slå två flugor i en smäll",
+      "en": "kill two birds with one stone",
+      "note": "Literally \"hit two flies with one blow\".",
+      "examples": [
+        {
+          "sv": "Jag cyklar till jobbet och slår två flugor i en smäll: motion och ingen bilkö.",
+          "en": "I cycle to work and kill two birds with one stone: exercise and no traffic jams."
+        },
+        {
+          "sv": "Jag hade ett möte i Malmö och hälsade på min syster samtidigt – två flugor i en smäll.",
+          "en": "I had a meeting in Malmö and visited my sister at the same time – two birds with one stone."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-05",
+      "level": "C1",
+      "phrase": "ana ugglor i mossen",
+      "en": "smell a rat",
+      "note": "Literally \"suspect owls in the bog\".",
+      "examples": [
+        {
+          "sv": "När priset sänktes igen anade jag ugglor i mossen.",
+          "en": "When the price was cut again, I smelt a rat."
+        },
+        {
+          "sv": "Revisorn anade tidigt ugglor i mossen.",
+          "en": "The auditor suspected something early on."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-06",
+      "level": "C1",
+      "phrase": "lägga korten på bordet",
+      "en": "put your cards on the table",
+      "examples": [
+        {
+          "sv": "Nu är det dags att lägga korten på bordet.",
+          "en": "Now it's time to put our cards on the table."
+        },
+        {
+          "sv": "Hon lade korten på bordet och berättade allt.",
+          "en": "She put her cards on the table and told everything."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-07",
+      "level": "C1",
+      "phrase": "gå över ån efter vatten",
+      "en": "make things harder than they need to be",
+      "note": "Literally \"cross the river to fetch water\".",
+      "examples": [
+        {
+          "sv": "Varför anlita en konsult? Det är att gå över ån efter vatten.",
+          "en": "Why hire a consultant? That's looking far for what's close at hand."
+        },
+        {
+          "sv": "Vi gick över ån efter vatten när svaret fanns i vår egen rapport.",
+          "en": "We looked far afield when the answer was in our own report."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-08",
+      "level": "C1",
+      "phrase": "ha is i magen",
+      "en": "keep a cool head",
+      "note": "Literally \"have ice in your stomach\".",
+      "examples": [
+        {
+          "sv": "Målvakten hade is i magen på straffen.",
+          "en": "The goalkeeper kept a cool head at the penalty."
+        },
+        {
+          "sv": "Ha is i magen och sälj inte aktierna nu.",
+          "en": "Keep calm and don't sell the shares now."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-09",
+      "level": "C1",
+      "phrase": "kasta in handduken",
+      "en": "throw in the towel",
+      "examples": [
+        {
+          "sv": "Efter tre år kastade de in handduken och sålde restaurangen.",
+          "en": "After three years they threw in the towel and sold the restaurant."
+        },
+        {
+          "sv": "Kasta inte in handduken än!",
+          "en": "Don't give up yet!"
+        }
+      ]
+    },
+    {
+      "id": "P-C1-10",
+      "level": "C1",
+      "phrase": "ingen ko på isen",
+      "en": "no cause for alarm",
+      "note": "Literally \"no cow on the ice\". Often det är ingen ko på isen.",
+      "examples": [
+        {
+          "sv": "Det är ingen ko på isen, vi hinner till tåget.",
+          "en": "No need to panic, we'll make the train."
+        },
+        {
+          "sv": "Rapporten är sen, men det är ingen ko på isen.",
+          "en": "The report is late, but there's no cause for alarm."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-11",
+      "level": "C1",
+      "phrase": "dra alla över en kam",
+      "en": "tar everyone with the same brush",
+      "note": "Literally \"pull everyone over one comb\".",
+      "examples": [
+        {
+          "sv": "Man ska inte dra alla ungdomar över en kam.",
+          "en": "You shouldn't tar all young people with the same brush."
+        },
+        {
+          "sv": "Artikeln drar alla bilister över en kam.",
+          "en": "The article lumps all drivers together."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-12",
+      "level": "C1",
+      "phrase": "hålla tummarna",
+      "en": "keep your fingers crossed",
+      "note": "Literally \"hold your thumbs\".",
+      "examples": [
+        {
+          "sv": "Jag håller tummarna för dig i morgon!",
+          "en": "I'll keep my fingers crossed for you tomorrow!"
+        },
+        {
+          "sv": "Vi håller tummarna för fint väder.",
+          "en": "We're hoping for good weather."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-13",
+      "level": "C1",
+      "phrase": "ta tjuren vid hornen",
+      "en": "take the bull by the horns",
+      "examples": [
+        {
+          "sv": "Hon tog tjuren vid hornen och ringde chefen.",
+          "en": "She took the bull by the horns and called the boss."
+        },
+        {
+          "sv": "Det är dags att ta tjuren vid hornen och prata om pengar.",
+          "en": "It's time to take the bull by the horns and talk about money."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-14",
+      "level": "C1",
+      "phrase": "ge sig ut på hal is",
+      "en": "get onto thin ice",
+      "note": "Literally \"go out on slippery ice\".",
+      "examples": [
+        {
+          "sv": "Nu ger du dig ut på hal is.",
+          "en": "Now you're on thin ice."
+        },
+        {
+          "sv": "Ministern gav sig ut på hal is när hon lovade lägre skatter.",
+          "en": "The minister was on thin ice when she promised lower taxes."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-15",
+      "level": "C1",
+      "phrase": "sticka ut hakan",
+      "en": "stick your neck out",
+      "note": "Literally \"stick out your chin\".",
+      "examples": [
+        {
+          "sv": "Jag sticker ut hakan och säger att vi vinner.",
+          "en": "I'll stick my neck out and say we'll win."
+        },
+        {
+          "sv": "Få politiker vågar sticka ut hakan i den frågan.",
+          "en": "Few politicians dare to stick their necks out on that issue."
+        }
+      ]
+    },
+    {
+      "id": "P-C1-16",
+      "level": "C1",
+      "phrase": "gå på knäna",
+      "en": "be on your knees, be worn out",
+      "note": "Used of people and of organisations.",
+      "examples": [
+        {
+          "sv": "Vården går på knäna efter vintern.",
+          "en": "Health care is on its knees after the winter."
+        },
+        {
+          "sv": "Efter flytten gick hela familjen på knäna.",
+          "en": "After the move the whole family was worn out."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-01",
+      "level": "C2",
+      "phrase": "gå i stöpet",
+      "en": "come to nothing, fall through",
+      "examples": [
+        {
+          "sv": "Planerna på en ny arena gick i stöpet.",
+          "en": "The plans for a new arena came to nothing."
+        },
+        {
+          "sv": "Förhandlingarna gick i stöpet i sista stund.",
+          "en": "The negotiations fell through at the last moment."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-02",
+      "level": "C2",
+      "phrase": "dra sitt strå till stacken",
+      "en": "do your bit",
+      "note": "Literally \"carry your straw to the stack\".",
+      "examples": [
+        {
+          "sv": "Alla måste dra sitt strå till stacken.",
+          "en": "Everyone has to do their bit."
+        },
+        {
+          "sv": "Genom att cykla drar hon sitt strå till stacken.",
+          "en": "By cycling she does her bit."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-03",
+      "level": "C2",
+      "phrase": "ta skeden i vacker hand",
+      "en": "make the best of it, grin and bear it",
+      "note": "Literally \"take the spoon in the pretty hand\". Formal, slightly old-fashioned.",
+      "examples": [
+        {
+          "sv": "Det blev inget lönelyft, så jag fick ta skeden i vacker hand.",
+          "en": "There was no pay rise, so I had to make the best of it."
+        },
+        {
+          "sv": "Efter valförlusten tog partiet skeden i vacker hand.",
+          "en": "After the election defeat the party swallowed its pride."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-04",
+      "level": "C2",
+      "phrase": "det ligger en hund begraven",
+      "en": "there is something fishy",
+      "note": "Literally \"a dog lies buried\".",
+      "examples": [
+        {
+          "sv": "Så billigt? Här ligger det en hund begraven.",
+          "en": "That cheap? Something's fishy here."
+        },
+        {
+          "sv": "Journalisten misstänkte att det låg en hund begraven.",
+          "en": "The journalist suspected there was something behind it."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-05",
+      "level": "C2",
+      "phrase": "halka på ett bananskal",
+      "en": "slip up on a trivial thing",
+      "note": "Common in news about politicians.",
+      "examples": [
+        {
+          "sv": "Ministern halkade på ett bananskal och fick avgå.",
+          "en": "The minister slipped up on something trivial and had to resign."
+        },
+        {
+          "sv": "Det vore synd att halka på ett bananskal så nära målet.",
+          "en": "It would be a pity to trip up on something minor so close to the goal."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-06",
+      "level": "C2",
+      "phrase": "sila mygg och svälja kameler",
+      "en": "strain at a gnat and swallow a camel",
+      "note": "From the Bible: fuss over trifles, miss the big thing.",
+      "examples": [
+        {
+          "sv": "Revisionen silade mygg och svalde kameler.",
+          "en": "The audit fussed over trifles and missed the big issues."
+        },
+        {
+          "sv": "Sluta sila mygg och svälja kameler!",
+          "en": "Stop fussing over details and missing the big picture!"
+        }
+      ]
+    },
+    {
+      "id": "P-C2-07",
+      "level": "C2",
+      "phrase": "vända kappan efter vinden",
+      "en": "go whichever way the wind blows",
+      "note": "Of someone who changes opinion for gain. Disapproving.",
+      "examples": [
+        {
+          "sv": "Han vänder kappan efter vinden inför varje val.",
+          "en": "He changes his tune before every election."
+        },
+        {
+          "sv": "Hon har aldrig vänt kappan efter vinden.",
+          "en": "She has never been an opportunist."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-08",
+      "level": "C2",
+      "phrase": "ha ett finger med i spelet",
+      "en": "have a hand in it",
+      "examples": [
+        {
+          "sv": "Polisen tror att grannen hade ett finger med i spelet.",
+          "en": "The police think the neighbour had a hand in it."
+        },
+        {
+          "sv": "Det är tydligt att styrelsen har ett finger med i spelet.",
+          "en": "It's clear the board has a hand in it."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-09",
+      "level": "C2",
+      "phrase": "till syvende och sist",
+      "en": "in the end, when all is said and done",
+      "note": "Fixed old form (syvende = sjunde). Formal or wry.",
+      "examples": [
+        {
+          "sv": "Till syvende och sist är det väljarna som bestämmer.",
+          "en": "In the end it's the voters who decide."
+        },
+        {
+          "sv": "Till syvende och sist handlar det om pengar.",
+          "en": "When all is said and done, it's about money."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-10",
+      "level": "C2",
+      "phrase": "i sinom tid",
+      "en": "in due course",
+      "note": "Formal.",
+      "examples": [
+        {
+          "sv": "Ni får besked i sinom tid.",
+          "en": "You will be informed in due course."
+        },
+        {
+          "sv": "Allt kommer att lösa sig i sinom tid.",
+          "en": "Everything will work out in due course."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-11",
+      "level": "C2",
+      "phrase": "ställa saken på sin spets",
+      "en": "bring matters to a head",
+      "examples": [
+        {
+          "sv": "Strejken ställde saken på sin spets.",
+          "en": "The strike brought matters to a head."
+        },
+        {
+          "sv": "Om vi ställer saken på sin spets: vill du stanna eller inte?",
+          "en": "To put it bluntly: do you want to stay or not?"
+        }
+      ]
+    },
+    {
+      "id": "P-C2-12",
+      "level": "C2",
+      "phrase": "göra en höna av en fjäder",
+      "en": "make a mountain out of a molehill",
+      "note": "Literally \"make a hen of a feather\".",
+      "examples": [
+        {
+          "sv": "Medierna gjorde en höna av en fjäder.",
+          "en": "The media made a mountain out of a molehill."
+        },
+        {
+          "sv": "Gör nu inte en höna av en fjäder!",
+          "en": "Don't make such a fuss about nothing!"
+        }
+      ]
+    },
+    {
+      "id": "P-C2-13",
+      "level": "C2",
+      "phrase": "slå dövörat till",
+      "en": "turn a deaf ear",
+      "examples": [
+        {
+          "sv": "Regeringen slog dövörat till kritiken.",
+          "en": "The government turned a deaf ear to the criticism."
+        },
+        {
+          "sv": "Han slår dövörat till alla förslag om förändring.",
+          "en": "He turns a deaf ear to every suggestion of change."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-14",
+      "level": "C2",
+      "phrase": "hålla god min i elakt spel",
+      "en": "put a brave face on it",
+      "note": "Literally \"keep a good face in a nasty game\".",
+      "examples": [
+        {
+          "sv": "Hon höll god min i elakt spel under hela middagen.",
+          "en": "She put a brave face on it through the whole dinner."
+        },
+        {
+          "sv": "Tränaren försökte hålla god min i elakt spel efter förlusten.",
+          "en": "The coach tried to put a brave face on things after the defeat."
+        }
+      ]
+    },
+    {
+      "id": "P-C2-15",
+      "level": "C2",
+      "phrase": "stå som spön i backen",
+      "en": "pour down; come thick and fast",
+      "note": "Of rain, or of questions and criticism.",
+      "examples": [
+        {
+          "sv": "Regnet stod som spön i backen hela kvällen.",
+          "en": "The rain poured down all evening."
+        },
+        {
+          "sv": "Efter beslutet stod kritiken som spön i backen.",
+          "en": "After the decision the criticism came thick and fast."
+        }
+      ]
+    }
+  ]
+}

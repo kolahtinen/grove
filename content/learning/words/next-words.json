@@ -1,0 +1,1446 @@
+{
+  "about": "Next words at your level: high-value words for A1–B1 that the library texts (content/library/texts, as of 2026-10-29) do not use yet (B-26). Draft, not approved by the owner. level/list_level come from the bundled lists (core list first, else the lower of SweLLex and Kelly). See content/learning/README.md.",
+  "status": "draft",
+  "words": [
+    {
+      "lemma": "noll",
+      "pos": "numeral",
+      "en": "zero",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Det är noll grader ute.",
+        "en": "It's zero degrees outside."
+      }
+    },
+    {
+      "lemma": "tretton",
+      "pos": "numeral",
+      "en": "thirteen",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Min dotter är tretton år.",
+        "en": "My daughter is thirteen."
+      }
+    },
+    {
+      "lemma": "april",
+      "pos": "noun-en",
+      "en": "April",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Jag fyller år i april.",
+        "en": "My birthday is in April."
+      }
+    },
+    {
+      "lemma": "september",
+      "pos": "noun-en",
+      "en": "September",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Skolan börjar i september.",
+        "en": "School starts in September."
+      }
+    },
+    {
+      "lemma": "apelsin",
+      "pos": "noun-en",
+      "en": "orange",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Jag äter en apelsin.",
+        "en": "I'm eating an orange."
+      }
+    },
+    {
+      "lemma": "tallrik",
+      "pos": "noun-en",
+      "en": "plate",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Ställ tallrikarna på bordet.",
+        "en": "Put the plates on the table."
+      }
+    },
+    {
+      "lemma": "gaffel",
+      "pos": "noun-en",
+      "en": "fork",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Kan jag få en gaffel?",
+        "en": "Could I have a fork?"
+      }
+    },
+    {
+      "lemma": "toalett",
+      "pos": "noun-en",
+      "en": "toilet",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Var är toaletten?",
+        "en": "Where is the toilet?"
+      }
+    },
+    {
+      "lemma": "pojkvän",
+      "pos": "noun-en",
+      "en": "boyfriend",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Hennes pojkvän heter Adam.",
+        "en": "Her boyfriend's name is Adam."
+      }
+    },
+    {
+      "lemma": "flickvän",
+      "pos": "noun-en",
+      "en": "girlfriend",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Han bor med sin flickvän.",
+        "en": "He lives with his girlfriend."
+      }
+    },
+    {
+      "lemma": "skjorta",
+      "pos": "noun-en",
+      "en": "shirt",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Han har en vit skjorta.",
+        "en": "He is wearing a white shirt."
+      }
+    },
+    {
+      "lemma": "klänning",
+      "pos": "noun-en",
+      "en": "dress",
+      "level": "A1",
+      "level_source": "core list A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Hon köper en röd klänning.",
+        "en": "She buys a red dress."
+      }
+    },
+    {
+      "lemma": "brev",
+      "pos": "noun-ett",
+      "en": "letter",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Jag skriver ett brev till mormor.",
+        "en": "I'm writing a letter to Grandma."
+      }
+    },
+    {
+      "lemma": "kille",
+      "pos": "noun-en",
+      "en": "boy, guy",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Han är en trevlig kille.",
+        "en": "He's a nice guy."
+      }
+    },
+    {
+      "lemma": "illa",
+      "pos": "adverb",
+      "en": "badly; bad",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Maten luktar illa.",
+        "en": "The food smells bad."
+      }
+    },
+    {
+      "lemma": "spännande",
+      "pos": "adjective",
+      "en": "exciting",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Filmen är spännande.",
+        "en": "The film is exciting."
+      }
+    },
+    {
+      "lemma": "svag",
+      "pos": "adjective",
+      "en": "weak",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Kaffet är för svagt.",
+        "en": "The coffee is too weak."
+      }
+    },
+    {
+      "lemma": "himmel",
+      "pos": "noun-en",
+      "en": "sky",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Himlen är blå i dag.",
+        "en": "The sky is blue today."
+      }
+    },
+    {
+      "lemma": "möta",
+      "pos": "verb",
+      "en": "meet",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Jag möter dig vid stationen.",
+        "en": "I'll meet you at the station."
+      }
+    },
+    {
+      "lemma": "ändra",
+      "pos": "verb",
+      "en": "change",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Kan vi ändra tiden?",
+        "en": "Can we change the time?"
+      }
+    },
+    {
+      "lemma": "söka",
+      "pos": "verb",
+      "en": "look for, apply for",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Hon söker jobb.",
+        "en": "She is looking for a job."
+      }
+    },
+    {
+      "lemma": "kasta",
+      "pos": "verb",
+      "en": "throw",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Kasta bollen till mig!",
+        "en": "Throw the ball to me!"
+      }
+    },
+    {
+      "lemma": "rida",
+      "pos": "verb",
+      "en": "ride (a horse)",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Min dotter rider varje lördag.",
+        "en": "My daughter goes riding every Saturday."
+      }
+    },
+    {
+      "lemma": "naturligtvis",
+      "pos": "adverb",
+      "en": "of course",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Naturligtvis kan du komma!",
+        "en": "Of course you can come!"
+      }
+    },
+    {
+      "lemma": "omöjlig",
+      "pos": "adjective",
+      "en": "impossible",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Det är omöjligt!",
+        "en": "It's impossible!"
+      }
+    },
+    {
+      "lemma": "underbar",
+      "pos": "adjective",
+      "en": "wonderful",
+      "level": "A1",
+      "level_source": "SweLLex A2; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Vilken underbar dag!",
+        "en": "What a wonderful day!"
+      }
+    },
+    {
+      "lemma": "kontakt",
+      "pos": "noun-en",
+      "en": "contact",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Vi har kontakt varje vecka.",
+        "en": "We're in touch every week."
+      }
+    },
+    {
+      "lemma": "sann",
+      "pos": "adjective",
+      "en": "true",
+      "level": "A1",
+      "level_source": "SweLLex B1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Är det sant?",
+        "en": "Is that true?"
+      }
+    },
+    {
+      "lemma": "internet",
+      "pos": "noun-ett",
+      "en": "internet",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Jag läser nyheter på internet.",
+        "en": "I read the news on the internet."
+      }
+    },
+    {
+      "lemma": "kamera",
+      "pos": "noun-en",
+      "en": "camera",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Min telefon har en bra kamera.",
+        "en": "My phone has a good camera."
+      }
+    },
+    {
+      "lemma": "klubb",
+      "pos": "noun-en",
+      "en": "club",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Han spelar i en klubb.",
+        "en": "He plays for a club."
+      }
+    },
+    {
+      "lemma": "idrott",
+      "pos": "noun-en",
+      "en": "sport, PE",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly B1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Idrott är mitt favoritämne.",
+        "en": "PE is my favourite subject."
+      }
+    },
+    {
+      "lemma": "matematik",
+      "pos": "noun-en",
+      "en": "mathematics",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly B1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Hon är bra på matematik.",
+        "en": "She is good at maths."
+      }
+    },
+    {
+      "lemma": "hemland",
+      "pos": "noun-ett",
+      "en": "home country",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Mitt hemland är Syrien.",
+        "en": "My home country is Syria."
+      }
+    },
+    {
+      "lemma": "vana",
+      "pos": "noun-en",
+      "en": "habit",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Det är en dålig vana.",
+        "en": "It's a bad habit."
+      }
+    },
+    {
+      "lemma": "mäta",
+      "pos": "verb",
+      "en": "measure",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Vi mäter rummet.",
+        "en": "We measure the room."
+      }
+    },
+    {
+      "lemma": "test",
+      "pos": "noun-en",
+      "en": "test",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "I dag har vi ett test.",
+        "en": "Today we have a test."
+      }
+    },
+    {
+      "lemma": "lexikon",
+      "pos": "noun-ett",
+      "en": "dictionary",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly C1",
+      "list_level": "A1",
+      "example": {
+        "sv": "Har du ett lexikon?",
+        "en": "Do you have a dictionary?"
+      }
+    },
+    {
+      "lemma": "gäng",
+      "pos": "noun-ett",
+      "en": "gang, group of friends",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Hela gänget kommer i kväll.",
+        "en": "The whole gang is coming tonight."
+      }
+    },
+    {
+      "lemma": "undersöka",
+      "pos": "verb",
+      "en": "examine, look into",
+      "level": "A1",
+      "level_source": "SweLLex A1; Kelly A2",
+      "list_level": "A1",
+      "example": {
+        "sv": "Läkaren undersöker min arm.",
+        "en": "The doctor examines my arm."
+      }
+    },
+    {
+      "lemma": "morot",
+      "pos": "noun-en",
+      "en": "carrot",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Kaninen äter en morot.",
+        "en": "The rabbit is eating a carrot."
+      }
+    },
+    {
+      "lemma": "peppar",
+      "pos": "noun-en",
+      "en": "pepper",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Kan du skicka saltet och pepparn?",
+        "en": "Could you pass the salt and pepper?"
+      }
+    },
+    {
+      "lemma": "godis",
+      "pos": "noun-ett",
+      "en": "sweets, candy",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Barnen får godis på lördagar.",
+        "en": "The children get sweets on Saturdays."
+      }
+    },
+    {
+      "lemma": "bebis",
+      "pos": "noun-en",
+      "en": "baby",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Bebisen sover i vagnen.",
+        "en": "The baby is sleeping in the pram."
+      }
+    },
+    {
+      "lemma": "finger",
+      "pos": "noun-ett",
+      "en": "finger",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Jag skar mig i fingret.",
+        "en": "I cut my finger."
+      }
+    },
+    {
+      "lemma": "kjol",
+      "pos": "noun-en",
+      "en": "skirt",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Hon har en lång kjol.",
+        "en": "She is wearing a long skirt."
+      }
+    },
+    {
+      "lemma": "strumpa",
+      "pos": "noun-en",
+      "en": "sock",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Var är min andra strumpa?",
+        "en": "Where is my other sock?"
+      }
+    },
+    {
+      "lemma": "halsduk",
+      "pos": "noun-en",
+      "en": "scarf",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Ta på dig halsduken, det är kallt.",
+        "en": "Put on your scarf, it's cold."
+      }
+    },
+    {
+      "lemma": "vante",
+      "pos": "noun-en",
+      "en": "mitten, glove",
+      "level": "A2",
+      "level_source": "core list A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Jag har tappat en vante.",
+        "en": "I've lost a mitten."
+      }
+    },
+    {
+      "lemma": "gråta",
+      "pos": "verb",
+      "en": "cry",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Varför gråter du?",
+        "en": "Why are you crying?"
+      }
+    },
+    {
+      "lemma": "gissa",
+      "pos": "verb",
+      "en": "guess",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Gissa vem jag träffade i dag!",
+        "en": "Guess who I met today!"
+      }
+    },
+    {
+      "lemma": "glädje",
+      "pos": "noun-en",
+      "en": "joy",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Hon grät av glädje.",
+        "en": "She cried with joy."
+      }
+    },
+    {
+      "lemma": "ljuga",
+      "pos": "verb",
+      "en": "lie, tell a lie",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Han ljuger aldrig.",
+        "en": "He never lies."
+      }
+    },
+    {
+      "lemma": "låsa",
+      "pos": "verb",
+      "en": "lock",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Glöm inte att låsa dörren.",
+        "en": "Don't forget to lock the door."
+      }
+    },
+    {
+      "lemma": "rädd",
+      "pos": "adjective",
+      "en": "afraid",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Jag är rädd för hundar.",
+        "en": "I'm afraid of dogs."
+      }
+    },
+    {
+      "lemma": "rättvis",
+      "pos": "adjective",
+      "en": "fair",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Det är inte rättvist!",
+        "en": "It's not fair!"
+      }
+    },
+    {
+      "lemma": "skrika",
+      "pos": "verb",
+      "en": "shout, scream",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Barnen skrek av glädje.",
+        "en": "The children screamed with joy."
+      }
+    },
+    {
+      "lemma": "stjäla",
+      "pos": "verb",
+      "en": "steal",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Någon har stulit min cykel.",
+        "en": "Someone has stolen my bike."
+      }
+    },
+    {
+      "lemma": "blyg",
+      "pos": "adjective",
+      "en": "shy",
+      "level": "A2",
+      "level_source": "SweLLex A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Min son är lite blyg.",
+        "en": "My son is a little shy."
+      }
+    },
+    {
+      "lemma": "modig",
+      "pos": "adjective",
+      "en": "brave",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly B2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Det var modigt av dig.",
+        "en": "That was brave of you."
+      }
+    },
+    {
+      "lemma": "generös",
+      "pos": "adjective",
+      "en": "generous",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly B2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Hon är mycket generös.",
+        "en": "She is very generous."
+      }
+    },
+    {
+      "lemma": "envis",
+      "pos": "adjective",
+      "en": "stubborn",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly C1",
+      "list_level": "A2",
+      "example": {
+        "sv": "Min bror är så envis.",
+        "en": "My brother is so stubborn."
+      }
+    },
+    {
+      "lemma": "huvudstad",
+      "pos": "noun-en",
+      "en": "capital",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Oslo är Norges huvudstad.",
+        "en": "Oslo is the capital of Norway."
+      }
+    },
+    {
+      "lemma": "radio",
+      "pos": "noun-en",
+      "en": "radio",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Jag lyssnar på radio i bilen.",
+        "en": "I listen to the radio in the car."
+      }
+    },
+    {
+      "lemma": "sten",
+      "pos": "noun-en",
+      "en": "stone",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Han kastade en sten i vattnet.",
+        "en": "He threw a stone into the water."
+      }
+    },
+    {
+      "lemma": "gåva",
+      "pos": "noun-en",
+      "en": "gift",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Boken var en gåva från min mamma.",
+        "en": "The book was a gift from my mother."
+      }
+    },
+    {
+      "lemma": "ramla",
+      "pos": "verb",
+      "en": "fall",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly B1",
+      "list_level": "A2",
+      "example": {
+        "sv": "Hon ramlade på isen.",
+        "en": "She fell on the ice."
+      }
+    },
+    {
+      "lemma": "tjock",
+      "pos": "adjective",
+      "en": "thick; fat",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly B1",
+      "list_level": "A2",
+      "example": {
+        "sv": "Boken är mycket tjock.",
+        "en": "The book is very thick."
+      }
+    },
+    {
+      "lemma": "sur",
+      "pos": "adjective",
+      "en": "sour; grumpy",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly B1",
+      "list_level": "A2",
+      "example": {
+        "sv": "Citronen är sur.",
+        "en": "The lemon is sour."
+      }
+    },
+    {
+      "lemma": "äcklig",
+      "pos": "adjective",
+      "en": "disgusting",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Maten var äcklig.",
+        "en": "The food was disgusting."
+      }
+    },
+    {
+      "lemma": "fixa",
+      "pos": "verb",
+      "en": "fix, sort out",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Kan du fixa datorn?",
+        "en": "Can you fix the computer?"
+      }
+    },
+    {
+      "lemma": "snacka",
+      "pos": "verb",
+      "en": "chat, talk (informal)",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Vi snackade hela kvällen.",
+        "en": "We chatted all evening."
+      }
+    },
+    {
+      "lemma": "allting",
+      "pos": "adverb",
+      "en": "everything",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Allting gick bra.",
+        "en": "Everything went well."
+      }
+    },
+    {
+      "lemma": "anlända",
+      "pos": "verb",
+      "en": "arrive (formal)",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Tåget anländer klockan tre.",
+        "en": "The train arrives at three."
+      }
+    },
+    {
+      "lemma": "fabrik",
+      "pos": "noun-en",
+      "en": "factory",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Han jobbar på en fabrik.",
+        "en": "He works in a factory."
+      }
+    },
+    {
+      "lemma": "drottning",
+      "pos": "noun-en",
+      "en": "queen",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Sverige har en drottning.",
+        "en": "Sweden has a queen."
+      }
+    },
+    {
+      "lemma": "knä",
+      "pos": "noun-ett",
+      "en": "knee",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Jag har ont i knät.",
+        "en": "My knee hurts."
+      }
+    },
+    {
+      "lemma": "lila",
+      "pos": "adjective",
+      "en": "purple",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly C1",
+      "list_level": "A2",
+      "example": {
+        "sv": "Hon har en lila jacka.",
+        "en": "She has a purple jacket."
+      }
+    },
+    {
+      "lemma": "seger",
+      "pos": "noun-en",
+      "en": "victory",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Laget firade segern.",
+        "en": "The team celebrated the victory."
+      }
+    },
+    {
+      "lemma": "sorg",
+      "pos": "noun-en",
+      "en": "grief, sorrow",
+      "level": "A2",
+      "level_source": "SweLLex A2; Kelly A2",
+      "list_level": "A2",
+      "example": {
+        "sv": "Det var en stor sorg när mormor dog.",
+        "en": "It was a great sorrow when Grandma died."
+      }
+    },
+    {
+      "lemma": "besviken",
+      "pos": "adjective",
+      "en": "disappointed",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Jag blev besviken på filmen.",
+        "en": "I was disappointed with the film."
+      }
+    },
+    {
+      "lemma": "bekväm",
+      "pos": "adjective",
+      "en": "comfortable",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Skorna är mycket bekväma.",
+        "en": "The shoes are very comfortable."
+      }
+    },
+    {
+      "lemma": "begravning",
+      "pos": "noun-en",
+      "en": "funeral",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Hela släkten kom till begravningen.",
+        "en": "All the relatives came to the funeral."
+      }
+    },
+    {
+      "lemma": "avfall",
+      "pos": "noun-ett",
+      "en": "waste",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Avfallet sorteras i olika kärl.",
+        "en": "The waste is sorted into different bins."
+      }
+    },
+    {
+      "lemma": "berömd",
+      "pos": "adjective",
+      "en": "famous",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Han är en berömd författare.",
+        "en": "He is a famous writer."
+      }
+    },
+    {
+      "lemma": "blind",
+      "pos": "adjective",
+      "en": "blind",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Hunden hjälper en blind kvinna.",
+        "en": "The dog helps a blind woman."
+      }
+    },
+    {
+      "lemma": "bokhylla",
+      "pos": "noun-en",
+      "en": "bookcase",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Bokhyllan är full av gamla böcker.",
+        "en": "The bookcase is full of old books."
+      }
+    },
+    {
+      "lemma": "fastän",
+      "pos": "conjunction",
+      "en": "although",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Hon gick ut fastän det regnade.",
+        "en": "She went out although it was raining."
+      }
+    },
+    {
+      "lemma": "flykt",
+      "pos": "noun-en",
+      "en": "escape, flight",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Familjen var på flykt i två år.",
+        "en": "The family were on the run for two years."
+      }
+    },
+    {
+      "lemma": "fruktansvärd",
+      "pos": "adjective",
+      "en": "terrible",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Det var ett fruktansvärt väder.",
+        "en": "The weather was terrible."
+      }
+    },
+    {
+      "lemma": "fördom",
+      "pos": "noun-en",
+      "en": "prejudice",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Vi måste kämpa mot fördomar.",
+        "en": "We have to fight prejudice."
+      }
+    },
+    {
+      "lemma": "gräla",
+      "pos": "verb",
+      "en": "quarrel",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Grannarna grälar varje kväll.",
+        "en": "The neighbours quarrel every evening."
+      }
+    },
+    {
+      "lemma": "hjälte",
+      "pos": "noun-en",
+      "en": "hero",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Brandmannen blev en hjälte.",
+        "en": "The firefighter became a hero."
+      }
+    },
+    {
+      "lemma": "hälsning",
+      "pos": "noun-en",
+      "en": "greeting, regards",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Hälsningar från oss alla!",
+        "en": "Greetings from all of us!"
+      }
+    },
+    {
+      "lemma": "ignorera",
+      "pos": "verb",
+      "en": "ignore",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Han ignorerade mina mejl.",
+        "en": "He ignored my emails."
+      }
+    },
+    {
+      "lemma": "illegal",
+      "pos": "adjective",
+      "en": "illegal",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Det är illegalt att köra utan körkort.",
+        "en": "It's illegal to drive without a licence."
+      }
+    },
+    {
+      "lemma": "köpare",
+      "pos": "noun-en",
+      "en": "buyer",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Huset fick snabbt en köpare.",
+        "en": "The house quickly found a buyer."
+      }
+    },
+    {
+      "lemma": "lekplats",
+      "pos": "noun-en",
+      "en": "playground",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Barnen leker på lekplatsen.",
+        "en": "The children are playing in the playground."
+      }
+    },
+    {
+      "lemma": "lyx",
+      "pos": "noun-en",
+      "en": "luxury",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "En lång frukost är ren lyx.",
+        "en": "A long breakfast is pure luxury."
+      }
+    },
+    {
+      "lemma": "madrass",
+      "pos": "noun-en",
+      "en": "mattress",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Jag behöver en ny madrass.",
+        "en": "I need a new mattress."
+      }
+    },
+    {
+      "lemma": "moster",
+      "pos": "noun-en",
+      "en": "aunt (mother's sister)",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Min moster bor i Finland.",
+        "en": "My aunt lives in Finland."
+      }
+    },
+    {
+      "lemma": "nyårsafton",
+      "pos": "noun-en",
+      "en": "New Year's Eve",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Vad gör ni på nyårsafton?",
+        "en": "What are you doing on New Year's Eve?"
+      }
+    },
+    {
+      "lemma": "nysa",
+      "pos": "verb",
+      "en": "sneeze",
+      "level": "B1",
+      "level_source": "SweLLex B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Jag nyser hela tiden på våren.",
+        "en": "I sneeze all the time in spring."
+      }
+    },
+    {
+      "lemma": "orättvis",
+      "pos": "adjective",
+      "en": "unfair",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Domen var orättvis.",
+        "en": "The verdict was unfair."
+      }
+    },
+    {
+      "lemma": "otrolig",
+      "pos": "adjective",
+      "en": "incredible",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Utsikten är otrolig.",
+        "en": "The view is incredible."
+      }
+    },
+    {
+      "lemma": "otur",
+      "pos": "noun-en",
+      "en": "bad luck",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Vi hade otur med vädret.",
+        "en": "We were unlucky with the weather."
+      }
+    },
+    {
+      "lemma": "oväntad",
+      "pos": "adjective",
+      "en": "unexpected",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Det var ett oväntat besök.",
+        "en": "It was an unexpected visit."
+      }
+    },
+    {
+      "lemma": "kemi",
+      "pos": "noun-en",
+      "en": "chemistry",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Han läser kemi på universitetet.",
+        "en": "He is studying chemistry at university."
+      }
+    },
+    {
+      "lemma": "korsa",
+      "pos": "verb",
+      "en": "cross",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Vi korsade gatan vid trafikljuset.",
+        "en": "We crossed the street at the lights."
+      }
+    },
+    {
+      "lemma": "mata",
+      "pos": "verb",
+      "en": "feed",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Glöm inte att mata katten.",
+        "en": "Don't forget to feed the cat."
+      }
+    },
+    {
+      "lemma": "nuförtiden",
+      "pos": "adverb",
+      "en": "nowadays",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Nuförtiden betalar alla med mobilen.",
+        "en": "Nowadays everyone pays with their phone."
+      }
+    },
+    {
+      "lemma": "husvagn",
+      "pos": "noun-en",
+      "en": "caravan",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C1",
+      "list_level": "B1",
+      "example": {
+        "sv": "På sommaren reser vi med husvagn.",
+        "en": "In summer we travel by caravan."
+      }
+    },
+    {
+      "lemma": "flitig",
+      "pos": "adjective",
+      "en": "hard-working",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Hon är en flitig student.",
+        "en": "She is a hard-working student."
+      }
+    },
+    {
+      "lemma": "garderob",
+      "pos": "noun-en",
+      "en": "wardrobe",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Kläderna hänger i garderoben.",
+        "en": "The clothes are hanging in the wardrobe."
+      }
+    },
+    {
+      "lemma": "gissning",
+      "pos": "noun-en",
+      "en": "guess",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Det är bara en gissning.",
+        "en": "It's only a guess."
+      }
+    },
+    {
+      "lemma": "grannland",
+      "pos": "noun-ett",
+      "en": "neighbouring country",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Norge är vårt grannland.",
+        "en": "Norway is our neighbouring country."
+      }
+    },
+    {
+      "lemma": "klasskamrat",
+      "pos": "noun-en",
+      "en": "classmate",
+      "level": "B1",
+      "level_source": "SweLLex B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Jag träffade en gammal klasskamrat.",
+        "en": "I met an old classmate."
+      }
+    },
+    {
+      "lemma": "livlig",
+      "pos": "adjective",
+      "en": "lively",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Det var en livlig diskussion.",
+        "en": "It was a lively discussion."
+      }
+    },
+    {
+      "lemma": "omtänksam",
+      "pos": "adjective",
+      "en": "thoughtful, caring",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly C2",
+      "list_level": "B1",
+      "example": {
+        "sv": "Tack, vad omtänksamt av dig!",
+        "en": "Thanks, how thoughtful of you!"
+      }
+    },
+    {
+      "lemma": "bitter",
+      "pos": "adjective",
+      "en": "bitter",
+      "level": "B1",
+      "level_source": "SweLLex B1; Kelly B1",
+      "list_level": "B1",
+      "example": {
+        "sv": "Kaffet smakar bittert.",
+        "en": "The coffee tastes bitter."
+      }
+    }
+  ]
+}
