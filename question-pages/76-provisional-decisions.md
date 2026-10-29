@@ -209,6 +209,14 @@ Prepared 2026-10-27 while the owner was away; asked one at a time in Claude Code
 
 **Answer:** Commit them, then update.
 
+### F4. If no usable graded list turns up quickly, what does the 1 November library use?
+
+- Kelly with one level of slack for now (Recommended)
+- A beginner core list as a stopgap (everyday words at A1/A2, with Kelly)
+- Wait for the better list (drafted texts after 1 November)
+
+**Answer:** A beginner core list as a stopgap; the owner skims it once.
+
 ## Applied
 
 (filled in after the session: which specs and addenda changed)
