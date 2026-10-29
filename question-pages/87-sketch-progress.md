@@ -21,3 +21,13 @@ Said done 2026-10-29.
 ## Applied
 
 RQ-448 (requirements from sketches, docs/requirements.md); G-09 FR-924 (Progress as version B, "this week" as the last 7 days), FR-925 (minutes per kind, picked-up time), user story 9, SC-009, FR-910; G-04 FR-415 points to them; data model migration 019; contract for `/api/progress` and `/api/input`'s kind. Built 2026-10-29: regen(store, drill, demo, client).
+
+## Sketch and build side by side (docs/sketching.md, 6)
+
+Screenshots: `prototypes/sketches/2026-10-29-progress/picked.png` (version B, the sketch's made-up A2 learner) and `built.png` (the dev server's demo learner, 390 px). The layout matches: the level card with today's minutes, the four cards two by two, the 7-day chart, since you started. Differences, apart from the data:
+
+1. The chart: the sketch has a minute scale with grid lines, each day's total above its bar, today marked "today", the legend above it and "Tap a bar to see its minutes and words" under it; the build has bars, day names and the legend only.
+2. The level card: the build keeps a line "Your level: …" under the two boxes (the old level line, still read by the levels tests); the sketch has only the boxes. The sketch's "since 22 Oct" under Now is not built, as grove keeps no day for reaching a level (FR-924).
+3. Since you started: the sketch puts the words on their own line under the minutes; the build puts them after "·".
+4. The demo learner shows "Listened 0 min · 136 words": its history has a listening text read but its minutes count as reading.
+
