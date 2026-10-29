@@ -144,7 +144,7 @@ MUST for must-priority combined requirements, SHOULD for should-priority ones. E
 **Reading view**
 
 - **FR-301** (RQ-10, RQ-411; N-11, N-38, N-02): The reading view MUST NOT show translations under the sentences. One **Show translation** button under the text shows the whole text's English below it (and **Hide translation** hides it again); the learner works out meanings from the words themselves (the word menu). After a practice answer the sentence's English still shows (FR-310). The translations setting is withdrawn (addendum 003, O-17).
-- **FR-302** (RQ-55, RQ-76; N-11): Each sentence MUST show how many new words it has; each text MUST show its word count, its number of new words and their share, counted as in G-02 FR-213 against the learner's ground now.
+- **FR-302** (RQ-55, RQ-76; N-11; B-31, question-pages/90): Each text MUST show its word count and its share of known words, counted as in G-02 FR-213 against the learner's ground now. No count of new words is shown, for the text or for its sentences: a learner who doesn't know a word marks it themselves (B-31; was: each sentence's and the text's number of new words).
 - **FR-303** (RQ-56; N-11): Character and place names MUST be kept in their own list (from the answers' names and the name rule of G-02 FR-213) and never count as new words.
 - **FR-304** (RQ-381, T-06; N-43; constitution 4.6): Every text MUST be shown as plain text.
 - **FR-320** (RQ-417; N-34, N-02): In the reading view, a word MUST never break from the punctuation that follows it, and a name never stands on a line of its own with its full stop (addendum 003, O-22: "Din granne heter / Olle / .").

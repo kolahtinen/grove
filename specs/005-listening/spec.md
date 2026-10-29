@@ -71,12 +71,12 @@ On a device without a Swedish voice, grove never reads Swedish with another lang
 - **FR-501** (RQ-20; N-03; C-03): Grove MUST speak Swedish only with a voice whose language is Swedish (`sv`, `sv-SE` or `sv_SE`), picking it when the voices arrive (also after the page has loaded); without one, it MUST NOT speak, everywhere grove speaks (word menu, Play, Review, Leaves).
 - **FR-502** (RQ-20, RQ-369; N-03): Without a Swedish voice, the first time the learner uses listening grove MUST say so once (kept for the learner on the server), with how to add one: iPhone/iPad/Mac (Settings → Accessibility → Spoken Content → Voices → Swedish), Android (Settings → Text-to-speech → the speech engine's language data → Swedish), Windows (Settings → Time & language → Speech → add Swedish), and that Chrome and Edge on a computer often have Swedish voices online; the help stays reachable from the listening view.
 - **FR-503** (RQ-13, RQ-365; N-37, N-03, N-13, N-02; X-02): A speed slider from 0.5× to 1.5× (step 0.1, 1× at first) MUST set the rate for all of grove's speech and be kept for the learner on the server; under it a note says that how well it works depends on the device's voice.
-- **FR-504** (RQ-198, RQ-21; N-03, N-34): **Listen** on a text MUST play the whole text audio-only, sentence by sentence, highlighting the sentence being read; Pause/Stop end it; Play continues from the highlighted sentence.
+- **FR-504** (RQ-198, RQ-21; N-03, N-34; B-32, question-pages/90): **Listen** on a listening text MUST play the whole text audio-only, sentence by sentence, highlighting the sentence being read; Pause/Stop end it; Play continues from the highlighted sentence.
 - **FR-505** (RQ-47, RQ-57; N-03, N-02): In listening mode the text MUST be blurred until the learner taps it or the whole text has been played; English is hidden until the text is shown.
 - **FR-506** (RQ-14; N-37): Each sentence MUST have replay, and show how many times it has been played in this listening session.
 - **FR-507** (RQ-197; N-03): Each sentence MUST be loopable: it repeats until the loop is turned off or another sentence is played.
 - **FR-508** (RQ-270; N-37): After listening, the text's comprehension questions MUST be offered (G-02's questions), making each text a listening passage.
-- **FR-509** (RQ-393; N-37, N-42): A **listening** text (G-02 FR-202) MUST open in listening mode (FR-504, FR-505: audio first, the text blurred until tapped or played through); a reading text opens for reading as before, with Listen still offered. Added 2026-10-26 (addendum 002).
+- **FR-509** (RQ-393; N-37, N-42): A **listening** text (G-02 FR-202) MUST open in listening mode (FR-504, FR-505: audio first, the text blurred until tapped or played through); a reading text opens for reading, with no Listen (B-32, question-pages/90: "it's a reading session"; was: with Listen still offered). Added 2026-10-26 (addendum 002).
 
 ### Key Entities *(include if feature involves data)*
 
