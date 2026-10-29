@@ -51,4 +51,4 @@ Asked 2026-10-29 in Claude Code, one at a time. Notes: [docs/reviews/2026-10-29-
 
 ## Applied
 
-Addendum 006 (RQ-440…443), accepted on question-pages/81. Specs: to change in G-09.
+Addendum 006 (RQ-440…443), accepted on question-pages/81. Specs changed 2026-10-29: G-09 (FR-901, FR-903…908, FR-912, FR-915, FR-916, FR-920, FR-922, FR-923).

@@ -21,11 +21,16 @@
 - Q: In the starting check, what happens to the words ticked as unknown? → A: They become unmarked leaves (not in the ground), waiting on Leaves to be marked later (question-pages/60).
 - Q: What does "Set my starting level again" do to the ground? → A: It replaces only the words the earlier starting check added; everything learned from texts, drilling and Let it fall stays (question-pages/60).
 
+### Session 2026-10-29 (addendum 006)
+
+- Q: The first step? → A: Pick my level or Assess my level; Pick highlights a level, then Choose or Not sure, assess (B-18). (FR-603)
+- Q: Assess needs a level to sample from: how? → A: It asks for a guess first, then the 30-word check at that level; from Not sure, assess the highlighted level is the guess (question-pages/82). (FR-603)
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Start from about what I know (Priority: P1)
 
-A new learner (not the reviewer account) closes the welcome and lands on **Starting level**. They pick a CEFR level, or "I'm a complete beginner". Grove shows 30 of that level's words; the learner ticks the ones they don't know and confirms. The level's other words, and every word of the levels below, join their ground; Home now shows their level.
+A new learner (not the reviewer account) closes the welcome and lands on **Starting level**. They choose **Pick my level** (a CEFR level, or "I'm a complete beginner", then Choose) or **Assess my level** (a guessed level, then the check). The check shows 30 of that level's words; the learner ticks the ones they don't know and confirms. The level's other words, and every word of the levels below, join their ground; Home now shows their level.
 
 **Why this priority**: Texts are written from the ground (G-02); without a starting ground, a learner who isn't a beginner gets texts far below their level (N-13).
 
@@ -33,11 +38,12 @@ A new learner (not the reviewer account) closes the welcome and lands on **Start
 
 **Acceptance Scenarios**:
 
-1. **Given** a new learner, **When** they choose a level, **Then** grove shows a sample of 30 of that level's words to tick as unknown, and on confirming the rest of that level's words and all words of the levels below join the ground. (RQ-113, RQ-114, RQ-249)
-2. **Given** ticked words, **When** the learner confirms, **Then** they stay out of the ground as unmarked leaves (without meanings), waiting under Leaves → Unmarked to be marked later. (RQ-114; question-pages/60)
-3. **Given** "I'm a complete beginner", **When** the learner chooses it, **Then** the ground stays empty and the first texts are beginner texts (G-02's empty-ground prompt). (edge case)
-4. **Given** a new account other than the reviewer's, **When** the welcome is closed, **Then** grove goes straight to Starting level; the reviewer account doesn't. (RQ-248)
-5. **Given** the learner ticks 20 or more of the 30 as unknown, **When** they confirm, **Then** grove suggests trying the level below, without forcing it. (edge case)
+1. **Given** the starting level, **When** it opens, **Then** it asks Pick my level or Assess my level; Pick lists the levels, a tap highlights one, and Choose applies it while Not sure, assess checks it; Assess asks for a guess and then checks it. (RQ-447)
+2. **Given** a new learner, **When** they assess at a level, **Then** grove shows a sample of 30 of that level's words to tick as unknown, and on confirming the rest of that level's words and all words of the levels below join the ground. (RQ-113, RQ-114, RQ-249)
+3. **Given** ticked words, **When** the learner confirms, **Then** they stay out of the ground as unmarked leaves (without meanings), waiting under Leaves → Unmarked to be marked later. (RQ-114; question-pages/60)
+4. **Given** "I'm a complete beginner", **When** the learner chooses it, **Then** the ground stays empty and the first texts are beginner texts (G-02's empty-ground prompt). (edge case)
+5. **Given** a new account other than the reviewer's, **When** the welcome is closed, **Then** grove goes straight to Starting level; the reviewer account doesn't. (RQ-248)
+6. **Given** the learner ticks 20 or more of the 30 as unknown, **When** they confirm, **Then** grove suggests trying the level below, without forcing it. (edge case)
 
 ---
 
@@ -93,7 +99,7 @@ Grove carries the Kelly list as a plain file in the build, imports it into its l
 
 **The starting check**
 
-- **FR-603** (RQ-113, RQ-433; N-12, N-13, N-16): A learner MUST be able to pick a CEFR level (A1–C2, each with a one-line description), or "I'm a complete beginner" (empty ground), and then choose either **Use this level** (the level's words and those below go into the ground at once, as FR-604 with nothing ticked) or **Check my level** (FR-604's sample of 30). (Addendum 005; question-pages/77, 2: "either you pick one yourself or you get it assessed".)
+- **FR-603** (RQ-113, RQ-433, RQ-447; N-12, N-13, N-16): The starting level MUST first ask one choice: **Pick my level** or **Assess my level** (B-18; addendum 006). **Pick my level** lists the CEFR levels (A1–C2, each with a one-line description) and "I'm a complete beginner" (empty ground); tapping one highlights it without applying it; below the list, **Choose** (enabled once one is highlighted) applies it (the level's words and those below go into the ground at once, as FR-604 with nothing ticked; the beginner empties nothing) and **Not sure, assess** starts the check with the highlighted level, or asks for a guess if none is. **Assess my level** asks "Which level do you think you are?" with the same list (one tap picks it) and then runs FR-604's check of 30 at that level (question-pages/82). Each step has ‹ Back to the one before (G-09 FR-922). (Was: pick a level, then Use this level or Check my level, addendum 005.)
 - **FR-604** (RQ-114, RQ-249; N-12): After a level is picked, grove MUST show a sample of 30 of that level's words (spread over the level from most to least common), each tickable as "I don't know this"; confirming puts every word of the levels below and the level's other words in the ground (known). Words ticked as unknown become unmarked leaves, without meanings (question-pages/60).
 - **FR-605** (RQ-248, RQ-433; N-13, N-36): A new account other than the reviewer's MUST go straight to the starting level after closing the welcome (G-04 FR-416), until it has made a choice (FR-603: picked or checked); the reviewer account never does. Until the ground gives a level (G-04 FR-414), the level shown is the one picked or checked (`start_level`), so every learner who has made the choice has a level (B-02).
 - **FR-606** (RQ-252, RQ-433; N-13): Settings (G-09 FR-910) MUST show **Start the starting level again** (not for the reviewer account), running FR-603 again (pick or check). It replaces only what the earlier choice added: starting words still untouched (never drilled, never met in a text, never fallen from a leaf) are removed, then the new choice is applied; everything else stays (question-pages/60).

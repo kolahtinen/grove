@@ -16,6 +16,9 @@ The words grove uses for its ideas, in the app and in every spec from G-02 on. T
 | **Drill** | Practising leaves with spaced reviews until they fall. | RQ-60 and G-04 |
 | **Setup** | The first prompts of a package, sent in a new chat: the rules, the answer format, the summary and your known words; your AI only replies "OK". Later prompts in the same chat just ask for the next texts. | RQ-390, RQ-391 (addendum 002) |
 | **Reading text** / **Listening text** | The two kinds of text in a part: a reading text is for reading; a listening text is written to be heard and opens in listening mode. | RQ-393 (addendum 002) |
+| **Discover / Review / Mix** | The three Learning tiles: Discover gives new texts, Review the words being drilled, Mix both. Each has Start (10 minutes) and Options… (skill and length). They replace Practise for X min, By skill and Just one mode. | RQ-440 (addendum 006) |
+| **Harder question** | A reverse-direction question (pick the Swedish word for a blank and its meaning) for a well-known word: a drilled leaf with a gap of 2 days or more. Part of Review; what Master was. | RQ-441 (addendum 006) |
+| **Fill bars** | When a session is short of new texts, bars for listening and reading show how many minutes of texts are still needed, fill as texts are added, and turn into Start. | RQ-444 (addendum 006) |
 | **Meaning check** | grove gives every word a meaning at once, from its word list or from you; your AI then checks it in the sentence where you met it. | RQ-396, RQ-398 (addendum 002) |
 | **Session** | A planned run of exercises of a chosen length (Practise for X min, By skill, a topic, or Just one mode), one exercise at a time. | RQ-421, G-09 FR-904 |
 | **Exercise** | One item of a session: a text to read or hear, a word to review, a Master question, or a practice review. | RQ-421, G-09 FR-905 |

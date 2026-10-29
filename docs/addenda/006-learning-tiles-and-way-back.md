@@ -65,4 +65,4 @@ Other: the deadline (two days left), and a third change to Learning and the sess
 
 ## Decision
 
-Accepted with the owner's answers ([question-pages/81](../../question-pages/81-addendum-006.md)): N-46 added; RQ-440…447 active; Harder questions only built now; only the fill bars the session's skill uses; all of it before the deploy, even past 1 November. To be specified in G-09 (`specs/009-home-sessions`) and G-06 (the starting level), then `/regenerate` the modules they touch.
+Accepted with the owner's answers ([question-pages/81](../../question-pages/81-addendum-006.md)): N-46 added; RQ-440…447 active; Harder questions only built now; only the fill bars the session's skill uses; all of it before the deploy, even past 1 November. Specified 2026-10-29 in G-09 (FR-901, FR-903…FR-908, FR-912, FR-915, FR-916, FR-920, new FR-922, FR-923; SC-001, new SC-006…SC-008) and G-06 FR-603 (Assess asks for a guess first, question-pages/82). B-20 (the short-session offer has two choices, Add a text and Practise without) applied to FR-920 with it.
