@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Learning options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for B-24, B-25, B-26 (docs/sketching.md). Throwaway: never copied into the build.
+   Tokens and parts copied from public/assets/grove.css (palette 14) on 2026-10-29. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+  /* sketch-only: one colour per skill, taken from grove's tokens */
+  --sk-reading: var(--accent2); --sk-listening: var(--cw); --sk-words: var(--discover); --sk-grammar: var(--wood); --sk-review: var(--review);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+h3 { font-size: 1rem; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+@media (min-width: 760px) { .sk-notes { grid-template-columns: repeat(3, 1fr); } }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 1rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul { margin: .3rem 0 .3rem; padding-left: 1.1rem; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; min-height: 700px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.sk-answers { margin-top: 2rem; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.progress { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 0 0 .8rem; }
+.progress > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.group-title { font-size: .95rem; margin: .4rem 0 .5rem; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0 0 1rem; }
+button.tile { aspect-ratio: 1; min-height: 44px; display: flex; flex-direction: column; gap: .35rem; align-items: center; justify-content: center; padding: 0; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--accent); box-shadow: var(--shadow); }
+button.tile .icon { width: 36%; height: 36%; stroke-width: 1.8; }
+button.tile[aria-expanded="true"] { border-color: var(--accent); background: var(--soft); }
+.tile-label { font-size: .78rem; font-weight: 600; line-height: 1.15; color: var(--ink); text-align: center; padding: 0 .3rem; }
+.tile-panel { grid-column: 1 / -1; margin: 0; animation: fade-in .2s ease; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.tile-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.tile-head h2 { margin: 0; }
+button.tile-close { min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+button.tile-close .icon { width: 18px; height: 18px; stroke-width: 2.2; }
+.tile-way { display: flex; flex-direction: column; gap: .6rem; }
+.resume-bar { display: flex; align-items: center; gap: .5rem; min-height: 48px; margin: 0 0 .6rem; padding: .5rem .9rem; border-radius: 16px; background: var(--soft); color: var(--ink); font-weight: 700; border: 0; width: 100%; text-align: left; }
+.resume-bar .icon { width: 1.2rem; height: 1.2rem; stroke-width: 2; }
+.way-back { margin: 0 0 .3rem; }
+.way-back button { display: inline-flex; align-items: center; min-height: 44px; padding: 0; font-weight: 700; color: var(--link); background: none; border: 0; }
+button.chip-choice { min-height: 44px; padding: .4rem .9rem; border-radius: 999px; }
+button.chip-choice[aria-checked="true"], button.chip-choice[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.minute-choices { display: flex; flex-wrap: wrap; gap: .4rem; }
+.session-line { margin: 0 0 .4rem; font-weight: 600; }
+.mode-card { padding: 0; overflow: hidden; }
+.mode-banner { display: flex; justify-content: space-between; align-items: center; padding: .55rem .7rem; background: var(--banner); }
+.chip { display: inline-flex; align-items: center; gap: .35rem; height: 26px; padding: 0 .7rem; border-radius: 999px; background: var(--card); line-height: 1; font-size: .78rem; font-weight: 700; }
+.chip .icon { width: 15px; height: 15px; stroke-width: 2.2; display: block; }
+.chip.discover { color: var(--discover); } .chip.review { color: var(--review); } .chip.mix { color: var(--accent2); }
+.mode-body { padding: .9rem 1rem 1rem; }
+.level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); vertical-align: middle; }
+button.link-button { background: none; border: 0; padding: 0 .2rem; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.passage { font-size: 1.15rem; line-height: 1.9; }
+.big-word { font-size: 2rem; font-weight: 700; line-height: 1.2; }
+
+/* ---------- sketch parts built from grove's ---------- */
+.skel { background: var(--line); border-radius: 12px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+.skel.line { height: .9rem; margin: .5rem 0; }
+.skel.block { height: 3.2rem; margin: .6rem 0; }
+.skel.tile { aspect-ratio: 1; border-radius: 22px; }
+.kicker { display: flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--muted-strong); margin: 0 0 .5rem; }
+.kicker .icon, .sk-ico { width: 18px; height: 18px; stroke-width: 2; flex: none; }
+.s-reading { color: var(--sk-reading); } .s-listening { color: var(--sk-listening); } .s-words { color: var(--sk-words); } .s-grammar { color: var(--sk-grammar); } .s-review { color: var(--sk-review); }
+.row-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.row-actions > * { flex: 1 1 auto; }
+.play { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .75rem; border-radius: 999px; font-size: .85rem; }
+.play .icon { width: 14px; height: 14px; stroke-width: 2.2; }
+.play.on { border-color: var(--accent); background: var(--soft); }
+.ex { margin: .2rem 0 0; }
+.ex .en { display: block; color: var(--muted); font-size: .88rem; }
+mark.pm { background: var(--soft); color: var(--ink); border-bottom: 2px solid var(--accent); border-radius: 4px; padding: 0 .1rem; }
+mark.nw { background: none; color: var(--ink); font-weight: 700; border-bottom: 2px dotted var(--cw); }
+.note-box { background: var(--soft); border-radius: 14px; padding: .5rem .7rem; font-size: .9rem; margin: .5rem 0; }
+
+/* Options A: tick-box rows */
+.tick-list { display: flex; flex-direction: column; gap: .45rem; margin: .3rem 0 .4rem; }
+label.tick { display: flex; gap: .7rem; align-items: flex-start; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 16px; background: var(--card2); cursor: pointer; min-height: 44px; }
+label.tick input { width: 1.3rem; height: 1.3rem; margin: .15rem 0 0; accent-color: var(--accent); flex: none; }
+label.tick.on { border-color: var(--accent); background: var(--soft); }
+label.tick .t-name { font-weight: 700; display: flex; gap: .4rem; align-items: center; }
+label.tick .t-line { display: block; font-size: .85rem; color: var(--muted); }
+label.tick .t-warn { display: block; font-size: .82rem; color: var(--amber); }
+.opt-section { margin: 0 0 1rem; }
+.opt-section > h2 { margin-bottom: .2rem; }
+.sum-card { background: var(--card); border: 1px solid var(--accent); border-radius: 18px; padding: .8rem .9rem; margin: 0 0 .8rem; }
+.sum-card ul { list-style: none; margin: .2rem 0 .3rem; padding: 0; }
+.sum-card li { display: flex; align-items: center; gap: .5rem; padding: .15rem 0; }
+.sum-card li .m { margin-left: auto; font-weight: 700; }
+.sticky-start { position: sticky; bottom: 0; padding: .6rem 0 .8rem; background: linear-gradient(transparent, var(--bg) 30%); }
+.switch-row { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .5rem 0; min-height: 44px; }
+button.switch { width: 52px; min-height: 32px; height: 32px; padding: 0; border-radius: 999px; position: relative; flex: none; }
+button.switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--muted); transition: left .15s; }
+button.switch[aria-checked="true"] { background: var(--accent); border-color: var(--accent); }
+button.switch[aria-checked="true"]::after { left: 23px; background: var(--onacc); }
+@container (min-width: 700px) {
+  .opt-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.2rem; align-items: start; }
+  .opt-grid .sticky-start { position: static; background: none; }
+  .opt-aside { position: sticky; top: 4.5rem; }
+}
+
+/* Options B: sheet-style page with chips */
+.sheet-behind { position: absolute; inset: 0; padding: 4.2rem 1rem 0; opacity: .5; filter: blur(1px); pointer-events: none; }
+.sheet-behind .tiles { max-width: 520px; margin: 0 auto; }
+.sheet-dim { position: absolute; inset: 0; background: var(--backdrop); }
+.sheet { position: relative; margin: 5.5rem auto 0; max-width: 560px; min-height: calc(100% - 5.5rem); background: var(--card2); border: 1px solid var(--line); border-bottom: 0; border-radius: 26px 26px 0 0; box-shadow: var(--shadow); padding: .4rem 1rem 1rem; }
+.grabber { width: 44px; height: 5px; border-radius: 999px; background: var(--line); margin: .3rem auto .4rem; }
+.sheet-head { display: flex; align-items: center; justify-content: space-between; gap: .4rem; }
+.sheet-head h1 { font-size: 1.1rem; margin: 0; }
+.chip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: .3rem 0 .4rem; }
+button.skill-chip { display: flex; align-items: center; gap: .5rem; border-radius: 16px; padding: .55rem .7rem; text-align: left; min-height: 52px; }
+button.skill-chip .icon { width: 22px; height: 22px; stroke-width: 2; flex: none; }
+button.skill-chip[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+button.skill-chip .ck { margin-left: auto; font-weight: 700; color: var(--link); }
+.seg { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; background: transparent; padding: .5rem 0; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-checked="true"] { background: var(--soft); font-weight: 700; color: var(--link); }
+.split-bar { display: flex; height: 14px; border-radius: 999px; overflow: hidden; background: var(--line); margin: .5rem 0 .4rem; gap: 2px; }
+.split-bar span { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: .2rem .8rem; font-size: .86rem; }
+.legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 3px; margin-right: .3rem; vertical-align: -1px; }
+
+/* Options C: plan first */
+.plan-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: wrap; }
+.stepper { display: inline-flex; align-items: center; gap: .3rem; }
+.stepper button { min-width: 44px; padding: 0; font-size: 1.2rem; }
+.stepper b { min-width: 4.6rem; text-align: center; font-size: 1.05rem; }
+ol.timeline { list-style: none; margin: .6rem 0 .4rem; padding: 0; }
+ol.timeline li { display: grid; grid-template-columns: 1.6rem 1fr auto; gap: .5rem; align-items: center; padding: .45rem 0; border-top: 1px solid var(--line); }
+ol.timeline li:first-child { border-top: 0; }
+ol.timeline .n { font-size: .78rem; color: var(--muted); text-align: right; }
+ol.timeline .what { display: flex; gap: .45rem; align-items: center; min-width: 0; }
+ol.timeline .m { font-size: .85rem; font-weight: 700; color: var(--muted-strong); }
+
+/* Words */
+ul.wlist { list-style: none; margin: .3rem 0 0; padding: 0; }
+ul.wlist li { padding: .7rem 0; border-top: 1px solid var(--line); }
+ul.wlist li:first-child { border-top: 0; }
+.w-head { display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; }
+.w-head b { font-size: 1.15rem; }
+.w-btns { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .4rem; }
+.w-btns button { min-height: 40px; padding: .25rem .75rem; font-size: .85rem; border-radius: 999px; }
+button.picked { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); font-weight: 700; }
+.dots { display: flex; gap: .3rem; justify-content: center; margin: .6rem 0 0; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.dots i.on { background: var(--accent); }
+.reveal { width: 100%; text-align: left; border-style: dashed; color: var(--muted-strong); }
+.quiz { display: flex; flex-direction: column; gap: .4rem; margin: .5rem 0; }
+.quiz button { text-align: left; }
+.quiz button.right { border-color: var(--ok); background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.quiz button.wrong { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
+
+/* Grammar: Spot it */
+.steps2 { display: grid; grid-template-columns: 1fr 1fr; gap: .3rem; margin: 0 0 .7rem; }
+.steps2 button { min-height: 40px; padding: .3rem; font-size: .85rem; border-radius: 12px; }
+.steps2 button[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.spot-text { font-size: 1.08rem; line-height: 2.25; margin: .4rem 0 .6rem; }
+.spot-text button.tok { display: inline; min-height: 0; padding: .12rem .14rem; margin: 0 -.02rem; border: 0; border-radius: 6px; background: none; color: var(--ink); font-weight: 400; line-height: inherit; }
+.spot-text button.tok:active { transform: none; }
+.spot-text .on, .spot-text button.tok.on { background: var(--soft); box-shadow: inset 0 -2px 0 var(--accent); }
+.spot-text .found { background: var(--ok-bg); box-shadow: inset 0 -2px 0 var(--ok); }
+.spot-text .missed { outline: 2px dashed var(--amber); outline-offset: 1px; background: transparent; }
+.spot-text .wrong, .spot-text button.tok.wrong { background: var(--bad-bg); text-decoration: line-through; text-decoration-color: var(--bad); }
+.spot-key { display: flex; flex-wrap: wrap; gap: .2rem .8rem; font-size: .8rem; color: var(--muted); }
+.spot-key span::before { content: ''; display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; margin-right: .3rem; vertical-align: -1px; }
+.spot-key .k-f::before { background: var(--ok-bg); border-bottom: 2px solid var(--ok); }
+.spot-key .k-m::before { border: 2px dashed var(--amber); }
+.spot-key .k-w::before { background: var(--bad-bg); }
+.ex-list { margin: .3rem 0 .6rem; padding-left: 0; list-style: none; }
+.ex-list li { padding: .3rem 0; }
+.rule { border-left: 3px solid var(--accent); padding: .2rem 0 .2rem .7rem; margin: .4rem 0 .7rem; }
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-29 · round 1</p>
+    <h1>Sketch: Learning options</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> choosing what a Learning session holds, and what Discover gives for Words and Grammar.</li>
+      <li><b>Screens:</b> Home's Learning tiles → Discover's panel → the Options page → the session's first exercise → a Words and a Grammar exercise.</li>
+      <li><b>Open:</b> how the Options page looks (A, B, C), how the planned session is shown, and how Words and Grammar exercises are laid out.</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>B-24</b> "Path 'Learning › Discover › Options' should open an options page." Options… opens its own page, not a fold-out.</div>
+      <div class="sk-note"><b>B-25</b> "More than one of listening, reading, words, grammar should be able to be ticked at once." Several ticked share the time equally, in turns (question-pages/85, 1); none ticked = all (today's Mix).</div>
+      <div class="sk-note"><b>B-26</b> Discover › Words and › Grammar "should have some content". Words: next words at your level, phrase spotlight. Grammar: pattern of the day, Spot it.</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Questions this sketch settles</summary>
+      <ul>
+        <li>What the Options page looks like as a page of its own, and its link back (FR-903, FR-922).</li>
+        <li>How ticking several skills looks, and how the page tells you what the session will hold (FR-903, FR-905, FR-906).</li>
+        <li>What a Words exercise and a Grammar exercise look like in Discover (FR-906).</li>
+        <li>What the first exercise of a mixed session looks like (FR-904).</li>
+      </ul>
+      <p class="small muted">Example data: made up for this sketch from grove's draft items in content/learning (not approved). The learner is at A2. Nothing you tap is saved.</p>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A" id="tab-v-A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B" id="tab-v-B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C" id="tab-v-C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Screen"><span class="sk-row-label">Screen</span>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="home">1 Home</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="options">2 Options</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="start">3 Session start</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="words">4 Words</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="grammar">5 Grammar</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Full page with tick boxes <small>Separate Words and Grammar exercises, list of words.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> Sheet-style page with chips <small>One word per card; learn and spot in one exercise.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> Plan first <small>The exercise list is the summary; example-first Words, spot-first Grammar.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons (paths from public/assets/icons.mjs, plus a few sketch-only ones) ---------- */
+const PATHS = {
+  discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
+  review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  mix: ['M12 21v-7', 'M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5z', 'M4.5 14A8 8 0 0 1 17 5.3', 'M17.5 2v4h-4'],
+  resume: ['M8 5l11 7-11 7z'],
+  play: ['M8 5l11 7-11 7z'],
+  common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
+  yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
+  progress: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20v-10'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  reading: ['M4 5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0z', 'M12 5c2.5-1.5 5-1.5 8 0v15c-3-1.5-5.5-1.5-8 0'],
+  listening: ['M4 16v-4a8 8 0 0 1 16 0v4', 'M4 15h3v5H4z', 'M17 15h3v5h-3z'],
+  words: ['M6 19C6 10 11 6 19 5c-1 9-5 14-13 14z', 'M6 19l7-7'],
+  grammar: ['M8 4H5v16h3', 'M16 4h3v16h-3', 'M9 12h6'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data (draft items from content/learning and content/library, A2) ---------- */
+const LEVEL = 'A2';
+const WORD_SETS = [
+  [
+    { lemma: 'halsduk', pos: 'en', en: 'scarf', sv: 'Ta på dig halsduken, det är kallt.', exEn: "Put on your scarf, it's cold." },
+    { lemma: 'strumpa', pos: 'en', en: 'sock', sv: 'Var är min andra strumpa?', exEn: 'Where is my other sock?' },
+    { lemma: 'kjol', pos: 'en', en: 'skirt', sv: 'Hon har en lång kjol.', exEn: 'She is wearing a long skirt.' },
+    { lemma: 'morot', pos: 'en', en: 'carrot', sv: 'Kaninen äter en morot.', exEn: 'The rabbit is eating a carrot.' },
+  ],
+  [
+    { lemma: 'peppar', pos: 'en', en: 'pepper', sv: 'Kan du skicka saltet och pepparn?', exEn: 'Could you pass the salt and pepper?' },
+    { lemma: 'godis', pos: 'ett', en: 'sweets, candy', sv: 'Barnen får godis på lördagar.', exEn: 'The children get sweets on Saturdays.' },
+    { lemma: 'bebis', pos: 'en', en: 'baby', sv: 'Bebisen sover i vagnen.', exEn: 'The baby is sleeping in the pram.' },
+  ],
+];
+const PHRASES = [
+  { phrase: 'ha lust att', en: 'feel like (doing)', note: 'Ingen lust means "don\'t feel like it".',
+    examples: [{ sv: 'Har du lust att gå på bio?', en: 'Do you feel like going to the cinema?' }, { sv: 'Jag har ingen lust att städa.', en: "I don't feel like cleaning." }],
+    quiz: ['want to, feel like', 'have to', 'be allowed to'], right: 0, find: ['lust att'] },
+  { phrase: 'hålla med', en: 'agree', note: 'The person you agree with comes after med: Jag håller med dig.',
+    examples: [{ sv: 'Jag håller med dig.', en: 'I agree with you.' }, { sv: 'Håller du med om det?', en: 'Do you agree with that?' }],
+    quiz: ['hold on', 'agree', 'come along'], right: 1, find: ['håller med', 'Håller du med'] },
+];
+const PATTERNS = [
+  { id: 'G-A2-06', name: 'The big car: den stora bilen',
+    explain: 'When an adjective comes before a noun in the definite form, Swedish marks "the" twice: den, det or de comes first, the adjective ends in -a, and the noun has its ending too: den stora bilen, det stora huset, de stora bilarna.',
+    hint: 'den / det / de + a word ending in -a + a noun ending in -en, -et or -na',
+    howToSpot: 'Look for den, det or de, then an adjective ending in -a, then a noun ending in -en, -et or -na.',
+    examples: [{ sv: 'Den röda bilen är min.', en: 'The red car is mine.', mark: 'Den röda bilen' }, { sv: 'Vi bor i det gula huset.', en: 'We live in the yellow house.', mark: 'det gula huset' }, { sv: 'De nya grannarna är trevliga.', en: 'The new neighbours are nice.', mark: 'De nya grannarna' }],
+    title: 'I butiken',
+    lines: ['Hej! Jag letar efter en jacka.', 'Vi har den svarta jackan här.', 'Den är fin, men jag gillar den gröna jackan mer.', 'Den gröna jackan kostar 900 kronor.', 'Okej. Har ni också den vita tröjan?', 'Ja, den ligger i det stora skåpet.', 'Jag tar den gröna jackan och de svarta byxorna.', 'Vill du ha en påse?'],
+    spot: [[1, 'den svarta jackan'], [2, 'den gröna jackan'], [3, 'Den gröna jackan'], [4, 'den vita tröjan'], [5, 'det stora skåpet'], [6, 'den gröna jackan'], [6, 'de svarta byxorna']] },
+  { id: 'G-A2-05', name: 'Adjectives match the noun: stor, stort, stora',
+    explain: 'An adjective changes to match its noun. With en-words it has no ending (en stor bil), with ett-words it adds -t (ett stort hus), and in the plural it adds -a (stora bilar).',
+    hint: 'adjectives before a noun or after är, with -t or -a',
+    howToSpot: 'Look for adjectives before a noun or after är, and check for the ending -t or -a.',
+    examples: [{ sv: 'De bor i ett stort hus.', en: 'They live in a big house.', mark: 'stort hus' }, { sv: 'Vattnet är kallt.', en: 'The water is cold.', mark: 'kallt' }],
+    title: 'En ny lägenhet',
+    lines: ['Vi har flyttat till en ny lägenhet.', 'Den har ett stort kök och tre små rum.', 'Köket är ljust och fint.', 'Vi har ett gammalt bord från min mormor.', 'I vardagsrummet står en grön soffa.', 'Fönstren är höga.', 'Grannarna är trevliga.'],
+    spot: [[0, 'ny lägenhet'], [1, 'stort kök'], [1, 'små rum'], [2, 'ljust'], [2, 'fint'], [3, 'gammalt bord'], [4, 'grön soffa'], [5, 'höga'], [6, 'trevliga']] },
+];
+const TEXTS = {
+  reading: [
+    { title: 'En helg på landet', topic: 'Travel and transport', lines: ['Förra helgen åkte Elin och Jonas till Dalarna.', 'Jonas mormor har ett litet rött hus där.', 'De tog tåget på fredag eftermiddag.', 'Resan tog fyra timmar.', 'När de kom fram var det redan mörkt.', 'Mormor hade lagat soppa och bakat bröd.'] },
+  ],
+  listening: [
+    { title: 'Ett samtal till vårdcentralen', topic: 'Health', lines: ['– Vårdcentralen, hej. Vad kan jag hjälpa dig med?', '– Hej, jag heter Samir. Jag har ont i ryggen.', '– Hur länge har du haft ont?', '– Sedan i söndags. Jag lyfte en tung låda.'] },
+  ],
+};
+const REVIEW_ITEMS = [
+  { sv: 'Ta på dig halsduken, det är kallt.', word: 'halsduken', en: 'the scarf' },
+  { sv: 'Resan tog fyra timmar.', word: 'Resan', en: 'the journey' },
+];
+
+/* ---------- Skills, tiles, versions ---------- */
+const ORDER = ['reading', 'listening', 'words', 'grammar'];
+const SKILL = {
+  reading: { name: 'Reading', line: 'New texts to read, at your level.', sum: 'reading text' },
+  listening: { name: 'Listening', line: 'New texts to hear, with the text hidden.', sum: 'listening' },
+  words: { name: 'Words', line: 'Next words at your level, and a phrase.', sum: 'words' },
+  grammar: { name: 'Grammar', line: 'A pattern of the day, and Spot it.', sum: 'grammar' },
+  review: { name: 'Review', line: '', sum: 'review' },
+};
+const REVIEW_LINE = {
+  reading: 'Your leaves, shown in their sentences.', listening: 'Your leaves, each sentence played first.',
+  words: 'Your word and phrase leaves.', grammar: 'Your pattern leaves first.',
+};
+const TILES = {
+  discover: { name: 'Discover', line: 'New texts, words and patterns at your level.' },
+  review: { name: 'Review', line: 'The words you are learning, when they are due; harder questions for the ones you know well.' },
+  mix: { name: 'Mix', line: 'Review first, then new things, in one session.' },
+};
+const VERSIONS = {
+  A: 'A · Full page with tick boxes. ‹ Discover at the top; each skill a tick-box row with a line; a summary card above Start. Words and Grammar as separate exercises taken in turns: next words as a list, a phrase spotlight, the pattern of the day, then Spot it.',
+  B: 'B · Sheet-style page with chips. Slides up over Home with ‹ Home; skills as chips; the summary as one bar split by skill. Words one card at a time (Pick up / I know it); a phrase with a quick check; Grammar\'s learn and spot as two steps of one exercise.',
+  C: 'C · Plan first. The page leads with the session itself: the exercises in turn order, changing as you tick; skills as switches below. Words and Grammar example-first: guess a word from its sentence before its meaning; spot the pattern before the rule.',
+};
+
+/* ---------- State (nothing is saved) ---------- */
+const S = {
+  version: 'A', screen: 'home', state: 'normal', width: 'phone', theme: 'auto',
+  tile: 'discover', panel: null,
+  opts: { discover: { skills: ['words', 'grammar'], minutes: 10, hard: false }, review: { skills: [], minutes: 10, hard: false }, mix: { skills: [], minutes: 10, hard: false } },
+  session: null, ex: 0, sub: {}, playing: null,
+};
+const clone = (o) => JSON.parse(JSON.stringify(o));
+const fmt = (x) => { const h = Math.round(x * 2) / 2; return Number.isInteger(h) ? String(h) : `${Math.floor(h) || ''}½`; };
+
+/* ---------- Planning: ticked skills share the time equally, taken in turns (question-pages/85, 1) ---------- */
+function pool(skill, tile, opts, version, noWords) {
+  if (tile === 'review') return opts.hard ? [{ k: 'harder', min: 2.5 }] : [{ k: 'rev', min: 2.5 }];
+  if (skill === 'reading') return [{ k: 'read', min: 3 }, { k: 'read', min: 2 }];
+  if (skill === 'listening') return [{ k: 'listen', min: 2.5 }];
+  if (skill === 'words') {
+    if (noWords) return [{ k: 'phrase', p: 0, min: 2.5 }, { k: 'phrase', p: 1, min: 2.5 }];
+    return [{ k: 'next', set: 0, min: 2.5 }, { k: 'phrase', p: 0, min: 2.5 }, { k: 'next', set: 1, min: 2.5 }, { k: 'phrase', p: 1, min: 2.5 }];
+  }
+  if (skill === 'grammar') {
+    if (version === 'B') return [{ k: 'learnspot', pat: 0, min: 5 }, { k: 'spot', pat: 1, min: 2.5 }];
+    if (version === 'C') return [{ k: 'guess', pat: 0, min: 5 }, { k: 'spot', pat: 1, min: 2.5 }];
+    return [{ k: 'pattern', pat: 0, min: 2.5 }, { k: 'spot', pat: 0, min: 2.5 }, { k: 'spot', pat: 1, min: 2.5 }];
+  }
+  return [{ k: 'rev', min: 2.5 }];
+}
+function fill(p, share) {
+  const items = []; let t = 0; let i = 0;
+  while (i < 24 && t + p[i % p.length].min <= share + 0.3) { items.push({ ...p[i % p.length] }); t += p[i % p.length].min; i++; }
+  if (!items.length) items.push({ ...p[0], min: share });
+  return items;
+}
+function plan(tile, opts, version, noWords) {
+  const all = opts.skills.length === 0;
+  const skills = all ? ORDER.slice() : ORDER.filter((s) => opts.skills.includes(s));
+  const L = opts.minutes;
+  const groups = [];
+  let rest = L;
+  if (tile === 'mix') {
+    const r = Math.round(L * 0.4 * 2) / 2;
+    groups.push({ skill: 'review', items: fill([{ k: 'rev', min: 2 }], r) });
+    rest = L - r;
+  }
+  const share = rest / skills.length;
+  for (const s of skills) groups.push({ skill: s, items: fill(pool(s, tile, opts, version, noWords), share).map((it) => ({ ...it, skill: s })) });
+  if (groups[0] && groups[0].skill === 'review') groups[0].items = groups[0].items.map((it) => ({ ...it, skill: 'review' }));
+  const seq = [];
+  if (tile === 'mix') seq.push(...groups[0].items);
+  const turnGroups = tile === 'mix' ? groups.slice(1) : groups;
+  const max = Math.max(...turnGroups.map((g) => g.items.length));
+  for (let i = 0; i < max; i++) for (const g of turnGroups) if (g.items[i]) seq.push(g.items[i]);
+  for (const g of groups) g.min = g.items.reduce((a, b) => a + b.min, 0);
+  const total = seq.reduce((a, b) => a + b.min, 0);
+  return { groups, seq, total, all, skills, L };
+}
+function groupLabel(g, tile, opts) {
+  if (g.skill === 'review') return 'review';
+  if (tile === 'review') return opts.hard ? `harder questions (${SKILL[g.skill].name.toLowerCase()})` : `review (${SKILL[g.skill].name.toLowerCase()})`;
+  return SKILL[g.skill].sum;
+}
+function summaryLine(p, tile, opts) { return p.groups.map((g) => `≈${fmt(g.min)} min ${groupLabel(g, tile, opts)}`).join(' · '); }
+function skillsLine(p) { return p.all ? 'All skills, in turns (as Mix)' : `${p.skills.map((s) => SKILL[s].name).join(' + ')}${p.skills.length > 1 ? ', in turns' : ''}`; }
+const ITEM_NAME = {
+  read: 'Reading text', listen: 'Listening text', next: 'Next words at your level', phrase: 'Phrase spotlight',
+  pattern: 'Pattern of the day', spot: 'Spot it', learnspot: 'Pattern of the day + Spot it', guess: 'Spot the pattern, then the rule',
+  rev: 'Review', harder: 'Harder questions',
+};
+function itemName(it) {
+  if (it.k === 'spot' && it.pat === 1) return 'Spot it: an earlier pattern';
+  return ITEM_NAME[it.k];
+}
+
+/* ---------- Shared bits ---------- */
+const topbar = () => `<header class="topbar"><div class="topbar-inner"><span class="brand">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu (not part of this sketch)">☰</button></div></header>`;
+const playBtn = (id, label = 'Play') => {
+  const err = S.state === 'error';
+  const on = S.playing === id;
+  return `<button type="button" class="play${on ? ' on' : ''}" data-act="play" data-id="${id}"${err ? ' disabled' : ''}>${ic('play')}${on ? 'Playing…' : label}</button>`;
+};
+const markIn = (sv, mark, cls = 'pm') => {
+  const i = sv.toLowerCase().indexOf(mark.toLowerCase());
+  if (i < 0) return esc(sv);
+  return `${esc(sv.slice(0, i))}<mark class="${cls}">${esc(sv.slice(i, i + mark.length))}</mark>${esc(sv.slice(i + mark.length))}`;
+};
+const skelCard = (n = 4) => `<div class="card">${'<div class="skel line"></div>'.repeat(1)}<div class="skel line" style="width:60%"></div>${'<div class="skel block"></div>'.repeat(n - 2)}</div>`;
+const wayBack = (label, act, extra = '') => `<p class="way-back"><button type="button" data-act="${act}"${extra}>‹ ${esc(label)}</button></p>`;
+
+/* ---------- Screen 1: Home ---------- */
+function homeScreen() {
+  if (S.state === 'loading') {
+    return `<h2 class="group-title">Learning</h2><div class="tiles"><div class="skel tile"></div><div class="skel tile"></div><div class="skel tile"></div></div><h2 class="group-title">Library</h2><div class="tiles"><div class="skel tile"></div><div class="skel tile"></div></div>`;
+  }
+  let h = '';
+  if (S.state === 'error') h += `<div class="message bad" role="alert">grove couldn't load your sessions. Check your connection.<div class="row-actions"><button type="button" data-act="retry">Try again</button></div></div>`;
+  h += `<section><h2 class="group-title">Learning</h2>`;
+  if (S.session && S.state === 'normal' && S.ex < S.session.plan.seq.length) {
+    h += `<button type="button" class="resume-bar" data-act="resume">${ic('resume')}Resume: ${S.session.plan.L}-minute ${TILES[S.session.tile].name} · ${S.ex + 1} of ${S.session.plan.seq.length}</button>`;
+  }
+  h += '<div class="tiles">';
+  for (const id of ['discover', 'review', 'mix']) {
+    h += `<button type="button" class="tile" data-act="tile" data-id="${id}" aria-expanded="${S.panel === id}"${S.state === 'error' ? ' disabled' : ''}>${ic(id)}<span class="tile-label">${TILES[id].name}</span></button>`;
+  }
+  if (S.panel && S.state !== 'error') h += panel(S.panel);
+  h += '</div></section>';
+  h += `<section><h2 class="group-title">Library</h2><div class="tiles"><button type="button" class="tile" disabled style="opacity:.75">${ic('common')}<span class="tile-label">Common library</span></button><button type="button" class="tile" disabled style="opacity:.75">${ic('yours')}<span class="tile-label">Your library</span></button></div></section>`;
+  h += `<section><h2 class="group-title">Progress</h2><div class="tiles"><button type="button" class="tile" disabled style="opacity:.75">${ic('progress')}<span class="tile-label">Progress</span></button></div></section>`;
+  h += `<p class="small muted">Library and Progress aren't part of this sketch.</p>`;
+  return h;
+}
+function panel(id) {
+  const t = TILES[id];
+  const o = S.opts[id];
+  const last = plan(id, o, S.version, false);
+  let body = '';
+  if (S.state === 'empty') {
+    const msg = id === 'review' ? 'Nothing is due. Your leaves come back when they start to fade.'
+      : 'Nothing new to discover: no unread texts, and you have met every next word and pattern at A2.';
+    body = `<p class="message ok" style="margin:0">${msg}</p>`
+      + (id === 'review' ? `<button type="button" class="main" data-act="tile" data-id="discover">Discover instead</button>` : `<button type="button" class="main" data-act="noop">Add a text</button><button type="button" data-act="noop">Try B1's words and patterns</button>`)
+      + `<button type="button" data-act="options" data-id="${id}">Options…</button>`;
+  } else if (S.version === 'C') {
+    body = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem"><button type="button" class="main" data-act="quickstart" data-id="${id}">Start</button><button type="button" data-act="options" data-id="${id}">Options…</button></div>
+      <p class="small muted" style="margin:0">Start: 10 minutes, all skills in turns.</p>`;
+  } else {
+    body = `<button type="button" class="main" data-act="quickstart" data-id="${id}">Start <span style="font-weight:400">· 10 min, all skills</span></button>
+      <button type="button" data-act="options" data-id="${id}">Options…</button>`;
+    if (S.version === 'B' && o.skills.length) body += `<p class="small muted" style="margin:0">Last time in Options: ${esc(skillsLine(last))} · ${o.minutes} min</p>`;
+  }
+  return `<section class="card tile-panel" aria-labelledby="panel-title"><div class="tile-head"><h2 id="panel-title">${t.name}</h2><button type="button" class="tile-close" data-act="close-panel" aria-label="Close">${ic('close')}</button></div>
+    <p class="muted" style="margin:.2rem 0 .7rem">${t.line}</p><div class="tile-way">${body}</div></section>`;
+}
+
+/* ---------- Screen 2: Options page (B-24, B-25) ---------- */
+function optionsScreen() {
+  const tile = S.tile; const o = S.opts[tile]; const t = TILES[tile];
+  const noWords = S.state === 'empty';
+  const p = plan(tile, o, S.version, noWords);
+  const loading = S.state === 'loading';
+  const errBox = S.state === 'error' ? `<div class="message bad" role="alert">grove couldn't plan this session: no connection. Your ticks are kept.<div class="row-actions"><button type="button" data-act="retry">Try again</button></div></div>` : '';
+  const warn = (s) => (noWords && s === 'words' && tile !== 'review' ? `No next words left at ${LEVEL}: Words gives phrases only.` : '');
+  const line = (s) => (tile === 'review' ? REVIEW_LINE[s] : SKILL[s].line);
+  const hard = tile === 'review';
+  const startLabel = loading ? 'Planning…' : `Start · ${o.minutes} min`;
+  const startBtn = `<button type="button" class="main" data-act="start-options"${loading || S.state === 'error' ? ' disabled' : ''}>${startLabel}</button>`;
+
+  if (S.version === 'B') {
+    const behind = `<div class="sheet-behind" aria-hidden="true"><div class="tiles"><div class="card" style="aspect-ratio:1;margin:0"></div><div class="card" style="aspect-ratio:1;margin:0"></div><div class="card" style="aspect-ratio:1;margin:0"></div></div></div><div class="sheet-dim"></div>`;
+    const chips = ORDER.map((s) => { const on = o.skills.includes(s); return `<button type="button" class="skill-chip" aria-pressed="${on}" data-act="skill" data-id="${s}">${ic(s, `icon s-${s}`)}<span>${SKILL[s].name}${warn(s) ? '<br><small style="color:var(--amber);font-weight:400">phrases only</small>' : ''}</span>${on ? '<span class="ck">✓</span>' : ''}</button>`; }).join('');
+    const seg = [5, 10, 20, 30].map((m) => `<button type="button" role="radio" aria-checked="${o.minutes === m}" data-act="minutes" data-m="${m}">${m}</button>`).join('');
+    const bar = loading ? '<div class="skel line"></div><div class="skel line" style="width:70%"></div>' : `<div class="split-bar">${p.groups.map((g) => `<span style="flex:${g.min};background:var(--sk-${g.skill})" title="${esc(groupLabel(g, tile, o))}"></span>`).join('')}</div>
+      <div class="legend">${p.groups.map((g) => `<span><i style="background:var(--sk-${g.skill})"></i>≈${fmt(g.min)} min ${esc(groupLabel(g, tile, o))}</span>`).join('')}</div>`;
+    return `${behind}<div class="sheet">
+      <div class="grabber"></div>
+      <div class="sheet-head">${wayBack('Home', 'back-home')}<h1>${t.name} options</h1><button type="button" class="tile-close" data-act="back-home" aria-label="Close">${ic('close')}</button></div>
+      ${errBox}
+      <h2 style="margin:.6rem 0 .2rem">Skills <span class="small muted" style="font-weight:400">· tick any; none = all</span></h2>
+      <div class="chip-grid">${chips}</div>
+      <h2 style="margin:.8rem 0 .3rem">Minutes</h2>
+      <div class="seg" role="radiogroup" aria-label="Length">${seg}</div>
+      ${hard ? `<div class="switch-row"><span>Harder questions only</span><button type="button" class="switch" role="switch" aria-checked="${o.hard}" data-act="hard" aria-label="Harder questions only"></button></div>` : ''}
+      <div style="margin:1rem 0 .2rem"><b>Your ${o.minutes} minutes</b> <span class="small muted">· ${esc(skillsLine(p))}</span></div>
+      ${bar}
+      <div class="sticky-start">${startBtn}</div>
+    </div>`;
+  }
+
+  if (S.version === 'C') {
+    const steps = [5, 10, 20, 30];
+    const i = steps.indexOf(o.minutes);
+    const timeline = loading ? '<div class="skel block"></div><div class="skel block"></div>' : `<ol class="timeline">${p.seq.map((it, n) => `<li><span class="n">${n + 1}</span><span class="what">${ic(it.skill, `icon sk-ico s-${it.skill}`)}<span>${esc(tile === 'review' ? `${it.k === 'harder' ? 'Harder questions' : 'Review'} · ${SKILL[it.skill].name.toLowerCase()}` : itemName(it))}</span></span><span class="m">${fmt(it.min)} min</span></li>`).join('')}</ol>`;
+    const switches = ORDER.map((s) => { const on = o.skills.includes(s); return `<div class="switch-row"><span style="display:flex;gap:.5rem;align-items:flex-start">${ic(s, `icon sk-ico s-${s}`)}<span><b>${SKILL[s].name}</b><span class="small muted" style="display:block">${line(s)}</span>${warn(s) ? `<span class="small" style="display:block;color:var(--amber)">${warn(s)}</span>` : ''}</span></span><button type="button" class="switch" role="switch" aria-checked="${on}" aria-label="${SKILL[s].name}" data-act="skill" data-id="${s}"></button></div>`; }).join('');
+    return `<div class="g-main">${wayBack(t.name, 'back-tile')}
+      <h1 style="font-size:1.25rem;margin-bottom:.2rem">Plan your ${t.name}</h1>
+      ${errBox}
+      <div class="card">
+        <div class="plan-head"><b>${esc(skillsLine(p))}</b>
+          <span class="stepper"><button type="button" data-act="step" data-d="-1" aria-label="Shorter"${i === 0 ? ' disabled' : ''}>−</button><b>${o.minutes} min</b><button type="button" data-act="step" data-d="1" aria-label="Longer"${i === steps.length - 1 ? ' disabled' : ''}>+</button></span></div>
+        ${timeline}
+        <p class="small muted" style="margin:0">${loading ? '' : esc(summaryLine(p, tile, o))}</p>
+      </div>
+      <h2 style="margin:.4rem 0 0">Skills</h2>
+      <p class="small muted" style="margin:0">Switch on any; with none on, you get all of them.</p>
+      ${switches}
+      ${hard ? `<div class="switch-row" style="border-top:1px solid var(--line)"><span><b>Harder questions only</b><span class="small muted" style="display:block">Only reversed questions for words you know well.</span></span><button type="button" class="switch" role="switch" aria-checked="${o.hard}" data-act="hard" aria-label="Harder questions only"></button></div>` : ''}
+      <div class="sticky-start">${startBtn}</div></div>`;
+  }
+
+  // Version A
+  const ticks = ORDER.map((s) => { const on = o.skills.includes(s); return `<label class="tick${on ? ' on' : ''}"><input type="checkbox" data-act="skill" data-id="${s}"${on ? ' checked' : ''}><span><span class="t-name">${ic(s, `icon sk-ico s-${s}`)}${SKILL[s].name}</span><span class="t-line">${line(s)}</span>${warn(s) ? `<span class="t-warn">${warn(s)}</span>` : ''}</span></label>`; }).join('');
+  const mins = [5, 10, 20, 30].map((m) => `<button type="button" class="chip-choice" role="radio" aria-checked="${o.minutes === m}" data-act="minutes" data-m="${m}">${m} min</button>`).join('');
+  const sum = loading ? '<div class="sum-card"><div class="skel line"></div><div class="skel line"></div><div class="skel line" style="width:50%"></div></div>'
+    : `<div class="sum-card" aria-live="polite"><b>Your session</b> <span class="small muted">· ${esc(skillsLine(p))}</span>
+      <ul>${p.groups.map((g) => `<li>${ic(g.skill, `icon sk-ico s-${g.skill}`)}<span>${esc(groupLabel(g, tile, o))}</span><span class="m">≈${fmt(g.min)} min</span></li>`).join('')}</ul>
+      <p class="small muted" style="margin:0">${esc(summaryLine(p, tile, o))}</p></div>`;
+  return `<div class="g-main" style="max-width:860px">${wayBack(t.name, 'back-tile')}
+    <h1 style="font-size:1.25rem;margin-bottom:.2rem">${t.name} options</h1>
+    <p class="muted">${t.line}</p>
+    ${errBox}
+    <div class="opt-grid"><div>
+      <section class="opt-section"><h2>Skills</h2><p class="small muted" style="margin:0">Tick one or more. They share the time, in turns. Tick none for all of them.</p>
+        <div class="tick-list" role="group" aria-label="Skills">${ticks}</div>
+        ${o.skills.length ? '<button type="button" class="link-button" data-act="clear">Clear ticks (all skills)</button>' : ''}</section>
+      <section class="opt-section"><h2>Length</h2><div class="minute-choices" role="radiogroup" aria-label="Length">${mins}</div></section>
+      ${hard ? `<section class="opt-section"><label class="tick${o.hard ? ' on' : ''}"><input type="checkbox" data-act="hard"${o.hard ? ' checked' : ''}><span><span class="t-name">Harder questions only</span><span class="t-line">Only reversed questions, for the words you know well.</span></span></label></section>` : ''}
+    </div><div class="opt-aside">${sum}<div class="sticky-start">${startBtn}</div></div></div></div>`;
+}
+
+/* ---------- Screens 3–5: the session ---------- */
+function sessionScreen() {
+  const sess = S.session; const p = sess.plan; const n = p.seq.length;
+  const tname = TILES[sess.tile].name;
+  if (S.ex >= n) {
+    return `<div class="g-main">${wayBack('Home', 'back-home')}<section class="card"><h2>Well done</h2>
+      <ul class="small" style="padding-left:1.1rem"><li>${fmt(p.total)} minutes · ${esc(skillsLine(p))}</li><li>${S.sub.pickedCount || 2} words picked up as leaves</li><li>1 pattern met: ${esc(PATTERNS[0].name)}</li><li>Days practised this week: 4</li></ul>
+      <button type="button" class="main" data-act="back-home">Back to Home</button></section></div>`;
+  }
+  const it = p.seq[S.ex];
+  const done = p.seq.slice(0, S.ex).reduce((a, b) => a + b.min, 0);
+  const left = p.total - done;
+  const head = `${wayBack('Home', 'back-home')}<p class="session-line">${p.L}-minute ${tname} · ${S.ex + 1} of ${n} · about ${fmt(left)} min left</p>
+    <div class="progress"><span style="width:${Math.round((done / p.total) * 100)}%"></span></div>
+    <p class="small muted" style="margin:-.4rem 0 .6rem">${esc(skillsLine(p))}</p>`;
+  if (S.state === 'loading') return `<div class="g-main">${head}${skelCard(5)}</div>`;
+  const mode = it.skill === 'review' || sess.tile === 'review' ? 'review' : 'discover';
+  const chipMode = `<span class="chip ${mode}">${ic(mode)}${mode === 'review' ? 'Review' : 'Discover'}</span>`;
+  const chipMin = `<span class="chip ${mode}">≈${fmt(it.min)} min</span>`;
+  const kicker = `<p class="kicker">${ic(it.skill, `icon s-${it.skill}`)}${esc(it.skill === 'review' ? 'Review' : SKILL[it.skill].name)} · ${esc(sess.tile === 'review' ? (it.k === 'harder' ? 'Harder questions' : 'Review') : itemName(it))}</p>`;
+  const body = exerciseBody(it);
+  const nextIt = p.seq[S.ex + 1];
+  const upNext = nextIt ? `<p class="small muted" style="margin:.6rem 0 0">Up next: ${esc(sess.tile === 'review' ? SKILL[nextIt.skill].name : itemName(nextIt))}</p>` : '';
+  return `<div class="g-main">${head}<section class="card mode-card"><div class="mode-banner">${chipMode}${chipMin}</div>
+    <div class="mode-body">${kicker}${body}${upNext}</div></section>
+    <p style="text-align:center;margin:0"><button type="button" class="link-button" data-act="back-home">Leave the session</button></p></div>`;
+}
+const nextBtn = (label = 'Next') => `<button type="button" class="main" data-act="next" style="margin-top:.8rem">${label}</button>`;
+
+function exerciseBody(it) {
+  const st = S.state;
+  if (st === 'empty') return emptyBody(it);
+  if (st === 'error') {
+    if (it.k === 'spot' || it.k === 'learnspot' || it.k === 'guess') return `<div class="message bad" role="alert">grove couldn't check your taps: no connection. Your taps are kept.</div>${renderItem(it)}`;
+    return `<div class="message bad" role="alert">Can't play sound: this device has no Swedish voice. <button type="button" class="link-button" data-act="noop">How to add one</button></div>${renderItem(it)}`;
+  }
+  return renderItem(it);
+}
+function emptyBody(it) {
+  if (S.session && S.session.tile === 'review') return `<h3>Nothing is due</h3><p>Your leaves are all fresh. ${S.session.opts.hard ? 'And no words are well known enough for harder questions yet.' : ''}</p><div class="row-actions"><button type="button" class="main" data-act="quickstart" data-id="discover">Discover instead</button><button type="button" data-act="retry">Practice reviews</button></div>`;
+  if (it.skill === 'words') return `<h3>No words left at your level</h3><p>You've met all 40 next words at ${LEVEL}. Nice.</p>
+    <div class="row-actions"><button type="button" class="main" data-act="retry">Phrases instead</button><button type="button" data-act="retry">Try B1's next words</button></div>
+    <p class="small muted" style="margin:.6rem 0 0">Its time can also go to the other ticked skills (question 2 below).</p>`;
+  if (it.skill === 'grammar') return `<h3>You've had every ${LEVEL} pattern</h3><p>All 8 patterns at ${LEVEL} have been your pattern of the day.</p>
+    <div class="row-actions"><button type="button" class="main" data-act="retry">Spot it with an old pattern</button><button type="button" data-act="retry">B1's first pattern</button></div>`;
+  if (it.skill === 'review') return `<h3>Nothing is due</h3><p>Your leaves are all fresh.</p>${nextBtn('Skip to the new things')}`;
+  return `<h3>No new ${it.skill === 'listening' ? 'listening' : 'reading'} texts</h3><p>There isn't enough to fill this part.</p>
+    <div class="row-actions"><button type="button" class="main" data-act="noop">Add a text</button><button type="button" data-act="retry">Practise without</button></div>`;
+}
+
+function renderItem(it) {
+  switch (it.k) {
+    case 'read': return readItem();
+    case 'listen': return listenItem();
+    case 'next': return S.version === 'B' ? nextWordsB(it) : S.version === 'C' ? nextWordsC(it) : nextWordsA(it);
+    case 'phrase': return S.version === 'B' ? phraseB(it) : S.version === 'C' ? phraseC(it) : phraseA(it);
+    case 'pattern': return patternA(PATTERNS[it.pat]);
+    case 'spot': return spotItem(PATTERNS[it.pat], `Tap every place you see: <b>${esc(PATTERNS[it.pat].hint)}</b>.`, it.pat === 1 ? `<p class="small muted">From an earlier day: <b>${esc(PATTERNS[1].name)}</b></p>` : '');
+    case 'learnspot': return learnSpotB(PATTERNS[it.pat]);
+    case 'guess': return guessC(PATTERNS[it.pat]);
+    case 'harder': return harderItem();
+    default: return reviewItem();
+  }
+}
+
+function readItem() {
+  const t = TEXTS.reading[0];
+  return `<h3>${esc(t.title)} <span class="level-badge">${LEVEL}</span></h3><p class="small muted">${esc(t.topic)} · reading</p>
+    <p class="passage">${t.lines.map(esc).join(' ')}</p>${nextBtn('Done reading')}`;
+}
+function listenItem() {
+  const t = TEXTS.listening[0];
+  return `<h3>${esc(t.title)} <span class="level-badge">${LEVEL}</span></h3><p class="small muted">${esc(t.topic)} · listening</p>
+    <div class="row-actions">${playBtn('listen', 'Play the text')}</div>
+    ${S.sub.showText ? `<p class="passage">${t.lines.map(esc).join(' ')}</p>` : '<button type="button" class="link-button" data-act="sub" data-k="showText">Show the text</button>'}${nextBtn('Done listening')}`;
+}
+function reviewItem() {
+  const r = REVIEW_ITEMS[S.ex % REVIEW_ITEMS.length];
+  return `<p class="passage">${markIn(r.sv, r.word, 'nw')}</p>
+    ${S.sub.ans ? `<p><b>${esc(r.word)}</b> = ${esc(r.en)}</p><div class="row-actions"><button type="button" data-act="next">I knew it</button><button type="button" data-act="next">I didn't</button></div>` : '<button type="button" class="main" data-act="sub" data-k="ans">Show the meaning</button>'}`;
+}
+function harderItem() {
+  return `<p>Say it in Swedish, then check:</p><p class="big-word" style="font-size:1.4rem">the scarf</p>
+    ${S.sub.ans ? `<p><b>halsduken</b> · Ta på dig halsduken, det är kallt.</p><div class="row-actions"><button type="button" data-act="next">I knew it</button><button type="button" data-act="next">I didn't</button></div>` : '<button type="button" class="main" data-act="sub" data-k="ans">Check</button>'}`;
+}
+
+/* Words: next words at your level */
+const wordId = (w) => `w-${w.lemma}`;
+const pickBtn = (w) => { const on = (S.sub.picked || []).includes(w.lemma); return `<button type="button" class="${on ? 'picked' : ''}" data-act="pick" data-id="${esc(w.lemma)}">${on ? '✓ Picked up' : '+ Pick up'}</button>`; };
+function nextWordsA(it) {
+  const set = WORD_SETS[it.set];
+  return `<h3 style="margin-bottom:.1rem">Next words at your level <span class="level-badge">${LEVEL}</span></h3>
+    <p class="small muted" style="margin:0">Useful words you haven't met in your texts yet. Pick up the ones you want to learn.</p>
+    <ul class="wlist">${set.map((w) => `<li><div class="w-head"><b>${esc(w.lemma)}</b><span class="small muted">${w.pos} · ${esc(w.en)}</span></div>
+      <p class="ex">${markIn(w.sv, w.lemma, 'nw')}<span class="en">${esc(w.exEn)}</span></p>
+      <div class="w-btns">${playBtn(wordId(w))}${pickBtn(w)}</div></li>`).join('')}</ul>${nextBtn()}`;
+}
+function nextWordsB(it) {
+  const set = WORD_SETS[it.set];
+  const i = S.sub.wi || 0;
+  const dots = `<div class="dots">${set.map((_, n) => `<i class="${n <= i ? 'on' : ''}"></i>`).join('')}</div>`;
+  if (i >= set.length) {
+    const c = (S.sub.picked || []).length;
+    return `<h3>${set.length} new words seen</h3><p>${c} picked up as leaves; grove will bring them back in Review.</p>${dots}${nextBtn()}`;
+  }
+  const w = set[i];
+  return `<p class="small muted" style="margin:0">Next words at your level · ${LEVEL} · ${i + 1} of ${set.length}</p>
+    <p class="big-word" style="margin:.4rem 0 0">${esc(w.lemma)}</p><p class="muted" style="margin:0 0 .5rem">${w.pos} · ${esc(w.en)}</p>
+    <p class="ex">${markIn(w.sv, w.lemma, 'nw')}<span class="en">${esc(w.exEn)}</span></p>
+    <div class="row-actions">${playBtn(wordId(w))}</div>
+    <div class="row-actions"><button type="button" data-act="wnext" data-pick="0">I know it</button><button type="button" class="main" style="width:auto" data-act="wnext" data-pick="${esc(w.lemma)}">+ Pick up</button></div>${dots}`;
+}
+function nextWordsC(it) {
+  const set = WORD_SETS[it.set];
+  const rev = S.sub.rev || [];
+  return `<h3 style="margin-bottom:.1rem">Guess the new word <span class="level-badge">${LEVEL}</span></h3>
+    <p class="small muted" style="margin:0">Each sentence has one word you haven't met. Guess it, then tap to see.</p>
+    <ul class="wlist">${set.map((w) => { const open = rev.includes(w.lemma); return `<li><p class="ex" style="font-size:1.05rem">${markIn(w.sv, w.lemma, 'nw')}</p>
+      ${open ? `<p class="ex"><b>${esc(w.lemma)}</b> <span class="muted">${w.pos} · ${esc(w.en)}</span><span class="en">${esc(w.exEn)}</span></p><div class="w-btns">${playBtn(wordId(w))}${pickBtn(w)}</div>`
+        : `<button type="button" class="reveal" data-act="reveal" data-id="${esc(w.lemma)}">What does it mean?</button>`}</li>`; }).join('')}</ul>${nextBtn()}`;
+}
+/* Words: phrase spotlight */
+function phraseA(it) {
+  const ph = PHRASES[it.p];
+  return `<p class="small muted" style="margin:0">Phrase spotlight · ${LEVEL}</p><p class="big-word" style="font-size:1.6rem;margin:.2rem 0 0">${esc(ph.phrase)}</p>
+    <p class="muted" style="margin:0 0 .4rem">${esc(ph.en)}</p><div class="note-box">${esc(ph.note)}</div>
+    <ul class="ex-list">${ph.examples.map((e, n) => `<li><p class="ex">${esc(e.sv)}<span class="en">${esc(e.en)}</span></p>${playBtn(`ph-${it.p}-${n}`)}</li>`).join('')}</ul>
+    <div class="w-btns">${pickBtn({ lemma: ph.phrase })}</div>${nextBtn()}`;
+}
+function phraseB(it) {
+  const ph = PHRASES[it.p]; const q = S.sub.quiz;
+  const opts = ph.quiz.map((o, n) => { let cls = ''; if (q !== undefined) { if (n === ph.right) cls = 'right'; else if (n === q) cls = 'wrong'; } return `<button type="button" class="${cls}" data-act="quiz" data-n="${n}"${q !== undefined ? ' disabled' : ''}>${esc(o)}</button>`; }).join('');
+  return `<p class="small muted" style="margin:0">Phrase spotlight · ${LEVEL}</p><p class="big-word" style="font-size:1.6rem;margin:.2rem 0 .4rem">${esc(ph.phrase)}</p>
+    <p class="ex">${esc(ph.examples[0].sv)}</p>${playBtn(`ph-${it.p}-0`)}
+    <p style="margin:.7rem 0 0"><b>What does it mean?</b></p><div class="quiz">${opts}</div>
+    ${q !== undefined ? `<div class="note-box"><b>${esc(ph.phrase)}</b> = ${esc(ph.en)}. ${esc(ph.note)}</div><p class="ex">${esc(ph.examples[1].sv)}<span class="en">${esc(ph.examples[1].en)}</span></p><div class="w-btns">${pickBtn({ lemma: ph.phrase })}</div>${nextBtn()}` : ''}`;
+}
+function phraseC(it) {
+  const ph = PHRASES[it.p]; const open = (S.sub.rev || []).includes('phrase');
+  const mk = (sv) => { for (const f of ph.find) { if (sv.toLowerCase().includes(f.toLowerCase())) return markIn(sv, f, 'nw'); } return esc(sv); };
+  return `<h3 style="margin-bottom:.1rem">Guess the phrase</h3><p class="small muted" style="margin:0">The same phrase is in both sentences.</p>
+    <ul class="ex-list">${ph.examples.map((e, n) => `<li><p class="ex" style="font-size:1.05rem">${mk(e.sv)}</p>${open ? `<p class="ex"><span class="en">${esc(e.en)}</span></p>` : ''}${playBtn(`ph-${it.p}-${n}`)}</li>`).join('')}</ul>
+    ${open ? `<div class="note-box"><b>${esc(ph.phrase)}</b> = ${esc(ph.en)}. ${esc(ph.note)}</div><div class="w-btns">${pickBtn({ lemma: ph.phrase })}</div>${nextBtn()}`
+      : '<button type="button" class="reveal" data-act="reveal" data-id="phrase">What does it mean?</button>'}`;
+}
+
+/* Grammar: pattern of the day */
+function patternBody(pt, withText) {
+  return `<p class="big-word" style="font-size:1.25rem;margin:.1rem 0 .3rem">${esc(pt.name)}</p>
+    <p>${esc(pt.explain)}</p>
+    <ul class="ex-list">${pt.examples.map((e) => `<li><p class="ex">${markIn(e.sv, e.mark)}<span class="en">${esc(e.en)}</span></p></li>`).join('')}</ul>
+    ${withText ? `<h3 style="margin:.6rem 0 .2rem">${esc(pt.title)} <span class="level-badge">${LEVEL}</span></h3>
+    <p class="passage" style="font-size:1.05rem">${pt.lines.map((l, i) => { let s = esc(l); for (const [li, m] of pt.spot) if (li === i) s = s.replace(esc(m), `<mark class="pm">${esc(m)}</mark>`); return s; }).join(' ')}</p>` : ''}`;
+}
+function patternA(pt) {
+  return `<p class="small muted" style="margin:0">Pattern of the day · ${LEVEL}</p>${patternBody(pt, true)}
+    <p class="small muted">You'll spot it yourself later in this session.</p>${nextBtn()}`;
+}
+/* Grammar: Spot it (tap every place; then grove shows the missed ones) */
+function spotModel(pt) {
+  const lines = pt.lines.map((text, li) => {
+    const marks = pt.spot.map(([l, m], si) => ({ l, m, si })).filter((x) => x.l === li);
+    const ranges = []; let from = 0;
+    for (const x of marks) { const at = text.indexOf(x.m, from); if (at >= 0) { ranges.push({ at, end: at + x.m.length, si: x.si }); from = at + x.m.length; } }
+    ranges.sort((a, b) => a.at - b.at);
+    const segs = []; let pos = 0;
+    for (const r of ranges) { if (r.at > pos) segs.push({ text: text.slice(pos, r.at) }); segs.push({ text: text.slice(r.at, r.end), si: r.si }); pos = r.end; }
+    if (pos < text.length) segs.push({ text: text.slice(pos) });
+    return segs;
+  });
+  return lines;
+}
+function spotText(pt) {
+  const tapped = S.sub.tapped || []; const checked = !!S.sub.checked;
+  const model = spotModel(pt);
+  let wi = 0;
+  const out = model.map((segs, li) => segs.map((seg) => {
+    const parts = seg.text.split(/(\s+)/);
+    if (seg.si !== undefined) {
+      const key = `s${seg.si}`; const on = tapped.includes(key);
+      const cls = checked ? (on ? 'found' : 'missed') : (on ? 'on' : '');
+      return `<span class="${cls}">${parts.map((p) => (/^\s+$/.test(p) || !p ? p : `<button type="button" class="tok" data-act="tap" data-key="${key}">${esc(p)}</button>`)).join('')}</span>`;
+    }
+    return parts.map((p) => {
+      if (/^\s+$/.test(p) || !p) return p;
+      const key = `w${li}-${wi++}`; const on = tapped.includes(key);
+      const cls = on ? (checked ? 'wrong' : 'on') : '';
+      return `<button type="button" class="tok ${cls}" data-act="tap" data-key="${key}">${esc(p)}</button>`;
+    }).join('');
+  }).join('')).join(' ');
+  return `<div class="spot-text">${out}</div>`;
+}
+function spotResult(pt) {
+  const tapped = S.sub.tapped || [];
+  const found = pt.spot.filter((_, si) => tapped.includes(`s${si}`)).length;
+  const wrong = tapped.filter((k) => k.startsWith('w')).length;
+  const missed = pt.spot.length - found;
+  return `<div class="message ${missed === 0 && wrong === 0 ? 'ok' : 'ok'}" role="status"><b>You found ${found} of ${pt.spot.length}.</b> ${missed ? `grove shows the ${missed} you missed with a dashed line.` : 'You found them all.'}${wrong ? ` ${wrong} tap${wrong > 1 ? 's were' : ' was'} not the pattern.` : ''}</div>
+    <div class="spot-key"><span class="k-f">found</span><span class="k-m">missed</span><span class="k-w">not the pattern</span></div>`;
+}
+function spotItem(pt, instr, extra = '') {
+  const checked = !!S.sub.checked; const err = S.state === 'error';
+  return `${extra}<p>${instr}</p><h3 style="margin:.2rem 0 0">${esc(pt.title)}</h3>${spotText(pt)}
+    ${checked ? spotResult(pt) + nextBtn() : `<button type="button" class="main" data-act="check"${err ? ' disabled' : ''}>Check</button><p class="small muted" style="margin:.4rem 0 0">Tap any word of a place to mark it; tap again to unmark.</p>`}`;
+}
+function learnSpotB(pt) {
+  const step = S.sub.gstep || 'learn';
+  const tabs = `<div class="steps2" role="tablist"><button type="button" role="tab" aria-selected="${step === 'learn'}" data-act="gstep" data-s="learn">1 · Learn</button><button type="button" role="tab" aria-selected="${step === 'spot'}" data-act="gstep" data-s="spot">2 · Spot it</button></div>`;
+  if (step === 'learn') return `${tabs}<p class="small muted" style="margin:0">Pattern of the day · ${LEVEL}</p>${patternBody(pt, false)}<button type="button" class="main" data-act="gstep" data-s="spot">Now spot it in a text</button>`;
+  return `${tabs}${spotItem(pt, `Tap every place you see <b>${esc(pt.hint)}</b>.`)}`;
+}
+function guessC(pt) {
+  const checked = !!S.sub.checked; const err = S.state === 'error';
+  const head = `<p class="small muted" style="margin:0">Pattern of the day · ${LEVEL}</p><p><b>Something repeats in this text.</b> A clue: <i>den / det / de</i> + a word + a noun. Tap each place you think it is.</p>`;
+  const body = `<h3 style="margin:.2rem 0 0">${esc(pt.title)}</h3>${spotText(pt)}`;
+  if (!checked) return `${head}${body}<button type="button" class="main" data-act="check"${err ? ' disabled' : ''}>Show me the rule</button>`;
+  return `${head}${body}${spotResult(pt)}<div class="rule"><p class="small muted" style="margin:0">The rule</p>${patternBody(pt, false)}</div>${nextBtn()}`;
+}
+
+/* ---------- Render ---------- */
+function screenHtml() {
+  if (S.screen === 'home') return `<div class="g-main">${homeScreen()}</div>`;
+  if (S.screen === 'options') return optionsScreen();
+  return sessionScreen();
+}
+function navActive() {
+  if (S.screen !== 'session') return S.screen;
+  const it = S.session && S.session.plan.seq[S.ex];
+  if (S.ex === 0) return 'start';
+  if (it && it.skill === 'words') return 'words';
+  if (it && it.skill === 'grammar') return 'grammar';
+  return 'start';
+}
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  document.querySelectorAll('[data-act="version"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.version)));
+  document.querySelectorAll('[data-act="nav"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.screen === navActive())));
+  document.querySelectorAll('[data-act="state"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.s === S.state)));
+  document.querySelectorAll('[data-act="width"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.w === S.width)));
+  document.querySelectorAll('[data-act="theme"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.t === S.theme)));
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  const stage = document.getElementById('stage');
+  stage.className = `sk-stage ${S.width}`;
+  document.getElementById('frame').innerHTML = topbar() + screenHtml();
+  fit();
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+
+/* ---------- Actions ---------- */
+function startSession(tile, opts) {
+  S.session = { tile, opts: clone(opts), plan: plan(tile, opts, S.version, S.state === 'empty') };
+  S.screen = 'session'; S.ex = 0; S.sub = {};
+}
+function ensureSessionWith(skill) {
+  const has = S.session && S.session.tile !== 'review' && S.session.plan.seq.some((x) => x.skill === skill);
+  if (!has) {
+    const o = S.opts.discover;
+    if (o.skills.length && !o.skills.includes(skill)) o.skills.push(skill);
+    S.tile = 'discover';
+    startSession('discover', o);
+  }
+  S.screen = 'session'; S.sub = {};
+  S.ex = S.session.plan.seq.findIndex((x) => x.skill === skill);
+}
+function replan() { if (S.session) { S.session.plan = plan(S.session.tile, S.session.opts, S.version, false); S.ex = Math.min(S.ex, S.session.plan.seq.length - 1); S.sub = {}; } }
+const toggle = (arr, v) => (arr.includes(v) ? arr.filter((x) => x !== v) : arr.concat(v));
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const d = el.dataset;
+  const o = S.opts[S.tile];
+  switch (a) {
+    case 'version': S.version = d.v; replan(); break;
+    case 'state': S.state = d.s; break;
+    case 'width': S.width = d.w; break;
+    case 'theme': S.theme = d.t; break;
+    case 'nav':
+      if (d.screen === 'home') { S.screen = 'home'; }
+      else if (d.screen === 'options') { S.screen = 'options'; }
+      else if (d.screen === 'start') { if (!S.session) startSession(S.tile, S.opts[S.tile]); S.screen = 'session'; S.ex = 0; S.sub = {}; }
+      else ensureSessionWith(d.screen);
+      break;
+    case 'tile': S.tile = d.id; S.panel = S.panel === d.id ? null : d.id; S.screen = 'home'; if (S.state === 'error') S.state = 'normal'; break;
+    case 'close-panel': S.panel = null; break;
+    case 'options': S.tile = d.id; S.screen = 'options'; break;
+    case 'quickstart': startSession(d.id, { skills: [], minutes: 10, hard: false }); break;
+    case 'resume': S.screen = 'session'; break;
+    case 'back-tile': S.screen = 'home'; S.panel = S.tile; break;
+    case 'back-home': S.screen = 'home'; break;
+    case 'skill': o.skills = toggle(o.skills, d.id); break;
+    case 'clear': o.skills = []; break;
+    case 'minutes': o.minutes = Number(d.m); break;
+    case 'step': { const st = [5, 10, 20, 30]; const i = Math.max(0, Math.min(3, st.indexOf(o.minutes) + Number(d.d))); o.minutes = st[i]; break; }
+    case 'hard': o.hard = !o.hard; break;
+    case 'start-options': startSession(S.tile, o); break;
+    case 'next': S.ex += 1; S.sub = { pickedCount: S.sub.pickedCount }; break;
+    case 'retry': S.state = 'normal'; break;
+    case 'play':
+      S.playing = d.id;
+      setTimeout(() => { if (S.playing === d.id) { S.playing = null; render(); } }, 1400);
+      break;
+    case 'pick': S.sub.picked = toggle(S.sub.picked || [], d.id); S.sub.pickedCount = (S.sub.pickedCount || 0) + 1; break;
+    case 'wnext': if (d.pick !== '0') { S.sub.picked = (S.sub.picked || []).concat(d.pick); S.sub.pickedCount = (S.sub.pickedCount || 0) + 1; } S.sub.wi = (S.sub.wi || 0) + 1; break;
+    case 'reveal': S.sub.rev = (S.sub.rev || []).concat(d.id); break;
+    case 'quiz': S.sub.quiz = Number(d.n); break;
+    case 'sub': S.sub[d.k] = true; break;
+    case 'gstep': S.sub.gstep = d.s; S.sub.tapped = S.sub.tapped || []; break;
+    case 'tap': if (!S.sub.checked) S.sub.tapped = toggle(S.sub.tapped || [], d.key); break;
+    case 'check': S.sub.checked = true; break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+// tick boxes in version A fire click on the input; keep the checkbox in step by re-rendering (done above)
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions (page UI only; a later publish wires storage) ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'The Options page\'s link at the top: what should it say?', options: [
+    ['discover', '‹ Discover (the tile you came from)', 'Back returns to Home with Discover open. FR-922\'s page map has no Options page yet; this adds it under its tile.'],
+    ['home', '‹ Home', 'Like every other page under Home in FR-922; Home opens with no tile open.'] ] },
+  { id: 'q2', text: 'A ticked skill has too little for its share (e.g. no words left at your level). Where does its time go?', options: [
+    ['others', 'To the other ticked skills', 'They share it equally, still in turns. With nothing else ticked, as below.'],
+    ['fill', 'Filled as today', 'FR-905\'s filling: re-reading, listening again and practice reviews.'],
+    ['shorter', 'Nowhere: the session is shorter, and says so', 'e.g. "7 of 10 minutes planned".'] ] },
+  { id: 'q3', text: 'Words and phrases shown in Discover: when do they become leaves?', options: [
+    ['pick', 'Only when you tap Pick up', 'Nothing is added unless you choose it.'],
+    ['all', 'All of them, automatically', 'Every word shown is drilled in Review.'],
+    ['never', 'Never from here', 'Discover only shows them; they become leaves when you meet them in a text.'] ] },
+  { id: 'q4', text: 'Spot it: what counts as finding a place?', options: [
+    ['any', 'A tap on any word of it', 'Tapping "gröna" in "den gröna jackan" finds the whole place.'],
+    ['all', 'Every word of it must be tapped', 'Stricter; more taps on a phone.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, label, why], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(label)}${i === 0 ? '<span class="def">default</span>' : ''}<small>${esc(why)}</small></span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Learning options', notes: ['B-24', 'B-25', 'B-26'], pick: null, comments: { A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', collectAnswers);
+collectAnswers();
+render();
+})();
+</script>
+</body>
+</html>
