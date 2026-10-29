@@ -1,6 +1,6 @@
 {
   "about": "Topic words: key words for each of the 10 library topics at A1–B2 (B-26). Draft, not approved by the owner. list_level/level_source: the level a word has in the bundled lists (core list first, else the lower of SweLLex and Kelly, as the library check does); null when no list has it. See content/learning/README.md.",
-  "status": "draft",
+  "status": "approved",
   "topics": [
     {
       "topic": "People and family",

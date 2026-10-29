@@ -2,7 +2,7 @@
 
 Content for the empty "Learning > Discover > Options > Grammar" and "… > Words" pages, from the owner's note B-26 (docs/reviews/2026-10-29-branch-test.md): "should have some content". The owner then said "you can make content for the words and grammar in the meantime". **Nothing here is wired into grove.** How grove uses it isn't specified yet, so these are data files only, like the library drafts in `content/library/`.
 
-**Status: draft, not approved by the owner.** Claude wrote all the Swedish and English. No Swedish speaker has read it yet.
+**Status: approved by the owner as it stands, 2026-10-29** (question-pages/89: "Approve as it stands"; like the library's B-11). Claude wrote all the Swedish and English, and no Swedish speaker has read it yet: the list of items to check first (below) stays the owner's reading list, a Report on any item reaches the owner, and fixes go into these files and the next build.
 
 ## What each file is for
 
@@ -15,7 +15,7 @@ Content for the empty "Learning > Discover > Options > Grammar" and "… > Words
 
 Words 1 ("words you've met but haven't learned") needs no content, because it comes from the learner's own texts.
 
-Each file has `about` and `status: "draft"` at the top.
+Each file has `about` and `status` at the top (`"approved"` since 2026-10-29).
 
 ## Formats
 
@@ -115,3 +115,5 @@ These are the items Claude was least sure of:
 ## History
 
 - 2026-10-29: first draft by Claude at the owner's word (B-26): grammar ladder (36 patterns), phrase spotlight (103), topic words (479), next words (120). Checked with a throwaway script, not committed. It confirmed that every file parses, every `mark` occurs exactly once as written (whole-word) in its sentence or line, every `spot` line index exists, the counts and lengths are within the limits above, and example sentences stay at most 14 words at A1–A2 and 20 at B1–B2.
+
+2026-10-29: approved by the owner as it stands, for Discover's Words and Grammar (question-pages/89).

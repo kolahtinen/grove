@@ -25,3 +25,12 @@ Said done 2026-10-29.
 - Mark it by dragging
 
 **Answer:** (Other) "any of its words, but have the word menu have a separate 'patterns' section that lists any patterns it is part of." Read as: a tap on any word of a place finds it; and the word menu (G-03 FR-305) gets its own **Patterns** section listing every grammar pattern the tapped word is part of (today patterns share a list with phrases only when the AI named them).
+
+### F1. Discover's Words and Grammar would show the draft content in content/learning (no Swedish speaker has read it). What should grove use? (default: approve as it stands)
+
+- Approve as it stands (Recommended): Report on each item reaches the owner; fixes as read
+- Approve after the README's list is checked
+- Not yet: Words and Grammar say "coming soon"
+
+**Answer:** Approve as it stands.
+

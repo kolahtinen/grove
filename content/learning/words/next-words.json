@@ -1,6 +1,6 @@
 {
   "about": "Next words at your level: high-value words for A1–B1 that the library texts (content/library/texts, as of 2026-10-29) do not use yet (B-26). Draft, not approved by the owner. level/list_level come from the bundled lists (core list first, else the lower of SweLLex and Kelly). See content/learning/README.md.",
-  "status": "draft",
+  "status": "approved",
   "words": [
     {
       "lemma": "noll",
