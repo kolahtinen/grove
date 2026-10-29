@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { agreeTerms } from './helpers.mjs';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
+import { startTestGrove, PASSWORD } from '../fakes/harness.mjs';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
@@ -144,4 +145,52 @@ test('FR-906 FR-908 RQ-423 RQ-424: By skill offers four skills in three forms an
   await panel.getByRole('button', { name: 'Discover' }).click();
   await page.waitForURL(/\/session$/);
   await expect(page.locator('#session-line')).toContainText('Discover');
+});
+
+test('FR-916 FR-917 RQ-431 RQ-432: the Common library says its texts are coming and searches the common dictionary as you type, with meanings and levels; a word can be added as a leaf', async ({ page }) => {
+  await signIn(page);
+  await page.getByRole('button', { name: 'Common library' }).click();
+  await page.locator('#tile-panel').getByRole('link', { name: 'Open the common library' }).click();
+  await page.waitForURL(/\/library$/);
+  await expect(page.locator('#library-coming')).toContainText('coming');
+  await page.getByLabel('Search').fill('p');
+  await expect(page.locator('#lexicon-results li')).toHaveCount(0);
+  const word = 'pingvin';
+  await page.getByLabel('Search').fill(word);
+  const item = page.locator('#lexicon-results li', { has: page.locator('.text-title', { hasText: new RegExp(`^${word}$`) }) });
+  await expect(item).toBeVisible();
+  await expect(item.locator('.lexicon-en')).not.toBeEmpty();
+  const add = item.getByRole('button', { name: `Add ${word} as a leaf` });
+  if (await add.isVisible()) {
+    await add.click();
+    await expect(item).toContainText('added as a leaf');
+  } else {
+    await expect(item.locator('.text-state')).toHaveText(/a leaf|in your ground/);
+  }
+});
+
+test('FR-920 RQ-434: with no unread text, Practise first says so and offers Add a text or practising without a text', async ({ page }) => {
+  const t = await startTestGrove({ host: 'localhost' });
+  try {
+    const learner = t.seedAccount({ email: 'no-texts@example.test' });
+    t.grove.db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(learner.id);
+    t.grove.db.prepare('UPDATE learner_settings SET start_done = 1, welcome_dismissed = 1 WHERE account_id = ?').run(learner.id);
+    await page.goto(`${t.base}/signin`);
+    await page.getByLabel('Email').fill('no-texts@example.test');
+    await page.getByLabel('Password').fill(PASSWORD);
+    await page.getByRole('button', { name: 'Sign in' }).click();
+    await page.waitForURL(/\/terms$/);
+    await agreeTerms(page);
+    await page.waitForURL(`${t.base}/`);
+    await page.getByRole('button', { name: 'Practise' }).click();
+    await page.locator('#tile-panel').getByRole('button', { name: 'Start' }).click();
+    const offer = page.getByRole('group', { name: 'You have no new texts' });
+    await expect(offer).toBeVisible();
+    await expect(offer.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
+    await offer.getByRole('button', { name: 'Practise without a text' }).click();
+    // Nothing at all to practise for this learner: the panel says so (FR-905).
+    await expect(page.locator('#tile-panel .message')).toContainText('nothing to practise');
+  } finally {
+    await t.close();
+  }
 });
