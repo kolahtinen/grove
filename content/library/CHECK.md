@@ -2,7 +2,7 @@
 
 Written by `node scripts/check-library.mjs`: each text counted with grove's own word counting against the words at its level and below: the core list (`core-a1a2.tsv`) first, otherwise the lower of SweLLex (`vocab-graded/`) and Kelly (inflections, compounds and fixed phrases included). "Above" lists the words above the text's level with the level they first count at (— = in no list; * = in no list and not in the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.
 
-## A1 (24 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
+## A1 (29 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -30,8 +30,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A1-22 | En ny tröja | reading, dialogue | 71 | 7 | tröja (A2), blå (A2), storlek (A2), **rea** (B2) | 2 → 1 (tröja no longer far) | passes |
 | A1-23 | Tåget till Göteborg | listening | 76 | 10 | tåg (A2), fönster (A2), bredvid (A2), sjö (A2), **bistro** (C2), **kanelbulle** (—), **perrong** (—), kram (A2) | 4 → 3 (kram no longer far) | passes |
 | A1-24 | Läraren Karin | reading | 68 | 8 | träd (A2) | 0 → 0 | passes |
+| A1-25 | Frukost | listening | 52 | 7 | bröd (A2), **yoghurt** (C2) | 3 → 1 (mjölk, äpple no longer far) | passes |
+| A1-26 | Var är nycklarna? | reading, dialogue | 57 | 6 | nyckel (A2), hall (A2), bord (A2), väska (A2), jacka (A2), blå (A2), sovrum (A2) | 4 → 0 (hall, väska, jacka, sovrum no longer far) | passes |
+| A1-27 | Hos tandläkaren | listening, dialogue | 68 | 7 | **bak** (B2), hål (A2) | 1 → 1 (none no longer far) | passes |
+| A1-28 | Den första snön | reading | 73 | 10 | fönster (A2), snöa (A2), **minus** (C1), jacka (A2), mössa (A2), gård (A2), snö (A2), park (A2), tyst (A2), träd (A2), sjö (A2), vinter (A2) | 4 → 1 (jacka, mössa, choklad no longer far) | passes |
+| A1-29 | En söndag på museet | listening | 79 | 9 | museum (A2), centrum (A2) | 3 → 0 (station, kafé, kaka no longer far) | passes |
 
-## A2 (24 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
+## A2 (29 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -59,6 +64,11 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-22 | Sommarjobbet | reading | 106 | 14 | **cappuccino** (—), turist (B1), **bulle** (C1) | 6 → 2 (kafé, nervös, skina, bak no longer far) | passes |
 | A2-23 | Läxorna | listening, dialogue | 94 | 11 | **rabatt** (B2), **popcorn** (—) | 3 → 2 (läxa no longer far) | passes |
 | A2-24 | Ett rum i kollektivet | reading | 109 | 13 | baksida (B1), **schema** (B2), **städning** (C1), **disk** (B2), bråk (B1) | 6 → 3 (badrum, kylskåp, tomat no longer far) | passes |
+| A2-25 | Mormors bröd | reading | 83 | 9 | **jäst** (—), **kokbok** (—), **skål** (B2), **ugn** (C1), mjuk (B1) | 7 → 4 (baka, mjöl, deg no longer far) | passes |
+| A2-26 | Is på gatan | listening | 94 | 10 | **halka** (B2) | 2 → 1 (gips no longer far) | passes |
+| A2-27 | Min bror i Oslo | reading, dialogue | 100 | 9 | köttbulle (B1) | 1 → 0 (köttbulle no longer far) | passes |
+| A2-28 | Språkcaféet | listening, dialogue | 106 | 10 | **språkcafé** (—*) | 1 → 1 (none no longer far) | passes |
+| A2-29 | En natt i tält | reading | 117 | 13 | tält (B1), **till slut** (C1), bada (B1) | 2 → 1 (korv no longer far) | passes |
 
 ## B1 (17 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
 
@@ -132,4 +142,4 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
 | C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
 
-100 of 100 texts pass.
+110 of 110 texts pass.
