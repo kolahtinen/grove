@@ -47,4 +47,19 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B1-09 | Sopsortering | reading | 122 | 18 | diskbänk (B2), **kärl** (C1), **biogas** (—*), metall (B2), burk (B2), **återvinningscentral** (C1) | 5 → 3 (sopa, batteri no longer far) | passes |
 | B1-10 | Planer för sommaren | listening, dialogue | 125 | 13 | **vandrarhem** (C2) | 2 → 1 (färja no longer far) | passes |
 
-30 of 30 texts pass.
+## B2 (10 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
+
+| id | title | kind | words | longest | above | far: Kelly alone → now | result |
+|---|---|---|---|---|---|---|---|
+| B2-01 | Föräldrar efter fyrtio | reading | 198 | 20 | **fyrtiotvå** (—), till slut (C1), **förstagångsföräldrar** (—*), **tjugofemåring** (—*) | 3 → 3 (none no longer far) | passes |
+| B2-02 | Ett samhälle utan kontanter | reading | 184 | 22 | kontanter (C1), **kollekt** (—*), **bank-id** (—*) | 4 → 2 (app, bankomat no longer far) | passes |
+| B2-03 | Mer än en kaffepaus | listening | 185 | 22 | oartig (C1), **kanelbulle** (—), tilltugg (C1) | 3 → 1 (oartigt, smörgås no longer far) | passes |
+| B2-04 | Vems tur är det att städa? | reading, dialogue | 181 | 20 | **tentaplugg** (—*), stökig (C1), **dammsugning** (—), **tenta** (—) | 3 → 3 (none no longer far) | passes |
+| B2-05 | Fyra dagars arbetsvecka? | listening, dialogue | 186 | 20 | **fyradagarsvecka** (—*), **turas** (—), **halvera** (—) | 3 → 3 (none no longer far) | passes |
+| B2-06 | Med nattåg till Europa | reading | 188 | 20 | **nattåg** (—), **sovvagn** (—), **kupé** (—), **termos** (—), **överstökad** (—) | 5 → 5 (none no longer far) | passes |
+| B2-07 | Bokcirkeln | reading | 181 | 22 | — | 1 → 0 (bibliotekarie no longer far) | passes |
+| B2-08 | Barn och skärmar | listening | 184 | 23 | brottas (C1), **scrolla** (—) | 1 → 1 (none no longer far) | passes |
+| B2-09 | Vargen som delar Sverige | reading | 195 | 22 | **mellersta** (—), **skolbuss** (—), **inavlad** (C2) | 3 → 3 (none no longer far) | passes |
+| B2-10 | Första gången i vallokalen | listening, dialogue | 182 | 19 | **legitimation** (C2), **förtidsrösta** (—) | 2 → 2 (none no longer far) | passes |
+
+40 of 40 texts pass.
