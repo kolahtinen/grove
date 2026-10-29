@@ -125,19 +125,28 @@ function openMenu(token, sentence, line) {
   const phrases = token.phrases || [];
   $('menu-phrases').hidden = phrases.length === 0;
   $('menu-phrase-list').replaceChildren(...phrases.map((p) => el('li', '', p)));
-  const pats = (token.patterns || []).map((pid) => data.patterns.find((p) => p.id === pid)).filter(Boolean);
+  // FR-305 (RQ-455): its own Patterns section, every pattern the word is part of: the text's, then grove's
+  // grammar ladder's (with the ladder's level).
+  const pats = [
+    ...(token.patterns || []).map((pid) => data.patterns.find((p) => p.id === pid)).filter(Boolean),
+    ...(token.ladder || []).map((pid) => (data.ladder || []).find((p) => p.id === pid)).filter(Boolean),
+  ];
   $('menu-patterns').hidden = pats.length === 0;
   $('menu-pattern-list').replaceChildren(...pats.map((p) => {
     const li = el('li');
-    li.append(el('strong', '', p.name), document.createTextNode(` — ${p.explain || ''} `));
-    // Pick up a pattern of the sentence too (FR-411; addendum 003, O-16).
+    li.append(el('strong', '', p.name));
+    if (p.level) li.append(el('span', 'ladder-level', p.level));
+    li.append(document.createTextNode(` — ${p.explain || ''} `));
+    // Pick up a pattern of the sentence too (FR-411; addendum 003, O-16); a ladder pattern by its ID.
     if (!p.drilled) {
       const pick = el('button', 'bar-button', 'Pick up');
       pick.type = 'button';
       pick.addEventListener('click', async () => {
-        const r = p.state === 'ground'
-          ? await post('/api/pick-up', { lemma: p.name, kind: 'pattern' })
-          : await post('/api/marks', { lemma: p.name, kind: 'pattern', remember: true });
+        const r = p.level
+          ? await post('/api/learning/answer', { item: p.id, action: 'pick' })
+          : p.state === 'ground'
+            ? await post('/api/pick-up', { lemma: p.name, kind: 'pattern' })
+            : await post('/api/marks', { lemma: p.name, kind: 'pattern', remember: true });
         if (!r.ok) { showMessage($('menu-message'), r.message); return; }
         p.state = 'leaf';
         p.drilled = 1;

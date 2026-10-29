@@ -12,7 +12,7 @@ const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls)
 const HOME = ['/', 'Home'];
 const LIBRARY = ['/texts', 'Your library'];
 const PARENTS = {
-  '/session': HOME, '/texts': HOME, '/library': HOME, '/progress': HOME, '/settings': HOME, '/profile': HOME,
+  '/session': HOME, '/options': HOME, '/texts': HOME, '/library': HOME, '/progress': HOME, '/settings': HOME, '/profile': HOME,
   '/add': LIBRARY, '/dictionary': LIBRARY, '/leaves': LIBRARY, '/text': LIBRARY, '/review': LIBRARY,
   '/library/text': ['/library', 'Common library'],
   '/add/ai': ['/add', 'Add a text'], '/own': ['/add', 'Add a text'],
@@ -52,7 +52,8 @@ function renderLink(parentOverride) {
   const parent = parentOverride ?? PARENTS[window.location.pathname];
   document.querySelector('.way-back')?.remove();
   if (!parent && !offer()) return;
-  document.querySelector('main')?.prepend(backLink(parent ?? HOME));
+  // A page can say where the link goes (the Options page's sheet head); else at the top of main.
+  (document.querySelector('[data-way-back]') ?? document.querySelector('main'))?.prepend(backLink(parent ?? HOME));
 }
 
 async function startSession(button) {

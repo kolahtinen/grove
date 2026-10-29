@@ -62,7 +62,20 @@ test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under 
     const open = page.getByRole('link', { name: 'Open the text' });
     const option = page.locator('#exercise-box button.option:not([disabled])').first();
     const show = page.getByRole('button', { name: 'Show' });
-    if (await open.isVisible()) {
+    // FR-928, FR-929 (B-26): a Mix of all skills has Words and Grammar exercises too.
+    const know = page.getByRole('button', { name: 'I know it' });
+    const choice = page.locator('#exercise-box .choices button:not([disabled])').first();
+    const spot = page.getByRole('button', { name: 'Now spot it in a text' });
+    const check = page.getByRole('button', { name: 'Check' });
+    if (await know.isVisible()) {
+      await know.click();
+    } else if (await choice.isVisible()) {
+      await choice.click();
+    } else if (await spot.isVisible()) {
+      await spot.click();
+    } else if (await check.isVisible()) {
+      await check.click();
+    } else if (await open.isVisible()) {
       await open.click();
       await page.waitForURL(/\/text\?id=\d+&session=\d+&index=\d+$/);
       await page.locator('#session-done').click();

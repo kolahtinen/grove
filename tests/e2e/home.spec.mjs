@@ -31,7 +31,7 @@ async function goOnIfShort(page) {
   if (await fill.isVisible()) await fill.click();
   await page.waitForURL(/\/session$/);
   const without = page.getByRole('button', { name: 'Practise without' });
-  await expect(without.or(page.locator('#exercise'))).toBeVisible();
+  await expect(without.or(page.locator('#exercise:visible'))).toBeVisible();
   if (await without.isVisible()) await without.click();
 }
 
@@ -86,17 +86,28 @@ test('FR-901 RQ-419 RQ-429 RQ-440: Home has three headed groups of labelled icon
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
-test('FR-901 FR-903 FR-904 RQ-440 RQ-442: Mix → Start is a 10-minute Mix; Options… offers the skills and 5, 10, 20, 30 minutes; while a session is going a Resume bar above the tiles opens it', async ({ page }) => {
+test('FR-901 FR-903 FR-904 RQ-440 RQ-442 RQ-450: Mix → Start is a 10-minute Mix of all skills; Options… opens its own page with ‹ Home, skill chips and 5 · 10 · 20 · 30; while a session is going a Resume bar above the tiles opens it', async ({ page }) => {
   await signIn(page);
   await page.getByRole('button', { name: 'Mix', exact: true }).click();
   const panel = page.locator('#tile-panel');
-  await panel.getByRole('button', { name: 'Options…' }).click();
-  for (const skill of ['Mix', 'Reading', 'Listening', 'Words', 'Grammar']) await expect(panel.getByRole('radio', { name: skill, exact: true })).toBeVisible();
-  for (const m of [5, 10, 20, 30]) await expect(panel.getByRole('radio', { name: `${m} min` })).toBeVisible();
-  await expect(panel.getByRole('radio', { name: 'Mix', exact: true })).toHaveAttribute('aria-checked', 'true');
-  await expect(panel.getByRole('radio', { name: '10 min' })).toHaveAttribute('aria-checked', 'true');
-  await expect(panel.getByLabel('Harder questions only')).toHaveCount(0);
-  await panel.getByRole('button', { name: 'Start', exact: true }).first().click();
+  await expect(panel.getByRole('button', { name: /^Start/ })).toHaveText('Start · 10 min, all skills');
+  await panel.getByRole('link', { name: 'Options…' }).click();
+  await page.waitForURL(/\/options\?tile=mix$/);
+  await expect(page.getByRole('heading', { name: 'Mix options' })).toBeVisible();
+  await expect(page.locator('.way-back a')).toHaveText('‹ Home');
+  await expect(page.locator('.way-back a')).toHaveAttribute('href', '/');
+  await expect(page.getByRole('link', { name: 'Close' })).toHaveAttribute('href', '/');
+  for (const skill of ['Reading', 'Listening', 'Words', 'Grammar']) await expect(page.getByRole('button', { name: skill, exact: true })).toHaveAttribute('aria-pressed', 'false');
+  for (const m of [5, 10, 20, 30]) await expect(page.getByRole('radio', { name: `${m} minutes` })).toBeVisible();
+  await expect(page.getByRole('radio', { name: '10 minutes' })).toHaveAttribute('aria-checked', 'true');
+  await expect(page.getByRole('switch', { name: 'Harder questions only' })).toBeHidden();
+  await expect(page.locator('#plan-line')).toHaveText('Your 10 minutes · All skills, in turns');
+  await expect(page.locator('#plan-legend li')).toHaveText(['≈4 min review', '≈1½ min reading', '≈1½ min listening', '≈1½ min words', '≈1½ min grammar']);
+  await expect(page.locator('#plan-bar span')).toHaveCount(5);
+  await page.getByRole('link', { name: '‹ Home' }).click();
+  await page.waitForURL(/\/$/);
+  await page.getByRole('button', { name: 'Mix', exact: true }).click();
+  await panel.getByRole('button', { name: /^Start/ }).click();
   await goOnIfShort(page);
   await expect(page.locator('#session-line')).toContainText('10-minute Mix');
   await page.goto('/');
@@ -109,22 +120,37 @@ test('FR-901 FR-903 FR-904 RQ-440 RQ-442: Mix → Start is a 10-minute Mix; Opti
   await expect(page.locator('#session-line')).toContainText('10-minute Mix');
 });
 
-test('FR-903 FR-905 RQ-440 RQ-441: Review\'s Options… add Harder questions only; the chosen options start that session and are shown again next time', async ({ page }) => {
+test('FR-903 FR-905 RQ-440 RQ-441 RQ-450 RQ-451: on the Options page skills are ticked in any number and the bar splits the time; Review adds Harder questions only; the chosen options start that session and are named next time', async ({ page }) => {
   await signIn(page);
-  await page.getByRole('button', { name: 'Review', exact: true }).click();
-  const panel = page.locator('#tile-panel');
-  await panel.getByRole('button', { name: 'Options…' }).click();
-  await expect(panel.getByLabel('Harder questions only')).not.toBeChecked();
-  await panel.getByRole('radio', { name: 'Reading', exact: true }).click();
-  await panel.getByRole('radio', { name: '5 min' }).click();
-  await panel.locator('.session-options').getByRole('button', { name: 'Start' }).click();
+  await page.goto('/options?tile=discover');
+  await page.getByRole('button', { name: 'Reading', exact: true }).click();
+  await page.getByRole('button', { name: 'Grammar', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Reading', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'Grammar', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('radio', { name: '20 minutes' }).click();
+  await expect(page.locator('#plan-line')).toHaveText('Your 20 minutes · Reading + Grammar, in turns');
+  await expect(page.locator('#plan-legend li')).toHaveText(['≈10 min reading', '≈10 min grammar']);
+  await expect(page.getByRole('button', { name: 'Start · 20 min' })).toBeVisible();
+  await page.getByRole('button', { name: 'Reading', exact: true }).click();
+  await expect(page.locator('#plan-line')).toHaveText('Your 20 minutes · Grammar');
+  await page.goto('/options?tile=review');
+  await expect(page.getByRole('heading', { name: 'Review options' })).toBeVisible();
+  const hard = page.getByRole('switch', { name: 'Harder questions only' });
+  await expect(hard).toHaveAttribute('aria-checked', 'false');
+  await page.getByRole('button', { name: 'Reading', exact: true }).click();
+  await page.getByRole('radio', { name: '5 minutes' }).click();
+  await expect(page.locator('#plan-legend li')).toHaveText(['≈5 min review (reading)']);
+  await page.getByRole('button', { name: 'Start · 5 min' }).click();
   await goOnIfShort(page);
   await expect(page.locator('#session-line')).toContainText('5-minute Review');
   await page.goto('/');
   await page.getByRole('button', { name: 'Review', exact: true }).click();
-  await panel.getByRole('button', { name: 'Options…' }).click();
-  await expect(panel.getByRole('radio', { name: 'Reading', exact: true })).toHaveAttribute('aria-checked', 'true');
-  await expect(panel.getByRole('radio', { name: '5 min' })).toHaveAttribute('aria-checked', 'true');
+  await expect(page.locator('#tile-panel')).toContainText('Last time in Options: Reading · 5 min');
+  await page.locator('#tile-panel').getByRole('link', { name: 'Options…' }).click();
+  await expect(page.getByRole('button', { name: 'Reading', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('radio', { name: '5 minutes' })).toHaveAttribute('aria-checked', 'true');
+  await page.keyboard.press('Escape');
+  await page.waitForURL(/\/$/);
 });
 
 test('FR-902 RQ-420: the top bar has the logo linking Home and ☰ with Account, Settings, Help and Sign out; Help shows How grove works in a bubble with Replay', async ({ page }) => {
@@ -249,10 +275,10 @@ test('FR-920 FR-923 SC-006 RQ-444 RQ-445 B-20 B-23: a Reading session short of n
     await page.waitForURL(`${t.base}/`);
     await page.getByRole('button', { name: 'Discover', exact: true }).click();
     const panel = page.locator('#tile-panel');
-    await panel.getByRole('button', { name: 'Options…' }).click();
-    await panel.getByRole('radio', { name: 'Reading', exact: true }).click();
-    await panel.getByRole('radio', { name: '5 min' }).click();
-    await panel.locator('.session-options').getByRole('button', { name: 'Start' }).click();
+    await panel.getByRole('link', { name: 'Options…' }).click();
+    await page.getByRole('button', { name: 'Reading', exact: true }).click();
+    await page.getByRole('radio', { name: '5 minutes' }).click();
+    await page.getByRole('button', { name: 'Start · 5 min' }).click();
     await page.waitForURL(/\/session$/);
     // B-20: two choices.
     await expect(page.locator('#offer-line')).toContainText('min of reading');
@@ -300,7 +326,7 @@ test('FR-920 FR-923 SC-006 RQ-444 RQ-445 B-20 B-23: a Reading session short of n
 
 test('FR-922 RQ-446: every signed-in page but Home names the page it belongs under at the top and goes there; the phone\'s Back closes the menu first', async ({ page }) => {
   await signIn(page);
-  const map = { '/session': 'Home', '/texts': 'Home', '/library': 'Home', '/progress': 'Home', '/settings': 'Home', '/profile': 'Home', '/add': 'Your library', '/dictionary': 'Your library', '/leaves': 'Your library', '/add/ai': 'Add a text', '/own': 'Add a text' };
+  const map = { '/session': 'Home', '/options?tile=discover': 'Home', '/texts': 'Home', '/library': 'Home', '/progress': 'Home', '/settings': 'Home', '/profile': 'Home', '/add': 'Your library', '/dictionary': 'Your library', '/leaves': 'Your library', '/add/ai': 'Add a text', '/own': 'Add a text' };
   const hrefs = { Home: '/', 'Your library': '/texts', 'Add a text': '/add' };
   for (const [path, parent] of Object.entries(map)) {
     await page.goto(path);
@@ -335,7 +361,7 @@ test('FR-905 RQ-441 B-30: a Review with nothing to practise says so and offers G
     await agreeTerms(page);
     await page.waitForURL(`${t.base}/`);
     await page.getByRole('button', { name: 'Review', exact: true }).click();
-    await page.locator('#tile-panel').getByRole('button', { name: 'Start', exact: true }).click();
+    await page.locator('#tile-panel').getByRole('button', { name: /^Start/ }).click();
     const offer = page.getByRole('group', { name: 'Nothing to review' });
     await expect(offer).toContainText('nothing to practise');
     await expect(offer.getByRole('link', { name: 'Add a text' })).toHaveAttribute('href', '/add');
