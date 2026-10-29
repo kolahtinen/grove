@@ -76,26 +76,28 @@ test('FR-401 RQ-52 RQ-415: after rating, the marking step lists the new words wi
   await expect(page.locator('#marking-card')).toBeHidden();
 });
 
-test('FR-407 FR-406 RQ-06 RQ-415: Home shows the three stages; Review shows a due leaf in its sentence with Play and finishes with All done', async ({ page }) => {
+test('FR-908 FR-406 RQ-424 RQ-415: Just one mode → Review shows a due leaf in its sentence with Play, one card at a time', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   await setState(page, 'gärna', { ground: true });
   await api(page, '/api/pick-up', { lemma: 'gärna' });
+  // G-09 FR-908 replaces Home's three stages: Review on its own is a session of the due leaves.
   await page.goto('/');
-  for (const name of ['Discover', 'Review', 'Master']) await expect(page.locator('.stage-name', { hasText: name })).toBeVisible();
-  await expect(page.locator('#review-count')).toContainText('due');
-  await page.locator('#review-link').click();
-  await expect(page.locator('#review-heading')).toHaveText('Review');
+  await page.getByRole('button', { name: 'Just one mode' }).click();
+  await page.locator('#tile-panel').getByRole('button', { name: 'Review' }).click();
+  await page.waitForURL(/\/session$/);
+  await expect(page.locator('#session-line')).toContainText('Review');
+  await expect(page.locator('#exercise-banner .chip.review').first()).toContainText('Review');
   // The sentence is shown, with Play (addendum 003, question-pages/73, 2).
-  if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#review-box').getByRole('button', { name: 'Play' })).toBeVisible();
+  if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#exercise-box').getByRole('button', { name: 'Play' })).toBeVisible();
   for (let i = 0; i < 12; i += 1) {
-    if (await page.locator('.message.ok', { hasText: 'All done' }).isVisible()) break;
-    const option = page.locator('#review-box button.option:not([disabled])').first();
+    if (await page.locator('#session-end').isVisible()) break;
+    const option = page.locator('#exercise-box button.option:not([disabled])').first();
     if (await option.isVisible()) { await option.click(); await page.getByRole('button', { name: 'Next' }).click(); continue; }
     const show = page.getByRole('button', { name: 'Show' });
     if (await show.isVisible()) { await show.click(); await page.getByRole('button', { name: 'I knew it' }).click(); }
   }
-  await expect(page.locator('.message.ok', { hasText: 'All done' })).toBeVisible();
+  await expect(page.locator('#session-end')).toBeVisible();
 });
 
 test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember switch, Let it fall, Pick up for words and patterns, and the Leaves page', async ({ page }) => {
@@ -154,12 +156,12 @@ test('FR-413 RQ-294 RQ-413 RQ-415: words are coloured To remember and by the mar
   await expect(page.locator('button.w.other-reading')).toHaveCount(0);
 });
 
-test('FR-414 FR-415 RQ-03 RQ-71: Home shows the level line and today\'s minutes; Progress shows 14 day bars', async ({ page }) => {
+test('FR-414 FR-415 FR-910 RQ-03 RQ-71 RQ-427: Progress shows the level line, today\'s minutes and 14 day bars', async ({ page }) => {
   await signIn(page);
   // With level word lists present (G-06), the line shows the level; without them, "Set your starting level" (FR-414, FR-608).
-  await expect(page.locator('#level-line')).toContainText(/Level: |Set your starting level/);
-  await expect(page.locator('#level-line')).toContainText('min of input today');
   await page.goto('/progress');
+  await expect(page.locator('#progress-level')).toContainText(/Your level: |Set your starting level/);
+  await expect(page.locator('#progress-level')).toContainText('min of input today');
   await expect(page.locator('#bars .bar')).toHaveCount(14);
   await expect(page.locator('#progress-counts')).toContainText('words in your ground');
 });

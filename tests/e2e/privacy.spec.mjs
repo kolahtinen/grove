@@ -33,9 +33,11 @@ test('FR-024 RQ-331 RQ-367: every page, signed out and signed in, contacts only 
   for (const url of fonts) expect(new URL(url).pathname.startsWith('/fonts/')).toBe(true);
 });
 
-test('FR-024 RQ-367: an account email with HTML in it is shown as text in the header (constitution 4.6)', async ({ page }) => {
+test('FR-024 FR-910 RQ-367 RQ-427: an account email with HTML in it is shown as text on the Account page (constitution 4.6)', async ({ page }) => {
   await signIn(page, HTMLISH);
-  const email = page.locator('.account-email');
+  // G-09 FR-902 takes the email out of the top bar; FR-910 shows it on Account.
+  await page.goto('/profile');
+  const email = page.locator('#account-email-page');
   await expect(email).toHaveText(HTMLISH.email);
   await expect(email.locator('b')).toHaveCount(0);
 });

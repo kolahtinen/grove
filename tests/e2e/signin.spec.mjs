@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { REVIEWER } from '../fakes/dev-accounts.mjs';
 
-test('FR-011 FR-014 RQ-228 RQ-226: sign in, agree on the terms, see the header, sign out, and agree again next time', async ({ page }) => {
+test('FR-011 FR-902 RQ-228 RQ-420: sign in, agree on the terms, sign out from ☰, and agree again next time', async ({ page }) => {
   await page.goto('/');
   await expect(page).toHaveURL(/\/signin$/);
 
@@ -19,7 +19,8 @@ test('FR-011 FR-014 RQ-228 RQ-226: sign in, agree on the terms, see the header, 
   await agree.click();
 
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.locator('.account-email')).toHaveText(REVIEWER.email);
+  // G-09 FR-902 replaces FR-014's email and Sign out in the bar: Sign out is in the ☰ menu.
+  await page.getByRole('button', { name: 'Menu' }).click();
   await page.getByRole('button', { name: 'Sign out' }).click();
   await expect(page).toHaveURL(/\/signin$/);
 
