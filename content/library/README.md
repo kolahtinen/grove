@@ -78,3 +78,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2026-10-29, batch 3 (10 texts): A1-14…A1-19, A2-16…A2-19, added by Claude at the owner's word, 2026-10-29 (B-19).
 
 2026-10-29, batch 4 (10 texts): A1-20, A1-21, A2-20…A2-22, B1-13…B1-17, added by Claude at the owner's word, 2026-10-29 (B-19).
+
+2026-10-29, batch 5 (10 texts): A1-22…A1-24, A2-23, A2-24, B2-11…B2-15, added by Claude at the owner's word, 2026-10-29 (B-19).

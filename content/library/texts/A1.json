@@ -2061,6 +2061,295 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "A1-22",
+      "level": "A1",
+      "topic": "Daily life",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "En ny tröja",
+      "names": [],
+      "above_level": [
+        "tröja",
+        "blå",
+        "storlek",
+        "rea"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej! Kan jag hjälpa dig?",
+          "en": "– Hi! Can I help you?"
+        },
+        {
+          "sv": "– Ja, jag letar efter en varm tröja.",
+          "en": "– Yes, I'm looking for a warm jumper."
+        },
+        {
+          "sv": "– Vilken färg vill du ha?",
+          "en": "– What colour would you like?"
+        },
+        {
+          "sv": "– Blå eller grön.",
+          "en": "– Blue or green."
+        },
+        {
+          "sv": "– Vi har den här gröna. Vilken storlek har du?",
+          "en": "– We have this green one. What size are you?"
+        },
+        {
+          "sv": "– Medium, tror jag.",
+          "en": "– Medium, I think."
+        },
+        {
+          "sv": "– Du kan prova den där borta.",
+          "en": "– You can try it on over there."
+        },
+        {
+          "sv": "– Tack. Den är lite för liten.",
+          "en": "– Thanks. It's a little too small."
+        },
+        {
+          "sv": "– Här är en större. Prova den.",
+          "en": "– Here's a bigger one. Try it."
+        },
+        {
+          "sv": "– Ja, den här är bra. Vad kostar den?",
+          "en": "– Yes, this one is good. How much is it?"
+        },
+        {
+          "sv": "– Trehundra kronor. Den är på rea i dag.",
+          "en": "– Three hundred kronor. It's on sale today."
+        },
+        {
+          "sv": "– Bra pris! Jag tar den.",
+          "en": "– Good price! I'll take it."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad letar kunden efter?",
+          "options": [
+            "En jacka",
+            "En varm tröja",
+            "Skor"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vilken färg har tröjan?",
+          "options": [
+            "Blå",
+            "Grön",
+            "Röd"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför är priset bra?",
+          "options": [
+            "Tröjan är på rea",
+            "Kunden har ett kort",
+            "Tröjan är gammal"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A1-23",
+      "level": "A1",
+      "topic": "Travel and transport",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Tåget till Göteborg",
+      "names": [
+        "Amir",
+        "Göteborg",
+        "Stockholm"
+      ],
+      "above_level": [
+        "tåg",
+        "fönster",
+        "bredvid",
+        "sjö",
+        "bistro",
+        "kanelbulle",
+        "perrong",
+        "kram"
+      ],
+      "lines": [
+        {
+          "sv": "Amir åker tåg från Stockholm till Göteborg.",
+          "en": "Amir is taking the train from Stockholm to Gothenburg."
+        },
+        {
+          "sv": "Resan tar tre timmar.",
+          "en": "The journey takes three hours."
+        },
+        {
+          "sv": "Han sitter vid fönstret i vagn fem.",
+          "en": "He sits by the window in carriage five."
+        },
+        {
+          "sv": "Bredvid honom sitter en gammal kvinna med en liten hund.",
+          "en": "Next to him sits an old woman with a little dog."
+        },
+        {
+          "sv": "Hunden sover hela tiden.",
+          "en": "The dog sleeps the whole time."
+        },
+        {
+          "sv": "Amir läser en bok och lyssnar på musik.",
+          "en": "Amir reads a book and listens to music."
+        },
+        {
+          "sv": "Utanför fönstret ser han skog, sjöar och små röda hus.",
+          "en": "Outside the window he sees forest, lakes and small red houses."
+        },
+        {
+          "sv": "Efter en timme går han till bistron.",
+          "en": "After an hour he goes to the buffet car."
+        },
+        {
+          "sv": "Han köper en kaffe och en kanelbulle.",
+          "en": "He buys a coffee and a cinnamon bun."
+        },
+        {
+          "sv": "Tåget kommer fram i tid.",
+          "en": "The train arrives on time."
+        },
+        {
+          "sv": "Hans syster väntar på perrongen.",
+          "en": "His sister is waiting on the platform."
+        },
+        {
+          "sv": "Hon kramar honom och säger välkommen.",
+          "en": "She hugs him and says welcome."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur lång tid tar resan?",
+          "options": [
+            "En timme",
+            "Tre timmar",
+            "Fem timmar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad köper Amir?",
+          "options": [
+            "En kaffe och en kanelbulle",
+            "En smörgås",
+            "Vatten"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem väntar på perrongen?",
+          "options": [
+            "Hans mamma",
+            "Hans syster",
+            "En vän"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-24",
+      "level": "A1",
+      "topic": "Work and study",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Läraren Karin",
+      "names": [
+        "Karin"
+      ],
+      "above_level": [
+        "träd"
+      ],
+      "lines": [
+        {
+          "sv": "Karin är lärare i en skola.",
+          "en": "Karin is a teacher at a school."
+        },
+        {
+          "sv": "Hon undervisar barn som är nio år.",
+          "en": "She teaches children who are nine."
+        },
+        {
+          "sv": "Det finns tjugo barn i klassen.",
+          "en": "There are twenty children in the class."
+        },
+        {
+          "sv": "På morgonen läser de svenska.",
+          "en": "In the morning they study Swedish."
+        },
+        {
+          "sv": "Efter lunch har de matte.",
+          "en": "After lunch they have maths."
+        },
+        {
+          "sv": "Barnen tycker om att räkna med Karin.",
+          "en": "The children like doing sums with Karin."
+        },
+        {
+          "sv": "Hon gör matten rolig med spel.",
+          "en": "She makes maths fun with games."
+        },
+        {
+          "sv": "Ibland går klassen ut i skogen.",
+          "en": "Sometimes the class goes out to the forest."
+        },
+        {
+          "sv": "Där lär de sig om träd och djur.",
+          "en": "There they learn about trees and animals."
+        },
+        {
+          "sv": "Karin slutar klockan fyra.",
+          "en": "Karin finishes at four o'clock."
+        },
+        {
+          "sv": "Men på kvällen läser hon barnens texter.",
+          "en": "But in the evening she reads the children's texts."
+        },
+        {
+          "sv": "Hon älskar sitt jobb.",
+          "en": "She loves her job."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur gamla är barnen?",
+          "options": [
+            "Sex år",
+            "Nio år",
+            "Tolv år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad har de efter lunch?",
+          "options": [
+            "Svenska",
+            "Matte",
+            "Musik"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör Karin på kvällen?",
+          "options": [
+            "Hon läser barnens texter",
+            "Hon tittar på film",
+            "Hon tränar"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

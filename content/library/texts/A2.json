@@ -2116,6 +2116,201 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A2-23",
+      "level": "A2",
+      "topic": "Work and study",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Läxorna",
+      "names": [
+        "Ida"
+      ],
+      "above_level": [
+        "rabatt",
+        "popcorn"
+      ],
+      "lines": [
+        {
+          "sv": "– Ida, har du gjort dina läxor?",
+          "en": "– Ida, have you done your homework?"
+        },
+        {
+          "sv": "– Nästan. Jag har bara matten kvar.",
+          "en": "– Almost. I've only got maths left."
+        },
+        {
+          "sv": "– Behöver du hjälp?",
+          "en": "– Do you need help?"
+        },
+        {
+          "sv": "– Ja, jag förstår inte hur man räknar med procent.",
+          "en": "– Yes, I don't understand how to calculate with percentages."
+        },
+        {
+          "sv": "– Okej. En tröja kostar tvåhundra kronor, och det är tio procent rabatt.",
+          "en": "– Okay. A jumper costs two hundred kronor, and there's ten per cent off."
+        },
+        {
+          "sv": "– Hur mycket billigare blir den?",
+          "en": "– How much cheaper does it get?"
+        },
+        {
+          "sv": "– Tjugo kronor?",
+          "en": "– Twenty kronor?"
+        },
+        {
+          "sv": "– Precis! Så vad kostar den då?",
+          "en": "– Exactly! So what does it cost then?"
+        },
+        {
+          "sv": "– Hundraåttio kronor. Det var ju inte så svårt.",
+          "en": "– A hundred and eighty kronor. That wasn't so hard."
+        },
+        {
+          "sv": "– Nej, du är duktig. Prova nästa uppgift själv.",
+          "en": "– No, you're good at this. Try the next task yourself."
+        },
+        {
+          "sv": "– Femtio procent av sextio är trettio.",
+          "en": "– Fifty per cent of sixty is thirty."
+        },
+        {
+          "sv": "– Rätt igen. Hur många uppgifter har du kvar?",
+          "en": "– Right again. How many tasks do you have left?"
+        },
+        {
+          "sv": "– Fem. Sedan vill jag titta på en film.",
+          "en": "– Five. Then I want to watch a film."
+        },
+        {
+          "sv": "– Det låter bra. Jag gör popcorn under tiden.",
+          "en": "– Sounds good. I'll make popcorn meanwhile."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vilken läxa har Ida kvar?",
+          "options": [
+            "Svenska",
+            "Matte",
+            "Engelska"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad kostar tröjan med rabatt?",
+          "options": [
+            "Tvåhundra kronor",
+            "Hundraåttio kronor",
+            "Tjugo kronor"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad vill Ida göra sedan?",
+          "options": [
+            "Titta på en film",
+            "Gå ut",
+            "Sova"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "A2-24",
+      "level": "A2",
+      "topic": "Home",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Ett rum i kollektivet",
+      "names": [
+        "Noah"
+      ],
+      "above_level": [
+        "baksida",
+        "schema",
+        "städning",
+        "disk",
+        "bråk"
+      ],
+      "lines": [
+        {
+          "sv": "Noah bor i ett kollektiv med fyra andra personer.",
+          "en": "Noah lives in a shared house with four other people."
+        },
+        {
+          "sv": "Alla har ett eget rum, men de delar kök och badrum.",
+          "en": "Everyone has their own room, but they share the kitchen and bathroom."
+        },
+        {
+          "sv": "Huset är stort och gammalt, med en trädgård på baksidan.",
+          "en": "The house is big and old, with a garden at the back."
+        },
+        {
+          "sv": "Hyran är billig, och det var därför Noah flyttade dit.",
+          "en": "The rent is cheap, and that was why Noah moved there."
+        },
+        {
+          "sv": "Men nu tycker han mest om att aldrig vara ensam.",
+          "en": "But now what he likes most is never being alone."
+        },
+        {
+          "sv": "Varje söndag lagar de middag tillsammans och pratar om veckan.",
+          "en": "Every Sunday they cook dinner together and talk about the week."
+        },
+        {
+          "sv": "De har ett schema för städning och disk på kylskåpet.",
+          "en": "They have a schedule for cleaning and washing up on the fridge."
+        },
+        {
+          "sv": "Ibland blir det bråk, till exempel när någon äter upp någon annans ost.",
+          "en": "Sometimes there are arguments, for example when someone eats someone else's cheese."
+        },
+        {
+          "sv": "Då pratar de om det på söndagsmiddagen.",
+          "en": "Then they talk about it at the Sunday dinner."
+        },
+        {
+          "sv": "I somras odlade de tomater i trädgården och hade fest för grannarna.",
+          "en": "Last summer they grew tomatoes in the garden and had a party for the neighbours."
+        },
+        {
+          "sv": "Noah säger att kollektivet har blivit som en familj för honom.",
+          "en": "Noah says the shared house has become like a family to him."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur många bor i kollektivet?",
+          "options": [
+            "Tre",
+            "Fem",
+            "Tio"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför flyttade Noah dit?",
+          "options": [
+            "Hyran är billig",
+            "Det ligger nära jobbet",
+            "Hans vänner bor där"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När pratar de om problem?",
+          "options": [
+            "På söndagsmiddagen",
+            "Varje morgon",
+            "Aldrig"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

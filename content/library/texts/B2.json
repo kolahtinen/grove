@@ -993,6 +993,496 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "B2-11",
+      "level": "B2",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Bonusfamiljen",
+      "names": [
+        "Elias",
+        "Malin",
+        "Malins",
+        "Patrik",
+        "Patriks",
+        "Wilma"
+      ],
+      "above_level": [
+        "styvfamilj",
+        "till slut",
+        "fredagsmys",
+        "taco",
+        "pussel",
+        "kartong"
+      ],
+      "lines": [
+        {
+          "sv": "När Malin och Patrik flyttade ihop hade de tillsammans tre barn från tidigare förhållanden.",
+          "en": "When Malin and Patrik moved in together, they had three children between them from previous relationships."
+        },
+        {
+          "sv": "Malins dotter Wilma var tolv, och Patriks söner var sju och nio.",
+          "en": "Malin's daughter Wilma was twelve, and Patrik's sons were seven and nine."
+        },
+        {
+          "sv": "Barnen bodde varannan vecka hos dem och varannan vecka hos sina andra föräldrar.",
+          "en": "The children lived every other week with them and every other week with their other parents."
+        },
+        {
+          "sv": "I Sverige kallas sådana familjer ofta för bonusfamiljer, ett ord som ska låta mer positivt än styvfamilj.",
+          "en": "In Sweden such families are often called bonus families, a word meant to sound more positive than stepfamily."
+        },
+        {
+          "sv": "Men verkligheten var inte alltid så positiv i början.",
+          "en": "But the reality wasn't always so positive at first."
+        },
+        {
+          "sv": "Wilma ville inte dela badrum med två små pojkar, och Elias, den äldste av bröderna, vägrade prata med Malin under de första månaderna.",
+          "en": "Wilma didn't want to share a bathroom with two little boys, and Elias, the elder of the brothers, refused to talk to Malin for the first few months."
+        },
+        {
+          "sv": "Vi gjorde misstaget att tro att alla direkt skulle känna sig som en familj, säger Patrik.",
+          "en": "We made the mistake of thinking everyone would immediately feel like a family, says Patrik."
+        },
+        {
+          "sv": "Det tog tid, och vi fick lära oss att respektera att barnen redan hade en mamma och en pappa.",
+          "en": "It took time, and we had to learn to respect that the children already had a mother and a father."
+        },
+        {
+          "sv": "Det som till slut gjorde skillnad var små, gemensamma traditioner.",
+          "en": "What finally made the difference was small, shared traditions."
+        },
+        {
+          "sv": "Fredagsmys med tacos och film, en årlig cykelsemester och en regel om att alla får välja middag en gång i veckan.",
+          "en": "Friday nights in with tacos and a film, an annual cycling holiday and a rule that everyone gets to choose dinner once a week."
+        },
+        {
+          "sv": "Nu, fem år senare, är Wilma och Elias de som bråkar minst och skrattar mest tillsammans.",
+          "en": "Now, five years later, Wilma and Elias are the ones who argue least and laugh most together."
+        },
+        {
+          "sv": "Patrik tillägger att det viktigaste var att de vuxna aldrig tvingade fram någon kärlek, utan lät relationerna växa i sin egen takt.",
+          "en": "Patrik adds that the most important thing was that the adults never forced any love, but let the relationships grow at their own pace."
+        },
+        {
+          "sv": "Malin beskriver det som ett pussel där bitarna till slut har hittat sin plats, även om bilden inte ser ut som den på kartongen.",
+          "en": "Malin describes it as a puzzle where the pieces have finally found their place, even if the picture doesn't look like the one on the box."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur ofta bodde barnen hos Malin och Patrik?",
+          "options": [
+            "Hela tiden",
+            "Varannan vecka",
+            "Bara på helger"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vilket misstag gjorde de i början?",
+          "options": [
+            "De trodde att alla direkt skulle känna sig som en familj",
+            "De flyttade för långt bort",
+            "De bestämde allt själva"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad gjorde skillnad till slut?",
+          "options": [
+            "Ett större hus",
+            "Små gemensamma traditioner",
+            "Hjälp från en psykolog"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "B2-12",
+      "level": "B2",
+      "topic": "Food and drink",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Vegetariskt på jobbet",
+      "names": [
+        "Sanna",
+        "Robert"
+      ],
+      "above_level": [
+        "linsgrytan",
+        "lins"
+      ],
+      "lines": [
+        {
+          "sv": "– Har du sett att personalrestaurangen bara ska servera vegetariskt på måndagar och onsdagar från och med nästa månad?",
+          "en": "– Have you seen that the staff canteen is only going to serve vegetarian food on Mondays and Wednesdays from next month?"
+        },
+        {
+          "sv": "– Ja, och jag tycker att det är ett steg i rätt riktning. Köttindustrin står för en stor del av utsläppen.",
+          "en": "– Yes, and I think it's a step in the right direction. The meat industry accounts for a large share of emissions."
+        },
+        {
+          "sv": "– Jag förstår argumentet, men jag gillar inte att någon annan bestämmer vad jag ska äta.",
+          "en": "– I understand the argument, but I don't like someone else deciding what I should eat."
+        },
+        {
+          "sv": "– Ingen tvingar dig. Du kan ta med dig egen mat de dagarna.",
+          "en": "– Nobody's forcing you. You can bring your own food on those days."
+        },
+        {
+          "sv": "– Visst, men då betalar jag ju för en förmån som jag inte kan använda.",
+          "en": "– Sure, but then I'm paying for a benefit I can't use."
+        },
+        {
+          "sv": "– Har du provat deras vegetariska rätter? Linsgrytan förra veckan var faktiskt riktigt god.",
+          "en": "– Have you tried their vegetarian dishes? The lentil stew last week was actually really good."
+        },
+        {
+          "sv": "– Jag erkänner att den var okej. Men efter en sallad är jag hungrig igen klockan två.",
+          "en": "– I admit it was okay. But after a salad I'm hungry again at two o'clock."
+        },
+        {
+          "sv": "– Det beror på vad som serveras. Bönor och linser mättar lika bra som kött om de lagas rätt.",
+          "en": "– It depends on what's served. Beans and lentils fill you up as well as meat if they're cooked right."
+        },
+        {
+          "sv": "– Kanske. Jag skulle hellre se att de serverade mindre kött men av bättre kvalitet, från svenska gårdar.",
+          "en": "– Maybe. I'd rather they served less meat but of better quality, from Swedish farms."
+        },
+        {
+          "sv": "– Där är vi faktiskt överens. Det kanske är något vi kan föreslå på nästa personalmöte.",
+          "en": "– There we actually agree. Maybe that's something we can suggest at the next staff meeting."
+        },
+        {
+          "sv": "– Gärna. Och om de fortsätter med linsgrytan kan jag kanske tänka mig två vegetariska dagar.",
+          "en": "– Sure. And if they keep the lentil stew, maybe I can live with two vegetarian days."
+        },
+        {
+          "sv": "– Då skriver jag ihop ett förslag i kväll, så kan du läsa det i morgon innan vi skickar det.",
+          "en": "– Then I'll write up a proposal tonight, and you can read it tomorrow before we send it."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad ska personalrestaurangen göra?",
+          "options": [
+            "Servera bara vegetariskt på måndagar och onsdagar",
+            "Stänga på fredagar",
+            "Höja priserna"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad tycker Robert om?",
+          "options": [
+            "Att någon annan bestämmer vad han äter",
+            "Linsgrytan",
+            "Sallader"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är de överens om?",
+          "options": [
+            "Mindre kött men av bättre kvalitet",
+            "Bara vegetariskt",
+            "Inga förändringar"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B2-13",
+      "level": "B2",
+      "topic": "Home",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Andrahandskontraktet",
+      "names": [
+        "Leon",
+        "Stockholm"
+      ],
+      "above_level": [
+        "förstahandskontrakt",
+        "till slut",
+        "hyresvärd"
+      ],
+      "lines": [
+        {
+          "sv": "När Leon fick jobb i Stockholm hade han två veckor på sig att hitta någonstans att bo.",
+          "en": "When Leon got a job in Stockholm he had two weeks to find somewhere to live."
+        },
+        {
+          "sv": "Att få ett förstahandskontrakt var uteslutet, eftersom kön till hyresrätterna i staden kan vara över tio år lång.",
+          "en": "Getting a first-hand lease was out of the question, since the queue for rental flats in the city can be over ten years long."
+        },
+        {
+          "sv": "Han började därför leta efter en lägenhet i andra hand, alltså att hyra av någon som själv har ett kontrakt.",
+          "en": "So he started looking for a sublet, that is, renting from someone who has a lease themselves."
+        },
+        {
+          "sv": "Annonserna var många, men det var något skumt med flera av dem.",
+          "en": "There were many adverts, but something was fishy about several of them."
+        },
+        {
+          "sv": "En person ville ha tre månaders hyra i förskott innan Leon ens hade sett lägenheten.",
+          "en": "One person wanted three months' rent in advance before Leon had even seen the flat."
+        },
+        {
+          "sv": "En annan begärde en hyra som var dubbelt så hög som normalt.",
+          "en": "Another asked for a rent twice as high as normal."
+        },
+        {
+          "sv": "Bedrägerier på bostadsmarknaden är tyvärr vanliga, särskilt när efterfrågan är stor.",
+          "en": "Fraud on the housing market is unfortunately common, especially when demand is high."
+        },
+        {
+          "sv": "Till slut hittade han en etta via en kollega, men även då fanns det saker att tänka på.",
+          "en": "In the end he found a studio through a colleague, but even then there were things to think about."
+        },
+        {
+          "sv": "Hyresvärden måste ha godkännande från sin förening eller värd för att få hyra ut, och hyran får inte vara högre än vad som är skäligt.",
+          "en": "The landlord must have approval from their association or landlord to sublet, and the rent mustn't be higher than what is reasonable."
+        },
+        {
+          "sv": "Leon bad om ett skriftligt kontrakt och kontrollerade att allt var i ordning.",
+          "en": "Leon asked for a written contract and checked that everything was in order."
+        },
+        {
+          "sv": "Nu har han bott där i ett år och trivs bra, men kontraktet gäller bara ett år till.",
+          "en": "Now he has lived there for a year and is happy, but the contract only runs for one more year."
+        },
+        {
+          "sv": "Sedan börjar jakten igen, säger han med en suck.",
+          "en": "Then the hunt starts again, he says with a sigh."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför kunde Leon inte få ett förstahandskontrakt?",
+          "options": [
+            "Kön kan vara över tio år lång",
+            "Han hade för låg lön",
+            "Han var för ung"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad var misstänkt med en av annonserna?",
+          "options": [
+            "De ville ha tre månaders hyra i förskott",
+            "Lägenheten var för stor",
+            "Den låg utanför staden"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur hittade han till slut sin lägenhet?",
+          "options": [
+            "Via en kollega",
+            "Via en mäklare",
+            "I tidningen"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B2-14",
+      "level": "B2",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Promenadens kraft",
+      "names": [],
+      "above_level": [
+        "maraton",
+        "rask",
+        "hjärt",
+        "två-diabetes"
+      ],
+      "lines": [
+        {
+          "sv": "Man behöver inte springa maraton eller lyfta tunga vikter för att må bättre.",
+          "en": "You don't need to run a marathon or lift heavy weights to feel better."
+        },
+        {
+          "sv": "Enligt allt fler studier räcker det långt med något så enkelt som en daglig promenad.",
+          "en": "According to more and more studies, something as simple as a daily walk goes a long way."
+        },
+        {
+          "sv": "En halvtimmes rask promenad om dagen minskar risken för hjärt- och kärlsjukdomar, typ två-diabetes och vissa former av cancer.",
+          "en": "A brisk half-hour walk a day reduces the risk of cardiovascular disease, type 2 diabetes and some forms of cancer."
+        },
+        {
+          "sv": "Effekterna på den psykiska hälsan är minst lika imponerande.",
+          "en": "The effects on mental health are at least as impressive."
+        },
+        {
+          "sv": "Personer som promenerar regelbundet sover bättre, känner sig mindre stressade och har lägre risk att drabbas av depression.",
+          "en": "People who walk regularly sleep better, feel less stressed and have a lower risk of depression."
+        },
+        {
+          "sv": "Särskilt positivt verkar det vara att gå i naturen, bland träd och vatten.",
+          "en": "Walking in nature, among trees and water, seems especially beneficial."
+        },
+        {
+          "sv": "Forskare tror att det beror på att hjärnan får vila från de ständiga intryck som vi utsätts för i vardagen.",
+          "en": "Researchers think it is because the brain gets a rest from the constant stimuli we are exposed to in daily life."
+        },
+        {
+          "sv": "Det fina med promenader är att de nästan inte kostar något och passar de flesta, oavsett ålder och kondition.",
+          "en": "The great thing about walks is that they cost almost nothing and suit most people, regardless of age and fitness."
+        },
+        {
+          "sv": "Den som har svårt att komma i gång kan börja med tio minuter och sedan öka successivt.",
+          "en": "Anyone who finds it hard to get started can begin with ten minutes and then increase gradually."
+        },
+        {
+          "sv": "Ett tips är att ta med en vän, eftersom man då pratar och märker inte hur tiden går.",
+          "en": "One tip is to bring a friend, since you then chat and don't notice the time passing."
+        },
+        {
+          "sv": "Ett annat är att gå en hållplats tidigare av bussen på väg hem från jobbet.",
+          "en": "Another is to get off the bus one stop earlier on the way home from work."
+        },
+        {
+          "sv": "Små förändringar i vardagen kan med andra ord ge stora resultat på sikt.",
+          "en": "Small changes in daily life can, in other words, give big results over time."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur lång promenad rekommenderas varje dag?",
+          "options": [
+            "Tio minuter",
+            "En halvtimme",
+            "Två timmar"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Varför är det bra att gå i naturen enligt forskarna?",
+          "options": [
+            "Luften är kallare",
+            "Hjärnan får vila från ständiga intryck",
+            "Man går snabbare"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vilket tips ges?",
+          "options": [
+            "Att gå en hållplats tidigare av bussen",
+            "Att köpa dyra skor",
+            "Att bara gå på helger"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B2-15",
+      "level": "B2",
+      "topic": "Society",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Allemansrätten till information",
+      "names": [
+        "Sverige"
+      ],
+      "above_level": [
+        "urholka",
+        "skyndsamt"
+      ],
+      "lines": [
+        {
+          "sv": "Visste du att du i Sverige har rätt att läsa nästan alla dokument som finns hos myndigheter och kommuner?",
+          "en": "Did you know that in Sweden you have the right to read almost all documents held by authorities and municipalities?"
+        },
+        {
+          "sv": "Det kallas offentlighetsprincipen, och den har funnits sedan 1766, vilket gör den till en av de äldsta i världen.",
+          "en": "It is called the principle of public access, and it has existed since 1766, making it one of the oldest in the world."
+        },
+        {
+          "sv": "Principen betyder att vem som helst kan begära ut till exempel en kommuns avtal, mejl mellan tjänstemän eller protokoll från möten.",
+          "en": "The principle means anyone can request, for example, a municipality's contracts, emails between officials or minutes from meetings."
+        },
+        {
+          "sv": "Man behöver inte berätta vem man är eller varför man vill ha handlingen.",
+          "en": "You don't need to say who you are or why you want the document."
+        },
+        {
+          "sv": "Tanken är att medborgarna ska kunna granska hur makten används och hur skattepengarna spenderas.",
+          "en": "The idea is that citizens should be able to scrutinise how power is used and how tax money is spent."
+        },
+        {
+          "sv": "Journalister använder rätten varje dag, och många uppmärksammade avslöjanden har börjat med en enkel begäran om att få se ett dokument.",
+          "en": "Journalists use the right every day, and many high-profile revelations have started with a simple request to see a document."
+        },
+        {
+          "sv": "Det finns dock undantag.",
+          "en": "There are exceptions, however."
+        },
+        {
+          "sv": "Uppgifter om enskilda personers hälsa, om rikets säkerhet eller om pågående brottsutredningar kan beläggas med sekretess.",
+          "en": "Information about individuals' health, national security or ongoing criminal investigations can be made confidential."
+        },
+        {
+          "sv": "Då måste myndigheten kunna förklara varför, och beslutet kan överklagas.",
+          "en": "Then the authority must be able to explain why, and the decision can be appealed."
+        },
+        {
+          "sv": "Kritiker menar att principen urholkas när offentlig verksamhet läggs ut på privata företag, som inte omfattas av samma regler.",
+          "en": "Critics argue that the principle is being eroded when public services are outsourced to private companies, which aren't covered by the same rules."
+        },
+        {
+          "sv": "Försvarare påpekar att öppenheten ändå är ovanligt stor i en internationell jämförelse, och att den bidrar till att korruptionen i Sverige är låg.",
+          "en": "Defenders point out that openness is still unusually high in international comparison, and that it helps keep corruption in Sweden low."
+        },
+        {
+          "sv": "Den som vill pröva principen själv kan helt enkelt skicka ett mejl till sin kommun och be att få se ett dokument.",
+          "en": "Anyone wanting to try the principle can simply email their municipality and ask to see a document."
+        },
+        {
+          "sv": "Svaret ska komma skyndsamt, vilket oftast betyder inom några dagar.",
+          "en": "The answer must come promptly, which usually means within a few days."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad innebär offentlighetsprincipen?",
+          "options": [
+            "Att alla måste rösta",
+            "Att man har rätt att läsa de flesta dokument hos myndigheter",
+            "Att alla får gå i skolan gratis"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Måste man förklara varför man vill se en handling?",
+          "options": [
+            "Ja, alltid",
+            "Nej",
+            "Bara om man är journalist"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad menar kritikerna?",
+          "options": [
+            "Att principen urholkas när verksamhet läggs ut på privata företag",
+            "Att principen är för ny",
+            "Att för få använder den"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }
