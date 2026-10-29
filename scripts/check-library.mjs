@@ -42,8 +42,8 @@ export const LIMITS = {
   A2: { min: 80, max: 120, sentence: 14, far: 5 },
   B1: { min: 120, max: 180, sentence: 20, far: 7 },
   B2: { min: 180, max: 250, sentence: 25, far: 9 },
-  C1: { min: 220, max: 320, sentence: 30, far: 12 },
-  C2: { min: 250, max: 380, sentence: 35, far: 15 },
+  C1: { min: 250, max: 350, sentence: 30, far: 12 },
+  C2: { min: 300, max: 400, sentence: 35, far: 15 },
 };
 
 // The word list's inflected forms (form → headwords), so "bilar" is known through "bil".
@@ -59,7 +59,8 @@ function readForms() {
 
 // Forms neither list nor the word list resolves (irregular or colloquial), checked by hand; counted as
 // their dictionary form too.
-const GLOSSARY_FORMS = new Map([['sköt', 'skjuta'], ['stan', 'stad'], ['sjönk', 'sjunka'], ['drog', 'dra'], ['höll', 'hålla']]);
+const GLOSSARY_FORMS = new Map([['sköt', 'skjuta'], ['stan', 'stad'], ['sjönk', 'sjunka'], ['drog', 'dra'], ['höll', 'hålla'], ['diffusa', 'diffus'], ['tömda', 'tömma'], ['bidrog', 'bidra'],
+  ['förstagångsföräldrar', 'förstagångsförälder'], ['sansade', 'sansad'], ['infekterade', 'infekterad']]);
 const kelly = readKelly();
 const forms = readForms();
 for (const [form, lemma] of GLOSSARY_FORMS) forms.set(form, [...(forms.get(form) || []), lemma]);
@@ -127,9 +128,13 @@ function dictionaryForm(word, mode) {
   if (listed.length) return listed[0];
   const regular = regularLemma(word, (l) => map.has(l)) ?? meaning(word)?.lemma;
   if (regular) return regular;
-  // A long compound in its definite form (uppkörningen → uppkörning, läxhjälpen → läxhjälp).
-  const definite = word.length >= 8 && word.match(/^(.+?)(en|et)$/);
-  return definite ? definite[1] : word;
+  // A long word no list knows: undo the commonest endings (uppkörningen → uppkörning, klädbutiker →
+  // klädbutik, likåldriga → likåldrig, sansade → sansad, hyggesfritt → hyggesfri).
+  if (word.length < 8) return word;
+  for (const [ending, put] of [['iga', 'ig'], ['ade', 'ad'], ['tt', ''], ['ar', ''], ['er', ''], ['en', ''], ['et', '']]) {
+    if (word.endsWith(ending)) return word.slice(0, -ending.length) + put;
+  }
+  return word;
 }
 
 const inLexicon = (word) => !!meaning(word) || !!regularLemma(word, (l) => !!meaning(l));

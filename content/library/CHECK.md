@@ -51,7 +51,7 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
-| B2-01 | Föräldrar efter fyrtio | reading | 198 | 20 | **fyrtiotvå** (—), till slut (C1), **förstagångsföräldrar** (—*), **tjugofemåring** (—*) | 3 → 3 (none no longer far) | passes |
+| B2-01 | Föräldrar efter fyrtio | reading | 198 | 20 | **fyrtiotvå** (—), till slut (C1), **förstagångsförälder** (—*), **tjugofemåring** (—*) | 3 → 3 (none no longer far) | passes |
 | B2-02 | Ett samhälle utan kontanter | reading | 184 | 22 | kontanter (C1), **kollekt** (—*), **bank-id** (—*) | 4 → 2 (app, bankomat no longer far) | passes |
 | B2-03 | Mer än en kaffepaus | listening | 185 | 22 | oartig (C1), **kanelbulle** (—), tilltugg (C1) | 3 → 1 (oartigt, smörgås no longer far) | passes |
 | B2-04 | Vems tur är det att städa? | reading, dialogue | 181 | 20 | **tentaplugg** (—*), stökig (C1), **dammsugning** (—), **tenta** (—) | 3 → 3 (none no longer far) | passes |
@@ -62,4 +62,19 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B2-09 | Vargen som delar Sverige | reading | 195 | 22 | **mellersta** (—), **skolbuss** (—), **inavlad** (C2) | 3 → 3 (none no longer far) | passes |
 | B2-10 | Första gången i vallokalen | listening, dialogue | 182 | 19 | **legitimation** (C2), **förtidsrösta** (—) | 2 → 2 (none no longer far) | passes |
 
-40 of 40 texts pass.
+## C1 (10 texts; 250–350 words, sentences ≤ 30 words, ≤ 12 far words)
+
+| id | title | kind | words | longest | above | far: Kelly alone → now | result |
+|---|---|---|---|---|---|---|---|
+| C1-01 | Ensam i ett land av ensamhushåll | reading | 276 | 24 | **tjugosju** (—), **klätterklubb** (—*) | 3 → 2 (fetma no longer far) | passes |
+| C1-02 | Lagom är bäst – eller? | listening | 277 | 27 | **vikingatid** (—), **dryckeshorn** (—), **sansad** (—), **pragmatisk** (—), fjäder (C2), **jantelag** (—), **oskriven** (—) | 7 → 6 (varken no longer far) | passes |
+| C1-03 | Maten som hamnar i soporna | reading | 261 | 28 | **före-datum** (—*), **förbrukningsdag** (—*), **affärsidé** (—), **skönhetsfel** (—*), banal (C2) | 5 → 4 (app no longer far) | passes |
+| C1-04 | Hos banken | reading, dialogue | 281 | 22 | **budgivning** (—*), **lånelöfte** (—*), amortering (C2), **belåningsgrad** (—*), **överbryggningslån** (—*) | 4 → 4 (none no longer far) | passes |
+| C1-05 | Att byta bana mitt i livet | reading | 278 | 29 | **fyrtiofem** (—), **högskoleutbildning** (—), **avgiftsfri** (—), **tenta** (—), **arbetspass** (—) | 7 → 5 (alltmer, familjeliv no longer far) | passes |
+| C1-06 | Ska bilen ut ur stan? | listening, dialogue | 272 | 27 | **innerstad** (—), **byggd** (—), **utryckningsfordon** (—), **klädbutik** (—*), **pendelparkering** (—*), **stegvis** (—), **beredd** (—) | 7 → 7 (none no longer far) | passes |
+| C1-07 | Flickan som inte ville bli vuxen | reading | 270 | 26 | rödhårig (C2), **trotsa** (—), **olydig** (—), **satirisk** (—), **folkmun** (—), **kännas** (—) | 7 → 5 (samhällsdebatt, resmål no longer far) | passes |
+| C1-08 | När kroppen säger ifrån | listening | 274 | 27 | **pinkod** (—), **bulta** (—), **diffus** (—) | 7 → 3 (arbetsbelastning, utvilad, deltid, arbetsmängd no longer far) | passes |
+| C1-09 | Skogen – resurs eller livsmiljö? | reading | 268 | 27 | infekterad (C2), **likåldrig** (—*), **lav** (—), **bärplockning** (—), **hyggesfri** (—*), **friluftsliv** (—) | 6 → 5 (kalhuggs no longer far) | passes |
+| C1-10 | Litar vi fortfarande på varandra? | reading, dialogue | 266 | 28 | **otrygghet** (—), **naturlag** (—) | 2 → 2 (none no longer far) | passes |
+
+50 of 50 texts pass.
