@@ -709,5 +709,36 @@ document.getElementById('show-answers').addEventListener('click', async () => {
 
 render();
 </script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  document.getElementById('show-answers').after(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...collectAnswers(), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  document.addEventListener('change', (e) => { if (e.target.matches('input[name="pick"], input[name^="q-"]')) later(); });
+  document.addEventListener('input', (e) => { if (e.target.matches('textarea[id^="comment-"]')) later(); });
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['A', 'B', 'C', 'other']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [name, q] of Object.entries(a.questions ?? {})) { if (!q.defaulted) { const r = document.querySelector(`input[name="${name}"][value="${q.answer}"]`); if (r) { r.checked = true; r.dispatchEvent(new Event('change', { bubbles: true })); } } }
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
 </body>
 </html>

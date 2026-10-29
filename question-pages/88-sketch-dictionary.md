@@ -1,0 +1,13 @@
+# 88 — Sketch: Dictionary pick up and let fall (B-28), round 1
+
+Sketch: https://claude.ai/artifact/9y3VSm1GiB7cRaekzByeFt · source `prototypes/sketches/2026-10-29-dictionary-toggle/index.html` · published 2026-10-29. Questions before it: question-pages/85 (3: both dictionaries).
+
+Versions: **A** a two-part control "Pick up | Let it fall", the current state lit, Undo under the row · **B** one button showing only the action you can take now, flipping after a tap, Undo in a toast · **C** an upright switch, Pick up above and Let it fall below, no Undo (flipping back is the undo).
+
+Questions on the page (blanks take the default): undo for both / Pick up only / none; a wrong answer in the meaning check keeps the leaf / offers "Let it fall anyway"; a state label on each row, yes / no; in A, light the current state / the side you can tap.
+
+Made up for the sketch, not in the spec: C's rule that dropping a word you just picked up skips the meaning check; "Are you sure?" instead of the check for a word with too few other meanings.
+
+## Your pick and comments
+
+(filled in when the owner says done)
