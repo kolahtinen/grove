@@ -21,6 +21,8 @@ Same columns as [requirements.md](../requirements.md).
 | RQ-435 | **Add a text** is one page with the two ways side by side, each with a short explainer (what it does, how long it takes, what grove does with the text), each leading to its own page: **Texts from your AI** and **Your own text**. | B-05, B-07; question-pages/77 (6) | yes (RQ-422's New texts on the Texts page; RQ-418's own-text page) | N-25, N-26, N-19 | easy | must | active |
 | RQ-436 | **Texts from your AI** is a wizard: an always-visible step list (done ✓, now ●, next ○), one step per screen with one main button and Back, a confirmation after every action (copied, answer read, texts added with their titles); grove chooses the tactic from the learner's AI and offers another only after failures. | B-06, B-08, B-09; question-pages/77 (7) | yes (RQ-403's tactic tabs, RQ-422's wizard card) | N-26, N-25, N-15 | medium | must | active |
 | RQ-437 | The terms are agreed at sign-up, at the first sign-in on each new device, and again when the terms change; grove stores which version each agreement was to. | B-01; question-pages/77 (1); question-pages/76 (16) | yes (RQ-228 "at each new sign-in"; RQ-428 keeps the screens) | N-27, N-28, N-24 | medium | must | active |
+| RQ-438 | The common library holds **grove texts**: texts grove provides, approved by the owner, belonging to no learner, each with its topic and level; a learner adds one to Your library, where it is marked "grove text", never Beta. The first 50 (A1–C1, ten per level, written by Claude) were approved by the owner as they stand. | B-11; question-pages/76 (17, 18) | yes (RQ-431's "texts coming") | N-41, N-13, N-01, N-14, N-43 | easy | must | active |
+| RQ-439 | **Add a text** has a third way, **From the common library**, beside Texts from your AI and Your own text. | B-10 | yes (RQ-435's two ways) | N-41, N-19, N-15 | easy | must | active |
 
 The confirmed provisional decisions (PD-02…PD-05, PD-07, PD-10…PD-14, PD-16, PD-28 with F1) set values inside existing requirements (RQ-421, RQ-423, RQ-425, RQ-426, RQ-428) and need no new ID.
 
@@ -29,7 +31,8 @@ The confirmed provisional decisions (PD-02…PD-05, PD-07, PD-10…PD-14, PD-16,
 - **R-27:** a learner signs in on a device that grove wrongly takes as known, and uses grove without having agreed (constitution 3.1). Test: a sign-in without the device cookie, with another account's cookie, with a forged cookie, and after the terms version changes all show the terms screens.
 - **R-28:** the device cookie is a lasting identifier in the learner's browser. Mitigation: it holds only a random value, is HttpOnly and SameSite=Lax, is stored hashed with the agreement, and the privacy notice says so; clearing it only means agreeing again.
 - **R-29:** searching the whole word list (57,961 headwords) is slow on the owner's computer. Test: a search answers within G-01 Q-05's 0.5 s.
-- **R-30:** the deadline (R-25 again): Home and Texts change a second time. Mitigation: the library's own data (shared texts, Publish to library) stays a later feature; until then the Common library shows its dictionary and says its texts are coming. The drafted texts on branch `library-content` are source material only, not imported before the owner has read them.
+- **R-30:** the deadline (R-25 again): Home and Texts change a second time. Mitigation: Publish to library (the owner's lessons) stays a later feature; the 50 approved grove texts are imported as data (B-11).
+- **R-31:** the 50 grove texts were approved without a Swedish speaker's line-by-line read (B-11), so some may have mistakes. Mitigation: they are marked "grove text"; G-03's Report on the reading page reaches the owner; the owner's later reading fixes them in `content/library/`.
 
 ## Feasibility
 
@@ -37,4 +40,4 @@ Everything reuses what exists: the tiles and panels (FR-901), the sessions plann
 
 ## Decision
 
-Accepted with the owner's answers (question-pages/76, 77). Specified in G-09 (FR-901, FR-904, FR-905, FR-906, FR-909, FR-911…FR-913, new FR-915…FR-921), G-01 FR-011, G-04 FR-413 and G-06 FR-605; constitution 3.1 amended (2.0.0).
+Accepted with the owner's answers (question-pages/76, 77). Specified in G-09 (FR-901, FR-904, FR-905, FR-906, FR-909, FR-911…FR-913, new FR-915…FR-921; FR-916, FR-918, FR-920 again for RQ-438, RQ-439 after B-10, B-11), G-01 FR-011, G-04 FR-413 and G-06 FR-605; constitution 3.1 amended (2.0.0).

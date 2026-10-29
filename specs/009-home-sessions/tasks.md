@@ -169,3 +169,6 @@ Palette findings for the owner (T804): white text on the light end of the main b
 - [ ] T849 Tests and build G-01 FR-011 per device and terms version (migration 015 `terms_agreements`, device cookie, TERMS_VERSION; constitution 3.1 2.0.0): no cookie, another account's cookie, forged cookie, new version
 - [ ] T850 Tests and build G-06 FR-603, FR-605: Use this level or Check my level; the picked level shown until the ground gives one
 - [ ] T851 Full run (`npm test`, `npx playwright test`, `npm run check`), `docs/modules.md`, regeneration log, STATUS
+- [ ] T852 Bring `content/library/` (texts, vocab lists, README with sources, licences and the approval) and `scripts/check-library.mjs` from branch `library-content`; `scripts/build-library.mjs` → `server/library/grove-texts.json` (each text checked by `validateAnswer`)
+- [ ] T853 Tests and build: migration 016 `library_texts`, start-up import (FR-916), `GET /api/library`, `POST /api/library/add` through G-02's accept path, "grove text" and never Beta (`server/library/`, new module `library`)
+- [ ] T854 Tests and build: `/library` by topic with level and the up-to filter, Add to your library / Open; Add a text's third way (FR-918); FR-920's Pick from the common library

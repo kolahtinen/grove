@@ -24,3 +24,4 @@ The words grove uses for its ideas, in the app and in every spec from G-02 on. T
 | **Common library** | grove's shared texts by topic with their levels, and the common dictionary. | RQ-431, G-09 FR-916 |
 | **Common dictionary** | grove's whole Swedish word list, searchable, with meanings and levels; a word can be added as a leaf. | RQ-432, G-09 FR-917 |
 | **Your dictionary** | The words met in the learner's own texts (the Dictionary page). | G-03 FR-316, G-09 FR-915 |
+| **grove text** | A text grove provides in the common library, approved by the owner and belonging to no learner; added to Your library, it is marked "grove text", never Beta. | RQ-438, G-09 FR-916; B-11 |
