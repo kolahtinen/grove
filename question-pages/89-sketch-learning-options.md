@@ -34,3 +34,7 @@ Said done 2026-10-29.
 
 **Answer:** Approve as it stands.
 
+
+## Applied
+
+RQ-450…RQ-455 (requirements from sketches); G-09 FR-903 (the Options page, version B: a sheet with ‹ Home and ✕, skill chips in a 2×2 grid ticked in any number, none = all, 5 · 10 · 20 · 30, Harder questions only on Review, the split bar with its legend), FR-905 and FR-906 (the ticked skills share the time equally in turns; a short share goes to the other ticked skills, texts only after Practise without; Mix keeps Review first at most 40%; the new exercises' durations), FR-922 (the Options page → Home), new FR-928 (Words: next words one per card, I know it / + Pick up; the phrase spotlight with its meaning check), FR-929 (Grammar: the pattern of the day, Learn then Spot it; a tap on any word of a place finds it; earlier patterns spotted after), FR-930 (the approved `content/learning/` built into the server and imported at start-up, migration 020), FR-931 (Report on each item, listed for the owner by `npm run reports:show`); G-03 FR-305 (the word menu's own Patterns section, with the text's patterns and grove's grammar ladder's). Contract, data model (migration 020), plan and `docs/modules.md` (new module `learning`) updated.
