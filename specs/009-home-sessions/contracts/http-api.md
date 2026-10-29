@@ -58,8 +58,8 @@ Answers to Review and Master questions go to G-04's `POST /api/review` unchanged
 
 | Method, path | Body | Responses |
 |---|---|---|
-| `POST /api/learning/answer` | `{item, action: "know"\|"pick"}` | a word or phrase: `know` adds it to the learner's ground (a word only; `400` for a phrase), `pick` makes it a drilled leaf To remember, due now (G-04 FR-411); both mark it shown. `200 {state: "ground"\|"leaf"}` · `404` (not a word or phrase item) |
+| `POST /api/learning/answer` | `{item, action: "know"\|"pick"}` | a word or phrase (and, `pick` only, a grammar pattern from the word menu, FR-305, picked up by its name with its explanation, not marked met): `know` adds it to the learner's ground (a word only; `400` for a phrase), `pick` makes it a drilled leaf To remember, due now (G-04 FR-411); both mark it shown. `200 {state: "ground"\|"leaf"}` · `404` (not a word or phrase item) |
 | `POST /api/learning/seen` | `{item}` | a phrase shown (Next), or a pattern met (Spot it checked). `200 {}` |
 | `POST /api/learning/report` | `{item, reason: "wrong_meaning"\|"bad_translation"\|"unnatural"\|"wrong_mark"\|"audio"\|"other", note?: string ≤ 200}` | `200 {}`; kept for the owner (`npm run reports:show`) |
 
-The text payload of `GET /api/text` (G-03) adds `ladder: [{id, level, name, explain, state, drilled}]` and, on each word token, `ladder: [ids]` (FR-305's Patterns section; a pattern is picked up as `kind: "pattern"` with its name, as the text's patterns are).
+The reading payload of `GET /api/reading` (G-03) adds `ladder: [{id, level, name, explain, state, drilled}]` and, on each word token, `ladder: [ids]` (FR-305's Patterns section; a pattern is picked up as `kind: "pattern"` with its name, as the text's patterns are).

@@ -115,7 +115,9 @@ test('FR-928 RQ-452: I know it puts a word in the ground; + Pick up makes a word
   assert.equal(answerItem({ db, accountId: learner.id, id: 'P-A1-02', action: 'pick' }).state, 'leaf');
   assert.equal(db.prepare("SELECT drilled FROM words WHERE account_id = ? AND kind = 'phrase' AND lemma = ?").get(learner.id, getItem(db, 'P-A1-02').data.phrase).drilled, 1);
   assert.throws(() => answerItem({ db, accountId: learner.id, id: 'P-A1-03', action: 'know' }), /Only a word/);
-  assert.throws(() => answerItem({ db, accountId: learner.id, id: 'G-A1-01', action: 'pick' }), /no such item/);
+  assert.throws(() => answerItem({ db, accountId: learner.id, id: 'G-A1-01', action: 'know' }), /Only a word/);
+  assert.equal(answerItem({ db, accountId: learner.id, id: 'G-A1-01', action: 'pick' }).state, 'leaf', 'a ladder pattern is picked up by its name (FR-305)');
+  assert.equal(db.prepare("SELECT en FROM words WHERE account_id = ? AND kind = 'pattern'").get(learner.id).en, getItem(db, 'G-A1-01').data.explain);
   assert.throws(() => answerItem({ db, accountId: learner.id, id: 'W-nonsenseword', action: 'pick' }), /no such item/);
   const inv = learningInventory(db, learner.id);
   assert.ok(!inv.words.includes(know) && !inv.words.includes(pick));

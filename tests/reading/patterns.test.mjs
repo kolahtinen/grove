@@ -53,3 +53,25 @@ test('FR-309 RQ-171: a pattern item has the fields of a word (state, added time,
   assert.ok(row.added_at > 0);
   assert.equal(row.fallen_at, null);
 });
+
+test('FR-305 RQ-455: the word menu\'s Patterns lists grove\'s grammar ladder patterns whose marked parts are in the sentence, on the words they cover; one picked up shows as a leaf', async () => {
+  const db = t.grove.db;
+  const { ladderFor } = await import('../../server/learning/learning.mjs');
+  const { words } = await import('../../server/learning/content.mjs');
+  const lib = db.prepare('SELECT id, data FROM library_texts ORDER BY id').all()
+    .find((r) => JSON.parse(r.data).lines.some((l) => ladderFor(db, words(l.sv)).length));
+  assert.ok(lib, 'a grove text with a ladder pattern');
+  const added = await c.post('/api/library/add', { id: lib.id });
+  assert.equal(added.status, 200, JSON.stringify(added.body));
+  const r = (await c.get(`/api/reading?id=${added.body.textId}`)).body;
+  assert.ok(r.ladder.length > 0);
+  const p = r.ladder[0];
+  assert.ok(p.id.startsWith('G-') && p.name && p.explain && p.level);
+  assert.deepEqual([p.state, p.drilled], [null, 0]);
+  const on = tokensOf(r).filter((x) => x.ladder?.includes(p.id));
+  assert.ok(on.length > 0, 'the words it covers carry it');
+  assert.ok(tokensOf(r).filter((x) => !x.ladder?.includes(p.id) && x.word).length > 0, 'not every word');
+  assert.equal((await c.post('/api/learning/answer', { item: p.id, action: 'pick' })).status, 200);
+  const again = (await c.get(`/api/reading?id=${added.body.textId}`)).body.ladder.find((x) => x.id === p.id);
+  assert.deepEqual([again.state, again.drilled], ['leaf', 1]);
+});

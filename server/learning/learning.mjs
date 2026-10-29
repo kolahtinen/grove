@@ -127,16 +127,18 @@ export function markSeen(db, accountId, id, now = Date.now()) {
 
 // I know it (a word joins the ground) or + Pick up (a drilled leaf To remember, due now, G-04 FR-411); the
 // content's meaning is the item's, as approved (FR-930). Either marks the item shown.
+// A ladder pattern is picked up from the word menu (G-03 FR-305) by its name, with its explanation.
 export function answerItem({ db, accountId, id, action, now = () => Date.now() }) {
-  const item = mustItem(db, id, ['word', 'phrase']);
+  const item = mustItem(db, id, ['word', 'phrase', 'pattern']);
   if (action === 'know' && item.type !== 'word') throw new HttpError(400, 'bad_request', 'Only a word can be known this way.');
   const items = createItems({ db, now });
   const kind = item.type;
-  const lemma = kind === 'word' ? item.data.lemma : item.data.phrase;
+  const lemma = { word: item.data.lemma, phrase: item.data.phrase, pattern: item.data.name }[kind];
+  const meaning = kind === 'pattern' ? item.data.explain : item.data.en;
   return transaction(db, () => {
     let word = items.find(accountId, lemma, kind);
     if (!word) {
-      word = items.findOrCreate(accountId, lemma, kind, null, item.data.en);
+      word = items.findOrCreate(accountId, lemma, kind, null, meaning);
       db.prepare("UPDATE words SET en_source = 'ai' WHERE id = ?").run(word.id);
       word = items.groundFor(word);
     }
@@ -144,7 +146,7 @@ export function answerItem({ db, accountId, id, action, now = () => Date.now() }
       if (word.state === 'ground') items.pickUp(word);
       else if (!word.drilled) items.setMarks(word, { remember: true });
     }
-    markSeen(db, accountId, id, now());
+    if (kind !== 'pattern') markSeen(db, accountId, id, now());
     return { state: db.prepare('SELECT state FROM words WHERE id = ?').get(word.id).state };
   });
 }
