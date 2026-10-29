@@ -451,7 +451,7 @@ test('FR-202 RQ-444: migration 018 keeps every package and adds only_kind, readi
   }
 });
 
-test('FR-925 RQ-448: migration 019 keeps every row; earlier minutes count as reading, a drilled leaf\'s picked-up time is its added time, and the starting level\'s day is the account\'s creation', () => {
+test('FR-925 RQ-448: migration 019 keeps every row; earlier minutes count as reading, and a drilled leaf\'s picked-up time is its added time', () => {
   const dir = tempDir();
   try {
     const db = openDb(join(dir, 'grove.db'));
@@ -460,13 +460,10 @@ test('FR-925 RQ-448: migration 019 keeps every row; earlier minutes count as rea
     db.prepare("INSERT INTO input_days (account_id, day, seconds) VALUES (1, '2026-10-28', 600)").run();
     db.prepare("INSERT INTO words (id, account_id, lemma, kind, state, added_at, drilled) VALUES (5, 1, 'kopp', 'word', 'leaf', 222, 1)").run();
     db.prepare("INSERT INTO words (id, account_id, lemma, kind, state, added_at, drilled) VALUES (6, 1, 'hus', 'word', 'ground', 333, 0)").run();
-    db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (1)').run();
-    db.prepare("UPDATE learner_settings SET start_level = 'A1' WHERE account_id = 1").run();
     migrate(db);
     assert.deepEqual({ ...db.prepare('SELECT seconds, read_seconds, listen_seconds FROM input_days WHERE account_id = 1').get() }, { seconds: 600, read_seconds: 600, listen_seconds: 0 });
     assert.equal(db.prepare('SELECT picked_at FROM words WHERE id = 5').get().picked_at, 222);
     assert.equal(db.prepare('SELECT picked_at FROM words WHERE id = 6').get().picked_at, null);
-    assert.equal(db.prepare('SELECT start_level_at FROM learner_settings WHERE account_id = 1').get().start_level_at, 111);
     assert.throws(() => db.prepare("UPDATE input_days SET listen_seconds = 60000 WHERE account_id = 1").run());
     db.close();
   } finally {

@@ -48,7 +48,7 @@ The return link (FR-923) is this row: a page shows "‹ Back to your session" on
 
 `words`, `review_answers`, `texts`: sessions read them; answers and reads change them through G-03's and G-04's routes as before. The summary counts `review_answers` and `texts.read_at` between `started_at` and `finished_at`.
 
-## Migration 019 (B-27; FR-924, FR-925): minutes per kind, picked-up time, the starting level's day
+## Migration 019 (B-27; FR-924, FR-925): minutes per kind, picked-up time
 
 `019-progress.sql` changes no row's meaning:
 
@@ -56,5 +56,5 @@ The return link (FR-923) is this row: a page shows "‹ Back to your session" on
 |---|---|---|
 | `input_days` | `read_seconds`, `listen_seconds` INTEGER NOT NULL DEFAULT 0 | Each 0–57600; with `seconds` still the day's total. Existing rows: `read_seconds = seconds` (all earlier input was counted on text pages). "Other" is `seconds − read_seconds − listen_seconds`. |
 | `words` | `picked_at` INTEGER | When the leaf was first drilled (FR-925). Existing drilled or fallen leaves: `added_at`. |
-| `learner_settings` | `start_level_at` INTEGER | When the starting level was set (G-06 FR-603). Existing rows with a starting level: the account's `created_at`. |
+The starting level's day is `learner_settings.start_at`, kept since G-06.
 
