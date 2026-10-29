@@ -970,6 +970,315 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A1-11",
+      "level": "A1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "Hos polisen",
+      "names": [
+        "Sara"
+      ],
+      "above_level": [
+        "plånbok",
+        "oj",
+        "id-kort",
+        "brun",
+        "i morse",
+        "snällt"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej. Jag har tappat min plånbok.",
+          "en": "– Hi. I have lost my wallet."
+        },
+        {
+          "sv": "– Oj. När tappade du den?",
+          "en": "– Oh. When did you lose it?"
+        },
+        {
+          "sv": "– I går kväll, på bussen.",
+          "en": "– Yesterday evening, on the bus."
+        },
+        {
+          "sv": "– Vad finns i plånboken?",
+          "en": "– What is in the wallet?"
+        },
+        {
+          "sv": "– Mitt kort, mitt id-kort och lite pengar.",
+          "en": "– My card, my ID card and a little money."
+        },
+        {
+          "sv": "– Hur ser den ut?",
+          "en": "– What does it look like?"
+        },
+        {
+          "sv": "– Den är liten och brun.",
+          "en": "– It is small and brown."
+        },
+        {
+          "sv": "– Vad heter du?",
+          "en": "– What is your name?"
+        },
+        {
+          "sv": "– Jag heter Sara.",
+          "en": "– My name is Sara."
+        },
+        {
+          "sv": "– Vänta lite, Sara. Jag ska titta.",
+          "en": "– Wait a moment, Sara. I'll have a look."
+        },
+        {
+          "sv": "– Är det den här?",
+          "en": "– Is it this one?"
+        },
+        {
+          "sv": "– Ja! Det är min plånbok!",
+          "en": "– Yes! That's my wallet!"
+        },
+        {
+          "sv": "– En man lämnade den här i morse.",
+          "en": "– A man left it here this morning."
+        },
+        {
+          "sv": "– Vad snällt! Tack så mycket!",
+          "en": "– How kind! Thank you very much!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad har Sara tappat?",
+          "options": [
+            "Sin telefon",
+            "Sin plånbok",
+            "Sin nyckel"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var tappade hon den?",
+          "options": [
+            "På bussen",
+            "I affären",
+            "I parken"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem lämnade plånboken hos polisen?",
+          "options": [
+            "En kvinna",
+            "En man",
+            "Ett barn"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-12",
+      "level": "A1",
+      "topic": "People and family",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Ett foto av familjen",
+      "names": [
+        "Nils",
+        "Ella",
+        "Kim"
+      ],
+      "above_level": [
+        "glasögon",
+        "bredvid",
+        "mormor"
+      ],
+      "lines": [
+        {
+          "sv": "– Vem är det på fotot?",
+          "en": "– Who is that in the photo?"
+        },
+        {
+          "sv": "– Det är min familj.",
+          "en": "– That's my family."
+        },
+        {
+          "sv": "– Vem är mannen med glasögon?",
+          "en": "– Who is the man with glasses?"
+        },
+        {
+          "sv": "– Det är min pappa. Han heter Nils.",
+          "en": "– That's my dad. His name is Nils."
+        },
+        {
+          "sv": "– Och kvinnan bredvid honom?",
+          "en": "– And the woman next to him?"
+        },
+        {
+          "sv": "– Det är min mamma, Ella. Hon är lärare.",
+          "en": "– That's my mum, Ella. She is a teacher."
+        },
+        {
+          "sv": "– Vem är den lilla pojken?",
+          "en": "– Who is the little boy?"
+        },
+        {
+          "sv": "– Det är min bror Kim. Han är fem år.",
+          "en": "– That's my brother Kim. He is five."
+        },
+        {
+          "sv": "– Har ni en hund också?",
+          "en": "– Do you have a dog too?"
+        },
+        {
+          "sv": "– Nej, hunden är mormors.",
+          "en": "– No, the dog is grandma's."
+        },
+        {
+          "sv": "– Bor din mormor nära er?",
+          "en": "– Does your grandma live near you?"
+        },
+        {
+          "sv": "– Ja, hon bor i samma hus.",
+          "en": "– Yes, she lives in the same building."
+        },
+        {
+          "sv": "– Vad bra! Ni ser glada ut.",
+          "en": "– How nice! You look happy."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad gör mamman?",
+          "options": [
+            "Hon är lärare",
+            "Hon är läkare",
+            "Hon är kock"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur gammal är Kim?",
+          "options": [
+            "Tre år",
+            "Fem år",
+            "Tio år"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vems är hunden?",
+          "options": [
+            "Pappans",
+            "Mormors",
+            "Kims"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A1-13",
+      "level": "A1",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Middag på fredag",
+      "names": [
+        "Leila",
+        "Tom"
+      ],
+      "above_level": [
+        "middag",
+        "taco",
+        "skär",
+        "gurka",
+        "steka",
+        "kött",
+        "panna",
+        "lukta",
+        "juice"
+      ],
+      "lines": [
+        {
+          "sv": "Det är fredag kväll.",
+          "en": "It is Friday evening."
+        },
+        {
+          "sv": "Leila och Tom lagar middag tillsammans.",
+          "en": "Leila and Tom are cooking dinner together."
+        },
+        {
+          "sv": "De gör tacos.",
+          "en": "They are making tacos."
+        },
+        {
+          "sv": "Tom skär tomater och gurka.",
+          "en": "Tom cuts tomatoes and cucumber."
+        },
+        {
+          "sv": "Leila steker kött i en panna.",
+          "en": "Leila fries meat in a pan."
+        },
+        {
+          "sv": "Det luktar gott i köket.",
+          "en": "It smells good in the kitchen."
+        },
+        {
+          "sv": "De dricker vatten och juice.",
+          "en": "They drink water and juice."
+        },
+        {
+          "sv": "Tom tycker om ost, så han tar mycket ost.",
+          "en": "Tom likes cheese, so he takes a lot of cheese."
+        },
+        {
+          "sv": "Leila äter mest grönsaker.",
+          "en": "Leila eats mostly vegetables."
+        },
+        {
+          "sv": "Efter maten äter de glass.",
+          "en": "After the meal they eat ice cream."
+        },
+        {
+          "sv": "Sedan tittar de på en film i soffan.",
+          "en": "Then they watch a film on the sofa."
+        },
+        {
+          "sv": "Fredag är den bästa dagen, säger Tom.",
+          "en": "Friday is the best day, says Tom."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad lagar de?",
+          "options": [
+            "Pizza",
+            "Tacos",
+            "Soppa"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör Leila?",
+          "options": [
+            "Hon skär tomater",
+            "Hon steker kött",
+            "Hon bakar bröd"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad gör de efter maten?",
+          "options": [
+            "De går ut",
+            "De tittar på en film",
+            "De diskar"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }

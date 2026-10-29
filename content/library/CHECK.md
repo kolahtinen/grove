@@ -2,7 +2,7 @@
 
 Written by `node scripts/check-library.mjs`: each text counted with grove's own word counting against the words at its level and below: the core list (`core-a1a2.tsv`) first, otherwise the lower of SweLLex (`vocab-graded/`) and Kelly (inflections, compounds and fixed phrases included). "Above" lists the words above the text's level with the level they first count at (— = in no list; * = in no list and not in the word list); **bold** words are far (two or more bands above, or not in Kelly) and limited; the others are one band above, a stretch.
 
-## A1 (10 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
+## A1 (13 texts; 50–80 words, sentences ≤ 10 words, ≤ 4 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -16,8 +16,11 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A1-08 | Johan är kock | reading | 54 | 6 | **kock** (C1), restaurang (A2), fisk (A2), potatis (A2), gäst (A2) | 3 → 1 (soppa, potatis no longer far) | passes |
 | A1-09 | På lördag | reading | 57 | 7 | bio (A2), pizza (A2) | 3 → 0 (bio, pizza, promenera no longer far) | passes |
 | A1-10 | Jag är sjuk | reading, dialogue | 54 | 7 | **åh** (—), feber (A2), det gör inget (A2), vila (A2), **krya** (—) | 4 → 2 (hals, feber no longer far) | passes |
+| A1-11 | Hos polisen | reading, dialogue | 64 | 7 | **plånbok** (B1), **oj** (B1), **id-kort** (—*), brun (A2), **i morse** (B1), snällt (A2) | 5 → 4 (brun no longer far) | passes |
+| A1-12 | Ett foto av familjen | listening, dialogue | 70 | 6 | glasögon (A2), bredvid (A2), mormor (A2) | 1 → 0 (mormor no longer far) | passes |
+| A1-13 | Middag på fredag | listening | 60 | 9 | middag (A2), **taco** (—), skär (A2), gurka (A2), **steka** (B1), kött (A2), **panna** (B1), lukta (A2), juice (A2) | 8 → 3 (tomat, gurka, lukta, juice, soffa no longer far) | passes |
 
-## A2 (10 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
+## A2 (15 texts; 80–120 words, sentences ≤ 14 words, ≤ 5 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -31,8 +34,13 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-08 | En dag i Stockholm | listening | 87 | 14 | — | 2 → 0 (kafé, promenera no longer far) | passes |
 | A2-09 | Fotbollsmatchen | reading | 82 | 9 | **blöt** (B2), paus (B1), **halvlek** (B2) | 2 → 2 (none no longer far) | passes |
 | A2-10 | Ett rum för två nätter | listening, dialogue | 89 | 8 | **familjerum** (—*), **parkering** (C1) | 2 → 2 (none no longer far) | passes |
+| A2-11 | Min bästa vän | reading | 114 | 13 | **träffas** (—), tonår (B1) | 2 → 1 (penna no longer far) | passes |
+| A2-12 | En stressig måndag | listening | 104 | 14 | **väckarklocka** (—), **blöt** (B2), **kännas** (—) | 6 → 3 (paraply, smörgås, kafé no longer far) | passes |
+| A2-13 | Svamp i skogen | reading, dialogue | 109 | 11 | **kantarell** (—), **mossa** (—), **löv** (B2), gran (B1), **svamp** (B2), **korg** (B2), steka (B1) | 8 → 5 (steka, smör, smörgås no longer far) | passes |
+| A2-14 | Fika med Rut | reading | 105 | 14 | **tjugotre** (—), **träffas** (—) | 3 → 2 (baka no longer far) | passes |
+| A2-15 | Vad ska vi äta i kväll? | listening, dialogue | 86 | 7 | **citron** (C2) | 8 → 1 (lök, kyckling, lax, sallad, tomat, gurka, disk no longer far) | passes |
 
-## B1 (10 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
+## B1 (12 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
 
 | id | title | kind | words | longest | above | far: Kelly alone → now | result |
 |---|---|---|---|---|---|---|---|
@@ -46,6 +54,8 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | B1-08 | Körkortet | reading | 123 | 17 | **trettiotvå** (—), **parkera** (C1), **uppkörning** (C1), **skolzon** (—*) | 4 → 4 (none no longer far) | passes |
 | B1-09 | Sopsortering | reading | 122 | 18 | diskbänk (B2), **kärl** (C1), **biogas** (—*), metall (B2), burk (B2), **återvinningscentral** (C1) | 5 → 3 (sopa, batteri no longer far) | passes |
 | B1-10 | Planer för sommaren | listening, dialogue | 125 | 13 | **vandrarhem** (C2) | 2 → 1 (färja no longer far) | passes |
+| B1-11 | Tvillingarna | reading | 139 | 19 | skoj (B2), isär (B2), juridik (B2), **skidlärare** (—*) | 3 → 1 (tvilling, skoj no longer far) | passes |
+| B1-12 | Kräftskiva i augusti | listening | 145 | 18 | **kräftskiva** (—), **kräfta** (C2), **dill** (C2), **saft** (C2), **paj** (C2), **dekorera** (C2), **papperslyktor** (C2), melodi (B2) | 9 → 7 (snapsvisa, fånig no longer far) | passes |
 
 ## B2 (10 texts; 180–250 words, sentences ≤ 25 words, ≤ 9 far words)
 
@@ -77,4 +87,4 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C1-09 | Skogen – resurs eller livsmiljö? | reading | 268 | 27 | infekterad (C2), **likåldrig** (—*), **lav** (—), **bärplockning** (—), **hyggesfri** (—*), **friluftsliv** (—) | 6 → 5 (kalhuggs no longer far) | passes |
 | C1-10 | Litar vi fortfarande på varandra? | reading, dialogue | 266 | 28 | **otrygghet** (—), **naturlag** (—) | 2 → 2 (none no longer far) | passes |
 
-50 of 50 texts pass.
+60 of 60 texts pass.

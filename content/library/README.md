@@ -70,3 +70,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 ## Approval
 
 2026-10-29: the owner approved all 50 drafts (A1–C1, ten per level) for the common library as they stand, without a line-by-line read (docs/reviews/2026-10-29-branch-test.md, B-11). They are still marked as not read by a Swedish speaker; fixes come from learners' reports and the owner's later reading (the reading page keeps a Good / Small fixes / Rewrite mark per text).
+
+2026-10-29, batch 1 (10 texts): A1-11…A1-13, A2-11…A2-15, B1-11, B1-12, added by Claude at the owner's word, 2026-10-29 (B-19). They fill the topic gaps (A1 Society; A2 People and family, Daily life, Nature and environment, Society) and thin topics (People and family, Food and drink).

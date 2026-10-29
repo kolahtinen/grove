@@ -909,6 +909,291 @@
   ]
  },
  {
+  "id": "A1-11",
+  "level": "A1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Hos polisen",
+  "names": [
+   "Sara"
+  ],
+  "lines": [
+   {
+    "sv": "– Hej. Jag har tappat min plånbok.",
+    "en": "– Hi. I have lost my wallet."
+   },
+   {
+    "sv": "– Oj. När tappade du den?",
+    "en": "– Oh. When did you lose it?"
+   },
+   {
+    "sv": "– I går kväll, på bussen.",
+    "en": "– Yesterday evening, on the bus."
+   },
+   {
+    "sv": "– Vad finns i plånboken?",
+    "en": "– What is in the wallet?"
+   },
+   {
+    "sv": "– Mitt kort, mitt id-kort och lite pengar.",
+    "en": "– My card, my ID card and a little money."
+   },
+   {
+    "sv": "– Hur ser den ut?",
+    "en": "– What does it look like?"
+   },
+   {
+    "sv": "– Den är liten och brun.",
+    "en": "– It is small and brown."
+   },
+   {
+    "sv": "– Vad heter du?",
+    "en": "– What is your name?"
+   },
+   {
+    "sv": "– Jag heter Sara.",
+    "en": "– My name is Sara."
+   },
+   {
+    "sv": "– Vänta lite, Sara. Jag ska titta.",
+    "en": "– Wait a moment, Sara. I'll have a look."
+   },
+   {
+    "sv": "– Är det den här?",
+    "en": "– Is it this one?"
+   },
+   {
+    "sv": "– Ja! Det är min plånbok!",
+    "en": "– Yes! That's my wallet!"
+   },
+   {
+    "sv": "– En man lämnade den här i morse.",
+    "en": "– A man left it here this morning."
+   },
+   {
+    "sv": "– Vad snällt! Tack så mycket!",
+    "en": "– How kind! Thank you very much!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad har Sara tappat?",
+    "options": [
+     "Sin telefon",
+     "Sin plånbok",
+     "Sin nyckel"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Var tappade hon den?",
+    "options": [
+     "På bussen",
+     "I affären",
+     "I parken"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vem lämnade plånboken hos polisen?",
+    "options": [
+     "En kvinna",
+     "En man",
+     "Ett barn"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A1-12",
+  "level": "A1",
+  "topic": "People and family",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Ett foto av familjen",
+  "names": [
+   "Nils",
+   "Ella",
+   "Kim"
+  ],
+  "lines": [
+   {
+    "sv": "– Vem är det på fotot?",
+    "en": "– Who is that in the photo?"
+   },
+   {
+    "sv": "– Det är min familj.",
+    "en": "– That's my family."
+   },
+   {
+    "sv": "– Vem är mannen med glasögon?",
+    "en": "– Who is the man with glasses?"
+   },
+   {
+    "sv": "– Det är min pappa. Han heter Nils.",
+    "en": "– That's my dad. His name is Nils."
+   },
+   {
+    "sv": "– Och kvinnan bredvid honom?",
+    "en": "– And the woman next to him?"
+   },
+   {
+    "sv": "– Det är min mamma, Ella. Hon är lärare.",
+    "en": "– That's my mum, Ella. She is a teacher."
+   },
+   {
+    "sv": "– Vem är den lilla pojken?",
+    "en": "– Who is the little boy?"
+   },
+   {
+    "sv": "– Det är min bror Kim. Han är fem år.",
+    "en": "– That's my brother Kim. He is five."
+   },
+   {
+    "sv": "– Har ni en hund också?",
+    "en": "– Do you have a dog too?"
+   },
+   {
+    "sv": "– Nej, hunden är mormors.",
+    "en": "– No, the dog is grandma's."
+   },
+   {
+    "sv": "– Bor din mormor nära er?",
+    "en": "– Does your grandma live near you?"
+   },
+   {
+    "sv": "– Ja, hon bor i samma hus.",
+    "en": "– Yes, she lives in the same building."
+   },
+   {
+    "sv": "– Vad bra! Ni ser glada ut.",
+    "en": "– How nice! You look happy."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad gör mamman?",
+    "options": [
+     "Hon är lärare",
+     "Hon är läkare",
+     "Hon är kock"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Hur gammal är Kim?",
+    "options": [
+     "Tre år",
+     "Fem år",
+     "Tio år"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vems är hunden?",
+    "options": [
+     "Pappans",
+     "Mormors",
+     "Kims"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A1-13",
+  "level": "A1",
+  "topic": "Food and drink",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Middag på fredag",
+  "names": [
+   "Leila",
+   "Tom"
+  ],
+  "lines": [
+   {
+    "sv": "Det är fredag kväll.",
+    "en": "It is Friday evening."
+   },
+   {
+    "sv": "Leila och Tom lagar middag tillsammans.",
+    "en": "Leila and Tom are cooking dinner together."
+   },
+   {
+    "sv": "De gör tacos.",
+    "en": "They are making tacos."
+   },
+   {
+    "sv": "Tom skär tomater och gurka.",
+    "en": "Tom cuts tomatoes and cucumber."
+   },
+   {
+    "sv": "Leila steker kött i en panna.",
+    "en": "Leila fries meat in a pan."
+   },
+   {
+    "sv": "Det luktar gott i köket.",
+    "en": "It smells good in the kitchen."
+   },
+   {
+    "sv": "De dricker vatten och juice.",
+    "en": "They drink water and juice."
+   },
+   {
+    "sv": "Tom tycker om ost, så han tar mycket ost.",
+    "en": "Tom likes cheese, so he takes a lot of cheese."
+   },
+   {
+    "sv": "Leila äter mest grönsaker.",
+    "en": "Leila eats mostly vegetables."
+   },
+   {
+    "sv": "Efter maten äter de glass.",
+    "en": "After the meal they eat ice cream."
+   },
+   {
+    "sv": "Sedan tittar de på en film i soffan.",
+    "en": "Then they watch a film on the sofa."
+   },
+   {
+    "sv": "Fredag är den bästa dagen, säger Tom.",
+    "en": "Friday is the best day, says Tom."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad lagar de?",
+    "options": [
+     "Pizza",
+     "Tacos",
+     "Soppa"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör Leila?",
+    "options": [
+     "Hon skär tomater",
+     "Hon steker kött",
+     "Hon bakar bröd"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad gör de efter maten?",
+    "options": [
+     "De går ut",
+     "De tittar på en film",
+     "De diskar"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "A2-01",
   "level": "A2",
   "topic": "Travel and transport",
@@ -1851,6 +2136,457 @@
   ]
  },
  {
+  "id": "A2-11",
+  "level": "A2",
+  "topic": "People and family",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Min bästa vän",
+  "names": [
+   "Josefin",
+   "Amina",
+   "Göteborg"
+  ],
+  "lines": [
+   {
+    "sv": "Josefin och Amina träffades första dagen i skolan när de var sju år.",
+    "en": "Josefin and Amina met on the first day of school when they were seven."
+   },
+   {
+    "sv": "De satt bredvid varandra och delade på en röd penna.",
+    "en": "They sat next to each other and shared a red pencil."
+   },
+   {
+    "sv": "Sedan dess har de varit bästa vänner.",
+    "en": "Since then they have been best friends."
+   },
+   {
+    "sv": "När de var små lekte de i parken varje dag efter skolan.",
+    "en": "When they were little they played in the park every day after school."
+   },
+   {
+    "sv": "I tonåren pratade de i telefon i flera timmar varje kväll.",
+    "en": "As teenagers they talked on the phone for hours every evening."
+   },
+   {
+    "sv": "Nu är de trettio år och bor i olika städer.",
+    "en": "Now they are thirty and live in different cities."
+   },
+   {
+    "sv": "Josefin bor kvar, men Amina flyttade till Göteborg.",
+    "en": "Josefin still lives there, but Amina moved to Gothenburg."
+   },
+   {
+    "sv": "De träffas inte lika ofta längre, men de skickar meddelanden nästan varje dag.",
+    "en": "They don't meet as often any more, but they send messages almost every day."
+   },
+   {
+    "sv": "Varje sommar reser de bort tillsammans en vecka.",
+    "en": "Every summer they go away together for a week."
+   },
+   {
+    "sv": "Förra året var de i Norge och vandrade i bergen.",
+    "en": "Last year they were in Norway and hiked in the mountains."
+   },
+   {
+    "sv": "När Josefin fick ett barn i våras kom Amina först av alla.",
+    "en": "When Josefin had a baby last spring, Amina was the first to come."
+   },
+   {
+    "sv": "En bra vän är som en syster, säger Josefin.",
+    "en": "A good friend is like a sister, says Josefin."
+   }
+  ],
+  "questions": [
+   {
+    "q": "När träffades Josefin och Amina?",
+    "options": [
+     "På jobbet",
+     "Första dagen i skolan",
+     "På semester"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Var bor Amina nu?",
+    "options": [
+     "I Göteborg",
+     "I Norge",
+     "Hemma"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad gör de varje sommar?",
+    "options": [
+     "De reser bort en vecka",
+     "De arbetar",
+     "De går i skolan"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "A2-12",
+  "level": "A2",
+  "topic": "Daily life",
+  "form": "prose",
+  "kind": "listening",
+  "title": "En stressig måndag",
+  "names": [
+   "Viktor"
+  ],
+  "lines": [
+   {
+    "sv": "Viktor vaknade och tittade på klockan.",
+    "en": "Viktor woke up and looked at the clock."
+   },
+   {
+    "sv": "Den var redan halv åtta, och han skulle vara på jobbet klockan åtta.",
+    "en": "It was already half past seven, and he was supposed to be at work at eight."
+   },
+   {
+    "sv": "Han hade glömt att ställa väckarklockan.",
+    "en": "He had forgotten to set the alarm clock."
+   },
+   {
+    "sv": "Han klädde på sig snabbt och hoppade över frukosten.",
+    "en": "He got dressed quickly and skipped breakfast."
+   },
+   {
+    "sv": "Ute regnade det, och han hittade inte sitt paraply.",
+    "en": "Outside it was raining, and he couldn't find his umbrella."
+   },
+   {
+    "sv": "Bussen var full, så han fick stå hela vägen.",
+    "en": "The bus was full, so he had to stand the whole way."
+   },
+   {
+    "sv": "Han kom till kontoret tjugo minuter för sent och var helt blöt.",
+    "en": "He arrived at the office twenty minutes late and was completely wet."
+   },
+   {
+    "sv": "Men hans chef log bara och sa att mötet var flyttat till klockan nio.",
+    "en": "But his boss just smiled and said the meeting had been moved to nine."
+   },
+   {
+    "sv": "Viktor köpte en kopp kaffe och en smörgås i kaféet nere i huset.",
+    "en": "Viktor bought a cup of coffee and a sandwich in the café downstairs."
+   },
+   {
+    "sv": "Efter det kändes allt mycket bättre.",
+    "en": "After that everything felt much better."
+   },
+   {
+    "sv": "På kvällen ställde han två väckarklockor, för säkerhets skull.",
+    "en": "In the evening he set two alarm clocks, just in case."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför vaknade Viktor för sent?",
+    "options": [
+     "Han var sjuk",
+     "Han hade glömt att ställa väckarklockan",
+     "Bussen var sen"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur var vädret?",
+    "options": [
+     "Det regnade",
+     "Det var soligt",
+     "Det snöade"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad sa chefen?",
+    "options": [
+     "Att Viktor skulle gå hem",
+     "Att mötet var flyttat till nio",
+     "Att han var arg"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A2-13",
+  "level": "A2",
+  "topic": "Nature and environment",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "Svamp i skogen",
+  "names": [
+   "Ingrid",
+   "Lukas"
+  ],
+  "lines": [
+   {
+    "sv": "– Lukas, titta här! Jag har hittat kantareller.",
+    "en": "– Lukas, look here! I've found chanterelles."
+   },
+   {
+    "sv": "– Var då? Jag ser bara mossa och löv.",
+    "en": "– Where? I only see moss and leaves."
+   },
+   {
+    "sv": "– Här, under granen. De är gula, ser du?",
+    "en": "– Here, under the spruce. They're yellow, see?"
+   },
+   {
+    "sv": "– Ja, nu ser jag dem. Är du säker på att man kan äta dem?",
+    "en": "– Yes, now I see them. Are you sure you can eat them?"
+   },
+   {
+    "sv": "– Helt säker. Jag har plockat kantareller sedan jag var liten.",
+    "en": "– Completely sure. I've been picking chanterelles since I was little."
+   },
+   {
+    "sv": "– Min pappa sa alltid att man inte ska plocka okända svampar.",
+    "en": "– My dad always said you shouldn't pick unknown mushrooms."
+   },
+   {
+    "sv": "– Det har han rätt i. Vissa svampar är farliga.",
+    "en": "– He's right about that. Some mushrooms are dangerous."
+   },
+   {
+    "sv": "– Hur många har vi nu?",
+    "en": "– How many do we have now?"
+   },
+   {
+    "sv": "– Hela korgen är nästan full. Det räcker till middag.",
+    "en": "– The whole basket is almost full. That's enough for dinner."
+   },
+   {
+    "sv": "– Hur lagar man dem?",
+    "en": "– How do you cook them?"
+   },
+   {
+    "sv": "– Man steker dem i smör och äter dem på en smörgås. Det är det bästa jag vet.",
+    "en": "– You fry them in butter and eat them on a sandwich. It's the best thing I know."
+   },
+   {
+    "sv": "– Då går vi hem. Jag börjar bli hungrig.",
+    "en": "– Then let's go home. I'm starting to get hungry."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Var hittade Ingrid kantarellerna?",
+    "options": [
+     "Under en gran",
+     "Vid sjön",
+     "I trädgården"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad sa Lukas pappa?",
+    "options": [
+     "Att alla svampar är farliga",
+     "Att man inte ska plocka svamp man inte känner igen",
+     "Att kantareller är gröna"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur vill Ingrid äta svampen?",
+    "options": [
+     "I en soppa",
+     "Stekt i smör på en smörgås",
+     "Rå"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A2-14",
+  "level": "A2",
+  "topic": "Society",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Fika med Rut",
+  "names": [
+   "Rut",
+   "Daniel"
+  ],
+  "lines": [
+   {
+    "sv": "Daniel är tjugotre år och studerar på universitetet.",
+    "en": "Daniel is twenty-three and studies at the university."
+   },
+   {
+    "sv": "En gång i veckan besöker han Rut, som är nittio år och bor ensam.",
+    "en": "Once a week he visits Rut, who is ninety and lives alone."
+   },
+   {
+    "sv": "De träffades genom en förening som hjälper äldre som känner sig ensamma.",
+    "en": "They met through an association that helps older people who feel lonely."
+   },
+   {
+    "sv": "Daniel får inga pengar för det, men han tycker att det är roligt.",
+    "en": "Daniel gets no money for it, but he thinks it is fun."
+   },
+   {
+    "sv": "Varje tisdag dricker de kaffe och äter kakor som Rut har bakat.",
+    "en": "Every Tuesday they drink coffee and eat biscuits Rut has baked."
+   },
+   {
+    "sv": "Rut berättar om hur det var när hon var ung.",
+    "en": "Rut tells him what it was like when she was young."
+   },
+   {
+    "sv": "Hon arbetade på posten i fyrtio år och har sett staden förändras.",
+    "en": "She worked at the post office for forty years and has seen the town change."
+   },
+   {
+    "sv": "Daniel hjälper henne med datorn så att hon kan prata med sina barnbarn.",
+    "en": "Daniel helps her with the computer so she can talk to her grandchildren."
+   },
+   {
+    "sv": "Ibland går de en kort promenad till torget.",
+    "en": "Sometimes they take a short walk to the square."
+   },
+   {
+    "sv": "Rut säger att tisdagen är veckans bästa dag.",
+    "en": "Rut says Tuesday is the best day of the week."
+   },
+   {
+    "sv": "Daniel säger samma sak.",
+    "en": "Daniel says the same."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur gammal är Rut?",
+    "options": [
+     "Sjuttio år",
+     "Åttio år",
+     "Nittio år"
+    ],
+    "answer": 2
+   },
+   {
+    "q": "Hur träffades de?",
+    "options": [
+     "Genom en förening",
+     "På universitetet",
+     "De är grannar"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad hjälper Daniel Rut med?",
+    "options": [
+     "Att baka",
+     "Datorn",
+     "Att städa"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "A2-15",
+  "level": "A2",
+  "topic": "Food and drink",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Vad ska vi äta i kväll?",
+  "names": [
+   "Ebba",
+   "Alex"
+  ],
+  "lines": [
+   {
+    "sv": "– Alex, vad ska vi äta i kväll?",
+    "en": "– Alex, what shall we eat tonight?"
+   },
+   {
+    "sv": "– Jag vet inte. Vad finns det hemma?",
+    "en": "– I don't know. What is there at home?"
+   },
+   {
+    "sv": "– Lite ris, några ägg och en lök. Inte mycket.",
+    "en": "– A little rice, a few eggs and an onion. Not much."
+   },
+   {
+    "sv": "– Vi kan köpa något på vägen hem.",
+    "en": "– We can buy something on the way home."
+   },
+   {
+    "sv": "– Ska vi laga kyckling med ris?",
+    "en": "– Shall we cook chicken with rice?"
+   },
+   {
+    "sv": "– Vi åt kyckling i går. Vad sägs om fisk?",
+    "en": "– We had chicken yesterday. What about fish?"
+   },
+   {
+    "sv": "– Bra idé. Då köper jag lax och citron.",
+    "en": "– Good idea. Then I'll buy salmon and lemon."
+   },
+   {
+    "sv": "– Och potatis i stället för ris.",
+    "en": "– And potatoes instead of rice."
+   },
+   {
+    "sv": "– Okej. Ska vi ha sallad också?",
+    "en": "– Okay. Shall we have a salad too?"
+   },
+   {
+    "sv": "– Ja, köp tomater och gurka.",
+    "en": "– Yes, buy tomatoes and cucumber."
+   },
+   {
+    "sv": "– Vem lagar maten?",
+    "en": "– Who's cooking?"
+   },
+   {
+    "sv": "– Jag lagar, och du diskar efteråt.",
+    "en": "– I'll cook, and you wash up afterwards."
+   },
+   {
+    "sv": "– Det är en bra affär. Vi ses klockan sex!",
+    "en": "– That's a good deal. See you at six!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad åt de i går?",
+    "options": [
+     "Fisk",
+     "Kyckling",
+     "Pasta"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad ska de äta i kväll?",
+    "options": [
+     "Lax med potatis",
+     "Kyckling med ris",
+     "Ägg med lök"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vem diskar?",
+    "options": [
+     "Ebba",
+     "Alex",
+     "Båda"
+    ],
+    "answer": 1
+   }
+  ]
+ },
+ {
   "id": "B1-01",
   "level": "B1",
   "topic": "Work and study",
@@ -2778,6 +3514,184 @@
      "Träna"
     ],
     "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "B1-11",
+  "level": "B1",
+  "topic": "People and family",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Tvillingarna",
+  "names": [
+   "Elsa",
+   "Maja",
+   "Kanada"
+  ],
+  "lines": [
+   {
+    "sv": "Elsa och Maja är tvillingar, men de är väldigt olika.",
+    "en": "Elsa and Maja are twins, but they are very different."
+   },
+   {
+    "sv": "Elsa har alltid varit lugn och tyckt om att läsa, medan Maja hellre spelade fotboll och klättrade i träd.",
+    "en": "Elsa has always been calm and liked reading, while Maja preferred playing football and climbing trees."
+   },
+   {
+    "sv": "När de var små klädde deras mamma dem i likadana kläder, vilket båda tyckte var hemskt.",
+    "en": "When they were little their mother dressed them in identical clothes, which both thought was awful."
+   },
+   {
+    "sv": "I skolan blandade lärarna ofta ihop dem, och ibland bytte de plats på skoj.",
+    "en": "At school the teachers often mixed them up, and sometimes they swapped places for fun."
+   },
+   {
+    "sv": "Efter gymnasiet gick deras vägar isär.",
+    "en": "After upper secondary school their paths parted."
+   },
+   {
+    "sv": "Elsa började studera juridik, och Maja flyttade till Kanada för att arbeta som skidlärare.",
+    "en": "Elsa started studying law, and Maja moved to Canada to work as a ski instructor."
+   },
+   {
+    "sv": "Under de åren pratade de i telefon varje söndag, trots tidsskillnaden.",
+    "en": "During those years they talked on the phone every Sunday, despite the time difference."
+   },
+   {
+    "sv": "Elsa säger att det var då hon förstod hur mycket hennes syster betydde för henne.",
+    "en": "Elsa says it was then she understood how much her sister meant to her."
+   },
+   {
+    "sv": "Nu bor de i samma stad igen och träffas flera gånger i veckan.",
+    "en": "Now they live in the same town again and meet several times a week."
+   },
+   {
+    "sv": "De är fortfarande olika, men de bråkar mycket mindre än förr.",
+    "en": "They are still different, but they quarrel much less than before."
+   },
+   {
+    "sv": "Vi behöver inte vara lika för att förstå varandra, säger Maja.",
+    "en": "We don't need to be alike to understand each other, says Maja."
+   },
+   {
+    "sv": "Och ingen annan kan få mig att skratta som hon.",
+    "en": "And nobody else can make me laugh like she does."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur är Elsa?",
+    "options": [
+     "Lugn och tycker om att läsa",
+     "Vild och sportig",
+     "Blyg och tyst"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad gjorde Maja i Kanada?",
+    "options": [
+     "Hon studerade juridik",
+     "Hon arbetade som skidlärare",
+     "Hon var på semester"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "När pratade systrarna i telefon?",
+    "options": [
+     "Varje söndag",
+     "En gång i månaden",
+     "Aldrig"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "B1-12",
+  "level": "B1",
+  "topic": "Food and drink",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Kräftskiva i augusti",
+  "names": [
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "I augusti har många svenskar kräftskiva, en fest där man äter kräftor tillsammans.",
+    "en": "In August many Swedes have a crayfish party, a party where people eat crayfish together."
+   },
+   {
+    "sv": "Förr fick man bara fiska kräftor under en kort tid i slutet av sommaren.",
+    "en": "In the past you were only allowed to catch crayfish for a short time at the end of summer."
+   },
+   {
+    "sv": "Därför blev det en tradition att fira när säsongen började.",
+    "en": "So it became a tradition to celebrate when the season started."
+   },
+   {
+    "sv": "Kräftorna kokas med salt och mycket dill och äts kalla.",
+    "en": "The crayfish are boiled with salt and a lot of dill and eaten cold."
+   },
+   {
+    "sv": "Man äter dem med händerna, och det är helt okej att det låter när man suger ut saften.",
+    "en": "You eat them with your hands, and it's perfectly fine to make noise when you suck out the juice."
+   },
+   {
+    "sv": "Till kräftorna serveras bröd, ost och ofta en paj.",
+    "en": "With the crayfish there is bread, cheese and often a pie."
+   },
+   {
+    "sv": "Bordet dekoreras med papperslyktor som ser ut som en glad måne, och gästerna har roliga hattar på huvudet.",
+    "en": "The table is decorated with paper lanterns that look like a happy moon, and the guests wear funny hats."
+   },
+   {
+    "sv": "Under kvällen sjunger man snapsvisor, korta sånger som ofta är lite fåniga.",
+    "en": "During the evening people sing drinking songs, short songs that are often a little silly."
+   },
+   {
+    "sv": "Många skriver till och med egna texter till kända melodier.",
+    "en": "Many even write their own lyrics to well-known tunes."
+   },
+   {
+    "sv": "Den som inte tycker om skaldjur behöver inte vara orolig, eftersom det alltid finns annan mat också.",
+    "en": "Anyone who doesn't like shellfish needn't worry, since there is always other food too."
+   },
+   {
+    "sv": "Det viktigaste är inte kräftorna utan att man träffas en sista gång innan hösten och mörkret kommer.",
+    "en": "The most important thing isn't the crayfish but meeting one last time before autumn and the darkness come."
+   }
+  ],
+  "questions": [
+   {
+    "q": "När har man kräftskiva?",
+    "options": [
+     "I augusti",
+     "I december",
+     "I maj"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Hur äter man kräftorna?",
+    "options": [
+     "Varma med kniv och gaffel",
+     "Kalla med händerna",
+     "I en soppa"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är det viktigaste med kräftskivan enligt texten?",
+    "options": [
+     "Kräftorna",
+     "Hattarna",
+     "Att man träffas innan hösten kommer"
+    ],
+    "answer": 2
    }
   ]
  },

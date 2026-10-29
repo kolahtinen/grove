@@ -976,6 +976,200 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "B1-11",
+      "level": "B1",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Tvillingarna",
+      "names": [
+        "Elsa",
+        "Maja",
+        "Kanada"
+      ],
+      "above_level": [
+        "skoj",
+        "isär",
+        "juridik",
+        "skidlärare"
+      ],
+      "lines": [
+        {
+          "sv": "Elsa och Maja är tvillingar, men de är väldigt olika.",
+          "en": "Elsa and Maja are twins, but they are very different."
+        },
+        {
+          "sv": "Elsa har alltid varit lugn och tyckt om att läsa, medan Maja hellre spelade fotboll och klättrade i träd.",
+          "en": "Elsa has always been calm and liked reading, while Maja preferred playing football and climbing trees."
+        },
+        {
+          "sv": "När de var små klädde deras mamma dem i likadana kläder, vilket båda tyckte var hemskt.",
+          "en": "When they were little their mother dressed them in identical clothes, which both thought was awful."
+        },
+        {
+          "sv": "I skolan blandade lärarna ofta ihop dem, och ibland bytte de plats på skoj.",
+          "en": "At school the teachers often mixed them up, and sometimes they swapped places for fun."
+        },
+        {
+          "sv": "Efter gymnasiet gick deras vägar isär.",
+          "en": "After upper secondary school their paths parted."
+        },
+        {
+          "sv": "Elsa började studera juridik, och Maja flyttade till Kanada för att arbeta som skidlärare.",
+          "en": "Elsa started studying law, and Maja moved to Canada to work as a ski instructor."
+        },
+        {
+          "sv": "Under de åren pratade de i telefon varje söndag, trots tidsskillnaden.",
+          "en": "During those years they talked on the phone every Sunday, despite the time difference."
+        },
+        {
+          "sv": "Elsa säger att det var då hon förstod hur mycket hennes syster betydde för henne.",
+          "en": "Elsa says it was then she understood how much her sister meant to her."
+        },
+        {
+          "sv": "Nu bor de i samma stad igen och träffas flera gånger i veckan.",
+          "en": "Now they live in the same town again and meet several times a week."
+        },
+        {
+          "sv": "De är fortfarande olika, men de bråkar mycket mindre än förr.",
+          "en": "They are still different, but they quarrel much less than before."
+        },
+        {
+          "sv": "Vi behöver inte vara lika för att förstå varandra, säger Maja.",
+          "en": "We don't need to be alike to understand each other, says Maja."
+        },
+        {
+          "sv": "Och ingen annan kan få mig att skratta som hon.",
+          "en": "And nobody else can make me laugh like she does."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur är Elsa?",
+          "options": [
+            "Lugn och tycker om att läsa",
+            "Vild och sportig",
+            "Blyg och tyst"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad gjorde Maja i Kanada?",
+          "options": [
+            "Hon studerade juridik",
+            "Hon arbetade som skidlärare",
+            "Hon var på semester"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "När pratade systrarna i telefon?",
+          "options": [
+            "Varje söndag",
+            "En gång i månaden",
+            "Aldrig"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B1-12",
+      "level": "B1",
+      "topic": "Food and drink",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Kräftskiva i augusti",
+      "names": [
+        "Sverige"
+      ],
+      "above_level": [
+        "kräftskiva",
+        "kräfta",
+        "dill",
+        "saft",
+        "paj",
+        "dekorera",
+        "papperslyktor",
+        "melodi"
+      ],
+      "lines": [
+        {
+          "sv": "I augusti har många svenskar kräftskiva, en fest där man äter kräftor tillsammans.",
+          "en": "In August many Swedes have a crayfish party, a party where people eat crayfish together."
+        },
+        {
+          "sv": "Förr fick man bara fiska kräftor under en kort tid i slutet av sommaren.",
+          "en": "In the past you were only allowed to catch crayfish for a short time at the end of summer."
+        },
+        {
+          "sv": "Därför blev det en tradition att fira när säsongen började.",
+          "en": "So it became a tradition to celebrate when the season started."
+        },
+        {
+          "sv": "Kräftorna kokas med salt och mycket dill och äts kalla.",
+          "en": "The crayfish are boiled with salt and a lot of dill and eaten cold."
+        },
+        {
+          "sv": "Man äter dem med händerna, och det är helt okej att det låter när man suger ut saften.",
+          "en": "You eat them with your hands, and it's perfectly fine to make noise when you suck out the juice."
+        },
+        {
+          "sv": "Till kräftorna serveras bröd, ost och ofta en paj.",
+          "en": "With the crayfish there is bread, cheese and often a pie."
+        },
+        {
+          "sv": "Bordet dekoreras med papperslyktor som ser ut som en glad måne, och gästerna har roliga hattar på huvudet.",
+          "en": "The table is decorated with paper lanterns that look like a happy moon, and the guests wear funny hats."
+        },
+        {
+          "sv": "Under kvällen sjunger man snapsvisor, korta sånger som ofta är lite fåniga.",
+          "en": "During the evening people sing drinking songs, short songs that are often a little silly."
+        },
+        {
+          "sv": "Många skriver till och med egna texter till kända melodier.",
+          "en": "Many even write their own lyrics to well-known tunes."
+        },
+        {
+          "sv": "Den som inte tycker om skaldjur behöver inte vara orolig, eftersom det alltid finns annan mat också.",
+          "en": "Anyone who doesn't like shellfish needn't worry, since there is always other food too."
+        },
+        {
+          "sv": "Det viktigaste är inte kräftorna utan att man träffas en sista gång innan hösten och mörkret kommer.",
+          "en": "The most important thing isn't the crayfish but meeting one last time before autumn and the darkness come."
+        }
+      ],
+      "questions": [
+        {
+          "q": "När har man kräftskiva?",
+          "options": [
+            "I augusti",
+            "I december",
+            "I maj"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur äter man kräftorna?",
+          "options": [
+            "Varma med kniv och gaffel",
+            "Kalla med händerna",
+            "I en soppa"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är det viktigaste med kräftskivan enligt texten?",
+          "options": [
+            "Kräftorna",
+            "Hattarna",
+            "Att man träffas innan hösten kommer"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }
