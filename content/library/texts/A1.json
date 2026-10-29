@@ -3,7 +3,8 @@
   "texts": [
     {
       "id": "A1-01",
-      "topic": "Me and my family",
+      "level": "A1",
+      "topic": "People and family",
       "form": "prose",
       "kind": "reading",
       "title": "Jag heter Anna",
@@ -103,6 +104,7 @@
     },
     {
       "id": "A1-02",
+      "level": "A1",
       "topic": "Daily life",
       "form": "prose",
       "kind": "reading",
@@ -113,8 +115,7 @@
       "above_level": [
         "bröd",
         "jacka",
-        "kontor",
-        "stan"
+        "kontor"
       ],
       "lines": [
         {
@@ -198,6 +199,7 @@
     },
     {
       "id": "A1-03",
+      "level": "A1",
       "topic": "Food and drink",
       "form": "dialogue",
       "kind": "reading",
@@ -298,6 +300,7 @@
     },
     {
       "id": "A1-04",
+      "level": "A1",
       "topic": "Home",
       "form": "prose",
       "kind": "reading",
@@ -390,7 +393,8 @@
     },
     {
       "id": "A1-05",
-      "topic": "Shopping",
+      "level": "A1",
+      "topic": "Daily life",
       "form": "dialogue",
       "kind": "listening",
       "title": "I affären",
@@ -486,7 +490,8 @@
     },
     {
       "id": "A1-06",
-      "topic": "Weather and seasons",
+      "level": "A1",
+      "topic": "Nature and environment",
       "form": "prose",
       "kind": "listening",
       "title": "Vädret i dag",
@@ -584,7 +589,8 @@
     },
     {
       "id": "A1-07",
-      "topic": "Getting around",
+      "level": "A1",
+      "topic": "Travel and transport",
       "form": "dialogue",
       "kind": "listening",
       "title": "Vid busshållplatsen",
@@ -678,7 +684,8 @@
     },
     {
       "id": "A1-08",
-      "topic": "Work",
+      "level": "A1",
+      "topic": "Work and study",
       "form": "prose",
       "kind": "reading",
       "title": "Johan är kock",
@@ -773,7 +780,8 @@
     },
     {
       "id": "A1-09",
-      "topic": "Free time",
+      "level": "A1",
+      "topic": "Free time and culture",
       "form": "prose",
       "kind": "reading",
       "title": "På lördag",
@@ -783,8 +791,7 @@
       ],
       "above_level": [
         "bio",
-        "pizza",
-        "stan"
+        "pizza"
       ],
       "lines": [
         {
@@ -868,6 +875,7 @@
     },
     {
       "id": "A1-10",
+      "level": "A1",
       "topic": "Health",
       "form": "dialogue",
       "kind": "reading",

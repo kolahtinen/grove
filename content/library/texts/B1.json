@@ -3,7 +3,8 @@
   "texts": [
     {
       "id": "B1-01",
-      "topic": "Work",
+      "level": "B1",
+      "topic": "Work and study",
       "form": "prose",
       "kind": "reading",
       "title": "Att jobba hemifrån",
@@ -99,7 +100,8 @@
     },
     {
       "id": "B1-02",
-      "topic": "Culture",
+      "level": "B1",
+      "topic": "Free time and culture",
       "form": "prose",
       "kind": "reading",
       "title": "Midsommar",
@@ -194,7 +196,8 @@
     },
     {
       "id": "B1-03",
-      "topic": "Getting around",
+      "level": "B1",
+      "topic": "Travel and transport",
       "form": "dialogue",
       "kind": "reading",
       "title": "Tåget är försenat",
@@ -289,6 +292,7 @@
     },
     {
       "id": "B1-04",
+      "level": "B1",
       "topic": "Society",
       "form": "prose",
       "kind": "reading",
@@ -298,7 +302,7 @@
         "Ivan"
       ],
       "above_level": [
-        "läxhjälpen"
+        "läxhjälp"
       ],
       "lines": [
         {
@@ -382,6 +386,7 @@
     },
     {
       "id": "B1-05",
+      "level": "B1",
       "topic": "Home",
       "form": "dialogue",
       "kind": "listening",
@@ -495,7 +500,8 @@
     },
     {
       "id": "B1-06",
-      "topic": "Nature",
+      "level": "B1",
+      "topic": "Nature and environment",
       "form": "prose",
       "kind": "reading",
       "title": "Allemansrätten",
@@ -590,6 +596,7 @@
     },
     {
       "id": "B1-07",
+      "level": "B1",
       "topic": "Health",
       "form": "prose",
       "kind": "listening",
@@ -682,7 +689,8 @@
     },
     {
       "id": "B1-08",
-      "topic": "Everyday life",
+      "level": "B1",
+      "topic": "Daily life",
       "form": "prose",
       "kind": "reading",
       "title": "Körkortet",
@@ -692,7 +700,7 @@
       "above_level": [
         "trettiotvå",
         "parkera",
-        "uppkörningen",
+        "uppkörning",
         "skolzon"
       ],
       "lines": [
@@ -777,7 +785,8 @@
     },
     {
       "id": "B1-09",
-      "topic": "Environment",
+      "level": "B1",
+      "topic": "Nature and environment",
       "form": "prose",
       "kind": "reading",
       "title": "Sopsortering",
@@ -870,7 +879,8 @@
     },
     {
       "id": "B1-10",
-      "topic": "Free time",
+      "level": "B1",
+      "topic": "Free time and culture",
       "form": "dialogue",
       "kind": "listening",
       "title": "Planer för sommaren",

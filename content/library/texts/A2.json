@@ -3,7 +3,8 @@
   "texts": [
     {
       "id": "A2-01",
-      "topic": "Travel",
+      "level": "A2",
+      "topic": "Travel and transport",
       "form": "prose",
       "kind": "reading",
       "title": "En helg på landet",
@@ -101,7 +102,8 @@
     },
     {
       "id": "A2-02",
-      "topic": "Work",
+      "level": "A2",
+      "topic": "Work and study",
       "form": "dialogue",
       "kind": "reading",
       "title": "Intervjun",
@@ -202,7 +204,8 @@
     },
     {
       "id": "A2-03",
-      "topic": "Celebrations",
+      "level": "A2",
+      "topic": "Free time and culture",
       "form": "prose",
       "kind": "reading",
       "title": "Farmors födelsedag",
@@ -299,6 +302,7 @@
     },
     {
       "id": "A2-04",
+      "level": "A2",
       "topic": "Health",
       "form": "dialogue",
       "kind": "listening",
@@ -397,6 +401,7 @@
     },
     {
       "id": "A2-05",
+      "level": "A2",
       "topic": "Home",
       "form": "prose",
       "kind": "reading",
@@ -489,6 +494,7 @@
     },
     {
       "id": "A2-06",
+      "level": "A2",
       "topic": "Food and drink",
       "form": "prose",
       "kind": "listening",
@@ -582,7 +588,8 @@
     },
     {
       "id": "A2-07",
-      "topic": "Culture",
+      "level": "A2",
+      "topic": "Free time and culture",
       "form": "prose",
       "kind": "reading",
       "title": "På biblioteket",
@@ -672,7 +679,8 @@
     },
     {
       "id": "A2-08",
-      "topic": "Travel",
+      "level": "A2",
+      "topic": "Travel and transport",
       "form": "prose",
       "kind": "listening",
       "title": "En dag i Stockholm",
@@ -682,9 +690,7 @@
         "Djurgården",
         "Vasamuseet"
       ],
-      "above_level": [
-        "stan"
-      ],
+      "above_level": [],
       "lines": [
         {
           "sv": "Stockholm ligger på fjorton öar.",
@@ -763,7 +769,8 @@
     },
     {
       "id": "A2-09",
-      "topic": "Free time",
+      "level": "A2",
+      "topic": "Free time and culture",
       "form": "prose",
       "kind": "reading",
       "title": "Fotbollsmatchen",
@@ -774,8 +781,7 @@
       "above_level": [
         "blöt",
         "paus",
-        "halvlek",
-        "sköt"
+        "halvlek"
       ],
       "lines": [
         {
@@ -859,7 +865,8 @@
     },
     {
       "id": "A2-10",
-      "topic": "Travel",
+      "level": "A2",
+      "topic": "Travel and transport",
       "form": "dialogue",
       "kind": "listening",
       "title": "Ett rum för två nätter",

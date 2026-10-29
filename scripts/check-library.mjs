@@ -25,11 +25,16 @@ import { createCounter } from '../server/words/count.mjs';
 import { splitSentences } from '../server/words/sentences.mjs';
 import { tokenize } from '../server/words/tokens.mjs';
 import { regularLemma } from '../server/words/inflect.mjs';
+import { IRREGULAR } from '../server/words/irregular.mjs';
 import { validateAnswer } from '../server/texts/schema.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LIB = join(ROOT, 'content', 'library');
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+
+// The shared topics the library is browsed by (question-pages/77); see content/library/TOPICS.md.
+export const TOPICS = ['People and family', 'Daily life', 'Food and drink', 'Home', 'Work and study', 'Travel and transport',
+  'Free time and culture', 'Health', 'Nature and environment', 'Society'];
 
 // Words per text, the longest sentence in words, and how many words above the level a text may have.
 export const LIMITS = {
@@ -52,8 +57,12 @@ function readForms() {
   return forms;
 }
 
+// Forms neither list nor the word list resolves (irregular or colloquial), checked by hand; counted as
+// their dictionary form too.
+const GLOSSARY_FORMS = new Map([['sköt', 'skjuta'], ['stan', 'stad'], ['sjönk', 'sjunka'], ['drog', 'dra'], ['höll', 'hålla']]);
 const kelly = readKelly();
 const forms = readForms();
+for (const [form, lemma] of GLOSSARY_FORMS) forms.set(form, [...(forms.get(form) || []), lemma]);
 
 function readTsv(file, levelCol) {
   const out = new Map();
@@ -107,6 +116,22 @@ function wordLevel(word, mode) {
   for (const level of LEVELS) if (levelCounter(level, mode).isKnownWord(word)) return level;
   return null;
 }
+// A form's dictionary form for the glossary: the listed word it inflects (lowest level first, so
+// "bakat" → baka, not the participle bakad), else the word list's headword.
+function dictionaryForm(word, mode) {
+  const map = levelMap(mode);
+  if (GLOSSARY_FORMS.has(word)) return GLOSSARY_FORMS.get(word);
+  if (map.has(word)) return word;
+  const rank = (l) => LEVELS.indexOf(map.get(l));
+  const listed = [...(forms.get(word) || []), ...(IRREGULAR.get(word) || [])].filter((l) => map.has(l)).sort((a, b) => rank(a) - rank(b));
+  if (listed.length) return listed[0];
+  const regular = regularLemma(word, (l) => map.has(l)) ?? meaning(word)?.lemma;
+  if (regular) return regular;
+  // A long compound in its definite form (uppkörningen → uppkörning, läxhjälpen → läxhjälp).
+  const definite = word.length >= 8 && word.match(/^(.+?)(en|et)$/);
+  return definite ? definite[1] : word;
+}
+
 const inLexicon = (word) => !!meaning(word) || !!regularLemma(word, (l) => !!meaning(l));
 
 export function checkText(text, level, mode = 'graded') {
@@ -124,7 +149,7 @@ export function checkText(text, level, mode = 'graded') {
       const counted = counter.countSentence(sentence);
       words += counted.total;
       for (const item of counted.items) {
-        const key = item.kind === 'phrase' ? item.text : (meaning(item.text)?.lemma ?? item.text);
+        const key = item.kind === 'phrase' ? item.text : dictionaryForm(item.text, mode);
         if (!above.has(key)) above.set(key, { forms: new Set(), level: item.kind === 'phrase' ? (levelMap(mode).get(item.text) ?? null) : wordLevel(item.text, mode) });
         above.get(key).forms.add(item.text);
       }
@@ -139,6 +164,8 @@ export function checkText(text, level, mode = 'graded') {
   if (longest > limits.sentence) problems.push(`a sentence of ${longest} words (at most ${limits.sentence})`);
   if (far.length > limits.far) problems.push(`${far.length} far words (at most ${limits.far}): ${far.join(', ')}`);
   if (notListed.length) problems.push(`not listed in above_level: ${notListed.join(', ')}`);
+  if (!TOPICS.includes(text.topic)) problems.push(`topic "${text.topic}" is not one of the shared topics`);
+  if (text.level !== level) problems.push(`level "${text.level}" but it is in ${level}.json`);
   const { id, level: _l, topic, form, names: _n, above_level: _a, ...core } = text;
   const valid = validateAnswer({ part: 'LIB', texts: [core] });
   if (!valid.ok) problems.push(...valid.problems);
