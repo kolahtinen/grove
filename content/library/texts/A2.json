@@ -1669,8 +1669,12 @@
           "en": "Linus moved into his first flat in January."
         },
         {
-          "sv": "Han visste inte hur tvättstugan fungerade, så han gick ner en söndag utan att boka.",
-          "en": "He didn't know how the laundry room worked, so he went down one Sunday without booking."
+          "sv": "Han visste inte hur tvättstugan fungerade.",
+          "en": "He didn't know how the laundry room worked."
+        },
+        {
+          "sv": "En söndag gick han ner utan att boka.",
+          "en": "One Sunday he went down without booking."
         },
         {
           "sv": "Alla maskiner var lediga, och han startade två av dem.",

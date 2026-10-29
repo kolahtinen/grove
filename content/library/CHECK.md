@@ -47,7 +47,7 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | A2-15 | Vad ska vi äta i kväll? | listening, dialogue | 86 | 7 | **citron** (C2) | 8 → 1 (lök, kyckling, lax, sallad, tomat, gurka, disk no longer far) | passes |
 | A2-16 | Den nya grannen | listening | 113 | 12 | **sjuttiofem** (—), **gengäld** (—) | 4 → 2 (baka, knacka no longer far) | passes |
 | A2-17 | På apoteket | listening, dialogue | 116 | 11 | hosta (B1), **hostmedicin** (—), **honung** (C1) | 6 → 2 (hosta, feber, sked, tablett no longer far) | passes |
-| A2-18 | Tvättstugan | reading | 119 | 15 | **hyreshus** (—), tvättstuga (B1), **källare** (B2), **korg** (B2), i förväg (B1) | 4 → 3 (tvättstuga no longer far) | **fails**: a sentence of 15 words (at most 14) |
+| A2-18 | Tvättstugan | reading | 118 | 11 | **hyreshus** (—), tvättstuga (B1), **källare** (B2), **korg** (B2), i förväg (B1) | 4 → 3 (tvättstuga no longer far) | passes |
 | A2-19 | Kolonilotten | reading | 110 | 14 | **kolonilott** (C1), **lott** (C1), **snigel** (—) | 5 → 3 (morot, sallad no longer far) | passes |
 
 ## B1 (12 texts; 120–180 words, sentences ≤ 20 words, ≤ 7 far words)
@@ -112,4 +112,4 @@ Written by `node scripts/check-library.mjs`: each text counted with grove's own 
 | C2-09 | Ett innanhav i kris | reading | 306 | 29 | **bräckvattenhav** (—*), **övergödning** (—), **fosfor** (—), **gödning** (—), **alg** (—), **blomning** (—), **torsk** (—), **reningsverk** (—), **bottensediment** (—*), **uthållig** (—), **beredd** (—) | 11 → 11 (none no longer far) | passes |
 | C2-10 | Svenskan i engelskans skugga | reading, dialogue | 302 | 21 | **samhällsämne** (—*), **famla** (—), **samhällsbärande** (—*), **parallellspråkighet** (—*) | 5 → 4 (lånord no longer far) | passes |
 
-79 of 80 texts pass.
+80 of 80 texts pass.
