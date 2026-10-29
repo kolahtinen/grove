@@ -66,3 +66,7 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 4. **The `pos` and `none` gaps** (537 words): fill by hand, by a meanings prompt to the learner's AI (as G-02 does for words the list lacks), or leave out.
 5. **C2** texts weren't started; the limits are in the checker. A2 has no text yet in four topics (TOPICS.md).
 6. **Glossaries**: `above_level` uses each word's dictionary form, with a short hand-checked table for irregular forms (`GLOSSARY_FORMS` in the checker). Long words no list knows get their commonest ending undone by rule, so a few may still be off.
+
+## Approval
+
+2026-10-29: the owner approved all 50 drafts (A1–C1, ten per level) for the common library as they stand, without a line-by-line read (docs/reviews/2026-10-29-branch-test.md, B-11). They are still marked as not read by a Swedish speaker; fixes come from learners' reports and the owner's later reading (the reading page keeps a Good / Small fixes / Rewrite mark per text).
