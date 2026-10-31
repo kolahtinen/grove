@@ -2619,6 +2619,96 @@
   ]
  },
  {
+  "id": "A1-30",
+  "level": "A1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "reading",
+  "title": "På posten",
+  "names": [
+   "Finland"
+  ],
+  "lines": [
+   {
+    "sv": "– Hej! Jag vill skicka ett paket till Finland.",
+    "en": "– Hi! I want to send a parcel to Finland."
+   },
+   {
+    "sv": "– Okej. Vad finns i paketet?",
+    "en": "– Okay. What is in the parcel?"
+   },
+   {
+    "sv": "– En bok och en tröja till min mamma.",
+    "en": "– A book and a jumper for my mum."
+   },
+   {
+    "sv": "– Fint. Paketet väger två kilo.",
+    "en": "– Nice. The parcel weighs two kilos."
+   },
+   {
+    "sv": "– Vad kostar det?",
+    "en": "– What does it cost?"
+   },
+   {
+    "sv": "– Det kostar hundra kronor.",
+    "en": "– It costs a hundred kronor."
+   },
+   {
+    "sv": "– Hur lång tid tar det?",
+    "en": "– How long does it take?"
+   },
+   {
+    "sv": "– Det tar tre eller fyra dagar.",
+    "en": "– It takes three or four days."
+   },
+   {
+    "sv": "– Bra. Min mamma fyller år på fredag.",
+    "en": "– Good. My mum has her birthday on Friday."
+   },
+   {
+    "sv": "– Då kommer paketet i tid.",
+    "en": "– Then the parcel will arrive in time."
+   },
+   {
+    "sv": "– Tack för hjälpen!",
+    "en": "– Thanks for your help!"
+   },
+   {
+    "sv": "– Varsågod. Ha en bra dag!",
+    "en": "– You're welcome. Have a nice day!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vart ska paketet?",
+    "options": [
+     "Till Norge",
+     "Till Finland",
+     "Till Danmark"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad kostar det?",
+    "options": [
+     "Hundra kronor",
+     "Fyra kronor",
+     "Tvåhundra kronor"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "När fyller mamma år?",
+    "options": [
+     "På onsdag",
+     "På lördag",
+     "På fredag"
+    ],
+    "answer": 2
+   }
+  ]
+ },
+ {
   "id": "A2-01",
   "level": "A2",
   "topic": "Travel and transport",
@@ -5302,6 +5392,97 @@
   ]
  },
  {
+  "id": "A2-30",
+  "level": "A2",
+  "topic": "Society",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Val i skolan",
+  "names": [
+   "Elin",
+   "Sverige"
+  ],
+  "lines": [
+   {
+    "sv": "I september var det val i Sverige.",
+    "en": "In September there was an election in Sweden."
+   },
+   {
+    "sv": "Elin är femton år, så hon fick inte rösta.",
+    "en": "Elin is fifteen, so she was not allowed to vote."
+   },
+   {
+    "sv": "Men hennes skola hade ett eget val för eleverna.",
+    "en": "But her school had its own election for the pupils."
+   },
+   {
+    "sv": "Först läste klassen om de olika partierna.",
+    "en": "First the class read about the different parties."
+   },
+   {
+    "sv": "Sedan kom några politiker till skolan och svarade på frågor.",
+    "en": "Then some politicians came to the school and answered questions."
+   },
+   {
+    "sv": "Elin frågade om bussarna, för hon åker buss varje dag.",
+    "en": "Elin asked about the buses, because she takes the bus every day."
+   },
+   {
+    "sv": "På fredagen röstade alla elever i skolans bibliotek.",
+    "en": "On the Friday all the pupils voted in the school library."
+   },
+   {
+    "sv": "Det kändes nästan som ett riktigt val.",
+    "en": "It felt almost like a real election."
+   },
+   {
+    "sv": "På måndagen fick de veta resultatet.",
+    "en": "On the Monday they found out the result."
+   },
+   {
+    "sv": "Elin tyckte att det var roligt.",
+    "en": "Elin thought it was fun."
+   },
+   {
+    "sv": "Om tre år får hon rösta på riktigt.",
+    "en": "In three years she can vote for real."
+   },
+   {
+    "sv": "Hon vet redan att hon ska göra det.",
+    "en": "She already knows that she is going to do it."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför fick Elin inte rösta i valet?",
+    "options": [
+     "Hon var sjuk",
+     "Hon är för ung",
+     "Hon bor inte i Sverige"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Var röstade eleverna?",
+    "options": [
+     "På torget",
+     "I klassrummet",
+     "I skolans bibliotek"
+    ],
+    "answer": 2
+   },
+   {
+    "q": "Vad frågade Elin om?",
+    "options": [
+     "Om bussarna",
+     "Om skatter",
+     "Om skolmaten"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
   "id": "B1-01",
   "level": "B1",
   "topic": "Work and study",
@@ -7374,6 +7555,111 @@
   ]
  },
  {
+  "id": "B1-23",
+  "level": "B1",
+  "topic": "Society",
+  "form": "dialogue",
+  "kind": "listening",
+  "title": "Lampan vid hållplatsen",
+  "names": [
+   "Henrik",
+   "Maria",
+   "Lind",
+   "Björkvägen"
+  ],
+  "lines": [
+   {
+    "sv": "– Kommunens kundtjänst, du pratar med Henrik. Vad kan jag hjälpa dig med?",
+    "en": "– The council's customer service, you're speaking to Henrik. How can I help you?"
+   },
+   {
+    "sv": "– Hej, jag heter Maria Lind. Jag ringer om en gatlampa som inte fungerar.",
+    "en": "– Hi, my name is Maria Lind. I'm calling about a street lamp that doesn't work."
+   },
+   {
+    "sv": "– Okej. Var står lampan?",
+    "en": "– Okay. Where is the lamp?"
+   },
+   {
+    "sv": "– Vid busshållplatsen på Björkvägen, nära skolan.",
+    "en": "– At the bus stop on Björkvägen, near the school."
+   },
+   {
+    "sv": "– Hur länge har den varit trasig?",
+    "en": "– How long has it been broken?"
+   },
+   {
+    "sv": "– Sedan förra veckan. Det är helt mörkt där på morgonen när barnen väntar på bussen.",
+    "en": "– Since last week. It's completely dark there in the morning when the children are waiting for the bus."
+   },
+   {
+    "sv": "– Det låter inte bra. Har någon annan ringt om den?",
+    "en": "– That doesn't sound good. Has anyone else called about it?"
+   },
+   {
+    "sv": "– Jag vet inte. Jag trodde att någon annan skulle ringa, men ingen verkar ha gjort det.",
+    "en": "– I don't know. I thought someone else would call, but nobody seems to have done it."
+   },
+   {
+    "sv": "– Det är vanligt att alla tänker så. Bra att du ringde.",
+    "en": "– It's common for everyone to think that. Good that you called."
+   },
+   {
+    "sv": "– Hur lång tid tar det att laga den?",
+    "en": "– How long does it take to repair it?"
+   },
+   {
+    "sv": "– Vi försöker laga lampor nära skolor inom tre dagar.",
+    "en": "– We try to repair lamps near schools within three days."
+   },
+   {
+    "sv": "– Vad bra. Behöver ni mitt nummer?",
+    "en": "– Great. Do you need my number?"
+   },
+   {
+    "sv": "– Ja, gärna. Då kan vi skicka ett sms när lampan är lagad.",
+    "en": "– Yes, please. Then we can send you a text when the lamp is fixed."
+   },
+   {
+    "sv": "– Nästa gång kan du också anmäla felet i kommunens app.",
+    "en": "– Next time you can also report the fault in the council's app."
+   },
+   {
+    "sv": "– Det visste jag inte. Tack för hjälpen!",
+    "en": "– I didn't know that. Thanks for your help!"
+   }
+  ],
+  "questions": [
+   {
+    "q": "Varför ringer Maria?",
+    "options": [
+     "En gatlampa fungerar inte",
+     "Bussen kom inte",
+     "Skolan är stängd"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Hur snabbt försöker kommunen laga lampor nära skolor?",
+    "options": [
+     "Inom en vecka",
+     "Inom tre dagar",
+     "Samma dag"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Hur kan man anmäla ett fel nästa gång?",
+    "options": [
+     "Med ett brev",
+     "På skolan",
+     "I kommunens app"
+    ],
+    "answer": 2
+   }
+  ]
+ },
+ {
   "id": "B2-01",
   "level": "B2",
   "topic": "People and family",
@@ -9319,6 +9605,110 @@
   ]
  },
  {
+  "id": "B2-21",
+  "level": "B2",
+  "topic": "Daily life",
+  "form": "prose",
+  "kind": "listening",
+  "title": "Morgonmänniska eller kvällsmänniska?",
+  "names": [],
+  "lines": [
+   {
+    "sv": "Vissa människor vaknar pigga klockan sex och har hunnit träna, äta frukost och läsa tidningen innan resten av familjen har stigit upp.",
+    "en": "Some people wake up full of energy at six and have managed to exercise, eat breakfast and read the paper before the rest of the family has got up."
+   },
+   {
+    "sv": "Andra får knappt upp ögonen före nio, men blir i stället som mest kreativa sent på kvällen.",
+    "en": "Others can hardly open their eyes before nine, but are instead at their most creative late in the evening."
+   },
+   {
+    "sv": "Forskare har länge vetat att det här inte bara handlar om vanor eller vilja.",
+    "en": "Researchers have long known that this is not just a matter of habits or willpower."
+   },
+   {
+    "sv": "Kroppens inre klocka styrs delvis av våra gener, och den skiljer sig mellan olika personer.",
+    "en": "The body's inner clock is partly controlled by our genes, and it differs between people."
+   },
+   {
+    "sv": "Den förändras också under livet.",
+    "en": "It also changes during life."
+   },
+   {
+    "sv": "Små barn vaknar ofta tidigt, tonåringar vill sova länge och äldre blir ofta morgonmänniskor igen.",
+    "en": "Small children often wake early, teenagers want to sleep late and older people often become morning people again."
+   },
+   {
+    "sv": "Problemet är att skolan och arbetslivet för det mesta börjar tidigt.",
+    "en": "The problem is that school and working life mostly start early."
+   },
+   {
+    "sv": "Den som är kvällsmänniska får därför ofta sova för lite under veckan och försöker ta igen det på helgen.",
+    "en": "So an evening person often gets too little sleep during the week and tries to catch up at the weekend."
+   },
+   {
+    "sv": "Det kallas ibland social jetlag, eftersom kroppen hela tiden växlar mellan två olika tider.",
+    "en": "This is sometimes called social jet lag, because the body keeps switching between two different times."
+   },
+   {
+    "sv": "Vissa skolor har därför prövat att börja senare för de äldre eleverna.",
+    "en": "So some schools have tried starting later for the older pupils."
+   },
+   {
+    "sv": "Resultaten tyder på att eleverna sover mer, kommer i tid oftare och mår bättre.",
+    "en": "The results suggest that the pupils sleep more, are on time more often and feel better."
+   },
+   {
+    "sv": "På arbetsplatser med flexibla tider kan de anställda i viss mån välja själva.",
+    "en": "At workplaces with flexible hours, staff can to some extent choose for themselves."
+   },
+   {
+    "sv": "Men det går inte överallt.",
+    "en": "But that isn't possible everywhere."
+   },
+   {
+    "sv": "En busschaufför eller en förskollärare måste vara på plats när andra behöver dem.",
+    "en": "A bus driver or a preschool teacher has to be there when others need them."
+   },
+   {
+    "sv": "För den som inte kan välja finns det ändå några råd.",
+    "en": "For those who can't choose, there is still some advice."
+   },
+   {
+    "sv": "Gå ut i dagsljus på morgonen, undvik skärmar sent på kvällen och håll ungefär samma tider varje dag, även på helgen.",
+    "en": "Go out in daylight in the morning, avoid screens late in the evening and keep roughly the same hours every day, even at the weekend."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Vad styr kroppens inre klocka, enligt texten?",
+    "options": [
+     "Delvis våra gener",
+     "Bara våra vanor",
+     "Vad vi äter"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Vad är social jetlag?",
+    "options": [
+     "Att resa mellan tidszoner",
+     "Att kroppen växlar mellan olika tider på vardagar och helger",
+     "Att jobba på natten"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad hände när skolor började senare?",
+    "options": [
+     "Eleverna blev tröttare",
+     "Inget förändrades",
+     "Eleverna sov mer och mådde bättre"
+    ],
+    "answer": 2
+   }
+  ]
+ },
+ {
   "id": "C1-01",
   "level": "C1",
   "topic": "People and family",
@@ -10979,6 +11369,116 @@
      "Om att lära sig sjunga"
     ],
     "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C1-16",
+  "level": "C1",
+  "topic": "Home",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Tre generationer under samma tak",
+  "names": [
+   "Lena",
+   "Nils",
+   "Sofia",
+   "Leo",
+   "Göteborg"
+  ],
+  "lines": [
+   {
+    "sv": "När Lena och Nils sålde sin villa utanför Göteborg, flyttade de in i ett större hus tillsammans med sin dotter Sofia och hennes familj.",
+    "en": "When Lena and Nils sold their house outside Gothenburg, they moved into a bigger house together with their daughter Sofia and her family."
+   },
+   {
+    "sv": "Många i deras omgivning tyckte att de hade tagit ett märkligt beslut.",
+    "en": "Many people around them thought they had made a strange decision."
+   },
+   {
+    "sv": "I Sverige har det länge varit självklart att varje generation ska ha sitt eget hushåll, och att flytta ihop med sina vuxna barn uppfattas av många som ett steg tillbaka.",
+    "en": "In Sweden it has long been taken for granted that each generation should have its own household, and many see moving in with one's grown-up children as a step backwards."
+   },
+   {
+    "sv": "Ändå är det precis vad ett växande antal familjer väljer att göra.",
+    "en": "Yet that is exactly what a growing number of families choose to do."
+   },
+   {
+    "sv": "Skälen är både ekonomiska och praktiska.",
+    "en": "The reasons are both financial and practical."
+   },
+   {
+    "sv": "Bostadspriserna har stigit kraftigt, och för många unga familjer är det svårt att få råd med ett hus med trädgård.",
+    "en": "Housing prices have risen sharply, and for many young families it is hard to afford a house with a garden."
+   },
+   {
+    "sv": "Samtidigt lever de äldre längre och vill gärna vara delaktiga i barnbarnens liv, men utan att bli beroende av hemtjänsten.",
+    "en": "At the same time older people live longer and would like to take part in their grandchildren's lives, but without becoming dependent on home care."
+   },
+   {
+    "sv": "För familjen i Göteborg blev lösningen ett hus med två ingångar och två kök, men med en gemensam trädgård och ett stort vardagsrum där alla kan träffas.",
+    "en": "For the family in Gothenburg, the solution was a house with two entrances and two kitchens, but with a shared garden and a large living room where everyone can get together."
+   },
+   {
+    "sv": "– Det viktigaste är att man kan stänga dörren, säger Lena. Vi ses nästan varje dag, men vi lever inte i varandras fickor.",
+    "en": "– The most important thing is that you can close the door, says Lena. We see each other almost every day, but we don't live in each other's pockets."
+   },
+   {
+    "sv": "Hennes barnbarn Leo, som är sju år, går ofta över till mormor och morfar efter skolan.",
+    "en": "Her grandson Leo, who is seven, often goes over to his grandma and grandpa after school."
+   },
+   {
+    "sv": "Det har gjort vardagen lugnare för Sofia, som arbetar heltid och tidigare jagade klockan varje eftermiddag för att hinna hämta på fritids.",
+    "en": "That has made everyday life calmer for Sofia, who works full time and used to race the clock every afternoon to get to the after-school club in time."
+   },
+   {
+    "sv": "Men det finns också svårigheter.",
+    "en": "But there are difficulties too."
+   },
+   {
+    "sv": "Olika syn på uppfostran, på städning och på hur mycket man ska umgås kan skapa spänningar som är svårare att undvika när man bor vägg i vägg.",
+    "en": "Different views on bringing up children, on cleaning and on how much to spend time together can cause tensions that are harder to avoid when you live wall to wall."
+   },
+   {
+    "sv": "Familjen har därför bestämt sig för att ha ett möte en gång i månaden, där alla får säga vad som fungerar och vad som inte gör det.",
+    "en": "The family has therefore decided to hold a meeting once a month, where everyone can say what works and what doesn't."
+   },
+   {
+    "sv": "Experter på boende påpekar att flergenerationsboende är det normala i stora delar av världen, och att det svenska idealet är ett ganska nytt fenomen.",
+    "en": "Housing experts point out that several generations living together is the norm in large parts of the world, and that the Swedish ideal is a fairly new phenomenon."
+   },
+   {
+    "sv": "Kanske är det inte ett steg tillbaka, utan snarare en återgång till något som har fungerat länge.",
+    "en": "Perhaps it is not a step backwards, but rather a return to something that has worked for a long time."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur har familjen ordnat huset?",
+    "options": [
+     "Med två ingångar och två kök men en gemensam trädgård",
+     "Med ett kök för alla",
+     "Med två hus långt från varandra"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Hur har livet förändrats för Sofia?",
+    "options": [
+     "Hon har slutat arbeta",
+     "Vardagen har blivit lugnare",
+     "Hon har fått längre resor"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad påpekar experterna?",
+    "options": [
+     "Att flergenerationsboende är förbjudet i Sverige",
+     "Att få familjer vill bo så",
+     "Att det är vanligt i stora delar av världen"
+    ],
+    "answer": 2
    }
   ]
  },
@@ -12718,6 +13218,110 @@
      "Den visar att ingenting har förändrats"
     ],
     "answer": 1
+   }
+  ]
+ },
+ {
+  "id": "C2-16",
+  "level": "C2",
+  "topic": "Health",
+  "form": "prose",
+  "kind": "reading",
+  "title": "Sockerpillrets gåta",
+  "names": [],
+  "lines": [
+   {
+    "sv": "I medicinska studier jämförs ett nytt läkemedel nästan alltid med ett sockerpiller, ett så kallat placebo, för att forskarna ska kunna avgöra om medlet faktiskt har någon effekt.",
+    "en": "In medical studies a new drug is almost always compared with a sugar pill, a so-called placebo, so that researchers can determine whether the drug actually has any effect."
+   },
+   {
+    "sv": "Det märkliga är att även de patienter som får placebo ofta blir bättre, ibland påtagligt.",
+    "en": "The strange thing is that even the patients who get the placebo often get better, sometimes noticeably."
+   },
+   {
+    "sv": "Länge betraktades denna förbättring som ett störande brus, något som måste räknas bort för att den verkliga effekten skulle träda fram.",
+    "en": "For a long time this improvement was regarded as disturbing noise, something that had to be subtracted for the real effect to emerge."
+   },
+   {
+    "sv": "Under de senaste decennierna har allt fler forskare i stället börjat intressera sig för placeboeffekten i sig.",
+    "en": "Over recent decades, more and more researchers have instead begun to take an interest in the placebo effect itself."
+   },
+   {
+    "sv": "Frågan är inte längre bara om placebo fungerar, utan hur och varför det gör det.",
+    "en": "The question is no longer just whether a placebo works, but how and why it does."
+   },
+   {
+    "sv": "Att förväntningar påverkar hur vi upplever smärta, trötthet och illamående är i dag väl belagt, och hjärnavbildningar visar att kroppen kan frisätta sina egna smärtstillande ämnen när en patient tror sig ha fått medicin.",
+    "en": "That expectations affect how we experience pain, tiredness and nausea is well documented today, and brain scans show that the body can release its own painkilling substances when a patient believes they have been given medicine."
+   },
+   {
+    "sv": "Effekten är störst på symtom som till stor del formas av hur vi tolkar dem, och betydligt mindre, eller obefintlig, när det gäller exempelvis tumörer eller infektioner.",
+    "en": "The effect is greatest on symptoms that are largely shaped by how we interpret them, and much smaller, or non-existent, in the case of, for example, tumours or infections."
+   },
+   {
+    "sv": "Ett av de mest uppmärksammade fynden är att placebo kan fungera även när patienten vet om det.",
+    "en": "One of the most noticed findings is that a placebo can work even when the patient knows it is one."
+   },
+   {
+    "sv": "I flera mindre studier har personer med långvarig smärta fått piller som tydligt märkts som verkningslösa, och ändå rapporterat att de mått bättre.",
+    "en": "In several smaller studies, people with long-term pain have been given pills clearly labelled as having no active ingredient, and have still reported feeling better."
+   },
+   {
+    "sv": "Forskarna tolkar det som att själva ritualen, att ta något regelbundet och bli tagen på allvar, har en betydelse som går utöver pillrets innehåll.",
+    "en": "The researchers interpret this as meaning that the ritual itself, taking something regularly and being taken seriously, matters beyond what is in the pill."
+   },
+   {
+    "sv": "Här ligger också ett etiskt dilemma.",
+    "en": "This is also where an ethical dilemma lies."
+   },
+   {
+    "sv": "En läkare som medvetet skriver ut verkningslösa medel riskerar att undergräva det förtroende som hela vården vilar på, och att ge kvacksalvare argument för sina egna metoder.",
+    "en": "A doctor who knowingly prescribes ineffective remedies risks undermining the trust on which all healthcare rests, and giving quacks arguments for their own methods."
+   },
+   {
+    "sv": "Samtidigt vore det märkligt att bortse från en effekt som är både billig och nästan fri från biverkningar.",
+    "en": "At the same time, it would be strange to ignore an effect that is both cheap and almost free of side effects."
+   },
+   {
+    "sv": "Kanske ligger den viktigaste lärdomen inte i pillret utan i mötet.",
+    "en": "Perhaps the most important lesson lies not in the pill but in the encounter."
+   },
+   {
+    "sv": "Studier visar att patienter som får tid och uppmärksamhet rapporterar mindre smärta, även när behandlingen i övrigt är densamma.",
+    "en": "Studies show that patients who are given time and attention report less pain, even when the treatment is otherwise the same."
+   },
+   {
+    "sv": "En läkare som lyssnar, förklarar och inger hopp tycks på egen hand kunna göra skillnad, oavsett vad som står på receptet.",
+    "en": "A doctor who listens, explains and gives hope seems able to make a difference on their own, whatever is written on the prescription."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Hur betraktades placeboeffekten länge?",
+    "options": [
+     "Som ett störande brus i studierna",
+     "Som en ny medicin",
+     "Som ett bevis på att läkemedel inte fungerar"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Var är placeboeffekten minst, enligt texten?",
+    "options": [
+     "Vid smärta",
+     "Vid exempelvis tumörer och infektioner",
+     "Vid trötthet"
+    ],
+    "answer": 1
+   },
+   {
+    "q": "Vad är det etiska dilemmat?",
+    "options": [
+     "Att placebo har många biverkningar",
+     "Att patienter inte vill ta piller",
+     "Att verkningslösa medel kan undergräva förtroendet för vården"
+    ],
+    "answer": 2
    }
   ]
  }

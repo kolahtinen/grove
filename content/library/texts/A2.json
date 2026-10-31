@@ -2805,6 +2805,100 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "A2-30",
+      "level": "A2",
+      "topic": "Society",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Val i skolan",
+      "names": [
+        "Elin",
+        "Sverige"
+      ],
+      "above_level": [
+        "kännas"
+      ],
+      "lines": [
+        {
+          "sv": "I september var det val i Sverige.",
+          "en": "In September there was an election in Sweden."
+        },
+        {
+          "sv": "Elin är femton år, så hon fick inte rösta.",
+          "en": "Elin is fifteen, so she was not allowed to vote."
+        },
+        {
+          "sv": "Men hennes skola hade ett eget val för eleverna.",
+          "en": "But her school had its own election for the pupils."
+        },
+        {
+          "sv": "Först läste klassen om de olika partierna.",
+          "en": "First the class read about the different parties."
+        },
+        {
+          "sv": "Sedan kom några politiker till skolan och svarade på frågor.",
+          "en": "Then some politicians came to the school and answered questions."
+        },
+        {
+          "sv": "Elin frågade om bussarna, för hon åker buss varje dag.",
+          "en": "Elin asked about the buses, because she takes the bus every day."
+        },
+        {
+          "sv": "På fredagen röstade alla elever i skolans bibliotek.",
+          "en": "On the Friday all the pupils voted in the school library."
+        },
+        {
+          "sv": "Det kändes nästan som ett riktigt val.",
+          "en": "It felt almost like a real election."
+        },
+        {
+          "sv": "På måndagen fick de veta resultatet.",
+          "en": "On the Monday they found out the result."
+        },
+        {
+          "sv": "Elin tyckte att det var roligt.",
+          "en": "Elin thought it was fun."
+        },
+        {
+          "sv": "Om tre år får hon rösta på riktigt.",
+          "en": "In three years she can vote for real."
+        },
+        {
+          "sv": "Hon vet redan att hon ska göra det.",
+          "en": "She already knows that she is going to do it."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför fick Elin inte rösta i valet?",
+          "options": [
+            "Hon var sjuk",
+            "Hon är för ung",
+            "Hon bor inte i Sverige"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Var röstade eleverna?",
+          "options": [
+            "På torget",
+            "I klassrummet",
+            "I skolans bibliotek"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Vad frågade Elin om?",
+          "options": [
+            "Om bussarna",
+            "Om skatter",
+            "Om skolmaten"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ]
 }

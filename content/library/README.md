@@ -42,21 +42,26 @@ Columns: `sv`, `pos` (Kelly's part of speech), `kind` (word or phrase), `level`,
 
 ## Texts: `texts/<level>.json`
 
-50 texts so far, written by Claude and **not yet read by a Swedish speaker**. They join the library only once the owner has approved them (question-pages/77). Every text has a `level` and one `topic` from the shared set in `TOPICS.md`; the library is browsed by topic, and the level filter shows all levels up to the chosen one.
+136 texts in the library (`texts/`) and 12 waiting for longer and shorter word ranges (`texts-pending/`, below), all written by Claude and **not yet read by a Swedish speaker**. Every text has a `level` and one `topic` from the shared set in `TOPICS.md`; the library is browsed by topic, and the level filter shows all levels up to the chosen one. Counts as of 2026-10-31 (words counted by the check, names left out):
 
-| Level | Texts | Words each | Listening | Dialogues | Topics |
-|---|---|---|---|---|---|
-| A1 | 10 | 54–66, present tense, sentences ≤ 8 words | 3 | 4 | me and my family, daily life, food and drink, home, shopping, weather, getting around, work, free time, health |
-| A2 | 10 | 82–92, past tense and simple clauses | 4 | 3 | travel, work, celebrations, health, home, food, culture, free time |
-| B1 | 10 | 121–130, longer sentences and reasons | 3 | 3 | work, culture, getting around, society, home, nature, health, everyday life, environment, free time |
-| B2 | 10 | 181–198, mixed tenses, opinions, a few idioms | 4 | 3 | one per shared topic (late parenthood, a cashless society, fika, flatmates, a four-day week, night trains, a book circle, children and screens, the wolf, a first election) |
-| C1 | 10 | 261–281, complex syntax, idioms in moderation | 3 | 3 | one per shared topic (loneliness, lagom, food waste, a mortgage meeting, changing career, a car-free centre, Astrid Lindgren, burnout, the forest debate, trust) |
+| Level | Texts | Words each (library) | Pending: short, long | Listening | Dialogues | Style |
+|---|---|---|---|---|---|---|
+| A1 | 30 | 52–79 | 26, 116 | 13 | 15 | present tense, short main clauses |
+| A2 | 30 | 82–118 | 43, 182 | 12 | 10 | past tense and simple clauses |
+| B1 | 23 | 121–177 | 63, 263 | 9 | 8 | longer sentences and reasons |
+| B2 | 21 | 181–248 | 71, 334 | 9 | 6 | mixed tenses, opinions, a few idioms |
+| C1 | 16 | 252–347 | 121, 444 | 5 | 5 | complex syntax, idioms in moderation |
+| C2 | 16 | 302–396 | 131, 585 | 5 | 5 | formal and literary registers |
+
+### Pending texts: `texts-pending/<level>.json` (2026-10-31)
+
+At the owner's request "populate library more; it should get texts of different lengths", each level got three new texts: a **usual** one (in the library, batch 9) and a **short** one (about half the level's usual length) and a **long** one (about double; a long A1 text is still short main clauses). The short and long ones fall outside the check's word ranges (A1 50–80 … C2 300–400), which are code (`LIMITS` in `scripts/check-library.mjs`), so they wait here, in the same format, until the ranges change. Apart from their length they pass every rule of the check (sentence length, far words, glossary, G-02's answer format), checked with the checker's own `checkText`. To take them in: widen the ranges (proposed: A1 25–160, A2 40–240, B1 60–360, B2 70–500, C1 120–700, C2 130–800), then move the texts into `texts/` and rebuild.
 
 Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with `sv` and `en`, `questions` with `q`, `options`, `answer`), so it passes `validateAnswer`. It also has library fields that an import would read and drop: `id`, `topic`, `form` (prose or dialogue), `names` (names the counting should skip) and `above_level`. `above_level` is the text's glossary: every word above its level, written by `node scripts/check-library.mjs --fill` from what the check finds. Its forms come from the word list's lookup and want a look (e.g. "bakat" is listed as "bakad").
 
 ## The check: `CHECK.md`
 
-`node scripts/check-library.mjs` counts each text with grove's own word counting (`server/words`: the tokenizer, regular and irregular inflections, compounds, fixed phrases) against the words at its level and below. A word's level comes from the core list first, otherwise the lower of SweLLex and Kelly. CHECK.md also shows each text's far words against Kelly alone (before) and now. Because of the frequency bands above, a word **one band up** is a stretch (reported, not limited). Words **two or more bands up, or not in Kelly**, are "far" and limited: A1 ≤ 4, A2 ≤ 5, B1 ≤ 7 per text, each word counted once. A text also fails outside its word range (A1 50–80, A2 80–120, B1 120–180, B2 180–250, C1 250–350, C2 300–400; counted words, names left out), with a sentence over the level's length (10, 14, 20 words), with an unlisted word above its level, or when it fails G-02's answer format. **All 30 pass.**
+`node scripts/check-library.mjs` counts each text with grove's own word counting (`server/words`: the tokenizer, regular and irregular inflections, compounds, fixed phrases) against the words at its level and below. A word's level comes from the core list first, otherwise the lower of SweLLex and Kelly. CHECK.md also shows each text's far words against Kelly alone (before) and now. Because of the frequency bands above, a word **one band up** is a stretch (reported, not limited). Words **two or more bands up, or not in Kelly**, are "far" and limited: A1 ≤ 4, A2 ≤ 5, B1 ≤ 7 per text, each word counted once. A text also fails outside its word range (A1 50–80, A2 80–120, B1 120–180, B2 180–250, C1 250–350, C2 300–400; counted words, names left out), with a sentence over the level's length (10, 14, 20 words), with an unlisted word above its level, or when it fails G-02's answer format. **All 136 pass** (2026-10-31).
 
 ## To decide (owner)
 
@@ -64,7 +69,7 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2. **Where the library lives in grove**: PD-17 (inside Texts, by topic with a level filter) and PD-18 (your lessons first, published with "Publish to library").
 3. **Who reviews the texts**: PD-23 proposes that Claude drafts and you read each text once. These 30 are ready for that read.
 4. **The `pos` and `none` gaps** (537 words): fill by hand, by a meanings prompt to the learner's AI (as G-02 does for words the list lacks), or leave out.
-5. **C2** texts weren't started; the limits are in the checker. A2 has no text yet in four topics (TOPICS.md).
+5. **Word ranges** (2026-10-31): the check's ranges keep the 12 short and long texts in `texts-pending/` out of the library; widening them is a code change (`LIMITS` in the checker; proposal above).
 6. **Glossaries**: `above_level` uses each word's dictionary form, with a short hand-checked table for irregular forms (`GLOSSARY_FORMS` in the checker). Long words no list knows get their commonest ending undone by rule, so a few may still be off.
 
 ## Approval
@@ -86,3 +91,5 @@ Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with 
 2026-10-29, batch 7 (10 texts): B1-18…B1-22, B2-16…B2-20, added by Claude at the owner's word, 2026-10-29 (B-19), at the same request for texts of different lengths. Lengths spread across the check's ranges: B1 124–177 words, B2 184–248.
 
 2026-10-29, batch 8 (10 texts): C1-11…C1-15, C2-11…C2-15, added by Claude at the owner's word, 2026-10-29 (B-19), at the same request for texts of different lengths. Lengths spread across the check's ranges: C1 252–347 words, C2 315–396. Batches 6–8 together take every level from a short text near the bottom of its range to a long one near the top; the check's ranges (A1 50–80 … C2 300–400) were not changed, so the longest text in a level is at most about 1.6 times the shortest.
+
+2026-10-31, batch 9 (6 texts in the library, 12 pending): A1-30, A2-30, B1-23, B2-21, C1-16, C2-16 (usual length: 63, 91, 141, 219, 299, 317 words), added by Claude at the owner's word (B-19), at the owner's request "populate library more; it should get texts of different lengths". With each, a short and a long text at the same level (A1-31/32, A2-31/32, B1-24/25, B2-22/23, C1-17/18, C2-17/18) in `texts-pending/`, outside the check's word ranges (above). Topics: the thinner ones first (Society at A1, A2, B1, B2, C2; People and family at A1, B1, C1; Home, Work and study at C1; Health, Food and drink at C2), with listening texts and dialogues mixed in.
