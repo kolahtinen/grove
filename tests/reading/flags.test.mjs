@@ -1,6 +1,7 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readingGrove, signedIn, addPart, textId, tokensOf } from './helpers.mjs';
+import { openRequests } from '../../server/reading/flags.mjs';
 
 let t;
 let learner;
@@ -86,6 +87,16 @@ test('FR-315 RQ-301: a reported sentence is fixed by replacing its line; a repor
   assert.equal(res.result, 'accepted', JSON.stringify(res));
   assert.equal(t.grove.db.prepare('SELECT sv FROM text_lines WHERE text_id = ? AND position = 0').get(id).sv, 'Det är en mycket kall morgon i Stockholm.');
   assert.equal(t.grove.db.prepare('SELECT sv FROM sentences WHERE text_id = ? AND line_position = 0').get(id).sv, 'Det är en mycket kall morgon i Stockholm.');
+});
+
+test('FR-315 FR-305 RQ-456: a name\'s menu reports its sentence as "not a name", and the next prompt names that reason; a question can\'t be reported so', async () => {
+  const id = textId(t, learner.id, 'En kall morgon');
+  const rep = await c.post('/api/report', { textId: id, linePosition: 1, reason: 'not_a_name', note: 'Elsa is a word here' });
+  assert.equal(rep.status, 200, JSON.stringify(rep.body));
+  assert.equal(t.grove.db.prepare('SELECT reason FROM reports WHERE code = ? AND account_id = ?').get(rep.body.code, learner.id).reason, 'not_a_name');
+  assert.equal((await c.post('/api/report', { textId: id, questionPosition: 0, reason: 'not_a_name' })).status, 400);
+  const listed = openRequests(t.grove.db, learner.id).reports.join('\n');
+  assert.match(listed, new RegExp(`${rep.body.code}: text "En kall morgon", sentence ".*" — reason: not a name — note: Elsa is a word here`));
 });
 
 test('FR-319 RQ-155: flags and reports on another account\'s text are refused', async () => {

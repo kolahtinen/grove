@@ -35,6 +35,21 @@ test('FR-305 FR-306 RQ-18: the reading payload carries each word\'s status, dict
   assert.ok(tokensOf(r).some((x) => x.word === undefined && x.t === ' '), 'spaces are tokens without a word');
 });
 
+test('FR-305 RQ-456: the payload lists the phrases met with their meaning and state, for the menu\'s phrase rows; and when the text was first read (FR-933)', async () => {
+  const c = await signedIn(t);
+  const id = textId(t, learner.id, 'En kall morgon');
+  t.grove.db.prepare('UPDATE texts SET read_at = NULL WHERE id = ?').run(id);
+  const first = (await c.get(`/api/reading?id=${id}`)).body;
+  assert.equal(first.readAt, null, 'not read before this opening');
+  const phrase = first.phrases.find((p) => p.name === 'hur mår du');
+  assert.ok(phrase, JSON.stringify(first.phrases));
+  assert.equal(typeof phrase.en, 'string');
+  assert.ok(['leaf', 'ground'].includes(phrase.state));
+  assert.equal(typeof phrase.drilled, 'boolean');
+  const again = (await c.get(`/api/reading?id=${id}`)).body;
+  assert.equal(typeof again.readAt, 'number', 'read since the first opening');
+});
+
 test('FR-302 RQ-55 RQ-76: the text has its word count and share of known words (no new-word count is shown, B-31)', async () => {
   const r = (await reading('En bra dag')).body;
   assert.ok(r.stats.words > 100);

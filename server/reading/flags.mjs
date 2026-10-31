@@ -4,7 +4,8 @@ import { HttpError } from '../web/http.mjs';
 import { splitSentences } from '../words/sentences.mjs';
 
 export const EXPLAIN_REASONS = { why_form: 'why this form', why_here: 'why this word is here', other_meaning: 'a different meaning than I know', reading: 'reading', other: 'other' };
-export const REPORT_REASONS = { wrong_answer: 'wrong answer', bad_translation: 'bad translation', unnatural: 'unnatural sentence', wrong_reading: 'wrong reading', audio: 'audio', other: 'other' };
+// "not a name" comes only from a name's word menu (Not a name?, G-03 FR-305, FR-315; RQ-456), so only for a sentence.
+export const REPORT_REASONS = { wrong_answer: 'wrong answer', bad_translation: 'bad translation', unnatural: 'unnatural sentence', wrong_reading: 'wrong reading', audio: 'audio', not_a_name: 'not a name', other: 'other' };
 
 function nextCode(db, table, accountId, prefix) {
   const n = db.prepare(`SELECT COUNT(*) AS n FROM ${table} WHERE account_id = ?`).get(accountId).n;
@@ -24,6 +25,7 @@ export function createReport(db, accountId, { textId, questionPosition, linePosi
   if ((questionPosition === undefined) === (linePosition === undefined)) {
     throw new HttpError(400, 'bad_request', 'Report a question or a sentence, one at a time.');
   }
+  if (reason === 'not_a_name' && linePosition === undefined) throw new HttpError(400, 'bad_request', 'Only a sentence can be reported as not a name.');
   const text = db.prepare('SELECT id FROM texts WHERE id = ? AND account_id = ?').get(textId, accountId);
   if (!text) throw new HttpError(404, 'not_found', 'There is no such text.');
   const exists = questionPosition !== undefined

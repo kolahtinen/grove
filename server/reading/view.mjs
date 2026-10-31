@@ -44,7 +44,9 @@ export function buildReading(db, accountId, textId) {
   const words = createWordStore({ db });
   const names = db.prepare('SELECT name FROM names WHERE account_id = ?').all(accountId).map((r) => r.name);
   const leafPhrases = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND kind = 'phrase' AND state = 'leaf'").all(accountId).map((r) => r.lemma);
-  const allPhrases = db.prepare("SELECT lemma FROM words WHERE account_id = ? AND kind = 'phrase'").all(accountId).map((r) => r.lemma.split(/\s+/));
+  const phraseRows = db.prepare("SELECT lemma, en, state, drilled FROM words WHERE account_id = ? AND kind = 'phrase'").all(accountId);
+  const allPhrases = phraseRows.map((r) => r.lemma.split(/\s+/));
+  const phrasesMet = new Set();
   const counter = words.counterFor(accountId, { names, phrases: leafPhrases });
 
   const meaningHere = new Map(db.prepare(`SELECT w.lemma, m.en FROM word_meanings m JOIN words w ON w.id = m.word_id
@@ -107,7 +109,10 @@ export function buildReading(db, accountId, textId) {
       // Phrases: any phrase of the learner whose words appear in a row.
       for (const phrase of allPhrases) {
         for (let i = 0; i + phrase.length <= wordTokens.length; i += 1) {
-          if (phrase.every((w, k) => wordTokens[i + k].word === w)) for (let k = 0; k < phrase.length; k += 1) wordTokens[i + k].phrases.push(phrase.join(' '));
+          if (phrase.every((w, k) => wordTokens[i + k].word === w)) {
+            phrasesMet.add(phrase.join(' '));
+            for (let k = 0; k < phrase.length; k += 1) wordTokens[i + k].phrases.push(phrase.join(' '));
+          }
         }
       }
       // FR-305 (RQ-455): grove's grammar ladder patterns whose marked parts occur in this sentence.
@@ -139,6 +144,8 @@ export function buildReading(db, accountId, textId) {
   const answered = db.prepare('SELECT position, option, right FROM question_answers WHERE text_id = ? ORDER BY position').all(text.id)
     .filter((a) => !reported.has(a.position)).map((a) => ({ position: a.position, option: a.option, right: !!a.right }));
   const rating = db.prepare('SELECT value FROM ratings WHERE text_id = ?').get(text.id)?.value ?? null;
+  // G-09 FR-933: when the text was first read, before this opening ("You read this <when>").
+  const readAt = text.read_at ?? null;
   if (!text.read_at) db.prepare('UPDATE texts SET read_at = ? WHERE id = ?').run(Date.now(), text.id);
 
   return {
@@ -155,8 +162,12 @@ export function buildReading(db, accountId, textId) {
     speechRate: speechRateFor(db, accountId),
     voiceHelpShown: !!settings?.voice_help_shown,
     stats: { words: totalWords, newWords: newItems.size, share: totalWords ? Math.round((knownWords / totalWords) * 1000) / 10 : 100 },
+    readAt,
     lines,
     patterns,
+    // RQ-456 (FR-305): the learner's phrases met in the text, each with its meaning and state, for the word
+    // menu's folded phrase rows and their Pick up this phrase / Let it fall.
+    phrases: phraseRows.filter((r) => phrasesMet.has(r.lemma.split(/\s+/).join(' '))).map((r) => ({ name: r.lemma, en: r.en, state: r.state, drilled: !!r.drilled })),
     // The ladder patterns met in the text, with the learner's state of each (picked up by name, FR-411).
     ladder: [...ladder.values()].map(({ id, level, name, explain }) => {
       const own = db.prepare("SELECT state, drilled FROM words WHERE account_id = ? AND kind = 'pattern' AND lemma = ?").get(accountId, name.toLowerCase());
