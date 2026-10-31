@@ -14,10 +14,18 @@ export function createStart({ db, now = () => Date.now() }) {
 
   return {
     isReviewer,
+    // FR-605 (RQ-463): Home sends a new account to the starting level once (`needsStart`, until the page has
+    // been offered); the choice stays open (`startOpen`, Home's Progress row offers it) until it is made.
     flags(accountId) {
       const reviewer = isReviewer(accountId);
-      const done = !!db.prepare('SELECT start_done FROM learner_settings WHERE account_id = ?').get(accountId)?.start_done;
-      return { needsStart: !reviewer && !done, canRestart: !reviewer };
+      const s = db.prepare('SELECT start_done, start_offered FROM learner_settings WHERE account_id = ?').get(accountId);
+      const open = !reviewer && !s?.start_done;
+      return { needsStart: open && !s?.start_offered, startOpen: open, canRestart: !reviewer };
+    },
+    offered(accountId) {
+      db.prepare('INSERT OR IGNORE INTO learner_settings (account_id) VALUES (?)').run(accountId);
+      db.prepare('UPDATE learner_settings SET start_offered = 1 WHERE account_id = ?').run(accountId);
+      return {};
     },
     sample(level) {
       if (!LEVELS.includes(level)) throw new HttpError(400, 'bad_request', 'That is not a level.');

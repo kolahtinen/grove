@@ -28,6 +28,22 @@ test('FR-605 RQ-248: a new account needs the starting check; the reviewer never 
   assert.equal(r.canRestart, false);
 });
 
+test('FR-605 FR-922 RQ-463 RQ-248: Home sends a new account to the starting level once: after the page has been offered, it no longer needs it, though the choice stays open until made', async () => {
+  t.seedAccount({ email: 'once@example.test' });
+  const c = await client('once@example.test');
+  let s = (await c.get('/api/stages')).body;
+  assert.deepEqual([s.needsStart, s.startOpen], [true, true]);
+  assert.deepEqual((await c.post('/api/start/offered', {})).body, {});
+  s = (await c.get('/api/stages')).body;
+  assert.deepEqual([s.needsStart, s.startOpen], [false, true], 'Home stays Home; Progress still offers it');
+  assert.equal((await c.post('/api/start', { level: 'beginner', unknown: [] })).status, 200);
+  s = (await c.get('/api/stages')).body;
+  assert.deepEqual([s.needsStart, s.startOpen], [false, false]);
+  const r = (await (await client('reviewer@example.test')).get('/api/stages')).body;
+  assert.deepEqual([r.needsStart, r.startOpen], [false, false]);
+  assert.equal((await c.post('/api/start/offered', { level: 'A1' })).status, 400);
+});
+
 test('FR-604 RQ-114 RQ-249: the sample is 30 distinct words of the level, spread from most to least common', async () => {
   const c = await client();
   const res = await c.get('/api/start/sample?level=A2');
