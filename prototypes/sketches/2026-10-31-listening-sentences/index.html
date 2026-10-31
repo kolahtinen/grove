@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Listening sentences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for B-33 (docs/sketching.md). Throwaway: never copied into the build.
+   Tokens and parts copied from public/assets/grove.css (palette 14) on 2026-10-31.
+   Layout: the sketch chrome on top, one phone-sized frame of grove below, the answers under it. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --pbg: #222822; --pink: #E9EBE3; --pbord: #6FA27E; --phtx: #0F110E;
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 1rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul { margin: .3rem 0 .3rem; padding-left: 1.1rem; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); max-width: 70ch; }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; height: 780px; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; height: 720px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.scr { flex: 1; overflow-y: auto; min-height: 0; position: relative; }
+.sk-answers { margin-top: 2rem; max-width: 760px; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; background: var(--soft); }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message ul { margin: .2rem 0 .3rem; padding-left: 1.1rem; }
+.way-back { margin: 0 0 .3rem; }
+.way-back button { display: inline-flex; align-items: center; min-height: 44px; padding: 0; font-weight: 700; color: var(--link); background: none; border: 0; }
+.row { display: flex; gap: .5rem; margin-top: .6rem; }
+.row > button { flex: 1; }
+button.bar-button { padding: .3rem .7rem; font-size: .82rem; white-space: nowrap; flex: none; }
+.switch[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--link); }
+.listen-tools { margin-bottom: .6rem; }
+.speed { display: flex; align-items: center; gap: .6rem; margin: 0 0 .3rem; font-size: .9rem; }
+.speed input { flex: 1; accent-color: var(--accent); min-width: 0; }
+.listen-list { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .3rem; }
+.listen-row { display: flex; align-items: center; gap: .4rem; padding: .25rem .4rem; border-radius: 12px; }
+.listen-row.speaking { background: var(--soft); }
+.listen-text { min-width: 1.6rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.blurred { filter: blur(6px); user-select: none; }
+.passage { font-size: 1.05rem; line-height: 1.85; margin: .4rem 0 .3rem; }
+.sentence { border-radius: 8px; transition: background .2s ease; }
+.sentence.speaking { background: var(--soft); box-shadow: 0 0 0 3px var(--soft); }
+button.link-button { background: none; border: 0; padding: 0 .2rem; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.play { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; }
+.play .icon, .ib .icon { width: 16px; height: 16px; stroke-width: 2.2; flex: none; }
+.play.big { width: 100%; min-height: 52px; font-size: 1rem; font-weight: 700; border-radius: 16px; }
+.play.on { border-color: var(--accent); background: var(--soft); }
+.ib { display: inline-flex; align-items: center; justify-content: center; gap: .35rem; }
+.skel { height: .9rem; border-radius: 999px; background: var(--line); margin: .55rem 0; animation: pulse 1.2s ease-in-out infinite alternate; }
+@keyframes pulse { from { opacity: .45; } to { opacity: 1; } }
+.sheet-backdrop { position: absolute; inset: 0; background: var(--backdrop); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 20; }
+.anim.sheet-backdrop { animation: fade-in .2s ease; }
+.sheet { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 21; width: min(560px, 100%); max-height: 72%; display: flex; flex-direction: column; background: var(--pbg); color: var(--pink); border: 1px solid var(--pbord); border-bottom: none; border-radius: 22px 22px 0 0; box-shadow: var(--shadow); }
+.sheet.anim { animation: sheet-up .25s ease; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; background: var(--pbord); color: var(--phtx); padding: .45rem .6rem .45rem 1.05rem; border-radius: 21px 21px 0 0; }
+.sheet-head h3 { margin: 0; font-size: 1.05rem; }
+.sheet-head button { color: var(--phtx); background: transparent; border: 0; min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.sheet-head .icon { width: 20px; height: 20px; stroke-width: 2.2; }
+.sheet-body { overflow-y: auto; padding: .6rem .8rem 1.2rem; }
+@keyframes sheet-up { from { transform: translate(-50%, 30%); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* session frame, version B of the exercises sketch */
+.b-top { position: sticky; top: 0; z-index: 9; display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.b-top .leave { display: inline-flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; min-width: 44px; color: var(--link); }
+.b-top .leave .icon { width: 18px; height: 18px; stroke-width: 2.2; }
+.b-segs { flex: 1; display: flex; gap: 3px; min-width: 0; }
+.b-segs i { flex: 1; height: 7px; border-radius: 999px; background: var(--line); }
+.b-segs i.done { background: currentColor; opacity: .9; }
+.b-segs i.now { background: currentColor; opacity: .45; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px currentColor; }
+.b-count { font-size: .82rem; font-weight: 700; color: var(--muted-strong); white-space: nowrap; }
+.b-kicker { display: flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 700; margin: 0 0 .35rem; color: var(--cw); }
+.b-kicker .icon { width: 18px; height: 18px; stroke-width: 2; }
+.b-kicker .min { margin-left: auto; color: var(--muted); font-weight: 500; }
+.b-bar { position: sticky; bottom: 0; z-index: 9; margin: 0 -.75rem; padding: .6rem .75rem .9rem; background: var(--card2); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0,0,0,.12); }
+.b-bar-inner { max-width: 560px; margin: 0 auto; position: relative; }
+.b-bar .wait { font-size: .82rem; color: var(--muted); text-align: center; margin: 0 0 .45rem; }
+.b-bar button.main { width: 100%; }
+@container (min-width: 700px) { .b-bar { margin: 0; border-radius: 18px; border: 1px solid var(--line); } }
+.s-listening { color: var(--cw); }
+
+/* ---------- New parts in this sketch (B-33) ---------- */
+.sent-n { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; flex: none; }
+.sent-w { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.count { font-size: .75rem; color: var(--muted); white-space: nowrap; flex: none; }
+.loop-strip { display: flex; align-items: center; gap: .5rem; padding: .35rem .4rem .35rem .75rem; margin: .5rem 0 0; border-radius: 14px; background: var(--soft); border: 1px solid var(--accent); font-size: .88rem; }
+.loop-strip .icon { width: 16px; height: 16px; stroke-width: 2.2; color: var(--link); flex: none; }
+.loop-strip .sent-w { flex: 1; }
+
+/* A: rows in the sheet */
+.a-hint { font-size: .82rem; color: var(--muted); margin: 0 0 .5rem; }
+.a-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .2rem; }
+.a-row { display: flex; align-items: center; gap: .45rem; padding: .25rem .25rem .25rem .55rem; border-radius: 12px; }
+.a-row.speaking { background: var(--soft); }
+.a-row .sent-w { flex: 1; }
+.a-row .sent-n { width: 1.4rem; text-align: right; }
+
+/* B: a popover anchored to its button */
+.b-pick { width: 100%; display: flex; align-items: center; gap: .5rem; text-align: left; margin-top: .4rem; }
+.b-pick .lab { flex: 1; min-width: 0; display: flex; gap: .4rem; }
+.b-pick .icon { width: 16px; height: 16px; stroke-width: 2.2; flex: none; }
+.b-pick.looping { border-color: var(--accent); background: var(--soft); }
+.b-pick .x { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; margin: -6px -8px -6px 0; border-radius: 10px; color: var(--link); }
+.pop { position: absolute; left: .6rem; right: .6rem; z-index: 15; background: var(--pbg); color: var(--pink); border: 1px solid var(--pbord); border-radius: 16px; box-shadow: var(--shadow); }
+.pop.anim { animation: fade-in .15s ease; }
+.pop::before { content: ''; position: absolute; left: 1.4rem; width: 12px; height: 12px; background: var(--pbg); border: 1px solid var(--pbord); transform: rotate(45deg); }
+.pop.down { margin-top: .4rem; }
+.pop.down::before { top: -7px; border-right: 0; border-bottom: 0; }
+.pop.up { bottom: calc(100% + .5rem); }
+.pop.up::before { bottom: -7px; border-left: 0; border-top: 0; }
+.pop-list { list-style: none; margin: 0; padding: .35rem; max-height: 300px; overflow-y: auto; position: relative; }
+.b-row { display: flex; align-items: center; gap: .2rem; border-radius: 12px; }
+.b-row.speaking { background: var(--soft); }
+.b-row .tap { flex: 1; min-width: 0; display: flex; align-items: center; gap: .45rem; background: none; border: 0; text-align: left; padding: .3rem .5rem; min-height: 44px; color: var(--pink); }
+.b-row .tap .sent-w { flex: 1; }
+.b-row .eq { width: 14px; height: 14px; color: var(--link); flex: none; }
+.b-row .lp { background: none; border: 0; min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--muted); }
+.b-row .lp .icon { width: 18px; height: 18px; stroke-width: 2.1; }
+.b-row .lp[aria-pressed="true"] { color: var(--link); background: var(--soft); }
+.pop-foot { font-size: .78rem; color: var(--muted); padding: .1rem .85rem .55rem; margin: 0; }
+
+/* C: one chosen sentence, a bubble of chips to pick another */
+.c-bar { margin-top: .6rem; display: grid; gap: .45rem; position: relative; }
+.c-sel { display: flex; align-items: center; gap: .3rem; }
+.c-sel .step { min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+.c-sel .step .icon { width: 18px; height: 18px; stroke-width: 2.2; }
+.c-sel .which { flex: 1; min-width: 0; display: flex; align-items: center; gap: .4rem; text-align: left; }
+.c-sel .which.on { border-color: var(--accent); }
+.c-sel .which .icon { width: 16px; height: 16px; stroke-width: 2.2; margin-left: auto; flex: none; }
+.c-acts { display: flex; gap: .5rem; align-items: center; }
+.c-acts > button { flex: 1; white-space: nowrap; padding-inline: .6rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; padding: .6rem; max-height: 300px; overflow-y: auto; }
+.chips button { align-items: baseline; min-height: 40px; padding: .25rem .7rem; border-radius: 999px; font-size: .86rem; display: inline-flex; gap: .3rem; max-width: 100%; }
+.chips button .sent-n { font-size: .8rem; }
+.chips button[aria-current="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.chips button.speaking { box-shadow: 0 0 0 2px var(--accent); }
+.c-session { margin: 0 0 .55rem; }
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <h1>Sketch: Listening sentences</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> getting at one sentence of a listening text (replay, loop) without the long list of rows.</li>
+      <li><b>Places:</b> a listening text's own page (Listen card), and a listening exercise inside a session.</li>
+      <li><b>Open:</b> how the one button and its selection look (A, B, C), and how a sentence names itself.</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>B-33</b> "i don't want the long list of individual sentences like it is. maybe instead a button that opens a selection. in the selection bubble, sentences have 1-3 of their first words as an identifier, in stead of numbers. maybe also the number there first."</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Questions this sketch settles</summary>
+      <ul>
+        <li>Where the one button sits and what its selection looks like: a bottom sheet, a popover, or one chosen sentence with a chip bubble (G-05 FR-506, FR-507).</li>
+        <li>How a sentence is named: its number, its first words, or both.</li>
+        <li>How a looping sentence shows, and how you stop it.</li>
+        <li>Whether the sentence that is playing is marked in the selection.</li>
+        <li>Whether a session's listening exercise gets the button too (today it has no sentences at all).</li>
+      </ul>
+      <p class="small muted">Example data: a made-up A2 listening text of 12 sentences. Play and Replay don't make a sound here; the highlighting moves as if they did. Nothing you tap is saved.</p>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="now">Now</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Place"><span class="sk-row-label">Place</span>
+      <button type="button" class="sk-tab" role="tab" data-act="place" data-p="text">1 Text page</button>
+      <button type="button" class="sk-tab" role="tab" data-act="place" data-p="session">2 In a session</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+    <p class="sk-vdesc small" id="sdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Bottom sheet <small>A Sentences button next to Play; a sheet with Replay and Loop per row; a loop strip with Stop in the card.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> Popover under the slider <small>The button names the current sentence; tap a row to replay, ⟳ to loop; the button shows the loop and stops it.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> One chosen sentence <small>‹ sentence › with one Replay and one Loop; a bubble of chips to pick another.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-now" value="now"><span><b>Now</b> Keep today's list <small>Nothing changes.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default. Questions 1 and 2 change the sketch above as you answer.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons (paths from public/assets/icons.mjs, plus a few sketch-only ones) ---------- */
+const PATHS = {
+  play: ['M8 5l11 7-11 7z'],
+  pause: ['M8 5v14', 'M16 5v14'],
+  replay: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  loop: ['M17 2l3 3-3 3', 'M20 5H8a4 4 0 0 0-4 4v1', 'M7 22l-3-3 3-3', 'M4 19h12a4 4 0 0 0 4-4v-1'],
+  list: ['M9 6h11', 'M9 12h11', 'M9 18h11', 'M4.5 6h.01', 'M4.5 12h.01', 'M4.5 18h.01'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  down: ['M6 9l6 6 6-6'],
+  left: ['M15 6l-6 6 6 6'],
+  right: ['M9 6l6 6-6 6'],
+  wave: ['M4 10v4', 'M8 7v10', 'M12 4v16', 'M16 8v8', 'M20 11v2'],
+  listening: ['M4 16v-4a8 8 0 0 1 16 0v4', 'M4 15h3v5H4z', 'M17 15h3v5h-3z'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data (A2 listening text) ---------- */
+const TEXT = { title: 'Kväll vid sjön', level: 'A2', words: 96, known: 88, sentences: [
+  'Det är fredag kväll i juni.',
+  'Sara och hennes bror cyklar ner till sjön.',
+  'Vattnet är stilla och nästan varmt.',
+  'Sara badar en lång stund.',
+  'Johan tycker att det är för kallt.',
+  'Han sitter hellre på bryggan och fiskar.',
+  'Efter en timme har han inte fått någonting.',
+  'Sara skrattar och ger honom en macka.',
+  'Solen går ner bakom skogen.',
+  'Sen kommer myggorna, och de måste cykla hem.',
+  'På vägen hem pratar de om sommarlovet.',
+  'Sen bestämmer de att komma tillbaka nästa fredag.',
+] };
+const SHORT = { title: 'Hej då', level: 'A1', words: 6, known: 100, sentences: ['Vi ses i morgon, hej då!'] };
+
+const VERSIONS = {
+  now: 'Now · today\'s Listen card. Under Play / Pause / Show the text and the speed slider, every sentence is a row "N · Replay · Loop" with "played 2×" once played (FR-506, FR-507): 12 rows for this short text. In a session, a listening exercise today has only Play the text and Show the text: no sentences and no speed.',
+  A: 'A · Bottom sheet. A Sentences button sits next to Play and Pause (Show the text moves under the text, as in a session). It opens grove\'s sheet, like the word menu: each row is "N · first words…", played count, Replay and Loop. The sheet stays open while you replay; the playing row is lit. A loop shows as a strip in the card with Stop, also after the sheet is closed.',
+  B: 'B · Popover under the slider. One wide button under the speed slider names the sentence playing or last played. It opens a popover anchored to it: tap a row to replay it, ⟳ at its right loops it. The playing row is lit with a small wave. While a sentence loops, the button says "Looping" and its ✕ stops it. Tap outside to close. In a session the button sits under the text.',
+  C: 'C · One chosen sentence. A small bar holds ‹ the chosen sentence › with one Replay and one Loop; tapping the sentence opens a bubble of chips "N First words…" to pick another, and the bubble closes on a pick. Play moves the chosen sentence along as it reads; ‹ › or another pick ends a loop. In a session the bar sits in the bottom action bar above Next.',
+};
+const STATES = {
+  normal: 'Normal: a 12-sentence listening text, not yet played. Try Play, open the selection, Replay and Loop.',
+  empty: 'Empty: a text of one sentence. There is nothing to choose, so the button is left out and Play does it (Now shows its one row).',
+  error: 'Error: this device has no Swedish voice (FR-502). The help shows; the selection still opens so you can see the sentences, but nothing plays.',
+  loading: 'Loading: the text hasn\'t arrived yet. Play and the sentence button wait.',
+};
+
+/* ---------- State ---------- */
+const S = { version: 'A', place: 'text', state: 'normal', width: 'phone', theme: 'auto',
+  open: false, playing: null, mode: null, loop: null, resume: 0, counts: {}, sel: 0, shown: false, heard: false, rate: 1 };
+let timer = null;
+let opening = false; // animate the sheet or popover only on the render that opens it
+const anim = () => (opening ? ' anim' : '');
+const text = () => (S.state === 'empty' ? SHORT : TEXT);
+const N = () => text().sentences.length;
+
+function answer(id, dflt) { const c = document.querySelector(`input[name="${id}"]:checked`); return c ? c.value : dflt; }
+// "4 · Sara badar en…": number (q2) and the first words (q1) of a sentence.
+function firstWords(sv) {
+  const how = answer('q1', '3');
+  const words = sv.split(/\s+/);
+  if (how === 'fit') return sv;
+  const n = Number(how);
+  const take = words.slice(0, n).join(' ').replace(/[.,!?;:]+$/, '');
+  return words.length > n ? `${take}…` : take;
+}
+function label(i, cls = '') {
+  const num = answer('q2', 'yes') === 'yes';
+  return `${num ? `<span class="sent-n">${i + 1}</span>` : ''}<span class="sent-w${cls}">${esc(firstWords(text().sentences[i]))}</span>`;
+}
+const countTxt = (i) => (S.counts[i] ? `played ${S.counts[i]}×` : '');
+
+/* ---------- Pretend playback ---------- */
+const dur = () => 1600 / S.rate;
+function stop() { clearTimeout(timer); timer = null; if (S.playing !== null) S.resume = S.playing; S.playing = null; S.mode = null; S.loop = null; }
+function playOne(i) {
+  S.playing = i; S.counts[i] = (S.counts[i] || 0) + 1;
+  if (S.mode === 'all' || S.version === 'C') S.sel = i;
+  render();
+  timer = setTimeout(() => {
+    if (S.loop === i) { playOne(i); return; }
+    if (S.mode === 'all' && i + 1 < N()) { playOne(i + 1); return; }
+    if (S.mode === 'all') { S.heard = true; S.shown = true; S.resume = 0; }
+    S.playing = null; S.mode = null; render();
+  }, dur());
+}
+function playAll() { if (S.mode === 'all') return; const from = S.resume || 0; stop(); S.mode = 'all'; playOne(from); }
+function replay(i) { stop(); S.mode = 'one'; playOne(i); }
+function loop(i) { const on = S.loop !== i; stop(); if (on) { S.loop = i; S.mode = 'loop'; playOne(i); } }
+const canPlay = () => S.state === 'normal' || S.state === 'empty';
+
+/* ---------- Shared bits ---------- */
+function passage(blur) {
+  if (S.state === 'loading') return `<div>${[92, 100, 78, 96, 60].map((w) => `<div class="skel" style="width:${w}%"></div>`).join('')}</div>`;
+  return `<p class="passage${blur ? ' blurred' : ''}">${text().sentences.map((s, i) => `<span class="sentence${S.playing === i ? ' speaking' : ''}">${esc(s)}</span>`).join(' ')}</p>`;
+}
+const voiceHelp = () => (S.state === 'error' ? `<div class="message bad" role="status"><p style="margin:0 0 .3rem"><strong>This device has no Swedish voice</strong>, so grove stays silent rather than read Swedish with another language's voice.</p><p class="small" style="margin:0">To add one: iPhone, iPad, Mac: Settings → Accessibility → Spoken Content → Voices → Swedish. Android: Settings → Text-to-speech → Swedish. Then reload this page.</p></div>` : '');
+const speed = () => `<label class="speed" for="speed">Speed <span id="speed-value">${S.rate.toFixed(1)}×</span><input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="${S.rate}"></label><p class="small muted" style="margin:0 0 .4rem">How well the speed works depends on your device's voice.</p>`;
+const playLabel = () => (S.mode === 'all' ? 'Playing…' : S.heard ? 'Play again' : 'Play');
+const noVoice = () => (S.state === 'error' ? '<p class="small" style="color:var(--bad);margin:.2rem .4rem .4rem">No Swedish voice on this device, so nothing plays.</p>' : '');
+const hasChoice = () => S.state !== 'empty';
+const busy = () => S.state === 'loading';
+
+/* ---------- Version A: sheet ---------- */
+const aButton = () => `<button type="button" class="ib" data-act="open"${busy() ? ' disabled' : ''}>${ic('list')}${busy() ? 'Sentences' : `Sentences`}</button>`;
+function loopStrip() {
+  if (S.loop === null) return '';
+  return `<div class="loop-strip" role="status">${ic('loop')}<span class="sent-w">Looping ${label(S.loop)}</span><button type="button" class="bar-button" data-act="stop">Stop</button></div>`;
+}
+function aSheet() {
+  if (!S.open) return '';
+  const rows = text().sentences.map((s, i) => `<li class="a-row${S.playing === i ? ' speaking' : ''}">${label(i)}<span class="count">${countTxt(i)}</span><button type="button" class="bar-button" data-act="replay" data-i="${i}"${canPlay() ? '' : ' disabled'}>Replay</button><button type="button" class="bar-button switch" data-act="loop" data-i="${i}" aria-pressed="${S.loop === i}"${canPlay() ? '' : ' disabled'}>Loop</button></li>`).join('');
+  return `<div class="sheet-backdrop${anim()}" data-act="close"></div><div class="sheet${anim()}" role="dialog" aria-label="Sentences"><div class="sheet-head"><h3>Sentences</h3><button type="button" data-act="close" aria-label="Close">${ic('close')}</button></div><div class="sheet-body">${noVoice()}<p class="a-hint">Replay plays one sentence. Loop repeats it until you stop it or play another.</p><ul class="a-list">${rows}</ul></div></div>`;
+}
+
+/* ---------- Version B: popover ---------- */
+function bButton() {
+  const cur = S.loop !== null ? S.loop : S.playing !== null ? S.playing : null;
+  if (busy()) return `<button type="button" class="b-pick" disabled>${ic('list')}<span class="lab">Sentences</span>${ic('down')}</button>`;
+  if (S.loop !== null) return `<button type="button" class="b-pick looping" data-act="open" aria-expanded="${S.open}">${ic('loop')}<span class="lab"><span>Looping</span>${label(S.loop)}</span><span class="x" data-act="stop" role="button" aria-label="Stop the loop">${ic('close')}</span></button>`;
+  return `<button type="button" class="b-pick" data-act="open" aria-expanded="${S.open}">${ic('list')}<span class="lab">${cur === null ? `<span>Sentences</span><span class="muted">${N()}</span>` : label(cur)}</span>${ic('down')}</button>`;
+}
+function bPop(dir = 'down') {
+  if (!S.open) return '';
+  const rows = text().sentences.map((s, i) => `<li class="b-row${S.playing === i ? ' speaking' : ''}"><button type="button" class="tap" data-act="replay" data-i="${i}"${canPlay() ? '' : ' disabled'} aria-label="Replay sentence ${i + 1}">${label(i)}${S.playing === i ? ic('wave', 'icon eq') : `<span class="count">${countTxt(i)}</span>`}</button><button type="button" class="lp" data-act="loop" data-i="${i}" aria-pressed="${S.loop === i}" aria-label="Loop sentence ${i + 1}"${canPlay() ? '' : ' disabled'}>${ic('loop')}</button></li>`).join('');
+  return `<div class="pop ${dir}${anim()}" role="dialog" aria-label="Sentences">${noVoice()}<ul class="pop-list">${rows}</ul><p class="pop-foot">Tap a sentence to hear it again · ⟳ repeats it</p></div>`;
+}
+
+/* ---------- Version C: one chosen sentence ---------- */
+function cBar(dir = 'down') {
+  const i = S.sel; const dis = busy() ? ' disabled' : '';
+  const looping = S.loop === i;
+  const bubble = S.open ? `<div class="pop ${dir}${anim()}" style="${dir === 'down' ? 'top:46px;' : ''}left:0;right:0" role="dialog" aria-label="Pick a sentence">${noVoice()}<div class="chips">${text().sentences.map((s, k) => `<button type="button" data-act="pick" data-i="${k}" aria-current="${k === i}" class="${S.playing === k ? 'speaking' : ''}">${label(k)}</button>`).join('')}</div></div>` : '';
+  return `<div class="c-bar"><div class="c-sel"><button type="button" class="step" data-act="prev" aria-label="Previous sentence"${dis || (i === 0 ? ' disabled' : '')}>${ic('left')}</button><button type="button" class="which${S.open ? ' on' : ''}" data-act="open" aria-expanded="${S.open}"${dis}>${busy() ? '<span class="sent-w">Sentences</span>' : label(i)}${ic('down')}</button><button type="button" class="step" data-act="next" aria-label="Next sentence"${dis || (i === N() - 1 ? ' disabled' : '')}>${ic('right')}</button></div>
+    <div class="c-acts"><button type="button" class="ib${S.playing === i && !looping ? ' play on' : ''}" data-act="replay" data-i="${i}"${dis}>${ic('replay')}Replay</button><button type="button" class="ib switch" data-act="loop" data-i="${i}" aria-pressed="${looping}"${dis}>${ic('loop')}${looping ? 'Stop loop' : 'Loop'}</button><span class="count" style="flex:none;text-align:right">${countTxt(i)}</span></div>${bubble}</div>`;
+}
+
+/* ---------- The text page ---------- */
+function topbar() { return `<header class="topbar"><div class="topbar-inner"><span class="brand">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu (not part of this sketch)" data-act="noop">☰</button></div></header>`; }
+function textPage() {
+  const t = text(); const v = S.version;
+  const stats = busy() ? 'Loading…' : `${t.words} words · ${t.known}% known · a listening text`;
+  const showInRow = v === 'now' || v === 'B' || v === 'C';
+  const reading = `<section class="card"><h2>${busy() ? '…' : esc(t.title)}</h2><p class="small muted">${stats}</p><div class="row" style="margin:0 0 .6rem"><button type="button" aria-pressed="true" class="switch" data-act="noop">Listen</button><button type="button" class="main" data-act="noop"${busy() ? ' disabled' : ''}>Practise</button></div>${passage(!S.shown)}${!showInRow && !S.shown && !busy() ? '<button type="button" class="link-button" data-act="show">Show the text</button>' : ''}</section>`;
+  const play = `<button type="button" class="main" data-act="playall"${busy() ? ' disabled' : ''}>${busy() ? 'Loading…' : playLabel()}</button>`;
+  const pause = `<button type="button" data-act="pause"${busy() ? ' disabled' : ''}>Pause</button>`;
+  const show = `<button type="button" data-act="show"${busy() || S.shown ? ' disabled' : ''}>Show the text</button>`;
+  let body = '';
+  if (v === 'now') {
+    const rows = busy() ? '' : t.sentences.map((s, i) => `<li class="listen-row${S.playing === i ? ' speaking' : ''}"><span class="listen-text">${i + 1}</span><button type="button" class="bar-button" data-act="replay" data-i="${i}">Replay</button><button type="button" class="bar-button switch" data-act="loop" data-i="${i}" aria-pressed="${S.loop === i}">Loop</button><span class="small muted">${countTxt(i)}</span></li>`).join('');
+    body = `<div class="row listen-tools">${play}${pause}${show}</div>${speed()}<p class="small" style="margin:0"><button type="button" class="bar-button" data-act="noop">No Swedish voice?</button></p><ol class="listen-list">${rows}</ol>`;
+  } else if (v === 'A') {
+    body = `<div class="row listen-tools">${play}${pause}${hasChoice() ? aButton() : ''}</div>${loopStrip()}${speed()}<p class="small" style="margin:0"><button type="button" class="bar-button" data-act="noop">No Swedish voice?</button></p>`;
+  } else if (v === 'B') {
+    body = `<div class="row listen-tools">${play}${pause}${show}</div>${speed()}${hasChoice() ? `${bButton()}${bPop('down')}` : ''}<p class="small" style="margin:.6rem 0 0"><button type="button" class="bar-button" data-act="noop">No Swedish voice?</button></p>`;
+  } else {
+    body = `<div class="row listen-tools">${play}${pause}${show}</div>${hasChoice() ? cBar('down') : ''}<div style="margin-top:.8rem">${speed()}</div><p class="small" style="margin:0"><button type="button" class="bar-button" data-act="noop">No Swedish voice?</button></p>`;
+  }
+  const empty = S.state === 'empty' && v !== 'now' ? '<p class="small muted" style="margin:.5rem 0 0">One sentence: Play plays it again.</p>' : '';
+  const listen = `<section class="card"><h2>Listen</h2>${voiceHelp()}${body}${empty}</section>`;
+  return `${topbar()}<div class="scr" id="scr"><div class="g-main"><p class="way-back"><button type="button" data-act="noop">‹ Your library</button></p>${reading}${listen}</div></div>${v === 'A' ? aSheet() : ''}`;
+}
+
+/* ---------- Inside a session (exercises sketch, version B) ---------- */
+function sessionPage() {
+  const v = S.version; const t = text();
+  const segs = `<div class="b-segs s-listening" aria-hidden="true">${[0, 1, 2, 3, 4, 5].map((k) => `<i class="${k < 2 ? 'done' : k === 2 ? 'now' : ''}"></i>`).join('')}</div>`;
+  const top = `<div class="b-top"><button type="button" class="leave" data-act="noop" aria-label="Leave the session">${ic('close')}</button>${segs}<span class="b-count">3/6</span></div>`;
+  const kicker = `<p class="b-kicker">${ic('listening')}Listening · ${busy() ? 'New text' : `New text · ${t.level}`}<span class="min">4 min</span></p>`;
+  const h = `<h2 style="font-size:1.12rem;margin-bottom:.15rem">Listen first, with the text hidden.</h2><p class="small muted" style="margin-bottom:.7rem">Play it as often as you like. Show the text when you want it.</p>`;
+  const playTxt = busy() ? 'Loading…' : S.state === 'error' ? 'No Swedish voice on this device' : S.mode === 'all' ? 'Playing…' : S.heard ? 'Play again' : 'Play the text';
+  const big = `<button type="button" class="play big${S.mode === 'all' ? ' on' : ''}" data-act="playall"${busy() ? ' disabled' : ''}>${ic(S.mode === 'all' ? 'pause' : 'play')}${playTxt}</button>`;
+  let playRow = big;
+  if (v === 'A' && hasChoice()) playRow = `<div style="display:flex;gap:.5rem">${big}<button type="button" class="ib" style="min-height:52px;border-radius:16px;flex:none" data-act="open" aria-label="Sentences"${busy() ? ' disabled' : ''}>${ic('list')}${N()}</button></div>`;
+  const title = `<h3 style="margin:.9rem 0 0;font-size:1rem">${busy() ? '' : esc(t.title)}</h3>`;
+  const showBtn = !S.shown && !busy() ? '<button type="button" class="link-button" data-act="show">Show the text</button>' : '';
+  let below = '';
+  if (v === 'A') below = `${showBtn}${loopStrip()}`;
+  if (v === 'B') below = `${showBtn}${hasChoice() ? `<div style="position:relative">${bButton()}${bPop('down')}</div>` : ''}`;
+  if (v === 'C' || v === 'now') below = showBtn;
+  const voice = S.state === 'error' ? `<div style="margin-top:.6rem">${voiceHelp()}</div>` : '';
+  const empty = S.state === 'empty' && v !== 'now' ? '<p class="small muted" style="margin:.3rem 0 0">One sentence: Play plays it again.</p>' : '';
+  const card = `<section class="card">${kicker}${h}${playRow}${voice}${title}${passage(!S.shown)}${below}${empty}</section>`;
+  const nextOk = S.heard || S.shown;
+  const wait = !nextOk ? '<p class="wait">Play the text first</p>' : '';
+  const cInBar = v === 'C' && hasChoice() ? `<div class="c-session">${cBar('up')}</div>` : '';
+  const bar = `<div class="b-bar"><div class="b-bar-inner">${cInBar}${wait}<button type="button" class="main" data-act="noop"${nextOk ? '' : ' disabled'}>Next</button></div></div>`;
+  return `<div class="scr" id="scr">${top}<div class="g-main">${card}${bar}</div></div>${v === 'A' ? aSheet() : ''}`;
+}
+
+/* ---------- Render ---------- */
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  const sel = (q, k, v) => document.querySelectorAll(`[data-act="${q}"]`).forEach((b) => b.setAttribute('aria-selected', String(b.dataset[k] === v)));
+  sel('version', 'v', S.version); sel('place', 'p', S.place); sel('state', 's', S.state); sel('width', 'w', S.width); sel('theme', 't', S.theme);
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  document.getElementById('sdesc').textContent = STATES[S.state];
+  const frame = document.getElementById('frame');
+  const keep = [...frame.querySelectorAll('#scr, .sheet-body, .pop-list, .chips')].map((e) => e.scrollTop);
+  document.getElementById('stage').className = `sk-stage ${S.width}`;
+  frame.innerHTML = S.place === 'text' ? textPage() : sessionPage();
+  [...frame.querySelectorAll('#scr, .sheet-body, .pop-list, .chips')].forEach((e, k) => { if (keep[k] !== undefined) e.scrollTop = keep[k]; });
+  opening = false;
+  fit();
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+function reset() { stop(); S.open = false; S.counts = {}; S.sel = 0; S.resume = 0; S.shown = false; S.heard = false; }
+
+/* ---------- Actions ---------- */
+document.addEventListener('click', (e) => {
+  const inFrame = e.target.closest('#frame');
+  // B and C: a tap outside the popover closes it.
+  if (inFrame && S.open && S.version !== 'A' && !e.target.closest('.pop, [data-act="open"]')) { S.open = false; render(); }
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const i = Number(el.dataset.i);
+  switch (a) {
+    case 'version': S.version = el.dataset.v; reset(); break;
+    case 'place': S.place = el.dataset.p; reset(); break;
+    case 'state': S.state = el.dataset.s; reset(); break;
+    case 'width': S.width = el.dataset.w; break;
+    case 'theme': S.theme = el.dataset.t; break;
+    case 'open': S.open = !S.open; opening = S.open; break;
+    case 'close': S.open = false; break;
+    case 'playall': if (!canPlay()) break; if (S.mode === 'all' && S.place === 'session') stop(); else playAll(); break;
+    case 'pause': stop(); break;
+    case 'show': S.shown = true; break;
+    case 'replay': if (canPlay()) replay(i); return;
+    case 'loop': if (canPlay()) loop(i); return;
+    case 'stop': e.stopPropagation(); stop(); S.open = false; break;
+    case 'pick': if (S.loop !== null && S.loop !== i) stop(); S.sel = i; S.open = false; break;
+    case 'prev': if (S.loop !== null) stop(); S.sel = Math.max(0, S.sel - 1); break;
+    case 'next': if (S.loop !== null) stop(); S.sel = Math.min(N() - 1, S.sel + 1); break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'speed') { S.rate = Number(e.target.value); document.getElementById('speed-value').textContent = `${S.rate.toFixed(1)}×`; }
+});
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'How many of a sentence\'s first words name it in the selection?', options: [
+    ['3', 'Up to three words', '"Sara badar en…", "Det är fredag…". Short sentences show whole.'],
+    ['2', 'Two words', '"Sara badar…". Shorter rows. Sentences that start alike still differ here ("Sen kommer…", "Sen bestämmer…"); with one word both would be "Sen…".'],
+    ['1', 'One word', '"Sara…". Tightest; often only the number tells sentences apart.'],
+    ['fit', 'As many as fit on the line', 'The row is cut with … at its edge; longer on a computer than on a phone.'] ] },
+  { id: 'q2', text: 'Does the sentence\'s number show before its first words?', options: [
+    ['yes', 'Yes: "4 · Sara badar en…"', 'The number keeps the order clear and tells apart sentences that start alike.'],
+    ['no', 'No: only "Sara badar en…"', 'Cleaner; the order is still top to bottom.'] ] },
+  { id: 'q3', text: 'Should a session\'s listening exercise get the sentence button too?', options: [
+    ['yes', 'Yes, as on the text page', 'Today a session\'s listening has only Play the text and Show the text. With the button you can replay or loop one sentence before Next.'],
+    ['no', 'No, text page only', 'Sessions stay as they are: play the whole text, then Next.'],
+    ['speed', 'Yes, and the speed slider too', 'A session then has everything the text page\'s Listen card has.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, lab, why], k) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(lab)}${k === 0 ? '<span class="def">default</span>' : ''}<small>${esc(why)}</small></span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Listening sentences', notes: ['B-33'], pick: null, comments: { A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+window.sketchRender = render;
+
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', (e) => { collectAnswers(); if (e.target.name === 'q1' || e.target.name === 'q2') render(); });
+collectAnswers();
+render();
+})();
+</script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const box = document.getElementById('answers');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['A', 'B', 'C']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [id, q] of Object.entries(a.questions ?? {})) {
+      if (!q.isDefault) { const r = document.querySelector(`input[name="${id}"][value="${q.answer}"]`); if (r) r.checked = true; }
+      const n = document.getElementById(`${id}-note`); if (n && q.note) n.value = q.note;
+    }
+    window.collectAnswers();
+    window.sketchRender?.();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+</body>
+</html>
