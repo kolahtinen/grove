@@ -1,0 +1,510 @@
+# Text-level meanings for the common library (2026-10-31): the words a learner can tap in a grove text
+# that grove's word list (server/lexicon/sv-en.tsv, first Wiktionary sense of each headword) shows
+# empty ("empty") or with the wrong word ("homograph", e.g. får → "sheep", i → "the ninth letter").
+# Written by Claude from each word's use in the texts, in G-02's new_words shape (form, lemma, en).
+# texts: "*" = every grove text where the form occurs; else the text IDs it applies to (a form that means
+# different things in different texts, e.g. kort "card" / "short", has one row per sense).
+# NOT YET READ BY THE BUILD: scripts/build-library.mjs passes new_words: [] for every grove text, so these
+# reach learners only after the spec change in the README ("Meanings", To decide).
+form	lemma	en	issue	texts
+i	i	in	homograph	*
+som	som	who, which, that; as, like	homograph	*
+med	med	with	homograph	*
+för	för	for; too (för tung, too heavy)	homograph	*
+av	av	of, by, off	homograph	*
+efter	efter	after	homograph	*
+vill	vilja	want(s) to	homograph	*
+ville	vilja	wanted to	homograph	*
+vilja	vilja	to want	homograph	*
+går	gå	go(es), walk(s); leave(s) (of a train or bus)	homograph	*
+får	få	get(s); may, be allowed to	homograph	*
+få	få	to get; to be allowed to	homograph	*
+fick	få	got; was allowed to, had to	homograph	*
+fått	få	got, received (har fått)	homograph	*
+skulle	skola	would, should; was going to	homograph	*
+sin	sin	his, her, its, their (own)	homograph	*
+sitt	sin	his, her, its, their (own)	homograph	*
+sina	sin	his, her, its, their (own)	homograph	*
+min	min	my, mine	homograph	*
+mina	min	my, mine (plural)	homograph	*
+ditt	din	your, yours	homograph	*
+hela	hel	the whole, all of	homograph	*
+vid	vid	at, by, next to	homograph	*
+bor	bo	live(s), dwell(s)	homograph	*
+kom	komma	came	homograph	*
+gör	göra	do(es), make(s)	homograph	*
+göra	göra	to do, to make	homograph	*
+gjorde	göra	did, made	homograph	*
+gjort	göra	done, made (har gjort)	homograph	*
+svårt	svår	difficult, hard	homograph	*
+började	börja	began, started	homograph	*
+börjat	börja	begun, started (har börjat)	homograph	*
+mot	mot	towards, against	homograph	*
+egen	egen	own	homograph	*
+skolan	skola	the school	homograph	*
+skolor	skola	schools	homograph	*
+vän	vän	friend	homograph	*
+vänner	vän	friends	homograph	*
+vännen	vän	the friend	homograph	*
+visar	visa	show(s)	homograph	*
+visa	visa	to show	homograph	*
+stod	stå	stood; said (stod det, it said)	homograph	*
+såg	se	saw; looked	homograph	*
+tror	tro	believe(s), think(s)	homograph	*
+trodde	tro	believed, thought	homograph	*
+trott	tro	believed, thought (har trott)	homograph	*
+tro	tro	to believe, to think	homograph	*
+lär	lära	learn(s) (lär sig); teach(es)	homograph	*
+lära	lära	to learn (lära sig); to teach	homograph	*
+lärde	lära	learned (lärde sig); taught	homograph	*
+lärt	lära	learned (har lärt sig); taught	homograph	*
+räcker	räcka	is enough	homograph	*
+räckte	räcka	was enough	homograph	*
+räcka	räcka	to be enough	homograph	*
+ringer	ringa	call(s), ring(s)	homograph	*
+ringde	ringa	called, rang	homograph	*
+ringa	ringa	to call, to ring	homograph	*
+passar	passa	suit(s), fit(s)	homograph	*
+bokar	boka	book(s), reserve(s)	homograph	*
+åker	åka	go(es), travel(s) (by car, bus, train)	homograph	*
+ris	ris	rice	homograph	*
+skrev	skriva	wrote	homograph	*
+slutet	slut	the end	homograph	*
+dyrt	dyr	expensive	homograph	*
+lön	lön	pay, salary	homograph	*
+lönen	lön	the pay, the salary	homograph	*
+löner	lön	salaries, wages	homograph	*
+skönt	skön	nice, comfortable; a relief	homograph	*
+helgen	helg	the weekend	homograph	*
+helger	helg	weekends	homograph	*
+helgerna	helg	the weekends	homograph	*
+eget	egen	own	homograph	*
+lever	leva	live(s), is alive	homograph	*
+kräver	kräva	demand(s), require(s)	homograph	*
+krävs	kräva	is needed, is required	homograph	*
+krävt	kräva	required, demanded (har krävt)	homograph	*
+lovar	lova	promise(s)	homograph	*
+äger	äga	own(s)	homograph	*
+boken	bok	the book	homograph	*
+gula	gul	yellow	homograph	*
+trötta	trött	tired	homograph	*
+korta	kort	short	homograph	*
+mörka	mörk	dark	homograph	*
+långa	lång	long; tall	homograph	*
+reser	resa	travel(s)	homograph	*
+tråkig	tråkig	boring; a shame	homograph	*
+tråkigt	tråkig	boring; a shame (det var tråkigt, that's a shame)	homograph	*
+middag	middag	dinner	homograph	*
+middagen	middag	the dinner	homograph	*
+kyckling	kyckling	chicken	homograph	*
+fågel	fågel	bird	homograph	*
+fåglar	fågel	birds	homograph	*
+fåglarna	fågel	the birds	homograph	*
+stänger	stänga	close(s), shut(s)	homograph	*
+läggs	lägga	is put, is laid	homograph	*
+lägg	lägga	put (lägg dig, lie down)	homograph	*
+ordnar	ordna	arrange(s), sort(s) out	homograph	*
+träffa	träffa	to meet	homograph	*
+träffar	träffa	meet(s)	homograph	*
+träffade	träffa	met	homograph	*
+träffat	träffa	met (har träffat)	homograph	*
+satte	sätta	put, set	homograph	*
+sätter	sätta	put(s), set(s)	homograph	*
+sätta	sätta	to put, to set	homograph	*
+sätts	sätta	is set	homograph	*
+bakar	baka	bake(s)	homograph	*
+vågar	våga	dare(s)	homograph	*
+bakom	bakom	behind	homograph	*
+stämmer	stämma	is right, is true	homograph	*
+varor	vara	goods, products	homograph	*
+varorna	vara	the goods, the shopping	homograph	*
+varan	vara	the product	homograph	*
+driver	driva	run(s) (a business); drive(s)	homograph	*
+drivs	driva	is run	homograph	*
+driva	driva	to run (a business)	homograph	*
+syns	synas	show(s), can be seen	homograph	*
+fyllde	fylla	turned (an age); filled	homograph	*
+fyller	fylla	turn(s) (an age); fill(s)	homograph	*
+fylla	fylla	to fill (in)	homograph	*
+klädde	klä	dressed (klädde på sig, got dressed)	homograph	*
+oroar	oroa	worry, worries	homograph	*
+vars	vars	whose	homograph	*
+enstaka	enstaka	single, occasional	homograph	*
+blommar	blomma	is in flower, blooms	homograph	*
+tjänst	tjänst	service; job, post	homograph	*
+tjänster	tjänst	services	homograph	*
+grund	grund	basis; reason (på grund av, because of)	homograph	*
+fast	fast	permanent, fixed	homograph	B2-01
+fast	fast	although, even though	homograph	B2-04
+tänkte	tänka	thought; was going to	homograph	*
+kände	känna	felt; knew	homograph	*
+hittat	hitta	found (har hittat)	homograph	*
+hittade	hitta	found	homograph	*
+hittar	hitta	find(s)	homograph	*
+bestämde	bestämma	decided	homograph	*
+läste	läsa	read (past)	homograph	*
+läst	läsa	read (har läst)	homograph	*
+hörde	höra	heard	homograph	*
+hört	höra	heard (har hört)	homograph	*
+visade	visa	showed	homograph	*
+visat	visa	shown (har visat)	homograph	*
+flyttade	flytta	moved	homograph	*
+flyttat	flytta	moved (har flyttat)	homograph	*
+flyttar	flytta	move(s)	homograph	*
+arbetade	arbeta	worked	homograph	*
+arbetat	arbeta	worked (har arbetat)	homograph	*
+bakade	baka	baked	homograph	*
+bakat	baka	baked (har bakat)	homograph	*
+badade	bada	swam, bathed	homograph	*
+använde	använda	used	homograph	*
+använt	använda	used (har använt)	homograph	*
+betalt	betala	paid (har betalt)	homograph	*
+behövt	behöva	needed (har behövt)	homograph	*
+bytte	byta	changed, swapped	homograph	*
+firade	fira	celebrated	homograph	*
+målade	måla	painted	homograph	*
+lyfte	lyfta	lifted	homograph	*
+skickade	skicka	sent	homograph	*
+sålde	sälja	sold	homograph	*
+valde	välja	chose	homograph	*
+valt	välja	chosen (har valt)	homograph	*
+körde	köra	drove	homograph	*
+märkte	märka	noticed	homograph	*
+fattade	fatta	made (a decision); understood	homograph	*
+fattat	fatta	made (a decision) (har fattat)	homograph	*
+nått	nå	reached (har nått)	homograph	*
+ökat	öka	increased (har ökat)	homograph	*
+ökade	öka	increased	homograph	*
+vägrade	vägra	refused	homograph	*
+följt	följa	followed	homograph	*
+begärde	begära	asked for, demanded	homograph	*
+diskuterade	diskutera	discussed	homograph	*
+jämfört	jämföra	compared (jämfört med, compared with)	homograph	*
+uttryckte	uttrycka	expressed, put it	homograph	*
+drömt	drömma	dreamed (har drömt)	homograph	*
+bokat	boka	booked (har bokat)	homograph	*
+förlorat	förlora	lost (har förlorat)	homograph	*
+betraktade	betrakta	regarded, looked at	homograph	*
+anställde	anställa	employed, hired	homograph	*
+tömda	tömma	emptied	homograph	*
+sansade	sansad	level-headed, sensible	homograph	*
+sjukskrivna	sjukskriven	on sick leave	homograph	*
+infekterade	infekterad	infected	homograph	*
+mår	må	feel(s) (mår bra, is well)	homograph	*
+hittills	hittills	so far	homograph	*
+bröt	bryta	broke	homograph	*
+hamnar	hamna	end(s) up	homograph	*
+speglar	spegla	reflect(s)	homograph	*
+tvingar	tvinga	force(s)	homograph	*
+lockar	locka	attract(s), tempt(s)	homograph	*
+kämpar	kämpa	fight(s), struggle(s)	homograph	*
+fångar	fånga	catch(es), trap(s)	homograph	*
+vinkar	vinka	wave(s)	homograph	*
+formar	forma	shape(s)	homograph	*
+råkar	råka	happen(s) to	homograph	*
+tänder	tända	light(s) (candles)	homograph	*
+tvättar	tvätta	wash(es) (clothes)	homograph	*
+duschar	duscha	shower(s), take(s) a shower	homograph	*
+cyklar	cykla	cycle(s)	homograph	*
+kramar	krama	hug(s)	homograph	*
+kollar	kolla	check(s), look(s) at	homograph	*
+diskar	diska	wash(es) the dishes	homograph	*
+frågar	fråga	ask(s)	homograph	*
+frågade	fråga	asked	homograph	*
+frågat	fråga	asked (har frågat)	homograph	*
+hälsar	hälsa	greet(s), say(s) hello	homograph	*
+halkade	halka	slipped	homograph	*
+halkat	halka	slipped (har halkat)	homograph	*
+skojar	skoja	joke(s)	homograph	*
+suger	suga	suck(s)	homograph	*
+äts	äta	is eaten	homograph	*
+deltar	delta	take(s) part	homograph	*
+delta	delta	to take part	homograph	*
+vann	vinna	won	homograph	*
+dog	dö	died	homograph	*
+mor	mor	mother	homograph	*
+lett	leda	led (har lett)	homograph	*
+bärs	bära	is carried, is borne	homograph	*
+fars	far	father's	homograph	*
+trädde	träda	came (into force), stepped	homograph	*
+gifte	gifta	married (gifte sig, got married)	homograph	*
+fälldes	fälla	was brought down, fell	homograph	*
+milda	mild	mild	homograph	*
+bete	bete	grazing, pasture	homograph	*
+fäste	fäste	foothold	homograph	*
+platta	platt	flat	homograph	*
+snabba	snabb	quick, fast	homograph	*
+blekare	blek	paler	homograph	*
+magra	mager	thin, lean	homograph	*
+grunt	grund	shallow	homograph	*
+gödning	gödning	fertiliser	homograph	*
+alger	alg	algae	homograph	*
+kapital	kapital	capital (money)	homograph	*
+slag	slag	kind (ett slags, a kind of)	homograph	*
+slags	slag	kind of	homograph	*
+slaget	slag	the kind; the blow	homograph	*
+sticker	sticka	stick(s) out (sticker ut)	homograph	*
+sticka	sticka	to stick out	homograph	*
+sträva	sträva	to strive	homograph	*
+strid	strid	fight, struggle	homograph	*
+bett	be	asked (har bett)	homograph	*
+ana	ana	to sense, to suspect	homograph	*
+utgör	utgöra	make(s) up, constitute(s)	homograph	*
+ensamma	ensam	alone, lonely	homograph	*
+fina	fin	nice, fine	homograph	*
+fint	fin	nice, fine	homograph	*
+glada	glad	happy	homograph	*
+lätta	lätt	easy	homograph	*
+fasta	fast	fixed, permanent	homograph	*
+höga	hög	high	homograph	*
+vitt	vit	white	homograph	*
+skär	skära	cut(s)	homograph	*
+gift	gift	married	homograph	*
+hit	hit	here (to this place)	homograph	*
+tag	tag	hold (få tag i, get hold of)	homograph	*
+kön	kö	the queue	homograph	*
+val	val	election; choice	homograph	*
+valet	val	the election; the choice	homograph	*
+panna	panna	frying pan (pytt i panna, a hash of fried diced meat and potatoes)	homograph	*
+våren	vår	(the) spring	homograph	*
+mening	mening	sense; sentence	homograph	C1-09,C2-07
+meningen	mening	the idea, the point (det är meningen, that is the point)	homograph	C1-12,C2-06,C2-10
+meningen	mening	the sentence	homograph	B1-15
+disk	disk	dirty dishes; the washing-up	homograph	*
+disken	disk	the dishes, the washing-up	homograph	*
+rätter	rätt	dishes (food)	homograph	*
+rätterna	rätt	the dishes (food)	homograph	*
+låg	ligga	lay, was lying	homograph	C1-07,A2-32
+låg	låg	low	homograph	B2-15,C1-04,C1-10,C1-12,C2-06
+satt	sitta	sat, was sitting	homograph	*
+gång	gång	time, occasion (en gång, once; i gång, going)	homograph	*
+gången	gång	the time (första gången, the first time)	homograph	*
+å	å	on (å ena sidan, on the one hand)	homograph	*
+mål	mål	goal	homograph	*
+målet	mål	the goal, the aim	homograph	*
+ställ	ställa	put (ställ den, put it)	homograph	*
+plan	plan	plan	homograph	C2-05
+planen	plan	the pitch, the field	homograph	A2-09
+planer	plan	plans	homograph	*
+planet	plan	the plane	homograph	*
+rest	resa	travelled (har rest)	homograph	B2-01
+röra	röra	to move (röra sig, röra på sig)	homograph	*
+rör	röra	move(s); concern(s) (det rör sig om, it is about)	homograph	*
+kort	kort	card	homograph	A1-03,A1-11,A1-19,A1-20,A2-08,B2-02
+kort	kort	short	homograph	A2-14,B1-12,B1-15,B1-22,C1-03,C1-09,C1-14
+korten	kort	the cards (lägga korten på bordet, put one's cards on the table)	homograph	*
+lag	lag	team	homograph	A2-09
+laget	lag	the team	homograph	A2-09
+lag	lag	law	homograph	C1-07
+laget	lag	the group (gå laget runt, go round the whole group)	homograph	C1-02
+åt	äta	ate	homograph	A2-03,A2-15,A2-19,A2-32
+åt	åt	for (lagar middag åt henne, cooks dinner for her; ringde efter en taxi åt mig)	homograph	A2-16,A2-26
+åt	åt	at (skratta åt, laugh at)	homograph	B2-23
+åt	åt	(gå åt, be used up; ägna sig åt, devote oneself to; göra åt, do about)	homograph	C1-03,C2-02,C2-03,C2-15
+åt	åt	for (räcka åt alla, be enough for everyone)	homograph	C1-02
+kör	kör	choir	homograph	B2-16
+kör	köra	drive(s)	homograph	B1-08,B2-22
+bär	bär	berries	homograph	B1-06,B1-19,C2-15
+bär	bära	carry, carries (bära på, carry)	homograph	A1-14,C1-02
+händer	hända	happen(s)	homograph	*
+lätt	lätt	easy	homograph	A1-20,B2-03,B2-23
+lätt	lätt	easily; slight (en lätt nyfikenhet)	homograph	B2-17,C1-13,C2-02,C2-07
+handlar	handla	is about (handlar om)	homograph	*
+mitt	min	my	homograph	A1-11,A1-19,C1-04,C1-14,C2-05
+mitt	mitt	in the middle (mitt i, mitt på)	homograph	A2-19,B2-06,B2-19,B2-20,C1-11,C1-15
+matte	matte	maths	homograph	*
+matten	matte	the maths	homograph	*
+vår	vår	our	homograph	*
+sätt	sätta	sit (sätt dig, sit down)	homograph	A1-16,A1-27,A2-02
+sätt	sätt	way, manner	homograph	B1-25,B2-03,C1-09,C1-12,C2-03,C2-04,C2-06,C2-07,C2-15
+ses	ses	see each other (vi ses, see you)	homograph	*
+# Empty: no meaning in grove's word list (compounds, numbers, colloquial forms).
+stan	stad	town (colloquial: the town centre)	empty	*
+bidrog	bidra	contributed	empty	*
+id-kort	id-kort	ID card	empty	*
+fyrahundra	fyrahundra	four hundred	empty	*
+skärmfria	skärmfri	screen-free	empty	*
+stambyte	stambyte	replacing a building's water and drain pipes	empty	*
+vinbutik	vinbutik	wine shop	empty	*
+skoldagen	skoldag	the school day	empty	*
+inlandets	inland	the inland's, of the interior	empty	*
+språkkafé	språkkafé	language café	empty	*
+språkcafé	språkcafé	language café	empty	*
+språkcaféet	språkcafé	the language café	empty	*
+familjerum	familjerum	family room	empty	*
+hundrafyrtio	hundrafyrtio	a hundred and forty	empty	*
+föräldraledig	föräldraledig	on parental leave	empty	*
+jättetung	jättetung	really heavy	empty	*
+uppackade	uppackad	unpacked	empty	*
+hundraåttio	hundraåttio	a hundred and eighty	empty	*
+söndagsmiddagen	söndagsmiddag	the Sunday dinner	empty	*
+läxhjälpen	läxhjälp	the homework help	empty	*
+skolzon	skolzon	school zone	empty	*
+matrester	matrest	food scraps, leftovers	empty	*
+biogas	biogas	biogas	empty	*
+skidlärare	skidlärare	ski instructor	empty	*
+tidsskillnaden	tidsskillnad	the time difference	empty	*
+papperslyktor	papperslykta	paper lanterns	empty	*
+ersättningsmobil	ersättningsmobil	replacement phone	empty	*
+korrektur	korrektur	proofreading	empty	*
+tjugotusen	tjugotusen	twenty thousand	empty	*
+björkpollen	björkpollen	birch pollen	empty	*
+pollenprognosen	pollenprognos	the pollen forecast	empty	*
+förstagångsföräldrar	förstagångsförälder	first-time parents	empty	*
+tjugofemåring	tjugofemåring	25-year-old	empty	*
+kollekten	kollekt	the church collection	empty	*
+bank-id	bank-id	BankID (Swedish electronic ID)	empty	*
+tentaplugg	tentaplugg	studying for exams	empty	*
+fyradagarsvecka	fyradagarsvecka	four-day week	empty	*
+provperiod	provperiod	trial period	empty	*
+hemvägen	hemväg	the way home	empty	*
+fårbönder	fårbonde	sheep farmers	empty	*
+röstkortet	röstkort	the voting card	empty	*
+bonusfamiljer	bonusfamilj	blended families	empty	*
+cykelsemester	cykelsemester	cycling holiday	empty	*
+personalrestaurangen	personalrestaurang	the staff canteen	empty	*
+linsgrytan	linsgryta	the lentil stew	empty	*
+hjärt	hjärta	heart (hjärt- och kärlsjukdomar, heart and vascular disease)	empty	*
+två-diabetes	typ två-diabetes	type 2 diabetes	empty	*
+skattepengarna	skattepengar	the taxpayers' money	empty	*
+popkörer	popkör	pop choirs	empty	*
+hundstallet	hundstall	the dog kennel	empty	*
+kardemummabullar	kardemummabulle	cardamom buns	empty	*
+ensamhushållen	ensamhushåll	the single-person households	empty	*
+välfärdsmodellen	välfärdsmodell	the welfare model	empty	*
+klätterklubb	klätterklubb	climbing club	empty	*
+samtalsgrupper	samtalsgrupp	discussion groups	empty	*
+matsvinnet	matsvinn	the food waste	empty	*
+före-datum	bäst före-datum	best-before date	empty	*
+förbrukningsdag	förbrukningsdag	use-by date	empty	*
+livsmedelsverket	Livsmedelsverket	the Swedish Food Agency	empty	*
+skönhetsfel	skönhetsfel	cosmetic flaws	empty	*
+budgivning	budgivning	bidding	empty	*
+lånelöfte	lånelöfte	loan pre-approval	empty	*
+femhundratusen	femhundratusen	five hundred thousand	empty	*
+belåningsgraden	belåningsgrad	the loan-to-value ratio	empty	*
+månadsavgiften	månadsavgift	the monthly fee	empty	*
+överbryggningslån	överbryggningslån	bridging loan	empty	*
+måndagsmorgnarna	måndagsmorgon	the Monday mornings	empty	*
+omställningsstöd	omställningsstöd	career-transition support	empty	*
+semesterresorna	semesterresa	the holiday trips	empty	*
+meningsfull	meningsfull	meaningful	empty	*
+arbetsmarknadsforskare	arbetsmarknadsforskare	labour-market researchers	empty	*
+familjeliv	familjeliv	family life	empty	*
+möbelbutik	möbelbutik	furniture shop	empty	*
+hemtransporter	hemtransport	home deliveries	empty	*
+klädbutiker	klädbutik	clothes shops	empty	*
+pendelparkeringar	pendelparkering	park-and-ride car parks	empty	*
+turtätheten	turtäthet	the frequency (of buses or trains)	empty	*
+barndomsstad	barndomsstad	childhood town	empty	*
+arbetsbelastning	arbetsbelastning	workload	empty	*
+sömnproblem	sömnproblem	sleep problems	empty	*
+irritation	irritation	irritation	empty	*
+arbetsmängden	arbetsmängd	the amount of work	empty	*
+miljödebatten	miljödebatt	the environmental debate	empty	*
+skogsindustrin	skogsindustri	the forest industry	empty	*
+exportinkomster	exportinkomst	export earnings	empty	*
+likåldriga	likåldrig	even-aged	empty	*
+kalhuggs	kalhugga	is clear-cut	empty	*
+livsmiljöer	livsmiljö	habitats	empty	*
+skogsmarken	skogsmark	the forest land	empty	*
+hyggesfritt	hyggesfri	continuous-cover (without clear-cutting)	empty	*
+livsmiljö	livsmiljö	habitat	empty	*
+förtroendekapital	förtroendekapital	trust (as capital), goodwill	empty	*
+mörkertid	mörkertid	the dark season	empty	*
+utlämningsställe	utlämningsställe	collection point	empty	*
+friskvårdsbidrag	friskvårdsbidrag	wellness allowance (paid by an employer)	empty	*
+friskvårdsbidraget	friskvårdsbidrag	the wellness allowance	empty	*
+gymkort	gymkort	gym membership card	empty	*
+yoga	yoga	yoga	empty	*
+fysioterapeut	fysioterapeut	physiotherapist	empty	*
+mirakelkur	mirakelkur	miracle cure	empty	*
+mobilfria	mobilfri	phone-free	empty	*
+folkfest	folkfest	big public celebration	empty	*
+jurygrupper	jurygrupp	jury panels	empty	*
+ballader	ballad	ballads	empty	*
+sentimental	sentimental	sentimental	empty	*
+uppmärksamhetsekonomi	uppmärksamhetsekonomi	attention economy	empty	*
+romanläsning	romanläsning	reading novels	empty	*
+gräddsås	gräddsås	cream sauce	empty	*
+söndagsmiddagar	söndagsmiddag	Sunday dinners	empty	*
+vardagsmenyn	vardagsmeny	the everyday menu	empty	*
+vardagsmaten	vardagsmat	everyday food	empty	*
+rekordtakt	rekordtakt	record pace	empty	*
+betongelement	betongelement	precast concrete panels	empty	*
+centralvärme	centralvärme	central heating	empty	*
+grönytor	grönyta	green spaces	empty	*
+avundas	avundas	to envy	empty	*
+renoveringar	renovering	renovations	empty	*
+lönesamtalet	lönesamtal	the pay review meeting	empty	*
+supportavdelningen	supportavdelning	the support department	empty	*
+supportärendena	supportärende	the support cases	empty	*
+marknadsnivå	marknadsnivå	market level	empty	*
+gruppchef	gruppchef	team manager	empty	*
+malmfyndigheter	malmfyndighet	ore deposits	empty	*
+milslånga	milslång	miles long	empty	*
+mobiltäckningen	mobiltäckning	the mobile coverage	empty	*
+transportsträcka	transportsträcka	a stretch to get through (just to get somewhere)	empty	*
+titelsidan	titelsida	the title page	empty	*
+idiom	idiom	idioms	empty	*
+sociolekter	sociolekt	sociolects (ways of speaking of a social group)	empty	*
+prisutvecklingen	prisutveckling	the price trend	empty	*
+maskinöversättning	maskinöversättning	machine translation	empty	*
+magbesvär	magbesvär	stomach trouble	empty	*
+febernedsättande	febernedsättande	fever-reducing	empty	*
+bräckvattenhav	bräckvattenhav	brackish-water sea	empty	*
+skyddszoner	skyddszon	buffer zones	empty	*
+bottensedimenten	bottensediment	the bottom sediments	empty	*
+språkprogram	språkprogram	language programme	empty	*
+språkpolitik	språkpolitik	language policy	empty	*
+koncernspråk	koncernspråk	company language (of a corporate group)	empty	*
+samhällsämne	samhällsämne	social-studies subject	empty	*
+domänförlust	domänförlust	domain loss (a language losing ground in a field)	empty	*
+språklagen	språklag	the Language Act	empty	*
+samhällsbärande	samhällsbärande	that society rests on	empty	*
+parallellspråkighet	parallellspråkighet	parallel language use	empty	*
+namnlagen	namnlag	the Names Act	empty	*
+marknadshyror	marknadshyra	market rents	empty	*
+hyressättning	hyressättning	rent setting	empty	*
+nybyggda	nybyggd	newly built	empty	*
+tågresandet	tågresande	train travel	empty	*
+utrikesflyget	utrikesflyg	international flights	empty	*
+weekendresa	weekendresa	weekend trip	empty	*
+konsenskultur	konsenskultur	consensus culture	empty	*
+kaffeautomaten	kaffeautomat	the coffee machine	empty	*
+trädlösa	trädlös	treeless	empty	*
+fjällbjörkar	fjällbjörk	mountain birches	empty	*
+björkskog	björkskog	birch forest	empty	*
+fjällregionen	fjällregion	the mountain region	empty	*
+växtsäsongen	växtsäsong	the growing season	empty	*
+fjällväxter	fjällväxt	mountain plants	empty	*
+stödutfodring	stödutfodring	supplementary feeding	empty	*
+islager	islager	layer of ice	empty	*
+mätserier	mätserie	series of measurements	empty	*
+flyttlederna	flyttled	the migration routes	empty	*
+byggbranschen	byggbransch	the building trade	empty	*
+cirkelledare	cirkelledare	study-circle leader	empty	*
+studiecirkeln	studiecirkel	the study circle	empty	*
+studiecirkel	studiecirkel	study circle	empty	*
+id-kontroller	id-kontroll	ID checks	empty	*
+föräldraledighet	föräldraledighet	parental leave	empty	*
+anläggningsprogrammet	anläggningsprogram	(bygg- och anläggningsprogrammet) the building and construction programme	empty	*
+nyutbildad	nyutbildad	newly qualified	empty	*
+högstadieelever	högstadieelev	lower-secondary pupils (years 7–9)	empty	*
+svårfunna	svårfunnen	hard to find	empty	*
+jästsvamparna	jästsvamp	the yeasts	empty	*
+mjölksyrabakterierna	mjölksyrabakterie	the lactic acid bacteria	empty	*
+surdegsbröd	surdegsbröd	sourdough bread	empty	*
+läsesällskap	läsesällskap	reading societies	empty	*
+kommunalpolitiker	kommunalpolitiker	local politicians	empty	*
+studierummen	studierum	the study rooms	empty	*
+hobbyverksamhet	hobbyverksamhet	hobby activities	empty	*
+kulturskola	kulturskola	municipal school of music and the arts	empty	*
+svårligen	svårligen	hardly, with difficulty	empty	*
+placebo	placebo	placebo	empty	*
+jetlag	jetlag	jet lag	empty	*
+hemtjänsten	hemtjänst	home care (the council's help at home for older people)	empty	*
+flergenerationsboende	flergenerationsboende	several generations living together	empty	*
+placeboeffekten	placeboeffekt	the placebo effect	empty	*
+hjärnavbildningar	hjärnavbildning	brain scans	empty	*
+frisätta	frisätta	to release	empty	*

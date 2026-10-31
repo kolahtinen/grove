@@ -1,0 +1,3935 @@
+{
+ "level": "A1",
+ "texts": [
+  {
+   "id": "A1-01",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "läser"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Min bror"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Min syster"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-02",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "vaknar"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "läser"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "arbetar"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "äter han"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar han"
+      }
+     ]
+    },
+    {
+     "name": "Particle verbs: tycka om, komma ihåg, ge upp",
+     "explain_en": "Many verbs have a small stressed word, a particle, that changes the meaning: tycka om (like), komma ihåg (remember), hälsa på (visit), ge upp (give up). The particle follows the verb, after the subject if that comes after the verb, and it carries the stress.",
+     "level": "B1",
+     "ladder": "G-B1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "går upp"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar han på"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går till"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-03",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "går"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Vad vill du"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Vill du"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Vill du"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Har ni"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "Vad kostar det"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "Kan jag"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "vill du ha"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Vill du ha"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Vill du ha"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "Kan jag betala"
+      }
+     ]
+    },
+    {
+     "name": "To do: att + infinitive",
+     "explain_en": "After many verbs, adjectives and nouns, Swedish uses att + the infinitive, like English \"to\": Det är roligt att läsa. Hon slutade att röka.",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "The infinitive after a word, as in modal verb + infinitive (G-A2-04), which is A2 on the ladder.",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "att äta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-04",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "ligger"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "står"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "ser"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har hon"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är inte"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-05",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "ligger"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "har"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "tar jag"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Har ni"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Vad kostar de"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "Vill du"
+      }
+     ]
+    },
+    {
+     "name": "Past tense: -ade, -de, -te and strong verbs",
+     "explain_en": "The past tense is the same for every person. Regular verbs end in -ade, -de or -te (pratade, stängde, köpte); strong verbs change their vowel instead (gick, åt, drack, var).",
+     "level": "A2",
+     "ladder": "G-A2-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "var"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "var"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 10,
+       "words": "Vill du ha"
+      }
+     ]
+    },
+    {
+     "name": "Verbs that always end in -s: hoppas, minnas, träffas",
+     "explain_en": "Some verbs end in -s without being passive. A few only exist with -s (hoppas, minnas, lyckas, finnas), and some add it to mean \"each other\": vi träffas (\"we meet\"), de kramades (\"they hugged\").",
+     "level": "B2",
+     "ladder": "G-B2-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "finns"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "finns"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "finns"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-06",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "snöar"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "leker"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "blir"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "blir"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "blir"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "smälter"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "blir"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är det"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "blir det"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "blir det"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 12,
+       "words": "Ta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-07",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "tar"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "När kommer den"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Kan man"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "gör den inte"
+      }
+     ]
+    },
+    {
+     "name": "The future: ska and kommer att",
+     "explain_en": "Swedish often just uses the present tense for the future. Ska shows a plan or an intention: Jag ska resa. Kommer att says what will happen anyway: Det kommer att regna.",
+     "level": "A2",
+     "ladder": "G-A2-03",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "ska jag ta"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "ska ta"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Kan man köpa"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "måste köpa"
+      }
+     ]
+    },
+    {
+     "name": "man: one, you, people",
+     "explain_en": "man is a subject meaning people in general, like English \"you\" or \"one\": Man får inte röka här. It takes the same verb form as every other subject.",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "A general subject used in simple A2 statements about rules and habits; no new verb form, so just after the A1 basics.",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "man"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-08",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "arbetar"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "börjar"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "arbetar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "slutar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "gör han"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "har Johan"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "slutar han"
+      }
+     ]
+    },
+    {
+     "name": "To do: att + infinitive",
+     "explain_en": "After many verbs, adjectives and nouns, Swedish uses att + the infinitive, like English \"to\": Det är roligt att läsa. Hon slutade att röka.",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "The infinitive after a word, as in modal verb + infinitive (G-A2-04), which is A2 on the ladder.",
+     "places": [
+      {
+       "text": 1,
+       "line": 7,
+       "words": "att göra"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-09",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "arbetar"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "sover"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "ringer"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "börjar"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "promenerar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "ringer hon"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "promenerar de"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tar Mia"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "arbetar inte"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "vill gå"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-10",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "mår"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "gör"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Hur mår du"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "Vad är det"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Har du"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "kan inte"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "måste stanna"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "kan inte komma"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 12,
+       "words": "Krya"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-11",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "ser"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "När tappade du"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Hur ser den"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "Vad heter du"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Är det"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "min plånbok"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Mitt kort"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "mitt id-kort"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "min plånbok"
+      }
+     ]
+    },
+    {
+     "name": "Past tense: -ade, -de, -te and strong verbs",
+     "explain_en": "The past tense is the same for every person. Regular verbs end in -ade, -de or -te (pratade, stängde, köpte); strong verbs change their vowel instead (gick, åt, drack, var).",
+     "level": "A2",
+     "ladder": "G-A2-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "tappade"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "lämnade"
+      }
+     ]
+    },
+    {
+     "name": "Perfect tense: har + supine (har ätit)",
+     "explain_en": "The perfect tense is har plus the supine form of the verb: jag har ätit, vi har bott. As in English, it is for things that happened at no stated time or are still going on. With a past time like i går, use the past tense.",
+     "level": "A2",
+     "ladder": "G-A2-02",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "har tappat"
+      }
+     ]
+    },
+    {
+     "name": "The future: ska and kommer att",
+     "explain_en": "Swedish often just uses the present tense for the future. Ska shows a plan or an intention: Jag ska resa. Kommer att says what will happen anyway: Det kommer att regna.",
+     "level": "A2",
+     "ladder": "G-A2-03",
+     "places": [
+      {
+       "text": 1,
+       "line": 10,
+       "words": "ska titta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-12",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Bor"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "ser"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Vem är det"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Vem är mannen"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Vem är den"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Har ni"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "min familj"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "min pappa"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "min mamma"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "min bror"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "din mormor"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-13",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "steker"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "luktar"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tittar"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "säger"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 10,
+       "words": "äter de"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tittar de"
+      }
+     ]
+    },
+    {
+     "name": "Comparing: större, störst and mer, mest",
+     "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+     "level": "A2",
+     "ladder": "G-A2-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 12,
+       "words": "bästa"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-14",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "städar"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "öppnar"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "bär"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "sätter"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "säger"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tar Hassan"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är det"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "tycker inte"
+      }
+     ]
+    },
+    {
+     "name": "Reflexive verbs: tvätta sig, känna sig",
+     "explain_en": "Some verbs take a pronoun that points back to the subject: jag tvättar mig, du tvättar dig, hon tvättar sig, vi tvättar oss. Sig is for han, hon, den, det and de. Often English has no \"self\": känna sig means \"feel\".",
+     "level": "A2",
+     "ladder": "G-A2-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 11,
+       "words": "sätter sig"
+      }
+     ]
+    },
+    {
+     "name": "To do: att + infinitive",
+     "explain_en": "After many verbs, adjectives and nouns, Swedish uses att + the infinitive, like English \"to\": Det är roligt att läsa. Hon slutade att röka.",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "The infinitive after a word, as in modal verb + infinitive (G-A2-04), which is A2 on the ladder.",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "att städa"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-15",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "faller"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "badar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "blir"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "tycker"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Vad är det"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Är det"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Kan vi"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "badar inte"
+      }
+     ]
+    },
+    {
+     "name": "Perfect tense: har + supine (har ätit)",
+     "explain_en": "The perfect tense is har plus the supine form of the verb: jag har ätit, vi har bott. As in English, it is for things that happened at no stated time or are still going on. With a past time like i går, use the past tense.",
+     "level": "A2",
+     "ladder": "G-A2-02",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har gett"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Kan vi sitta"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Titta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-16",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "jobbar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "studerar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "kommer"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Är det"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Vad jobbar du"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är inte"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Min svenska"
+      }
+     ]
+    },
+    {
+     "name": "Perfect tense: har + supine (har ätit)",
+     "explain_en": "The perfect tense is har plus the supine form of the verb: jag har ätit, vi har bott. As in English, it is for things that happened at no stated time or are still going on. With a past time like i går, use the past tense.",
+     "level": "A2",
+     "ladder": "G-A2-02",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har du bott"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 11,
+       "words": "vill jobba"
+      }
+     ]
+    },
+    {
+     "name": "Reflexive verbs: tvätta sig, känna sig",
+     "explain_en": "Some verbs take a pronoun that points back to the subject: jag tvättar mig, du tvättar dig, hon tvättar sig, vi tvättar oss. Sig is for han, hon, den, det and de. Often English has no \"self\": känna sig means \"feel\".",
+     "level": "A2",
+     "ladder": "G-A2-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Sätt dig"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "lär oss"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Sätt dig"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-17",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "regnar"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "mår"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "tränar"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "sover"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "springer"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "pratar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "säger"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "regnar det"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "springer hon"
+      }
+     ]
+    },
+    {
+     "name": "Comparing: större, störst and mer, mest",
+     "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+     "level": "A2",
+     "ladder": "G-A2-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "bättre"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "gladare"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-18",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "övar"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "övar"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "sjunger"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "spelar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "lyssnar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "blir"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "säger"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "spelar de"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-19",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är vi"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Har du"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Vad kostar det"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "Kan jag"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "Mitt tåg"
+      }
+     ]
+    },
+    {
+     "name": "Past tense: -ade, -de, -te and strong verbs",
+     "explain_en": "The past tense is the same for every person. Regular verbs end in -ade, -de or -te (pratade, stängde, köpte); strong verbs change their vowel instead (gick, åt, drack, var).",
+     "level": "A2",
+     "ladder": "G-A2-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "kom"
+      }
+     ]
+    },
+    {
+     "name": "The future: ska and kommer att",
+     "explain_en": "Swedish often just uses the present tense for the future. Ska shows a plan or an intention: Jag ska resa. Kommer att says what will happen anyway: Det kommer att regna.",
+     "level": "A2",
+     "ladder": "G-A2-03",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "ska du"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "Kan jag betala"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-20",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Har"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "står"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Har du"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "Har du"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Vilken är din"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Har ni"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "din adress"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "ditt kort"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "vill låna"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "kan jag låna"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-21",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "ringer"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "sparar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "har"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är jag"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "sparar jag"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Vad gör du"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Mina vänner"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-22",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "letar"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "tror"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "tar"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Kan jag"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "Vad kostar den"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "Kan jag hjälpa"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "vill du ha"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "kan prova"
+      }
+     ]
+    },
+    {
+     "name": "Comparing: större, störst and mer, mest",
+     "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+     "level": "A2",
+     "ladder": "G-A2-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "större"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-23",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "åker"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "sitter"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "sitter"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "sover"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "läser"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "lyssnar"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "ser"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "köper"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "väntar"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "säger"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "går han"
+      }
+     ]
+    },
+    {
+     "name": "Particle verbs: tycka om, komma ihåg, ge upp",
+     "explain_en": "Many verbs have a small stressed word, a particle, that changes the meaning: tycka om (like), komma ihåg (remember), hälsa på (visit), ge upp (give up). The particle follows the verb, after the subject if that comes after the verb, and it carries the stress.",
+     "level": "B1",
+     "ladder": "G-B1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "går han till"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kommer fram"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-24",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "undervisar"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "läser"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "slutar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "läser"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "älskar"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "läser de"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "har de"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "lär de"
+      }
+     ]
+    },
+    {
+     "name": "There is: det finns",
+     "explain_en": "Swedish says \"there is\" or \"there are\" with det finns (det fanns in the past): Det finns en park här. The thing that exists comes after finns.",
+     "level": "A1",
+     "ladder": null,
+     "level_reason": "A fixed everyday chunk met from the first texts, like the A1 present tense (G-A1-01) it is built on.",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Det finns"
+      }
+     ]
+    },
+    {
+     "name": "Reflexive verbs: tvätta sig, känna sig",
+     "explain_en": "Some verbs take a pronoun that points back to the subject: jag tvättar mig, du tvättar dig, hon tvättar sig, vi tvättar oss. Sig is for han, hon, den, det and de. Often English has no \"self\": känna sig means \"feel\".",
+     "level": "A2",
+     "ladder": "G-A2-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "lär de sig"
+      }
+     ]
+    },
+    {
+     "name": "To do: att + infinitive",
+     "explain_en": "After many verbs, adjectives and nouns, Swedish uses att + the infinitive, like English \"to\": Det är roligt att läsa. Hon slutade att röka.",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "The infinitive after a word, as in modal verb + infinitive (G-A2-04), which is A2 on the ladder.",
+     "places": [
+      {
+       "text": 1,
+       "line": 6,
+       "words": "att räkna"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-25",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "pratar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "skrattar"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 7,
+       "words": "har vi"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "äter vi"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "Min man"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "min bästa"
+      }
+     ]
+    },
+    {
+     "name": "Comparing: större, störst and mer, mest",
+     "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+     "level": "A2",
+     "ladder": "G-A2-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 10,
+       "words": "bästa"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-26",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 9,
+       "words": "är de"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går vi"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Är de"
+      }
+     ]
+    },
+    {
+     "name": "Not: inte comes after the verb",
+     "explain_en": "To say \"not\", put inte after the verb: Jag dricker inte kaffe. Swedish needs no helper like English \"do\". If the subject comes after the verb, inte comes after the subject: I dag arbetar jag inte.",
+     "level": "A1",
+     "ladder": "G-A1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "vet inte"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "mina nycklar"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "min telefon"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "din hand"
+      }
+     ]
+    },
+    {
+     "name": "Past tense: -ade, -de, -te and strong verbs",
+     "explain_en": "The past tense is the same for every person. Regular verbs end in -ade, -de or -te (pratade, stängde, köpte); strong verbs change their vowel instead (gick, åt, drack, var).",
+     "level": "A2",
+     "ladder": "G-A2-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "var"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Var"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Vänta"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-27",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 1,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Gör"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "ser"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Tar"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Vad är problemet"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "Gör det"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Är det"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "Tar det"
+      }
+     ]
+    },
+    {
+     "name": "Comparing: större, störst and mer, mest",
+     "explain_en": "Most adjectives add -are and -ast to compare: billig, billigare, billigast. Some change more (stor, större, störst; bra, bättre, bäst), and many long words use mer and mest: mer spännande. \"Than\" is än.",
+     "level": "A2",
+     "ladder": "G-A2-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "längst"
+      }
+     ]
+    },
+    {
+     "name": "Reflexive verbs: tvätta sig, känna sig",
+     "explain_en": "Some verbs take a pronoun that points back to the subject: jag tvättar mig, du tvättar dig, hon tvättar sig, vi tvättar oss. Sig is for han, hon, den, det and de. Often English has no \"self\": känna sig means \"feel\".",
+     "level": "A2",
+     "ladder": "G-A2-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Sätt dig"
+      }
+     ]
+    },
+    {
+     "name": "Commands: the verb stem (Ta! Kom! Sätt dig!)",
+     "explain_en": "A command uses the verb without -r, the same as the infinitive without its -a ending if it has one: Ta en kaka! Sätt dig! Glöm inte nyckeln!",
+     "level": "A2",
+     "ladder": null,
+     "level_reason": "Built from the infinitive, which the ladder brings in at A2 with modal verbs (G-A2-04).",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "Sätt dig"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-28",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "tittar"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "snöar"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "leker"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "tycker"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är det"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är det"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "går jag"
+      }
+     ]
+    },
+    {
+     "name": "There is: det finns",
+     "explain_en": "Swedish says \"there is\" or \"there are\" with det finns (det fanns in the past): Det finns en park här. The thing that exists comes after finns.",
+     "level": "A1",
+     "ladder": null,
+     "level_reason": "A fixed everyday chunk met from the first texts, like the A1 present tense (G-A1-01) it is built on.",
+     "places": [
+      {
+       "text": 1,
+       "line": 8,
+       "words": "det finns"
+      }
+     ]
+    },
+    {
+     "name": "Particle verbs: tycka om, komma ihåg, ge upp",
+     "explain_en": "Many verbs have a small stressed word, a particle, that changes the meaning: tycka om (like), komma ihåg (remember), hälsa på (visit), ge upp (give up). The particle follows the verb, after the subject if that comes after the verb, and it carries the stress.",
+     "level": "B1",
+     "ladder": "G-B1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tar på"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "går till"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "går jag hem"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-29",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "ligger"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tittar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "står"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "tycker"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "köper"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "går"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är det"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är det"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "tittar vi"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går vi"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "köper vi"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "går vi"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "min syster"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "Min syster"
+      }
+     ]
+    },
+    {
+     "name": "Particle verbs: tycka om, komma ihåg, ge upp",
+     "explain_en": "Many verbs have a small stressed word, a particle, that changes the meaning: tycka om (like), komma ihåg (remember), hälsa på (visit), ge upp (give up). The particle follows the verb, after the subject if that comes after the verb, and it carries the stress.",
+     "level": "B1",
+     "ladder": "G-B1-07",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "går till"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "tycker om"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "går vi till"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "går vi hem"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-30",
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 4,
+       "words": "väger"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "kostar"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "tar"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "fyller"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "kommer"
+      }
+     ]
+    },
+    {
+     "name": "Questions: the verb comes first",
+     "explain_en": "In a yes/no question the verb comes first: Bor du här? In a question with a question word (vad, var, när, hur, vem) the verb comes right after that word: Var bor du?",
+     "level": "A1",
+     "ladder": "G-A1-06",
+     "places": [
+      {
+       "text": 1,
+       "line": 5,
+       "words": "Vad kostar det"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 3,
+       "words": "min mamma"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "Min mamma"
+      }
+     ]
+    },
+    {
+     "name": "Can, want, must: modal verb + infinitive",
+     "explain_en": "Modal verbs like kan, vill, måste, får and ska are followed by a verb in its basic form, without att: Jag kan simma. Note that får often means \"may, be allowed to\": Du får gå nu.",
+     "level": "A2",
+     "ladder": "G-A2-04",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "vill skicka"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-31",
+   "pending": true,
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "städar"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "dricker"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "är"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "städar vi"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "dricker vi"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "A1-32",
+   "pending": true,
+   "patterns": [
+    {
+     "name": "Present tense: verbs end in -r",
+     "explain_en": "Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.",
+     "level": "A1",
+     "ladder": "G-A1-01",
+     "places": [
+      {
+       "text": 1,
+       "line": 1,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 1,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "heter"
+      },
+      {
+       "text": 1,
+       "line": 4,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 5,
+       "words": "jobbar"
+      },
+      {
+       "text": 1,
+       "line": 6,
+       "words": "har"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 7,
+       "words": "går"
+      },
+      {
+       "text": 1,
+       "line": 8,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "leker"
+      },
+      {
+       "text": 1,
+       "line": 9,
+       "words": "sjunger"
+      },
+      {
+       "text": 1,
+       "line": 10,
+       "words": "är"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "sover"
+      },
+      {
+       "text": 1,
+       "line": 11,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "bor"
+      },
+      {
+       "text": 1,
+       "line": 13,
+       "words": "kommer"
+      },
+      {
+       "text": 1,
+       "line": 14,
+       "words": "äter"
+      },
+      {
+       "text": 1,
+       "line": 16,
+       "words": "gör"
+      },
+      {
+       "text": 1,
+       "line": 17,
+       "words": "läser"
+      }
+     ]
+    },
+    {
+     "name": "Verb second: I dag regnar det",
+     "explain_en": "In a Swedish statement the verb is always the second part. So when a sentence starts with a time or a place, the subject moves after the verb: I dag regnar det, not \"I dag det regnar\".",
+     "level": "A1",
+     "ladder": "G-A1-05",
+     "places": [
+      {
+       "text": 1,
+       "line": 14,
+       "words": "äter vi"
+      }
+     ]
+    },
+    {
+     "name": "My and your: min, mitt, mina",
+     "explain_en": "Words like \"my\" change to match the noun: min with en-words (min bil), mitt with ett-words (mitt hus) and mina in the plural (mina barn). Din, ditt, dina (\"your\") and vår, vårt, våra (\"our\") work the same way.",
+     "level": "A1",
+     "ladder": "G-A1-08",
+     "places": [
+      {
+       "text": 1,
+       "line": 2,
+       "words": "min fru"
+      },
+      {
+       "text": 1,
+       "line": 2,
+       "words": "våra barn"
+      },
+      {
+       "text": 1,
+       "line": 3,
+       "words": "Min fru"
+      },
+      {
+       "text": 1,
+       "line": 12,
+       "words": "Min mamma"
+      },
+      {
+       "text": 1,
+       "line": 15,
+       "words": "Min pappa"
+      },
+      {
+       "text": 1,
+       "line": 17,
+       "words": "Min mamma"
+      },
+      {
+       "text": 1,
+       "line": 18,
+       "words": "Min bror"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

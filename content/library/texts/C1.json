@@ -1760,6 +1760,120 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "C1-16",
+      "level": "C1",
+      "topic": "Home",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Tre generationer under samma tak",
+      "names": [
+        "Lena",
+        "Nils",
+        "Sofia",
+        "Leo",
+        "Göteborg"
+      ],
+      "above_level": [
+        "såld",
+        "flergenerationsboende"
+      ],
+      "lines": [
+        {
+          "sv": "När Lena och Nils sålde sin villa utanför Göteborg, flyttade de in i ett större hus tillsammans med sin dotter Sofia och hennes familj.",
+          "en": "When Lena and Nils sold their house outside Gothenburg, they moved into a bigger house together with their daughter Sofia and her family."
+        },
+        {
+          "sv": "Många i deras omgivning tyckte att de hade tagit ett märkligt beslut.",
+          "en": "Many people around them thought they had made a strange decision."
+        },
+        {
+          "sv": "I Sverige har det länge varit självklart att varje generation ska ha sitt eget hushåll, och att flytta ihop med sina vuxna barn uppfattas av många som ett steg tillbaka.",
+          "en": "In Sweden it has long been taken for granted that each generation should have its own household, and many see moving in with one's grown-up children as a step backwards."
+        },
+        {
+          "sv": "Ändå är det precis vad ett växande antal familjer väljer att göra.",
+          "en": "Yet that is exactly what a growing number of families choose to do."
+        },
+        {
+          "sv": "Skälen är både ekonomiska och praktiska.",
+          "en": "The reasons are both financial and practical."
+        },
+        {
+          "sv": "Bostadspriserna har stigit kraftigt, och för många unga familjer är det svårt att få råd med ett hus med trädgård.",
+          "en": "Housing prices have risen sharply, and for many young families it is hard to afford a house with a garden."
+        },
+        {
+          "sv": "Samtidigt lever de äldre längre och vill gärna vara delaktiga i barnbarnens liv, men utan att bli beroende av hemtjänsten.",
+          "en": "At the same time older people live longer and would like to take part in their grandchildren's lives, but without becoming dependent on home care."
+        },
+        {
+          "sv": "För familjen i Göteborg blev lösningen ett hus med två ingångar och två kök, men med en gemensam trädgård och ett stort vardagsrum där alla kan träffas.",
+          "en": "For the family in Gothenburg, the solution was a house with two entrances and two kitchens, but with a shared garden and a large living room where everyone can get together."
+        },
+        {
+          "sv": "– Det viktigaste är att man kan stänga dörren, säger Lena. Vi ses nästan varje dag, men vi lever inte i varandras fickor.",
+          "en": "– The most important thing is that you can close the door, says Lena. We see each other almost every day, but we don't live in each other's pockets."
+        },
+        {
+          "sv": "Hennes barnbarn Leo, som är sju år, går ofta över till mormor och morfar efter skolan.",
+          "en": "Her grandson Leo, who is seven, often goes over to his grandma and grandpa after school."
+        },
+        {
+          "sv": "Det har gjort vardagen lugnare för Sofia, som arbetar heltid och tidigare jagade klockan varje eftermiddag för att hinna hämta på fritids.",
+          "en": "That has made everyday life calmer for Sofia, who works full time and used to race the clock every afternoon to get to the after-school club in time."
+        },
+        {
+          "sv": "Men det finns också svårigheter.",
+          "en": "But there are difficulties too."
+        },
+        {
+          "sv": "Olika syn på uppfostran, på städning och på hur mycket man ska umgås kan skapa spänningar som är svårare att undvika när man bor vägg i vägg.",
+          "en": "Different views on bringing up children, on cleaning and on how much to spend time together can cause tensions that are harder to avoid when you live wall to wall."
+        },
+        {
+          "sv": "Familjen har därför bestämt sig för att ha ett möte en gång i månaden, där alla får säga vad som fungerar och vad som inte gör det.",
+          "en": "The family has therefore decided to hold a meeting once a month, where everyone can say what works and what doesn't."
+        },
+        {
+          "sv": "Experter på boende påpekar att flergenerationsboende är det normala i stora delar av världen, och att det svenska idealet är ett ganska nytt fenomen.",
+          "en": "Housing experts point out that several generations living together is the norm in large parts of the world, and that the Swedish ideal is a fairly new phenomenon."
+        },
+        {
+          "sv": "Kanske är det inte ett steg tillbaka, utan snarare en återgång till något som har fungerat länge.",
+          "en": "Perhaps it is not a step backwards, but rather a return to something that has worked for a long time."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur har familjen ordnat huset?",
+          "options": [
+            "Med två ingångar och två kök men en gemensam trädgård",
+            "Med ett kök för alla",
+            "Med två hus långt från varandra"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur har livet förändrats för Sofia?",
+          "options": [
+            "Hon har slutat arbeta",
+            "Vardagen har blivit lugnare",
+            "Hon har fått längre resor"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad påpekar experterna?",
+          "options": [
+            "Att flergenerationsboende är förbjudet i Sverige",
+            "Att få familjer vill bo så",
+            "Att det är vanligt i stora delar av världen"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }
