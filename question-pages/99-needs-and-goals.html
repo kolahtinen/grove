@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Needs and goals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Answer page for question-pages/99 (needs and goals for the course report, 2026-10-31).
+   Tokens copied from public/assets/grove.css (palette 14). Throwaway: never copied into the build. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --cw: #7CC2B0;
+  --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B; --cw: #2E6B5E;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B; --cw: #2E6B5E;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 7.5rem; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; text-wrap: balance; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .4rem .9rem; cursor: pointer; min-height: 40px; }
+button:active { transform: scale(.97); }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } }
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 16px 16px 5rem; }
+.kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+h1 { font-size: 1.5rem; }
+.how { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .7rem .9rem; margin: 0 0 .8rem; font-size: .92rem; }
+.how ul { margin: .2rem 0 0; padding-left: 1.1rem; }
+.how li { margin: .15rem 0; }
+details.terms { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .9rem; margin: 0 0 1rem; font-size: .9rem; }
+details.terms summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.terms dl { margin: .3rem 0; }
+details.terms dt { font-weight: 700; color: var(--link); }
+details.terms dd { margin: 0 0 .4rem; }
+
+/* progress bar */
+.bar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 82%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); margin: 0 -16px 1rem; padding: .5rem 16px .45rem; }
+.bar-top { display: flex; align-items: center; gap: .6rem; font-size: .85rem; }
+.bar-top b { font-weight: 700; }
+.meter { flex: 1; height: 6px; border-radius: 999px; background: var(--card2); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width .25s ease; }
+.chips { display: flex; gap: .35rem; overflow-x: auto; padding: .4rem 0 .1rem; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; font-size: .78rem; text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: .2rem .65rem; white-space: nowrap; }
+.chip.done { border-color: var(--accent); background: var(--soft); }
+.chip span { color: var(--muted); margin-left: .25rem; }
+.status { font-size: .78rem; color: var(--muted); margin: .15rem 0 0; min-height: 1.1em; }
+
+section.sec { margin: 0 0 2rem; }
+section.sec > h2 { font-size: 1.2rem; margin-top: .4rem; display: flex; gap: .5rem; align-items: baseline; flex-wrap: wrap; }
+section.sec > h2 .count { font-size: .8rem; font-weight: 500; color: var(--muted); }
+.intro { color: var(--muted-strong); font-size: .92rem; }
+h3.sub { font-size: 1rem; margin: 1.4rem 0 .6rem; color: var(--link); }
+
+.q { border: 1px solid var(--line); border-radius: 16px; padding: .7rem .9rem .5rem; margin: 0 0 .9rem; background: var(--card); box-shadow: var(--shadow); }
+.q.answered { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+.q-head { display: flex; gap: .5rem; align-items: baseline; margin: 0 0 .15rem; }
+.q-id { font-weight: 700; color: var(--link); flex: none; }
+.q-text { font-weight: 700; }
+.q-meta { display: flex; flex-wrap: wrap; gap: .3rem; margin: .1rem 0 .4rem; }
+.pill { font-size: .72rem; font-weight: 700; padding: .05rem .5rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); }
+.pill.ids { background: var(--card2); font-weight: 500; }
+.opt { display: flex; gap: .55rem; align-items: flex-start; padding: .4rem 0; min-height: 44px; cursor: pointer; border-top: 1px solid var(--line); }
+.opt:first-of-type { border-top: 0; }
+.opt input { margin-top: .3rem; accent-color: var(--accent); width: 1.15rem; height: 1.15rem; flex: none; }
+.opt .ol { display: block; font-weight: 500; }
+.opt .od { display: block; color: var(--muted); font-size: .86rem; }
+.opt .isdef { font-size: .7rem; font-weight: 700; color: var(--link); margin-left: .3rem; white-space: nowrap; }
+.opt.none .ol { font-style: italic; }
+.warn { color: var(--bad); font-size: .82rem; margin: .2rem 0; }
+.row-end { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin: .2rem 0 .1rem; }
+.clear { font-size: .78rem; min-height: 32px; padding: .15rem .6rem; color: var(--muted); background: none; }
+details.note summary { cursor: pointer; font-size: .82rem; color: var(--link); min-height: 32px; display: flex; align-items: center; }
+textarea { display: block; width: 100%; min-height: 3.6rem; margin: .25rem 0 .5rem; font: inherit; font-size: .92rem; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 12px; padding: .5rem .7rem; resize: vertical; }
+
+/* tick-lists (needs and goals) */
+.item { border-top: 1px solid var(--line); padding: .45rem 0; }
+.item:first-of-type { border-top: 0; }
+.item > label { display: flex; gap: .55rem; align-items: flex-start; cursor: pointer; min-height: 44px; }
+.item > label input { margin-top: .3rem; accent-color: var(--accent); width: 1.15rem; height: 1.15rem; flex: none; }
+.item .nid { font-weight: 700; color: var(--link); margin-right: .25rem; }
+.item .drafted { display: inline-block; margin-top: .2rem; font-size: .78rem; color: var(--muted); }
+.met-tag { font-weight: 700; padding: 0 .4rem; border-radius: 999px; margin-right: .25rem; font-size: .72rem; }
+.met-fully { background: var(--ok-bg); color: var(--ok); }
+.met-partly { background: var(--soft); color: var(--link); }
+.met-not { background: var(--bad-bg); color: var(--bad); }
+.met-later { background: var(--card2); color: var(--amber); }
+.follow { margin: .35rem 0 .2rem 1.7rem; padding: .5rem .7rem; border-left: 3px solid var(--accent); background: var(--card2); border-radius: 0 12px 12px 0; }
+.follow .fq { font-size: .82rem; font-weight: 700; margin: .1rem 0 .15rem; }
+.seg { display: flex; flex-wrap: wrap; gap: .3rem; margin: 0 0 .45rem; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { display: inline-flex; align-items: center; min-height: 36px; padding: .15rem .7rem; border: 1px solid var(--line); border-radius: 999px; font-size: .84rem; cursor: pointer; background: var(--card); }
+.seg input:checked + span { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.seg input:focus-visible + span { outline: 2px solid var(--accent2); outline-offset: 2px; }
+.seg-help { font-size: .78rem; color: var(--muted); margin: -.2rem 0 .45rem; }
+.follow textarea { background: var(--card); }
+
+.end { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .8rem .9rem; text-align: center; }
+.end p { margin: .2rem 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">grove · question page 99 · 31 October 2026</p>
+  <h1>Needs and goals</h1>
+  <p>A big round on stakeholders, needs and goals for the course report (sections 1.1, 2.1, 2.2 and 7), now that the requirements are close to finished. The record is <code>question-pages/99-needs-and-goals.md</code>.</p>
+  <div class="how">
+    <b>How to answer</b>
+    <ul>
+      <li>Answer as many as you like, in any order. <b>A blank answer means the default</b> (marked on each question).</li>
+      <li>Questions where you tick several start with their defaults ticked; change them as you like.</li>
+      <li><b>Tick-lists</b> (needs and goals): tick only the items that need your input. Everything left unticked is accepted as drafted. Ticking one opens its small follow-up questions. If none needs input, tick "None".</li>
+      <li>Every question has an optional note: write anything there, including a better wording.</li>
+      <li>Your answers save by themselves as you go. <b>Say done in Claude Code when finished.</b></li>
+    </ul>
+  </div>
+  <details class="terms">
+    <summary>grove's words used on this page</summary>
+    <dl>
+      <dt>Need (N-…)</dt><dd>What a person needs, said without any solution ("A learner needs …"). Never edited or deleted: a wrong one is withdrawn with a reason; a new wording becomes a new need.</dd>
+      <dt>Goal (G-…)</dt><dd>Something a person wants to get done with grove; each goal was also one part of the build.</dd>
+      <dt>Leaf</dt><dd>A word, phrase or grammar pattern you have met but don't know yet. <b>Picking it up</b> makes grove drill it.</dd>
+      <dt>Ground</dt><dd>What you know. New texts are written mostly from it. A leaf you know <b>falls</b> to the ground.</dd>
+      <dt>Discover, Review, Mix</dt><dd>Sessions with new texts and words / drilling the leaves that are due / both.</dd>
+      <dt>Common library, your library</dt><dd>grove's own texts for every level / the texts you added.</dd>
+      <dt>Word menu</dt><dd>What opens when you tap a word in a text: meaning, dictionary form, grammar patterns.</dd>
+      <dt>First build, second build</dt><dd>What is built now (G-01…G-09) / what was planned for right after.</dd>
+      <dt>B-notes, O-notes</dt><dd>Your notes from testing the builds (B-01…B-33, O-01…O-22).</dd>
+    </dl>
+  </details>
+
+  <div class="bar" role="region" aria-label="Progress">
+    <div class="bar-top"><b id="prog-text">0 of 0 answered</b><div class="meter" aria-hidden="true"><i id="prog-fill"></i></div></div>
+    <nav class="chips" id="chips" aria-label="Sections"></nav>
+    <p class="status" id="status" role="status"></p>
+  </div>
+
+  <form id="answers" autocomplete="off" onsubmit="return false"></form>
+
+  <div class="end">
+    <p><b>That's all.</b> Blank answers use their defaults.</p>
+    <p>Say <b>done</b> in Claude Code when finished.</p>
+    <p class="status" id="status2" role="status"></p>
+  </div>
+</div>
+
+<script>
+(() => {
+const SECTIONS = [{"id":"s1","title":"Stakeholders","intro":"For the report's section 2.1. A stakeholder is anyone affected by grove or able to affect it: the people who use it, build it, judge it, or whose work it uses. The report's table lists six today: the learner, the owner (you), the course reviewers, the authors of open data (Wiktionary, the Kelly word list), teachers and parents of under-13s (left out of the first build), and outside AI chats. Here you confirm them, add missing ones and say which are primary.","questions":[{"id":"Q01","ids":"learner","text":"How should the report describe the learner?","type":"single","def":"A","options":[{"v":"A","label":"Adults learning a language on their own","desc":"Grown-ups who learn without a teacher. Swedish is only the first language grove carries; the learner is not defined by it."},{"v":"B","label":"Adults learning Swedish on their own","desc":"Narrower: matches the first build exactly (Swedish texts, English explanations, C-09)."},{"v":"C","label":"Anyone learning a language, alone or in a class","desc":"Wider: school students and class learners too, which makes teachers close stakeholders."}]},{"id":"Q02","ids":"C-04, report 2.1","text":"The report says the first build \"allows adults only\", but the terms allow ages 13 and over (C-04). Which is right for the report?","type":"single","def":"A","options":[{"v":"A","label":"13 and over by the terms; invited adults in practice","desc":"The terms allow 13+ (Finland's age of consent online). The first build has no sign-up: only you and the course reviewers, all adults, have accounts."},{"v":"B","label":"Adults only (18+)","desc":"Change the stated rule to adults. This is a change to C-04 and the terms, not only the report."},{"v":"C","label":"Don't mention age in 2.1","desc":"Leave it to the privacy part of the report."}]},{"id":"Q03","ids":"report 2.1","text":"Which stakeholders are primary? Tick all that are. (default: Learner and Owner)","type":"multi","def":["learner","owner"],"options":[{"v":"learner","label":"Learner","desc":"Uses grove to learn; most needs are theirs."},{"v":"owner","label":"Owner (you)","desc":"Builds, runs and pays for grove alone, on your own computer."},{"v":"reviewers","label":"Course reviewers","desc":"At most five people who try the first version by invitation (C-11) and judge it."},{"v":"authors","label":"Authors of open data","desc":"The people behind Wiktionary and the Kelly word list, whose licences grove must respect (N-08)."}]},{"id":"Q04","ids":"owner","text":"How should the report describe you as a stakeholder? Tick all that apply. (default: builder and runner, course student, first learner)","type":"multi","def":["builder","student","learner"],"options":[{"v":"builder","label":"Builder and runner","desc":"You specify, build, host and maintain grove alone (C-10)."},{"v":"student","label":"Course student","desc":"Your course result depends on the project, so the report and its deadline are your needs too."},{"v":"learner","label":"First and main learner","desc":"You tested every build as a learner (the O- and B-notes); your notes are the main validation."}]},{"id":"Q05","ids":"N-09, N-22, N-23","text":"Teachers and parents of under-13s: how do they appear in 2.1?","type":"single","def":"A","options":[{"v":"A","label":"In the table, marked \"left out of the first build\"","desc":"Their needs stay recorded (N-09, N-22, N-23); the table says they are not served yet. This is how the report has it now."},{"v":"B","label":"Below the table, as future stakeholders","desc":"The table holds only those the first build serves; a line below names these for later builds."},{"v":"C","label":"Leave them out of the report","desc":"Only the needs file keeps them."}]},{"id":"Q06","ids":"C-08, C-04, C-12","text":"Outside AI chats (ChatGPT, Claude, Gemini, Le Chat) are not people. How should the report treat them and other outside services?","type":"single","def":"A","options":[{"v":"A","label":"A separate line: \"systems grove depends on\"","desc":"Below the table: AI chats (they write texts from grove's prompts), Firebase (holds passwords), Cloudflare (the tunnel that makes grove reachable) and the device's voices. Not stakeholders, but outside parties grove relies on."},{"v":"B","label":"Keep AI chats in the stakeholder table","desc":"As now: grove depends on how they answer, so they are listed with the people."},{"v":"C","label":"Leave them out of 2.1","desc":"Mention them only in the technology part (2.4)."}]},{"id":"Q07","ids":"missing stakeholders","text":"Are any stakeholders missing? Tick the ones to add. (default: none)","type":"multi","def":[],"none":"None: the list is complete","options":[{"v":"checker","label":"A Swedish speaker who checks the texts","desc":"Nobody has read the library texts and drafted learning content yet as a Swedish speaker (B-26). Such a person would be the one who makes the content trustworthy (N-43)."},{"v":"examiner","label":"The course teacher who grades the report","desc":"If they are not the same people as the course reviewers who try the app."},{"v":"authority","label":"The data protection authority","desc":"Finland's Data Protection Ombudsman, who supervises how grove handles personal data (C-04)."},{"v":"aiproviders","label":"The AI companies","desc":"Their terms govern the texts their chats write and what learners paste into them (C-07, C-08)."}]}]},{"id":"s2","title":"The core need and the vision","intro":"For the report's section 1.1. The core need is the one need grove exists for; the vision is one line saying what grove is. Both in your words: pick the closest draft and change it in the note. Terms: comprehensible input is reading and listening you can almost fully understand. Your ground is what you know; a leaf is a word, phrase or grammar pattern you have met and picked up to learn; picking it up means grove drills it until you let it fall to the ground.","questions":[{"id":"Q08","ids":"core need","text":"Which draft is closest to grove's core need?","type":"single","def":"B","options":[{"v":"A","label":"\"A learner needs a lot of reading and listening they can almost fully understand, on things that interest them, so that they pick up the language naturally.\"","desc":"Input only: the practice part (drilling words) is a means, not the core."},{"v":"B","label":"\"A learner needs to grow from what they already know: texts they can follow, and the new words they choose made to stick.\"","desc":"Input and practice together, as the report's 1.1 describes grove: each feeds the other."},{"v":"C","label":"\"A learner needs a way to learn a language mostly by reading and listening, at their own level and pace, without paying for it.\"","desc":"Puts level, pace and cost into the core."}]},{"id":"Q09","ids":"vision","text":"Which line says best what grove is?","type":"single","def":"A","options":[{"v":"A","label":"\"grove grows a language from what you already know.\"","desc":"Close to the tagline \"grow from what you know\" (RQ-309): every text is mostly words you know, and the new ones you pick up become part of your ground."},{"v":"B","label":"\"Free, understandable reading and listening at any level, with the words you choose drilled until they stick.\"","desc":"Says what you get, plainly; longer."},{"v":"C","label":"\"A calm place to read and listen your way into a language.\"","desc":"About the feel; says less about how it works."}]},{"id":"Q10","ids":"N-15, C-01","text":"Where does cost go: in the core need, or beside it?","type":"single","def":"A","options":[{"v":"A","label":"Beside it","desc":"Free learning is a learner need of its own (N-15), named next to the core; your zero budget is a constraint (C-01), not a need."},{"v":"B","label":"Inside the core need","desc":"Being free is part of what grove is for, so it goes into the core statement (as in draft C of Q08)."},{"v":"C","label":"Only as a constraint","desc":"The report mentions cost only with the constraints."}]},{"id":"Q11","ids":"input vs practice","text":"How do reading/listening and practice relate in grove?","type":"single","def":"A","options":[{"v":"A","label":"Input first; practice serves it","desc":"Reading and listening are the main thing; drilling makes the words you chose stick so the next texts stay understandable."},{"v":"B","label":"Two equal halves","desc":"As the report says now: two complementary parts that feed each other."},{"v":"C","label":"Practice first; texts supply it","desc":"The drilled words are the core; texts are where they come from."}]}]},{"id":"s3","title":"Needs review","intro":"Every active need, in groups of up to four. Tick the ones that need your input; everything left unticked is accepted as worded, with the first-build status drafted next to it. A ticked need opens two small questions: is it still right, and how far does the first build meet it (fully, partly, not, or later = planned for the second build)? Needs are never edited: a wrong one is withdrawn with a reason, and a better wording becomes a new need. N-01, N-14 and N-31 were withdrawn earlier (page 45). The report's 1.1 still cites N-01; it will cite N-42 instead.","questions":[{"id":"Q12","type":"needs","text":"Reading and listening","items":[{"id":"N-42","text":"A learner needs to get a lot of understandable reading and listening so that they pick up the language naturally.","met":"fully","why":"the common library (100 texts, A1–C2) and texts from your own AI"},{"id":"N-41","text":"Learners need material on topics that interest them.","met":"fully","why":"the library by topic; your AI writes on the topics you choose"},{"id":"N-11","text":"A language learner needs to have new reading and listening material consist mostly of familiar words, phrases and grammar patterns so that they can follow it.","met":"fully","why":"new texts start at 95% known words (RQ-167)"},{"id":"N-02","text":"A learner needs to understand texts without translating so that they learn to think in the language.","met":"partly","why":"texts are in Swedish only, but meanings and sentence translations are one tap away. Is this a need, or a teaching method?"}]},{"id":"Q13","type":"needs","text":"Level","items":[{"id":"N-13","text":"A learner needs to get practice and input at their own level so that it's neither too easy nor too hard.","met":"partly","why":"one overall level; levels per skill are in the second build"},{"id":"N-16","text":"A learner benefits from following their language level and getting input and practice at that level.","met":"partly","why":"\"benefits from\" is not a need; see the overlap question Q23"},{"id":"N-21","text":"Learners need to be exposed to material above their level, ideally with some help.","met":"partly","why":"harder library texts can be chosen; help through the word menu"},{"id":"N-44","text":"Learners need help with input and practice that are above their level.","met":"partly","why":"close to N-21; see Q24"}]},{"id":"Q14","type":"needs","text":"Help, sound and languages","items":[{"id":"N-45","text":"Learners need help with what they don't understand.","met":"fully","why":"the word menu: tap a word for its meaning, dictionary form and grammar patterns; Explain asks your AI"},{"id":"N-03","text":"A learner needs to hear the language spoken so that they learn pronunciation and listening.","met":"fully","why":"listening with the device's Swedish voice, when the device has one"},{"id":"N-30","text":"A learner needs to learn the language they choose.","met":"later","why":"Swedish only in the first build (C-09)"},{"id":"N-40","text":"Learners of languages with characters, such as Chinese, need help learning to recognise and use the characters.","met":"later","why":"no such language in the first build"}]},{"id":"Q15","type":"needs","text":"Remembering","items":[{"id":"N-04","text":"A learner needs to have the words they keep forgetting practised until they stick so that gaps don't stay gaps.","met":"fully","why":"Review drills your leaves until you let them fall"},{"id":"N-38","text":"Learners need help remembering what they learned.","met":"fully","why":"Review, spaced over days"},{"id":"N-35","text":"Learners need what they know to become automatic.","met":"partly","why":"Review's harder questions; no practice of speed"},{"id":"N-12","text":"A learner needs to focus practice on what they don't know yet rather than on what they already know so that their time goes where it helps.","met":"fully","why":"only the leaves you pick up are drilled; your ground is left alone"}]},{"id":"Q16","type":"needs","text":"Skills and effort","items":[{"id":"N-37","text":"Learners need practice in listening, reading, writing and grammar.","met":"partly","why":"no writing practice in the first build"},{"id":"N-05","text":"A learner needs to understand the grammar patterns behind sentences so that they can build sentences of their own.","met":"partly","why":"patterns in the word menu and Discover with Grammar; grammar exercises in the second build"},{"id":"N-06","text":"A learner needs to practise producing the language so that they can write as well as understand.","met":"later","why":"writing practice is in the second build"},{"id":"N-32","text":"Learners need to focus their efforts on activities that increase their language skills and confidence.","met":"partly","why":"sessions plan useful work; close to N-12 (Q31)"}]},{"id":"Q17","type":"needs","text":"Choice, guidance and finding your way","items":[{"id":"N-07","text":"A learner needs to decide what to work on so that practice matches their goals.","met":"partly","why":"Options… lets you tick skills and the length; topics in the library"},{"id":"N-39","text":"Learners need guidance on what to practise next.","met":"fully","why":"Discover, Review and Mix plan what to do for the time you have"},{"id":"N-19","text":"A learner needs flexibility in where, how and how long they practise.","met":"partly","why":"phone or computer, sessions of different lengths; only while your computer is on (C-06)"},{"id":"N-46","text":"Learners need to find their way around grove and back to what they were doing without getting lost.","met":"fully","why":"labelled back links and \"Back to your session\" (addendum 006)"}]},{"id":"Q18","type":"needs","text":"Progress and enjoyment","items":[{"id":"N-29","text":"A learner needs to feel they're making progress.","met":"fully","why":"the Progress page: read and heard this week, words in your ground (B-27)"},{"id":"N-36","text":"Learners need an idea of their level and how much progress they've made.","met":"fully","why":"your starting level next to your current level"},{"id":"N-33","text":"Learners need confidence in their learning outcomes.","met":"partly","why":"progress is shown, but nothing tests what you can do outside grove"},{"id":"N-34","text":"Learners need learning to feel enjoyable, not only hard work.","met":"partly","why":"calm look, your topics; game feel is in the second build"}]},{"id":"Q19","type":"needs","text":"Trust","items":[{"id":"N-43","text":"Learners need to trust what they learn from.","met":"partly","why":"library texts are checked by a program but not yet read by a Swedish speaker; texts can be reported"},{"id":"N-26","text":"A user needs confidence in grove, to believe their efforts are worthwhile.","met":"partly","why":"help pages say why the method works (G-08)"},{"id":"N-25","text":"The owner needs users to have confidence in the methods grove uses.","met":"partly","why":"the owner's side of N-26; see Q25"},{"id":"N-18","text":"The owner needs clients to trust the product.","met":"partly","why":"\"clients\" means learners: nobody pays"}]},{"id":"Q20","type":"needs","text":"Privacy and cost","items":[{"id":"N-17","text":"A learner needs to keep their information private and share only what's necessary with the parties that need it.","met":"fully","why":"only an email and learning data; the privacy notice names who sees what"},{"id":"N-20","text":"A learner needs their personal data protected at all times.","met":"fully","why":"data on your computer, hourly backups, passwords held by Firebase"},{"id":"N-24","text":"Users need their information to be minimally exposed to others.","met":"fully","why":"same as N-17? see Q28"},{"id":"N-15","text":"A learner needs learning to be affordable, costing only as much as they're willing to pay for language learning.","met":"fully","why":"grove is free; texts come from your own AI chat, free or paid, or the free library"}]},{"id":"Q21","type":"needs","text":"The owner, the law and licences","items":[{"id":"N-10","text":"The owner needs to be able to run and check grove alone in little time so that it stays maintainable.","met":"partly","why":"it runs by itself, but checking it takes long (your notes: your own code gets harder to understand)"},{"id":"N-27","text":"The owner needs to be free of licence-related legal issues.","met":"fully","why":"every entry records its source and licence; a credits page"},{"id":"N-28","text":"The owner needs the product to comply with the law.","met":"fully","why":"terms, privacy notice, export and deletion on request (GDPR basics)"},{"id":"N-08","text":"People who wrote the open dictionaries and word lists needs to have their licences respected (credit, same licence for shared data) so that their work can be reused legally.","met":"fully","why":"credits page; share-alike data is shared only under the same licence"}]},{"id":"Q22","type":"needs","text":"Left out of the first build","items":[{"id":"N-09","text":"A parent of a child under 13 needs to consent before the child's data is used so that the child is protected.","met":"not","why":"met by not allowing under-13s at all (a reduced requirement, not a reduced need)"},{"id":"N-22","text":"Teachers need control over the content of their teaching materials and over who has access to them.","met":"later","why":"teachers and classes were cut for now"},{"id":"N-23","text":"Teachers need information on how their students are doing.","met":"later","why":"teachers and classes were cut for now"}]},{"id":"Q23","ids":"N-13, N-16, N-36","text":"N-16 (\"A learner benefits from following their language level…\") overlaps N-13 and N-36. Withdraw it?","type":"single","def":"A","sub":"Overlaps","options":[{"v":"A","label":"Withdraw N-16","desc":"Reason: \"benefits from\" is not a need, and the content is N-13 (input at your level) plus N-36 (knowing your level). Its requirements move to N-13 and N-36."},{"v":"B","label":"Keep both","desc":"N-16 is about following your level as it changes; N-13 about the material matching it."}]},{"id":"Q24","ids":"N-21, N-44, N-45","text":"N-21 (material above your level, with some help) and N-44 (help with input above your level) say nearly the same. Which stays?","type":"single","def":"A","options":[{"v":"A","label":"Withdraw N-44","desc":"Reason: N-21 already says both parts (being given harder material, and help with it); help with anything you don't understand is N-45."},{"v":"B","label":"Withdraw N-21","desc":"Keep N-44 as the one about harder material."},{"v":"C","label":"Keep both","desc":"N-21 is about meeting harder material at all; N-44 about the help."}]},{"id":"Q25","ids":"N-25, N-26, N-18","text":"N-25 (the owner needs users to have confidence in grove's methods) is the owner's side of N-26. Withdraw it?","type":"single","def":"A","options":[{"v":"A","label":"Withdraw N-25","desc":"Reason: the learner's confidence is N-26; the owner's interest in being trusted is N-18."},{"v":"B","label":"Keep both","desc":"They belong to different stakeholders, so both stay."}]},{"id":"Q26","ids":"N-26, N-33, N-36","text":"N-26 (confidence that the effort is worthwhile) and N-33 (confidence in learning outcomes): one need or two?","type":"single","def":"A","options":[{"v":"A","label":"Two: keep both","desc":"N-26: trusting the method before results show. N-33: seeing that you really can do more."},{"v":"B","label":"Withdraw N-33 into N-26","desc":"Reason: both are about believing the work pays off."},{"v":"C","label":"Withdraw N-33 into N-36","desc":"Reason: confidence in outcomes comes from knowing your level and progress."}]},{"id":"Q27","ids":"N-27, N-28, N-08","text":"N-27 (free of licence issues) is part of N-28 (comply with the law). Withdraw N-27?","type":"single","def":"A","options":[{"v":"A","label":"Withdraw N-27","desc":"Reason: licences are part of the law (N-28); the data authors' side is N-08."},{"v":"B","label":"Keep both","desc":"Licences are the most likely legal trouble for grove and worth naming on their own."}]},{"id":"Q28","ids":"N-17, N-24, N-20","text":"N-24 (information minimally exposed) repeats N-17 (private, shared only as necessary). Withdraw N-24?","type":"single","def":"A","options":[{"v":"A","label":"Withdraw N-24","desc":"Reason: same as N-17. N-20 stays: it is about keeping data safe from harm (security), not about who sees it (privacy)."},{"v":"B","label":"Keep all three","desc":"N-24 is for all users, N-17 for learners."},{"v":"C","label":"Withdraw N-24 and N-20 into N-17","desc":"One privacy need for the report."}]},{"id":"Q29","ids":"N-04, N-38, N-35","text":"N-04 (forgotten words practised until they stick), N-38 (help remembering) and N-35 (what you know becomes automatic): keep all three?","type":"single","def":"A","options":[{"v":"A","label":"Keep all three","desc":"N-04: the words that keep slipping; N-38: remembering anything learned; N-35: using it without thinking."},{"v":"B","label":"Withdraw N-04 into N-38","desc":"Reason: N-38 is broader and less tied to drilling. The report then cites N-38 where it cites N-04."}]},{"id":"Q30","ids":"N-29, N-36","text":"N-29 (feel you are making progress) and N-36 (an idea of your level and progress): keep both?","type":"single","def":"A","options":[{"v":"A","label":"Keep both","desc":"Feeling progress (motivation) is not the same as knowing your level (information)."},{"v":"B","label":"Withdraw N-29 into N-36","desc":"Reason: the feeling comes from seeing the progress."}]},{"id":"Q31","ids":"N-12, N-32","text":"N-12 (practise what you don't know yet) and N-32 (effort on what increases skills and confidence): keep both?","type":"single","def":"A","options":[{"v":"A","label":"Keep both","desc":"N-12 is about what you practise; N-32 about which kinds of activity are worth the time."},{"v":"B","label":"Withdraw N-32 into N-12","desc":"Reason: both say \"spend the time where it helps\"."}]},{"id":"Q32","ids":"N-37, N-03, N-05, N-06","text":"N-37 (practice in listening, reading, writing and grammar) is the sum of N-03, N-05, N-06 and N-42. Keep it?","type":"single","def":"A","options":[{"v":"A","label":"Keep it","desc":"It says the skills belong together; the others say why each one matters."},{"v":"B","label":"Withdraw N-37","desc":"Reason: each skill has its own need already."}]},{"id":"Q33","ids":"N-07, N-39","text":"N-07 (decide what to work on) and N-39 (guidance on what next) pull against each other. How does the report treat that?","type":"single","def":"A","options":[{"v":"A","label":"Keep both; name it as a balance","desc":"grove plans a session for you (Start), and lets you choose (Options…). The report says so."},{"v":"B","label":"Keep both; guidance wins by default","desc":"Same, but the report says grove's plan comes first and choice is the exception."},{"v":"C","label":"Keep both; choice wins","desc":"The learner decides; grove only suggests."}]}]},{"id":"s4","title":"Needs found since the freeze","intro":"The needs were frozen on 23 October. Since then the addenda and your notes (B-01…B-33) showed things the needs don't quite say. Each draft is in the plain \"who needs what\" form, without a solution. Adding one means a new N-ID (N-47 on), not a change to the frozen documents.","questions":[{"id":"Q34","ids":"C-11, G-07","text":"Course reviewers have no need of their own. Add: \"Course reviewers need to try grove and judge it in a short time, without setting anything up.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"G-07 (the demo account with ready texts and words) then serves a real need instead of only N-15 and N-18."},{"v":"B","label":"Don't add: it is a constraint","desc":"Keep it as C-11 (the course context) only."}]},{"id":"Q35","ids":"owner, C-02","text":"Add: \"The owner needs the project to meet the course's requirements in time.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Explains choices made for the course: the report, the reviewers' demo, the Spec Kit process."},{"v":"B","label":"Don't add: it is a constraint","desc":"The deadline (C-02) and the course context (C-11) already say it."}]},{"id":"Q36","ids":"B-05, B-06, B-08, B-09, B-15","text":"Add: \"A learner needs to know what is happening, what they have already done and what comes next.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Your notes on the AI text wizard (\"hard to get confirmation on what has already happened\") and the session's way back show it was missing."},{"v":"B","label":"Don't add: covered by N-46","desc":"Finding your way back (N-46) is close enough."}]},{"id":"Q37","ids":"B-13, B-14, B-01","text":"Add: \"A learner needs to start learning straight away, without first making many choices.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Behind \"simplify the learning part\" (B-13), the one-tap Start (B-14) and agreeing to the terms only once (B-01)."},{"v":"B","label":"Don't add: covered by N-34 and N-39","desc":"Enjoyable learning and guidance on what next already cover it."}]},{"id":"Q38","ids":"B-03, B-10, B-20, B-30","text":"Add: \"A learner needs something suitable to read or listen to whenever they have time to learn.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Your notes on empty sessions (\"there is nothing to practise right now\") show the gap: lots of input (N-42) is not the same as having it there when you want it."},{"v":"B","label":"Don't add: covered by N-42 and N-19","desc":"Lots of input plus flexibility in when you practise."}]},{"id":"Q39","ids":"B-21, B-31, B-32, B-33","text":"Add: \"A learner needs to focus on one thing at a time, without distractions.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Behind removing the \"2 new\" count and the Listen button from reading sessions, and the long sentence list in listening."},{"v":"B","label":"Don't add: covered by N-34","desc":"Learning that feels enjoyable covers it."}]},{"id":"Q40","ids":"B-22, B-33","text":"Add: \"A learner needs reading and listening to feel like real reading and listening, not like an exercise sheet.\"","type":"single","def":"B","options":[{"v":"A","label":"Add it","desc":"Behind one continuous text instead of a sentence per row (B-22)."},{"v":"B","label":"Don't add: covered by N-34 and the new focus need","desc":"Q39's need and enjoyable learning cover it."}]},{"id":"Q41","ids":"C-06, G-01 FR-002, FR-003","text":"Add: \"A learner needs what they have learned and done to be kept, so that their work is never lost.\"","type":"single","def":"A","options":[{"v":"A","label":"Add it","desc":"Hourly backups and saving through restarts serve it today, under N-20 (data protected), which is about others, not loss."},{"v":"B","label":"Don't add: covered by N-20","desc":"Protecting data includes not losing it."}]},{"id":"Q42","ids":"N-p1-46 (page 27)","text":"Accessibility: \"Learners with poor sight or other impairments need to be able to learn with grove as well as anyone.\" You withdrew a similar need as wrong on page 27.","type":"single","def":"B","options":[{"v":"A","label":"Add it now","desc":"grove already tests contrast (readable colours in both looks); the need would explain why."},{"v":"B","label":"Don't add","desc":"Stay with page 27."}]},{"id":"Q43","ids":"owner notes","text":"Add: \"The owner needs to understand how grove works well enough to change it safely.\"","type":"single","def":"B","options":[{"v":"A","label":"Add it","desc":"Your report notes say your own code gets harder to understand as new tools come in; this would make it a need the process must serve (spec as the source)."},{"v":"B","label":"Don't add: covered by N-10","desc":"Running and checking grove alone (N-10) covers it."}]},{"id":"Q44","ids":"N-37","text":"Speaking is in no need. Add: \"A learner needs to practise speaking so that they can talk, not only understand.\"","type":"single","def":"B","options":[{"v":"A","label":"Add it, marked \"not met\"","desc":"A real need of learners; grove doesn't serve it, and the report says so."},{"v":"B","label":"Don't add","desc":"Never raised; grove is about understanding."}]},{"id":"Q45","ids":"anything else","text":"Is any other need missing? (default: no)","type":"single","def":"A","options":[{"v":"A","label":"No","desc":"The list with this round's additions is complete."},{"v":"B","label":"Yes: written in the note","desc":"Write it as \"A learner needs …\" or \"[Who] needs …\"."}]}]},{"id":"s5","title":"User goals","intro":"A user goal is something a person wants to get done with grove. G-01…G-08 were made from the frozen requirements (page 53) and G-09 later (addendum 004); they were also the order of the build, so some read as technical work packages (\"Platform, accounts, security…\"). For the report they could read from the learner's side. Terms: Discover = a session with new texts and words; Review = drilling your leaves that are due; Mix = both; the common library = grove's own texts; your library = texts you added.","questions":[{"id":"Q46","ids":"G-01…G-09","text":"How should the report present the goals?","type":"single","def":"C","options":[{"v":"A","label":"Keep G-01…G-09, with plain names","desc":"Same nine goals and IDs; only the names change (the next nine questions)."},{"v":"B","label":"Regroup into 5–6 learner goals","desc":"For example: start, get texts, read and listen, remember, see progress, find my way; the G-IDs vanish from the report."},{"v":"C","label":"Both","desc":"Plain-named G-01…G-09 in 2.2 (they are how the build was done), with the needs each serves; 1.1 tells them as the learner's story."}]},{"id":"Q47","ids":"G-01","text":"G-01 \"Platform, accounts, security and the look's basics\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Learn in my own private place, on my phone or computer\"","desc":"Serves N-17, N-20, N-19: an account only you use, safe data, works on a phone."},{"v":"B","label":"\"Sign in safely and know my data is safe\"","desc":"Closer to what G-01 builds (sign-in, terms, privacy)."},{"v":"C","label":"Keep the name","desc":"It is the platform; the report says it is technical."}]},{"id":"Q48","ids":"G-02","text":"G-02 \"Texts from the learner's own AI\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Get new texts on my topics, at my level, for free\"","desc":"The goal behind it (N-42, N-41, N-11, N-15); your own AI chat is how."},{"v":"B","label":"\"Get texts written for me by my own AI chat\"","desc":"Keeps the how in the name."},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q49","ids":"G-03","text":"G-03 \"Reading and the word menu\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Read texts I can follow, with help on any word\"","desc":"The word menu (tap a word for its meaning, form and patterns) is the help. N-42, N-45, N-05."},{"v":"B","label":"\"Read and get help right where I'm stuck\"","desc":""},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q50","ids":"G-04","text":"G-04 \"Ground, drilling and progress\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Make the new words I choose stick\"","desc":"Picking up leaves and Review; progress then moves to G-09's Progress page. N-04, N-38, N-12."},{"v":"B","label":"\"Remember what I learn and see what I know\"","desc":"Keeps progress in this goal. N-04, N-38, N-29, N-36."},{"v":"C","label":"Keep the name","desc":"\"Ground\" and \"drilling\" need explaining in the report."}]},{"id":"Q51","ids":"G-05","text":"G-05 \"Listening\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Hear my texts and learn to follow them by ear\"","desc":"N-03: the device's voice reads texts, sentence by sentence, again and in a loop."},{"v":"B","label":"Keep \"Listening\"","desc":"Already plain."}]},{"id":"Q52","ids":"G-06","text":"G-06 \"Starting level\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Start at the right level from day one\"","desc":"Pick your level or let grove assess it (B-18). N-13, N-36."},{"v":"B","label":"\"Find out my level\"","desc":""},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q53","ids":"G-07","text":"G-07 \"Demo content for reviewers\" is the reviewers' goal, not the learner's. How should it read?","type":"single","def":"A","options":[{"v":"A","label":"\"Reviewers can try grove at once, with texts and words ready\"","desc":"A goal of the course reviewers, serving their new need (Q34)."},{"v":"B","label":"Fold it into G-01 as \"Start learning on the first visit\"","desc":"Ready content helps any new learner, not only reviewers."},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q54","ids":"G-08","text":"G-08 \"The look's extras and help\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Enjoy grove and understand why it works\"","desc":"The extras (the look, the animations) and the help pages. N-34, N-26."},{"v":"B","label":"\"Understand how grove works\"","desc":"Only the help part; the extras are left out of the name."},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q55","ids":"G-09","text":"G-09 \"Home, sessions and the new look\". Plain name?","type":"single","def":"A","options":[{"v":"A","label":"\"Learn for as long as I have, and always know what to do next\"","desc":"Discover, Review and Mix sessions of a chosen length; Home and the way back. N-39, N-19, N-07, N-46."},{"v":"B","label":"\"Find my way and choose what to do next\"","desc":"Puts Home and finding your way first."},{"v":"C","label":"Keep the name","desc":""}]},{"id":"Q56","type":"goals","text":"Which needs each goal serves (the main ones, drafted). Tick the goals whose list is wrong.","mode":"note","items":[{"id":"G-01","text":"Private place / accounts","why":"N-17, N-20, N-19, N-28, N-18"},{"id":"G-02","text":"New texts","why":"N-42, N-41, N-11, N-13, N-15"},{"id":"G-03","text":"Reading with help","why":"N-42, N-45, N-02, N-05, N-11"},{"id":"G-04","text":"Words that stick","why":"N-04, N-38, N-12, N-29, N-36"},{"id":"G-05","text":"Listening","why":"N-03, N-37, N-42"},{"id":"G-06","text":"Starting level","why":"N-13, N-36"},{"id":"G-07","text":"Reviewers' demo","why":"the reviewers' new need (Q34), N-18"},{"id":"G-08","text":"Enjoy and understand","why":"N-34, N-26, N-43"},{"id":"G-09","text":"Sessions and finding your way","why":"N-39, N-07, N-19, N-46, N-41, and the new needs of Q36–Q38"}]},{"id":"Q57","type":"goals","text":"How far the first build meets each goal (drafted). Tick the goals whose status is wrong.","mode":"met","items":[{"id":"G-01","text":"Private place / accounts","met":"fully","why":"invited accounts only, no sign-up yet"},{"id":"G-02","text":"New texts","met":"partly","why":"the check with a real AI chat is not done yet"},{"id":"G-03","text":"Reading with help","met":"fully","why":""},{"id":"G-04","text":"Words that stick","met":"fully","why":""},{"id":"G-05","text":"Listening","met":"fully","why":"B-33 (the sentence list) still open"},{"id":"G-06","text":"Starting level","met":"fully","why":""},{"id":"G-07","text":"Reviewers' demo","met":"fully","why":""},{"id":"G-08","text":"Enjoy and understand","met":"partly","why":"the oak animation and your lessons are still to come"},{"id":"G-09","text":"Sessions and finding your way","met":"fully","why":"both rebuilds merged on 31 October"}]},{"id":"Q58","ids":"missing goals","text":"Which goals that the first build doesn't have should the report name as later goals? (default: the first two)","type":"multi","def":["write","languages"],"none":"None","options":[{"v":"write","label":"Write and use grammar","desc":"Writing and grammar exercises, planned for the second build (N-05, N-06)."},{"v":"languages","label":"Learn another language","desc":"Other languages and writing systems (N-30, N-40)."},{"v":"teachers","label":"Teach a class with grove","desc":"Teachers' materials and their students' progress (N-22, N-23); cut for now."},{"v":"speak","label":"Speak","desc":"Only if the speaking need is added (Q44)."}]}]},{"id":"s6","title":"Priorities and how they are checked","intro":"For the report: the few needs that matter most, and how each is checked. Checking that the right thing was built (does grove really meet the need?) is validation; checking that it was built right (do the tests pass?) is verification. Pick 3–5 needs; a question on how to check each one you pick then appears.","questions":[{"id":"Q59","ids":"top needs","text":"Which 3–5 needs matter most? (default: N-42, N-11, N-04, N-45, N-15)","type":"multi","def":["N-42","N-11","N-04","N-45","N-15"],"max":5,"options":[{"v":"N-42","label":"N-42 Lots of understandable reading and listening","desc":""},{"v":"N-11","label":"N-11 New material mostly in familiar words","desc":""},{"v":"N-13","label":"N-13 Input and practice at your own level","desc":""},{"v":"N-04","label":"N-04 Forgotten words practised until they stick","desc":""},{"v":"N-45","label":"N-45 Help with what you don't understand","desc":""},{"v":"N-29","label":"N-29 Feeling of progress","desc":""},{"v":"N-15","label":"N-15 Affordable learning","desc":""},{"v":"N-43","label":"N-43 Trust in what you learn from","desc":""}]},{"id":"Q60","ids":"N-42","showIf":["Q59","N-42"],"text":"How is N-42 (lots of understandable input) checked? Tick all. (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"Your own use, measured","desc":"You use grove for two weeks; the Progress page counts minutes read and heard. Target to set in the note (e.g. 3 hours)."},{"v":"B","label":"Enough texts at every level","desc":"Count the common library: at least 10 texts at each level A1–C2."},{"v":"C","label":"Reviewers' feedback","desc":"Ask the course reviewers whether they found enough to read that they could follow."},{"v":"D","label":"A small trial with learners","desc":"3–5 real learners for a week, after 1 November."}]},{"id":"Q61","ids":"N-11","showIf":["Q59","N-11"],"text":"How is N-11 (new material in familiar words) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"Measured on every text","desc":"grove counts the share of a new text's words that are in your ground; at least 95% (RQ-167). Already a test."},{"v":"B","label":"Your own reading","desc":"You read 10 new texts at your level and mark the words you didn't know; fewer than 1 in 20 is the target."},{"v":"C","label":"Learners rate texts","desc":"Too easy / just right / too hard after each text; most should be \"just right\"."}]},{"id":"Q62","ids":"N-13","showIf":["Q59","N-13"],"text":"How is N-13 (at your own level) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"The starting level feels right","desc":"You and the reviewers say whether the assessed level matches what you can do."},{"v":"B","label":"Texts feel \"just right\"","desc":"Most texts at your level are neither too easy nor too hard, by your own judgement over two weeks."},{"v":"C","label":"The level moves","desc":"Your current level on Progress rises as your ground grows."}]},{"id":"Q63","ids":"N-04","showIf":["Q59","N-04"],"text":"How is N-04 (forgotten words stick) checked? (default: A)","type":"multi","def":["A"],"options":[{"v":"A","label":"Still known a week later","desc":"Of the words you picked up and let fall, the share you still get right in Review a week later."},{"v":"B","label":"Words reaching your ground","desc":"How many leaves fall to the ground (you know them) each week."},{"v":"C","label":"Your own sense","desc":"A weekly line in a diary: do the words stick?"}]},{"id":"Q64","ids":"N-45","showIf":["Q59","N-45"],"text":"How is N-45 (help with what you don't understand) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"Every word has help","desc":"A tap on any word gives a meaning within half a second (tested, FR-305); count the words with no meaning stored."},{"v":"B","label":"Help that actually helps","desc":"Over 10 texts you note each time the help didn't make the word or sentence clear."},{"v":"C","label":"Reviewers' feedback","desc":"Ask the reviewers whether they got stuck anywhere."}]},{"id":"Q65","ids":"N-29","showIf":["Q59","N-29"],"text":"How is N-29 (feeling of progress) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"Progress shows what you did","desc":"The Progress page's numbers (read, heard, words in your ground, starting vs current level) match what you remember doing."},{"v":"B","label":"A weekly feeling","desc":"Once a week: \"do I feel I'm getting better?\" yes / somewhat / no."},{"v":"C","label":"Reviewers' feedback","desc":"Ask the reviewers."}]},{"id":"Q66","ids":"N-15","showIf":["Q59","N-15"],"text":"How is N-15 (affordable learning) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"The whole loop with a free AI","desc":"Get texts with a free AI chat's free tier, read, review: nothing asks for money (the real-AI check)."},{"v":"B","label":"Running costs stay zero","desc":"Nothing is paid beyond your Claude subscription (C-01)."},{"v":"C","label":"Works with no AI at all","desc":"The common library alone gives enough to learn from."}]},{"id":"Q67","ids":"N-43","showIf":["Q59","N-43"],"text":"How is N-43 (trust in what you learn from) checked? (default: A, B)","type":"multi","def":["A","B"],"options":[{"v":"A","label":"A Swedish speaker reads a sample","desc":"For example 10 library texts across the levels; count the mistakes."},{"v":"B","label":"The program checks every text","desc":"grove's checker runs on every library and AI text (known words, level, form)."},{"v":"C","label":"Reports from learners","desc":"Count the texts and sentences reported as wrong."}]},{"id":"Q68","ids":"validation","text":"How does the report describe validation overall?","type":"single","def":"A","options":[{"v":"A","label":"Your own tests as the main learner","desc":"Your notes after each build (O-01…O-22, B-01…B-33) are the validation, done by the first real user; the checks above are next steps."},{"v":"B","label":"Your tests plus the reviewers' feedback","desc":"The reviewers' views are added when they come."},{"v":"C","label":"Your tests now; a learner trial as future work","desc":"The report plans a small trial with real learners after the course."}]}]},{"id":"s7","title":"For the reflections","intro":"For the report's section 7: what this way of finding needs taught you. grove found its needs after the prototypes (\"prototype first, needs after\"), froze them, and then kept finding more through your tests.","questions":[{"id":"Q69","ids":"report 7","text":"How did deriving the needs after the prototypes work? Tick all that are true. (default: A, C)","type":"multi","def":["A","C"],"options":[{"v":"A","label":"It found needs a plain list would have missed","desc":"For example free learning (N-15) came from asking who pays for p1's AI."},{"v":"B","label":"The needs came out too many and too close","desc":"43 active needs with many overlaps, as this round shows."},{"v":"C","label":"Using the build showed needs late","desc":"Clarity, simplicity and the way back (N-46, Q36–Q39) came only from your tests after the freeze."},{"v":"D","label":"The needs rarely steered decisions","desc":"Decisions were made on screens and requirements; the needs were traced afterwards."}]},{"id":"Q70","ids":"report 7.3","text":"Which lesson about needs goes into 7.3? Tick all. (default: A, C)","type":"multi","def":["A","C"],"options":[{"v":"A","label":"Review the needs after each test of a build","desc":"Not only once before the freeze."},{"v":"B","label":"Keep the needs fewer and broader","desc":"About 15–25, each clearly different."},{"v":"C","label":"Name the core need early and test every feature against it","desc":"Your notes: with cheap prototypes the core of the app can get lost."}]}]}];
+const MET = [{"v":"fully","label":"Fully","desc":"The first build meets this need as it is."},{"v":"partly","label":"Partly","desc":"Some of it is met; say what is missing in the note if it matters."},{"v":"not","label":"Not","desc":"Not met, and no plan to meet it."},{"v":"later","label":"Later","desc":"Not met now; planned for the second build or after."}];
+const WORDING = [{"v":"keep","label":"Keep as worded","desc":"The need stays as it is."},{"v":"reword","label":"Withdraw and replace","desc":"Needs are never edited: this one is withdrawn and a new need with your wording is added. Write the new wording in the note."},{"v":"withdraw","label":"Withdraw","desc":"Wrong or not a need. Give the reason in the note; it is kept in the table as withdrawn."}];
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const metOf = (v) => MET.find((m) => m.v === v);
+const ALLQ = SECTIONS.flatMap((s) => s.questions.map((q) => ({ ...q, sec: s.id })));
+const form = document.getElementById('answers');
+const TOUCHED = new Set();
+const tickDefaults = (q) => { for (const i of form.querySelectorAll(`input[name="${q.id}"]`)) i.checked = q.def.length ? q.def.includes(i.value) : i.value === 'none'; };
+
+const noteBox = (id, label = 'Add a note (optional)') => `<details class="note"><summary>${label}</summary><textarea id="${id}" aria-label="Note"></textarea></details>`;
+const segs = (name, opts, def, title, help) => `<p class="fq">${esc(title)}</p><div class="seg" role="radiogroup" aria-label="${esc(title)}">${opts.map((o) => `<label><input type="radio" name="${name}" value="${o.v}"${o.v === def ? ' data-def="1"' : ''}><span>${esc(o.label)}${o.v === def ? ' ·&nbsp;default' : ''}</span></label>`).join('')}</div>${help ? `<p class="seg-help">${esc(help)}</p>` : ''}`;
+
+function defaultText(q) {
+  if (q.type === 'single') return q.def;
+  if (q.type === 'multi') return q.def.length ? q.def.join(', ') : 'none';
+  return 'none ticked';
+}
+
+function renderQ(q) {
+  let h = `<div class="q" id="${q.id}" data-q="${q.id}"${q.showIf ? ' hidden' : ''}>`;
+  h += `<div class="q-head"><span class="q-id">${q.id}</span><span class="q-text">${esc(q.text)}</span></div>`;
+  h += `<div class="q-meta">${q.ids ? `<span class="pill ids">${esc(q.ids)}</span>` : ''}<span class="pill">default: ${esc(defaultText(q))}</span>${q.type === 'multi' ? `<span class="pill ids">tick all that apply${q.max ? `, at most ${q.max}` : ''}</span>` : ''}</div>`;
+  if (q.type === 'single' || q.type === 'multi') {
+    const kind = q.type === 'single' ? 'radio' : 'checkbox';
+    for (const o of q.options) {
+      const isDef = q.type === 'single' ? o.v === q.def : q.def.includes(o.v);
+      h += `<label class="opt"><input type="${kind}" name="${q.id}" value="${esc(o.v)}"><span><span class="ol">${q.type === 'single' ? `<b>${esc(o.v)}.</b> ` : ''}${esc(o.label)}${isDef ? '<span class="isdef">default</span>' : ''}</span>${o.desc ? `<span class="od">${esc(o.desc)}</span>` : ''}</span></label>`;
+    }
+    if (q.none) h += `<label class="opt none"><input type="checkbox" name="${q.id}" value="none" data-none="1"><span><span class="ol">${esc(q.none)}${!q.def.length ? '<span class="isdef">default</span>' : ''}</span></span></label>`;
+    if (q.max) h += `<p class="warn" id="${q.id}-warn" hidden></p>`;
+  } else {
+    for (const it of q.items) {
+      const tag = it.met ? `<span class="met-tag met-${it.met}">${esc(metOf(it.met).label)}</span>` : '';
+      h += `<div class="item" data-item="${it.id}"><label><input type="checkbox" name="${q.id}-tick" value="${it.id}"><span><span class="nid">${it.id}</span>${esc(it.text)}<br><span class="drafted">${q.type === 'needs' ? 'First build: ' : (q.mode === 'met' ? 'Drafted: ' : 'Needs: ')}${tag}${esc(it.why || '')}</span></span></label>`;
+      h += `<div class="follow" hidden>`;
+      if (q.type === 'needs') h += segs(`${q.id}-${it.id}-wording`, WORDING, 'keep', 'Still right?', 'Replace = withdraw it and add your wording as a new need (write it in the note). Withdraw = give the reason in the note.');
+      if (q.type === 'needs' || q.mode === 'met') h += segs(`${q.id}-${it.id}-met`, MET, it.met, 'Met by the first build?', 'Fully, partly, not at all, or later (planned for the second build).');
+      h += `<p class="fq">${q.mode === 'note' ? 'The right needs, or what is wrong' : 'Note'}</p><textarea id="${q.id}-${it.id}-note" aria-label="Note for ${it.id}"></textarea></div></div>`;
+    }
+    h += `<label class="opt none"><input type="checkbox" name="${q.id}-tick" value="none" data-none="1"><span><span class="ol">None: all as drafted<span class="isdef">default</span></span></span></label>`;
+  }
+  h += `<div class="row-end">${noteBox(`${q.id}-note`)}<button type="button" class="clear" data-clear="${q.id}">Use the default</button></div>`;
+  return h + '</div>';
+}
+
+function build() {
+  let h = '';
+  const chips = [];
+  for (const s of SECTIONS) {
+    h += `<section class="sec" id="${s.id}"><h2>${esc(s.title)} <span class="count" id="${s.id}-count"></span></h2><p class="intro">${esc(s.intro)}</p>`;
+    for (const q of s.questions) {
+      if (q.sub) h += `<h3 class="sub">${esc(q.sub)}</h3>`;
+      h += renderQ(q);
+    }
+    h += '</section>';
+    chips.push(`<a class="chip" href="#${s.id}" id="${s.id}-chip">${esc(s.title)}<span></span></a>`);
+  }
+  form.innerHTML = h;
+  document.getElementById('chips').innerHTML = chips.join('');
+}
+
+const checked = (name) => [...form.querySelectorAll(`input[name="${CSS.escape(name)}"]:checked`)].map((i) => i.value);
+const val = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+
+function readQ(q) {
+  const note = val(`${q.id}-note`);
+  if (q.type === 'single') {
+    const v = checked(q.id)[0];
+    return { answer: v ?? q.def, isDefault: !v, note, touched: !!v };
+  }
+  if (q.type === 'multi') {
+    const vs = checked(q.id);
+    const picks = vs.filter((v) => v !== 'none');
+    const touched = TOUCHED.has(q.id);
+    return { answer: touched ? picks : q.def, isDefault: !touched, note, touched };
+  }
+  const ticks = checked(`${q.id}-tick`);
+  const none = ticks.includes('none');
+  const items = {};
+  for (const id of ticks.filter((t) => t !== 'none')) {
+    const it = q.items.find((x) => x.id === id);
+    const r = { note: val(`${q.id}-${id}-note`) };
+    if (q.type === 'needs') r.wording = checked(`${q.id}-${id}-wording`)[0] || 'keep';
+    if (q.type === 'needs' || q.mode === 'met') { const m = checked(`${q.id}-${id}-met`)[0]; r.met = m || it.met; r.metDrafted = it.met; }
+    items[id] = r;
+  }
+  const touched = none || Object.keys(items).length > 0;
+  return { answer: Object.keys(items), none, items, isDefault: !touched, note, touched };
+}
+
+function visible(q, A) {
+  if (!q.showIf) return true;
+  const [qid, v] = q.showIf;
+  const a = A[qid];
+  return Array.isArray(a?.answer) && a.answer.includes(v);
+}
+
+function collectAnswers() {
+  const A = {};
+  for (const q of ALLQ) A[q.id] = readQ(q);
+  let n = 0, done = 0;
+  const per = {};
+  for (const q of ALLQ) {
+    const show = visible(q, A);
+    const el = document.getElementById(q.id);
+    el.hidden = !show;
+    el.classList.toggle('answered', A[q.id].touched);
+    if (!show) { A[q.id].hidden = true; continue; }
+    n++; if (A[q.id].touched) done++;
+    per[q.sec] = per[q.sec] || [0, 0];
+    per[q.sec][0]++; if (A[q.id].touched) per[q.sec][1]++;
+    if (q.type !== 'single' && q.type !== 'multi') {
+      for (const it of el.querySelectorAll('.item')) it.querySelector('.follow').hidden = !it.querySelector('input').checked;
+    }
+    if (q.max) {
+      const w = document.getElementById(`${q.id}-warn`);
+      const c = A[q.id].answer.length;
+      w.hidden = c <= q.max && c >= 3;
+      w.textContent = c > q.max ? `${c} picked: please keep it to ${q.max}.` : `${c} picked: pick at least 3.`;
+    }
+  }
+  document.getElementById('prog-text').textContent = `${done} of ${n} answered`;
+  document.getElementById('prog-fill').style.width = `${n ? Math.round((done / n) * 100) : 0}%`;
+  for (const s of SECTIONS) {
+    const [t, d] = per[s.id] || [0, 0];
+    document.getElementById(`${s.id}-count`).textContent = `${d} of ${t} answered`;
+    const chip = document.getElementById(`${s.id}-chip`);
+    chip.querySelector('span').textContent = `${d}/${t}`;
+    chip.classList.toggle('done', t > 0 && d === t);
+  }
+  const out = {};
+  for (const [k, v] of Object.entries(A)) { const { touched, ...rest } = v; out[k] = rest; }
+  return { questions: out, answered: done, shown: n };
+}
+window.collectAnswers = collectAnswers;
+
+// "None" excludes the other ticks, and the other way round.
+form.addEventListener('change', (e) => {
+  const t = e.target;
+  if (t.type !== 'checkbox') return;
+  const group = [...form.querySelectorAll(`input[type="checkbox"][name="${CSS.escape(t.name)}"]`)];
+  if (t.dataset.none && t.checked) group.forEach((i) => { if (i !== t) i.checked = false; });
+  else if (!t.dataset.none && t.checked) group.forEach((i) => { if (i.dataset.none) i.checked = false; });
+});
+form.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-clear]');
+  if (!b) return;
+  const q = ALLQ.find((x) => x.id === b.dataset.clear);
+  const el = document.getElementById(q.id);
+  el.querySelectorAll('input').forEach((i) => { i.checked = false; });
+  el.querySelectorAll('.follow textarea').forEach((t) => { t.value = ''; });
+  TOUCHED.delete(q.id);
+  if (q.type === 'multi') tickDefaults(q);
+  form.dispatchEvent(new Event('change'));
+});
+
+build();
+for (const q of ALLQ) if (q.type === 'multi') tickDefaults(q);
+form.addEventListener('change', (e) => { const qe = e.target.closest?.('[data-q]'); if (qe && e.target.name === qe.dataset.q) TOUCHED.add(qe.dataset.q); }, true);
+form.addEventListener('input', collectAnswers);
+form.addEventListener('change', collectAnswers);
+collectAnswers();
+
+// Restore from saved answers (used by the saving script below).
+window.restoreAnswers = (a) => {
+  for (const q of ALLQ) {
+    const s = a.questions?.[q.id];
+    if (!s) continue;
+    const n = document.getElementById(`${q.id}-note`);
+    if (n && s.note) { n.value = s.note; n.closest('details').open = true; }
+    if (s.isDefault) continue;
+    if (q.type === 'single') { const r = form.querySelector(`input[name="${q.id}"][value="${CSS.escape(s.answer)}"]`); if (r) r.checked = true; continue; }
+    if (q.type === 'multi') {
+      TOUCHED.add(q.id);
+      form.querySelectorAll(`input[name="${q.id}"]`).forEach((i) => { i.checked = false; });
+      if (!s.answer.length) { const r = form.querySelector(`input[name="${q.id}"][value="none"]`); if (r) r.checked = true; }
+      for (const v of s.answer) { const r = form.querySelector(`input[name="${q.id}"][value="${CSS.escape(v)}"]`); if (r) r.checked = true; }
+      continue;
+    }
+    if (s.none) { const r = form.querySelector(`input[name="${q.id}-tick"][value="none"]`); if (r) r.checked = true; }
+    for (const [id, it] of Object.entries(s.items || {})) {
+      const r = form.querySelector(`input[name="${q.id}-tick"][value="${CSS.escape(id)}"]`); if (r) r.checked = true;
+      if (it.wording) { const w = form.querySelector(`input[name="${CSS.escape(`${q.id}-${id}-wording`)}"][value="${it.wording}"]`); if (w) w.checked = true; }
+      if (it.met) { const m = form.querySelector(`input[name="${CSS.escape(`${q.id}-${id}-met`)}"][value="${it.met}"]`); if (m) m.checked = true; }
+      const t = document.getElementById(`${q.id}-${id}-note`); if (t && it.note) t.value = it.note;
+    }
+  }
+  collectAnswers();
+};
+
+// Follow-up radios start on their defaults when an item is ticked.
+form.addEventListener('change', (e) => {
+  const t = e.target;
+  if (!t.name?.endsWith('-tick') || !t.checked || t.dataset.none) return;
+  const f = t.closest('.item').querySelector('.follow');
+  for (const grp of new Set([...f.querySelectorAll('input[type="radio"]')].map((i) => i.name))) {
+    if (!f.querySelector(`input[name="${CSS.escape(grp)}"]:checked`)) { const d = f.querySelector(`input[name="${CSS.escape(grp)}"][data-def]`); if (d) d.checked = true; }
+  }
+}, true);
+})();
+</script>
+<script>
+// Saving the answers for Claude: stored in the published page's own database (doc answers/round1),
+// restored on reopening. Nothing else is saved. Say "done" in Claude Code when finished.
+(() => {
+  const form = document.getElementById('answers');
+  const lines = [document.getElementById('status'), document.getElementById('status2')];
+  const say = (t) => lines.forEach((l) => { l.textContent = t; });
+  let db = null;
+  let timer = null;
+  let ready = false;
+  const save = async () => {
+    if (!db) { say('Answers can only be saved on the published page.'); return; }
+    try {
+      say('Saving…');
+      await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() });
+      say('Saved. Say "done" in Claude Code when you have finished.');
+    } catch { say('Couldn’t save just now; it will try again with your next change.'); }
+  };
+  const later = () => { if (!ready) return; clearTimeout(timer); timer = setTimeout(save, 700); };
+  form.addEventListener('input', later);
+  form.addEventListener('change', later);
+  form.addEventListener('click', (e) => { if (e.target.closest('[data-clear]')) later(); });
+  (async () => {
+    try { db = window.claude ? await window.claude.use('db') : null; } catch { db = null; }
+    if (!db) { ready = true; say('Answers can only be saved on the published page.'); return; }
+    try {
+      const snap = await db.doc('answers/round1').get();
+      const a = snap && snap.exists ? snap.data() : null;
+      if (a) { window.restoreAnswers(a); say('Your saved answers are back.'); }
+      else say('Answers save by themselves as you go.');
+    } catch { say('Couldn’t load saved answers; new answers still save.'); }
+    ready = true;
+  })();
+})();
+</script>
+</body>
+</html>
