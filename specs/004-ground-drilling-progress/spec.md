@@ -73,11 +73,11 @@ From the word menu, the learner marks any word To remember (it becomes a drilled
 
 **Why this priority**: Learners steer their own practice (N-12, N-32); the marking step covers the main flow.
 
-**Independent Test**: Mark a ground word To remember from the menu; Let it fall on a leaf answering right and on another answering wrong; pick up a ground word; add "kanelbulle" on Leaves; see each in the right state.
+**Independent Test**: Pick up a ground word from the menu; Let it fall on a leaf answering right and on another answering wrong; pick up a ground word; add "kanelbulle" on Leaves; see each in the right state.
 
 **Acceptance Scenarios**:
 
-1. **Given** the word menu, **When** the learner switches a word's To remember on, **Then** it becomes (or stays) a drilled leaf; switched off, a drilled leaf becomes an unmarked leaf. (RQ-07, RQ-415)
+1. **Given** the word menu on a ground word or an unmarked leaf, **When** the learner taps ↑ Pick up, **Then** it becomes a drilled leaf; the menu has no To remember switch (FR-409 since question-pages/95). (RQ-07, RQ-415, RQ-456)
 2. **Given** a leaf, **When** the learner presses Let it fall and answers its meaning right, **Then** it falls to the ground; answered wrong, it stays a leaf; a pattern asks "Are you sure?" instead. (question-pages/56)
 3. **Given** a ground word, **When** the learner picks it up, **Then** it becomes a drilled leaf again, due now. (glossary)
 4. **Given** Leaves, **When** it opens, **Then** it lists drilled leaves, each with play, meaning and delete; delete removes the leaf without putting it in the ground. (RQ-08, RQ-415)
@@ -162,9 +162,9 @@ On their first visit a learner sees a short welcome explaining leaves and the gr
 
 **Marks, Let it fall, pick up, Leaves**
 
-- **FR-409** (RQ-07, RQ-415; N-11, N-04, N-12): The word menu MUST let the learner switch **To remember** on or off for the word; switching it on makes the word a drilled leaf (due now, gap 1 day) if it wasn't; switching it off on a drilled leaf makes it an unmarked leaf again.
+- **FR-409** (RQ-07, RQ-415, RQ-456; N-11, N-04, N-12): The word menu MUST NOT offer **To remember** (question-pages/95, 1: it did what Pick up does); a word becomes a drilled leaf from the menu by **Pick up** (FR-411). The To remember switch stays in the marking step (FR-401) and on Leaves' Unmarked section (FR-412). *(was: the word menu switches To remember on or off.)*
 - **FR-410** (RQ-382, question-pages/56; N-12, N-32): The word menu MUST offer **Let it fall** on a leaf: grove asks its meaning once (multiple choice as FR-406); right → it falls to the ground; wrong → the learner chooses **Keep it** (it stays a leaf) or **Let it fall anyway** (it falls; B-28, question-pages/88); a pattern, or a word with fewer than 2 other meanings available, gets "Are you sure?" instead.
-- **FR-411** (RQ-383, RQ-414, RQ-416, RQ-449, glossary; N-04, N-05): **Pick up** MUST be offered on a ground word in the word menu and in both dictionaries (G-03 FR-316, G-09 FR-917, FR-926; a word of the common dictionary that is not yet the learner's is added and picked up), and in the word menu on each grammar pattern of the sentence (a pattern not yet a leaf is added as one): the item becomes a drilled leaf marked To remember, due now, gap 1 day (addendum 003, O-16, O-21).
+- **FR-411** (RQ-383, RQ-414, RQ-416, RQ-449, RQ-456, glossary; N-04, N-05): **Pick up** MUST be offered in the word menu on a ground word, a new word and an unmarked leaf (as **↑ Pick up <word>**), on each phrase and grammar pattern the word is part of that isn't a drilled leaf (as **Pick up this phrase / this pattern**; G-03 FR-305), and in both dictionaries (G-03 FR-316, G-09 FR-917, FR-926; a word of the common dictionary or a grove text that is not yet the learner's is added and picked up): the item becomes a drilled leaf marked To remember, due now, gap 1 day (addendum 003, O-16, O-21; question-pages/95).
 - **FR-412** (RQ-08, RQ-35, RQ-77, RQ-207, RQ-415; N-38, N-11, N-21, N-42, N-12, N-32): A **Leaves** page MUST list drilled leaves (To remember), each with play, meaning and delete (delete removes the leaf, not to the ground); and an **Unmarked** section (starter words, skipped marking steps) with the To remember switch; and let the learner add a word, phrase or pattern by typing it (≤ 80 characters), which becomes a drilled leaf marked To remember, with its meaning from grove's word list (G-02 FR-222); when the list doesn't have it, the learner MUST give a meaning (≤ 200 characters, saved as the learner's, `en_source = learner`), and the next request has the AI confirm or correct it (G-02 FR-207, meaning checks).
 
 **Colours**
