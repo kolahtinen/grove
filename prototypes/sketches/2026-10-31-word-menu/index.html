@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Word menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for the word menu (G-03 FR-305; docs/sketching.md). Throwaway: never copied into the build.
+   Tokens and parts copied from public/assets/grove.css (palette 14) on 2026-10-31.
+   Layout: notes and controls on top, one phone frame (a reading page with the menu open over it), answers below. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --pbg: #222822; --pink: #E9EBE3; --pbord: #6FA27E; --phtx: #0F110E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+    --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3, h4 { margin: 0 0 .6rem; line-height: 1.3; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame (as in the 2026-10-29 sketches) ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+@media (min-width: 760px) { .sk-notes { grid-template-columns: repeat(3, 1fr); } }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 1rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul { margin: .3rem 0 .3rem; padding-left: 1.1rem; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; min-height: 780px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.sk-answers { margin-top: 2rem; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+.now-tag { font-size: .7rem; font-weight: 700; color: var(--muted); margin-left: .2rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: .6rem 0 0; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.way-back { margin: 0 0 .3rem; }
+.way-back span { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--link); }
+.stats { color: var(--muted); font-size: .85rem; margin: -.3rem 0 .7rem; }
+.passage { font-size: 1.15rem; line-height: 2.2; }
+.passage p { margin: 0 0 .5rem; }
+button.w { font: inherit; color: inherit; background: none; border: none; padding: 0; margin: 0; border-radius: 4px; cursor: pointer; min-height: 0; line-height: inherit; font-weight: 400; }
+button.w:active { transform: none; background: var(--soft); }
+button.w.sel { background: var(--soft); }
+.w.new { border-bottom: 2px dotted var(--muted); }
+.w.leaf { border-bottom: 2px dotted var(--accent2); }
+.w.m-remember { color: var(--cw); border-bottom: 2px dotted var(--cw); }
+.translation-btn { min-height: 36px; padding: .25rem .8rem; font-size: .85rem; }
+button.bar-button { padding: .3rem .7rem; font-size: .82rem; min-height: 36px; white-space: nowrap; flex: none; }
+.row { display: flex; gap: .5rem; margin-top: .6rem; }
+.row > button { flex: 1; }
+
+/* The sheet over the page, inside the frame (grove's .sheet, absolute here instead of fixed) */
+.backdrop { position: absolute; inset: 0; background: var(--backdrop); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 20; animation: fade-in .2s ease; }
+.sheet { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 21; width: min(560px, 100%); max-height: 82%; overflow-y: auto;
+  background: var(--pbg); color: var(--pink); border: 1px solid var(--pbord); border-bottom: none; border-radius: 22px 22px 0 0; padding: 1rem 1.05rem 1.4rem; box-shadow: var(--shadow); animation: sheet-up .25s ease; }
+@keyframes sheet-up { from { opacity: 0; transform: translate(-50%, 48px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; background: var(--pbord); color: var(--phtx); margin: -1rem -1.05rem .8rem; padding: .55rem 1.05rem; border-radius: 22px 22px 0 0; position: sticky; top: -1rem; z-index: 2; }
+.sheet-head h3 { margin: 0; font-size: 2rem; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.sheet-head button.bar-button { color: var(--phtx); background: transparent; border-color: currentColor; }
+.sheet-head button.ico { min-width: 44px; min-height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--phtx); background: transparent; border: 0; }
+.sheet-head button.ico .icon { width: 22px; height: 22px; stroke-width: 2.2; }
+.menu-status { font-size: .85rem; color: var(--muted); margin: 0 0 .3rem; }
+.menu-status.leaf { color: var(--link); }
+.menu-facts { display: grid; grid-template-columns: auto 1fr; gap: .2rem .8rem; margin: .4rem 0 .8rem; }
+.menu-facts dt { color: var(--muted); font-size: .82rem; }
+.menu-facts dd { margin: 0; }
+.menu-explanation { border-left: 3px solid var(--accent); background: var(--soft); border-radius: 6px; padding: .4rem .6rem; font-size: .9rem; margin: .5rem 0; }
+button.switch { width: 100%; }
+button.switch[aria-pressed="true"] { background: var(--soft); border-color: var(--accent); color: var(--link); }
+.now-list { margin: .2rem 0 .4rem; padding-left: 1.4rem; }
+.now-list li { margin: .2rem 0; line-height: 1.7; }
+.ladder-level { margin-left: .3rem; padding: .05rem .4rem; border: 1px solid var(--line); border-radius: 999px; font-size: .72rem; font-weight: 700; color: var(--muted-strong); }
+h4.small { font-size: .82rem; margin: .7rem 0 .2rem; }
+.fall-box { margin-top: .6rem; display: grid; gap: .45rem; }
+.fall-box p { margin: 0; }
+.option { text-align: left; }
+.option.right { border-color: var(--ok); background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.option.wrong { border-color: var(--bad); background: var(--bad-bg); color: var(--bad); }
+.reasons { display: grid; gap: .1rem; margin: .3rem 0 .5rem; }
+.reasons label { display: flex; gap: .5rem; align-items: center; min-height: 36px; }
+.reasons input { accent-color: var(--accent); }
+.form-box { margin-top: .7rem; padding-top: .6rem; border-top: 1px solid var(--line); }
+.form-box input[type="text"] { width: 100%; font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .45rem .6rem; margin: .2rem 0 .6rem; }
+.skel { background: var(--line); border-radius: 10px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+.skel.line { height: .9rem; margin: .45rem 0; }
+.skel.btn { height: 46px; margin: .6rem 0 0; border-radius: 14px; }
+
+/* ---------- Parts new in this sketch, built from grove's ---------- */
+.state-chip { display: inline-flex; align-items: center; gap: .3rem; height: 24px; padding: 0 .6rem; border-radius: 999px; font-size: .74rem; font-weight: 700; border: 1px solid var(--line); color: var(--muted-strong); background: transparent; white-space: nowrap; }
+.state-chip.leaf { color: var(--link); border-color: var(--accent); background: var(--soft); }
+.state-chip.new { color: var(--discover); border-color: currentColor; }
+.state-chip.name { color: var(--muted); }
+.state-chip.rem { color: var(--cw); border-color: currentColor; }
+.meaning-big { font-size: 1.25rem; font-weight: 700; line-height: 1.35; margin: .1rem 0 .1rem; }
+.facts-sub { color: var(--muted); font-size: .86rem; margin: 0 0 .2rem; }
+.sv-expl { font-size: .9rem; color: var(--muted-strong); margin: .35rem 0 0; }
+.sv-expl i { color: var(--muted); font-style: normal; font-size: .78rem; font-weight: 700; margin-right: .3rem; }
+.act { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font-weight: 700; }
+.act .icon { width: 18px; height: 18px; stroke-width: 2.4; flex: none; }
+button.act.fill { background: var(--button-bg); color: var(--onacc); border: none; box-shadow: var(--glow); }
+button.act.out { background: transparent; color: var(--link); border: 1.5px solid var(--accent); }
+button.act.done { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); box-shadow: none; }
+button.act.wide { width: 100%; }
+.act-cap { font-size: .8rem; color: var(--muted); margin: .3rem 0 0; text-align: center; }
+.sec-title { display: flex; align-items: baseline; gap: .4rem; font-size: .78rem; font-weight: 700; color: var(--muted-strong); text-transform: uppercase; letter-spacing: .05em; margin: 1rem 0 .35rem; }
+.sec-title .n { color: var(--muted); font-weight: 500; }
+.name-line { display: flex; gap: .6rem; align-items: flex-start; padding: .4rem 0 .2rem; }
+.name-line p { margin: 0; }
+/* quiet row of secondary actions */
+.quiet { display: flex; flex-wrap: wrap; gap: .2rem 1rem; margin-top: 1rem; padding-top: .5rem; border-top: 1px solid var(--line); }
+.quiet button { background: none; border: 0; padding: .2rem 0; min-height: 44px; display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; text-align: left; color: var(--link); font-weight: 700; font-size: .9rem; line-height: 1.25; }
+.quiet button small { color: var(--muted); font-weight: 400; font-size: .74rem; }
+.quiet button .lab { display: inline-flex; align-items: center; gap: .3rem; }
+.quiet .icon { width: 16px; height: 16px; stroke-width: 2.2; }
+.switch-line { display: flex; align-items: center; justify-content: space-between; gap: .8rem; min-height: 44px; margin-top: .6rem; }
+.switch-line .t b { display: block; font-size: .92rem; }
+.switch-line .t small { color: var(--muted); font-size: .78rem; line-height: 1.3; display: block; }
+button.toggle { width: 52px; min-height: 32px; height: 32px; padding: 0; border-radius: 999px; position: relative; flex: none; }
+button.toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--muted); transition: left .15s; }
+button.toggle[aria-checked="true"] { background: var(--accent); border-color: var(--accent); }
+button.toggle[aria-checked="true"]::after { left: 23px; background: var(--onacc); }
+/* A: collapsed pattern rows */
+.prow { border: 1px solid var(--line); border-radius: 16px; background: var(--card); margin: 0 0 .45rem; overflow: hidden; }
+.prow > button.phead { width: 100%; display: flex; align-items: center; gap: .5rem; border: 0; border-radius: 0; background: transparent; text-align: left; padding: .55rem .75rem; color: var(--pink); }
+.prow .pname { flex: 1; min-width: 0; font-weight: 700; font-size: .92rem; line-height: 1.3; }
+.prow .chev { width: 18px; height: 18px; stroke-width: 2.2; flex: none; transition: transform .15s; color: var(--muted); }
+.prow.open .chev { transform: rotate(90deg); }
+.prow .pbody { padding: 0 .75rem .7rem; font-size: .9rem; }
+.prow .pbody p { margin: 0 0 .4rem; }
+.more-link { background: none; border: 0; padding: 0; min-height: 32px; color: var(--link); font-weight: 700; font-size: .84rem; }
+.ex-line { font-size: .88rem; margin: .1rem 0 .5rem; }
+.ex-line mark { background: var(--soft); color: inherit; border-bottom: 2px solid var(--accent); border-radius: 3px; padding: 0 .1rem; }
+.ex-line .en { display: block; color: var(--muted); font-size: .8rem; }
+/* B: segmented tabs + overflow */
+.seg { display: flex; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 0 0 .8rem; }
+.seg button { flex: 1; border: 0; border-radius: 0; background: transparent; padding: .45rem .3rem; min-height: 42px; font-size: .88rem; color: var(--pink); }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-selected="true"] { background: var(--soft); font-weight: 700; color: var(--link); }
+.seg .cnt { display: inline-block; min-width: 1.2rem; margin-left: .25rem; font-size: .72rem; border-radius: 999px; background: var(--line); padding: 0 .3rem; }
+.overflow { position: absolute; right: .6rem; top: 3.6rem; z-index: 5; width: min(300px, calc(100% - 1.2rem)); background: var(--card2); color: var(--ink); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: .35rem; animation: fade-in .15s ease; }
+.overflow button { display: flex; width: 100%; gap: .6rem; align-items: flex-start; text-align: left; border: 0; background: transparent; border-radius: 12px; padding: .5rem .6rem; }
+.overflow button:hover { background: var(--soft); }
+.overflow .icon { width: 18px; height: 18px; stroke-width: 2.2; margin-top: .2rem; flex: none; color: var(--link); }
+.overflow b { display: block; font-size: .92rem; }
+.overflow small { display: block; color: var(--muted); font-size: .78rem; line-height: 1.3; font-weight: 400; }
+.overflow .on-mark { margin-left: auto; font-size: .74rem; font-weight: 700; color: var(--cw); align-self: center; }
+.pcard { border: 1px solid var(--line); border-radius: 16px; background: var(--card); padding: .7rem .8rem; margin: 0 0 .55rem; }
+.pcard h4 { font-size: .98rem; margin: 0 0 .25rem; display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; }
+.pcard p { font-size: .9rem; margin: 0 0 .5rem; }
+/* C: dictionary-style rows with one button at the right (as G-09 FR-926) */
+.drows { list-style: none; margin: 0; padding: 0; }
+.drow { display: grid; grid-template-columns: 1fr auto; gap: .2rem .7rem; align-items: center; padding: .6rem 0; border-top: 1px solid var(--line); }
+.drows .drow:first-child { border-top: 0; }
+.drow .dmain { min-width: 0; }
+.drow .dtitle { font-weight: 700; display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; line-height: 1.3; }
+.drow .dmean { color: var(--muted-strong); font-size: .9rem; display: block; }
+.drow .why { grid-column: 1 / -1; font-size: .88rem; background: var(--soft); border-radius: 10px; padding: .45rem .6rem; margin: .1rem 0 0; }
+.drow .dmain button.more-link { min-height: 28px; font-size: .8rem; }
+.drow button.act { min-height: 40px; padding: .35rem .8rem; font-size: .86rem; border-radius: 999px; }
+.drow.self { background: color-mix(in srgb, var(--soft) 60%, transparent); border-radius: 14px; padding: .6rem .7rem; margin: 0 -.2rem; border-top: 0; }
+.lrows { margin-top: 1rem; border-top: 1px solid var(--line); }
+.lrows button { width: 100%; display: flex; align-items: center; gap: .6rem; background: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; padding: .55rem .1rem; text-align: left; color: var(--pink); }
+.lrows button .icon { width: 18px; height: 18px; stroke-width: 2.2; color: var(--link); flex: none; }
+.lrows button span { flex: 1; min-width: 0; }
+.lrows button b { display: block; font-size: .92rem; }
+.lrows button small { display: block; color: var(--muted); font-size: .78rem; font-weight: 400; }
+.lrows .chev { width: 16px; height: 16px; color: var(--muted); }
+.pin { min-height: 32px; padding: .1rem .55rem; border-radius: 999px; font-size: .74rem; font-weight: 700; color: var(--muted-strong); }
+.pin[aria-pressed="true"] { color: var(--cw); border-color: var(--cw); background: color-mix(in srgb, var(--cw) 14%, transparent); }
+/* message with Undo at the bottom of the screen (G-09 FR-926, FR-927) */
+.toast { position: absolute; left: 50%; bottom: 1rem; transform: translateX(-50%); z-index: 30; width: calc(100% - 1.5rem); max-width: 520px; display: flex; align-items: center; gap: .6rem; background: var(--ink); color: var(--bg); border-radius: 16px; padding: .55rem .6rem .55rem .9rem; box-shadow: var(--shadow); font-size: .9rem; animation: fade-in .2s ease; }
+.toast span { flex: 1; min-width: 0; }
+.toast button { background: transparent; color: var(--bg); border: 1px solid currentColor; min-height: 38px; padding: .2rem .8rem; font-weight: 700; }
+.esc-hint { font-size: .74rem; color: var(--muted); text-align: center; margin: .8rem 0 0; }
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <h1>Sketch: Word menu</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> the sheet that opens when you tap a word in a text (G-03 FR-305).</li>
+      <li><b>Try it:</b> tap any word in the text inside the phone, or use <b>Word</b> below to open the menu on a name, a ground word, a leaf, a word with two patterns or a word in a phrase.</li>
+      <li><b>Versions:</b> <b>Now</b> is the menu as built today, for comparison. <b>A</b>, <b>B</b> and <b>C</b> are three different fixes; pick one at the bottom.</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>Your words</b> "Just things that make the UI a bit hard to intuit. Give me a few sketches for the word menu alongside the current version and I can tell you what I want."</div>
+      <div class="sk-note"><b>1 · Two Pick up buttons.</b> A word with a grammar pattern shows a small Pick up under each pattern and a big Pick up for the word; nothing says which picks up what. (Try <i>Bröden</i> in Now.)</div>
+      <div class="sk-note"><b>2 · Names show empty rows.</b> Tapping a name shows "Dictionary form —" and "Meaning here —". (Try <i>Lina</i> in Now.)</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Also seen in the built menu, and what this sketch settles</summary>
+      <ul>
+        <li><b>Esc doesn't close it</b>; only Close and tapping outside do (A, B and C close on Esc).</li>
+        <li><b>A pattern's full explanation</b> sits inline in the sheet, with its Pick up after the last word of it.</li>
+        <li><b>Four equal buttons</b>: To remember, Explain, Report sentence and Pick up look the same, with no hint what each does.</li>
+        <li><b>The status says "In your ground — you know it"</b> above the facts, while the big button at the bottom offers Pick up for the same word.</li>
+        <li><b>To remember on a ground word does what Pick up does</b> (FR-409, FR-411: both make it a drilled leaf, due now), so a ground word has two ways to the same thing.</li>
+        <li><b>A leaf with no meaning stored</b> shows "Meaning here" with nothing after it (seen on <i>stan</i> in the A1-02 text; the Empty state below).</li>
+        <li><b>A new word in a grove text</b> has no Pick up at all, only To remember (Save as leaf is only for your own texts).</li>
+      </ul>
+      <p>It settles: how the word's facts, its one action, its patterns and phrases, and the lesser actions are laid out; what a name shows; whether the menu closes on Esc; what happens after Pick up or Let it fall (FR-305, FR-306, FR-409…FR-411, FR-926, FR-927).</p>
+      <p class="small muted">Example data: a made-up text and made-up learner states, written into this page; the grammar patterns are from grove's A1–A2 ladder. Nothing you tap is saved. Speech isn't played in the sketch.</p>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="Now" id="tab-v-Now">Now</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A" id="tab-v-A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B" id="tab-v-B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C" id="tab-v-C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Word"><span class="sk-row-label">Word</span>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="Lina">A name</button>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="morgon">Ground word</button>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="bageriet">Leaf</button>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="Bröden">Two patterns</button>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="tycker">In a phrase</button>
+      <button type="button" class="sk-tab" role="tab" data-act="word" data-k="nybakat">New word</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="reset">Reset words</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+    <p class="sk-vdesc" id="sdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> One action, patterns folded <small>The word's one button under its meaning; each pattern a folded row with its own "Pick up this pattern"; Explain and Report as a quiet row.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> Tabs: Word · Phrase · Patterns <small>One thing at a time, each tab with one button that names what it picks up; To remember, Explain and Report under ⋯ with a line each.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> Dictionary rows <small>The word, its phrase and its patterns as rows like your dictionary's, each with its own ↑ Pick up / ↓ Let it fall at the right.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-Now" value="Now"><span><b>Keep Now</b> <small>Only small fixes (names, Esc), no new layout.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-Now">On Now (the menu as built)</label><textarea id="comment-Now"></textarea>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons ---------- */
+const PATHS = {
+  play: ['M8 5l11 7-11 7z'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  up: ['M12 19V5', 'M6 11l6-6 6 6'],
+  down: ['M12 5v14', 'M6 13l6 6 6-6'],
+  more: ['M5 12h.01', 'M12 12h.01', 'M19 12h.01'],
+  chev: ['M9 6l6 6-6 6'],
+  help: ['M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z', 'M9.5 9.5a2.5 2.5 0 0 1 4.8.9c0 1.7-2.3 2.1-2.3 3.6', 'M12 17h.01'],
+  flag: ['M5 21V4', 'M5 4h11l-2 4 2 4H5'],
+  star: ['M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z'],
+  check: ['M5 12l5 5 9-10'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data ---------- */
+const TEXT_TITLE = 'Lina och bageriet';
+const SENTENCES = [
+  ['Lina', ' ', 'bor', ' ', 'i', ' ', 'en', ' ', 'liten', ' ', 'stad', ' ', 'vid', ' ', 'havet', '.'],
+  ['Varje', ' ', 'morgon', ' ', 'går', ' ', 'hon', ' ', 'till', ' ', 'bageriet', '.'],
+  ['Hon', ' ', 'tycker', ' ', 'om', ' ', 'nybakat', ' ', 'bröd', '.'],
+  ['Bröden', ' ', 'är', ' ', 'fortfarande', ' ', 'varma', '.'],
+];
+const ENGLISH = ['Lina lives in a small town by the sea.', 'Every morning she goes to the bakery.', 'She likes freshly baked bread.', 'The loaves are still warm.'];
+const BASE = {
+  Lina: { status: 'name' },
+  bor: { lemma: 'bo', en: 'live(s)', met: 14, pats: ['P1'] },
+  i: { lemma: 'i', en: 'in', met: 40 },
+  en: { lemma: 'en', en: 'a, an', met: 52 },
+  liten: { lemma: 'liten', en: 'small, little', met: 6, pats: ['P4'] },
+  stad: { lemma: 'stad', en: 'town', met: 5 },
+  vid: { lemma: 'vid', en: 'by, at', met: 7 },
+  havet: { lemma: 'hav', en: 'the sea', met: 2, pats: ['P2'] },
+  Varje: { lemma: 'varje', en: 'every', met: 8 },
+  morgon: { lemma: 'morgon', en: 'morning', met: 9 },
+  går: { lemma: 'gå', en: 'goes, walks', met: 21, pats: ['P1'] },
+  hon: { lemma: 'hon', en: 'she', met: 33 },
+  Hon: { lemma: 'hon', en: 'she', met: 33 },
+  till: { lemma: 'till', en: 'to', met: 19 },
+  bageriet: { lemma: 'bageri', en: 'the bakery', met: 3, status: 'leaf', pats: ['P2'], sv: 'Ett bageri är en butik där man bakar och säljer bröd.' },
+  tycker: { lemma: 'tycka', en: 'like (with om: tycka om)', met: 4, phrase: 'F1', pats: ['P1'] },
+  om: { lemma: 'om', en: 'about; here part of tycka om', met: 11, phrase: 'F1' },
+  nybakat: { lemma: 'nybakad', en: 'freshly baked', met: 0, status: 'new', pats: ['P4'] },
+  bröd: { lemma: 'bröd', en: 'bread', met: 6 },
+  Bröden: { lemma: 'bröd', en: 'the loaves', met: 2, pats: ['P2', 'P3'] },
+  är: { lemma: 'vara', en: 'are', met: 60, pats: ['P1'] },
+  fortfarande: { lemma: 'fortfarande', en: 'still', met: 3 },
+  varma: { lemma: 'varm', en: 'warm', met: 4, pats: ['P4'] },
+};
+const PHRASES = { F1: { name: 'tycka om', en: 'to like', status: 'new' } };
+const PATTERNS_BASE = {
+  P1: { name: 'Present tense: verbs end in -r', level: 'A1', state: null,
+    short: 'Verbs in the present end in -r, the same for every person.',
+    full: 'Swedish verbs in the present tense usually end in -r: talar, bor, läser, går. The form is the same for every person: jag bor, du bor, hon bor, vi bor.',
+    ex: ['Lina bor i en liten stad.', 'bor', 'Lina lives in a small town.'] },
+  P2: { name: '"The" goes on the end: bilen, huset', level: 'A1', state: null,
+    short: '"The" is an ending: bageri → bageriet, hav → havet.',
+    full: 'Swedish puts "the" at the end of the noun. En-words add -en or -n (bilen, flickan) and ett-words add -et or -t (huset, äpplet). In the plural, "the" is -na or -en: bilarna, bröden.',
+    ex: ['Bröden är fortfarande varma.', 'Bröden', 'The loaves are still warm.'] },
+  P3: { name: 'More than one: plural endings', level: 'A1', state: 'leaf',
+    short: 'Plurals take -or, -ar, -er, -n, or no ending: ett bröd, två bröd.',
+    full: 'Swedish nouns form the plural with an ending: -or (flickor), -ar (bilar), -er (katter), -n (äpplen) or no ending at all (barn, hus, bröd). Learn the plural together with the word.',
+    ex: ['Bröden är fortfarande varma.', 'Bröden', 'The loaves are still warm.'] },
+  P4: { name: 'Adjectives match the noun: stor, stort, stora', level: 'A2', state: null,
+    short: 'No ending with en-words, -t with ett-words, -a in the plural.',
+    full: 'An adjective changes to match its noun. With en-words it has no ending (en stor bil), with ett-words it adds -t (ett stort hus), and in the plural it adds -a (stora bilar). This also happens after är: huset är stort.',
+    ex: ['Hon tycker om nybakat bröd.', 'nybakat', 'She likes freshly baked bread.'] },
+};
+// The meaning check before a leaf falls (G-04 FR-410), made up.
+const CHECK = { bageriet: ['the bakery', 'the kitchen', 'the market'], default: (w) => [w.en, 'the station', 'quickly'] };
+
+const STATUS_NOW = { new: 'New word', leaf: 'Leaf — a word you are learning', ground: 'In your ground — you know it', name: 'Name — never counts as new' };
+const STATE_LABEL = { new: 'new', leaf: 'leaf', ground: 'ground', name: 'name' };
+
+const VERSIONS = {
+  Now: 'Now · the menu as built today (A1-02 screenshots, 2026-10-31): the word in the green strip with ▶ and Close; status line; Dictionary form and Meaning here; To remember as a full-width button; the patterns as a bulleted list with their full explanations and a small Pick up each; Explain and Report sentence; then the word\'s Let it fall or Pick up. Esc does nothing.',
+  A: 'A · One action, patterns folded. The meaning comes first, then one button for the word that names it ("↑ Pick up morgon" filled, "↓ Let it fall" outlined) with a line saying what it does. Patterns and phrases are folded rows below, each with its own "Pick up this pattern". Explain and Report are a quiet row of links with a hint each. Names get one line.',
+  B: 'B · Tabs. Word · Phrase · Patterns as tabs, so only one thing\'s button shows at a time, and each button says what it picks up. To remember, Explain and Report sentence sit under ⋯ in the green strip, each with a line saying what it does.',
+  C: 'C · Dictionary rows. The word, its phrase and its patterns are rows like your dictionary\'s (G-09 FR-926): name, meaning, state label, and one ↑ Pick up / ↓ Let it fall at the right of each row. A pattern\'s explanation opens with "Why?". Explain and Report are labelled rows at the bottom.',
+};
+const STATE_DESC = {
+  normal: '',
+  empty: 'Empty: the word has no meaning stored and is in no pattern (as "stan" in A1-02: Now shows "Meaning here" with nothing after it).',
+  error: 'Error: the save fails (no connection). Tap Pick up or Let it fall to see the message.',
+  loading: 'Loading: an action is under way, e.g. right after tapping Pick up (Now shows nothing while it waits).',
+};
+
+/* ---------- State (nothing is saved) ---------- */
+const clone = (o) => JSON.parse(JSON.stringify(o));
+const S = {
+  version: 'A', state: 'normal', width: 'phone', theme: 'auto',
+  sel: 'Bröden', open: true, trans: false,
+  tok: clone(BASE), pats: clone(PATTERNS_BASE), phr: clone(PHRASES),
+  ui: {}, toast: null, undo: null,
+};
+const resetUi = () => { S.ui = { tab: 'word', exp: {}, why: {}, more: false, form: null, fall: null, msg: null, saving: null }; };
+resetUi();
+
+/* ---------- Reading page under the sheet ---------- */
+const topbar = () => `<header class="topbar"><div class="topbar-inner"><span class="brand">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu (not part of this sketch)">☰</button></div></header>`;
+function wordClass(k) {
+  const w = S.tok[k]; if (!w) return '';
+  const st = w.status || 'ground';
+  let c = `w ${st}`;
+  if (w.remember) c += ' m-remember';
+  if (S.open && S.sel === k) c += ' sel';
+  return c;
+}
+function readingPage() {
+  const lines = SENTENCES.map((s) => `<p>${s.map((p) => (S.tok[p] ? `<button type="button" class="${wordClass(p)}" data-act="tap" data-k="${p}">${esc(p)}</button>` : esc(p))).join('')}</p>`).join('');
+  return `<main class="g-main"><p class="way-back"><span>‹ Your library</span></p>
+    <section class="card"><h2 style="font-size:1.15rem;margin-bottom:.4rem">${TEXT_TITLE}</h2><p class="stats">21 words · 90% known</p>
+    <button type="button" class="main" data-act="noop">Practise</button>
+    <div class="passage" style="margin-top:.8rem">${lines}</div>
+    <button type="button" class="translation-btn" data-act="trans">${S.trans ? 'Hide translation' : 'Show translation'}</button>
+    ${S.trans ? `<div class="small" style="margin-top:.5rem">${ENGLISH.map((e) => `<p style="margin:.2rem 0">${esc(e)}</p>`).join('')}</div>` : ''}
+    </section><p class="small muted">Tap any word. Underlined dotted: leaves (green), new words (grey).</p></main>`;
+}
+
+/* ---------- Helpers for every version ---------- */
+function word() {
+  const w = { ...S.tok[S.sel] };
+  w.t = S.sel;
+  w.status = w.status || 'ground';
+  if (S.state === 'empty' && w.status !== 'name') { w.en = null; w.pats = []; w.phrase = null; w.sv = null; }
+  w.pats = (w.pats || []).map((id) => ({ id, ...S.pats[id] }));
+  w.ph = w.phrase ? { id: w.phrase, ...S.phr[w.phrase] } : null;
+  return w;
+}
+const sentenceOf = (k) => SENTENCES.find((s) => s.includes(k)).join('');
+const savingBtn = (label) => `<button type="button" class="act out wide" disabled>${esc(label)}</button>`;
+const errMsg = (what) => `<div class="message bad" role="alert">Couldn't ${esc(what)}: no connection. Nothing changed.<div class="row"><button type="button" data-act="retry">Try again</button></div></div>`;
+// One action button for any item ('w' the word, 'F1' a phrase, 'P1' a pattern): ↑ Pick up when it isn't a leaf, ↓ Let it fall on a leaf.
+function actBtn(kind, id, status, label, opts = {}) {
+  const key = `${kind}:${id}`;
+  if (S.ui.saving === key) return `<button type="button" class="act out${opts.wide ? ' wide' : ''}" disabled>Saving…</button>`;
+  if (status === 'leaf') return `<button type="button" class="act out${opts.wide ? ' wide' : ''}" data-act="fall" data-kind="${kind}" data-id="${id}" aria-label="Let ${esc(label)} fall">${ic('down')}${esc(opts.fallText || 'Let it fall')}</button>`;
+  return `<button type="button" class="act fill${opts.wide ? ' wide' : ''}" data-act="pick" data-kind="${kind}" data-id="${id}" aria-label="Pick up ${esc(label)}">${ic('up')}${esc(opts.pickText || 'Pick up')}</button>`;
+}
+function fallBox() {
+  const f = S.ui.fall; if (!f) return '';
+  if (f.kind !== 'w') {
+    return `<div class="fall-box"><p>Are you sure you know it?</p><div class="row"><button type="button" data-act="fall-cancel">Keep it</button><button type="button" class="main" data-act="fall-yes">Yes, let it fall</button></div></div>`;
+  }
+  const w = word();
+  const opts = CHECK[S.sel] || CHECK.default(w);
+  if (f.wrong) {
+    return `<div class="fall-box"><p class="message bad" style="margin:0">Not quite. Keep it as a leaf, or let it fall anyway if you know it.</p><div class="row"><button type="button" data-act="fall-cancel">Keep it</button><button type="button" class="main" data-act="fall-yes">Let it fall anyway</button></div></div>`;
+  }
+  return `<div class="fall-box"><p class="passage" style="font-size:1rem;line-height:1.6">${esc(sentenceOf(S.sel))}</p><p class="small">What does “${esc(S.sel)}” mean here?</p>${opts.map((o, i) => `<button type="button" class="option" data-act="fall-answer" data-right="${i === 0}">${esc(o)}</button>`).join('')}<button type="button" class="more-link" data-act="fall-cancel">Cancel</button></div>`;
+}
+function formBox() {
+  const f = S.ui.form; if (!f) return '';
+  if (f === 'explain') {
+    return `<form class="form-box" onsubmit="return false"><p class="small" style="margin:0 0 .2rem"><b>Explain “${esc(S.sel)}”</b>: your AI's answer comes with the next prompt.</p><div class="reasons">
+      ${['Why this form', 'Why this word is here', 'A different meaning than I know', 'Other'].map((r, i) => `<label><input type="radio" name="er" ${i === 0 ? 'checked' : ''}><span>${r}</span></label>`).join('')}</div>
+      <button type="button" class="main" data-act="sent" data-what="Asked — the next prompt will include it.">Ask for an explanation</button></form>`;
+  }
+  return `<form class="form-box" onsubmit="return false"><p class="small" style="margin:0 0 .2rem"><b>Report this sentence</b>: “${esc(sentenceOf(S.sel))}”</p><div class="reasons">
+    ${['Bad translation', 'Unnatural sentence', 'Wrong reading', 'Audio', 'Other'].map((r, i) => `<label><input type="radio" name="rr" ${i === 1 ? 'checked' : ''}><span>${r}</span></label>`).join('')}</div>
+    <button type="button" class="main" data-act="sent" data-what="Reported — it won't count, and the next prompt asks for a fix.">Send report</button></form>`;
+}
+const msgBox = () => (S.ui.msg ? `<p class="message ${S.ui.msg.cls}" role="status">${esc(S.ui.msg.text)}</p>` : '');
+const sayBtn = () => `<button type="button" class="ico" data-act="noop" aria-label="Say ${esc(S.sel)} again">${ic('play')}</button>`;
+const closeBtn = () => `<button type="button" class="ico" data-act="close" aria-label="Close">${ic('close')}</button>`;
+const stateChip = (st, extra = '') => `<span class="state-chip ${st}">${STATE_LABEL[st]}${extra}</span>`;
+const metText = (w) => (w.met ? `met ${w.met} time${w.met === 1 ? '' : 's'}` : 'first time you meet it');
+const markEx = (ex) => { const [sv, m, en] = ex; const i = sv.indexOf(m); return `<p class="ex-line">${esc(sv.slice(0, i))}<mark>${esc(m)}</mark>${esc(sv.slice(i + m.length))}<span class="en">${esc(en)}</span></p>`; };
+const skel = () => `<div class="skel line" style="width:55%"></div><div class="skel line" style="width:80%"></div><div class="skel btn"></div>`;
+const escHint = () => '<p class="esc-hint">Esc, ✕ or a tap outside closes it.</p>';
+
+/* ---------- Now: the menu as built (public/text.html, public/assets/reading.mjs) ---------- */
+function sheetNow() {
+  const w = word();
+  const name = w.status === 'name';
+  let h = `<div class="sheet-head"><h3>${esc(w.t)}</h3><button type="button" class="bar-button" data-act="noop" aria-label="Say again">▶</button><button type="button" class="bar-button" data-act="close">Close</button></div>`;
+  h += `<p class="menu-status ${w.status}">${STATUS_NOW[w.status]}</p>`;
+  h += `<dl class="menu-facts"><dt>Dictionary form</dt><dd>${name ? '—' : esc(w.lemma)}</dd><dt>Meaning here</dt><dd>${name ? '—' : esc(w.en || '')}</dd></dl>`;
+  if (w.met) h += `<p class="small muted" style="margin:0">Met ${w.met} time${w.met === 1 ? '' : 's'}</p>`;
+  if (!name) h += `<div class="row" style="margin:.2rem 0 .6rem"><button type="button" class="switch" data-act="remember" aria-pressed="${!!w.remember}">To remember</button></div>`;
+  if (w.sv) h += `<p class="menu-explanation">${esc(w.sv)}</p>`;
+  if (w.ph) h += `<div><h4 class="small">Part of</h4><ul class="now-list"><li>${esc(w.ph.name)}</li></ul></div>`;
+  if (w.pats.length) {
+    h += `<div><h4 class="small">Patterns</h4><ul class="now-list">${w.pats.map((p) => `<li><strong>${esc(p.name)}</strong><span class="ladder-level">${p.level}</span> — ${esc(p.full)} ${p.state === 'leaf' ? '' : `<button type="button" class="bar-button" data-act="pick" data-kind="p" data-id="${p.id}">Pick up</button>`}</li>`).join('')}</ul></div>`;
+  }
+  h += `<div class="row">${name ? '' : '<button type="button" data-act="form" data-f="explain">Explain</button>'}<button type="button" data-act="form" data-f="report">Report sentence</button></div>`;
+  if (w.status === 'leaf') h += `<div class="row"><button type="button" data-act="fall" data-kind="w" data-id="w">Let it fall</button></div>`;
+  if (w.status === 'ground') h += `<div class="row"><button type="button" data-act="pick" data-kind="w" data-id="w">Pick up</button></div>`;
+  h += fallBox() + formBox() + msgBox();
+  return h;
+}
+
+/* ---------- A: one action, patterns folded ---------- */
+function wordAction(w, wide = true) {
+  if (S.state === 'loading') return savingBtn('Saving…');
+  return actBtn('w', 'w', w.status, w.t, { wide, pickText: `Pick up ${w.t}`, fallText: 'Let it fall' });
+}
+function capFor(st) {
+  return st === 'leaf' ? 'Only if you know it now: grove asks its meaning once.' : 'It becomes a leaf, due in Review today.';
+}
+function remSwitch(w, short) {
+  if (w.status !== 'leaf') return '';
+  return `<div class="switch-line"><span class="t"><b>To remember</b><small>${short ? 'Keep drilling it in Review' : 'Shown in teal in your texts and drilled in Review until you let it fall'}</small></span><button type="button" class="toggle" role="switch" data-act="remember" aria-checked="${!!w.remember}" aria-label="To remember"></button></div>`;
+}
+function nameBlock() {
+  return `<div class="name-line">${stateChip('name')}<p>A name — grove never counts it as new.</p></div>`;
+}
+function emptyMeaning() { return '<p class="meaning-big" style="color:var(--muted);font-weight:500;font-size:1rem">No meaning stored for this word yet.</p><p class="facts-sub">Explain asks your AI for one.</p>'; }
+function sheetA() {
+  const w = word();
+  let h = `<div class="sheet-head"><h3>${esc(w.t)}</h3>${sayBtn()}${closeBtn()}</div>`;
+  if (w.status === 'name') {
+    h += nameBlock();
+    h += `<div class="quiet"><button type="button" data-act="form" data-f="report"><span class="lab">${ic('flag')}Report sentence</span><small>Something is wrong in it</small></button></div>`;
+    return h + formBox() + msgBox() + escHint();
+  }
+  h += `<div style="display:flex;gap:.4rem;align-items:center;margin:0 0 .2rem">${stateChip(w.status, w.remember ? ' · to remember' : '')}<span class="facts-sub" style="margin:0">${metText(w)}</span></div>`;
+  if (w.en) h += `<p class="meaning-big">${esc(w.en)}</p><p class="facts-sub">Dictionary form <b style="color:var(--pink)">${esc(w.lemma)}</b></p>`;
+  else h += emptyMeaning();
+  if (w.sv) h += `<p class="sv-expl"><i>SV</i>${esc(w.sv)}</p>`;
+  h += `<div style="margin-top:.8rem">${S.state === 'error' && S.ui.err === 'w' ? errMsg(`save ${w.t}`) : ''}${S.ui.fall && S.ui.fall.kind === 'w' ? fallBox() : `${wordAction(w)}<p class="act-cap">${capFor(w.status)}</p>`}</div>`;
+  h += remSwitch(w);
+  if (w.ph) {
+    const p = w.ph;
+    h += `<p class="sec-title">Part of a phrase</p><div class="prow${S.ui.exp[p.id] ? ' open' : ''}"><button type="button" class="phead" data-act="exp" data-id="${p.id}" aria-expanded="${!!S.ui.exp[p.id]}"><span class="pname">${esc(p.name)} <span style="font-weight:400;color:var(--muted)">· ${esc(p.en)}</span></span>${stateChip(p.status)}${ic('chev', 'icon chev')}</button>
+      ${S.ui.exp[p.id] ? `<div class="pbody"><p>“Tycka om” together means <b>to like</b>; on its own, tycka means to think.</p>${S.state === 'error' && S.ui.err === p.id ? errMsg('save the phrase') : ''}${actBtn('f', p.id, p.status, p.name, { pickText: 'Pick up this phrase', fallText: 'Let this phrase fall' })}</div>` : ''}</div>`;
+  }
+  if (w.pats.length) {
+    h += `<p class="sec-title">Grammar in this word <span class="n">${w.pats.length}</span></p>`;
+    h += w.pats.map((p) => {
+      const open = !!S.ui.exp[p.id];
+      return `<div class="prow${open ? ' open' : ''}"><button type="button" class="phead" data-act="exp" data-id="${p.id}" aria-expanded="${open}"><span class="pname">${esc(p.name)}</span><span class="ladder-level">${p.level}</span>${p.state === 'leaf' ? stateChip('leaf') : ''}${ic('chev', 'icon chev')}</button>
+        ${open ? `<div class="pbody"><p>${esc(S.ui.why[p.id] ? p.full : p.short)} ${S.ui.why[p.id] ? '' : `<button type="button" class="more-link" data-act="why" data-id="${p.id}">More</button>`}</p>${markEx(p.ex)}${S.state === 'error' && S.ui.err === p.id ? errMsg('save the pattern') : ''}${S.ui.fall && S.ui.fall.id === p.id ? fallBox() : actBtn('p', p.id, p.state, p.name, { pickText: 'Pick up this pattern', fallText: 'Let this pattern fall' })}</div>` : ''}</div>`;
+    }).join('');
+  }
+  h += `<div class="quiet"><button type="button" data-act="form" data-f="explain"><span class="lab">${ic('help')}Explain</span><small>Ask your AI about this word</small></button><button type="button" data-act="form" data-f="report"><span class="lab">${ic('flag')}Report sentence</span><small>Something is wrong in it</small></button></div>`;
+  return h + formBox() + msgBox() + escHint();
+}
+
+/* ---------- B: tabs ---------- */
+function overflowMenu(w) {
+  if (!S.ui.more) return '';
+  let h = '<div class="overflow" role="menu">';
+  if (w.status === 'leaf') h += `<button type="button" role="menuitem" data-act="remember">${ic('star')}<span><b>To remember</b><small>Shown in teal in your texts; drilled in Review until you let it fall</small></span>${w.remember ? '<span class="on-mark">On</span>' : ''}</button>`;
+  if (w.status !== 'name') h += `<button type="button" role="menuitem" data-act="form" data-f="explain">${ic('help')}<span><b>Explain this word</b><small>Ask your AI why it looks like this here; the answer comes with the next prompt</small></span></button>`;
+  h += `<button type="button" role="menuitem" data-act="form" data-f="report">${ic('flag')}<span><b>Report this sentence</b><small>A bad translation or an unnatural sentence; it won't count</small></span></button>`;
+  return h + '</div>';
+}
+function sheetB() {
+  const w = word();
+  let h = `<div class="sheet-head"><h3>${esc(w.t)}</h3>${sayBtn()}<button type="button" class="ico" data-act="more" aria-label="More actions" aria-expanded="${S.ui.more}">${ic('more')}</button>${closeBtn()}</div>`;
+  h += overflowMenu(w);
+  if (w.status === 'name') return h + nameBlock() + formBox() + msgBox() + escHint();
+  const tabs = [['word', 'Word']];
+  if (w.ph) tabs.push(['phrase', 'Phrase']);
+  if (w.pats.length) tabs.push(['patterns', `Patterns<span class="cnt">${w.pats.length}</span>`]);
+  const tab = tabs.some((t) => t[0] === S.ui.tab) ? S.ui.tab : 'word';
+  if (tabs.length > 1) h += `<div class="seg" role="tablist">${tabs.map(([id, l]) => `<button type="button" role="tab" data-act="tab" data-t="${id}" aria-selected="${tab === id}">${l}</button>`).join('')}</div>`;
+  if (tab === 'word') {
+    if (w.en) h += `<p class="meaning-big">${esc(w.en)}</p>`; else h += emptyMeaning();
+    h += `<dl class="menu-facts" style="margin:.3rem 0 .6rem"><dt>Dictionary form</dt><dd>${esc(w.lemma)}</dd><dt>You</dt><dd>${stateChip(w.status, w.remember ? ' · to remember' : '')} <span class="small muted">${metText(w)}</span></dd></dl>`;
+    if (w.sv) h += `<p class="sv-expl"><i>SV</i>${esc(w.sv)}</p>`;
+    h += `<div style="margin-top:.8rem">${S.state === 'error' && S.ui.err === 'w' ? errMsg(`save ${w.t}`) : ''}${S.ui.fall && S.ui.fall.kind === 'w' ? fallBox() : `${wordAction(w)}<p class="act-cap">${capFor(w.status)}</p>`}</div>`;
+    if (tabs.length > 1) h += `<p class="small muted" style="margin:.7rem 0 0">This word is also part of ${tabs.slice(1).map((t) => (t[0] === 'phrase' ? 'a phrase' : `${w.pats.length} grammar pattern${w.pats.length > 1 ? 's' : ''}`)).join(' and ')}: see the tabs above.</p>`;
+  } else if (tab === 'phrase') {
+    const p = w.ph;
+    h += `<div class="pcard"><h4>${esc(p.name)} ${stateChip(p.status)}</h4><p><b>${esc(p.en)}</b>. “Tycka om” together means to like; on its own, tycka means to think.</p>${S.state === 'error' && S.ui.err === p.id ? errMsg('save the phrase') : ''}${actBtn('f', p.id, p.status, p.name, { wide: true, pickText: `Pick up “${p.name}”`, fallText: `Let “${p.name}” fall` })}</div>`;
+  } else {
+    h += w.pats.map((p) => `<div class="pcard"><h4>${esc(p.name)}<span class="ladder-level">${p.level}</span>${p.state === 'leaf' ? stateChip('leaf') : ''}</h4><p>${esc(S.ui.why[p.id] ? p.full : p.short)} ${S.ui.why[p.id] ? '' : `<button type="button" class="more-link" data-act="why" data-id="${p.id}">More</button>`}</p>${markEx(p.ex)}${S.state === 'error' && S.ui.err === p.id ? errMsg('save the pattern') : ''}${S.ui.fall && S.ui.fall.id === p.id ? fallBox() : actBtn('p', p.id, p.state, p.name, { wide: true, pickText: 'Pick up this pattern', fallText: 'Let this pattern fall' })}</div>`).join('');
+  }
+  return h + formBox() + msgBox() + escHint();
+}
+
+/* ---------- C: dictionary rows ---------- */
+function sheetC() {
+  const w = word();
+  let h = `<div class="sheet-head"><h3>${esc(w.t)}</h3>${sayBtn()}${closeBtn()}</div>`;
+  if (w.status === 'name') {
+    h += `<ul class="drows"><li class="drow self"><span class="dmain"><span class="dtitle">${esc(w.t)} ${stateChip('name')}</span><span class="dmean">A name — grove never counts it as new.</span></span></li></ul>`;
+    h += `<div class="lrows"><button type="button" data-act="form" data-f="report">${ic('flag')}<span><b>Report this sentence</b><small>Something is wrong in it</small></span>${ic('chev', 'icon chev')}</button></div>`;
+    return h + formBox() + msgBox() + escHint();
+  }
+  const btn = (kind, id, st, label) => (S.state === 'loading' && kind === 'w' ? '<button type="button" class="act out" disabled>Saving…</button>' : actBtn(kind, id, st, label));
+  h += '<ul class="drows">';
+  h += `<li class="drow self"><span class="dmain"><span class="dtitle">${esc(w.lemma)} ${stateChip(w.status)}${w.status === 'leaf' ? ` <button type="button" class="pin" data-act="remember" aria-pressed="${!!w.remember}" aria-label="To remember">${w.remember ? '★ to remember' : '☆ to remember'}</button>` : ''}</span><span class="dmean">${w.en ? esc(w.en) : '<i>no meaning stored yet</i>'} · ${metText(w)}</span>${w.sv ? `<span class="dmean small" style="margin-top:.2rem">${esc(w.sv)}</span>` : ''}</span>${S.ui.fall && S.ui.fall.kind === 'w' ? '' : btn('w', 'w', w.status, w.t)}${S.state === 'error' && S.ui.err === 'w' ? `<div class="why" style="background:none;padding:0">${errMsg(`save ${w.t}`)}</div>` : ''}${S.ui.fall && S.ui.fall.kind === 'w' ? `<div class="why" style="background:none;padding:0">${fallBox()}</div>` : ''}</li>`;
+  h += '</ul>';
+  if (w.ph) {
+    const p = w.ph;
+    h += `<p class="sec-title">Phrase in this sentence</p><ul class="drows"><li class="drow"><span class="dmain"><span class="dtitle">${esc(p.name)} ${stateChip(p.status)}</span><span class="dmean">${esc(p.en)}</span></span>${actBtn('f', p.id, p.status, p.name)}${S.state === 'error' && S.ui.err === p.id ? `<div class="why" style="background:none;padding:0">${errMsg('save the phrase')}</div>` : ''}</li></ul>`;
+  }
+  if (w.pats.length) {
+    h += `<p class="sec-title">Grammar patterns <span class="n">${w.pats.length}</span></p><ul class="drows">`;
+    h += w.pats.map((p) => `<li class="drow"><span class="dmain"><span class="dtitle">${esc(p.name)}<span class="ladder-level">${p.level}</span>${p.state === 'leaf' ? stateChip('leaf') : ''}</span><button type="button" class="more-link" data-act="why" data-id="${p.id}" aria-expanded="${!!S.ui.why[p.id]}">${S.ui.why[p.id] ? 'Hide' : 'Why?'}</button></span>${S.ui.fall && S.ui.fall.id === p.id ? '' : actBtn('p', p.id, p.state, p.name)}
+      ${S.ui.why[p.id] ? `<div class="why">${esc(p.full)}${markEx(p.ex)}</div>` : ''}${S.state === 'error' && S.ui.err === p.id ? `<div class="why" style="background:none;padding:0">${errMsg('save the pattern')}</div>` : ''}${S.ui.fall && S.ui.fall.id === p.id ? `<div class="why" style="background:none;padding:0">${fallBox()}</div>` : ''}</li>`).join('');
+    h += '</ul>';
+  }
+  h += `<div class="lrows"><button type="button" data-act="form" data-f="explain">${ic('help')}<span><b>Explain this word</b><small>Ask your AI why it looks like this here</small></span>${ic('chev', 'icon chev')}</button><button type="button" data-act="form" data-f="report">${ic('flag')}<span><b>Report this sentence</b><small>A bad translation or an unnatural sentence</small></span>${ic('chev', 'icon chev')}</button></div>`;
+  return h + formBox() + msgBox() + escHint();
+}
+
+/* ---------- Render ---------- */
+function sheet() {
+  if (!S.open) return '';
+  const body = { Now: sheetNow, A: sheetA, B: sheetB, C: sheetC }[S.version]();
+  return `<div class="backdrop" data-act="backdrop"></div><section class="sheet" role="dialog" aria-modal="true" aria-label="Word menu: ${esc(S.sel)}">${body}</section>`;
+}
+function toast() {
+  if (!S.toast) return '';
+  return `<div class="toast" role="status"><span>${esc(S.toast)}</span>${S.undo ? '<button type="button" data-act="undo">Undo</button>' : ''}</div>`;
+}
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  document.querySelectorAll('[data-act="version"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.version)));
+  document.querySelectorAll('[data-act="word"]').forEach((b) => b.setAttribute('aria-selected', String(S.open && b.dataset.k === S.sel)));
+  document.querySelectorAll('[data-act="state"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.s === S.state)));
+  document.querySelectorAll('[data-act="width"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.w === S.width)));
+  document.querySelectorAll('[data-act="theme"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.t === S.theme)));
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  document.getElementById('sdesc').textContent = STATE_DESC[S.state];
+  document.getElementById('stage').className = `sk-stage ${S.width}`;
+  const sc = document.querySelector('.sheet');
+  const scroll = sc ? sc.scrollTop : 0;
+  document.getElementById('frame').innerHTML = topbar() + readingPage() + sheet() + toast();
+  const sc2 = document.querySelector('.sheet');
+  if (sc2) sc2.scrollTop = scroll;
+  fit();
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+
+/* ---------- Actions (nothing is saved) ---------- */
+let toastTimer = null;
+function say(text, undoSnap) {
+  if (S.version === 'Now') { S.ui.msg = { cls: 'ok', text }; return; }
+  S.toast = text; S.undo = undoSnap || null;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { S.toast = null; S.undo = null; render(); }, 8000);
+}
+const snap = () => ({ tok: clone(S.tok), pats: clone(S.pats), phr: clone(S.phr) });
+function itemOf(kind, id) {
+  if (kind === 'w') return { get: () => S.tok[S.sel], label: S.sel };
+  if (kind === 'f') return { get: () => S.phr[id], label: S.phr[id].name };
+  return { get: () => S.pats[id], label: S.pats[id].name };
+}
+function setState(kind, id, st) {
+  const it = itemOf(kind, id).get();
+  if (kind === 'p') it.state = st; else it.status = st;
+  if (st === 'leaf') it.remember = true; else it.remember = false;
+}
+function doPick(kind, id) {
+  const label = itemOf(kind, id).label;
+  if (S.state === 'error') { S.ui.err = kind === 'w' ? 'w' : id; if (S.version === 'Now') S.ui.msg = { cls: 'bad', text: 'Couldn’t save — check your connection.' }; return; }
+  const before = snap();
+  const wasNew = kind === 'w' && (S.tok[S.sel].status === 'new');
+  setState(kind, id, 'leaf');
+  if (S.version === 'Now') { say(kind === 'w' ? 'Picked up — it is due for review now.' : `Picked up “${label}” — it is due for review now.`); return; }
+  say(wasNew || kind !== 'w' ? `${label} is a new leaf: due now in Review.` : `${label} is a leaf again: due now in Review.`, before);
+}
+function doFall() {
+  const f = S.ui.fall; S.ui.fall = null;
+  if (S.state === 'error') { S.ui.err = f.kind === 'w' ? 'w' : f.id; if (S.version === 'Now') S.ui.msg = { cls: 'bad', text: 'Couldn’t save — check your connection.' }; return; }
+  const before = snap();
+  const label = itemOf(f.kind, f.id).label;
+  setState(f.kind, f.id, f.kind === 'w' ? 'ground' : null);
+  if (S.version === 'Now') { say('It fell to your ground.'); return; }
+  say(`${label} fell to your ground. Well done.`, before);
+}
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const d = el.dataset;
+  switch (a) {
+    case 'version': S.version = d.v; resetUi(); S.toast = null; break;
+    case 'state': S.state = d.s; resetUi(); break;
+    case 'width': S.width = d.w; break;
+    case 'theme': S.theme = d.t; break;
+    case 'reset': S.tok = clone(BASE); S.pats = clone(PATTERNS_BASE); S.phr = clone(PHRASES); resetUi(); S.toast = null; break;
+    case 'word': case 'tap': S.sel = d.k; S.open = true; resetUi(); break;
+    case 'close': case 'backdrop': S.open = false; resetUi(); break;
+    case 'trans': S.trans = !S.trans; break;
+    case 'remember': { const w = S.tok[S.sel]; w.remember = !w.remember; if (w.remember && w.status !== 'leaf') { w.status = 'leaf'; } S.ui.more = false; if (S.version === 'Now' && w.remember) S.ui.msg = null; break; }
+    case 'pick':
+      if (S.state === 'loading') { S.ui.saving = `${d.kind}:${d.id}`; break; }
+      doPick(d.kind, d.id); break;
+    case 'fall':
+      if (S.state === 'loading') { S.ui.saving = `${d.kind}:${d.id}`; break; }
+      S.ui.fall = { kind: d.kind, id: d.id }; S.ui.form = null; break;
+    case 'fall-answer':
+      if (d.right === 'true') doFall(); else S.ui.fall.wrong = true; break;
+    case 'fall-yes': doFall(); break;
+    case 'fall-cancel': S.ui.fall = null; break;
+    case 'retry': S.ui.err = null; S.ui.msg = null; break;
+    case 'undo': if (S.undo) { S.tok = S.undo.tok; S.pats = S.undo.pats; S.phr = S.undo.phr; } S.toast = 'Undone: back as it was.'; S.undo = null; clearTimeout(toastTimer); toastTimer = setTimeout(() => { S.toast = null; render(); }, 3000); break;
+    case 'exp': S.ui.exp[d.id] = !S.ui.exp[d.id]; break;
+    case 'why': S.ui.why[d.id] = !S.ui.why[d.id]; break;
+    case 'tab': S.ui.tab = d.t; S.ui.fall = null; break;
+    case 'more': S.ui.more = !S.ui.more; break;
+    case 'form': S.ui.form = S.ui.form === d.f ? null : d.f; S.ui.more = false; S.ui.fall = null; break;
+    case 'sent': S.ui.form = null; S.ui.msg = { cls: 'ok', text: d.what }; break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+// Esc closes the menu in A, B and C; in Now it does nothing, as built.
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape' || !S.open) return;
+  if (S.version === 'Now') return;
+  if (S.ui.more) { S.ui.more = false; render(); return; }
+  S.open = false; resetUi(); render();
+});
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'On a ground word, To remember does what Pick up does (both make it a leaf, due now). What should the menu offer?', options: [
+    ['pick-only', 'Only Pick up on a ground or new word; To remember only on a leaf', 'Picking up marks it To remember, as today. On a leaf, To remember stays as a switch (A), under ⋯ (B) or a ☆ by the word (C).'],
+    ['both', 'Both, as today', 'Two ways to the same thing; each with a line saying what it does.'],
+    ['drop', 'No To remember in the menu at all', 'Pick up and Let it fall only; To remember stays in the marking step after a rating (FR-401).'] ] },
+  { id: 'q2', text: 'After Pick up or Let it fall in the menu, what happens?', options: [
+    ['stay-undo', 'The menu stays open, the button turns over, and a message with Undo shows for 8 seconds', 'As in your dictionary (FR-926, FR-927): "morgon is a leaf again: due now in Review. Undo".'],
+    ['close-undo', 'The menu closes, and the message with Undo shows over the text', 'Back to reading at once.'],
+    ['as-now', 'As today: a message in the menu, no Undo', '"Picked up — it is due for review now."'] ] },
+  { id: 'q3', text: 'A word not yet yours in a grove text (e.g. nybakat). Should its menu offer Pick up?', options: [
+    ['yes', 'Yes, ↑ Pick up, as in the common dictionary', 'It is added as a leaf, due now (FR-411, FR-926). Today it has no Pick up; Save as leaf is only for your own texts.'],
+    ['no', 'No, as today', 'New words become leaves through the marking step or To remember.'] ] },
+  { id: 'q4', text: 'A pattern\'s explanation in the menu: how much shows at first?', options: [
+    ['short', 'One short line, with More for the full explanation and an example', 'As in A and B; C shows only the name until you tap Why?.'],
+    ['name', 'Only its name; tap it for the rest', ''],
+    ['full', 'The full explanation, as today', ''] ] },
+  { id: 'q5', text: 'What closes the menu?', options: [
+    ['all', 'Esc, ✕ and a tap outside it', 'Today Esc does nothing.'],
+    ['no-esc', 'Close and a tap outside, as today', ''] ] },
+  { id: 'q6', text: 'A name\'s menu: what does it show?', options: [
+    ['line', 'One line, "A name — grove never counts it as new", and Report sentence', 'No Dictionary form or Meaning rows, no Explain.'],
+    ['line-notname', 'That line, plus "Not a name?" to report it as a mistake', 'For when the AI took a word for a name.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, label, why], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(label)}${i === 0 ? '<span class="def">default</span>' : ''}${why ? `<small>${esc(why)}</small>` : ''}</span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Word menu', notes: ['question-pages/91, 4'], pick: null, comments: { Now: '', A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['Now', 'A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', collectAnswers);
+collectAnswers();
+render();
+})();
+</script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const box = document.getElementById('answers');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['Now', 'A', 'B', 'C']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [id, q] of Object.entries(a.questions ?? {})) {
+      if (!q.isDefault) { const r = document.querySelector(`input[name="${id}"][value="${q.answer}"]`); if (r) r.checked = true; }
+      const n = document.getElementById(`${id}-note`); if (n && q.note) n.value = q.note;
+    }
+    window.collectAnswers();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+</body>
+</html>
