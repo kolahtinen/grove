@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for Home (question-pages/91, 3; B-04, B-12…B-14, B-17). Throwaway: never copied into the build.
+   Tokens and parts copied from public/assets/grove.css (palette 14) on 2026-10-31. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+  /* sketch-only: one colour per group band, taken from grove's tokens */
+  --g-learn: var(--accent2); --g-lib: var(--wood); --g-prog: var(--cw);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; text-wrap: balance; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+h3 { font-size: 1rem; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+@media (min-width: 760px) { .sk-notes { grid-template-columns: repeat(3, 1fr); } }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 1rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul, details.sk-settles ol { margin: .3rem 0 .3rem; padding-left: 1.1rem; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; min-height: 700px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.sk-answers { margin-top: 2rem; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.wide .topbar-inner, .wide .g-main { max-width: 900px; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; background: none; border: 0; padding: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; text-align: left; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; font-weight: 400; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.progress { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 0 0 .8rem; }
+.progress > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.group-title { font-size: .95rem; margin: .4rem 0 .5rem; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7rem; margin: 0 0 1rem; }
+button.tile { aspect-ratio: 1; max-width: 100%; min-height: 44px; display: flex; flex-direction: column; gap: .35rem; align-items: center; justify-content: center; padding: 0; border-radius: 22px; border: 1px solid var(--line); background: var(--card); color: var(--accent); box-shadow: var(--shadow); }
+button.tile .icon { width: 36%; height: 36%; stroke-width: 1.8; }
+button.tile[aria-expanded="true"] { border-color: var(--accent); background: var(--soft); }
+.tile-label { font-size: .78rem; font-weight: 600; line-height: 1.15; color: var(--ink); text-align: center; padding: 0 .3rem; }
+.tile-panel { grid-column: 1 / -1; margin: 0; animation: fade-in .2s ease; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.tile-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.tile-head h2 { margin: 0; }
+button.tile-close { min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+button.tile-close .icon { width: 18px; height: 18px; stroke-width: 2.2; }
+.tile-way { display: flex; flex-direction: column; gap: .6rem; }
+.resume-bar { display: flex; align-items: center; gap: .5rem; min-height: 48px; margin: 0 0 .6rem; padding: .5rem .9rem; border-radius: 16px; background: var(--soft); color: var(--ink); font-weight: 700; border: 0; width: 100%; text-align: left; }
+.resume-bar .icon { width: 1.2rem; height: 1.2rem; stroke-width: 2; flex: none; }
+.way-back { margin: 0 0 .3rem; }
+.way-back button { display: inline-flex; align-items: center; min-height: 44px; padding: 0; font-weight: 700; color: var(--link); background: none; border: 0; }
+.chip { display: inline-flex; align-items: center; gap: .35rem; height: 26px; padding: 0 .7rem; border-radius: 999px; background: var(--card2); border: 1px solid var(--line); line-height: 1; font-size: .78rem; font-weight: 700; color: var(--muted-strong); }
+.level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); vertical-align: middle; }
+button.link-button { background: none; border: 0; padding: 0 .2rem; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+
+/* ---------- sketch parts built from grove's ---------- */
+.skel { background: var(--line); border-radius: 12px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+.skel.line { height: .9rem; margin: .5rem 0; }
+.skel.block { height: 3.2rem; margin: .6rem 0; }
+.skel.tile { aspect-ratio: 1; border-radius: 22px; }
+.skel.row { height: 4.2rem; border-radius: 18px; margin: 0 0 .5rem; }
+.kicker { display: flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--muted-strong); margin: 0 0 .4rem; text-transform: uppercase; letter-spacing: .05em; }
+.kicker .icon { width: 16px; height: 16px; stroke-width: 2.2; }
+
+/* A: the next-step card */
+.next-card { border: 1px solid var(--accent); }
+.next-card .big { font-size: 1.25rem; font-weight: 700; line-height: 1.3; margin: 0 0 .2rem; }
+.next-card .why { color: var(--muted-strong); font-size: .9rem; margin: 0 0 .8rem; }
+.next-card .alt { display: flex; flex-wrap: wrap; gap: .2rem .9rem; margin: .5rem 0 0; font-size: .88rem; }
+.tile-sub { font-size: .68rem; color: var(--muted); font-weight: 500; line-height: 1.1; }
+
+/* B: today's overview */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; margin: .2rem 0 .8rem; }
+.stat { background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .45rem .55rem; min-width: 0; }
+.stat b { display: block; font-size: 1.25rem; line-height: 1.2; }
+.stat span { font-size: .74rem; color: var(--muted); }
+.week { display: grid; grid-template-columns: repeat(7, 1fr); gap: .35rem; align-items: end; height: 64px; margin: .2rem 0 .2rem; }
+.week i { display: block; border-radius: 6px 6px 3px 3px; background: var(--accent2); min-height: 3px; opacity: .85; }
+.week i.today { background: var(--accent); opacity: 1; }
+.week i.none { background: var(--line); }
+.week-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: .35rem; font-size: .7rem; color: var(--muted); text-align: center; }
+button.tile.start-tile { grid-column: 1 / -1; aspect-ratio: auto; min-height: 64px; flex-direction: row; justify-content: flex-start; gap: .7rem; padding: .6rem 1rem; background: var(--button-bg); color: var(--onacc); border: 0; box-shadow: var(--glow); text-align: left; }
+button.tile.start-tile .icon { width: 26px; height: 26px; stroke-width: 2.2; }
+button.tile.start-tile .tile-label { font-size: 1.05rem; font-weight: 700; padding: 0; }
+button.tile.start-tile .tile-sub { font-size: .82rem; margin-left: auto; }
+button.tile.start-tile .tile-label, button.tile.start-tile .tile-sub { color: var(--onacc); }
+.sheet-dim { position: absolute; inset: 0; background: var(--backdrop); z-index: 20; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 21; max-width: 560px; margin: 0 auto; background: var(--card2); border: 1px solid var(--line); border-bottom: 0; border-radius: 26px 26px 0 0; box-shadow: var(--shadow); padding: .4rem 1rem 1.2rem; animation: up .2s ease; }
+@keyframes up { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+.grabber { width: 44px; height: 5px; border-radius: 999px; background: var(--line); margin: .3rem auto .4rem; }
+
+/* C: map of everything */
+.band { border-radius: 22px; padding: .7rem .7rem .4rem; margin: 0 0 .9rem; background: color-mix(in srgb, var(--card) 55%, transparent); border: 1px solid var(--line); }
+.band-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding: 0 .2rem; }
+.band-head h2 { margin: 0 0 .1rem; font-size: 1rem; display: flex; align-items: center; gap: .45rem; }
+.band-head h2::before { content: ''; width: .6rem; height: .6rem; border-radius: 3px; background: var(--band); }
+.band-head p { margin: 0 0 .5rem; font-size: .8rem; color: var(--muted); }
+.band.learn { --band: var(--g-learn); } .band.lib { --band: var(--g-lib); } .band.prog { --band: var(--g-prog); }
+.rows { display: flex; flex-direction: column; gap: .45rem; margin: 0 0 .4rem; }
+button.row-tile { display: grid; grid-template-columns: 44px 1fr auto; gap: .7rem; align-items: center; width: 100%; text-align: left; padding: .6rem .75rem; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); min-height: 64px; }
+button.row-tile .ico { width: 44px; height: 44px; border-radius: 14px; background: var(--soft); color: var(--accent); display: grid; place-items: center; }
+button.row-tile .ico .icon { width: 24px; height: 24px; stroke-width: 1.9; }
+button.row-tile .nm { font-weight: 700; display: block; line-height: 1.25; }
+button.row-tile .ln { display: block; font-size: .82rem; color: var(--muted); line-height: 1.35; }
+button.row-tile .cnt { font-size: .78rem; font-weight: 700; color: var(--link); white-space: nowrap; }
+button.row-tile[aria-expanded="true"] { border-color: var(--accent); background: var(--soft); }
+.mini-week { display: grid; grid-template-columns: repeat(7, 6px); gap: 3px; align-items: end; height: 24px; }
+.mini-week i { display: block; background: var(--accent2); border-radius: 2px; min-height: 2px; }
+.mini-week i.none { background: var(--line); }
+@container (min-width: 700px) {
+  .map { display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: .9rem; align-items: start; }
+  .map .band { margin: 0; }
+  .ab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: start; }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 160px)); }
+}
+
+/* Shared pages */
+.topic { margin: 0 0 1rem; }
+.topic-head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+.topic-head h3 { margin: 0; }
+ul.texts { list-style: none; margin: .3rem 0 0; padding: 0; }
+ul.texts li { display: flex; justify-content: space-between; gap: .6rem; padding: .55rem 0; border-top: 1px solid var(--line); }
+ul.texts li:first-child { border-top: 0; }
+ul.texts .t { font-weight: 600; }
+ul.texts .k { font-size: .8rem; color: var(--muted); }
+.quick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; margin: 0 0 1rem; }
+.quick button { padding: .5rem .4rem; font-size: .85rem; line-height: 1.25; }
+.quick button b { display: block; font-size: 1rem; }
+.menu-sheet { position: absolute; top: 3.6rem; right: .75rem; z-index: 21; width: 220px; background: var(--card2); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: .4rem; display: flex; flex-direction: column; }
+.menu-sheet button { text-align: left; border: 0; background: none; border-radius: 12px; }
+.menu-sheet hr { border: 0; border-top: 1px solid var(--line); margin: .3rem .4rem; width: auto; }
+.prog-levels { display: flex; align-items: center; gap: .6rem; font-size: 1.05rem; }
+.prog-levels b { font-size: 1.5rem; }
+.stub-ex { border: 1px dashed var(--line); border-radius: 16px; padding: 1rem; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <h1>Sketch: Home</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> what Home is for and how it makes sense to a learner, the first time and after a week.</li>
+      <li><b>Screens:</b> Home → what Discover does → Your library → Progress → the ☰ menu (and Resume, from Home).</li>
+      <li><b>Open:</b> what Home shows first: A the next step, B where you stand today, C a clear map of everything (your pick on question-pages/91, 3, with "show me all three").</li>
+      <li><b>States:</b> <i>Normal</i> is a learner after a week (A2, 12 words due, a session going). <i>Empty</i> is a brand-new learner: no level, no texts, nothing due.</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>B-04</b> "There should be a clearer divide on the home page." Today: three headings over look-alike tiles; Library and Progress rows half empty.</div>
+      <div class="sk-note"><b>B-12…B-14</b> Learning is Discover, Review and Mix; each gives Start (10 min) and Options…. Resume is a bar above them while a session is going.</div>
+      <div class="sk-note"><b>B-17</b> Going back: "‹ Home" at the top of each page, Back closes what is open first (question-pages/80).</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Questions this sketch settles, and what is odd on Home today</summary>
+      <ul>
+        <li>What Home shows first, and how a learner knows what to do next (FR-901, FR-904).</li>
+        <li>What tapping a tile does: a panel, a sheet, or straight to its page (FR-901, FR-903).</li>
+        <li>What a brand-new learner sees before they have a level or any texts (FR-901, G-06 FR-605).</li>
+        <li>Names and one-line explanations for the tiles (FR-901, FR-915, FR-916).</li>
+      </ul>
+      <p class="small" style="margin:.4rem 0 .2rem"><b>Seen on the build today</b> (dev server, 390 px and 1280 px, 2026-10-31):</p>
+      <ol class="small">
+        <li>Every tile looks the same and says one word; Home tells you nothing about today (nothing due, no minutes, no level).</li>
+        <li>Two taps to start anything: tile, then Start in its panel. Library and Progress open a panel with just one button.</li>
+        <li>A new learner can't reach Home: after the welcome they are sent to the starting level, and its "‹ Home" link sends them back to it.</li>
+        <li>A new learner's Discover › Start opens a session page that only says "Not enough new texts"; Home then shows "Resume: 10-minute Discover" for a session that never began.</li>
+        <li>Review with nothing due says "Add a text first" and offers Go to Discover, which runs into the same wall.</li>
+        <li>Discover's line still says "New texts to read and hear"; it now also has Words and Grammar.</li>
+        <li>On a computer the tiles stay in a narrow column, each tile 170 px across, with Progress alone in its row.</li>
+      </ol>
+      <p class="small muted">Example data: made up for this sketch (learner "Maja", A2). Nothing you tap is saved.</p>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Screen"><span class="sk-row-label">Screen</span>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="home">1 Home</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="discover">2 Discover</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="library">3 Your library</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="progress">4 Progress</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="menu">5 ☰ Menu</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal (a week in)</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty (new learner)</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">Session</span>
+      <button type="button" class="sk-tab" data-act="going" data-g="1">Going (Resume shows)</button>
+      <button type="button" class="sk-tab" data-act="going" data-g="0">None</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Start first <small>One card on top with the next step; the tiles below, as today.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> Overview first <small>Where you stand today on top; Start is the first tile; tiles open as sheets.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> Map of everything <small>Three bands with named rows and a line each; Library and Progress go straight to their page.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons (paths from public/assets/icons.mjs) ---------- */
+const PATHS = {
+  discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
+  review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  mix: ['M12 21v-7', 'M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5z', 'M4.5 14A8 8 0 0 1 17 5.3', 'M17.5 2v4h-4'],
+  resume: ['M8 5l11 7-11 7z'],
+  play: ['M8 5l11 7-11 7z'],
+  common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
+  yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
+  progress: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20v-10'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  dictionary: ['M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z', 'M5 17a3 3 0 0 1 3-3h11', 'M9 8h6'],
+  practise: ['M12 21a8 8 0 1 0 0-16 8 8 0 0 0 0 16z', 'M12 9v4l2.5 2', 'M10 2h4'],
+  skill: ['M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z', 'M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M12 12h.01'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data ---------- */
+const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const LEARNER = {
+  level: 'A2', startLevel: 'A1', since: '24 Oct', today: 14, weekMin: 67, due: 12, fading: 5, newTexts: 3,
+  nextWords: 4, pattern: 'den stora bilen', leaves: 38, ground: 640, dictWords: 214,
+  week: [12, 0, 18, 9, 14, 14, 0], todayIdx: 5,
+  session: { label: '10-minute Mix', i: 4, n: 9, left: 6 },
+  topics: [
+    { name: 'Food and drink', texts: [['På kaféet', 'reading · new · 2 min'], ['Middag på fredag', 'listening · heard · 3 min']] },
+    { name: 'Travel', texts: [['En helg på landet', 'reading · new · 3 min'], ['På tåget till Göteborg', 'listening · new · 2 min']] },
+    { name: 'My own texts', texts: [['Brev från mormor', 'reading · read · 4 min']] },
+  ],
+};
+const isNew = () => S.state === 'empty';
+
+const TILES = {
+  discover: { name: 'Discover', line: 'New texts, words and grammar at your level.', short: 'New texts, words, grammar' },
+  review: { name: 'Review', line: 'The words you are learning, when they are due; harder questions for the ones you know well.', short: 'Your words, when due' },
+  mix: { name: 'Mix', line: 'Review first, then new things, in one session.', short: 'Review, then new things' },
+  common: { name: 'Common library', line: "grove's texts by topic and level, and the dictionary of every Swedish word.", short: "grove's texts for every level" },
+  yours: { name: 'Your library', line: 'Your texts by topic, Add a text, your dictionary and your leaves.', short: 'Texts you have added' },
+  progress: { name: 'Progress', line: 'Your level, your minutes and your words since you started.', short: 'Level, minutes, words' },
+};
+
+const VERSIONS = {
+  A: 'A · Start first. One card on top says what to do next and starts it in one tap (Resume, Review when words are due, Discover otherwise). The tiles below are today\'s, with a small line under each; tapping one opens it in place as now.',
+  B: 'B · Overview first. Today at the top: your level, minutes today, words due and this week\'s bars. Then the tiles; the first tile is Start, coloured. A tile opens as a sheet from the bottom instead of in the grid.',
+  C: 'C · Map of everything. Three bands, each with a heading and a line: Learn, Your texts, How you\'re doing. Each tile is a row with its name, a line and a count. Learning rows open in place; Library and Progress rows go straight to their page.',
+};
+
+/* ---------- State (nothing is saved) ---------- */
+const S = { version: 'A', screen: 'home', state: 'normal', going: true, width: 'phone', theme: 'auto', panel: null, sheet: null, menu: false, resumed: false, startedFrom: null };
+const going = () => S.going && !isNew();
+
+/* ---------- Shared bits ---------- */
+const topbar = () => `<header class="topbar"><div class="topbar-inner"><button type="button" class="brand" data-act="go" data-to="home" aria-label="grove, Home">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></button><button type="button" class="menu-button" data-act="menu" aria-label="Menu" aria-expanded="${S.menu}">☰</button></div></header>`;
+const wayBack = (label = 'Home') => `<p class="way-back"><button type="button" data-act="go" data-to="home">‹ ${esc(label)}</button></p>`;
+const errBox = (what) => `<div class="message bad" role="alert">grove couldn't load ${what}. Check your connection, then try again.<div style="margin-top:.5rem"><button type="button" data-act="retry">Try again</button></div></div>`;
+const resumeBar = () => going() ? `<button type="button" class="resume-bar" data-act="resume">${ic('resume')}<span>Resume: ${LEARNER.session.label} · ${LEARNER.session.i} of ${LEARNER.session.n}</span></button>` : '';
+const weekBars = (w = LEARNER.week, empty = false) => {
+  const max = Math.max(20, ...w);
+  return `<div class="week" aria-label="Minutes each day this week">${w.map((m, i) => `<i class="${empty || !m ? 'none' : ''}${i === LEARNER.todayIdx && !empty ? ' today' : ''}" style="height:${empty ? 4 : Math.max(4, Math.round(m / max * 100))}%" title="${WEEK_DAYS[i]} ${m} min"></i>`).join('')}</div><div class="week-days">${WEEK_DAYS.map((d, i) => `<span${i === LEARNER.todayIdx ? ' style="font-weight:700;color:var(--ink)"' : ''}>${i === LEARNER.todayIdx ? 'today' : d}</span>`).join('')}</div>`;
+};
+const miniWeek = () => `<span class="mini-week" aria-hidden="true">${LEARNER.week.map((m) => `<i class="${m ? '' : 'none'}" style="height:${Math.max(8, Math.round(m / 20 * 100))}%"></i>`).join('')}</span>`;
+
+// The panel a Learning tile opens (today's FR-903 content, with what is waiting).
+function learnPanelBody(id) {
+  if (isNew()) {
+    if (id === 'review') return `<p class="message ok" style="margin:0">Nothing to review yet. Words you pick up in a text come back here when they start to fade.</p><button type="button" class="main" data-act="tile" data-id="discover">Go to Discover</button>`;
+    return `<p class="small" style="margin:0">You have no texts yet, so your first session uses grove's: an A1 text, four first words and a first pattern.</p>
+      <button type="button" class="main" data-act="start" data-id="${id}">Start <span style="font-weight:400">· 5 min, all skills</span></button>
+      <button type="button" data-act="noop">Options…</button>`;
+  }
+  const waiting = id === 'review' ? `${LEARNER.due} words due · ${LEARNER.fading} fading soon`
+    : id === 'discover' ? `${LEARNER.newTexts} new texts · ${LEARNER.nextWords} next words · pattern: ${LEARNER.pattern}`
+      : `${LEARNER.due} due, then ${LEARNER.newTexts} new texts and today's pattern`;
+  return `<p class="small muted" style="margin:0">Waiting: ${esc(waiting)}</p>
+    <div class="row2"><button type="button" class="main" data-act="start" data-id="${id}">Start <span style="font-weight:400">· 10 min</span></button><button type="button" data-act="noop">Options…</button></div>`;
+}
+const panel = (id) => `<section class="card tile-panel" aria-labelledby="panel-title"><div class="tile-head"><h2 id="panel-title">${TILES[id].name}</h2><button type="button" class="tile-close" data-act="close" aria-label="Close">${ic('close')}</button></div>
+  <p class="muted" style="margin:.2rem 0 .7rem">${TILES[id].line}</p><div class="tile-way">${['discover', 'review', 'mix'].includes(id) ? learnPanelBody(id) : otherPanelBody(id)}</div></section>`;
+function otherPanelBody(id) {
+  if (id === 'yours') return `<button type="button" class="main" data-act="go" data-to="library">Open your library</button><p class="small" style="margin:0;display:flex;gap:1rem;flex-wrap:wrap"><a href="#" data-act="noop">Add a text</a><a href="#" data-act="noop">Your dictionary</a><a href="#" data-act="noop">Your leaves</a></p>`;
+  if (id === 'progress') return `<button type="button" class="main" data-act="go" data-to="progress">Open Progress</button>`;
+  return `<button type="button" class="main" data-act="noop">Open the common library</button>`;
+}
+function tileSub(id) {
+  if (S.state === 'error' || S.state === 'loading') return '';
+  if (isNew()) return { discover: 'Start here', review: 'Nothing yet', mix: 'Later', common: '50 texts', yours: 'No texts yet', progress: 'No level yet' }[id];
+  return { discover: `${LEARNER.newTexts} new texts`, review: `${LEARNER.due} due`, mix: '10 min', common: '50 texts', yours: '5 texts', progress: `${LEARNER.level} · ${LEARNER.today} min` }[id];
+}
+function tileBtn(id, opts = {}) {
+  const sub = opts.sub ? tileSub(id) : '';
+  return `<button type="button" class="tile${opts.cls ? ` ${opts.cls}` : ''}" data-act="tile" data-id="${id}" aria-expanded="${S.panel === id}">${ic(id)}<span class="tile-label">${TILES[id].name}</span>${sub ? `<span class="tile-sub">${esc(sub)}</span>` : ''}</button>`;
+}
+// Groups of square tiles, with an in-place panel (A) or none (B, sheets).
+function tileGroups({ sub, inPlace, startTile }) {
+  const grp = (title, ids, extra = '') => {
+    let tiles = ids.map((id) => tileBtn(id, { sub })).join('');
+    if (inPlace && S.panel && ids.includes(S.panel)) tiles += panel(S.panel);
+    return `<section><h2 class="group-title">${title}</h2>${extra}<div class="tiles">${tiles}</div></section>`;
+  };
+  let learnTiles = ['discover', 'review', 'mix'];
+  let h = '';
+  if (startTile) {
+    const st = isNew() ? 'Your first 5 min' : `10 min · ${LEARNER.due} due first`;
+    const tiles = `<button type="button" class="tile start-tile" data-act="start" data-id="mix">${ic('play')}<span class="tile-label">Start</span><span class="tile-sub">${st}</span></button>` + learnTiles.map((id) => tileBtn(id, { sub })).join('');
+    h += `<section><h2 class="group-title">Learning</h2>${resumeBar()}<div class="tiles">${tiles}</div></section>`;
+  } else {
+    h += grp('Learning', learnTiles, inPlace ? '' : resumeBar());
+  }
+  h += grp('Library', ['common', 'yours']);
+  h += grp('Progress', ['progress']);
+  return h;
+}
+
+/* ---------- Home, version A: start first ---------- */
+function nextCard() {
+  if (S.state === 'loading') return `<div class="card"><div class="skel line" style="width:40%"></div><div class="skel line"></div><div class="skel block"></div></div>`;
+  if (S.state === 'error') return `<div class="card next-card"><p class="kicker">${ic('play')}Next</p>${errBox('what is next')}</div>`;
+  if (isNew()) {
+    return `<section class="card next-card" aria-labelledby="next-t"><p class="kicker">${ic('discover')}Start here</p>
+      <p class="big" id="next-t">Your first session · 5 min</p>
+      <p class="why">A short A1 text from grove's library, four first words and one pattern. grove learns your level as you go.</p>
+      <button type="button" class="main" data-act="start" data-id="discover">Start · 5 min</button>
+      <p class="alt"><a href="#" data-act="noop">I know some Swedish: find my level</a></p></section>`;
+  }
+  if (going()) {
+    const s = LEARNER.session;
+    return `<section class="card next-card" aria-labelledby="next-t"><p class="kicker">${ic('resume')}Carry on</p>
+      <p class="big" id="next-t">${s.label} · ${s.i} of ${s.n}</p>
+      <div class="progress" style="margin:.3rem 0 .4rem"><span style="width:${Math.round((s.i - 1) / s.n * 100)}%"></span></div>
+      <p class="why">About ${s.left} min left. You left it at a review question.</p>
+      <button type="button" class="main" data-act="resume">Resume</button>
+      <p class="alt"><span class="muted">Or:</span><a href="#" data-act="start" data-id="review">Review ${LEARNER.due} due words instead</a></p></section>`;
+  }
+  return `<section class="card next-card" aria-labelledby="next-t"><p class="kicker">${ic('review')}Next</p>
+    <p class="big" id="next-t">${LEARNER.due} words due · Review · 10 min</p>
+    <p class="why">Five of them are fading. Then ${LEARNER.newTexts} new texts are waiting in Discover.</p>
+    <button type="button" class="main" data-act="start" data-id="review">Start · 10 min</button>
+    <p class="alt"><span class="muted">Or:</span><a href="#" data-act="start" data-id="mix">Mix both</a><a href="#" data-act="tile" data-id="discover">Something new</a></p></section>`;
+}
+function homeA() {
+  let h = nextCard();
+  if (S.state === 'loading') return h + `<h2 class="group-title">Learning</h2><div class="tiles"><div class="skel tile"></div><div class="skel tile"></div><div class="skel tile"></div></div>`;
+  return `<div class="ab-grid"><div>${h}</div><div>${tileGroups({ sub: true, inPlace: true })}</div></div>`;
+}
+
+/* ---------- Home, version B: overview first ---------- */
+function overview() {
+  if (S.state === 'loading') return `<div class="card"><div class="skel line" style="width:30%"></div><div class="stats"><div class="skel block"></div><div class="skel block"></div><div class="skel block"></div></div><div class="skel block"></div></div>`;
+  if (S.state === 'error') return `<div class="card"><h2>Today</h2>${errBox('today\'s numbers')}<p class="small muted" style="margin:0">The tiles below still work.</p></div>`;
+  if (isNew()) {
+    return `<section class="card" aria-labelledby="today-t"><div class="tile-head"><h2 id="today-t">Today</h2><span class="small muted">Saturday 31 Oct</span></div>
+      <div class="stats"><div class="stat"><b>–</b><span>level: not yet</span></div><div class="stat"><b>0</b><span>min today</span></div><div class="stat"><b>0</b><span>words due</span></div></div>
+      ${weekBars(LEARNER.week, true)}
+      <p class="small muted" style="margin:.6rem 0 .3rem">Your week fills in as you practise. Start your first session below, or <a href="#" data-act="noop">find your level</a> first.</p></section>`;
+  }
+  return `<section class="card" aria-labelledby="today-t"><div class="tile-head"><h2 id="today-t">Today</h2><span class="small muted">Saturday 31 Oct</span></div>
+    <div class="stats"><div class="stat"><b>${LEARNER.level}</b><span>your level</span></div><div class="stat"><b>${LEARNER.today}</b><span>min today</span></div><div class="stat"><b>${LEARNER.due}</b><span>words due</span></div></div>
+    ${weekBars()}
+    <p class="small muted" style="margin:.6rem 0 0">${LEARNER.weekMin} min this week · ${LEARNER.leaves} leaves · ${LEARNER.ground} words in your ground</p></section>`;
+}
+function homeB() {
+  let h = overview();
+  if (S.state === 'loading') return h + `<div class="tiles"><div class="skel tile"></div><div class="skel tile"></div><div class="skel tile"></div></div>`;
+  h = `<div class="ab-grid"><div>${h}</div><div>${tileGroups({ sub: false, inPlace: false, startTile: true })}</div></div>`;
+  if (S.sheet) h += sheet(S.sheet);
+  return h;
+}
+function sheet(id) {
+  return `<div class="sheet-dim" data-act="close"></div><section class="sheet" role="dialog" aria-labelledby="panel-title"><div class="grabber"></div>
+    <div class="tile-head"><h2 id="panel-title" style="display:flex;gap:.5rem;align-items:center"><span style="color:var(--accent);display:inline-flex">${ic(id, 'icon').replace('class="icon"', 'class="icon" style="width:22px;height:22px;stroke-width:2"')}</span>${TILES[id].name}</h2><button type="button" class="tile-close" data-act="close" aria-label="Close">${ic('close')}</button></div>
+    <p class="muted" style="margin:.2rem 0 .7rem">${TILES[id].line}</p><div class="tile-way">${['discover', 'review', 'mix'].includes(id) ? learnPanelBody(id) : otherPanelBody(id)}</div></section>`;
+}
+
+/* ---------- Home, version C: map of everything ---------- */
+function rowTile(id, line, count, extra = '') {
+  return `<button type="button" class="row-tile" data-act="${['discover', 'review', 'mix'].includes(id) ? 'tile' : 'go'}" data-id="${id}" data-to="${id === 'yours' ? 'library' : id === 'progress' ? 'progress' : 'common'}" aria-expanded="${S.panel === id}">
+    <span class="ico">${ic(id)}</span><span style="min-width:0"><span class="nm">${TILES[id].name}</span><span class="ln">${esc(line)}</span></span><span class="cnt">${extra || esc(count)}</span></button>`;
+}
+function homeC() {
+  if (S.state === 'loading') return `<div class="map">${['Learn', 'Your texts', 'How you\'re doing'].map((t) => `<div class="band"><div class="skel line" style="width:40%"></div><div class="skel row"></div><div class="skel row"></div></div>`).join('')}</div>`;
+  const n = isNew(); const err = S.state === 'error';
+  const cnt = (a, b) => (err ? '' : n ? a : b);
+  const learnRows = ['discover', 'review', 'mix'].map((id) => {
+    const r = rowTile(id, n && id === 'discover' ? 'Start here: a first text, words and a pattern.' : TILES[id].short + '.', cnt({ discover: 'Start here', review: 'none yet', mix: '' }[id], { discover: `${LEARNER.newTexts} new`, review: `${LEARNER.due} due`, mix: '10 min' }[id]));
+    return S.panel === id ? r + panel(id) : r;
+  }).join('');
+  return `${err ? errBox('your numbers') : ''}<div class="map">
+    <section class="band learn" aria-labelledby="b1"><div class="band-head"><div><h2 id="b1">Learn</h2><p>Practise for a few minutes. grove plans it.</p></div></div>${resumeBar()}<div class="rows">${learnRows}</div></section>
+    <section class="band lib" aria-labelledby="b2"><div class="band-head"><div><h2 id="b2">Your texts</h2><p>What you read and listen to.</p></div></div><div class="rows">
+      ${rowTile('yours', n ? 'Nothing here yet. Add a text, or take one from grove\'s.' : 'Texts you have added, your dictionary, your leaves.', cnt('0', '5 texts'))}
+      ${rowTile('common', 'grove\'s texts for every level, and the dictionary.', cnt('50 texts', '50 texts'))}</div></section>
+    <section class="band prog" aria-labelledby="b3"><div class="band-head"><div><h2 id="b3">How you're doing</h2><p>Your level and your week.</p></div></div><div class="rows">
+      ${rowTile('progress', n ? 'No level yet. It appears after your first texts.' : `${LEARNER.level} · ${LEARNER.today} min today · ${LEARNER.weekMin} min this week`, '', n || err ? '' : miniWeek())}</div></section>
+  </div>`;
+}
+
+/* ---------- Screen 2: Discover (what tapping it does) ---------- */
+function discoverScreen() {
+  // A and C open in place on Home; B opens a sheet. Shown here as Home with Discover open.
+  if (S.version === 'B') { S.sheet = 'discover'; return homeB(); }
+  S.panel = 'discover';
+  return S.version === 'A' ? homeA() : homeC();
+}
+
+/* ---------- Screen 3: Your library ---------- */
+function libraryScreen() {
+  let h = wayBack();
+  h += `<h1 style="font-size:1.3rem">Your library</h1>`;
+  if (S.state === 'loading') return h + '<div class="card"><div class="skel line"></div><div class="skel block"></div><div class="skel block"></div></div>';
+  if (S.state === 'error') return h + errBox('your texts');
+  h += `<div class="quick"><button type="button" data-act="noop"><b>+</b>Add a text</button><button type="button" data-act="noop"><b>${isNew() ? 0 : LEARNER.dictWords}</b>Your dictionary</button><button type="button" data-act="noop"><b>${isNew() ? 0 : LEARNER.leaves}</b>Your leaves</button></div>`;
+  if (isNew()) {
+    return h + `<div class="card"><h2>No texts yet</h2><p>Your texts land here, by topic. Take one of grove's ready texts, ask your AI for some, or paste your own.</p>
+      <div class="tile-way"><button type="button" class="main" data-act="noop">Pick from the common library</button><button type="button" data-act="noop">Add a text</button></div></div>`;
+  }
+  return h + LEARNER.topics.map((t) => `<section class="card topic"><div class="topic-head"><h3>${esc(t.name)}</h3><button type="button" class="link-button small" data-act="start" data-id="mix">Practise this topic</button></div>
+    <ul class="texts">${t.texts.map(([ti, k]) => `<li><span class="t">${esc(ti)}</span><span class="k">${esc(k)}</span></li>`).join('')}</ul></section>`).join('');
+}
+
+/* ---------- Screen 4: Progress ---------- */
+function progressScreen() {
+  let h = wayBack() + `<h1 style="font-size:1.3rem">Progress</h1>`;
+  if (S.state === 'loading') return h + '<div class="card"><div class="skel line"></div><div class="skel block"></div></div><div class="card"><div class="skel block"></div></div>';
+  if (S.state === 'error') return h + errBox('your progress');
+  if (isNew()) {
+    return h + `<div class="card"><h2>Your level</h2><p class="prog-levels"><b>–</b><span class="muted">not yet</span></p><p class="small muted">grove finds your level from the texts you read. You can also <a href="#" data-act="noop">pick or assess it now</a>.</p></div>
+      <div class="card"><h2>This week</h2>${weekBars(LEARNER.week, true)}<p class="small muted" style="margin:.6rem 0 0">Nothing read or heard yet. <a href="#" data-act="go" data-to="discover">Start from Discover ›</a></p></div>`;
+  }
+  return h + `<div class="card"><h2>Your level</h2><p class="prog-levels"><span class="muted">${LEARNER.startLevel}</span><span aria-hidden="true">→</span><b>${LEARNER.level}</b></p><p class="small muted" style="margin:0">Since ${LEARNER.since}. <a href="#" data-act="noop">How your level is found ›</a></p></div>
+    <div class="card"><h2>This week · ${LEARNER.weekMin} min</h2>${weekBars()}</div>
+    <div class="card"><div class="stats" style="margin:0"><div class="stat"><b>${LEARNER.leaves}</b><span>leaves drilling</span></div><div class="stat"><b>${LEARNER.ground}</b><span>words in ground</span></div><div class="stat"><b>7</b><span>texts read</span></div></div></div>`;
+}
+
+/* ---------- Screen 5: the ☰ menu ---------- */
+function menuOverlay() {
+  return `<div class="sheet-dim" data-act="menu"></div><nav class="menu-sheet" aria-label="Menu">
+    <button type="button" data-act="noop">Account</button><button type="button" data-act="noop">Settings</button><button type="button" data-act="noop">Help</button><hr><button type="button" data-act="noop">Sign out</button></nav>`;
+}
+
+/* ---------- Resume / Start: a stub of the session page ---------- */
+function sessionStub() {
+  const s = LEARNER.session;
+  const label = S.resumed ? `${s.label} · ${s.i} of ${s.n} · about ${s.left} min left` : `10-minute ${TILES[S.startedFrom] ? TILES[S.startedFrom].name : 'Mix'} · 1 of 8 · about 10 min left`;
+  const pct = S.resumed ? Math.round((s.i - 1) / s.n * 100) : 0;
+  return wayBack() + `<div class="card"><p style="font-weight:600;margin:0 0 .4rem">${esc(label)}</p><div class="progress"><span style="width:${pct}%"></span></div>
+    <div class="stub-ex">The exercise goes here (not part of this sketch).</div></div>`;
+}
+
+/* ---------- Render ---------- */
+function homeHtml() { return S.version === 'A' ? homeA() : S.version === 'B' ? homeB() : homeC(); }
+function screenHtml() {
+  if (S.screen === 'library') return libraryScreen();
+  if (S.screen === 'progress') return progressScreen();
+  if (S.screen === 'session') return sessionStub();
+  if (S.screen === 'discover') return discoverScreen();
+  return homeHtml();
+}
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  const sel = (q, f) => document.querySelectorAll(q).forEach((b) => b.setAttribute('aria-selected', String(f(b))));
+  sel('[data-act="version"]', (b) => b.dataset.v === S.version);
+  sel('#controls [data-act="nav"]', (b) => b.dataset.screen === (S.menu ? 'menu' : S.screen === 'session' ? 'home' : S.screen));
+  sel('[data-act="state"]', (b) => b.dataset.s === S.state);
+  sel('[data-act="going"]', (b) => (b.dataset.g === '1') === S.going);
+  sel('[data-act="width"]', (b) => b.dataset.w === S.width);
+  sel('[data-act="theme"]', (b) => b.dataset.t === S.theme);
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  const stage = document.getElementById('stage');
+  stage.className = `sk-stage ${S.width}`;
+  const wide = S.width === 'desktop' && S.screen !== 'library' && S.screen !== 'progress' && S.screen !== 'session';
+  const frame = document.getElementById('frame');
+  frame.className = `frame${wide ? ' wide' : ''}`;
+  frame.innerHTML = topbar() + `<div class="g-main">${screenHtml()}</div>` + (S.menu ? menuOverlay() : '');
+  fit();
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+
+/* ---------- Actions ---------- */
+function goHome() { S.screen = 'home'; S.panel = null; S.sheet = null; S.menu = false; }
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const d = el.dataset;
+  switch (a) {
+    case 'version': S.version = d.v; if (S.screen === 'discover') { S.panel = null; S.sheet = null; } break;
+    case 'state': S.state = d.s; break;
+    case 'going': S.going = d.g === '1'; break;
+    case 'width': S.width = d.w; break;
+    case 'theme': S.theme = d.t; break;
+    case 'nav':
+      S.menu = false; S.panel = null; S.sheet = null;
+      if (d.screen === 'menu') { S.screen = 'home'; S.menu = true; } else S.screen = d.screen;
+      break;
+    case 'menu': S.menu = !S.menu; break;
+    case 'go':
+      if (d.to === 'home') goHome();
+      else if (d.to === 'discover') { goHome(); S.screen = 'discover'; }
+      else if (d.to === 'library' || d.to === 'progress') { S.screen = d.to; S.panel = null; S.sheet = null; S.menu = false; }
+      else return; // common library: not part of this sketch
+      break;
+    case 'tile': {
+      const id = d.id;
+      if (S.screen !== 'home' && S.screen !== 'discover') S.screen = 'home';
+      if (S.version === 'B') { S.screen = 'home'; S.sheet = id; S.panel = null; }
+      else { S.screen = 'home'; S.panel = S.panel === id ? null : id; }
+      if (S.state === 'error' || S.state === 'loading') S.state = 'normal';
+      break;
+    }
+    case 'close': if (S.screen === 'discover') S.screen = 'home'; S.panel = null; S.sheet = null; break;
+    case 'start': S.screen = 'session'; S.resumed = false; S.startedFrom = d.id; S.panel = null; S.sheet = null; break;
+    case 'resume': S.screen = 'session'; S.resumed = true; S.panel = null; S.sheet = null; break;
+    case 'retry': S.state = 'normal'; break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && (S.menu || S.panel || S.sheet)) { S.menu = false; S.panel = null; S.sheet = null; if (S.screen === 'discover') S.screen = 'home'; render(); } });
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'A brand-new learner, after the terms: where do they land?', options: [
+    ['home', 'On Home, with a first 5-minute session to start', 'Their level is found from what they read; "Find my level" stays as a link. Fixes today\'s loop where "‹ Home" on the starting level page sends you back to it.'],
+    ['start', 'On the starting level page first, as today (with its loop fixed)', 'Pick or assess a level before anything else; "‹ Home" then really goes Home and asks again later.'],
+    ['either', 'On Home, with "Find your level" as the first card', 'The level is the first thing on Home; the tiles are there too.'] ] },
+  { id: 'q2', text: 'Tapping a Library or Progress tile: what happens?', options: [
+    ['page', 'It opens its page straight away', 'One tap. The panel with one "Open…" button goes. Learning tiles keep their panel (Start, Options…).'],
+    ['panel', 'It opens a panel first, as today', 'Every tile behaves the same; two taps to reach the page.'] ] },
+  { id: 'q3', text: 'Should each tile show a small live line (e.g. "12 due", "3 new texts", "A2 · 14 min")?', options: [
+    ['yes', 'Yes, on every tile that has one', 'Home tells you something before you tap. With nothing to show, the line says so ("Nothing yet").'],
+    ['learn', 'Only on Discover and Review', 'Less to read; the counts that lead to action.'],
+    ['no', 'No, the label is enough', 'As today.'] ] },
+  { id: 'q4', text: 'The two libraries\' names', options: [
+    ['keep', 'Keep "Your library" and "Common library"', 'As in the spec (FR-915, FR-916).'],
+    ['texts', '"Your texts" and "grove\'s texts"', 'Plainer: says what is inside. The dictionaries keep their place inside each.'],
+    ['words', 'Keep the names, and add a "Your words" tile', 'Your dictionary and your leaves move out of Your library into their own tile.'] ] },
+  { id: 'q5', text: 'While a session is going, where does Resume go?', options: [
+    ['top', 'At the very top of Home', 'In A it is the next-step card; in B and C a bar above everything.'],
+    ['learn', 'Above the Learning tiles, as today', 'The bar sits under the Learning heading.'] ] },
+  { id: 'q6', text: 'On a computer, how wide is Home?', options: [
+    ['wide', 'Wider: the groups side by side', 'Up to about 900 px, as in the Desktop view of this sketch; reading pages stay narrow.'],
+    ['narrow', 'The same narrow column as on a phone', 'As today (560 px); big tiles with space around them.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, label, why], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(label)}${i === 0 ? '<span class="def">default</span>' : ''}<small>${esc(why)}</small></span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Home', notes: ['B-04', 'B-12', 'B-13', 'B-14', 'B-17', 'question-pages/91 (3)'], pick: null, comments: { A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', collectAnswers);
+collectAnswers();
+render();
+})();
+</script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const box = document.getElementById('answers');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['A', 'B', 'C']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [id, q] of Object.entries(a.questions ?? {})) {
+      if (!q.isDefault) { const r = document.querySelector(`input[name="${id}"][value="${q.answer}"]`); if (r) r.checked = true; }
+      const n = document.getElementById(`${id}-note`); if (n && q.note) n.value = q.note;
+    }
+    window.collectAnswers();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+</body>
+</html>
