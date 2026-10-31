@@ -106,3 +106,14 @@ Inside `plan`, an exercise also keeps:
 A session left on its offer, never planned (`plan` = `[]`, `offer` set), is deleted by `POST /api/session/leave` (FR-904: not kept, no Resume). Home's Resume shows only a going session with a plan.
 
 The summary reads, between `started_at` and `finished_at`: done text exercises by kind (not `reread` or `listen`), `review_answers` as before, `words.picked_at` (picked up), `learning_seen.first_at` of patterns (met), `words.fallen_at`.
+
+## Migration 022 (RQ-465; G-09 FR-916, G-03 FR-305): a pattern's level
+
+`022-pattern-level.sql` adds two columns to `words` (no rebuild) and changes no row:
+
+| Table | Column | Notes |
+|---|---|---|
+| `words` | `level` TEXT | A1…C2: a grammar pattern's CEFR level (`kind = 'pattern'`), from a grove text's `patterns/<level>.json`; set when the learner adds a grove text whose pattern the item is and it has no level yet. NULL for words, phrases and an AI text's pattern without one. Existing rows: NULL |
+| | `ladder` TEXT | the pattern's ID in grove's grammar ladder (`G-<level>-<nn>`, `content/learning/grammar/patterns.json`) where it is one; else NULL |
+
+A grove text's own meanings (the per-text rows of `content/library/meanings.tsv`) need no column: an added copy stores them in G-03's `text_meanings` (migration 010), keyed by the copy's text and form.
