@@ -498,3 +498,31 @@ test('FR-930 FR-931 FR-905 RQ-454 RQ-451: migration 020 keeps every row and adds
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-315 FR-605 RQ-456 RQ-463: migration 021 keeps every report and lets a sentence be reported as not a name; the starting level is offered once (earlier accounts that saw Home count as offered)', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 20 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 111), (2, 'u2', 'b@example.test', 112), (3, 'u3', 'c@example.test', 113)").run();
+    db.prepare('INSERT INTO learner_settings (account_id, welcome_dismissed, start_done) VALUES (1, 1, 0), (2, 0, 0), (3, 0, 1)').run();
+    db.prepare("INSERT INTO packages (id, account_id, status, created_at) VALUES (3, 1, 'open', 1)").run();
+    db.prepare("INSERT INTO exchanges (id, account_id, package_id, part_no, kind, code, prompt, status, created_at) VALUES (7, 1, 3, 1, 'part', 'ABCD-1', 'p', 'accepted', 1)").run();
+    db.prepare("INSERT INTO texts (id, account_id, exchange_id, package_id, part_no, position, title, topic, created_at) VALUES (9, 1, 7, 3, 1, 1, 'T', 'kafé', 1)").run();
+    db.prepare("INSERT INTO reports (account_id, code, text_id, line_position, reason, status, created_at) VALUES (1, 'R1', 9, 0, 'audio', 'open', 5)").run();
+    migrate(db);
+    assert.equal(db.prepare('SELECT reason FROM reports').get().reason, 'audio', 'the report is kept');
+    db.prepare("INSERT INTO reports (account_id, code, text_id, line_position, reason, status, created_at) VALUES (1, 'R2', 9, 1, 'not_a_name', 'open', 6)").run();
+    assert.throws(() => db.prepare("INSERT INTO reports (account_id, code, text_id, line_position, reason, status, created_at) VALUES (1, 'R3', 9, 1, 'nonsense', 'open', 6)").run());
+    assert.throws(() => db.prepare("INSERT INTO reports (account_id, code, text_id, reason, status, created_at) VALUES (1, 'R4', 9, 'other', 'open', 6)").run(), 'still exactly one position');
+    assert.throws(() => db.prepare("INSERT INTO reports (account_id, code, text_id, line_position, reason, status, created_at) VALUES (1, 'R1', 9, 2, 'other', 'open', 6)").run(), 'codes stay unique per account');
+    const offered = Object.fromEntries(db.prepare('SELECT account_id, start_offered FROM learner_settings').all().map((r) => [r.account_id, r.start_offered]));
+    assert.deepEqual(offered, { 1: 1, 2: 0, 3: 1 });
+    db.prepare('DELETE FROM texts').run();
+    db.prepare('DELETE FROM accounts WHERE id = 1').run();
+    assert.equal(db.prepare('SELECT COUNT(*) AS n FROM reports').get().n, 0, 'reports go with their text and account');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
