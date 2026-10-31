@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Exercises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for question-pages/91, 2 (docs/sketching.md): every exercise of a session in one shared frame.
+   Throwaway: never copied into the build. Tokens and parts copied from public/assets/grove.css
+   (palette 14) on 2026-10-31; icons from public/assets/icons.mjs. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+  /* sketch-only: one colour per skill, taken from grove's tokens (as the Options sketch) */
+  --sk-reading: var(--accent2); --sk-listening: var(--cw); --sk-words: var(--discover); --sk-grammar: var(--wood); --sk-review: var(--review);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; text-wrap: balance; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+h3 { font-size: 1rem; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px max(16px, env(safe-area-inset-right, 0px)) 4rem max(16px, env(safe-area-inset-left, 0px)); }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+@media (min-width: 760px) { .sk-notes { grid-template-columns: repeat(2, 1fr); } }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 .6rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul, details.sk-settles ol { margin: .3rem 0 .3rem; padding-left: 1.2rem; }
+details.sk-settles li { margin: .15rem 0; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: .4rem 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; min-height: 760px; border: 1px solid var(--line); border-radius: 26px; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.sk-answers { margin-top: 2rem; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.progress { height: 6px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.progress > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 0 8px var(--accent); }
+.session-line { margin: 0 0 .4rem; font-weight: 600; }
+.mode-card { padding: 0; overflow: hidden; }
+.mode-banner { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .55rem .7rem; background: var(--banner); }
+.chip { display: inline-flex; align-items: center; gap: .35rem; height: 26px; padding: 0 .7rem; border-radius: 999px; background: var(--card); line-height: 1; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.chip .icon { width: 15px; height: 15px; stroke-width: 2.2; display: block; }
+.mode-body { padding: .9rem 1rem 1rem; }
+button.link-button { background: none; border: 0; padding: 0 .2rem; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.passage { font-size: 1.15rem; line-height: 1.9; }
+.big-word { font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 0 0 .2rem; }
+button.option { position: relative; display: block; width: 100%; text-align: left; margin: 0 0 .4rem; border-radius: 16px; min-height: 3rem; padding: .8rem 2.6rem .8rem 1rem; }
+button.option.right { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); font-weight: 700; }
+button.option.wrong { background: var(--bad-bg); color: var(--bad); border-color: var(--bad); }
+button.option:disabled { opacity: 1; cursor: default; }
+button.option:disabled:not(.right):not(.wrong) { color: var(--muted); }
+button.option.right::after, button.option.wrong::after { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; }
+button.option.right::after { content: "✓"; }
+button.option.wrong::after { content: "✗"; }
+mark.new-word { background: none; color: var(--ink); font-weight: 700; border-bottom: 2px dotted var(--cw); }
+mark.pattern-part { background: var(--soft); color: var(--ink); border-bottom: 2px solid var(--accent); border-radius: 4px; padding: 0 .1rem; }
+mark.asked { background: var(--soft); color: var(--ink); font-weight: 700; border-radius: 4px; padding: 0 .15rem; }
+.dots { display: inline-flex; gap: .3rem; align-items: center; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
+.dots i.on { background: var(--accent); }
+.play { display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .85rem; border-radius: 999px; font-size: .88rem; min-height: 40px; }
+.play .icon { width: 14px; height: 14px; stroke-width: 2.2; }
+.play.on { border-color: var(--accent); background: var(--soft); }
+.play.big { width: 100%; justify-content: center; min-height: 52px; font-size: 1rem; font-weight: 700; border-radius: 16px; }
+.play.big .icon { width: 18px; height: 18px; }
+.ex { margin: .2rem 0 .6rem; }
+.ex .en { display: block; color: var(--muted); font-size: .88rem; }
+.note-box { background: var(--soft); border-radius: 14px; padding: .5rem .7rem; font-size: .9rem; margin: .5rem 0; }
+.row-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.row-actions > * { flex: 1 1 0; }
+.skel { background: var(--line); border-radius: 12px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+.skel.line { height: .9rem; margin: .5rem 0; }
+.skel.block { height: 3rem; margin: .6rem 0; }
+.s-reading { color: var(--sk-reading); } .s-listening { color: var(--sk-listening); } .s-words { color: var(--sk-words); } .s-grammar { color: var(--sk-grammar); } .s-review { color: var(--sk-review); } .s-plain { color: var(--accent2); }
+
+/* ---------- The exercise parts, the same in every version ---------- */
+.instr { font-size: 1.02rem; font-weight: 700; margin: 0 0 .7rem; }
+.instr small { display: block; font-weight: 400; font-size: .85rem; color: var(--muted-strong); margin-top: .15rem; }
+.feedback { border-radius: 14px; padding: .55rem .8rem; font-size: .93rem; margin: .6rem 0 0; }
+.feedback.ok { background: var(--ok-bg); color: var(--ok); }
+.feedback.bad { background: var(--bad-bg); color: var(--bad); }
+.feedback.plain { background: var(--soft); color: var(--ink); }
+.feedback b { font-weight: 700; }
+.en-line { display: block; color: var(--muted); font-size: .9rem; margin-top: .1rem; }
+.qblock { border-top: 1px solid var(--line); padding-top: .7rem; margin-top: .8rem; }
+.qblock h3 { font-size: .95rem; margin-bottom: .4rem; }
+.q-legend { font-weight: 600; margin: 0 0 .4rem; }
+.rate { display: grid; grid-template-columns: repeat(5, 1fr); gap: .3rem; }
+.rate button { padding: .3rem .1rem; font-size: .76rem; line-height: 1.2; min-height: 48px; border-radius: 12px; }
+.rate button[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.text-lines { font-size: 1.08rem; line-height: 1.9; margin: 0; }
+.text-lines .w { cursor: pointer; border-radius: 4px; }
+.text-lines .w:hover { background: var(--soft); }
+.blurred { filter: blur(5px); user-select: none; }
+.word-pos { color: var(--muted); margin: 0 0 .6rem; }
+.hint { font-size: .82rem; color: var(--muted); margin: .4rem 0 0; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.pair small { display: block; font-weight: 400; font-size: .75rem; opacity: .85; }
+button.picked { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); font-weight: 700; }
+.sub-steps { display: flex; gap: .3rem; margin: 0 0 .7rem; }
+.sub-steps span { flex: 1; text-align: center; font-size: .8rem; padding: .3rem; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); }
+.sub-steps span.now { border-color: var(--accent); background: var(--soft); color: var(--ink); font-weight: 700; }
+.sub-steps span.done { color: var(--ok); }
+.spot { font-size: 1.08rem; line-height: 2.3; margin: .3rem 0 .6rem; }
+.spot button.w { display: inline; min-height: 0; margin: 0; padding: .08rem .12rem; border: 0; border-radius: 6px; background: none; color: var(--ink); font: inherit; line-height: inherit; }
+.spot button.w:active { transform: none; }
+.spot .tapped, .spot button.w.tapped { background: var(--soft); box-shadow: inset 0 -2px 0 var(--accent); }
+.spot .found { background: var(--ok-bg); box-shadow: inset 0 -2px 0 var(--ok); border-radius: 6px; }
+.spot .missed { border: 2px dashed var(--amber); border-radius: 6px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.spot button.w.off { background: var(--bad-bg); text-decoration: line-through; text-decoration-color: var(--bad); }
+.spot button.w:disabled { opacity: 1; cursor: default; }
+.spot-key { display: flex; flex-wrap: wrap; gap: .2rem .8rem; font-size: .8rem; color: var(--muted); margin-top: .4rem; }
+.spot-key span::before { content: ''; display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; margin-right: .3rem; vertical-align: -1px; }
+.spot-key .k-f::before { background: var(--ok-bg); border-bottom: 2px solid var(--ok); }
+.spot-key .k-m::before { border: 2px dashed var(--amber); }
+.spot-key .k-w::before { background: var(--bad-bg); }
+.ex-list { margin: .3rem 0 .6rem; padding-left: 0; list-style: none; }
+.ex-list li { padding: .25rem 0; }
+.toast { font-size: .82rem; color: var(--muted-strong); background: var(--soft); border-radius: 12px; padding: .4rem .6rem; margin: .5rem 0 0; }
+.summary { list-style: none; padding: 0; margin: .3rem 0 .8rem; }
+.summary li { display: flex; align-items: center; gap: .55rem; padding: .35rem 0; border-top: 1px solid var(--line); }
+.summary li:first-child { border-top: 0; }
+.summary .icon { width: 18px; height: 18px; stroke-width: 2; flex: none; }
+.summary b { margin-left: auto; }
+.plan-list { list-style: none; padding: 0; margin: .3rem 0 .9rem; }
+.plan-list li { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: .5rem; align-items: center; padding: .35rem 0; border-top: 1px solid var(--line); font-size: .92rem; }
+.plan-list li:first-child { border-top: 0; }
+.plan-list .icon { width: 18px; height: 18px; stroke-width: 2; }
+.plan-list .m { color: var(--muted-strong); font-size: .85rem; }
+.leave { display: inline-flex; align-items: center; gap: .3rem; background: none; border: 0; padding: 0 .3rem; min-height: 44px; color: var(--link); font-weight: 700; font-size: .9rem; }
+.leave .icon { width: 16px; height: 16px; stroke-width: 2.2; }
+
+/* ---------- Version A: header card on top, banner says the skill and the task, Next ends the card ---------- */
+.a-head { padding: .7rem .9rem .8rem; }
+.a-head .top { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.a-head .session-line { margin: 0; }
+.a-head .meta { font-size: .82rem; color: var(--muted-strong); margin: .1rem 0 .5rem; }
+.a-banner-task { color: var(--onbanner); font-size: .82rem; font-weight: 600; flex: 1; min-width: 0; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.a-next { margin-top: .9rem; }
+.a-wait { font-size: .82rem; color: var(--muted); text-align: center; margin: .5rem 0 0; }
+
+/* ---------- Version B: slim bar on top, one action bar at the bottom ---------- */
+.b-top { position: sticky; top: 0; z-index: 9; display: flex; align-items: center; gap: .5rem; padding: .5rem .75rem; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.b-top .leave { padding: 0; min-width: 44px; justify-content: center; }
+.b-segs { flex: 1; display: flex; gap: 3px; min-width: 0; }
+.b-segs i { flex: 1; height: 7px; border-radius: 999px; background: var(--line); }
+.b-segs i.done { background: currentColor; opacity: .9; }
+.b-segs i.now { background: currentColor; opacity: .45; box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px currentColor; }
+.b-count { font-size: .82rem; font-weight: 700; color: var(--muted-strong); white-space: nowrap; }
+.b-kicker { display: flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 700; margin: 0 0 .35rem; }
+.b-kicker .icon { width: 18px; height: 18px; stroke-width: 2; }
+.b-kicker .min { margin-left: auto; color: var(--muted); font-weight: 500; }
+.b-card { padding-bottom: 1.1rem; }
+.b-bar { position: sticky; bottom: 0; z-index: 9; margin: 0 -.75rem; padding: .6rem .75rem .9rem; background: var(--card2); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0,0,0,.12); }
+.b-bar.ok { background: var(--ok-bg); border-top-color: var(--ok); }
+.b-bar.bad { background: var(--bad-bg); border-top-color: var(--bad); }
+.b-bar-inner { max-width: 560px; margin: 0 auto; }
+.b-bar .fb { font-size: .93rem; margin: 0 0 .5rem; }
+.b-bar.ok .fb { color: var(--ok); } .b-bar.bad .fb { color: var(--bad); }
+.b-bar .fb b { font-size: 1.02rem; }
+.b-bar .wait { font-size: .82rem; color: var(--muted); text-align: center; margin: 0 0 .45rem; }
+@container (min-width: 700px) { .b-bar { margin: 0; border-radius: 18px; border: 1px solid var(--line); } }
+
+/* ---------- Version C: the session as a path, each exercise as numbered steps ---------- */
+.c-path { display: flex; align-items: center; gap: .25rem; overflow-x: auto; padding: .1rem 0 .4rem; scrollbar-width: none; }
+.c-path span { flex: none; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); background: var(--card2); }
+.c-path span .icon { width: 16px; height: 16px; stroke-width: 2; }
+.c-path span.done { opacity: .55; }
+.c-path span.done::after { content: ''; }
+.c-path span.now { width: 38px; height: 38px; border: 2px solid currentColor; background: var(--card); }
+.c-path b { flex: none; width: 8px; height: 2px; background: var(--line); }
+.c-head { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; font-size: .85rem; color: var(--muted-strong); }
+.c-head strong { color: var(--ink); font-size: .95rem; }
+.c-title { display: flex; align-items: center; gap: .5rem; margin: 0 0 .7rem; }
+.c-title .icon { width: 26px; height: 26px; stroke-width: 1.9; flex: none; }
+.c-title h2 { margin: 0; font-size: 1.15rem; }
+.c-title small { display: block; font-size: .8rem; color: var(--muted); font-weight: 500; }
+ol.c-steps { list-style: none; margin: 0 0 .8rem; padding: 0; display: flex; flex-direction: column; gap: .3rem; counter-reset: st; }
+ol.c-steps li { counter-increment: st; display: flex; align-items: center; gap: .55rem; font-size: .9rem; color: var(--muted); }
+ol.c-steps li::before { content: counter(st); width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1px solid var(--line); display: inline-flex; align-items: center; justify-content: center; font-size: .78rem; font-weight: 700; flex: none; }
+ol.c-steps li.now { color: var(--ink); font-weight: 700; }
+ol.c-steps li.now::before { border-color: var(--accent); background: var(--soft); }
+ol.c-steps li.done { color: var(--ok); }
+ol.c-steps li.done::before { content: '✓'; border-color: var(--ok); background: var(--ok-bg); }
+.c-next small { display: block; font-weight: 400; font-size: .8rem; opacity: .85; }
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <h1>Sketch: Exercises</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> every exercise a session can show, in one frame that works the same way each time.</li>
+      <li><b>Screens:</b> one made-up 20-minute Mix that walks through every type in turn: the start, Review, a harder question, Recall, a new text to read, Words, a new text to listen to, the phrase spotlight, Grammar, read again, listen again, and the summary. Use <b>Next</b> in the session, or jump with the <b>Exercise</b> row.</li>
+      <li><b>Open:</b> where the header with the skill, the task and "N of M" sits; where answers and right/wrong go; how you move on (A, B, C).</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>question-pages/91, 2</b> "One frame, same types … and they need little UI fixes to make them less confusing." No exercise types added or dropped. The word menu is looked into separately; here a tap on a word only says where it would open.</div>
+      <div class="sk-note"><b>The same small fixes in every version</b> (from playing the build at 390 px): each exercise names its skill and says what to do in one line; one count for the session; right and wrong look the same everywhere; Next sits in one place and comes when the exercise is done; a text in a session has no links that leave it; listening starts with Play.</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Questions this sketch settles</summary>
+      <ul>
+        <li>One frame for every exercise of a session (FR-904, FR-912): where the session's place, the skill, the task and the minutes show.</li>
+        <li>Where answers, right/wrong and Next go, the same for Review, harder questions, Recall, Words, phrases, Grammar and texts (FR-928, FR-929; G-04 FR-404…FR-407).</li>
+        <li>How a text (reading, listening, read again, listen again) looks inside a session (FR-904, FR-905; G-03, G-05).</li>
+        <li>The session's start and its summary (FR-904).</li>
+      </ul>
+    </details>
+    <details class="sk-settles">
+      <summary>What I saw in the build (2026-10-31, the demo learner, 390 px)</summary>
+      <ol>
+        <li>The banner says only Discover or Review: a Words, Grammar, reading or listening exercise all say "Discover", and nothing says what to do (Review: no line like "pick the meaning").</li>
+        <li>Two counts compete: "1 of 3" for the session and "1 of 4" for the word cards; Grammar's "1 · Learn / 2 · Spot it" are tabs you can skip with.</li>
+        <li>Right/wrong differs: Review marks ✓ ✗ and says "Not quite — the right answer is marked."; the phrase spotlight says "Not quite." and its locked choices fade to half strength, so the right one is hard to read.</li>
+        <li>The word asked about in Review isn't marked in its sentence, and the English never shows after answering.</li>
+        <li>A text opens on the text page with "Done — next exercise" at the very top (you can skip it unread) while the page ends with "Back to Home", "‹ Your library" and Practise, which all leave the session.</li>
+        <li>A listening text opens as a blurred reading page; you have to find Listen, then scroll past the whole blurred text to reach Play. Its card in the session says "Read it, answer its questions".</li>
+        <li>Read again and listen again look exactly like a new text and ask for a rating again.</li>
+        <li>Spot it: punctuation sits apart from words ("sex ."); dashed outlines run into the next word.</li>
+        <li>After the last word card the dots overlap Next.</li>
+        <li>The session bar is the browser's default blue, not grove's green; "about 0 min left" on a 1-question Review; the summary lists "0 texts read", "0 min of practice" and still offers "Leave for now".</li>
+        <li>Review's chip says "1 min" for a 20-second question.</li>
+      </ol>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A" id="tab-v-A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B" id="tab-v-B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C" id="tab-v-C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Exercise" id="jump"><span class="sk-row-label">Exercise</span></div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Header card on top <small>The green banner names the skill and the task; Next ends the card.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> Action bar at the bottom <small>A slim bar of exercises on top; right/wrong and Next always in one bar at the bottom.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> Path and steps <small>The session as a row of icons; each exercise lists its steps and ticks them off; Next says what comes next.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons (paths from public/assets/icons.mjs) ---------- */
+const PATHS = {
+  discover: ['M12 21V11', 'M12 13c0-4 3-6 7-6 0 4-3 6-7 6z', 'M12 15c0-3-2-5-6-5 0 3 2 5 6 5z'],
+  review: ['M20 12a8 8 0 1 1-2.3-5.6', 'M20 4v5h-5'],
+  mix: ['M12 21v-7', 'M12 16c0-3 2.5-5 6-5 0 3-2.5 5-6 5z', 'M4.5 14A8 8 0 0 1 17 5.3', 'M17.5 2v4h-4'],
+  play: ['M8 5l11 7-11 7z'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  reading: ['M4 5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0z', 'M12 5c2.5-1.5 5-1.5 8 0v15c-3-1.5-5.5-1.5-8 0'],
+  listening: ['M4 15v-3a8 8 0 0 1 16 0v3', 'M4 15h3v5H4z', 'M17 15h3v5h-3z'],
+  words: ['M4 5h16v11H10l-5 4v-4H4z', 'M8 9h8', 'M8 12h5'],
+  grammar: ['M7 3v18', 'M7 9h5a4 4 0 0 0 4-4V3', 'M7 15h8a3 3 0 0 1 3 3v3'],
+  progress: ['M4 20h16', 'M7 20v-6', 'M12 20V8', 'M17 20v-10'],
+  flag: ['M5 21V4', 'M5 4h11l-2 4 2 4H5'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data (written for this sketch; the learner is at A2) ---------- */
+const SKILLS = {
+  review: { name: 'Review', icon: 'review', cls: 's-review' },
+  reading: { name: 'Reading', icon: 'reading', cls: 's-reading' },
+  listening: { name: 'Listening', icon: 'listening', cls: 's-listening' },
+  words: { name: 'Words', icon: 'words', cls: 's-words' },
+  grammar: { name: 'Grammar', icon: 'grammar', cls: 's-grammar' },
+};
+const REVIEW = { sv: 'Vi tar bussen till stan på lördag.', word: 'stan', en: 'We are taking the bus into town on Saturday.', options: ['the station', 'the town centre', 'the shop', 'the street'], right: 1 };
+const HARDER = { gap: 'Kan du ____ fönstret? Det är varmt här inne.', meaning: 'open', en: 'Can you open the window? It is warm in here.', options: ['stänga', 'öppna', 'tvätta', 'måla'], right: 1 };
+const RECALL = { lemma: 'trött', pos: 'adjective', en: 'tired', sv: 'Jag är så trött i dag.', exEn: 'I am so tired today.' };
+const READING = { title: 'Fika på jobbet', words: 92, known: '96% known',
+  lines: ['Klockan tre har vi fika på jobbet.', 'Sara bakar ofta kanelbullar hemma.', 'I dag har hon med sig en stor låda.', 'Alla blir glada och tar en bulle.', 'Chefen dricker te, men vi andra dricker kaffe.', 'Efter tio minuter är lådan tom.'],
+  newWord: 'låda',
+  questions: [{ q: 'Vad bakar Sara?', options: ['Kanelbullar', 'Bröd', 'En tårta'], right: 0 }, { q: 'Vad dricker chefen?', options: ['Kaffe', 'Te', 'Vatten'], right: 1 }] };
+const LISTENING = { title: 'I telefon med mormor', words: 74,
+  lines: ['– Hej mormor, det är Leo!', '– Hej vännen! Hur mår du?', '– Bra. Jag har ett nytt jobb på biblioteket.', '– Vad roligt! När börjar du?', '– På måndag. Jag är lite nervös.', '– Det går säkert bra.'],
+  questions: [{ q: 'Var ska Leo jobba?', options: ['På ett kafé', 'På biblioteket', 'I en skola'], right: 1 }] };
+const WORDS = [
+  { lemma: 'kudde', pos: 'en-word', en: 'pillow', sv: 'Jag vill ha en mjuk kudde.', exEn: 'I want a soft pillow.' },
+  { lemma: 'hylla', pos: 'en-word', en: 'shelf', sv: 'Boken står på hyllan.', exEn: 'The book is on the shelf.', mark: 'hyllan' },
+  { lemma: 'lampa', pos: 'en-word', en: 'lamp', sv: 'Kan du tända lampan?', exEn: 'Can you turn on the lamp?', mark: 'lampan' },
+];
+const PHRASE = { phrase: 'ta det lugnt', en: 'take it easy', note: 'Often said to someone who is stressed: Ta det lugnt!',
+  ex1: 'Ta det lugnt, vi har gott om tid.', ex2: { sv: 'I helgen ska jag bara ta det lugnt.', en: 'This weekend I am just going to take it easy.' },
+  choices: ['hurry up', 'take it easy', 'take the bus'], right: 1 };
+const PATTERN = { name: 'The verb comes second: I dag åker jag', level: 'A2',
+  explain: 'When a sentence starts with something other than the person doing it (a time, a place), the verb still comes second, and the person comes after it.',
+  examples: [{ sv: 'I dag åker jag till Malmö.', en: 'Today I am going to Malmö.', mark: 'åker jag' }, { sv: 'Sedan dricker hon kaffe.', en: 'Then she drinks coffee.', mark: 'dricker hon' }, { sv: 'På kvällen läser vi.', en: 'In the evening we read.', mark: 'läser vi' }],
+  howToSpot: 'a verb right before jag, du, hon, han, vi or de.',
+  title: 'Majas dag',
+  lines: ['Maja vaknar klockan sju.', 'Sedan dricker hon kaffe.', 'På bussen läser hon en bok.', 'Hon jobbar på ett kafé.', 'I dag är det mycket folk.', 'Efter jobbet handlar hon mat.', 'Hemma lagar hon soppa.'],
+  spot: [[1, 'dricker hon'], [2, 'läser hon'], [4, 'är det'], [5, 'handlar hon'], [6, 'lagar hon']] };
+const AGAIN_R = { title: 'En helg på landet', ago: '12 days ago', lines: ['Förra helgen åkte Elin och Jonas till Dalarna.', 'Jonas mormor har ett litet rött hus där.', 'De tog tåget på fredag eftermiddag.', 'Mormor hade lagat soppa och bakat bröd.'] };
+const AGAIN_L = { title: 'På stationen', ago: '9 days ago', lines: ['– Ursäkta, när går tåget till Uppsala?', '– Klockan fem över tolv, från spår tre.', '– Tack! Var köper jag en biljett?', '– I appen eller i automaten där borta.'] };
+const RATES = ['Almost nothing', 'A little', 'About half', 'Most', 'Everything'];
+
+/* ---------- The session: every type in turn ---------- */
+const SEQ = [
+  { id: 'start', tab: 'Start' },
+  { id: 'review', tab: 'Review', skill: 'review', what: 'Pick the meaning', time: '20 s', secs: 20 },
+  { id: 'harder', tab: 'Harder', skill: 'review', what: 'Harder question', time: '25 s', secs: 25 },
+  { id: 'recall', tab: 'Recall', skill: 'review', what: 'Remember the meaning', time: '20 s', secs: 20 },
+  { id: 'reading', tab: 'Reading', skill: 'reading', what: 'New text', time: '4 min', secs: 240 },
+  { id: 'words', tab: 'Words', skill: 'words', what: 'Next words · A2', time: '1½ min', secs: 90 },
+  { id: 'listening', tab: 'Listening', skill: 'listening', what: 'New text', time: '3 min', secs: 180 },
+  { id: 'phrase', tab: 'Phrase', skill: 'words', what: 'Phrase spotlight · A2', time: '2½ min', secs: 150 },
+  { id: 'grammar', tab: 'Grammar', skill: 'grammar', what: 'Pattern of the day · A2', time: '5 min', secs: 300 },
+  { id: 'readagain', tab: 'Read again', skill: 'reading', what: 'Read again', time: '1½ min', secs: 90 },
+  { id: 'listenagain', tab: 'Listen again', skill: 'listening', what: 'Listen again', time: '1½ min', secs: 90 },
+  { id: 'end', tab: 'Summary' },
+];
+const EXS = SEQ.filter((x) => x.skill);
+const TOTAL_SECS = EXS.reduce((a, x) => a + x.secs, 0);
+const LABEL = '20-minute Mix';
+
+const VERSIONS = {
+  A: 'A · Header card on top. The session card ("20-minute Mix · 4 of 10 · about 14 min left", the bar and Leave) stays at the top; the green banner names the skill and the task; answers, right/wrong and Next all sit inside the exercise card, Next last.',
+  B: 'B · Action bar at the bottom. During a session grove’s top bar gives way to a slim bar that shows every exercise as a coloured segment, "4/10" and ✕ to leave; the card starts with the skill and the task; one bar at the bottom always holds right/wrong and the one button (Check, Next…), so your thumb finds it in the same place.',
+  C: 'C · Path and steps. The session is a row of icons you move along; each exercise lists its steps (Read · Answer · Rate) and ticks them off; Next names what comes next ("Next: Words").',
+};
+
+/* ---------- State ---------- */
+const S = { version: 'A', i: 0, state: 'normal', width: 'phone', theme: 'auto', sub: {}, toast: '' };
+const cur = () => SEQ[S.i];
+const exIndex = () => EXS.indexOf(cur());
+const secsDone = () => EXS.slice(0, Math.max(0, exIndex())).reduce((a, x) => a + x.secs, 0);
+const minsLeft = () => Math.max(1, Math.round((TOTAL_SECS - secsDone()) / 60));
+
+/* ---------- Pieces ---------- */
+const optionBtn = (text, n, picked, right, act, extra = '') => {
+  const done = picked !== undefined;
+  let cls = 'option';
+  if (done && n === right) cls += ' right';
+  else if (done && n === picked) cls += ' wrong';
+  return `<button type="button" class="${cls}" data-act="${act}" data-n="${n}"${extra}${done ? ' disabled' : ''}>${esc(text)}</button>`;
+};
+const markIn = (sv, mark, cls) => { const i = mark ? sv.toLowerCase().indexOf(mark.toLowerCase()) : -1; if (i < 0) return esc(sv); return `${esc(sv.slice(0, i))}<mark class="${cls}">${esc(sv.slice(i, i + mark.length))}</mark>${esc(sv.slice(i + mark.length))}`; };
+const playBtn = (id, label = 'Play', big = false) => { const on = S.sub.playing === id; return `<button type="button" class="play${on ? ' on' : ''}${big ? ' big' : ''}" data-act="play" data-id="${id}">${ic('play')}${on ? 'Playing…' : label}</button>`; };
+function textLines(lines, newWord) {
+  return `<p class="text-lines">${lines.map((l) => l.split(' ').map((w) => {
+    const bare = w.replace(/[.,!?–]/g, '');
+    if (!bare) return esc(w);
+    const inner = newWord && bare.toLowerCase() === newWord ? `<mark class="new-word">${esc(w)}</mark>` : esc(w);
+    return `<span class="w" data-act="word" data-w="${esc(bare)}">${inner}</span>`;
+  }).join(' ')).join(' ')}</p>`;
+}
+const fbHtml = (fb) => (fb ? `<div class="feedback ${fb.kind}" role="status">${fb.html}</div>` : '');
+
+/* Each exercise as one model: the task line, the body, right/wrong, and the one action that moves on. */
+function model() {
+  const x = cur(); const sub = S.sub;
+  const m = { instr: '', instrSmall: '', body: '', fb: null, action: null, wait: '', steps: [], step: 0 };
+  const next = { label: 'Next', act: 'next' };
+  switch (x.id) {
+    case 'review': {
+      m.instr = `What does “${REVIEW.word}” mean here?`;
+      m.steps = ['Answer', 'See the sentence in English']; m.step = sub.pick === undefined ? 0 : 2;
+      m.body = `<p class="passage" style="margin:0 0 .3rem">${markIn(REVIEW.sv, REVIEW.word, 'asked')}</p>${sub.pick !== undefined ? `<span class="en-line">${esc(REVIEW.en)}</span>` : ''}<div style="margin:.4rem 0 .7rem">${playBtn('rev')}</div>${REVIEW.options.map((o, n) => optionBtn(o, n, sub.pick, REVIEW.right, 'pick')).join('')}`;
+      if (sub.pick !== undefined) m.fb = sub.pick === REVIEW.right ? { kind: 'ok', html: '<b>Right.</b> stan = the town centre.' } : { kind: 'bad', html: `<b>Not quite.</b> stan means “the town centre”; the right answer has a ✓.` };
+      m.action = sub.pick === undefined ? { ...next, disabled: true } : next; m.wait = 'Pick an answer';
+      break;
+    }
+    case 'harder': {
+      m.instr = `Fill the gap: which word means “${HARDER.meaning}”?`; m.instrSmall = 'A harder question, for a word you know well.';
+      m.steps = ['Fill the gap', 'See the sentence in English']; m.step = sub.pick === undefined ? 0 : 2;
+      const filled = sub.pick !== undefined ? HARDER.gap.replace('____', `<mark class="asked">${HARDER.options[HARDER.right]}</mark>`) : esc(HARDER.gap);
+      m.body = `<p class="passage" style="margin:0 0 .3rem">${filled}</p>${sub.pick !== undefined ? `<span class="en-line">${esc(HARDER.en)}</span>` : ''}<div style="height:.6rem"></div>${HARDER.options.map((o, n) => optionBtn(o, n, sub.pick, HARDER.right, 'pick')).join('')}`;
+      if (sub.pick !== undefined) m.fb = sub.pick === HARDER.right ? { kind: 'ok', html: '<b>Right.</b> öppna = open.' } : { kind: 'bad', html: '<b>Not quite.</b> “Open” is <b>öppna</b>; the right answer has a ✓.' };
+      m.action = sub.pick === undefined ? { ...next, disabled: true } : next; m.wait = 'Pick a word';
+      break;
+    }
+    case 'recall': {
+      m.instr = 'Do you remember what it means?'; m.instrSmall = 'Say it in your head or out loud, then show the meaning.';
+      m.steps = ['Remember', 'Show the meaning', 'Say if you knew it']; m.step = !sub.shown ? 0 : sub.knew === undefined ? 2 : 3;
+      m.body = `<p class="big-word">${esc(RECALL.lemma)}</p><p class="word-pos">${esc(RECALL.pos)}</p>`;
+      if (sub.shown) {
+        m.body += `<div class="note-box"><b>${esc(RECALL.lemma)}</b> = ${esc(RECALL.en)}<span class="en-line">${esc(RECALL.sv)} · ${esc(RECALL.exEn)}</span></div>`;
+        m.body += `<div class="pair" style="margin-top:.6rem">${['I knew it', 'I didn’t'].map((t, n) => `<button type="button" class="${sub.knew === n ? 'picked' : ''}" data-act="knew" data-n="${n}"${sub.knew !== undefined ? ' disabled' : ''}>${t}</button>`).join('')}</div>`;
+      }
+      if (sub.knew !== undefined) m.fb = sub.knew === 0 ? { kind: 'ok', html: '<b>Good.</b> grove asks again in a few days.' } : { kind: 'plain', html: 'No problem. grove asks again soon.' };
+      m.action = !sub.shown ? { label: 'Show the meaning', act: 'show' } : sub.knew === undefined ? { ...next, disabled: true } : next;
+      m.wait = sub.shown ? 'Did you know it?' : '';
+      break;
+    }
+    case 'reading': case 'listening': {
+      const T = x.id === 'reading' ? READING : LISTENING;
+      const listen = x.id === 'listening';
+      const qs = T.questions; const ans = sub.ans || {};
+      const answered = qs.every((_, k) => ans[k] !== undefined);
+      const heard = !listen || sub.heard;
+      m.steps = listen ? ['Listen', 'Answer the question', 'Say how much you understood'] : ['Read', `Answer ${qs.length} questions`, 'Say how much you understood'];
+      m.step = !heard ? 0 : !answered ? 1 : sub.rate === undefined ? 2 : 3;
+      m.instr = listen ? 'Listen first, with the text hidden.' : 'Read the text, then answer and rate it.';
+      m.instrSmall = listen ? 'Play it as often as you like. Show the text when you want it.' : 'Tap a word you don’t know to see its meaning.';
+      let h = `<h3 style="margin:0 0 .1rem">${esc(T.title)}</h3><p class="small muted" style="margin:0 0 .6rem">${T.words} words${T.known ? ` · ${T.known}` : ''}</p>`;
+      if (listen) {
+        h += `<div style="margin:0 0 .6rem">${playBtn('listen', sub.heard ? 'Play again' : 'Play the text', true)}</div>`;
+        h += `<div class="${sub.showText ? '' : 'blurred'}" aria-hidden="${!sub.showText}">${textLines(T.lines)}</div>`;
+        if (!sub.showText) h += `<button type="button" class="link-button" data-act="showtext">Show the text</button>`;
+      } else {
+        h += textLines(T.lines, T.newWord);
+      }
+      if (S.toast) h += `<p class="toast">${esc(S.toast)}</p>`;
+      if (heard) {
+        h += `<div class="qblock"><h3>${qs.length === 1 ? 'A question' : 'Questions'}</h3>${qs.map((q, k) => `<p class="q-legend">${esc(q.q)}</p>${q.options.map((o, n) => optionBtn(o, n, ans[k], q.right, 'tq', ` data-q="${k}"`)).join('')}${ans[k] !== undefined ? `<p class="small" style="color:var(${ans[k] === q.right ? '--ok' : '--bad'});margin:-.1rem 0 .5rem">${ans[k] === q.right ? '✓ Right.' : '✗ Not quite; the right answer has a ✓.'}</p>` : ''}`).join('')}</div>`;
+        h += `<div class="qblock"><h3>How much did you understand?</h3><div class="rate">${RATES.map((r, n) => `<button type="button" data-act="rate" data-n="${n}" aria-pressed="${sub.rate === n}">${r}</button>`).join('')}</div></div>`;
+      }
+      m.body = h;
+      if (answered && sub.rate !== undefined) m.fb = { kind: 'ok', html: `<b>Text done.</b> ${listen ? 'grove picks your next listening texts' : 'Your next texts take'} this into account.` };
+      m.action = answered && sub.rate !== undefined ? next : { ...next, disabled: true };
+      m.wait = !heard ? 'Play the text first' : !answered ? 'Answer the question' + (qs.length > 1 ? 's' : '') : 'Say how much you understood';
+      break;
+    }
+    case 'words': {
+      const wi = sub.wi || 0; const picked = sub.picked || [];
+      m.steps = WORDS.map((w, n) => `Word ${n + 1}`); m.step = wi;
+      const dots = `<span class="dots" aria-label="Word ${Math.min(wi + 1, WORDS.length)} of ${WORDS.length}">${WORDS.map((_, n) => `<i class="${n <= wi ? 'on' : ''}"></i>`).join('')}</span>`;
+      if (wi >= WORDS.length) {
+        m.instr = `${WORDS.length} new words seen`;
+        m.body = `<ul class="ex-list">${WORDS.map((w) => `<li><b>${esc(w.lemma)}</b> · ${esc(w.en)} <span class="small ${picked.includes(w.lemma) ? '' : 'muted'}" style="${picked.includes(w.lemma) ? 'color:var(--ok)' : ''}">${picked.includes(w.lemma) ? '· picked up ✓' : '· you know it'}</span></li>`).join('')}</ul>`;
+        m.fb = { kind: 'ok', html: `<b>${picked.length} picked up.</b> grove brings ${picked.length === 1 ? 'it' : 'them'} back in Review.` };
+        m.action = next;
+      } else {
+        const w = WORDS[wi];
+        m.instr = 'Do you know this word?'; m.instrSmall = `Word ${wi + 1} of ${WORDS.length}`;
+        m.body = `<div style="margin:0 0 .5rem">${dots}</div><p class="big-word">${esc(w.lemma)}</p><p class="word-pos">${esc(w.pos)} · ${esc(w.en)}</p><p class="ex">${markIn(w.sv, w.mark || w.lemma, 'new-word')}<span class="en">${esc(w.exEn)}</span></p>${playBtn('w' + wi)}
+          <div class="pair" style="margin-top:.8rem"><button type="button" data-act="wnext" data-pick="0">I know it<small>add it to your ground</small></button><button type="button" class="main" style="box-shadow:none" data-act="wnext" data-pick="${esc(w.lemma)}">+ Pick up<small>learn it in Review</small></button></div>`;
+        m.action = { ...next, disabled: true }; m.wait = 'Choose for each word';
+      }
+      break;
+    }
+    case 'phrase': {
+      m.instr = 'What does this phrase mean?'; m.instrSmall = 'Guess from the example, then see how it’s used.';
+      m.steps = ['Guess the meaning', 'See it used']; m.step = sub.pick === undefined ? 0 : 2;
+      let h = `<p class="big-word" style="font-size:1.6rem">${esc(PHRASE.phrase)}</p><p class="ex">${markIn(PHRASE.ex1, 'ta det lugnt', 'new-word')}</p><div style="margin:0 0 .7rem">${playBtn('ph')}</div>`;
+      h += PHRASE.choices.map((o, n) => optionBtn(o, n, sub.pick, PHRASE.right, 'pick')).join('');
+      if (sub.pick !== undefined) {
+        h += `<div class="note-box"><b>${esc(PHRASE.phrase)}</b> = ${esc(PHRASE.en)}. ${esc(PHRASE.note)}</div><p class="ex">${markIn(PHRASE.ex2.sv, 'ta det lugnt', 'new-word')}<span class="en">${esc(PHRASE.ex2.en)}</span></p>
+          <button type="button" class="${sub.phPicked ? 'picked' : ''}" style="width:100%" data-act="phpick">${sub.phPicked ? '✓ Picked up: you’ll see it in Review' : '+ Pick up this phrase'}</button>`;
+        m.fb = sub.pick === PHRASE.right ? { kind: 'ok', html: '<b>Right.</b> ta det lugnt = take it easy.' } : { kind: 'bad', html: '<b>Not quite.</b> It means “take it easy”; the right answer has a ✓.' };
+      }
+      m.body = h;
+      m.action = sub.pick === undefined ? { ...next, disabled: true } : next; m.wait = 'Pick a meaning';
+      break;
+    }
+    case 'grammar': {
+      const spot = sub.gstep === 'spot';
+      m.steps = ['Learn the pattern', 'Spot it in a text', 'Check']; m.step = !spot ? 0 : !sub.checked ? 1 : 3;
+      if (!spot) {
+        m.instr = 'Learn the pattern.'; m.instrSmall = 'Step 1 of 2. Then you spot it in a short text.';
+        m.body = `<p class="big-word" style="font-size:1.35rem">${esc(PATTERN.name)}</p><p>${esc(PATTERN.explain)}</p><ul class="ex-list">${PATTERN.examples.map((e) => `<li>${markIn(e.sv, e.mark, 'pattern-part')}<span class="en-line">${esc(e.en)}</span></li>`).join('')}</ul>`;
+        m.action = { label: 'Now spot it in a text', act: 'gspot' };
+      } else {
+        m.instr = 'Tap every place you see the pattern.'; m.instrSmall = `Step 2 of 2. Look for ${PATTERN.howToSpot} One tap marks the whole place.`;
+        m.body = `<h3 style="margin:0 0 .1rem">${esc(PATTERN.title)}</h3>${spotHtml()}`;
+        if (sub.checked) {
+          const tapped = sub.tapped || []; const found = PATTERN.spot.filter((_, k) => tapped.includes('p' + k)).length; const off = tapped.filter((t) => t[0] === 'w').length;
+          m.body += `<div class="spot-key"><span class="k-f">found</span><span class="k-m">missed</span><span class="k-w">not the pattern</span></div>`;
+          m.fb = { kind: found === PATTERN.spot.length ? 'ok' : 'plain', html: `<b>You found ${found} of ${PATTERN.spot.length}.</b> ${found < PATTERN.spot.length ? 'The ones you missed have a dashed line.' : 'All of them.'}${off ? ` ${off} tap${off > 1 ? 's were' : ' was'} not the pattern.` : ''}` };
+          m.action = next;
+        } else {
+          m.action = { label: 'Check', act: 'check', disabled: !(sub.tapped || []).length }; m.wait = 'Tap at least one place';
+        }
+      }
+      break;
+    }
+    case 'readagain': case 'listenagain': {
+      const T = x.id === 'readagain' ? AGAIN_R : AGAIN_L; const listen = x.id === 'listenagain';
+      m.instr = listen ? 'Listen to it once more.' : 'Read it once more, at your own pace.';
+      m.instrSmall = `You ${listen ? 'heard' : 'read'} this ${T.ago}. No questions this time.`;
+      m.steps = [listen ? 'Listen' : 'Read', 'Done']; m.step = sub.read ? 2 : 0;
+      let h = `<h3 style="margin:0 0 .6rem">${esc(T.title)}</h3>`;
+      if (listen) h += `<div style="margin:0 0 .6rem">${playBtn('again', sub.heard ? 'Play again' : 'Play the text', true)}</div><div class="${sub.showText ? '' : 'blurred'}">${textLines(T.lines)}</div>${sub.showText ? '' : '<button type="button" class="link-button" data-act="showtext">Show the text</button>'}`;
+      else h += textLines(T.lines);
+      if (S.toast) h += `<p class="toast">${esc(S.toast)}</p>`;
+      m.body = h;
+      const ready = listen ? sub.heard : true;
+      m.action = ready ? { label: listen ? 'Done listening' : 'Done reading', act: 'next' } : { label: 'Done listening', act: 'next', disabled: true };
+      m.wait = 'Play the text first';
+      break;
+    }
+    default: break;
+  }
+  return m;
+}
+
+function spotHtml() {
+  const tapped = S.sub.tapped || []; const checked = !!S.sub.checked;
+  return `<p class="spot">${PATTERN.lines.map((line, li) => {
+    const toks = line.split(' ');
+    const places = PATTERN.spot.map((s, k) => ({ k, line: s[0], words: s[1].split(' ') })).filter((p) => p.line === li);
+    const out = []; let t = 0;
+    while (t < toks.length) {
+      const bare = (w) => w.replace(/[.,!?]/g, '').toLowerCase();
+      const p = places.find((pl) => pl.words.every((w, j) => toks[t + j] && bare(toks[t + j]) === w));
+      if (p) {
+        const key = 'p' + p.k; const on = tapped.includes(key);
+        const cls = checked ? (on ? 'found' : 'missed') : (on ? 'tapped' : '');
+        out.push(`<span class="${cls}">${p.words.map((_, j) => `<button type="button" class="w" data-act="tap" data-key="${key}"${checked ? ' disabled' : ''}>${esc(toks[t + j])}</button>`).join(' ')}</span>`);
+        t += p.words.length;
+      } else {
+        const key = `w${li}-${t}`; const on = tapped.includes(key);
+        out.push(`<button type="button" class="w${on ? (checked ? ' off' : ' tapped') : ''}" data-act="tap" data-key="${key}"${checked ? ' disabled' : ''}>${esc(toks[t])}</button>`);
+        t += 1;
+      }
+    }
+    return out.join(' ');
+  }).join(' ')}</p>`;
+}
+
+/* ---------- States applied to a model ---------- */
+const EMPTY = {
+  review: 'This word is no longer one of your leaves, so there is nothing to ask.',
+  harder: 'This word is no longer one of your leaves, so there is nothing to ask.',
+  recall: 'This word is no longer one of your leaves, so there is nothing to ask.',
+  reading: 'This text was removed from your library since the session was planned.',
+  listening: 'This text was removed from your library since the session was planned.',
+  words: 'No new words are left at your level. grove gives this time to the other exercises.',
+  phrase: 'No new phrases are left at your level.',
+  grammar: 'You have met every pattern up to A2. grove gives this time to the other exercises.',
+  readagain: 'This text was removed from your library.',
+  listenagain: 'This text was removed from your library.',
+};
+function applyState(m) {
+  const id = cur().id;
+  if (S.state === 'loading') { m.body = '<div class="skel line" style="width:70%"></div><div class="skel line"></div><div class="skel block"></div><div class="skel block"></div><div class="skel block"></div>'; m.fb = null; m.action = { label: 'Next', act: 'next', disabled: true }; m.wait = 'Loading…'; }
+  if (S.state === 'empty') { m.body = `<p class="muted">${EMPTY[id]}</p>`; m.fb = null; m.instrSmall = ''; m.action = { label: 'Next', act: 'next' }; m.steps = []; }
+  if (S.state === 'error') { m.fb = { kind: 'bad', html: '<b>Your answer wasn’t saved.</b> grove couldn’t reach the server. Check your connection, then try again.' }; m.action = { label: 'Try again', act: 'retry' }; }
+  return m;
+}
+
+/* ---------- The start and the end ---------- */
+function planList() {
+  return `<ul class="plan-list">${EXS.map((x) => `<li>${ic(SKILLS[x.skill].icon, `icon ${SKILLS[x.skill].cls}`)}<span>${SKILLS[x.skill].name} · ${esc(x.what.toLowerCase().replace(' · a2', ''))}</span><span class="m">${x.time}</span></li>`).join('')}</ul>`;
+}
+function startBody() {
+  if (S.state === 'loading') return '<div class="skel line" style="width:60%"></div><div class="skel block"></div><div class="skel block"></div>';
+  if (S.state === 'empty') return `<h2>Not enough new texts</h2><p>This session needs about 4 more minutes of reading and 3 of listening.</p><div class="row-actions"><button type="button" class="main" data-act="noop">Add a text</button><button type="button" data-act="retry">Practise without</button></div><p class="hint">Practise without goes on with what you have, filled with early reviews and texts again.</p>`;
+  const err = S.state === 'error' ? '<div class="message bad" role="alert">grove couldn’t plan this session: no connection. <button type="button" class="link-button" data-act="retry">Try again</button></div>' : '';
+  return `${err}<h2 style="margin-bottom:.2rem">${LABEL}</h2><p class="small muted">${EXS.length} exercises, about 20 minutes. One at a time; you can leave and carry on later.</p>${S.version === 'C' ? '' : planList()}`;
+}
+function endBody() {
+  if (S.state === 'loading') return '<div class="skel line" style="width:50%"></div><div class="skel block"></div>';
+  if (S.state === 'error') return '<div class="message bad" role="alert">grove couldn’t save the end of your session. Your answers so far are kept. <button type="button" class="link-button" data-act="retry">Try again</button></div>';
+  if (S.state === 'empty') return `<h2>Done</h2><p>A short one: 3 minutes of practice.</p><p class="small muted">You’ve practised 4 days this week.</p>`;
+  const picked = (S.picked || 0);
+  return `<h2>Well done</h2><p class="small muted" style="margin-top:-.3rem">${LABEL} · 21 minutes of practice</p><ul class="summary">
+    <li>${ic('reading', 'icon s-reading')}Texts read<b>2</b></li>
+    <li>${ic('listening', 'icon s-listening')}Texts heard<b>2</b></li>
+    <li>${ic('review', 'icon s-review')}Words reviewed<b>3</b></li>
+    <li>${ic('words', 'icon s-words')}New words and phrases picked up<b>${picked + 1}</b></li>
+    <li>${ic('grammar', 'icon s-grammar')}Pattern met<b>1</b></li>
+    <li>${ic('progress', 'icon s-plain')}Days practised this week<b>4</b></li></ul>
+    <p class="small muted">Lines with nothing in them are left out (none fell to your ground today).</p>`;
+}
+
+/* ---------- The three frames ---------- */
+function topbar() { return `<header class="topbar"><div class="topbar-inner"><a class="brand" href="#" onclick="return false">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></a><button type="button" class="menu-button" aria-label="Menu" data-act="noop">☰</button></div></header>`; }
+const leaveBtn = (label = 'Leave') => `<button type="button" class="leave" data-act="leave">${ic('close')}${label}</button>`;
+const actionBtn = (a, cls = 'main') => (a ? `<button type="button" class="${cls}" data-act="${a.act}"${a.disabled ? ' disabled' : ''}>${esc(a.label)}</button>` : '');
+
+function frameA() {
+  const x = cur();
+  const n = exIndex();
+  if (x.id === 'start' || x.id === 'end') {
+    const end = x.id === 'end';
+    const head = `<section class="card a-head"><div class="top"><p class="session-line">${LABEL}${end ? ' · done' : ''}</p>${end ? '' : leaveBtn()}</div><p class="meta">${end ? `${EXS.length} of ${EXS.length}` : `${EXS.length} exercises · about 20 min`}</p><div class="progress"><span style="width:${end ? 100 : 0}%"></span></div></section>`;
+    const body = end ? endBody() : startBody();
+    const btn = end ? `<button type="button" class="main" data-act="home">Back to Home</button>` : (S.state === 'normal' || S.state === 'error' ? `<button type="button" class="main" data-act="next"${S.state === 'error' ? ' disabled' : ''}>Start</button>` : '');
+    return `${head}<section class="card">${body}${btn}</section>`;
+  }
+  const sk = SKILLS[x.skill]; const m = applyState(model());
+  const head = `<section class="card a-head"><div class="top"><p class="session-line">${LABEL}</p>${leaveBtn()}</div><p class="meta">${n + 1} of ${EXS.length} · about ${minsLeft()} min left</p><div class="progress"><span style="width:${(secsDone() / TOTAL_SECS) * 100}%"></span></div></section>`;
+  const banner = `<header class="mode-banner"><span class="chip ${sk.cls}">${ic(sk.icon)}${sk.name}</span><span class="a-banner-task">${esc(x.what)}</span><span class="chip ${sk.cls}">${x.time}</span></header>`;
+  const instr = `<p class="instr">${esc(m.instr)}${m.instrSmall ? `<small>${esc(m.instrSmall)}</small>` : ''}</p>`;
+  const act = m.action ? `<div class="a-next">${actionBtn(m.action)}${m.action.disabled && m.wait ? `<p class="a-wait">${esc(m.wait)}</p>` : ''}</div>` : '';
+  return `${head}<section class="card mode-card">${banner}<div class="mode-body">${instr}${m.body}${fbHtml(m.fb)}${act}</div></section>`;
+}
+
+function frameB() {
+  const x = cur(); const n = exIndex();
+  const segs = `<div class="b-segs" aria-hidden="true">${EXS.map((e, k) => `<i class="${SKILLS[e.skill].cls} ${x.id === 'end' || k < n ? 'done' : k === n ? 'now' : ''}"></i>`).join('')}</div>`;
+  const count = x.id === 'start' ? '0/' + EXS.length : x.id === 'end' ? `${EXS.length}/${EXS.length}` : `${n + 1}/${EXS.length}`;
+  const top = `<div class="b-top">${x.id === 'end' ? '' : `<button type="button" class="leave" data-act="leave" aria-label="Leave the session">${ic('close')}</button>`}${segs}<span class="b-count">${count}</span></div>`;
+  if (x.id === 'start' || x.id === 'end') {
+    const end = x.id === 'end';
+    const btn = end ? { label: 'Back to Home', act: 'home' } : (S.state === 'normal' || S.state === 'error') ? { label: 'Start', act: 'next', disabled: S.state === 'error' } : null;
+    const extra = end && S.state === 'normal' ? '<button type="button" style="width:100%;margin-top:.45rem" data-act="noop">Another 10 minutes</button>' : '';
+    return `${top}<div class="g-main"><section class="card b-card">${end ? endBody() : startBody()}</section><div class="b-bar"><div class="b-bar-inner">${btn ? actionBtn(btn) : ''}${extra}</div></div></div>`;
+  }
+  const sk = SKILLS[x.skill]; const m = applyState(model());
+  const kicker = `<p class="b-kicker ${sk.cls}">${ic(sk.icon)}${sk.name} · ${esc(x.what)}<span class="min">${x.time}</span></p>`;
+  const h = `<h2 style="font-size:1.12rem;margin-bottom:${m.instrSmall ? '.15rem' : '.7rem'}">${esc(m.instr)}</h2>${m.instrSmall ? `<p class="small muted" style="margin-bottom:.7rem">${esc(m.instrSmall)}</p>` : ''}`;
+  const fbk = m.fb ? (m.fb.kind === 'plain' ? '' : m.fb.kind) : '';
+  const bar = `<div class="b-bar ${fbk}"><div class="b-bar-inner">${m.fb ? `<p class="fb" role="status">${m.fb.html}</p>` : m.action && m.action.disabled && m.wait ? `<p class="wait">${esc(m.wait)}</p>` : ''}${actionBtn(m.action)}</div></div>`;
+  return `${top}<div class="g-main"><section class="card b-card">${kicker}${h}${m.body}</section>${bar}</div>`;
+}
+
+function frameC() {
+  const x = cur(); const n = exIndex();
+  const path = `<div class="c-path" aria-label="Your session">${['start', ...EXS.map((e) => e.id), 'end'].map((id, k) => {
+    const e = SEQ.find((s) => s.id === id); const cls = e.skill ? SKILLS[e.skill].cls : 's-plain';
+    const pos = SEQ.indexOf(e); const state = pos < S.i ? 'done' : pos === S.i ? 'now' : '';
+    const icon = id === 'start' ? 'mix' : id === 'end' ? 'flag' : SKILLS[e.skill].icon;
+    return `${k ? '<b></b>' : ''}<span class="${cls} ${state}" title="${esc(e.tab)}">${ic(icon)}</span>`;
+  }).join('')}</div>`;
+  const head = (right) => `<section class="card" style="padding:.7rem .9rem .5rem"><div class="c-head"><strong>${LABEL}</strong><span>${right}</span></div>${path}</section>`;
+  if (x.id === 'start' || x.id === 'end') {
+    const end = x.id === 'end';
+    const btn = end ? `<button type="button" class="main" data-act="home">Back to Home</button>` : (S.state === 'normal' || S.state === 'error') ? `<button type="button" class="main c-next" data-act="next"${S.state === 'error' ? ' disabled' : ''}>Start<small>First: Review · pick the meaning</small></button>` : '';
+    const legend = !end && S.state === 'normal' ? `<p class="small muted">The row above is your session: each icon is one exercise, in this order. ${leaveBtn('Leave')}</p>` : '';
+    return `${head(end ? 'done' : 'about 20 min')}<section class="card">${end ? endBody() : startBody()}${legend}${btn}</section>`;
+  }
+  const sk = SKILLS[x.skill]; const m = applyState(model());
+  const nextEx = SEQ[S.i + 1];
+  const nextName = nextEx.id === 'end' ? 'the summary' : `${SKILLS[nextEx.skill].name} · ${nextEx.what.toLowerCase().replace(' · a2', '')}`;
+  const title = `<div class="c-title">${ic(sk.icon, `icon ${sk.cls}`)}<h2>${sk.name}<small>${esc(x.what)} · ${x.time}</small></h2></div>`;
+  const steps = m.steps.length > 1 && S.state !== 'empty' ? `<ol class="c-steps">${m.steps.map((s, k) => `<li class="${k < m.step ? 'done' : k === m.step ? 'now' : ''}">${esc(s)}</li>`).join('')}</ol>` : '';
+  const instr = `<p class="instr">${esc(m.instr)}${m.instrSmall ? `<small>${esc(m.instrSmall)}</small>` : ''}</p>`;
+  let act = '';
+  if (m.action) {
+    const isNext = m.action.act === 'next';
+    act = `<div style="margin-top:.9rem"><button type="button" class="main${isNext ? ' c-next' : ''}" data-act="${m.action.act}"${m.action.disabled ? ' disabled' : ''}>${esc(m.action.label === 'Next' ? 'Next' : m.action.label)}${isNext ? `<small>${m.action.disabled && m.wait ? esc(m.wait) : `Then: ${esc(nextName)}`}</small>` : ''}</button></div>`;
+  }
+  return `${head(`${n + 1} of ${EXS.length} · about ${minsLeft()} min left`)}<section class="card">${title}${steps}${instr}${m.body}${fbHtml(m.fb)}${act}<p style="margin:.6rem 0 0;text-align:center">${leaveBtn('Leave for now')}</p></section>`;
+}
+
+/* ---------- Render ---------- */
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  document.querySelectorAll('[data-act="version"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.version)));
+  document.querySelectorAll('[data-act="jump"]').forEach((b) => b.setAttribute('aria-selected', String(Number(b.dataset.i) === S.i)));
+  document.querySelectorAll('[data-act="state"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.s === S.state)));
+  document.querySelectorAll('[data-act="width"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.w === S.width)));
+  document.querySelectorAll('[data-act="theme"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.t === S.theme)));
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  const stage = document.getElementById('stage');
+  stage.className = `sk-stage ${S.width}`;
+  const inner = S.left ? leftHtml() : S.version === 'A' ? frameA() : S.version === 'B' ? frameB() : frameC();
+  document.getElementById('frame').innerHTML = S.version === 'B' && !S.left ? inner : topbar() + `<div class="g-main">${inner}</div>`;
+  const now = document.querySelector('.c-path .now');
+  if (now) now.parentElement.scrollLeft = now.offsetLeft - now.parentElement.clientWidth / 2;
+  fit();
+}
+function leftHtml() {
+  return `<section class="card"><h2>You left your session</h2><p>${LABEL} · ${Math.max(1, exIndex() + 1)} of ${EXS.length}. On Home it waits under <b>▶ Resume</b>.</p><button type="button" class="main" data-act="resume">▶ Resume</button></section>`;
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+function buildJump() {
+  const row = document.getElementById('jump');
+  row.insertAdjacentHTML('beforeend', SEQ.map((x, i) => `<button type="button" class="sk-tab" role="tab" data-act="jump" data-i="${i}">${i ? `${i < SEQ.length - 1 ? i + ' ' : ''}` : ''}${esc(x.tab)}</button>`).join(''));
+}
+
+/* ---------- Actions ---------- */
+const toggle = (arr, v) => (arr.includes(v) ? arr.filter((x) => x !== v) : arr.concat(v));
+function go(i) { S.i = Math.max(0, Math.min(SEQ.length - 1, i)); S.sub = {}; S.toast = ''; S.left = false; if (S.state !== 'normal' && S.state !== 'empty') S.state = 'normal'; }
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const d = el.dataset;
+  switch (a) {
+    case 'version': S.version = d.v; break;
+    case 'jump': go(Number(d.i)); if (S.state === 'empty') S.state = 'normal'; break;
+    case 'state': S.state = d.s; S.left = false; break;
+    case 'width': S.width = d.w; break;
+    case 'theme': S.theme = d.t; break;
+    case 'next': { const st = S.state; go(S.i + 1); S.state = st === 'empty' ? 'normal' : S.state; break; }
+    case 'retry': S.state = 'normal'; break;
+    case 'leave': S.left = true; break;
+    case 'resume': S.left = false; break;
+    case 'home': go(0); break;
+    case 'pick': S.sub.pick = Number(d.n); break;
+    case 'tq': S.sub.ans = { ...(S.sub.ans || {}), [d.q]: Number(d.n) }; break;
+    case 'rate': S.sub.rate = Number(d.n); break;
+    case 'show': S.sub.shown = true; break;
+    case 'knew': S.sub.knew = Number(d.n); break;
+    case 'showtext': S.sub.showText = true; break;
+    case 'word': S.toast = `“${d.w}”: the word menu opens here (looked into separately, not part of this sketch).`; break;
+    case 'play':
+      S.sub.playing = d.id;
+      setTimeout(() => { if (S.sub.playing === d.id) { S.sub.playing = null; if (d.id === 'listen' || d.id === 'again') S.sub.heard = true; render(); } }, 1300);
+      break;
+    case 'wnext': if (d.pick !== '0') { S.sub.picked = (S.sub.picked || []).concat(d.pick); S.picked = (S.sub.picked || []).length; } S.sub.wi = (S.sub.wi || 0) + 1; break;
+    case 'phpick': S.sub.phPicked = !S.sub.phPicked; break;
+    case 'gspot': S.sub.gstep = 'spot'; break;
+    case 'tap': if (!S.sub.checked) S.sub.tapped = toggle(S.sub.tapped || [], d.key); break;
+    case 'check': S.sub.checked = true; break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'A text in a session (reading or listening): where does it open?', options: [
+    ['frame', 'In the session\'s own frame', 'Like every other exercise: the session\'s header, the text, its questions and rating, then Next. No links that leave the session.'],
+    ['textpage', 'On the text page, as today, with the session\'s header added', 'The full text page (Practise, translation, Report), with Next moved to the end.'] ] },
+  { id: 'q2', text: 'A listening text in a session: how does it start?', options: [
+    ['play', 'With Play first, the text hidden', 'As in this sketch; Show the text when you want it.'],
+    ['read', 'As a reading page with a Listen button', 'As today.'] ] },
+  { id: 'q3', text: 'Read again and listen again: what do they ask?', options: [
+    ['light', 'Nothing: read or listen, then Done', 'As in this sketch: no questions, no rating the second time.'],
+    ['same', 'The same as the first time', 'Questions and "How much did you understand?" again.'] ] },
+  { id: 'q4', text: 'After a wrong answer (Review, harder question, phrase): what happens?', options: [
+    ['show', 'Show the right answer, then Next', 'As today and in this sketch.'],
+    ['again', 'One more try, then show it', 'The wrong choice is crossed out; a second wrong shows the answer.'] ] },
+  { id: 'q5', text: 'Can you go back to an exercise you have finished?', options: [
+    ['no', 'No, only on or leave', 'As FR-904 says now.'],
+    ['look', 'Yes, to look again (answers stay as they were)', 'A ‹ Back in the header; nothing can be answered twice.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, label, why], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(label)}${i === 0 ? '<span class="def">default</span>' : ''}<small>${esc(why)}</small></span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Exercises', notes: ['question-pages/91, 2'], pick: null, comments: { A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+
+buildJump();
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', collectAnswers);
+collectAnswers();
+render();
+})();
+</script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const box = document.getElementById('answers');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['A', 'B', 'C']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [id, q] of Object.entries(a.questions ?? {})) {
+      if (!q.isDefault) { const r = document.querySelector(`input[name="${id}"][value="${q.answer}"]`); if (r) r.checked = true; }
+      const n = document.getElementById(`${id}-note`); if (n && q.note) n.value = q.note;
+    }
+    window.collectAnswers();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+</body>
+</html>
