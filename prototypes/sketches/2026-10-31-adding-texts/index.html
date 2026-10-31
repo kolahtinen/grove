@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sketch: Adding texts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Sketch for B-05…B-10, B-15, B-16, B-20, B-23 (docs/sketching.md; question-pages/91, 1). Throwaway: never copied into the build.
+   Tokens and parts copied from public/assets/grove.css on 2026-10-31. */
+:root {
+  color-scheme: dark;
+  --bg: #0F110E;
+  --bgimg: radial-gradient(900px 520px at 8% -8%, rgba(111,162,126,.14), transparent 62%), radial-gradient(760px 480px at 105% 6%, rgba(227,164,110,.08), transparent 60%);
+  --card: #1A1F1A; --card2: #222822; --ink: #E9EBE3; --muted: #9AA095; --line: rgba(233,235,227,.10);
+  --accent: #6FA27E; --accent2: #97C3A2; --button-bg: linear-gradient(135deg, var(--accent), var(--accent2));
+  --link: #97C3A2; --muted-strong: #B9BDB2; --onacc: #0F110E; --soft: rgba(111,162,126,.16);
+  --banner: #2E5A40; --onbanner: #FFFFFF; --backdrop: rgba(5,6,5,.45);
+  --ok: #8FCB7E; --ok-bg: rgba(143,203,126,.14); --bad: #E07A6E; --bad-bg: rgba(224,122,110,.15);
+  --amber: #DE9A66; --wood: #C9A27E; --shadow: 0 12px 34px rgba(0,0,0,.45);
+  --glow: 0 0 0 1px rgba(111,162,126,.45), 0 6px 22px rgba(111,162,126,.28);
+  --cw: #7CC2B0; --gpk: #E3A46E; --discover: #F0C28F; --review: #DE9A66; --master: #CF7A5E;
+  --font: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Noto Sans JP', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #ECE5DA;
+    --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+    --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+    --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+    --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+    --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+    --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+    --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+  }
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ECE5DA;
+  --bgimg: radial-gradient(900px 560px at 0% -10%, rgba(94,138,102,.16), transparent 62%), radial-gradient(760px 480px at 110% 0%, rgba(192,133,82,.12), transparent 60%);
+  --card: #EEEEE2; --card2: #F5F4EC; --ink: #26241F; --muted: #6A6761; --line: rgba(38,36,31,.12);
+  --accent: #2F5A40; --accent2: #5E8A66; --button-bg: var(--accent); --link: #2F5A40; --muted-strong: #4F4C46;
+  --onacc: #FFFFFF; --soft: rgba(47,90,64,.10); --banner: #2F5A40; --onbanner: #FFFFFF; --backdrop: rgba(38,36,31,.30);
+  --ok: #3C7738; --ok-bg: #EAF2E4; --bad: #A14646; --bad-bg: #F3E1DC; --amber: #74432C; --wood: #4B2E2B;
+  --shadow: 0 10px 30px rgba(75,46,43,.12); --glow: 0 0 0 1px rgba(47,90,64,.35), 0 6px 20px rgba(47,90,64,.22);
+  --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; background-color: var(--bg); background-image: var(--bgimg); background-attachment: fixed; color: var(--ink); font-family: var(--font); font-size: 15px; line-height: 1.6; font-variant-numeric: tabular-nums; overflow-x: hidden; }
+h1, h2, h3 { margin: 0 0 .6rem; line-height: 1.3; text-wrap: balance; }
+h2 { font-size: 1.05rem; font-weight: 700; }
+h3 { font-size: 1rem; }
+p { margin: 0 0 .8rem; }
+a { color: var(--link); }
+.small { font-size: .82rem; }
+.muted { color: var(--muted); }
+[hidden] { display: none !important; }
+button { font: inherit; font-weight: 500; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem 1rem; cursor: pointer; transition: transform .12s ease; min-height: 44px; }
+button:active { transform: scale(.97); }
+button.main { width: 100%; border: none; background: var(--button-bg); color: var(--onacc); font-weight: 600; box-shadow: var(--glow); }
+button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+input:focus-visible, button:focus-visible, a:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+/* ---------- The sketch page around the frame ---------- */
+.sk-wrap { max-width: 1100px; margin: 0 auto; padding: 16px 16px 4rem; }
+.sk-head h1 { font-size: 1.35rem; margin-bottom: .3rem; }
+.sk-kicker { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 0 0 .2rem; }
+.sk-brief { margin: .5rem 0 .8rem; padding-left: 1.1rem; }
+.sk-brief li { margin: .15rem 0; }
+.sk-notes { display: grid; gap: .5rem; margin: 0 0 .8rem; }
+@media (min-width: 760px) { .sk-notes { grid-template-columns: repeat(3, 1fr); } }
+.sk-note { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .6rem .8rem; font-size: .88rem; }
+.sk-note b { color: var(--link); }
+details.sk-settles { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 0 0 1rem; font-size: .9rem; }
+details.sk-settles summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+details.sk-settles ul, details.sk-settles ol { margin: .3rem 0 .3rem; padding-left: 1.1rem; }
+.sk-controls { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0 0 .8rem; }
+.sk-row { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem 0; }
+.sk-row-label { font-size: .75rem; font-weight: 700; color: var(--muted); width: 4.2rem; flex: none; }
+.sk-tab { min-height: 36px; padding: .25rem .75rem; border-radius: 999px; font-size: .85rem; }
+.sk-tab[aria-selected="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; color: var(--ink); }
+.sk-tab.version { min-width: 44px; font-weight: 700; }
+.sk-vdesc { font-size: .86rem; margin: .4rem 0 0; color: var(--muted-strong); }
+.sk-stage { position: relative; }
+.sk-stage.phone .frame { width: 390px; max-width: 100%; margin: 0 auto; }
+.sk-stage.desktop { overflow: hidden; }
+.sk-stage.desktop .frame { width: 1000px; transform-origin: top left; }
+.frame { container-type: inline-size; position: relative; min-height: 720px; border: 1px solid var(--line); border-radius: 26px; overflow: hidden; overflow: clip; background-color: var(--bg); background-image: var(--bgimg); box-shadow: var(--shadow); }
+.sk-answers { margin-top: 2rem; }
+.sk-answers h2 { font-size: 1.2rem; }
+.sk-answers fieldset { border: 1px solid var(--line); border-radius: 16px; padding: .6rem .9rem .8rem; margin: 0 0 1rem; background: var(--card); }
+.sk-answers legend { font-weight: 700; padding: 0 .3rem; }
+.sk-answers .opt { display: flex; gap: .55rem; align-items: flex-start; padding: .35rem 0; min-height: 44px; }
+.sk-answers .opt input { margin-top: .35rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+.sk-answers .opt span small { display: block; color: var(--muted); }
+.sk-answers textarea { display: block; width: 100%; min-height: 4.5rem; margin: .25rem 0 .7rem; font: inherit; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; }
+.sk-answers label.c { font-weight: 600; font-size: .9rem; }
+.def { font-size: .72rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); margin-left: .3rem; }
+
+/* ---------- grove parts (copied from grove.css) ---------- */
+.icon { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.topbar { position: sticky; top: 0; z-index: 10; background: linear-gradient(var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.topbar-inner { max-width: 560px; margin: 0 auto; padding: .55rem .75rem; display: flex; align-items: center; gap: .6rem; }
+.brand { display: flex; align-items: center; gap: .5rem; color: var(--ink); text-decoration: none; min-width: 0; }
+.logo { width: 30px; height: 30px; flex: none; stroke: var(--accent); }
+.name { display: flex; flex-direction: column; line-height: 1.2; }
+.title { font-size: 1.15rem; font-weight: 700; }
+.tagline { font-size: .7rem; color: var(--muted); white-space: nowrap; }
+button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; font-size: 1.15rem; line-height: 1; }
+.g-main { max-width: 560px; margin: 0 auto; padding: .7rem .75rem 2rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 1rem 1.05rem; margin: 0 0 .9rem; }
+.message { border-radius: 16px; padding: .6rem .8rem; margin: 0 0 .8rem; font-size: .9rem; }
+.message.bad { background: var(--bad-bg); color: var(--bad); }
+.message.ok { background: var(--ok-bg); color: var(--ok); }
+.message b { font-weight: 700; }
+.message .next { display: block; color: var(--ink); margin-top: .15rem; }
+.progress { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 0 0 .8rem; }
+.progress > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.way-back { margin: 0 0 .3rem; }
+.way-back button { display: inline-flex; align-items: center; min-height: 44px; padding: 0; font-weight: 700; color: var(--link); background: none; border: 0; }
+button.chip-choice { min-height: 44px; padding: .4rem .9rem; border-radius: 999px; }
+button.chip-choice[aria-checked="true"], button.chip-choice[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); font-weight: 700; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.level-badge { font-size: .72rem; font-weight: 700; padding: .05rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted-strong); vertical-align: middle; }
+button.link-button { background: none; border: 0; padding: 0 .2rem; min-height: 44px; color: var(--link); font-weight: 700; box-shadow: none; }
+.beta { display: inline-block; vertical-align: middle; margin-left: .4rem; padding: .05rem .5rem; border-radius: 999px; border: 1px solid var(--amber); color: var(--amber); font-size: .7rem; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
+.text-state { font-size: .75rem; padding: .1rem .55rem; border-radius: 999px; background: var(--soft); color: var(--muted-strong); white-space: nowrap; }
+.text-state.new, .text-state.added { color: var(--link); font-weight: 700; }
+.step-list { list-style: none; margin: .2rem 0 .8rem; padding: 0; display: flex; flex-direction: column; gap: .25rem; }
+.step-list .step { display: flex; align-items: baseline; gap: .5rem; font-size: .9rem; color: var(--muted); }
+.step-list .step.done { color: var(--ink); }
+.step-list .step.now { color: var(--ink); font-weight: 700; }
+.step-list .step-mark { width: 1.3rem; text-align: center; color: var(--link); flex: none; }
+.step-list .step-done { display: block; font-size: .8rem; font-weight: 400; color: var(--muted); }
+label.field { display: block; font-weight: 600; font-size: .9rem; margin: 0 0 .7rem; }
+label.field input, label.field textarea, label.field select { display: block; width: 100%; margin-top: .25rem; font: inherit; font-weight: 400; color: var(--ink); background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: .6rem .75rem; min-height: 44px; }
+label.field textarea { min-height: 7rem; resize: vertical; }
+.field-hint { display: block; font-weight: 400; font-size: .8rem; color: var(--muted); }
+
+/* ---------- sketch parts built from grove's ---------- */
+.skel { background: var(--line); border-radius: 12px; animation: pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: .45; } }
+.skel.line { height: .9rem; margin: .5rem 0; }
+.skel.block { height: 3.2rem; margin: .6rem 0; }
+.row-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+.row-actions > * { flex: 1 1 auto; }
+.ways { display: flex; flex-direction: column; gap: .7rem; }
+@container (min-width: 700px) { .ways { display: grid; grid-template-columns: repeat(3, 1fr); } }
+.way { display: flex; flex-direction: column; gap: .45rem; padding: .85rem .9rem; border-radius: 18px; border: 1px solid var(--line); background: var(--card2); text-align: left; width: 100%; }
+.way h3 { margin: 0; display: flex; align-items: center; gap: .5rem; }
+.way h3 .icon { width: 22px; height: 22px; stroke-width: 2; color: var(--accent); flex: none; }
+.way p { margin: 0; font-size: .9rem; }
+.way .facts { display: flex; flex-wrap: wrap; gap: .3rem .9rem; font-size: .8rem; color: var(--muted-strong); }
+.way .facts span::before { content: '· '; color: var(--muted); }
+.way .facts span:first-child::before { content: ''; }
+.way .underway { font-size: .85rem; background: var(--soft); border-radius: 12px; padding: .35rem .6rem; color: var(--ink); }
+button.way-pick { display: grid; grid-template-columns: 40px 1fr auto; align-items: center; gap: .7rem; text-align: left; padding: .8rem .9rem; border-radius: 18px; background: var(--card2); }
+button.way-pick .icon { width: 28px; height: 28px; stroke-width: 1.8; color: var(--accent); }
+button.way-pick b { display: block; font-size: 1rem; }
+button.way-pick small { display: block; color: var(--muted); font-size: .84rem; line-height: 1.4; }
+button.way-pick .go { color: var(--link); font-size: 1.3rem; font-weight: 700; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 0 0 .9rem; background: var(--card2); }
+.seg button { border: 0; border-radius: 0; background: transparent; padding: .45rem .2rem; font-size: .84rem; line-height: 1.25; min-height: 48px; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-selected="true"] { background: var(--soft); font-weight: 700; color: var(--link); }
+.topic-h { font-size: .95rem; margin: .9rem 0 .3rem; display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+ul.tlist { list-style: none; margin: 0; padding: 0; }
+ul.tlist > li { border-top: 1px solid var(--line); padding: .55rem 0; }
+ul.tlist > li:first-child { border-top: 0; }
+.trow { display: grid; grid-template-columns: 1fr auto; gap: .2rem .6rem; align-items: center; }
+.trow .tt { font-weight: 600; background: none; border: 0; padding: 0; min-height: 40px; text-align: left; color: var(--ink); display: flex; align-items: center; gap: .4rem; }
+.trow .meta { grid-column: 1; display: flex; gap: .35rem; flex-wrap: wrap; font-size: .78rem; color: var(--muted-strong); }
+.trow .meta span { background: var(--soft); border-radius: 999px; padding: 0 .5rem; }
+.trow .add { grid-row: 1 / span 2; grid-column: 2; min-height: 40px; padding: .25rem .8rem; border-radius: 999px; font-size: .85rem; }
+.trow .add.done { border-color: var(--ok); color: var(--ok); background: var(--ok-bg); font-weight: 700; }
+.first-lines { font-size: .95rem; line-height: 1.75; margin: .4rem 0 .3rem; color: var(--ink); }
+.first-lines .fade { color: var(--muted); }
+.preview-in { background: var(--card2); border-radius: 14px; padding: .6rem .75rem; margin-top: .4rem; }
+.sheet-dim { position: absolute; inset: 0; background: var(--backdrop); z-index: 20; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 21; background: var(--card2); border: 1px solid var(--line); border-bottom: 0; border-radius: 26px 26px 0 0; box-shadow: var(--shadow); padding: .4rem 1.05rem 1.2rem; max-width: 560px; margin: 0 auto; }
+@keyframes up { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
+.grabber { width: 44px; height: 5px; border-radius: 999px; background: var(--line); margin: .3rem auto .5rem; }
+.sheet-head { display: flex; justify-content: space-between; align-items: flex-start; gap: .5rem; }
+.sheet-head h2 { margin: 0; font-size: 1.15rem; }
+button.x { min-width: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+button.x .icon { width: 18px; height: 18px; stroke-width: 2.2; }
+.toast { position: absolute; left: .75rem; right: .75rem; bottom: .9rem; z-index: 15; background: var(--banner); color: var(--onbanner); border-radius: 16px; padding: .55rem .6rem .55rem .9rem; display: flex; align-items: center; gap: .6rem; box-shadow: var(--shadow); font-size: .9rem; max-width: 540px; margin: 0 auto; }
+.toast span { flex: 1; min-width: 0; }
+.toast button { background: transparent; border-color: rgba(255,255,255,.35); color: var(--onbanner); min-height: 40px; padding: .2rem .7rem; font-weight: 700; }
+.basket { position: sticky; bottom: 0; margin: .6rem -.75rem -2rem; padding: .7rem .75rem 1rem; background: var(--card); border-top: 1px solid var(--line); display: flex; align-items: center; gap: .7rem; }
+.basket span { flex: 1; font-size: .9rem; }
+.basket button { width: auto; }
+.prompt-box { display: grid; grid-template-columns: 1fr auto; gap: .2rem .7rem; align-items: center; padding: .6rem .75rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card2); margin: 0 0 .5rem; }
+.prompt-box.copied { border-color: var(--ok); }
+.prompt-box b { font-size: .92rem; }
+.prompt-box small { grid-column: 1; color: var(--muted); font-size: .8rem; }
+.prompt-box small.ok { color: var(--ok); font-weight: 700; }
+.prompt-box button { grid-row: 1 / span 2; grid-column: 2; min-height: 40px; padding: .25rem .8rem; border-radius: 999px; font-size: .85rem; }
+.prompt-box.copied button { color: var(--ok); border-color: var(--ok); background: var(--ok-bg); }
+.paste { width: 100%; min-height: 7rem; font: inherit; font-size: .85rem; color: var(--ink); background: var(--card2); border: 1px dashed var(--accent2); border-radius: 14px; padding: .6rem .75rem; margin: .2rem 0 .6rem; }
+.counter { font-size: .78rem; font-weight: 700; color: var(--muted-strong); letter-spacing: .04em; text-transform: uppercase; margin: 0 0 .2rem; }
+.mini-steps { display: flex; gap: .3rem; margin: 0 0 .5rem; }
+.mini-steps i { flex: 1; height: 6px; border-radius: 999px; background: var(--line); }
+.mini-steps i.done { background: var(--accent2); }
+.mini-steps i.now { background: var(--accent); }
+details.donelist { font-size: .86rem; margin: 0 0 .7rem; }
+details.donelist summary { cursor: pointer; color: var(--link); font-weight: 700; min-height: 32px; }
+.nav-row { display: grid; grid-template-columns: auto 1fr; gap: .5rem; margin-top: .8rem; }
+.choice-list { display: flex; flex-direction: column; gap: .4rem; margin: .3rem 0 .6rem; }
+label.choice { display: flex; gap: .6rem; align-items: flex-start; padding: .55rem .75rem; border: 1px solid var(--line); border-radius: 14px; background: var(--card2); cursor: pointer; }
+label.choice.on { border-color: var(--accent); background: var(--soft); }
+label.choice input { margin-top: .3rem; accent-color: var(--accent); width: 1.1rem; height: 1.1rem; flex: none; }
+label.choice small { display: block; color: var(--muted); }
+.tag { font-size: .7rem; font-weight: 700; padding: 0 .45rem; border-radius: 999px; background: var(--soft); color: var(--link); margin-left: .3rem; }
+/* B: checklist rows */
+ol.checklist { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+ol.checklist > li { border-left: 2px solid var(--line); margin-left: .7rem; padding: 0 0 .9rem 1.1rem; position: relative; }
+ol.checklist > li:last-child { border-left-color: transparent; }
+ol.checklist > li::before { position: absolute; left: -.8rem; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; font-size: .78rem; font-weight: 700; background: var(--card2); border: 1px solid var(--line); color: var(--muted); counter-increment: c; content: counter(c); }
+ol.checklist > li.done::before { content: '✓'; background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+ol.checklist > li.now::before { background: var(--accent); border-color: var(--accent); color: var(--onacc); }
+ol.checklist > li.done { border-left-color: var(--ok); }
+.ck-name { font-weight: 700; line-height: 1.5rem; display: flex; justify-content: space-between; gap: .5rem; }
+li.next .ck-name { color: var(--muted); font-weight: 500; }
+.ck-done { font-size: .84rem; color: var(--muted-strong); }
+.ck-body { margin-top: .4rem; }
+/* C: timeline log + pinned next card */
+ul.log { list-style: none; margin: 0 0 .8rem; padding: 0; }
+ul.log li { display: grid; grid-template-columns: 3rem 1.2rem 1fr; gap: .4rem; font-size: .88rem; padding: .3rem 0; align-items: baseline; }
+ul.log .t { color: var(--muted); font-size: .78rem; text-align: right; }
+ul.log .m { color: var(--ok); font-weight: 700; text-align: center; }
+ul.log li.who-grove .m { color: var(--link); }
+ul.log li.bad .m { color: var(--bad); }
+.next-card { border: 1px solid var(--accent); border-radius: 20px; background: var(--card); padding: .9rem 1rem; box-shadow: var(--glow); }
+.next-card .counter { color: var(--link); }
+.under-card { border-radius: 18px; background: var(--soft); padding: .7rem .85rem; margin: 0 0 .9rem; }
+.under-card h2 { font-size: .95rem; margin: 0 0 .3rem; }
+.under-card ul { list-style: none; margin: 0; padding: 0; }
+.under-card li { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .3rem 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.under-card li:first-of-type { border-top: 0; }
+.under-card li button { min-height: 38px; padding: .2rem .7rem; font-size: .84rem; border-radius: 999px; flex: none; }
+.big-done { text-align: center; padding: .6rem 0 .2rem; }
+.big-done .ring { width: 56px; height: 56px; border-radius: 50%; background: var(--ok-bg); color: var(--ok); display: grid; place-items: center; margin: 0 auto .5rem; font-size: 1.6rem; font-weight: 700; }
+.known { display: flex; align-items: center; gap: .6rem; font-size: .88rem; margin: .3rem 0 .6rem; }
+.known .progress { flex: 1; margin: 0; }
+.wordrow { display: flex; justify-content: space-between; gap: .5rem; font-size: .9rem; border-top: 1px solid var(--line); padding: .3rem 0; }
+.wordrow:first-child { border-top: 0; }
+.wordrow em { font-style: normal; color: var(--muted); }
+@container (min-width: 700px) {
+  .g-main { max-width: 900px; }
+  .two { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.2rem; align-items: start; }
+  .two > .side { position: sticky; top: 4.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="sk-wrap">
+  <header class="sk-head">
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <h1>Sketch: Adding texts</h1>
+    <ul class="sk-brief">
+      <li><b>For:</b> getting a Swedish text into Your library, all three ways (question-pages/91, 1).</li>
+      <li><b>Screens:</b> Add a text → From the common library (pick, preview, added) → Texts from your AI (the wizard) → Your own text (paste, the one AI check of its new words) → Added (what happened, what's next).</li>
+      <li><b>Open:</b> how the three ways are laid out (A, B, C), and how each step says what has happened and what comes next.</li>
+    </ul>
+    <div class="sk-notes">
+      <div class="sk-note"><b>B-05, B-07</b> "Adding a text either by AI or one of your own should both have explainers, also they should sit on their own pages." <b>B-10</b> A third way: from the common library.</div>
+      <div class="sk-note"><b>B-06, B-08, B-09</b> The AI way "should work more like a wizard"; "very confusing indeed… hard to get confirmation on what has already happened and what is happening".</div>
+      <div class="sk-note"><b>B-16</b> A preview when adding from the library, without losing your place. <b>B-15, B-20, B-23</b> From a session's offer: Add a text with only the kinds the session needs (not shown here; the fill bars stay as built).</div>
+    </div>
+    <details class="sk-settles">
+      <summary>Questions this sketch settles, and what's broken today</summary>
+      <ul>
+        <li>One Add a text page holding all three ways, or a chooser leading to separate pages (FR-909, FR-918).</li>
+        <li>How the AI wizard shows done, now and next, and confirms every action (FR-919, B-09).</li>
+        <li>How a library text is previewed and added without leaving the list (FR-916, B-16).</li>
+        <li>How Your own text goes from paste, through the one AI check, to reading (G-03 FR-318, FR-321).</li>
+      </ul>
+      <p style="margin:.6rem 0 .2rem"><b>Found in today's build</b> (walked at 390 px, 2026-10-31):</p>
+      <ol class="small">
+        <li>Texts from your AI: pasting an answer grove can't read leaves "Reading the answer…" on screen for good (a script error); no fix-it prompt appears, and the next paste says "This part is already added", which is wrong.</li>
+        <li>Coming back to the wizard after that shows "Fix-it prompt (part 1 of 3)" with no word of what failed, and the step list has lost "Send the setup".</li>
+        <li>The step list grows a step (Send the setup) only after Get texts, so the steps you see first aren't the real ones.</li>
+        <li>"Package: 0 of 3 parts in", "Version", the three ways of asking: words the learner has to guess at. The AI and Version menus are squeezed onto one line.</li>
+        <li>From the common library opens a page whose link says "‹ Home", so there's no way back to Add a text. The level filter says A1 for an A2 learner.</li>
+        <li>Tapping a library title leaves the list for the reading page (B-16 still open); after + Add, only a line at the top of the list says so.</li>
+        <li>Your own text: Save text jumps straight to the reading page with no "Saved", shows "How much did you understand?" before the text can be read, and ends in "Back to Home" while the top link says "‹ Your library".</li>
+        <li>The own text's AI check isn't explained as a step (what it is, how long, what comes after), and "waiting for your AI" in the list doesn't say what to do.</li>
+      </ol>
+      <p class="small muted">Example data: made up for this sketch. The learner is at A2, uses free ChatGPT, topic "Ett litet kafé". Nothing you tap is saved.</p>
+    </details>
+  </header>
+
+  <div class="sk-controls" id="controls">
+    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Screen"><span class="sk-row-label">Screen</span>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="add">1 Add a text</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="library">2 Common library</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="ai">3 Your AI</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="own">4 Your own text</button>
+      <button type="button" class="sk-tab" role="tab" data-act="nav" data-screen="done">5 Added</button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="normal">Normal</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="empty">Empty</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="error">Error</button>
+      <button type="button" class="sk-tab" role="tab" data-act="state" data-s="loading">Loading</button>
+    </div>
+    <div class="sk-row"><span class="sk-row-label">View</span>
+      <button type="button" class="sk-tab" data-act="width" data-w="phone">Phone</button>
+      <button type="button" class="sk-tab" data-act="width" data-w="desktop">Desktop</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+      <span style="width:.6rem"></span>
+      <button type="button" class="sk-tab" data-act="restart">Start over</button>
+    </div>
+    <p class="sk-vdesc" id="vdesc"></p>
+  </div>
+
+  <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+
+  <section class="sk-answers" id="answers">
+    <h2>Your pick</h2>
+    <fieldset id="pick">
+      <legend>Which version should the spec be written from?</legend>
+      <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Chooser, then a page per way <small>Each way on its own page; the AI and own-text pages one step per screen with a progress bar and a "done so far" list.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-B" value="B"><span><b>B</b> One page, three tabs <small>Everything stays on Add a text; the wizard is a numbered checklist where each done step says what happened.</small></span></label>
+      <label class="opt"><input type="radio" name="pick" id="pick-C" value="C"><span><b>C</b> What's going on, then what's next <small>Add a text opens with what's under way; each way is a log of what has happened with one "Next" card.</small></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>Comments in your own words</legend>
+      <label class="c" for="comment-A">On A</label><textarea id="comment-A"></textarea>
+      <label class="c" for="comment-B">On B</label><textarea id="comment-B"></textarea>
+      <label class="c" for="comment-C">On C</label><textarea id="comment-C"></textarea>
+    </fieldset>
+
+    <h2>Questions the sketch raises</h2>
+    <p class="small muted">Leave any blank and it takes the default.</p>
+    <div id="questions"></div>
+  </section>
+</div>
+
+<script>
+(function () {
+'use strict';
+
+/* ---------- Icons (paths from public/assets/icons.mjs, plus a few sketch-only ones) ---------- */
+const PATHS = {
+  common: ['M4 20h16', 'M5 20V8', 'M9 20V6', 'M13 20V9', 'M16 20l2-12 3 .6-2 11.4'],
+  yours: ['M6 3h12v18l-6-4-6 4z', 'M10 9h4'],
+  ai: ['M4 5h16v11H9l-5 4z', 'M8 10h.01', 'M12 10h.01', 'M16 10h.01'],
+  own: ['M5 4h10l4 4v12H5z', 'M15 4v4h4', 'M8 13h8', 'M8 17h5'],
+  close: ['M6 6l12 12', 'M18 6L6 18'],
+  reading: ['M4 5c3-1.5 5.5-1.5 8 0v15c-2.5-1.5-5-1.5-8 0z', 'M12 5c2.5-1.5 5-1.5 8 0v15c-3-1.5-5.5-1.5-8 0'],
+  listening: ['M4 16v-4a8 8 0 0 1 16 0v4', 'M4 15h3v5H4z', 'M17 15h3v5h-3z'],
+};
+const ic = (name, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${(PATHS[name] || []).map((d) => `<path d="${d}"/>`).join('')}</svg>`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const LOGO = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+
+/* ---------- Made-up example data (A2 learner, free ChatGPT, topic "Ett litet kafé") ---------- */
+const LIB = [
+  { topic: 'Daily life', texts: [
+    { id: 'l1', title: 'Bussen är sen', kind: 'reading', level: 'A2', min: 2, lines: ['Det regnar i Malmö.', 'Amira står vid busshållplatsen och väntar.', 'Bussen skulle komma kvart över sju.', 'Nu är klockan tjugo över.'] },
+    { id: 'l2', title: 'Ett samtal om tvättstugan', kind: 'listening', level: 'A2', min: 2, lines: ['– Hej, är det du som har bokat tvättstugan i dag?', '– Ja, från tre till sex.', '– Jag glömde min tröja där i går.'] },
+  ] },
+  { topic: 'Food and drink', texts: [
+    { id: 'l3', title: 'Fika med Lina', kind: 'reading', level: 'A2', min: 2, lines: ['Lina och Jonas träffas på ett kafé efter jobbet.', 'Hon tar en kopp te och en kanelbulle.', 'Jonas vill bara ha kaffe.', '"Du måste smaka", säger Lina.'] },
+    { id: 'l4', title: 'Vi handlar till middagen', kind: 'reading', level: 'A1', min: 1, lines: ['Vi behöver mjölk, ägg och potatis.', 'Pappa skriver en lista.', 'Affären stänger klockan nio.'] },
+  ] },
+  { topic: 'Travel and transport', texts: [
+    { id: 'l5', title: 'Tåget till Umeå', kind: 'listening', level: 'A2', min: 3, lines: ['– Nästa station är Sundsvall.', '– Tåget är tio minuter försenat.', '– Vi ber om ursäkt.'] },
+  ] },
+];
+const AI_TEXTS = [
+  { title: 'Kaffe och kanelbulle', kind: 'reading', min: 2 },
+  { title: 'Ny på jobbet', kind: 'reading', min: 2 },
+  { title: 'Samtal i kassan', kind: 'listening', min: 1 },
+];
+const OWN = { title: 'Hösten i Uppsala', text: 'Hösten kom tidigt i år. Löven på träden blev gula och röda redan i september. Varje morgon cyklar Sara till jobbet längs ån. Hon fryser om händerna, men hon tycker om den klara luften.', words: 34, newWords: [['löv', 'leaf'], ['å', 'small river'], ['frysa', 'be cold'], ['klar', 'clear'], ['luft', 'air'], ['tidigt', 'early']] };
+const ALL_TEXTS = LIB.flatMap((g) => g.texts.map((t) => ({ ...t, topic: g.topic })));
+
+const VERSIONS = {
+  A: 'A · Chooser, then a page per way (B-05, B-07 as said). Add a text is three big choices with a line each; each way opens its own page with "‹ Add a text". The library previews a text in a sheet over the list. The AI way and Your own text go one step per screen: "Step 3 of 5", a bar, a "Done so far" list, a green line after every action saying what happened and what to do next, Back and one main button.',
+  B: 'B · One page, three tabs. Add a text keeps all three ways on one page, switched by tabs at the top; each tab starts with its explainer. Library previews open in place under the row. The wizard is a numbered checklist on the page: done steps stay visible with what happened ("Copied 2 setup messages · ChatGPT said OK"), the current step is open, the next ones are greyed.',
+  C: 'C · What\'s going on, then what\'s next. Add a text opens with anything under way (a part waiting for your AI\'s answer, an own text waiting for its check), then the three ways. Each way is a short log of what has happened, with times, and one "Next" card with the one thing to do now. The library collects added texts in a bar at the bottom with Done.',
+};
+const SCREEN_TITLE = { add: 'Add a text', library: 'Common library', ai: 'Texts from your AI', own: 'Your own text', done: 'Added' };
+
+/* ---------- State (nothing is saved) ---------- */
+const fresh = () => ({
+  version: 'A', screen: 'add', state: 'normal', width: 'phone', theme: 'auto',
+  tab: 'library', last: 'ai', toast: null,
+  lib: { added: [], preview: null, level: 'A2', kind: 'all' },
+  ai: { step: 1, family: 'ChatGPT', product: 'Free', tactic: 'steps', setup: [false, false], reqCopied: false, pasted: false, log: [['14:02', 'You chose ChatGPT (free). grove will ask it step by step.', 'you']] },
+  own: { step: 0, title: '', text: '', checkCopied: false, log: [] },
+});
+let S = fresh();
+S.ai.step = 1;
+const keep = (o) => ({ version: o.version, width: o.width, theme: o.theme, state: o.state });
+let clock = 2;
+const now = () => `14:${String(clock++).padStart(2, '0')}`;
+
+/* ---------- Shared bits ---------- */
+const topbar = () => `<header class="topbar"><div class="topbar-inner"><span class="brand">${LOGO}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu (not part of this sketch)">☰</button></div></header>`;
+const wayBack = (label, act, extra = '') => `<p class="way-back"><button type="button" data-act="${act}"${extra}>‹ ${esc(label)}</button></p>`;
+const skel = (n = 4) => `<div class="card"><div class="skel line" style="width:50%"></div><div class="skel line" style="width:80%"></div>${'<div class="skel block"></div>'.repeat(n)}</div>`;
+const errMsg = (what, act = 'retry') => `<div class="message bad" role="alert">${what}<div class="row-actions"><button type="button" data-act="${act}">Try again</button></div></div>`;
+const ok = (what, next) => `<p class="message ok" role="status"><b>${what}</b>${next ? `<span class="next">${next}</span>` : ''}</p>`;
+const kindChip = (t) => `<span>${t.kind === 'reading' ? '📖 reading' : '🎧 listening'} · ${t.min} min</span>`;
+const firstLines = (t, n = 3) => `<p class="first-lines">${t.lines.slice(0, n).map(esc).join(' ')} <span class="fade">…</span></p>`;
+const isAdded = (id) => S.lib.added.includes(id);
+
+/* ---------- Screen 1: Add a text ---------- */
+const WAYS = [
+  { id: 'library', icon: 'common', name: 'From the common library', line: 'Texts grove has written, by topic and level. Pick one and it\'s in your library at once.', facts: ['Ready now', 'A1 to C2', 'Free'], go: 'Choose a text' },
+  { id: 'ai', icon: 'ai', name: 'Texts from your AI', beta: true, line: 'grove writes a request for you to paste into a free AI chat (ChatGPT, Claude, Gemini…). You paste its answer back; grove checks it and adds 3 texts on your topic, mostly in words you know.', facts: ['About 5 minutes', '3 texts each time', 'Your topic'], go: 'Get texts from your AI' },
+  { id: 'own', icon: 'own', name: 'Your own text', beta: true, line: 'Paste a Swedish text you like, such as an article or a song. Your AI explains its new words once, then you read it like any other text. Only you see it.', facts: ['About 3 minutes', 'Reading only', 'Private'], go: 'Add your own text' },
+];
+function underWay() {
+  const items = [];
+  if (S.ai.step > 1 && S.ai.step < 4) items.push(['ai', `Texts from your AI: ${AI_STEP_NAMES[S.ai.step].toLowerCase()} (step ${S.ai.step + 1} of 5)`]);
+  if (S.own.step === 1) items.push(['own', `"${S.own.title || OWN.title}" is waiting for your AI's check`]);
+  if (S.state === 'normal' && !items.length && S.version === 'C') items.push(['ai', 'Texts from your AI: part 1 of 3 waiting for ChatGPT\'s answer (since 14:05)']);
+  return items;
+}
+function addScreen() {
+  if (S.state === 'loading') return `<div class="g-main">${wayBack('Your library', 'noop')}${skel(3)}</div>`;
+  let h = `<div class="g-main">${wayBack('Your library', 'noop')}`;
+  if (S.state === 'error') h += errMsg('grove couldn\'t load what you have under way. The three ways still work.');
+  if (S.version === 'B') return h + tabbedAdd() + '</div>';
+  h += `<h1 style="font-size:1.25rem">Add a text</h1><p class="muted">Three ways to get Swedish texts into your library.</p>`;
+  if (S.version === 'C') {
+    const items = S.state === 'empty' ? [] : underWay();
+    if (items.length) h += `<section class="under-card"><h2>Under way</h2><ul>${items.map(([w, line]) => `<li><span>${esc(line)}</span><button type="button" data-act="go" data-to="${w}">Continue</button></li>`).join('')}</ul></section>`;
+    else if (S.state === 'empty') h += `<p class="small muted">Nothing under way. Pick a way below; grove remembers where you got to if you leave.</p>`;
+  }
+  if (S.version === 'A') {
+    h += `<div class="ways">${WAYS.map((w) => `<button type="button" class="way-pick" data-act="go" data-to="${w.id}">${ic(w.icon)}<span><b>${w.name}${w.beta ? '<span class="beta">Beta</span>' : ''}</b><small>${w.line}</small><small style="color:var(--muted-strong);margin-top:.2rem">${w.facts.join(' · ')}</small>${S.state === 'normal' && w.id === 'ai' && S.ai.step > 1 && S.ai.step < 4 ? `<small style="color:var(--link);font-weight:700;margin-top:.2rem">Under way: step ${S.ai.step + 1} of 5</small>` : ''}</span><span class="go" aria-hidden="true">›</span></button>`).join('')}</div>`;
+  } else {
+    h += `<div class="ways">${WAYS.map((w) => `<section class="way"><h3>${ic(w.icon)}${w.name}${w.beta ? '<span class="beta">Beta</span>' : ''}</h3><p>${w.line}</p><p class="facts">${w.facts.map((f) => `<span>${f}</span>`).join('')}</p><button type="button" class="main" data-act="go" data-to="${w.id}">${w.go}</button></section>`).join('')}</div>`;
+  }
+  return h + '</div>';
+}
+function tabbedAdd() {
+  const tabs = [['library', 'Common<br>library'], ['ai', 'From<br>your AI'], ['own', 'Your<br>own text']];
+  let h = `<h1 style="font-size:1.25rem;margin-bottom:.5rem">Add a text</h1><div class="seg" role="tablist">${tabs.map(([id, l]) => `<button type="button" role="tab" aria-selected="${S.tab === id}" data-act="tab" data-id="${id}">${l}</button>`).join('')}</div>`;
+  const w = WAYS.find((x) => x.id === S.tab);
+  h += `<p class="small muted" style="margin:-.2rem 0 .7rem">${w.line} <span style="color:var(--muted-strong)">${w.facts.join(' · ')}</span></p>`;
+  if (S.state === 'loading' || S.state === 'error') return h;
+  if (S.tab === 'library') h += libraryBody();
+  if (S.tab === 'ai') h += aiBody();
+  if (S.tab === 'own') h += ownBody();
+  return h;
+}
+
+/* ---------- Screen 2: Common library (pick, preview, added) ---------- */
+function libraryScreen() {
+  if (S.version === 'B') { S.tab = 'library'; return addScreen(); }
+  if (S.state === 'loading') return `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}${skel(5)}</div>`;
+  let h = `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}<h1 style="font-size:1.25rem">Common library</h1>`;
+  h += libraryBody();
+  h += '</div>';
+  if (S.version === 'A' && S.lib.preview) h += previewSheet();
+  return h;
+}
+function libFilters() {
+  const levels = ['A1', 'A2', 'B1'].map((l) => `<button type="button" class="chip-choice" role="radio" aria-checked="${S.lib.level === l}" data-act="level" data-l="${l}">up to ${l}</button>`).join('');
+  return `<div class="chips" role="radiogroup" aria-label="Levels" style="margin:.2rem 0 .3rem">${levels}</div><p class="small muted" style="margin:0 0 .3rem">Your level is A2, so texts up to A2 show first.</p>`;
+}
+function libraryBody() {
+  let h = '';
+  if (S.state === 'error') h += errMsg('"Fika med Lina" wasn\'t added: grove couldn\'t reach the server. Nothing changed in your library.', 'retry');
+  if (S.version !== 'B') h += libFilters();
+  if (S.state === 'empty') return h + `<div class="card" style="margin-top:.6rem"><p style="margin:0 0 .4rem"><b>You have added every text up to A2.</b></p><p class="muted small">Try a level up, or get texts on your own topic from your AI.</p><div class="row-actions"><button type="button" data-act="level" data-l="B1">Show B1 texts</button><button type="button" data-act="go" data-to="ai">Texts from your AI</button></div></div>`;
+  for (const g of LIB) {
+    h += `<h2 class="topic-h">${g.topic}</h2><ul class="tlist">`;
+    for (const t of g.texts) {
+      const added = isAdded(t.id);
+      const open = S.lib.preview === t.id;
+      const addBtn = added ? `<button type="button" class="add done" data-act="read" data-id="${t.id}" aria-label="Added. Read ${esc(t.title)}">Added ✓</button>` : `<button type="button" class="add" data-act="add" data-id="${t.id}" aria-label="Add ${esc(t.title)}">+ Add</button>`;
+      h += `<li><div class="trow"><button type="button" class="tt" data-act="preview" data-id="${t.id}" aria-expanded="${open}">${esc(t.title)}${S.version === 'B' ? `<span class="small muted">${open ? '▴' : '▾'}</span>` : ''}</button>${addBtn}<span class="meta"><span>${t.level}</span>${kindChip(t)}</span></div>`;
+      if (S.version === 'C') h += `<p class="first-lines small" style="margin:.2rem 0 0;font-size:.88rem">${esc(t.lines[0])} <span class="fade">…</span></p>`;
+      if (S.version === 'B' && open) h += `<div class="preview-in">${firstLines(t)}<div class="row-actions">${added ? '<button type="button" data-act="read" data-id="' + t.id + '">Read it now</button>' : `<button type="button" class="main" data-act="add" data-id="${t.id}">+ Add to your library</button>`}</div></div>`;
+      h += '</li>';
+    }
+    h += '</ul>';
+  }
+  if (S.version === 'C' && S.lib.added.length) {
+    h += `<div class="basket"><span><b>${S.lib.added.length} added</b> to Your library</span><button type="button" class="main" data-act="lib-done">Done</button></div>`;
+  }
+  if (S.version !== 'C' && S.toast) h += `<div class="toast" role="status"><span>${esc(S.toast)}</span><button type="button" data-act="read" data-id="${S.lib.added[S.lib.added.length - 1]}">Read now</button></div>`;
+  return h;
+}
+function previewSheet() {
+  const t = ALL_TEXTS.find((x) => x.id === S.lib.preview);
+  const added = isAdded(t.id);
+  return `<div class="sheet-dim" data-act="close-preview"></div><section class="sheet" role="dialog" aria-labelledby="pv-title"><div class="grabber"></div>
+    <div class="sheet-head"><div><p class="counter">${esc(t.topic)}</p><h2 id="pv-title">${esc(t.title)}</h2></div><button type="button" class="x" data-act="close-preview" aria-label="Close">${ic('close')}</button></div>
+    <p class="small" style="margin:.3rem 0 0;color:var(--muted-strong)">${t.level} · ${t.kind} · about ${t.min} min · ${t.lines.length * 7} words</p>
+    ${firstLines(t)}
+    ${added ? ok(`"${esc(t.title)}" is in your library.`, 'Read it now, or close this and pick another.') + '<div class="row-actions"><button type="button" class="main" data-act="read" data-id="' + t.id + '">Read it now</button><button type="button" data-act="close-preview">Back to the list</button></div>'
+      : `<button type="button" class="main" data-act="add" data-id="${t.id}">+ Add to your library</button><p class="small muted" style="margin:.5rem 0 0">You stay here; close the preview to keep picking.</p>`}
+  </section>`;
+}
+
+/* ---------- Screen 3: Texts from your AI (the wizard) ---------- */
+const AI_STEP_NAMES = ['Choose your AI', 'Start a new chat and send the setup', 'Ask for part 1 of 3', 'Paste ChatGPT\'s answer', 'Texts added'];
+const AI_SHORT = ['Your AI', 'Setup', 'Request', 'Answer', 'Added'];
+function aiDoneLine(i) {
+  return [
+    `${S.ai.family} (${S.ai.product.toLowerCase()}), step by step · topic: Ett litet kafé`,
+    'New chat · 2 setup messages sent · ChatGPT said OK',
+    'Request copied into the same chat',
+    'Answer read: 3 texts, all fine',
+    '',
+  ][i];
+}
+function aiStepBody(i) {
+  const errorHere = S.state === 'error' && i === 3;
+  if (i === 0) {
+    const fam = ['ChatGPT', 'Claude', 'Gemini', 'Copilot', 'Le Chat', 'Another'];
+    const empty = S.state === 'empty';
+    return `<p class="small muted" style="margin:0 0 .3rem">Which AI chat will you use? Any free one works.</p>
+      <div class="chips" role="radiogroup" aria-label="Your AI">${fam.map((f) => `<button type="button" class="chip-choice" role="radio" aria-checked="${!empty && S.ai.family === f}" data-act="family" data-f="${f}">${f}</button>`).join('')}</div>
+      <p class="small" style="margin:.6rem 0 .3rem"><b>Free or paid?</b></p>
+      <div class="chips">${['Free', 'Paid (Plus, Pro…)'].map((p) => `<button type="button" class="chip-choice" role="radio" aria-checked="${!empty && S.ai.product === p.split(' ')[0]}" data-act="product" data-p="${p.split(' ')[0]}">${p}</button>`).join('')}</div>
+      <details style="margin:.7rem 0 .2rem"><summary class="small" style="cursor:pointer;color:var(--link);font-weight:700;min-height:32px">How grove asks ${empty ? 'your AI' : S.ai.family}: step by step <span class="tag">Best for free ${empty ? 'AIs' : S.ai.family}</span></summary>
+        <div class="choice-list">${[['steps', 'Step by step', 'A short setup once, then one part at a time.', true], ['long', 'One long prompt', 'Everything in each request; no setup. Good when the AI forgets.'], ['whole', 'All at once', 'All three parts in one answer. For paid AIs.']].map(([v, n, l, rec]) => `<label class="choice${S.ai.tactic === v ? ' on' : ''}"><input type="radio" name="tactic" data-act="tactic" data-t="${v}"${S.ai.tactic === v ? ' checked' : ''}><span><b>${n}</b>${rec ? '<span class="tag">Recommended</span>' : ''}<small>${l}</small></span></label>`).join('')}</div></details>
+      <p class="small" style="margin:.4rem 0 .6rem">Topic: <b>Ett litet kafé</b> <button type="button" class="link-button" data-act="noop">Change</button></p>
+      <button type="button" class="main" data-act="ai-next"${empty ? ' disabled' : ''}>Next: start a new chat</button>${empty ? '<p class="small muted" style="margin:.4rem 0 0">Choose your AI first.</p>' : ''}`;
+  }
+  if (i === 1) {
+    const [a, b] = S.ai.setup;
+    const box = (n, done) => `<div class="prompt-box${done ? ' copied' : ''}"><b>Setup message ${n} of 2</b>${done ? `<small class="ok">✓ Copied. Paste it into the new chat and send it.</small>` : `<small>${n === 1 ? 'The rules and the answer format' : 'The 480 Swedish words you know'}</small>`}<button type="button" data-act="copy-setup" data-n="${n - 1}">${done ? 'Copy again' : 'Copy'}</button></div>`;
+    return `<p style="margin:0 0 .5rem">Open <b>a new chat</b> in ChatGPT. Send these two messages one at a time; ChatGPT answers "OK" to each.</p>${box(1, a)}${box(2, b)}
+      <button type="button" class="main" data-act="ai-next"${a && b ? '' : ' disabled'}>ChatGPT said OK to both</button>${a && b ? '' : '<p class="small muted" style="margin:.4rem 0 0">Copy both messages first.</p>'}`;
+  }
+  if (i === 2) {
+    const c = S.ai.reqCopied;
+    return `<p style="margin:0 0 .5rem">In the <b>same chat</b>, send this request. It asks for 2 reading texts and 1 listening text about Ett litet kafé, mostly in words you know.</p>
+      <div class="prompt-box${c ? ' copied' : ''}"><b>Request for part 1 of 3</b>${c ? '<small class="ok">✓ Copied. Paste it into ChatGPT and wait for the whole answer.</small>' : '<small>About 2,000 characters</small>'}<button type="button" data-act="copy-req">${c ? 'Copy again' : 'Copy'}</button></div>
+      <button type="button" class="main" data-act="ai-next"${c ? '' : ' disabled'}>ChatGPT has answered</button>
+      <p class="small muted" style="margin:.4rem 0 0">ChatGPT usually takes about a minute.</p>`;
+  }
+  if (i === 3) {
+    if (S.state === 'loading') return `<p style="margin:0 0 .4rem"><b>Reading ChatGPT's answer…</b></p><p class="small muted">Checking 3 texts: the format, then the new words in each. This takes a few seconds; don't close the page.</p><div class="progress"><span style="width:55%"></span></div>`;
+    let h = '';
+    if (errorHere) h += `<div class="message bad" role="alert"><b>grove couldn't use this answer: it stops in the middle of the second text.</b><span class="next" style="color:var(--ink)">Nothing was added. ChatGPT may have hit its length limit. Copy the fix-it request into the same chat, then paste its new answer here.</span></div>
+      <div class="prompt-box"><b>Fix-it request</b><small>Asks ChatGPT for the whole answer again</small><button type="button" data-act="noop">Copy</button></div>`;
+    h += `<p style="margin:0 0 .3rem">Copy ChatGPT's <b>whole answer</b> (the copy button under it) and paste it here.</p>
+      <textarea class="paste" aria-label="ChatGPT's answer" placeholder="Paste the answer here">${S.ai.pasted ? 'Here are your texts!\n```json\n{ "part": "KAFE-1", "texts": [ { "kind": "reading", "title": "Kaffe och kanelbulle", …' : ''}</textarea>
+      <button type="button" class="main" data-act="ai-paste">Add the texts</button>`;
+    return h;
+  }
+  return `<p style="margin:0 0 .4rem"><b>3 texts are in your library</b>, under "Ett litet kafé":</p><ul class="tlist">${AI_TEXTS.map((t) => `<li><div class="trow"><button type="button" class="tt" data-act="noop">${esc(t.title)}</button><span class="text-state new">new</span><span class="meta">${kindChip(t)}</span></div></li>`).join('')}</ul>
+    <p class="small muted" style="margin:.5rem 0">That was part 1 of 3. Parts 2 and 3 come from the same chat, when you want them.</p>
+    <div class="row-actions"><button type="button" class="main" data-act="noop">Read "Kaffe och kanelbulle"</button><button type="button" data-act="ai-part2">Ask for part 2</button></div>`;
+}
+function aiScreen() {
+  if (S.version === 'B') { S.tab = 'ai'; return addScreen(); }
+  if (S.state === 'loading' && S.ai.step !== 3) return `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}${skel(3)}</div>`;
+  let h = `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}<h1 style="font-size:1.2rem">Texts from your AI<span class="beta">Beta</span></h1>`;
+  h += aiBody();
+  return h + '</div>';
+}
+function aiBody() {
+  const st = S.state === 'empty' ? 0 : (S.state === 'error' || S.state === 'loading') ? 3 : S.ai.step;
+  if (S.version === 'A') {
+    let h = `<p class="counter">Step ${st + 1} of 5</p><div class="mini-steps" aria-hidden="true">${AI_SHORT.map((_, i) => `<i class="${i < st ? 'done' : i === st ? 'now' : ''}"></i>`).join('')}</div>`;
+    if (st > 0) h += `<details class="donelist"><summary>Done so far (${st})</summary><ol class="step-list" style="margin-top:.3rem">${AI_STEP_NAMES.slice(0, st).map((n, i) => `<li class="step done"><span class="step-mark">✓</span><span>${n}<span class="step-done">${aiDoneLine(i)}</span></span></li>`).join('')}</ol></details>`;
+    if (S.toast && S.state === 'normal') h += ok(S.toast[0], S.toast[1]);
+    h += `<section class="card"><h2>${AI_STEP_NAMES[st]}</h2>${aiStepBody(st)}</section>`;
+    if (st > 0 && st < 4) h += `<button type="button" data-act="ai-back">‹ Back: ${AI_STEP_NAMES[st - 1].toLowerCase()}</button>`;
+    return h;
+  }
+  if (S.version === 'B') {
+    let h = '';
+    if (S.toast && S.state === 'normal') h += ok(S.toast[0], S.toast[1]);
+    h += `<ol class="checklist">${AI_STEP_NAMES.map((n, i) => {
+      const cls = i < st ? 'done' : i === st ? 'now' : 'next';
+      return `<li class="${cls}"><div class="ck-name"><span>${n}</span>${i < st && i < 4 ? `<button type="button" class="link-button" style="min-height:24px;font-size:.82rem" data-act="ai-goto" data-i="${i}">Redo</button>` : ''}</div>${i < st ? `<div class="ck-done">${aiDoneLine(i)}</div>` : ''}${i === st ? `<div class="ck-body">${aiStepBody(i)}</div>` : ''}</li>`;
+    }).join('')}</ol>`;
+    return h;
+  }
+  // C: log + next card
+  const log = S.state === 'empty' ? [] : S.ai.log;
+  let h = '';
+  if (log.length) h += `<h2 style="font-size:.9rem;color:var(--muted-strong);margin:.2rem 0 .3rem">What has happened</h2><ul class="log">${log.map(([t, m, who]) => `<li class="who-${who}"><span class="t">${t}</span><span class="m">${who === 'bad' ? '!' : '✓'}</span><span>${esc(m)}</span></li>`).join('')}${S.state === 'error' ? `<li class="bad"><span class="t">14:25</span><span class="m">!</span><span>grove couldn't use the answer; nothing was added.</span></li>` : ''}</ul>`;
+  else h += `<p class="muted small">Nothing yet. Five short steps; grove keeps track of where you are, so you can leave and come back.</p>`;
+  h += `<section class="next-card"><p class="counter">Next · ${st + 1} of 5</p><h2>${AI_STEP_NAMES[st]}</h2>${aiStepBody(st)}</section>`;
+  if (st > 0 && st < 4) h += `<p style="margin-top:.6rem"><button type="button" class="link-button" data-act="ai-back">‹ Back a step</button></p>`;
+  return h;
+}
+
+/* ---------- Screen 4: Your own text (paste, the one AI check, then read) ---------- */
+const OWN_STEPS = ['Paste your text', 'Your AI explains its new words', 'Read it'];
+function ownStepBody(i) {
+  if (i === 0) {
+    const empty = S.state === 'empty';
+    const t = empty ? '' : (S.own.title || OWN.title); const x = empty ? '' : (S.own.text || OWN.text);
+    return `<label class="field" for="own-title">Title<input id="own-title" value="${esc(t)}" maxlength="120"></label>
+      <label class="field" for="own-text">Swedish text<span class="field-hint">Up to 20,000 characters. A news article, a song, a page from a book.</span><textarea id="own-text">${esc(x)}</textarea></label>
+      ${empty ? '' : `<p class="small muted" style="margin:-.3rem 0 .6rem">${OWN.words} words · about 6 new to you</p>`}
+      <button type="button" class="main" data-act="own-save"${empty ? ' disabled' : ''}>Save and go on</button>${empty ? '<p class="small muted" style="margin:.4rem 0 0">Paste a title and a text first.</p>' : ''}`;
+  }
+  if (i === 1) {
+    if (S.state === 'loading') return `<p><b>Reading your AI's answer…</b></p><p class="small muted">Checking that every new word has a meaning.</p><div class="progress"><span style="width:60%"></span></div>`;
+    let h = '';
+    if (S.state === 'error') h += `<div class="message bad" role="alert"><b>2 words have no meaning yet: "klara", "luften".</b><span class="next" style="color:var(--ink)">The rest is kept. Copy the short follow-up into the same chat and paste its answer.</span></div><div class="prompt-box"><b>Follow-up for 2 words</b><small>Same chat</small><button type="button" data-act="noop">Copy</button></div>`;
+    const c = S.own.checkCopied;
+    h += `<p style="margin:0 0 .5rem">Your text is saved. Before you read it, your AI gives the meaning of each word you haven't met, and says if the text looks copyrighted. This happens once.</p>
+      <div class="prompt-box${c ? ' copied' : ''}"><b>Word check for "${esc(S.own.title || OWN.title)}"</b>${c ? '<small class="ok">✓ Copied. Paste it into any AI chat and wait for the answer.</small>' : '<small>Any chat, new or old</small>'}<button type="button" data-act="own-copy">${c ? 'Copy again' : 'Copy'}</button></div>
+      <textarea class="paste" aria-label="Your AI's answer" placeholder="Then paste your AI's whole answer here"${c ? '' : ' disabled'}></textarea>
+      <button type="button" class="main" data-act="own-check"${c ? '' : ' disabled'}>Add the meanings</button>`;
+    return h;
+  }
+  return ownReady();
+}
+function ownReady() {
+  return `<div class="known"><span>82% known</span><div class="progress"><span style="width:82%"></span></div></div>
+    <p class="small muted" style="margin:0 0 .4rem">A little harder than your usual texts. Your AI thinks it is free to use.</p>
+    <div style="margin:.2rem 0 .7rem">${OWN.newWords.map(([sv, en]) => `<div class="wordrow"><b>${sv}</b><em>${en}</em></div>`).join('')}</div>
+    <div class="row-actions"><button type="button" class="main" data-act="go" data-to="done">Read "${esc(S.own.title || OWN.title)}"</button></div>`;
+}
+function ownScreen() {
+  if (S.version === 'B') { S.tab = 'own'; return addScreen(); }
+  if (S.state === 'loading' && S.own.step !== 1) return `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}${skel(3)}</div>`;
+  return `<div class="g-main">${wayBack('Add a text', 'go', ' data-to="add"')}<h1 style="font-size:1.2rem">Your own text<span class="beta">Beta</span></h1>${ownBody()}</div>`;
+}
+function ownBody() {
+  const st = S.state === 'empty' ? 0 : (S.state === 'error' || S.state === 'loading') ? 1 : S.own.step;
+  let h = '';
+  if (S.version === 'A') {
+    h += `<p class="counter">Step ${st + 1} of 3</p><div class="mini-steps" aria-hidden="true">${OWN_STEPS.map((_, i) => `<i class="${i < st ? 'done' : i === st ? 'now' : ''}"></i>`).join('')}</div>`;
+    if (S.toast && S.state === 'normal') h += ok(S.toast[0], S.toast[1]);
+    h += `<section class="card"><h2>${OWN_STEPS[st]}</h2>${ownStepBody(st)}</section>`;
+    if (st === 0) h += ownList();
+    return h;
+  }
+  if (S.version === 'B') {
+    if (S.toast && S.state === 'normal') h += ok(S.toast[0], S.toast[1]);
+    h += `<ol class="checklist">${OWN_STEPS.map((n, i) => `<li class="${i < st ? 'done' : i === st ? 'now' : 'next'}"><div class="ck-name"><span>${n}</span></div>${i < st ? `<div class="ck-done">${i === 0 ? `Saved "${esc(S.own.title || OWN.title)}", ${OWN.words} words` : 'Meanings added for 6 new words'}</div>` : ''}${i === st ? `<div class="ck-body">${ownStepBody(i)}</div>` : ''}</li>`).join('')}</ol>`;
+    if (st === 0) h += ownList();
+    return h;
+  }
+  const log = S.state === 'empty' ? [] : S.own.log;
+  if (log.length || S.state === 'error') h += `<h2 style="font-size:.9rem;color:var(--muted-strong);margin:.2rem 0 .3rem">What has happened</h2><ul class="log">${(log.length ? log : [['14:20', `You saved "${OWN.title}" (${OWN.words} words, 6 new to you).`, 'you']]).map(([t, m, who]) => `<li class="who-${who}"><span class="t">${t}</span><span class="m">✓</span><span>${esc(m)}</span></li>`).join('')}${S.state === 'error' ? '<li class="bad"><span class="t">14:24</span><span class="m">!</span><span>Your AI\'s answer left 2 words without a meaning.</span></li>' : ''}</ul>`;
+  h += `<section class="next-card"><p class="counter">Next · ${st + 1} of 3</p><h2>${OWN_STEPS[st]}</h2>${ownStepBody(st)}</section>`;
+  if (st === 0) h += ownList();
+  return h;
+}
+function ownList() {
+  if (S.state === 'empty') return `<p class="small muted" style="margin-top:1rem">Your own texts will be listed here.</p>`;
+  return `<h2 style="font-size:.95rem;margin:1.1rem 0 .3rem">Your own texts</h2><ul class="tlist"><li><div class="trow"><button type="button" class="tt" data-act="noop">Låten om Stockholm</button><span class="text-state">read</span></div></li><li><div class="trow"><button type="button" class="tt" data-act="own-resume">Nyheter: nytt bibliotek</button><button type="button" class="add" data-act="own-resume">Finish the word check</button><span class="meta"><span>waiting for your AI's word check</span></span></div></li></ul>`;
+}
+
+/* ---------- Screen 5: Added (what happened, what's next) ---------- */
+function doneScreen() {
+  if (S.state === 'loading') return `<div class="g-main">${skel(3)}</div>`;
+  const back = S.version === 'B' ? wayBack('Add a text', 'go', ' data-to="add"') : wayBack(S.last === 'library' ? 'Common library' : 'Add a text', 'go', ` data-to="${S.last === 'library' ? 'library' : 'add'}"`);
+  let h = `<div class="g-main">${back}`;
+  if (S.state === 'error') return h + errMsg('grove couldn\'t load your new texts. They are saved; this page just can\'t show them now.') + '</div>';
+  let titles; let line; let main;
+  if (S.last === 'library') { const ids = S.lib.added.length ? S.lib.added : ['l3']; titles = ids.map((id) => ALL_TEXTS.find((t) => t.id === id)); line = `${titles.length === 1 ? 'is' : 'are'} in your library, under ${[...new Set(titles.map((t) => t.topic))].join(' and ')}.`; main = `Read "${titles[0].title}"`; }
+  else if (S.last === 'own') { titles = [{ title: S.own.title || OWN.title, kind: 'reading', min: 1 }]; line = 'is ready to read, under "My own texts".'; main = `Read "${titles[0].title}"`; }
+  else { titles = AI_TEXTS; line = 'are in your library, under "Ett litet kafé".'; main = `Read "${AI_TEXTS[0].title}"`; }
+  if (S.state === 'empty') return h + `<div class="card"><p><b>Nothing added yet.</b></p><p class="small muted">When you add a text, this page shows what was added and where to find it.</p><button type="button" class="main" data-act="go" data-to="add">Add a text</button></div></div>`;
+  h += `<section class="card"><div class="big-done"><div class="ring">✓</div><h1 style="font-size:1.15rem;margin:0">${titles.length} ${titles.length === 1 ? 'text' : 'texts'} added</h1></div>
+    <ul class="tlist" style="margin:.6rem 0">${titles.map((t) => `<li><div class="trow"><button type="button" class="tt" data-act="noop">${esc(t.title)}</button><span class="text-state new">new</span><span class="meta">${kindChip(t)}</span></div></li>`).join('')}</ul>
+    <p class="small muted">${titles.length === 1 ? 'It' : 'They'} ${line} Each new word you meet becomes a word to practise only when you pick it up.</p>
+    <div class="row-actions" style="flex-direction:column"><button type="button" class="main" data-act="noop">${esc(main)}</button>
+    ${S.last === 'ai' ? '<button type="button" data-act="ai-part2">Ask ChatGPT for part 2 of 3</button>' : ''}
+    <button type="button" data-act="go" data-to="add">Add another text</button><button type="button" data-act="noop">Go to Your library</button></div></section>`;
+  return h + '</div>';
+}
+
+/* ---------- Render ---------- */
+function screenHtml() {
+  if (S.screen === 'library') return libraryScreen();
+  if (S.screen === 'ai') return aiScreen();
+  if (S.screen === 'own') return ownScreen();
+  if (S.screen === 'done') return doneScreen();
+  return addScreen();
+}
+function navActive() { return S.version === 'B' && S.screen === 'add' ? S.tab : S.screen; }
+function render() {
+  const root = document.documentElement;
+  if (S.theme === 'auto') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', S.theme);
+  document.querySelectorAll('[data-act="version"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.v === S.version)));
+  document.querySelectorAll('[data-act="nav"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.screen === navActive())));
+  document.querySelectorAll('[data-act="state"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.s === S.state)));
+  document.querySelectorAll('[data-act="width"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.w === S.width)));
+  document.querySelectorAll('[data-act="theme"]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.t === S.theme)));
+  document.getElementById('vdesc').textContent = VERSIONS[S.version];
+  document.getElementById('stage').className = `sk-stage ${S.width}`;
+  document.getElementById('frame').innerHTML = topbar() + screenHtml();
+  fit();
+}
+function fit() {
+  const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
+  if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
+  const s = Math.min(1, stage.clientWidth / 1000);
+  frame.style.transform = `scale(${s})`;
+  stage.style.height = `${Math.ceil(frame.offsetHeight * s)}px`;
+}
+
+/* ---------- Actions ---------- */
+function goTo(to) {
+  S.toast = null;
+  if (to === 'add') { S.screen = 'add'; return; }
+  if (S.version === 'B' && to !== 'done') { S.screen = 'add'; S.tab = to; return; }
+  S.screen = to;
+}
+function aiLog(m, who = 'you') { S.ai.log.push([now(), m, who]); }
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.disabled) return;
+  const a = el.dataset.act; const d = el.dataset;
+  switch (a) {
+    case 'version': S.version = d.v; S.toast = null; if (S.version !== 'A') S.lib.preview = null; break;
+    case 'state': S.state = d.s; break;
+    case 'width': S.width = d.w; break;
+    case 'theme': S.theme = d.t; break;
+    case 'restart': S = { ...fresh(), ...keep(S), state: 'normal' }; break;
+    case 'nav': goTo(d.screen); break;
+    case 'go': if (S.state !== 'normal' && d.to !== 'done') S.state = 'normal'; if (d.to === 'done' && S.screen === 'own') S.last = 'own'; goTo(d.to); break;
+    case 'tab': S.tab = d.id; S.toast = null; break;
+    case 'retry': S.state = 'normal'; break;
+    case 'level': S.lib.level = d.l; if (S.state === 'empty') S.state = 'normal'; break;
+    case 'preview': S.lib.preview = S.lib.preview === d.id ? null : d.id; S.toast = null; break;
+    case 'close-preview': S.lib.preview = null; break;
+    case 'add': {
+      if (S.state === 'error') break;
+      if (!isAdded(d.id)) S.lib.added.push(d.id);
+      const t = ALL_TEXTS.find((x) => x.id === d.id);
+      S.last = 'library';
+      S.toast = S.version === 'A' && S.lib.preview ? null : `"${t.title}" is in your library.`;
+      break;
+    }
+    case 'read': S.last = 'library'; S.lib.preview = null; S.screen = 'done'; S.toast = null; break;
+    case 'lib-done': S.last = 'library'; S.screen = 'done'; break;
+    case 'family': S.ai.family = d.f; if (S.state === 'empty') S.state = 'normal'; S.toast = null; break;
+    case 'product': S.ai.product = d.p; if (S.state === 'empty') S.state = 'normal'; break;
+    case 'tactic': S.ai.tactic = d.t; break;
+    case 'ai-goto': S.ai.step = Number(d.i); S.toast = null; break;
+    case 'ai-back': S.ai.step = Math.max(0, S.ai.step - 1); S.toast = null; break;
+    case 'ai-next':
+      if (S.ai.step === 0) { S.toast = [`Saved: ${S.ai.family} (${S.ai.product.toLowerCase()}), step by step.`, 'Next, open a new chat and send the two setup messages.']; aiLog(`You chose ${S.ai.family} (${S.ai.product.toLowerCase()}).`); }
+      if (S.ai.step === 1) { S.toast = ['Setup done: ChatGPT knows the rules and your words.', 'Next, copy the request for part 1 into the same chat.']; aiLog('ChatGPT said OK to both setup messages.'); }
+      if (S.ai.step === 2) { S.toast = ['Good. Now bring the answer back.', 'In ChatGPT, tap the copy button under its answer, then paste it below.']; S.ai.pasted = false; }
+      S.ai.step = Math.min(4, S.ai.step + 1);
+      break;
+    case 'copy-setup': S.ai.setup[Number(d.n)] = true; S.toast = [`Setup message ${Number(d.n) + 1} copied.`, S.ai.setup.every(Boolean) ? 'When ChatGPT has said OK to both, tap the button below.' : 'Paste it into the new chat and send it; then copy the next one.']; aiLog(`You copied setup message ${Number(d.n) + 1} of 2.`); break;
+    case 'copy-req': S.ai.reqCopied = true; S.toast = ['Copied. Now paste it into ChatGPT and wait for its answer.', 'It takes about a minute. Come back here when it has finished writing.']; aiLog('You copied the request for part 1.'); break;
+    case 'ai-paste':
+      if (S.state === 'error') break;
+      S.ai.pasted = true; aiLog('grove read the answer: 3 texts, all fine.', 'grove'); aiLog('3 texts added to your library.', 'grove');
+      S.ai.step = 4; S.toast = ['3 texts added to your library.', 'Part 1 of 3 is done.']; S.last = 'ai';
+      if (S.version !== 'A' && S.version !== 'B') { /* C shows it in the log */ S.toast = null; }
+      break;
+    case 'ai-part2': S.ai.step = 2; S.ai.reqCopied = false; S.screen = S.version === 'B' ? 'add' : 'ai'; S.tab = 'ai'; S.toast = ['Your request for part 2 is ready.', 'Same chat as before; no setup needed.']; aiLog('You asked for part 2 of 3.'); break;
+    case 'own-save': {
+      const t = document.getElementById('own-title'); const x = document.getElementById('own-text');
+      S.own.title = (t && t.value.trim()) || OWN.title; S.own.text = (x && x.value.trim()) || OWN.text;
+      S.own.step = 1; S.toast = [`Saved "${S.own.title}" (${OWN.words} words, 6 new to you).`, 'Next, your AI explains the new words. Only you can see this text.'];
+      S.own.log.push([now(), `You saved "${S.own.title}" (${OWN.words} words, 6 new to you).`, 'you']);
+      break;
+    }
+    case 'own-resume': S.own.step = 1; S.own.title = 'Nyheter: nytt bibliotek'; S.toast = ['Picking up where you left off.', 'The word check for this text is still waiting for your AI.']; break;
+    case 'own-copy': S.own.checkCopied = true; S.toast = ['Copied. Paste it into your AI chat.', 'Then paste its whole answer in the box below.']; S.own.log.push([now(), 'You copied the word check.', 'you']); break;
+    case 'own-check': if (S.state === 'error') break; S.own.step = 2; S.last = 'own'; S.toast = ['Meanings added for 6 new words.', `"${S.own.title || OWN.title}" is ready to read.`]; S.own.log.push([now(), 'grove read the answer: every new word has a meaning.', 'grove']); break;
+    case 'noop': break;
+    default: return;
+  }
+  e.preventDefault();
+  render();
+});
+// The title and text fields: keep what's typed when re-rendering
+document.addEventListener('input', (e) => { if (e.target.id === 'own-title') S.own.title = e.target.value; if (e.target.id === 'own-text') S.own.text = e.target.value; });
+window.addEventListener('resize', fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+/* ---------- Your pick and the questions ---------- */
+const QUESTIONS = [
+  { id: 'q1', text: 'After + Add in the common library, where are you?', options: [
+    ['stay', 'Still on the list, with a line saying it was added and "Read now"', 'You can keep picking (B-16). The row shows Added ✓.'],
+    ['open', 'On the text, ready to read', 'One tap fewer to read it; you leave the list (today\'s title tap).'],
+    ['basket', 'On the list, added texts collected in a bar with Done', 'Version C\'s way; Done shows what was added.'] ] },
+  { id: 'q2', text: 'Texts from your AI: after a copy, should the wizard move on by itself?', options: [
+    ['confirm', 'No: it says "Copied" and what to do, and you tap to go on', 'You decide when ChatGPT has answered; nothing jumps away.'],
+    ['auto', 'Yes: it moves to the next step with the confirmation on top', 'One tap fewer; today\'s Copy of the request does this.'] ] },
+  { id: 'q3', text: 'What should the AI way call its ways of asking (today Step by step, One long prompt, Whole package)?', options: [
+    ['hidden', 'Hide them under "How grove asks" with the recommended one chosen', 'Most learners never open it; switching is still there (FR-223).'],
+    ['shown', 'Show all three on the first step, as today', 'Always in view; more to read before you start.'] ] },
+  { id: 'q4', text: 'Your own text: when does the AI word check happen?', options: [
+    ['right', 'Right after Save, as step 2 on the same page', 'You finish in one go; the text opens when the meanings are in.'],
+    ['later', 'Later, on the text when you open it', 'As today: Save opens the text, which asks for the check first.'] ] },
+  { id: 'q5', text: 'What should Add a text say about something half done (an AI part waiting for its answer, an own text waiting for its check)?', options: [
+    ['line', 'A line on that way: "Under way: step 4 of 5" with Continue', 'Versions A and B.'],
+    ['top', 'An "Under way" box at the top of Add a text', 'Version C.'],
+    ['none', 'Nothing; the way remembers where you were when you open it', 'Today\'s build.'] ] },
+  { id: 'q6', text: 'Keep the Beta badges on Texts from your AI and Your own text?', options: [
+    ['keep', 'Keep them', 'FR-224: "This part of grove is new and still being tested."'],
+    ['drop', 'Drop them', 'They work; the badge makes them look unfinished.'] ] },
+];
+function buildQuestions() {
+  const box = document.getElementById('questions');
+  box.innerHTML = QUESTIONS.map((q, qi) => `<fieldset id="${q.id}"><legend>${qi + 1}. ${esc(q.text)}</legend>${q.options.map(([v, label, why], i) =>
+    `<label class="opt"><input type="radio" name="${q.id}" id="${q.id}-${v}" value="${v}"><span>${esc(label)}${i === 0 ? '<span class="def">default</span>' : ''}<small>${esc(why)}</small></span></label>`).join('')}
+    <label class="c" for="${q.id}-note">Note (optional)</label><textarea id="${q.id}-note" style="min-height:2.6rem"></textarea></fieldset>`).join('');
+}
+window.sketchAnswers = { sketch: 'Sketch: Adding texts', notes: ['B-05', 'B-06', 'B-07', 'B-08', 'B-09', 'B-10', 'B-15', 'B-16', 'B-20', 'B-23'], pick: null, comments: { A: '', B: '', C: '' }, questions: {} };
+function collectAnswers() {
+  const A = window.sketchAnswers;
+  const pick = document.querySelector('input[name="pick"]:checked');
+  A.pick = pick ? pick.value : null;
+  for (const v of ['A', 'B', 'C']) A.comments[v] = document.getElementById(`comment-${v}`).value.trim();
+  for (const q of QUESTIONS) {
+    const c = document.querySelector(`input[name="${q.id}"]:checked`);
+    A.questions[q.id] = { question: q.text, answer: c ? c.value : q.options[0][0], isDefault: !c, note: document.getElementById(`${q.id}-note`).value.trim() };
+  }
+  return A;
+}
+window.collectAnswers = collectAnswers;
+
+buildQuestions();
+document.getElementById('answers').addEventListener('input', collectAnswers);
+document.getElementById('answers').addEventListener('change', collectAnswers);
+collectAnswers();
+render();
+})();
+</script>
+<script>
+// Saving the pick, comments and answers for Claude (docs/sketching.md: comment on the sketch page, then
+// say "done"). Stored in the published page's own database; restored on reopening. Nothing else is saved.
+(() => {
+  const box = document.getElementById('answers');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round1').set({ ...JSON.parse(JSON.stringify(window.collectAnswers())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round1').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick-${a.pick}`); if (r) r.checked = true; }
+    for (const k of ['A', 'B', 'C']) { const t = document.getElementById(`comment-${k}`); if (t && a.comments?.[k]) t.value = a.comments[k]; }
+    for (const [id, q] of Object.entries(a.questions ?? {})) {
+      if (!q.isDefault) { const r = document.querySelector(`input[name="${id}"][value="${q.answer}"]`); if (r) r.checked = true; }
+      const n = document.getElementById(`${id}-note`); if (n && q.note) n.value = q.note;
+    }
+    window.collectAnswers();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+</body>
+</html>
