@@ -372,10 +372,16 @@ test('FR-922 RQ-446: every signed-in page but Home names the page it belongs und
     await expect(back, path).toHaveAttribute('href', hrefs[parent]);
   }
   // G-09 FR-932: on the session page the top bar (and its link) gives way to the session bar, whose ✕ leads Home.
-  await page.goto('/session');
-  await expect(page.locator('#session-leave:visible, .way-back a:visible').first()).toBeVisible();
-  if (await page.locator('#session-leave').isVisible()) await expect(page.locator('.way-back a')).toBeHidden();
-  else await expect(page.locator('.way-back a')).toHaveText('‹ Home');
+  // question-pages/98: during a session the ✕ is the only way out; no ‹ Home link.
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Mix', exact: true }).click();
+  await page.locator('#tile-panel').getByRole('button', { name: /^Start/ }).click();
+  await goOnIfShort(page);
+  await page.locator('#session-start').click();
+  await expect(page.locator('#session-leave')).toBeVisible();
+  await expect(page.locator('.way-back a')).toBeHidden();
+  await page.locator('#session-leave').click();
+  await page.waitForURL(/\/$/);
   await page.goto('/');
   await expect(page.locator('.way-back')).toHaveCount(0);
   await page.goto('/progress');
