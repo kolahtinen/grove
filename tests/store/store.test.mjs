@@ -526,3 +526,25 @@ test('FR-315 FR-605 RQ-456 RQ-463: migration 021 keeps every report and lets a s
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test('FR-916 FR-305 RQ-465: migration 022 keeps every word and gives a grammar pattern a level and a ladder ID, NULL for the rows already there', () => {
+  const dir = tempDir();
+  try {
+    const db = openDb(join(dir, 'grove.db'));
+    migrate(db, { upTo: 21 });
+    db.prepare("INSERT INTO accounts (id, firebase_uid, email, created_at) VALUES (1, 'u1', 'a@example.test', 111)").run();
+    db.prepare("INSERT INTO words (id, account_id, lemma, kind, en, state, added_at) VALUES (4, 1, 'hus', 'word', 'house', 'ground', 1), (5, 1, 'det finns', 'pattern', 'there is', 'leaf', 2)").run();
+    migrate(db);
+    const rows = db.prepare('SELECT id, lemma, en, state, level, ladder FROM words ORDER BY id').all().map((r) => ({ ...r }));
+    assert.deepEqual(rows, [
+      { id: 4, lemma: 'hus', en: 'house', state: 'ground', level: null, ladder: null },
+      { id: 5, lemma: 'det finns', en: 'there is', state: 'leaf', level: null, ladder: null },
+    ]);
+    db.prepare("UPDATE words SET level = 'A1', ladder = 'G-A1-05' WHERE id = 5").run();
+    assert.deepEqual({ ...db.prepare('SELECT level, ladder FROM words WHERE id = 5').get() }, { level: 'A1', ladder: 'G-A1-05' });
+    assert.throws(() => db.prepare("UPDATE words SET level = 'D1' WHERE id = 5").run(), 'only A1…C2');
+    db.close();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
