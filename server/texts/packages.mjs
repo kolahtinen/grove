@@ -413,8 +413,14 @@ export function createPackages({ db, words, sizes = DEFAULT_SIZES, now = () => D
     },
 
     answer(accountId, exchangeId, pasted) {
-      const exchange = db.prepare('SELECT * FROM exchanges WHERE id = ? AND account_id = ?').get(exchangeId, accountId);
+      let exchange = db.prepare('SELECT * FROM exchanges WHERE id = ? AND account_id = ?').get(exchangeId, accountId);
       if (!exchange) throw new HttpError(404, 'not_found', 'There is no such prompt.');
+      // RQ-461 (FR-919): a paste into a request grove refused is the answer to its waiting fix-it request (the
+      // newest of that code), so a correct answer after a failed one is read normally, never "already added".
+      if (exchange.status === 'needs_fix') {
+        const fix = db.prepare("SELECT * FROM exchanges WHERE account_id = ? AND code = ? AND kind = 'fix' AND status = 'waiting' ORDER BY id DESC LIMIT 1").get(accountId, exchange.code);
+        if (fix) exchange = fix;
+      }
       const root = exchange.fixes_id ? exchangeById(exchange.fixes_id) : exchange;
       if (root.kind === 'own') return answerOwn({ db, words, sizes, now, accountId, exchange, root, pasted });
       if (exchange.kind === 'meanings') throw new HttpError(409, 'duplicate', 'This prompt is no longer used. Ask for texts again.');

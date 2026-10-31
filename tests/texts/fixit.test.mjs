@@ -98,6 +98,26 @@ test('FR-206 RQ-185 RQ-41: a cut-off answer and a non-JSON answer get a fix-it p
   assert.equal(before, 3, 'refused answers stored nothing');
 });
 
+test('FR-919 FR-206 RQ-461: a refusal from the AI says what went wrong with a fix-it request; the next paste, even into the first request\'s box, is read as the answer to that fix-it, and a correct one is added, never refused as already added', async () => {
+  const email = 'paste-again@example.test';
+  seedGround(t.grove.db, t.seedAccount({ email }).id, known);
+  const { c, p } = await start(email);
+  const sorry = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: 'Sorry, I cannot do that.' });
+  assert.equal(sorry.status, 200);
+  assert.equal(sorry.body.result, 'needs_fix');
+  assert.ok(sorry.body.problems.length >= 1 && sorry.body.problems.every((x) => typeof x === 'string' && x.length > 0));
+  assert.ok(sorry.body.fix.prompt.length > 0);
+  const again = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: 'Sorry, I still cannot.' });
+  assert.equal(again.body.result, 'needs_fix', 'a second unusable paste into the first box is read too, not "already added"');
+  assert.equal((await c.get('/api/home')).body.waiting.exchangeId, again.body.fix.exchangeId, 'the newest fix-it is the one waiting');
+  const good = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('good.json').replaceAll('TEST-1', p.code) });
+  assert.equal(good.status, 200, JSON.stringify(good.body));
+  assert.equal(good.body.result, 'accepted', JSON.stringify(good.body));
+  assert.ok(good.body.texts.length >= 1);
+  const twice = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('good.json').replaceAll('TEST-1', p.code) });
+  assert.equal(twice.status, 409, 'once accepted, the same part is already added');
+});
+
 test('FR-205 RQ-41: an answer with an unknown field is refused and stores nothing', async () => {
   const { c, p } = await start();
   const res = await c.post('/api/answer', { exchangeId: p.exchangeId, answer: answer('extra-fields.json').replaceAll('TEST-1', p.code) });
