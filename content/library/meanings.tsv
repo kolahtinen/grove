@@ -4,8 +4,8 @@
 # Written by Claude from each word's use in the texts, in G-02's new_words shape (form, lemma, en).
 # texts: "*" = every grove text where the form occurs; else the text IDs it applies to (a form that means
 # different things in different texts, e.g. kort "card" / "short", has one row per sense).
-# NOT YET READ BY THE BUILD: scripts/build-library.mjs passes new_words: [] for every grove text, so these
-# reach learners only after the spec change in the README ("Meanings", To decide).
+# READ BY THE BUILD (RQ-466): "*" rows → server/lexicon/corrections.tsv (node scripts/build-lexicon.mjs --corrections), before the word list;
+# rows naming texts → each grove text's own meanings (node scripts/build-library.mjs). Rebuild both after a change.
 form	lemma	en	issue	texts
 i	i	in	homograph	*
 som	som	who, which, that; as, like	homograph	*

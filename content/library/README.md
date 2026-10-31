@@ -42,9 +42,9 @@ Columns: `sv`, `pos` (Kelly's part of speech), `kind` (word or phrase), `level`,
 
 ## Texts: `texts/<level>.json`
 
-136 texts in the library (`texts/`) and 12 waiting for longer and shorter word ranges (`texts-pending/`, below), all written by Claude and **not yet read by a Swedish speaker**. Every text has a `level` and one `topic` from the shared set in `TOPICS.md`; the library is browsed by topic, and the level filter shows all levels up to the chosen one. Counts as of 2026-10-31 (words counted by the check, names left out):
+148 texts in the library (`texts/`; the 12 short and long ones that waited in `texts-pending/` moved in on 2026-10-31 when the check's word ranges were widened, RQ-464), all written by Claude and **not yet read by a Swedish speaker**. Every text has a `level` and one `topic` from the shared set in `TOPICS.md`; the library is browsed by topic, and the level filter shows all levels up to the chosen one. Counts as of 2026-10-31 before the move (words counted by the check, names left out); after it: A1 32, A2 32, B1 25, B2 23, C1 18, C2 18.
 
-| Level | Texts | Words each (library) | Pending: short, long | Listening | Dialogues | Style |
+| Level | Texts | Words each (library) | Moved in: short, long | Listening | Dialogues | Style |
 |---|---|---|---|---|---|---|
 | A1 | 30 | 52–79 | 26, 116 | 13 | 15 | present tense, short main clauses |
 | A2 | 30 | 82–118 | 43, 182 | 12 | 10 | past tense and simple clauses |
@@ -53,9 +53,9 @@ Columns: `sv`, `pos` (Kelly's part of speech), `kind` (word or phrase), `level`,
 | C1 | 16 | 252–347 | 121, 444 | 5 | 5 | complex syntax, idioms in moderation |
 | C2 | 16 | 302–396 | 131, 585 | 5 | 5 | formal and literary registers |
 
-### Pending texts: `texts-pending/<level>.json` (2026-10-31)
+### Short and long texts (2026-10-31; were `texts-pending/`)
 
-At the owner's request "populate library more; it should get texts of different lengths", each level got three new texts: a **usual** one (in the library, batch 9) and a **short** one (about half the level's usual length) and a **long** one (about double; a long A1 text is still short main clauses). The short and long ones fall outside the check's word ranges (A1 50–80 … C2 300–400), which are code (`LIMITS` in `scripts/check-library.mjs`), so they wait here, in the same format, until the ranges change. Apart from their length they pass every rule of the check (sentence length, far words, glossary, G-02's answer format), checked with the checker's own `checkText`. To take them in: widen the ranges (proposed: A1 25–160, A2 40–240, B1 60–360, B2 70–500, C1 120–700, C2 130–800), then move the texts into `texts/` and rebuild.
+At the owner's request "populate library more; it should get texts of different lengths", each level got three new texts: a **usual** one (in the library, batch 9) and a **short** one (about half the level's usual length) and a **long** one (about double; a long A1 text is still short main clauses). The short and long ones fall outside the check's word ranges (A1 50–80 … C2 300–400), which are code (`LIMITS` in `scripts/check-library.mjs`), so they wait here, in the same format, until the ranges change. Apart from their length they pass every rule of the check (sentence length, far words, glossary, G-02's answer format), checked with the checker's own `checkText`. **Taken in 2026-10-31** (question-pages/97, 1; RQ-464): the ranges are now A1 25–160, A2 40–240, B1 60–360, B2 70–500, C1 120–700, C2 130–800 and the 12 texts are in `texts/`.
 
 Each text has the fields G-02 accepts from an AI (`kind`, `title`, `lines` with `sv` and `en`, `questions` with `q`, `options`, `answer`), so it passes `validateAnswer`. It also has library fields that an import would read and drop: `id`, `topic`, `form` (prose or dialogue), `names` (names the counting should skip) and `above_level`. `above_level` is the text's glossary: every word above its level, written by `node scripts/check-library.mjs --fill` from what the check finds. Its forms come from the word list's lookup and want a look (e.g. "bakat" is listed as "bakad").
 
@@ -67,7 +67,7 @@ At the owner's request "analyse all texts for grammar patterns and give those gr
 - **Patterns not on the ladder** got a level by the ladder's logic: det finns (A1, a fixed chunk on the A1 present tense), the -s genitive (A1, with min/mitt/mina), att + infinitive, commands, man, brukar + infinitive (A2, with the A2 modal verb + infinitive), för att + infinitive and håller på att (B1, with the B1 clauses), inte bara … utan också (B2). Each one's reason is in its `level_reason`.
 - A text lists a pattern above its level only where it occurs more than once; patterns are listed from the lowest level.
 - **How they were found**: by rule, with `patterns/find-patterns.mjs` (word-list forms and Kelly's parts of speech), checked by hand on a sample of texts at each level. So a place may be off (e.g. a verb form taken for a noun); a Report or the owner's reading fixes the file directly.
-- **Not in grove yet**: `scripts/build-library.mjs` builds each text's answer with no patterns, and G-02's format has no field for a pattern's level. Both need a spec change (README, To decide 7).
+- **In grove** (2026-10-31; question-pages/97, 2; RQ-465, G-09 FR-916): `scripts/build-library.mjs` carries each text's patterns with their `level` and `ladder` into `grove-texts.json`; a learner's copy stores them as the text's patterns and the word menu shows each one's level (G-03 FR-305).
 
 ## Meanings: `meanings.tsv` (2026-10-31)
 
@@ -78,7 +78,7 @@ At the owner's request "make sure common library does not have empty meanings or
 
 `meanings.tsv` has a meaning for each, in G-02's `new_words` shape (`form`, `lemma`, `en`) with the `issue` and the `texts` it applies to (`*` = all); every row's form occurs in the texts it names, and no form has two meanings in one text (one exception left: A2-32 has åt as "ate" and in "skrattade åt", "laughed at"; the row keeps "ate").
 
-**Not in grove yet**: the build gives grove texts no meanings of their own (`new_words: []`), so learners still see the word list's. Two ways in, both a spec change: the build passes each text's rows as its `new_words` (G-09 FR-916), or, better for the wrong-word rows, which hit every text a learner reads (also their own), a checked override list in front of the word list (G-02 FR-222). A word already in a learner's ground keeps the meaning it got then.
+**In grove** (2026-10-31; question-pages/97, 3; RQ-466): the `*` rows are built into `server/lexicon/corrections.tsv` (`node scripts/build-lexicon.mjs --corrections`) and come before the word list everywhere (G-02 FR-222); the rows naming texts are each text's own meanings, carried by `scripts/build-library.mjs` and stored on a learner's copy as its meanings here (G-09 FR-916). A meaning already stored for a learner's word stays. Rebuild both after changing this file.
 
 **Other checks** (2026-10-31): every question's right answer was compared with the text by rule (an answer whose words are not in the text, or a wrong option's are) and the 25 flagged were read by hand: all right. Each line's English was checked against its Swedish for numbers, names, dialogue dashes and question marks: no mismatch. No Swedish mistakes were found in the lines read for these checks, but the texts have still not been read whole by a Swedish speaker.
 
