@@ -343,10 +343,27 @@ a.bar-button.nav { text-decoration: none; padding: .3rem .7rem; font-size: .82re
 .listen-tools { margin-bottom: .6rem; }
 .speed { display: flex; align-items: center; gap: .6rem; margin: 0; }
 .speed input { flex: 1; accent-color: var(--accent); }
-.listen-list { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .3rem; }
-.listen-row { display: flex; align-items: center; gap: .4rem; padding: .25rem .4rem; border-radius: 12px; }
+/* G-05 FR-506, FR-507 (B-33, version A): the Sentences button, its sheet and the loop strip. */
+button.sentences-button { display: inline-flex; align-items: center; gap: .4rem; }
+button.sentences-button .icon { width: 18px; height: 18px; flex: none; }
+button.sentences-button.compact { min-height: 48px; border-radius: 16px; flex: none; font-variant-numeric: tabular-nums; }
+.play-row.with-sentences { display: flex; gap: .5rem; align-items: stretch; }
+.sentences-sheet .sheet-head { position: sticky; top: -1rem; z-index: 1; }
+.sentences-sheet .sheet-head h3 { font-size: 1.05rem; }
+.sentences-hint, .sentences-novoice { margin: 0 0 .5rem; }
+.sentences-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+.listen-row { display: flex; align-items: center; gap: .45rem; padding: .25rem .25rem .25rem .55rem; border-radius: 12px; }
 .listen-row.speaking { background: var(--soft); }
-.listen-text { min-width: 1.6rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.listen-row .sent-label { flex: 1; }
+.listen-row .play-count { font-size: .75rem; white-space: nowrap; flex: none; }
+.sent-label { display: flex; gap: .3rem; min-width: 0; }
+.sent-n { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; flex: none; }
+.listen-row .sent-n { min-width: 1.4rem; text-align: right; }
+.sent-w { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.loop-strip { display: flex; align-items: center; gap: .5rem; margin: .5rem 0 .6rem; padding: .35rem .4rem .35rem .75rem; border-radius: 14px; background: var(--soft); border: 1px solid var(--accent); font-size: .88rem; }
+.loop-strip > .icon { width: 16px; height: 16px; color: var(--link); flex: none; }
+.loop-strip .loop-what { flex: 1; min-width: 0; display: flex; gap: .3rem; white-space: nowrap; }
+.sentences-note { margin: .3rem 0 .6rem; }
 #voice-help { background: var(--soft); color: var(--ink); }
 #voice-help ul { margin: .2rem 0 .4rem; padding-left: 1.1rem; }
 @media (prefers-reduced-motion: reduce), (prefers-reduced-transparency: reduce) { .blurred { filter: blur(6px); } }

@@ -32,6 +32,9 @@ const PATHS = {
   ai: ['M4 5h16v11H9l-5 4z', 'M8 10h.01', 'M12 10h.01', 'M16 10h.01'],
   own: ['M6 3h9l4 4v14H6z', 'M14 3v5h5', 'M9 13h7', 'M9 17h5'],
   fell: ['M12 4v12', 'M7 11l5 5 5-5', 'M4 20h16'],
+  // A listening text's Sentences (G-05 FR-506, FR-507, version A): a list of rows and a loop.
+  list: ['M8 6h12', 'M8 12h12', 'M8 18h12', 'M4 6h.01', 'M4 12h.01', 'M4 18h.01'],
+  loop: ['M4 11V9a3 3 0 0 1 3-3h13', 'M17 3l3 3-3 3', 'M20 13v2a3 3 0 0 1-3 3H4', 'M7 21l-3-3 3-3'],
 };
 const NS = 'http://www.w3.org/2000/svg';
 

@@ -8,6 +8,7 @@ import { startHeartbeat } from './heartbeat.mjs';
 import { speak as say, cancel, hasSwedish, setRate, getRate, onVoices } from './speech.mjs';
 import { renderLines } from './textview.mjs';
 import { createWordMenu } from './wordmenu.mjs';
+import { createSentences } from './sentences.mjs';
 
 const speak = (text, onend) => say(text, { onend });
 
@@ -269,10 +270,9 @@ if (data?.rating && data?.marking > 0) offerMarking();
 // G-09 FR-925: listening while listening mode is open, reading otherwise.
 startHeartbeat(() => ($('listening-card') && !$('listening-card').hidden ? 'listening' : 'reading'));
 
-// G-05: listening mode (FR-501…FR-508): blurred text, Play with highlighting, replay with count, loop,
-// speed, the one-time voice help, then the questions.
-const counts = new Map();
-let loopId = null;
+// G-05: listening mode (FR-501…FR-508): blurred text, Play with highlighting, the Sentences sheet with
+// replay, count and loop (FR-506, FR-507: sentences.mjs, version A), speed, the one-time voice help, then
+// the questions.
 let listenIndex = 0;
 let listening = false;
 const allSentences = () => data.lines.flatMap((l) => l.sentences);
@@ -282,63 +282,29 @@ function showVoiceHelp(save) {
   if (save && !data.voiceHelpShown) { data.voiceHelpShown = true; post('/api/settings', { voiceHelpShown: true }); }
 }
 
-function renderListenList() {
-  const list = $('listen-list');
-  list.replaceChildren();
-  allSentences().forEach((s, i) => {
-    const li = el('li', 'listen-row');
-    li.dataset.index = String(i);
-    const replay = el('button', 'bar-button', 'Replay');
-    replay.type = 'button';
-    replay.addEventListener('click', () => { stopListening(); playOne(i); });
-    const loop = el('button', 'bar-button switch', 'Loop');
-    loop.type = 'button';
-    loop.setAttribute('aria-pressed', String(loopId === i));
-    loop.addEventListener('click', () => {
-      const on = loopId !== i;
-      stopListening();
-      loopId = on ? i : null;
-      renderListenList();
-      if (on) playOne(i);
-    });
-    const count = el('span', 'small muted play-count', counts.get(i) ? `played ${counts.get(i)}×` : '');
-    const text = el('span', 'listen-text', `${i + 1}`);
-    li.append(text, replay, loop, count);
-    list.append(li);
-  });
-}
-
 function highlight(i) {
-  document.querySelectorAll('#lines .sentence').forEach((span) => span.classList.toggle('speaking', String(i) !== 'null' && span.dataset.sentence === String(allSentences()[i]?.id)));
-  document.querySelectorAll('#listen-list .listen-row').forEach((row) => row.classList.toggle('speaking', row.dataset.index === String(i)));
+  document.querySelectorAll('#lines .sentence').forEach((span) => span.classList.toggle('speaking', i !== null && span.dataset.sentence === String(allSentences()[i]?.id)));
 }
 
-function playOne(i, onend) {
-  const s = allSentences()[i];
-  if (!s) return;
-  if (!hasSwedish()) { showVoiceHelp(true); return; }
-  counts.set(i, (counts.get(i) || 0) + 1);
-  // Only the count changes, so the row's buttons stay put while a sentence loops (FR-506, FR-507).
-  const count = $('listen-list').querySelector(`.listen-row[data-index="${i}"] .play-count`);
-  if (count) count.textContent = `played ${counts.get(i)}×`;
-  else renderListenList();
-  highlight(i);
-  speak(s.sv, () => {
-    if (loopId === i) { playOne(i); return; }
-    highlight(null);
-    onend?.();
-  });
+const sentencesUi = data ? createSentences({
+  sentences: allSentences,
+  highlight,
+  onUser: () => { listening = false; },
+  onNoVoice: () => showVoiceHelp(true),
+}) : null;
+if (sentencesUi) {
+  $('listen-pause').after(sentencesUi.button);
+  document.querySelector('#listening-card .listen-tools').after(sentencesUi.strip, sentencesUi.note);
 }
 
 function stopListening() {
   listening = false;
-  loopId = null;
-  cancel();
-  highlight(null);
+  sentencesUi?.stop();
 }
 
 function reveal() {
   $('lines').classList.remove('blurred');
+  $('listen-show').hidden = true;
   $('translation').hidden = false;
   $('questions-card').hidden = data.questions.length === 0;
 }
@@ -347,27 +313,28 @@ function playFrom(i) {
   if (!listening) return;
   if (i >= allSentences().length) { listening = false; listenIndex = 0; reveal(); return; }
   listenIndex = i;
-  playOne(i, () => playFrom(i + 1));
+  sentencesUi.play(i, () => playFrom(i + 1));
 }
 
 $('listen').addEventListener('click', () => {
   $('listening-card').hidden = false;
   $('lines').classList.add('blurred');
+  $('listen-show').hidden = false;
   $('translation').hidden = true;
   $('questions-card').hidden = true;
   $('speed').value = String(getRate());
   $('speed-value').textContent = `${getRate().toFixed(1)}×`;
-  renderListenList();
+  sentencesUi.update();
   if (!hasSwedish() && !data.voiceHelpShown) showVoiceHelp(true);
   $('listening-card').scrollIntoView({ block: 'nearest' });
 });
 $('listen-play').addEventListener('click', () => {
   if (!hasSwedish()) { showVoiceHelp(true); return; }
-  loopId = null;
+  stopListening();
   listening = true;
   playFrom(listenIndex);
 });
-$('listen-pause').addEventListener('click', () => { listening = false; loopId = null; cancel(); });
+$('listen-pause').addEventListener('click', stopListening);
 $('listen-show').addEventListener('click', reveal);
 $('lines').addEventListener('click', (event) => {
   if ($('lines').classList.contains('blurred')) { event.stopPropagation(); event.preventDefault(); reveal(); }
