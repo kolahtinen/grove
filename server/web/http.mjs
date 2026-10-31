@@ -77,6 +77,10 @@ export function checkSchema(body, schema) {
       if (!Array.isArray(value) || value.length > rule.max) throw new HttpError(400, 'bad_request', 'The request was not understood.');
       out[key] = value.map((entry) => checkSchema(entry, rule.of));
       continue;
+    } else if (rule.type === 'object') {
+      // A nested object is checked as strictly as the body (G-09's session answer, RQ-459).
+      out[key] = checkSchema(value, rule.of);
+      continue;
     } else if (rule.type === 'boolean') {
       if (typeof value !== 'boolean') throw new HttpError(400, 'bad_request', 'The request was not understood.');
     } else {

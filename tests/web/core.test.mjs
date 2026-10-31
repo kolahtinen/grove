@@ -3,7 +3,7 @@ import { connect } from 'node:net';
 import assert from 'node:assert/strict';
 import { startTestGrove } from '../fakes/harness.mjs';
 import { CSP } from '../../server/web/headers.mjs';
-import { createRouter } from '../../server/web/http.mjs';
+import { createRouter, checkSchema } from '../../server/web/http.mjs';
 
 let t;
 before(async () => { t = await startTestGrove(); });
@@ -118,6 +118,15 @@ test('FR-022 RQ-231: malformed JSON and unknown fields get 400 bad_request with 
   const unknown = await c.post('/api/signin', { email: 'a@example.test', password: 'x', isOwner: true });
   assert.equal(unknown.status, 400);
   assert.equal(unknown.body.error, 'bad_request');
+});
+
+test('FR-022 RQ-231 RQ-459: a field that is an object (a session exercise\'s answer) is checked as strictly as the body: its unknown fields and wrong types are refused', () => {
+  const schema = { answer: { type: 'object', optional: true, of: { picks: { type: 'list', max: 2, item: { type: 'integer', min: 0, max: 3 }, optional: true }, knew: { type: 'boolean', optional: true } } } };
+  assert.deepEqual(checkSchema({ answer: { picks: [1, 0] } }, schema), { answer: { picks: [1, 0] } });
+  assert.deepEqual(checkSchema({}, schema), {});
+  for (const bad of [{ answer: { picks: [1], score: 2 } }, { answer: [1] }, { answer: null }, { answer: 'x' }, { answer: { knew: 'yes' } }, { answer: { picks: [1, 0, 2] } }]) {
+    assert.throws(() => checkSchema(bad, schema), (e) => e.status === 400 && e.code === 'bad_request', JSON.stringify(bad));
+  }
 });
 
 test('FR-022 RQ-231: a thrown handler error gives a plain 500 with no stack trace (constitution 2.5)', async () => {

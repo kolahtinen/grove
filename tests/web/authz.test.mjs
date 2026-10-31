@@ -40,6 +40,8 @@ const BODIES = {
   '/api/sessions': { kind: 'time', tile: 'mix', skill: 'mix', minutes: 5, voice: true },
   '/api/session/next': { sessionId: 999999, index: 0 },
   '/api/session/plan': { sessionId: 999999, fill: true },
+  '/api/session/leave': { sessionId: 999999 },
+  '/api/start/offered': {},
   '/api/library/add': { id: 'Z9-99' },
   '/api/undo': { lemma: 'kopp', kind: 'word' },
   '/api/learning/answer': { item: 'W-zzz', action: 'know' },
