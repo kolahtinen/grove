@@ -9,7 +9,25 @@ function shuffle(list) {
   return a;
 }
 
+// FR-932: a sentence shown in an exercise never carries a closing quotation mark it doesn't open (a
+// line's closing ” left on its last sentence).
+export function tidySentence(sv) {
+  let text = String(sv ?? '').trim();
+  for (const [open, close] of [['“', '”'], ['«', '»'], ['„', '”']]) {
+    const opens = text.split(open).length - 1;
+    const closes = text.split(close).length - 1;
+    if (closes > opens && text.endsWith(close)) text = text.slice(0, -1).trimEnd();
+  }
+  if ((text.split('"').length - 1) % 2 === 1 && text.endsWith('"')) text = text.slice(0, -1).trimEnd();
+  return text;
+}
+
 export function createQuestions(db) {
+  // The English of a sentence's line (FR-932: shown after answering).
+  const lineEn = (textId, sv) => db.prepare(`SELECT l.en FROM sentences s JOIN text_lines l ON l.text_id = s.text_id AND l.position = s.line_position
+    WHERE s.text_id = ? AND s.sv = ? LIMIT 1`).get(textId, sv)?.en
+    ?? db.prepare('SELECT en FROM text_lines WHERE text_id = ? AND sv = ? LIMIT 1').get(textId, sv)?.en ?? null;
+
   // The most recent sentence of this learner containing the item (its new items, its form, or a learned form).
   function sentenceFor(accountId, item) {
     const forms = [item.lemma, ...db.prepare('SELECT form FROM word_forms WHERE word_id = ?').all(item.id).map((r) => r.form)];
@@ -59,7 +77,7 @@ export function createQuestions(db) {
       const others = otherMeanings(accountId, item, right);
       if (!s || !right || others.length < 2) return recall(item, right);
       const options = shuffle([right, ...shuffle(others).slice(0, Math.min(3, others.length))]);
-      return { lemma: item.lemma, kind: item.kind, mode, sentence: s.sv, word: s.form, meaning: right, options, right: options.indexOf(right) };
+      return { lemma: item.lemma, kind: item.kind, mode, sentence: tidySentence(s.sv), sentenceEn: lineEn(s.textId, s.sv), word: s.form, meaning: right, options, right: options.indexOf(right) };
     },
     // Master: the sentence with the form blanked, the English meaning, and Swedish forms to choose from.
     masterQuestion(accountId, item) {
@@ -72,7 +90,7 @@ export function createQuestions(db) {
       if (others.length < 2 || !meaning) return recall(item, meaning);
       const options = shuffle([s.form.toLowerCase(), ...shuffle(others).slice(0, 3)]);
       const blank = s.sv.replace(new RegExp(`(^|[^\\p{L}])${s.form.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?=[^\\p{L}]|$)`, 'u'), `$1${'_'.repeat(Math.max(4, s.form.length))}`);
-      return { lemma: item.lemma, kind: item.kind, mode: 'master', sentence: blank, meaning, options, right: options.indexOf(s.form.toLowerCase()) };
+      return { lemma: item.lemma, kind: item.kind, mode: 'master', sentence: tidySentence(blank), sentenceEn: lineEn(s.textId, s.sv), meaning, options, right: options.indexOf(s.form.toLowerCase()) };
     },
   };
 }

@@ -38,7 +38,7 @@ test('FR-410 (question-pages/56): Let it fall asks a meaning question; right fal
   assert.equal(word(t, learner.id, 'har + supine', 'pattern').state, 'ground');
 });
 
-test('FR-411 RQ-383 RQ-414 RQ-415: Pick up drills a ground word or pattern To remember, due now; a leaf can\'t be picked up', async () => {
+test('FR-411 RQ-383 RQ-414 RQ-415 RQ-456: Pick up drills a ground word or pattern, an unmarked leaf or a new word To remember, due now; a drilled leaf can\'t be picked up', async () => {
   assert.deepEqual((await c.post('/api/pick-up', { lemma: 'hund' })).body, { result: 'picked_up' });
   const hund = word(t, learner.id, 'hund');
   assert.deepEqual([hund.state, hund.drilled, hund.to_read, hund.to_remember, hund.gap_days], ['leaf', 1, 0, 1, 1]);
@@ -48,7 +48,18 @@ test('FR-411 RQ-383 RQ-414 RQ-415: Pick up drills a ground word or pattern To re
   assert.deepEqual([pattern.state, pattern.drilled, pattern.to_remember], ['leaf', 1, 1]);
   const due = (await c.get('/api/review?mode=review')).body.items.map((i) => i.lemma);
   assert.ok(due.includes('hund'), 'due now');
-  assert.equal((await c.post('/api/pick-up', { lemma: 'tolv' })).status, 409);
+  // RQ-456 (question-pages/95): the menu's one action on an unmarked leaf and on a new word is Pick up.
+  const tolv = word(t, learner.id, 'tolv');
+  assert.deepEqual([tolv.state, tolv.drilled], ['leaf', 0], 'tolv is an unmarked leaf of the text');
+  assert.deepEqual((await c.post('/api/pick-up', { lemma: 'tolv' })).body, { result: 'picked_up' });
+  assert.deepEqual([word(t, learner.id, 'tolv').drilled, word(t, learner.id, 'tolv').to_remember], [1, 1]);
+  assert.equal(word(t, learner.id, 'giraff'), undefined);
+  assert.deepEqual((await c.post('/api/pick-up', { lemma: 'giraff' })).body, { result: 'picked_up' });
+  assert.deepEqual([word(t, learner.id, 'giraff').state, word(t, learner.id, 'giraff').drilled], ['leaf', 1]);
+  assert.deepEqual((await c.post('/api/pick-up', { lemma: 'nya ord', kind: 'phrase' })).body, { result: 'picked_up' }, 'a phrase too');
+  const again = await c.post('/api/pick-up', { lemma: 'tolv' });
+  assert.equal(again.status, 409);
+  assert.equal(again.body.error, 'already_drilled');
 });
 
 test('FR-419 RQ-155: marks, Let it fall and Pick up act only on the learner\'s own items', async () => {

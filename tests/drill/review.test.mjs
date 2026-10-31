@@ -35,6 +35,21 @@ test('FR-404 FR-406 RQ-80 RQ-32 RQ-07 RQ-415: Review lists fading leaves first, 
   assert.ok(res.body.items.every((i) => i.mode === 'remember' && i.sentence), 'every leaf in a sentence, To remember (no To read)');
 });
 
+test('FR-932 RQ-457: a question carries the English of its sentence\'s line, and never a closing quotation mark its sentence doesn\'t open', async () => {
+  const db = t.grove.db;
+  const kopp = (await c.get('/api/review?mode=review')).body.items.find((i) => i.lemma === 'kopp');
+  const row = db.prepare('SELECT s.id, s.sv, l.en FROM sentences s JOIN text_lines l ON l.text_id = s.text_id AND l.position = s.line_position WHERE s.account_id = ? AND s.sv = ?').get(learner.id, kopp.sentence);
+  assert.ok(row, 'the sentence is one the learner read');
+  assert.equal(kopp.sentenceEn, row.en);
+  db.prepare('UPDATE sentences SET sv = ? WHERE id = ?').run(`${row.sv}”`, row.id);
+  try {
+    const again = (await c.get('/api/review?mode=review')).body.items.find((i) => i.lemma === 'kopp');
+    assert.equal(again.sentence, row.sv, 'the closing ” is dropped');
+  } finally {
+    db.prepare('UPDATE sentences SET sv = ? WHERE id = ?').run(row.sv, row.id);
+  }
+});
+
 test('FR-406 RQ-32: an item without a sentence is a recall card', async () => {
   await c.post('/api/leaves', { text: 'kanelbulle' });
   t.grove.db.prepare('UPDATE words SET last_review_at = ? WHERE account_id = ? AND lemma = ?').run(clock.now - 2 * DAY, learner.id, 'kanelbulle');

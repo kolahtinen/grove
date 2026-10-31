@@ -57,9 +57,10 @@ export function createItems({ db, now = () => Date.now() }) {
       db.prepare("UPDATE words SET state = 'ground' WHERE id = ?").run(item.id);
       return db.prepare('SELECT * FROM words WHERE id = ?').get(item.id);
     },
-    // Picked up: a drilled leaf To remember, due now (FR-411).
+    // Picked up: a drilled leaf To remember, due now (FR-411): a ground item or an unmarked leaf (RQ-456:
+    // the word menu's one action on a ground, new or unmarked word); a drilled leaf already is one.
     pickUp(item) {
-      if (item.state !== 'ground') throw new HttpError(409, 'not_ground', 'Only words in your ground can be picked up.');
+      if (item.state === 'leaf' && item.drilled) throw new HttpError(409, 'already_drilled', 'You are already learning this one in Review.');
       db.prepare("UPDATE words SET state = 'leaf', drilled = 1, to_read = 0, to_remember = 1, gap_days = ?, last_review_at = ?, fallen_at = NULL, picked_at = COALESCE(picked_at, ?) WHERE id = ?")
         .run(START_GAP, now() - START_GAP * 24 * 60 * 60 * 1000, now(), item.id);
     },

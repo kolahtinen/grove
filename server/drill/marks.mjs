@@ -40,8 +40,8 @@ export function createMarks({ db, now = () => Date.now() }) {
       if (ok && item.state === 'leaf') remember(accountId, item, before, false);
       return { fell: ok && item.state === 'leaf' };
     },
-    // A pattern of the sentence, or a common-dictionary word, that isn't an item yet is added as one
-    // (FR-411, RQ-414, RQ-449).
+    // A pattern or phrase of the sentence, a new word of a text, or a common-dictionary word that isn't an
+    // item yet is added as one (FR-411, RQ-414, RQ-449, RQ-456).
     pickUp(accountId, { lemma, kind = 'word' }) {
       const had = items.find(accountId, lemma, kind);
       const item = had ?? items.groundFor(items.findOrCreate(accountId, lemma, kind));
