@@ -4,9 +4,24 @@ import { sendJson, HttpError } from '../web/http.mjs';
 import { createSessions } from './store.mjs';
 import { listTopics } from './topics.mjs';
 import { TILES, SKILLS, TICKS, LENGTHS } from './plan.mjs';
+import { createOverview } from './overview.mjs';
+
+// A finished exercise's answer, kept for looking again (RQ-459; contracts: Answer).
+const ANSWER = {
+  type: 'object',
+  optional: true,
+  of: {
+    picks: { type: 'list', max: 2, item: { type: 'integer', min: 0, max: 3 }, optional: true },
+    cards: { type: 'list', max: 4, item: { type: 'enum', values: ['know', 'pick'] }, optional: true },
+    picked: { type: 'boolean', optional: true },
+    taps: { type: 'list', max: 100, item: { type: 'integer', min: 0, max: 999 }, optional: true },
+    knew: { type: 'boolean', optional: true },
+  },
+};
 
 export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
   const sessions = createSessions({ db, now });
+  const overview = createOverview({ db, now });
   router.add({
     method: 'POST', path: '/api/sessions', access: 'agreed',
     schema: {
@@ -51,8 +66,26 @@ export function registerSessionRoutes(router, { db, now = () => Date.now() }) {
   });
   router.add({
     method: 'POST', path: '/api/session/next', access: 'agreed',
-    schema: { sessionId: { type: 'integer', min: 1 }, index: { type: 'integer', min: 0, max: 200 } },
+    schema: { sessionId: { type: 'integer', min: 1 }, index: { type: 'integer', min: 0, max: 200 }, answer: ANSWER },
     handler: (ctx) => sendJson(ctx.res, 200, { session: sessions.next(ctx.account.id, ctx.body) }),
   });
+  // FR-904 (RQ-459): a finished exercise looked at again.
+  router.add({
+    method: 'GET', path: '/api/session/exercise', access: 'agreed',
+    handler: (ctx) => {
+      const id = Number(ctx.url.searchParams.get('id'));
+      const index = Number(ctx.url.searchParams.get('index'));
+      if (!Number.isSafeInteger(id) || id < 1 || ctx.url.searchParams.get('index') === null) throw new HttpError(404, 'not_found', 'There is no such finished exercise.');
+      sendJson(ctx.res, 200, sessions.exercise(ctx.account.id, { id, index }));
+    },
+  });
+  // FR-904: ✕ on a session; one never planned isn't kept.
+  router.add({
+    method: 'POST', path: '/api/session/leave', access: 'agreed',
+    schema: { sessionId: { type: 'integer', min: 1 } },
+    handler: (ctx) => sendJson(ctx.res, 200, sessions.leave(ctx.account.id, ctx.body)),
+  });
+  // FR-901 (RQ-463): Home's live counts.
+  router.add({ method: 'GET', path: '/api/overview', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, overview.overview(ctx.account.id)) });
   router.add({ method: 'GET', path: '/api/topics', access: 'agreed', handler: (ctx) => sendJson(ctx.res, 200, { topics: listTopics(db, ctx.account.id) }) });
 }

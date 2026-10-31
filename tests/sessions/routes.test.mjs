@@ -159,7 +159,7 @@ test('FR-904 RQ-421: the summary counts practice reviews among the words reviewe
   let view = s;
   for (let i = 0; i < 40 && view.status === 'going'; i += 1) view = (await c.post('/api/session/next', { sessionId: view.id, index: view.index })).body.session;
   assert.equal(view.status, 'finished');
-  assert.deepEqual(Object.keys(view.summary).sort(), ['daysThisWeek', 'minutes', 'textsRead', 'wordsFell', 'wordsReviewed']);
+  assert.deepEqual(Object.keys(view.summary).sort(), ['daysThisWeek', 'minutes', 'patternsMet', 'pickedUp', 'textsHeard', 'textsRead', 'wordsFell', 'wordsReviewed']);
   assert.ok(view.summary.daysThisWeek >= 0 && view.summary.daysThisWeek <= 7);
 });
 
@@ -239,4 +239,102 @@ test('FR-928 FR-929 RQ-452 RQ-453: a Words session shows next words one per card
   assert.equal(grammar.exercise.learn, true);
   const p = grammar.exercise.pattern;
   assert.ok(p.id.startsWith('G-') && p.name && p.explain && p.howToSpot && p.examples.length && p.text.lines.length && p.spot.length);
+});
+
+test('FR-904 FR-912 FR-932 RQ-457: a session lists its exercises for the start screen and the session bar, each with its skill and seconds; the exercise shown names its skill and seconds', async () => {
+  const s = (await start({ minutes: 10 })).body.session;
+  assert.equal(s.exercises.length, s.total);
+  assert.ok(s.exercises.every((e) => ['review', 'reading', 'listening', 'words', 'grammar'].includes(e.skill) && e.seconds > 0 && e.done === false), JSON.stringify(s.exercises));
+  assert.equal(s.seconds, s.exercises.reduce((n, e) => n + e.seconds, 0));
+  assert.equal(s.secondsLeft, s.seconds);
+  assert.equal(s.exercise.skill, s.exercises[0].skill);
+  assert.equal(s.exercise.seconds, s.exercises[0].seconds);
+  assert.equal(s.exercise.skill, 'review', 'Mix starts with Review');
+  const moved = (await c.post('/api/session/next', { sessionId: s.id, index: 0 })).body.session;
+  assert.equal(moved.exercises[0].done, true);
+  assert.equal(moved.secondsLeft, s.seconds - s.exercises[0].seconds);
+  const texts = moved.exercises.filter((e) => e.skill === 'reading' || e.skill === 'listening');
+  assert.ok(texts.every((e) => typeof e.title === 'string'), 'a text exercise names its text');
+});
+
+test('FR-904 FR-932 RQ-459: an exercise is frozen when first shown; once done with its answer it can be looked at again as it was, answers kept; nothing else can', async () => {
+  const s = (await start({ tile: 'review', minutes: 5 })).body.session;
+  const q = s.exercise.question;
+  assert.ok(q, 'a review question');
+  assert.deepEqual((await c.get('/api/session')).body.session.exercise.question, q, 'the same question when shown again');
+  assert.equal((await c.get(`/api/session/exercise?id=${s.id}&index=0`)).status, 404, 'not finished yet');
+  const bad = await c.post('/api/session/next', { sessionId: s.id, index: 0, answer: { picks: [0], score: 3 } });
+  assert.equal(bad.status, 400, 'an unknown answer field');
+  const picks = q.options ? [(q.right + 1) % q.options.length, q.right] : undefined;
+  const answer = picks ? { picks } : { knew: false };
+  const moved = await c.post('/api/session/next', { sessionId: s.id, index: 0, answer });
+  assert.equal(moved.status, 200, JSON.stringify(moved.body));
+  const look = await c.get(`/api/session/exercise?id=${s.id}&index=0`);
+  assert.equal(look.status, 200, JSON.stringify(look.body));
+  assert.deepEqual(look.body.exercise.question, q, 'as it was shown');
+  assert.deepEqual(look.body.answer, answer);
+  assert.equal(look.body.index, 0);
+  assert.equal((await c.get(`/api/session/exercise?id=${s.id}&index=1`)).status, 404, 'the current one is not looked at again');
+  assert.equal((await c.get(`/api/session/exercise?id=${s.id}&index=x`)).status, 404);
+  const other = t.client();
+  await other.signInAgreed('other@example.test');
+  assert.equal((await other.get(`/api/session/exercise?id=${s.id}&index=0`)).status, 404, 'another account');
+});
+
+test('FR-904 FR-920 RQ-457: leaving a session whose plan was never started keeps nothing and gives no Resume; leaving a planned one keeps it', async () => {
+  const offered = (await start({ minutes: 30, fill: false, skill: 'listening' })).body.session;
+  if (offered.offer) {
+    const left = await c.post('/api/session/leave', { sessionId: offered.id });
+    assert.deepEqual(left.body, { kept: false });
+    assert.equal((await c.get('/api/session')).body.session, null, 'no Resume');
+    assert.equal(t.grove.db.prepare('SELECT COUNT(*) AS n FROM practice_sessions WHERE id = ?').get(offered.id).n, 0);
+  }
+  const planned = (await start({ tile: 'review', minutes: 5 })).body.session;
+  assert.deepEqual((await c.post('/api/session/leave', { sessionId: planned.id })).body, { kept: true });
+  assert.equal((await c.get('/api/session')).body.session.id, planned.id);
+  const other = t.client();
+  await other.signInAgreed('other@example.test');
+  assert.equal((await other.post('/api/session/leave', { sessionId: planned.id })).status, 404);
+});
+
+test('FR-904 FR-933 RQ-457 RQ-458: the summary counts new texts read and heard apart, never a text read or heard again, and the words picked up and patterns met during the session', async () => {
+  const db = t.grove.db;
+  const at = Date.now();
+  const reading = db.prepare("SELECT id FROM texts WHERE account_id = ? AND kind = 'reading' LIMIT 1").get(learner.id).id;
+  const listening = db.prepare("SELECT id FROM texts WHERE account_id = ? AND kind = 'listening' LIMIT 1").get(learner.id)?.id ?? reading;
+  const plan = [
+    { mode: 'discover', type: 'text', textId: reading, seconds: 60, done: true },
+    { mode: 'discover', type: 'text', textId: reading, again: 'reread', seconds: 60, done: true },
+    { mode: 'discover', type: 'text', textId: listening, again: 'listen', seconds: 60, done: true },
+  ];
+  const id = Number(db.prepare(`INSERT INTO practice_sessions (account_id, kind, minutes, params, plan, at_index, status, started_at, finished_at, tile, skill)
+    VALUES (?, 'time', 5, '{}', ?, 3, 'finished', ?, ?, 'discover', 'mix')`).run(learner.id, JSON.stringify(plan), at - 1000, at + 1000).lastInsertRowid);
+  db.prepare('UPDATE words SET picked_at = ? WHERE id = (SELECT id FROM words WHERE account_id = ? ORDER BY id LIMIT 1)').run(at, learner.id);
+  db.prepare("INSERT OR REPLACE INTO learning_seen (account_id, item_id, first_at, last_at) SELECT ?, id, ?, ? FROM learning_items WHERE type = 'pattern' LIMIT 1").run(learner.id, at, at);
+  const summary = (await c.get(`/api/session?id=${id}`)).body.session.summary;
+  assert.equal(summary.textsRead, 1, 'read again doesn\'t count');
+  assert.equal(summary.textsHeard, 0, 'listen again doesn\'t count');
+  assert.equal(summary.pickedUp, 1);
+  assert.equal(summary.patternsMet, 1);
+  assert.equal(summary.minutes, 3, 'again counts as minutes');
+});
+
+test('FR-901 RQ-463: Home\'s counts are the account\'s own: new texts, words due, texts, grove texts, level, today and this week\'s minutes Monday to Sunday; a brand-new learner is said to be one', async () => {
+  const db = t.grove.db;
+  const o = (await c.get('/api/overview')).body;
+  assert.equal(o.newTexts, db.prepare('SELECT COUNT(*) AS n FROM texts WHERE account_id = ? AND ready = 1 AND read_at IS NULL').get(learner.id).n);
+  assert.equal(o.yourTexts, db.prepare('SELECT COUNT(*) AS n FROM texts WHERE account_id = ?').get(learner.id).n);
+  assert.equal(o.commonTexts, db.prepare('SELECT COUNT(*) AS n FROM library_texts').get().n);
+  assert.equal(o.leaves, db.prepare("SELECT COUNT(*) AS n FROM words WHERE account_id = ? AND state = 'leaf' AND drilled = 1").get(learner.id).n);
+  assert.ok(Number.isInteger(o.due) && o.due >= 0 && o.due <= o.leaves);
+  assert.equal(o.week.length, 7);
+  assert.ok(o.week.every((m) => Number.isInteger(m) && m >= 0));
+  assert.ok(o.weekMinutes >= o.todayMinutes);
+  assert.equal(o.brandNew, false);
+  assert.equal(typeof o.startOpen, 'boolean');
+  const empty = t.client();
+  await empty.signInAgreed('empty@example.test');
+  const e = (await empty.get('/api/overview')).body;
+  assert.deepEqual([e.newTexts, e.due, e.leaves, e.yourTexts, e.todayMinutes, e.weekMinutes, e.brandNew, e.startOpen, e.level], [0, 0, 0, 0, 0, 0, true, true, null]);
+  assert.deepEqual(e.week, [0, 0, 0, 0, 0, 0, 0]);
 });
