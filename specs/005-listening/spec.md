@@ -28,7 +28,7 @@ The learner opens a text and taps **Listen**. The text is blurred; they press Pl
 
 1. **Given** a device with a Swedish voice, **When** the learner plays a text, **Then** each sentence is read and highlighted while it's read. (RQ-20, RQ-21, RQ-198)
 2. **Given** listening mode, **When** it starts, **Then** the text is blurred until the learner taps it or the text has been played through; the text's questions follow. (RQ-47, RQ-57, RQ-270)
-3. **Given** a sentence, **When** the learner replays it, **Then** it is read again and its play count goes up; **When** they loop it, **Then** it repeats until stopped. (RQ-14, RQ-197)
+3. **Given** a sentence, **When** the learner opens **Sentences** and replays it, **Then** it is read again and its play count goes up; each row starts with the sentence's number and up to its first three words; **When** they loop it, **Then** it repeats until stopped, and a Looping strip with Stop shows in the card after the sheet is closed. (RQ-14, RQ-197, RQ-467)
 
 ---
 
@@ -73,8 +73,8 @@ On a device without a Swedish voice, grove never reads Swedish with another lang
 - **FR-503** (RQ-13, RQ-365; N-37, N-03, N-13, N-02; X-02): A speed slider from 0.5× to 1.5× (step 0.1, 1× at first) MUST set the rate for all of grove's speech and be kept for the learner on the server; under it a note says that how well it works depends on the device's voice.
 - **FR-504** (RQ-198, RQ-21; N-03, N-34; B-32, question-pages/90): **Listen** on a listening text MUST play the whole text audio-only, sentence by sentence, highlighting the sentence being read; Pause/Stop end it; Play continues from the highlighted sentence.
 - **FR-505** (RQ-47, RQ-57; N-03, N-02): In listening mode the text MUST be blurred until the learner taps it or the whole text has been played; English is hidden until the text is shown.
-- **FR-506** (RQ-14; N-37): Each sentence MUST have replay, and show how many times it has been played in this listening session.
-- **FR-507** (RQ-197; N-03): Each sentence MUST be loopable: it repeats until the loop is turned off or another sentence is played.
+- **FR-506** (RQ-14, RQ-467; N-37; B-33, question-pages/100): The listening card MUST have one **Sentences** button next to Play (`prototypes/sketches/2026-10-31-listening-sentences/`, version A), opening grove's bottom sheet (like the word menu; ✕, Esc, Back or the backdrop close it) with one row per sentence: its number, then up to its first three words and "…" when there are more ("2 · Elsa öppnar dörren…"), how many times it has been played in this listening session, **Replay** and **Loop**; the sheet stays open while replaying and lights the sentence playing. The same in a session's listening exercise (G-09 FR-933). Was: a row per sentence in the card.
+- **FR-507** (RQ-197, RQ-467; N-03): Each sentence MUST be loopable (its Loop in the sheet): it repeats until the loop is turned off or another sentence is played; while it loops, the listening card shows a strip "Looping N · first words…" with **Stop**, also after the sheet is closed.
 - **FR-508** (RQ-270; N-37): After listening, the text's comprehension questions MUST be offered (G-02's questions), making each text a listening passage.
 - **FR-509** (RQ-393; N-37, N-42): A **listening** text (G-02 FR-202) MUST open in listening mode (FR-504, FR-505: audio first, the text blurred until tapped or played through); a reading text opens for reading, with no Listen (B-32, question-pages/90: "it's a reading session"; was: with Listen still offered). Added 2026-10-26 (addendum 002).
 

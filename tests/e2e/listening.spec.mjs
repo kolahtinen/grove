@@ -82,22 +82,33 @@ test('FR-504 FR-505 FR-508 RQ-198 RQ-21 RQ-47 RQ-57 RQ-270: Listen blurs the tex
   expect(spoken).toEqual(await sentencesOf(page, id));
 });
 
-test('FR-506 FR-507 RQ-14 RQ-197: replay counts plays; a looped sentence repeats until the loop is turned off', async ({ page }) => {
+test('FR-506 FR-507 RQ-14 RQ-197 RQ-467: the Sentences sheet names rows by number and first words; replay counts plays; a looped sentence repeats until stopped', async ({ page }) => {
   await fakeSpeech(page, 'sv');
   await signIn(page);
   const id = await listeningText(page);
   await page.goto(`/text?id=${id}`);
   await page.locator('#listen').click();
-  const row = page.locator('#listen-list .listen-row').nth(1);
+  await expect(page.locator('#listen-list .listen-row')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Sentences' }).click();
+  const sheet = page.getByRole('dialog', { name: 'Sentences' });
+  const sentences = await sentencesOf(page, id);
+  const words = sentences[1].split(/\s+/);
+  await expect(sheet.locator('.listen-row').nth(1)).toContainText(`2 · ${words.slice(0, 3).join(' ')}${words.length > 3 ? '…' : ''}`);
+  const row = sheet.locator('.listen-row').nth(1);
   await row.getByRole('button', { name: 'Replay' }).click();
   await expect(row.locator('.play-count')).toHaveText('played 1×');
   await page.waitForTimeout(100);
-  await page.locator('#listen-list .listen-row').nth(1).getByRole('button', { name: 'Replay' }).click();
-  await expect(page.locator('#listen-list .listen-row').nth(1).locator('.play-count')).toHaveText('played 2×');
-  await page.locator('#listen-list .listen-row').nth(2).getByRole('button', { name: 'Loop' }).click();
-  const looped = (await sentencesOf(page, id))[2];
+  await sheet.locator('.listen-row').nth(1).getByRole('button', { name: 'Replay' }).click();
+  await expect(sheet.locator('.listen-row').nth(1).locator('.play-count')).toHaveText('played 2×');
+  await sheet.locator('.listen-row').nth(2).getByRole('button', { name: 'Loop' }).click();
+  const looped = sentences[2];
   await expect.poll(async () => (await page.evaluate(() => window.__spoken)).filter((u) => u.text === looped).length, { timeout: 5000 }).toBeGreaterThan(3);
-  await page.locator('#listen-list .listen-row').nth(2).getByRole('button', { name: 'Loop' }).click();
+  await sheet.getByRole('button', { name: 'Close' }).click();
+  await expect(sheet).toBeHidden();
+  const strip = page.locator('#listening-card .loop-strip');
+  await expect(strip).toContainText('Looping 3 ·');
+  await strip.getByRole('button', { name: 'Stop' }).click();
+  await expect(strip).toBeHidden();
   const n = (await page.evaluate(() => window.__spoken)).length;
   await page.waitForTimeout(400);
   expect((await page.evaluate(() => window.__spoken)).length).toBeLessThanOrEqual(n + 1);
@@ -113,7 +124,8 @@ test('FR-503 RQ-13 RQ-365: the speed slider sets the rate of the next utterance,
   await page.locator('#speed').fill('0.7');
   await page.locator('#speed').dispatchEvent('change');
   await expect(page.locator('#speed-value')).toHaveText('0.7×');
-  await page.locator('#listen-list .listen-row').first().getByRole('button', { name: 'Replay' }).click();
+  await page.getByRole('button', { name: 'Sentences' }).click();
+  await page.getByRole('dialog', { name: 'Sentences' }).locator('.listen-row').first().getByRole('button', { name: 'Replay' }).click();
   await expect.poll(async () => Math.round(((await page.evaluate(() => window.__spoken)).at(-1)?.rate ?? 0) * 10) / 10).toBe(0.7);
   await page.reload();
   await page.locator('#listen').click();

@@ -8,4 +8,6 @@ Questions on the page: how many first words (up to three); the number first (yes
 
 ## Your pick and comments
 
-(waiting: say "done" in Claude Code)
+Saved 2026-10-31 17:27. **Pick: A** (the Sentences button and its sheet). Q1 first words: **3**. Q2 number first: **yes**. Q3 in a session too: **yes**. No comments.
+
+Applied 2026-10-31 (the owner's "ok"): RQ-467; G-05 FR-506 and FR-507 now describe the button, the sheet and the loop strip; their browser test opens the sheet first (the FR-503 test reaches Replay the same way).
