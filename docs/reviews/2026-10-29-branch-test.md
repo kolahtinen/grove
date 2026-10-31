@@ -46,3 +46,11 @@ State tested: the branch after question-pages/76 and 77 were applied (three-grou
 | B-31 | Reading page in a session | "In reading sessions: remove the '2 new' thing. If a user doesn't know a word they will add it themselves." The text's stats line ("N words · 2 new (95% known)") drops the new-words count. | decided (question-pages/90) |
 | B-32 | Reading page in a session | "In reading sessions: don't have the listen option; it's a reading session." A reading exercise in a session shows no Listen button. | decided (question-pages/90) |
 
+
+## Round 3: the sketch round's build, seen as screenshots (2026-10-31)
+
+State: main after the sketch round's and the library's rebuilds (question-pages/92…98), shown as 390 px screenshots of the dev server (the owner away from the computer).
+
+| ID | Page | Note | Sorted as |
+|---|---|---|---|
+| B-33 | Listening (a text's Listen card) | "i don't want the long list of individual sentences like it is. maybe instead a button that opens a selection. in the selection bubble, sentences have 1-3 of their first words as an identifier, in stead of numbers. maybe also the number there first." Today a listening text lists every sentence as a row "N · Replay · Loop" (G-05 FR-503…FR-505), 12 rows for a short text. Wanted: one button opening a bubble that lists the sentences as "N · Det är kväll…" (number, then the first 1–3 words), each with Replay and Loop. | to sort |
