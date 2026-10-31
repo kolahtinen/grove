@@ -1,0 +1,472 @@
+# Corrections to grove's word list (G-02 FR-222, RQ-466): forms the list leaves empty or gives another word's meaning.
+# Built by `node scripts/build-lexicon.mjs --corrections` from the rows of content/library/meanings.tsv marked * (written by Claude from each word's use in grove's texts).
+# <form> <dictionary form> <English meaning>; read before the list for that form.
+i	i	in
+som	som	who, which, that; as, like
+med	med	with
+för	för	for; too (för tung, too heavy)
+av	av	of, by, off
+efter	efter	after
+vill	vilja	want(s) to
+ville	vilja	wanted to
+vilja	vilja	to want
+går	gå	go(es), walk(s); leave(s) (of a train or bus)
+får	få	get(s); may, be allowed to
+få	få	to get; to be allowed to
+fick	få	got; was allowed to, had to
+fått	få	got, received (har fått)
+skulle	skola	would, should; was going to
+sin	sin	his, her, its, their (own)
+sitt	sin	his, her, its, their (own)
+sina	sin	his, her, its, their (own)
+min	min	my, mine
+mina	min	my, mine (plural)
+ditt	din	your, yours
+hela	hel	the whole, all of
+vid	vid	at, by, next to
+bor	bo	live(s), dwell(s)
+kom	komma	came
+gör	göra	do(es), make(s)
+göra	göra	to do, to make
+gjorde	göra	did, made
+gjort	göra	done, made (har gjort)
+svårt	svår	difficult, hard
+började	börja	began, started
+börjat	börja	begun, started (har börjat)
+mot	mot	towards, against
+egen	egen	own
+skolan	skola	the school
+skolor	skola	schools
+vän	vän	friend
+vänner	vän	friends
+vännen	vän	the friend
+visar	visa	show(s)
+visa	visa	to show
+stod	stå	stood; said (stod det, it said)
+såg	se	saw; looked
+tror	tro	believe(s), think(s)
+trodde	tro	believed, thought
+trott	tro	believed, thought (har trott)
+tro	tro	to believe, to think
+lär	lära	learn(s) (lär sig); teach(es)
+lära	lära	to learn (lära sig); to teach
+lärde	lära	learned (lärde sig); taught
+lärt	lära	learned (har lärt sig); taught
+räcker	räcka	is enough
+räckte	räcka	was enough
+räcka	räcka	to be enough
+ringer	ringa	call(s), ring(s)
+ringde	ringa	called, rang
+ringa	ringa	to call, to ring
+passar	passa	suit(s), fit(s)
+bokar	boka	book(s), reserve(s)
+åker	åka	go(es), travel(s) (by car, bus, train)
+ris	ris	rice
+skrev	skriva	wrote
+slutet	slut	the end
+dyrt	dyr	expensive
+lön	lön	pay, salary
+lönen	lön	the pay, the salary
+löner	lön	salaries, wages
+skönt	skön	nice, comfortable; a relief
+helgen	helg	the weekend
+helger	helg	weekends
+helgerna	helg	the weekends
+eget	egen	own
+lever	leva	live(s), is alive
+kräver	kräva	demand(s), require(s)
+krävs	kräva	is needed, is required
+krävt	kräva	required, demanded (har krävt)
+lovar	lova	promise(s)
+äger	äga	own(s)
+boken	bok	the book
+gula	gul	yellow
+trötta	trött	tired
+korta	kort	short
+mörka	mörk	dark
+långa	lång	long; tall
+reser	resa	travel(s)
+tråkig	tråkig	boring; a shame
+tråkigt	tråkig	boring; a shame (det var tråkigt, that's a shame)
+middag	middag	dinner
+middagen	middag	the dinner
+kyckling	kyckling	chicken
+fågel	fågel	bird
+fåglar	fågel	birds
+fåglarna	fågel	the birds
+stänger	stänga	close(s), shut(s)
+läggs	lägga	is put, is laid
+lägg	lägga	put (lägg dig, lie down)
+ordnar	ordna	arrange(s), sort(s) out
+träffa	träffa	to meet
+träffar	träffa	meet(s)
+träffade	träffa	met
+träffat	träffa	met (har träffat)
+satte	sätta	put, set
+sätter	sätta	put(s), set(s)
+sätta	sätta	to put, to set
+sätts	sätta	is set
+bakar	baka	bake(s)
+vågar	våga	dare(s)
+bakom	bakom	behind
+stämmer	stämma	is right, is true
+varor	vara	goods, products
+varorna	vara	the goods, the shopping
+varan	vara	the product
+driver	driva	run(s) (a business); drive(s)
+drivs	driva	is run
+driva	driva	to run (a business)
+syns	synas	show(s), can be seen
+fyllde	fylla	turned (an age); filled
+fyller	fylla	turn(s) (an age); fill(s)
+fylla	fylla	to fill (in)
+klädde	klä	dressed (klädde på sig, got dressed)
+oroar	oroa	worry, worries
+vars	vars	whose
+enstaka	enstaka	single, occasional
+blommar	blomma	is in flower, blooms
+tjänst	tjänst	service; job, post
+tjänster	tjänst	services
+grund	grund	basis; reason (på grund av, because of)
+tänkte	tänka	thought; was going to
+kände	känna	felt; knew
+hittat	hitta	found (har hittat)
+hittade	hitta	found
+hittar	hitta	find(s)
+bestämde	bestämma	decided
+läste	läsa	read (past)
+läst	läsa	read (har läst)
+hörde	höra	heard
+hört	höra	heard (har hört)
+visade	visa	showed
+visat	visa	shown (har visat)
+flyttade	flytta	moved
+flyttat	flytta	moved (har flyttat)
+flyttar	flytta	move(s)
+arbetade	arbeta	worked
+arbetat	arbeta	worked (har arbetat)
+bakade	baka	baked
+bakat	baka	baked (har bakat)
+badade	bada	swam, bathed
+använde	använda	used
+använt	använda	used (har använt)
+betalt	betala	paid (har betalt)
+behövt	behöva	needed (har behövt)
+bytte	byta	changed, swapped
+firade	fira	celebrated
+målade	måla	painted
+lyfte	lyfta	lifted
+skickade	skicka	sent
+sålde	sälja	sold
+valde	välja	chose
+valt	välja	chosen (har valt)
+körde	köra	drove
+märkte	märka	noticed
+fattade	fatta	made (a decision); understood
+fattat	fatta	made (a decision) (har fattat)
+nått	nå	reached (har nått)
+ökat	öka	increased (har ökat)
+ökade	öka	increased
+vägrade	vägra	refused
+följt	följa	followed
+begärde	begära	asked for, demanded
+diskuterade	diskutera	discussed
+jämfört	jämföra	compared (jämfört med, compared with)
+uttryckte	uttrycka	expressed, put it
+drömt	drömma	dreamed (har drömt)
+bokat	boka	booked (har bokat)
+förlorat	förlora	lost (har förlorat)
+betraktade	betrakta	regarded, looked at
+anställde	anställa	employed, hired
+tömda	tömma	emptied
+sansade	sansad	level-headed, sensible
+sjukskrivna	sjukskriven	on sick leave
+infekterade	infekterad	infected
+mår	må	feel(s) (mår bra, is well)
+hittills	hittills	so far
+bröt	bryta	broke
+hamnar	hamna	end(s) up
+speglar	spegla	reflect(s)
+tvingar	tvinga	force(s)
+lockar	locka	attract(s), tempt(s)
+kämpar	kämpa	fight(s), struggle(s)
+fångar	fånga	catch(es), trap(s)
+vinkar	vinka	wave(s)
+formar	forma	shape(s)
+råkar	råka	happen(s) to
+tänder	tända	light(s) (candles)
+tvättar	tvätta	wash(es) (clothes)
+duschar	duscha	shower(s), take(s) a shower
+cyklar	cykla	cycle(s)
+kramar	krama	hug(s)
+kollar	kolla	check(s), look(s) at
+diskar	diska	wash(es) the dishes
+frågar	fråga	ask(s)
+frågade	fråga	asked
+frågat	fråga	asked (har frågat)
+hälsar	hälsa	greet(s), say(s) hello
+halkade	halka	slipped
+halkat	halka	slipped (har halkat)
+skojar	skoja	joke(s)
+suger	suga	suck(s)
+äts	äta	is eaten
+deltar	delta	take(s) part
+delta	delta	to take part
+vann	vinna	won
+dog	dö	died
+mor	mor	mother
+lett	leda	led (har lett)
+bärs	bära	is carried, is borne
+fars	far	father's
+trädde	träda	came (into force), stepped
+gifte	gifta	married (gifte sig, got married)
+fälldes	fälla	was brought down, fell
+milda	mild	mild
+bete	bete	grazing, pasture
+fäste	fäste	foothold
+platta	platt	flat
+snabba	snabb	quick, fast
+blekare	blek	paler
+magra	mager	thin, lean
+grunt	grund	shallow
+gödning	gödning	fertiliser
+alger	alg	algae
+kapital	kapital	capital (money)
+slag	slag	kind (ett slags, a kind of)
+slags	slag	kind of
+slaget	slag	the kind; the blow
+sticker	sticka	stick(s) out (sticker ut)
+sticka	sticka	to stick out
+sträva	sträva	to strive
+strid	strid	fight, struggle
+bett	be	asked (har bett)
+ana	ana	to sense, to suspect
+utgör	utgöra	make(s) up, constitute(s)
+ensamma	ensam	alone, lonely
+fina	fin	nice, fine
+fint	fin	nice, fine
+glada	glad	happy
+lätta	lätt	easy
+fasta	fast	fixed, permanent
+höga	hög	high
+vitt	vit	white
+skär	skära	cut(s)
+gift	gift	married
+hit	hit	here (to this place)
+tag	tag	hold (få tag i, get hold of)
+kön	kö	the queue
+val	val	election; choice
+valet	val	the election; the choice
+panna	panna	frying pan (pytt i panna, a hash of fried diced meat and potatoes)
+våren	vår	(the) spring
+disk	disk	dirty dishes; the washing-up
+disken	disk	the dishes, the washing-up
+rätter	rätt	dishes (food)
+rätterna	rätt	the dishes (food)
+satt	sitta	sat, was sitting
+gång	gång	time, occasion (en gång, once; i gång, going)
+gången	gång	the time (första gången, the first time)
+å	å	on (å ena sidan, on the one hand)
+mål	mål	goal
+målet	mål	the goal, the aim
+ställ	ställa	put (ställ den, put it)
+planer	plan	plans
+planet	plan	the plane
+röra	röra	to move (röra sig, röra på sig)
+rör	röra	move(s); concern(s) (det rör sig om, it is about)
+korten	kort	the cards (lägga korten på bordet, put one's cards on the table)
+händer	hända	happen(s)
+handlar	handla	is about (handlar om)
+matte	matte	maths
+matten	matte	the maths
+vår	vår	our
+ses	ses	see each other (vi ses, see you)
+stan	stad	town (colloquial: the town centre)
+bidrog	bidra	contributed
+id-kort	id-kort	ID card
+fyrahundra	fyrahundra	four hundred
+skärmfria	skärmfri	screen-free
+stambyte	stambyte	replacing a building's water and drain pipes
+vinbutik	vinbutik	wine shop
+skoldagen	skoldag	the school day
+inlandets	inland	the inland's, of the interior
+språkkafé	språkkafé	language café
+språkcafé	språkcafé	language café
+språkcaféet	språkcafé	the language café
+familjerum	familjerum	family room
+hundrafyrtio	hundrafyrtio	a hundred and forty
+föräldraledig	föräldraledig	on parental leave
+jättetung	jättetung	really heavy
+uppackade	uppackad	unpacked
+hundraåttio	hundraåttio	a hundred and eighty
+söndagsmiddagen	söndagsmiddag	the Sunday dinner
+läxhjälpen	läxhjälp	the homework help
+skolzon	skolzon	school zone
+matrester	matrest	food scraps, leftovers
+biogas	biogas	biogas
+skidlärare	skidlärare	ski instructor
+tidsskillnaden	tidsskillnad	the time difference
+papperslyktor	papperslykta	paper lanterns
+ersättningsmobil	ersättningsmobil	replacement phone
+korrektur	korrektur	proofreading
+tjugotusen	tjugotusen	twenty thousand
+björkpollen	björkpollen	birch pollen
+pollenprognosen	pollenprognos	the pollen forecast
+förstagångsföräldrar	förstagångsförälder	first-time parents
+tjugofemåring	tjugofemåring	25-year-old
+kollekten	kollekt	the church collection
+bank-id	bank-id	BankID (Swedish electronic ID)
+tentaplugg	tentaplugg	studying for exams
+fyradagarsvecka	fyradagarsvecka	four-day week
+provperiod	provperiod	trial period
+hemvägen	hemväg	the way home
+fårbönder	fårbonde	sheep farmers
+röstkortet	röstkort	the voting card
+bonusfamiljer	bonusfamilj	blended families
+cykelsemester	cykelsemester	cycling holiday
+personalrestaurangen	personalrestaurang	the staff canteen
+linsgrytan	linsgryta	the lentil stew
+hjärt	hjärta	heart (hjärt- och kärlsjukdomar, heart and vascular disease)
+två-diabetes	typ två-diabetes	type 2 diabetes
+skattepengarna	skattepengar	the taxpayers' money
+popkörer	popkör	pop choirs
+hundstallet	hundstall	the dog kennel
+kardemummabullar	kardemummabulle	cardamom buns
+ensamhushållen	ensamhushåll	the single-person households
+välfärdsmodellen	välfärdsmodell	the welfare model
+klätterklubb	klätterklubb	climbing club
+samtalsgrupper	samtalsgrupp	discussion groups
+matsvinnet	matsvinn	the food waste
+före-datum	bäst före-datum	best-before date
+förbrukningsdag	förbrukningsdag	use-by date
+livsmedelsverket	livsmedelsverket	the Swedish Food Agency
+skönhetsfel	skönhetsfel	cosmetic flaws
+budgivning	budgivning	bidding
+lånelöfte	lånelöfte	loan pre-approval
+femhundratusen	femhundratusen	five hundred thousand
+belåningsgraden	belåningsgrad	the loan-to-value ratio
+månadsavgiften	månadsavgift	the monthly fee
+överbryggningslån	överbryggningslån	bridging loan
+måndagsmorgnarna	måndagsmorgon	the Monday mornings
+omställningsstöd	omställningsstöd	career-transition support
+semesterresorna	semesterresa	the holiday trips
+meningsfull	meningsfull	meaningful
+arbetsmarknadsforskare	arbetsmarknadsforskare	labour-market researchers
+familjeliv	familjeliv	family life
+möbelbutik	möbelbutik	furniture shop
+hemtransporter	hemtransport	home deliveries
+klädbutiker	klädbutik	clothes shops
+pendelparkeringar	pendelparkering	park-and-ride car parks
+turtätheten	turtäthet	the frequency (of buses or trains)
+barndomsstad	barndomsstad	childhood town
+arbetsbelastning	arbetsbelastning	workload
+sömnproblem	sömnproblem	sleep problems
+irritation	irritation	irritation
+arbetsmängden	arbetsmängd	the amount of work
+miljödebatten	miljödebatt	the environmental debate
+skogsindustrin	skogsindustri	the forest industry
+exportinkomster	exportinkomst	export earnings
+likåldriga	likåldrig	even-aged
+kalhuggs	kalhugga	is clear-cut
+livsmiljöer	livsmiljö	habitats
+skogsmarken	skogsmark	the forest land
+hyggesfritt	hyggesfri	continuous-cover (without clear-cutting)
+livsmiljö	livsmiljö	habitat
+förtroendekapital	förtroendekapital	trust (as capital), goodwill
+mörkertid	mörkertid	the dark season
+utlämningsställe	utlämningsställe	collection point
+friskvårdsbidrag	friskvårdsbidrag	wellness allowance (paid by an employer)
+friskvårdsbidraget	friskvårdsbidrag	the wellness allowance
+gymkort	gymkort	gym membership card
+yoga	yoga	yoga
+fysioterapeut	fysioterapeut	physiotherapist
+mirakelkur	mirakelkur	miracle cure
+mobilfria	mobilfri	phone-free
+folkfest	folkfest	big public celebration
+jurygrupper	jurygrupp	jury panels
+ballader	ballad	ballads
+sentimental	sentimental	sentimental
+uppmärksamhetsekonomi	uppmärksamhetsekonomi	attention economy
+romanläsning	romanläsning	reading novels
+gräddsås	gräddsås	cream sauce
+söndagsmiddagar	söndagsmiddag	Sunday dinners
+vardagsmenyn	vardagsmeny	the everyday menu
+vardagsmaten	vardagsmat	everyday food
+rekordtakt	rekordtakt	record pace
+betongelement	betongelement	precast concrete panels
+centralvärme	centralvärme	central heating
+grönytor	grönyta	green spaces
+avundas	avundas	to envy
+renoveringar	renovering	renovations
+lönesamtalet	lönesamtal	the pay review meeting
+supportavdelningen	supportavdelning	the support department
+supportärendena	supportärende	the support cases
+marknadsnivå	marknadsnivå	market level
+gruppchef	gruppchef	team manager
+malmfyndigheter	malmfyndighet	ore deposits
+milslånga	milslång	miles long
+mobiltäckningen	mobiltäckning	the mobile coverage
+transportsträcka	transportsträcka	a stretch to get through (just to get somewhere)
+titelsidan	titelsida	the title page
+idiom	idiom	idioms
+sociolekter	sociolekt	sociolects (ways of speaking of a social group)
+prisutvecklingen	prisutveckling	the price trend
+maskinöversättning	maskinöversättning	machine translation
+magbesvär	magbesvär	stomach trouble
+febernedsättande	febernedsättande	fever-reducing
+bräckvattenhav	bräckvattenhav	brackish-water sea
+skyddszoner	skyddszon	buffer zones
+bottensedimenten	bottensediment	the bottom sediments
+språkprogram	språkprogram	language programme
+språkpolitik	språkpolitik	language policy
+koncernspråk	koncernspråk	company language (of a corporate group)
+samhällsämne	samhällsämne	social-studies subject
+domänförlust	domänförlust	domain loss (a language losing ground in a field)
+språklagen	språklag	the Language Act
+samhällsbärande	samhällsbärande	that society rests on
+parallellspråkighet	parallellspråkighet	parallel language use
+namnlagen	namnlag	the Names Act
+marknadshyror	marknadshyra	market rents
+hyressättning	hyressättning	rent setting
+nybyggda	nybyggd	newly built
+tågresandet	tågresande	train travel
+utrikesflyget	utrikesflyg	international flights
+weekendresa	weekendresa	weekend trip
+konsenskultur	konsenskultur	consensus culture
+kaffeautomaten	kaffeautomat	the coffee machine
+trädlösa	trädlös	treeless
+fjällbjörkar	fjällbjörk	mountain birches
+björkskog	björkskog	birch forest
+fjällregionen	fjällregion	the mountain region
+växtsäsongen	växtsäsong	the growing season
+fjällväxter	fjällväxt	mountain plants
+stödutfodring	stödutfodring	supplementary feeding
+islager	islager	layer of ice
+mätserier	mätserie	series of measurements
+flyttlederna	flyttled	the migration routes
+byggbranschen	byggbransch	the building trade
+cirkelledare	cirkelledare	study-circle leader
+studiecirkeln	studiecirkel	the study circle
+studiecirkel	studiecirkel	study circle
+id-kontroller	id-kontroll	ID checks
+föräldraledighet	föräldraledighet	parental leave
+anläggningsprogrammet	anläggningsprogram	(bygg- och anläggningsprogrammet) the building and construction programme
+nyutbildad	nyutbildad	newly qualified
+högstadieelever	högstadieelev	lower-secondary pupils (years 7–9)
+svårfunna	svårfunnen	hard to find
+jästsvamparna	jästsvamp	the yeasts
+mjölksyrabakterierna	mjölksyrabakterie	the lactic acid bacteria
+surdegsbröd	surdegsbröd	sourdough bread
+läsesällskap	läsesällskap	reading societies
+kommunalpolitiker	kommunalpolitiker	local politicians
+studierummen	studierum	the study rooms
+hobbyverksamhet	hobbyverksamhet	hobby activities
+kulturskola	kulturskola	municipal school of music and the arts
+svårligen	svårligen	hardly, with difficulty
+placebo	placebo	placebo
+jetlag	jetlag	jet lag
+hemtjänsten	hemtjänst	home care (the council's help at home for older people)
+flergenerationsboende	flergenerationsboende	several generations living together
+placeboeffekten	placeboeffekt	the placebo effect
+hjärnavbildningar	hjärnavbildning	brain scans
+frisätta	frisätta	to release

@@ -60,7 +60,8 @@ export function buildReading(db, accountId, textId) {
   // An own text's AI meanings, word by word (FR-318).
   const textMeaning = new Map(db.prepare('SELECT form, en FROM text_meanings WHERE text_id = ?').all(text.id).map((r) => [r.form, r.en]));
   const explanations = db.prepare('SELECT form, lemma, explain_en FROM explanations WHERE account_id = ? ORDER BY id').all(accountId);
-  const patterns = db.prepare(`SELECT DISTINCT w.id, w.lemma AS name, w.en AS explain, w.state, w.drilled FROM pattern_places p JOIN words w ON w.id = p.word_id
+  // The text's patterns with their level and ladder ID (a grove text's, RQ-465; NULL for an AI text's).
+  const patterns = db.prepare(`SELECT DISTINCT w.id, w.lemma AS name, w.en AS explain, w.state, w.drilled, w.level, w.ladder FROM pattern_places p JOIN words w ON w.id = p.word_id
     WHERE p.text_id = ? ORDER BY w.id`).all(text.id);
   const places = db.prepare('SELECT word_id, line_position, words FROM pattern_places WHERE text_id = ?').all(text.id);
   const textPatternNames = new Set(patterns.map((p) => String(p.name).toLowerCase()));

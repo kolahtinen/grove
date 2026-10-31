@@ -155,3 +155,50 @@ test('FR-305 RQ-455 RQ-456: the word menu has its own Grammar in this word secti
     await expect(row.getByRole('button', { name: `Let ${found.pattern.name} fall` })).toBeVisible();
   }
 });
+
+test('FR-305 FR-916 RQ-465: a grove text\'s own grammar pattern shows in the word menu with its level chip, and Pick up this pattern picks it up by name', async ({ page }) => {
+  await signIn(page);
+  const found = await page.evaluate(async () => {
+    const me = await (await fetch('/api/me')).json();
+    const lib = await (await fetch('/api/library')).json();
+    for (const t of lib.texts.filter((x) => x.kind === 'reading' && x.level === 'A2').slice(0, 20)) {
+      const r = await fetch('/api/library/add', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ id: t.id }) });
+      const { textId } = await r.json();
+      const reading = await (await fetch(`/api/reading?id=${textId}`)).json();
+      const tokens = reading.lines.flatMap((l) => l.sentences.flatMap((s) => s.tokens)).filter((x) => x.word);
+      const counts = new Map();
+      for (const x of tokens) counts.set(x.t, (counts.get(x.t) ?? 0) + 1);
+      for (const tok of tokens) {
+        if (counts.get(tok.t) !== 1 || tok.status === 'name') continue;
+        const pattern = (tok.patterns ?? []).map((id) => reading.patterns.find((p) => p.id === id)).find((p) => p?.level && !(p.state === 'leaf' && p.drilled));
+        if (pattern) return { textId, word: tok.t, pattern };
+      }
+    }
+    return null;
+  });
+  expect(found).not.toBeNull();
+  await page.goto(`/text?id=${found.textId}`);
+  await page.locator('button.w', { hasText: new RegExp(`^${found.word}$`) }).first().click();
+  await expect(page.locator('#menu .sec-title', { hasText: 'Grammar in this word' })).toBeVisible();
+  const row = page.locator('#menu-pattern-list .prow', { hasText: found.pattern.name });
+  await expect(row).toBeVisible();
+  await expect(row.locator('.ladder-level')).toHaveText(found.pattern.level);
+  await row.locator('button.phead').click();
+  const picked = page.waitForRequest((req) => req.url().endsWith('/api/pick-up') && req.method() === 'POST');
+  await row.getByRole('button', { name: `Pick up ${found.pattern.name}` }).click();
+  expect(JSON.parse((await picked).postData())).toMatchObject({ lemma: found.pattern.name, kind: 'pattern' });
+  await expect(page.locator('.toast')).toContainText(`${found.pattern.name} is a leaf`);
+  await expect(row.getByRole('button', { name: `Let ${found.pattern.name} fall` })).toBeVisible();
+});
+
+test('FR-306 FR-916 RQ-466: a grove text\'s own meaning is the word menu\'s meaning here (kort "card" in A1-03)', async ({ page }) => {
+  await signIn(page);
+  const textId = await page.evaluate(async () => {
+    const me = await (await fetch('/api/me')).json();
+    const r = await fetch('/api/library/add', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ id: 'A1-03' }) });
+    return (await r.json()).textId;
+  });
+  await page.goto(`/text?id=${textId}`);
+  await page.locator('button.w', { hasText: /^kort$/ }).first().click();
+  await expect(page.locator('#menu-meaning')).toContainText('card');
+});

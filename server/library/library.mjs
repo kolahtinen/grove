@@ -1,6 +1,7 @@
 // The common library's grove texts (G-09 FR-916; addendum 005, RQ-438; B-11): carried in the build,
 // imported at start-up when missing or changed, belonging to no learner. A learner adds one to Your
-// library as their own copy through G-02's accept path, marked "grove text" and never Beta.
+// library as their own copy through G-02's accept path, marked "grove text" and never Beta. Each text
+// carries its grammar patterns with their levels (RQ-465) and its own meanings (RQ-466).
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
@@ -30,7 +31,10 @@ export function importGroveTexts(db, file = GROVE_TEXTS_FILE) {
   transaction(db, () => {
     const upsert = db.prepare(`INSERT INTO library_texts (id, level, topic, kind, form, title, data) VALUES (?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT (id) DO UPDATE SET level = excluded.level, topic = excluded.topic, kind = excluded.kind, form = excluded.form, title = excluded.title, data = excluded.data`);
-    for (const t of texts) upsert.run(t.id, t.level, t.topic, t.kind, t.form, t.title, JSON.stringify({ names: t.names, lines: t.lines, questions: t.questions }));
+    for (const t of texts) {
+      const data = { names: t.names, lines: t.lines, questions: t.questions, patterns: t.patterns ?? [], meanings: t.meanings ?? [] };
+      upsert.run(t.id, t.level, t.topic, t.kind, t.form, t.title, JSON.stringify(data));
+    }
     const ids = texts.map((t) => t.id);
     db.prepare(`DELETE FROM library_texts WHERE id NOT IN (SELECT value FROM json_each(?))`).run(JSON.stringify(ids));
     db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES ('grove_texts_hash', ?)").run(hash);
@@ -62,14 +66,24 @@ export function libraryText(db, accountId, id) {
 }
 
 // Adds a grove text to the learner's library through G-02's accept path; adding it again opens the copy.
-// Only an ID in library_texts is accepted, so no other text can be copied this way (T-24).
+// Only an ID in library_texts is accepted, so no other text can be copied this way (T-24). The text's
+// patterns go through the accept path as an AI text's do (pattern places, the learner's pattern items),
+// then each pattern item without a level takes the text's level and ladder ID (RQ-465); the text's own
+// meanings become the copy's meanings here (G-03 FR-306's first choice), leaving the learner's words as
+// they are (RQ-466).
 export function addToLibrary({ db, accountId, id, now = () => Date.now() }) {
   const row = db.prepare('SELECT * FROM library_texts WHERE id = ?').get(id);
   if (!row) throw new HttpError(404, 'not_found', 'There is no such text in the library.');
   const had = db.prepare('SELECT id FROM texts WHERE account_id = ? AND library_id = ?').get(accountId, id);
   if (had) return { textId: had.id, added: false };
   const data = JSON.parse(row.data);
-  const answer = validateAnswer({ part: LIBRARY_CODE(id), texts: [{ kind: row.kind, title: row.title, lines: data.lines, questions: data.questions }], new_words: [], new_phrases: [], inflections: [], names: data.names }).value;
+  const patterns = data.patterns ?? [];
+  const answer = validateAnswer({
+    part: LIBRARY_CODE(id),
+    texts: [{ kind: row.kind, title: row.title, lines: data.lines, questions: data.questions }],
+    new_words: [], new_phrases: [], inflections: [], names: data.names,
+    patterns: patterns.map(({ name, explain_en, places }) => ({ name, explain_en, places })),
+  }).value;
   const words = createWordStore({ db, now });
   return transaction(db, () => {
     const at = now();
@@ -82,6 +96,13 @@ export function addToLibrary({ db, accountId, id, now = () => Date.now() }) {
     acceptAnswer({ db, words, accountId, exchange, answer, check, topic: row.topic, now, counter });
     const text = db.prepare('SELECT id FROM texts WHERE account_id = ? AND exchange_id = ?').get(accountId, exchange.id);
     db.prepare('UPDATE texts SET library_id = ? WHERE id = ?').run(id, text.id);
+    const setLevel = db.prepare(`UPDATE words SET level = COALESCE(level, ?), ladder = COALESCE(ladder, ?)
+      WHERE account_id = ? AND kind = 'pattern' AND lemma = ?`);
+    for (const p of patterns) {
+      if (LEVELS.includes(p.level)) setLevel.run(p.level, p.ladder ?? null, accountId, String(p.name).toLowerCase());
+    }
+    const meaning = db.prepare('INSERT OR IGNORE INTO text_meanings (account_id, text_id, form, lemma, en) VALUES (?, ?, ?, ?, ?)');
+    for (const m of data.meanings ?? []) meaning.run(accountId, text.id, String(m.form).toLowerCase(), String(m.lemma).toLowerCase(), m.en);
     return { textId: text.id, added: true };
   });
 }

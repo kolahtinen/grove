@@ -225,9 +225,10 @@ export function createWordMenu({ textId, getData, onChange }) {
     toast(`${token.t} fell to your ground.`, () => undo(item, () => Object.assign(token, before)));
   }
 
-  // A phrase or pattern row's Pick up / Let it fall (FR-411); a ladder pattern is picked up by its ID.
+  // A phrase or pattern row's Pick up / Let it fall (FR-411); a ladder pattern not among the text's own
+  // is picked up by its ID, a text's pattern (with or without a level, RQ-465) by its name.
   async function pickItem(p, kind) {
-    const r = p.level && kind === 'pattern'
+    const r = p.fromLadder && kind === 'pattern'
       ? await post('/api/learning/answer', { item: p.id, action: 'pick' })
       : await post('/api/pick-up', { lemma: p.name, kind });
     if (!r.ok) { showMessage(message, r.message); return; }
@@ -372,6 +373,8 @@ export function createWordMenu({ textId, getData, onChange }) {
       body.append(list);
     }
     // Grammar in this word: the text's patterns whose places include it, then grove's grammar ladder's.
+    // Each shows its level where it has one: the ladder's, or a grove text's stored level (RQ-465).
+    for (const p of data.ladder || []) p.fromLadder = true;
     const pats = [
       ...(token.patterns || []).map((pid) => data.patterns.find((p) => p.id === pid)).filter(Boolean),
       ...(token.ladder || []).map((pid) => (data.ladder || []).find((p) => p.id === pid)).filter(Boolean),
@@ -383,7 +386,7 @@ export function createWordMenu({ textId, getData, onChange }) {
       const list = el('div', 'menu-patterns');
       list.id = 'menu-pattern-list';
       for (const p of pats) {
-        const key = `pattern:${p.level ? p.id : p.name}`;
+        const key = `pattern:${p.fromLadder ? p.id : p.name}`;
         const pleaf = p.state === 'leaf' && !!p.drilled;
         const extra = [];
         if (p.level) extra.push(el('span', 'ladder-level', p.level));

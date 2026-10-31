@@ -1092,7 +1092,7 @@
         "saft",
         "paj",
         "dekorera",
-        "papperslyktor",
+        "papperslykta",
         "melodi"
       ],
       "lines": [
@@ -2294,6 +2294,204 @@
             "Med ett brev",
             "På skolan",
             "I kommunens app"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "id": "B1-24",
+      "level": "B1",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Trappan",
+      "names": [
+        "Leo"
+      ],
+      "above_level": [],
+      "lines": [
+        {
+          "sv": "Förra året bestämde sig Leo för att sluta ta hissen på jobbet.",
+          "en": "Last year Leo decided to stop taking the lift at work."
+        },
+        {
+          "sv": "Hans kontor ligger på sjätte våningen.",
+          "en": "His office is on the sixth floor."
+        },
+        {
+          "sv": "De första veckorna var han mycket trött när han kom upp.",
+          "en": "For the first few weeks he was very tired when he got to the top."
+        },
+        {
+          "sv": "Nu går det mycket lättare, och han tar trapporna flera gånger om dagen.",
+          "en": "Now it is much easier, and he takes the stairs several times a day."
+        },
+        {
+          "sv": "Han säger att han sover bättre och har mer energi.",
+          "en": "He says he sleeps better and has more energy."
+        },
+        {
+          "sv": "Det bästa är att det inte kostar något och inte tar extra tid.",
+          "en": "The best thing is that it costs nothing and takes no extra time."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Var ligger Leos kontor?",
+          "options": [
+            "På tredje våningen",
+            "På sjätte våningen",
+            "På tionde våningen"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är det bästa, enligt texten?",
+          "options": [
+            "Det är gratis och tar ingen extra tid",
+            "Han träffar fler kollegor",
+            "Hissen är ofta trasig"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "B1-25",
+      "level": "B1",
+      "topic": "People and family",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Farmors brev",
+      "names": [
+        "Hanna",
+        "Hannas",
+        "Umeå",
+        "Ingrid",
+        "Stockholm",
+        "Norge"
+      ],
+      "above_level": [],
+      "lines": [
+        {
+          "sv": "När Hanna flyttade hemifrån för att plugga i Umeå fick hon ett brev från sin farmor.",
+          "en": "When Hanna moved away from home to study in Umeå, she got a letter from her grandmother."
+        },
+        {
+          "sv": "Det var första gången hon fick ett riktigt brev, med frimärke och allt.",
+          "en": "It was the first time she had got a real letter, with a stamp and everything."
+        },
+        {
+          "sv": "Farmor Ingrid är över åttio år och har aldrig haft en smart telefon.",
+          "en": "Grandma Ingrid is over eighty and has never had a smartphone."
+        },
+        {
+          "sv": "Hon skrev om sitt eget första år borta från familjen, på femtiotalet.",
+          "en": "She wrote about her own first year away from her family, in the fifties."
+        },
+        {
+          "sv": "Då flyttade hon till Stockholm för att jobba på ett sjukhus.",
+          "en": "Back then she moved to Stockholm to work at a hospital."
+        },
+        {
+          "sv": "Hon hade ingen telefon i sitt rum och ringde hem bara en gång i månaden.",
+          "en": "She had no phone in her room and called home only once a month."
+        },
+        {
+          "sv": "I stället skrev hon brev till sin mamma varje söndag.",
+          "en": "Instead she wrote a letter to her mother every Sunday."
+        },
+        {
+          "sv": "Hanna tyckte att brevet var så fint att hon bestämde sig för att svara på samma sätt.",
+          "en": "Hanna thought the letter was so lovely that she decided to answer in the same way."
+        },
+        {
+          "sv": "Det var svårare än hon trodde.",
+          "en": "It was harder than she thought."
+        },
+        {
+          "sv": "Hon var van vid att skriva korta meddelanden på mobilen, inte långa texter för hand.",
+          "en": "She was used to writing short messages on her phone, not long texts by hand."
+        },
+        {
+          "sv": "Efter några rader gjorde handen ont.",
+          "en": "After a few lines her hand hurt."
+        },
+        {
+          "sv": "Men hon fortsatte och berättade om sina nya vänner, om den kalla lägenheten och om kurserna.",
+          "en": "But she kept going and wrote about her new friends, the cold flat and her courses."
+        },
+        {
+          "sv": "Sedan dess skriver de till varandra ungefär en gång i månaden.",
+          "en": "Since then they have written to each other about once a month."
+        },
+        {
+          "sv": "Breven tar flera dagar att komma fram, men det gör ingenting.",
+          "en": "The letters take several days to arrive, but that doesn't matter."
+        },
+        {
+          "sv": "Hanna säger att hon tänker mer på vad hon skriver när hon inte kan ändra det.",
+          "en": "Hanna says she thinks more about what she writes when she can't change it."
+        },
+        {
+          "sv": "Hon sparar alla brev i en låda under sängen.",
+          "en": "She keeps all the letters in a box under her bed."
+        },
+        {
+          "sv": "Farmor gör likadant.",
+          "en": "Grandma does the same."
+        },
+        {
+          "sv": "I julas, när Hanna var hemma, läste de några av breven högt för varandra.",
+          "en": "At Christmas, when Hanna was at home, they read some of the letters aloud to each other."
+        },
+        {
+          "sv": "De skrattade mycket, och farmor berättade saker som hon aldrig hade sagt förut.",
+          "en": "They laughed a lot, and Grandma told them things she had never said before."
+        },
+        {
+          "sv": "Hon hade till exempel varit kär i en läkare på sjukhuset, men han flyttade till Norge.",
+          "en": "For example, she had been in love with a doctor at the hospital, but he moved to Norway."
+        },
+        {
+          "sv": "Hannas pappa hade aldrig hört den historien.",
+          "en": "Hanna's dad had never heard that story."
+        },
+        {
+          "sv": "Nu vill han också börja skriva brev, men han vet inte riktigt vad han ska skriva om.",
+          "en": "Now he wants to start writing letters too, but he doesn't really know what to write about."
+        },
+        {
+          "sv": "– Börja med vädret, säger farmor. Det gjorde jag alltid.",
+          "en": "– Start with the weather, says Grandma. I always did."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur ofta skriver Hanna och farmor till varandra?",
+          "options": [
+            "Varje vecka",
+            "Ungefär en gång i månaden",
+            "En gång om året"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad var svårt för Hanna?",
+          "options": [
+            "Att skriva för hand",
+            "Att köpa frimärken",
+            "Att hitta adressen"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vem hade aldrig hört historien om läkaren?",
+          "options": [
+            "Hanna",
+            "Hannas mamma",
+            "Hannas pappa"
           ],
           "answer": 2
         }

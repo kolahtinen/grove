@@ -36,14 +36,15 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 export const TOPICS = ['People and family', 'Daily life', 'Food and drink', 'Home', 'Work and study', 'Travel and transport',
   'Free time and culture', 'Health', 'Nature and environment', 'Society'];
 
-// Words per text, the longest sentence in words, and how many words above the level a text may have.
+// Words per text (G-09 FR-916, RQ-464: wide enough for short, usual and long texts at every level;
+// question-pages/97, 1), the longest sentence in words, and how many words above the level a text may have.
 export const LIMITS = {
-  A1: { min: 50, max: 80, sentence: 10, far: 4 },
-  A2: { min: 80, max: 120, sentence: 14, far: 5 },
-  B1: { min: 120, max: 180, sentence: 20, far: 7 },
-  B2: { min: 180, max: 250, sentence: 25, far: 9 },
-  C1: { min: 250, max: 350, sentence: 30, far: 12 },
-  C2: { min: 300, max: 400, sentence: 35, far: 15 },
+  A1: { min: 25, max: 160, sentence: 10, far: 4 },
+  A2: { min: 40, max: 240, sentence: 14, far: 5 },
+  B1: { min: 60, max: 360, sentence: 20, far: 7 },
+  B2: { min: 70, max: 500, sentence: 25, far: 9 },
+  C1: { min: 120, max: 700, sentence: 30, far: 12 },
+  C2: { min: 130, max: 800, sentence: 35, far: 15 },
 };
 
 // The word list's inflected forms (form → headwords), so "bilar" is known through "bil".

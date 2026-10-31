@@ -2899,6 +2899,216 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "A2-31",
+      "level": "A2",
+      "topic": "Free time and culture",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Bio i kväll?",
+      "names": [
+        "Sara"
+      ],
+      "above_level": [
+        "popcorn"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej Sara! Vill du gå på bio i kväll?",
+          "en": "– Hi Sara! Do you want to go to the cinema tonight?"
+        },
+        {
+          "sv": "– Kanske. Vilken film?",
+          "en": "– Maybe. Which film?"
+        },
+        {
+          "sv": "– En ny svensk film. Den börjar halv åtta.",
+          "en": "– A new Swedish film. It starts at half past seven."
+        },
+        {
+          "sv": "– Jag måste jobba till sju.",
+          "en": "– I have to work until seven."
+        },
+        {
+          "sv": "– Det går bra. Vi ses vid bion kvart över sju.",
+          "en": "– That's fine. Let's meet at the cinema at quarter past seven."
+        },
+        {
+          "sv": "– Okej! Jag köper popcorn.",
+          "en": "– Okay! I'll buy popcorn."
+        },
+        {
+          "sv": "– Och jag köper biljetterna på nätet.",
+          "en": "– And I'll buy the tickets online."
+        }
+      ],
+      "questions": [
+        {
+          "q": "När börjar filmen?",
+          "options": [
+            "Kvart över sju",
+            "Halv åtta",
+            "Klockan sju"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad ska Sara köpa?",
+          "options": [
+            "Biljetterna",
+            "Popcorn",
+            "Kaffe"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "id": "A2-32",
+      "level": "A2",
+      "topic": "Nature and environment",
+      "form": "prose",
+      "kind": "reading",
+      "title": "En dag vid havet",
+      "names": [
+        "Jonas",
+        "Lund"
+      ],
+      "above_level": [
+        "mjuk",
+        "ficka",
+        "gräs",
+        "bada",
+        "bad",
+        "skräp",
+        "plast",
+        "soptunna",
+        "påse"
+      ],
+      "lines": [
+        {
+          "sv": "I lördags åkte vi till havet, min sambo Jonas och jag.",
+          "en": "Last Saturday we went to the sea, my partner Jonas and I."
+        },
+        {
+          "sv": "Vi tog tåget från Lund och sedan en buss till en liten by.",
+          "en": "We took the train from Lund and then a bus to a small village."
+        },
+        {
+          "sv": "Det var varmt och soligt, men det blåste lite.",
+          "en": "It was warm and sunny, but it was a bit windy."
+        },
+        {
+          "sv": "Först gick vi en lång promenad på stranden.",
+          "en": "First we went for a long walk on the beach."
+        },
+        {
+          "sv": "Sanden var vit och mjuk.",
+          "en": "The sand was white and soft."
+        },
+        {
+          "sv": "Vi såg många fåglar och en gammal båt.",
+          "en": "We saw lots of birds and an old boat."
+        },
+        {
+          "sv": "Jonas hittade fina stenar och lade dem i fickan.",
+          "en": "Jonas found nice stones and put them in his pocket."
+        },
+        {
+          "sv": "Vid tolv åt vi lunch i gräset.",
+          "en": "At twelve we had lunch on the grass."
+        },
+        {
+          "sv": "Vi hade med oss smörgåsar, frukt och kaffe.",
+          "en": "We had brought sandwiches, fruit and coffee."
+        },
+        {
+          "sv": "Sedan badade vi.",
+          "en": "Then we went for a swim."
+        },
+        {
+          "sv": "Vattnet var kallt, bara sjutton grader!",
+          "en": "The water was cold, only seventeen degrees!"
+        },
+        {
+          "sv": "Jonas skrek högt, och några barn skrattade åt honom.",
+          "en": "Jonas shouted loudly, and some children laughed at him."
+        },
+        {
+          "sv": "Efter badet låg vi på stranden och läste.",
+          "en": "After the swim we lay on the beach and read."
+        },
+        {
+          "sv": "På eftermiddagen såg vi mycket skräp vid vattnet.",
+          "en": "In the afternoon we saw a lot of litter by the water."
+        },
+        {
+          "sv": "Det var plast, flaskor och en gammal sko.",
+          "en": "There was plastic, bottles and an old shoe."
+        },
+        {
+          "sv": "Vi plockade upp allt och slängde det i en soptunna.",
+          "en": "We picked it all up and threw it in a bin."
+        },
+        {
+          "sv": "En äldre man kom fram och sa tack.",
+          "en": "An older man came up and said thank you."
+        },
+        {
+          "sv": "Han berättade att han städar stranden varje morgon.",
+          "en": "He told us that he cleans the beach every morning."
+        },
+        {
+          "sv": "Han har gjort det i tio år.",
+          "en": "He has done it for ten years."
+        },
+        {
+          "sv": "Plasten kommer med vinden och vattnet, sa han.",
+          "en": "The plastic comes with the wind and the water, he said."
+        },
+        {
+          "sv": "Klockan sex tog vi bussen hem igen.",
+          "en": "At six we took the bus home again."
+        },
+        {
+          "sv": "Vi var trötta, men mycket glada.",
+          "en": "We were tired, but very happy."
+        },
+        {
+          "sv": "Nästa gång ska vi ta med oss en extra påse för skräp.",
+          "en": "Next time we will bring an extra bag for litter."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur kallt var vattnet?",
+          "options": [
+            "Sju grader",
+            "Tjugo grader",
+            "Sjutton grader"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Vad såg de på eftermiddagen?",
+          "options": [
+            "Skräp vid vattnet",
+            "En stor båt",
+            "Många fiskar"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad gör den äldre mannen varje morgon?",
+          "options": [
+            "Han badar",
+            "Han städar stranden",
+            "Han tittar på fåglar"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ]
 }

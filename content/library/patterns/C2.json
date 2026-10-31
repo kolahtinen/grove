@@ -7810,7 +7810,6 @@
   },
   {
    "id": "C2-17",
-   "pending": true,
    "patterns": [
     {
      "name": "Present tense: verbs end in -r",
@@ -8027,7 +8026,6 @@
   },
   {
    "id": "C2-18",
-   "pending": true,
    "patterns": [
     {
      "name": "Past tense: -ade, -de, -te and strong verbs",
