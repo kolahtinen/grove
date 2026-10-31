@@ -48,8 +48,11 @@ function backLink(parent) {
   return nav;
 }
 
+// G-09 FR-918: the common library opened from Add a text goes back to Add a text.
+const fromAdd = () => new URLSearchParams(window.location.search).get('from') === 'add';
+
 function renderLink(parentOverride) {
-  const parent = parentOverride ?? PARENTS[window.location.pathname];
+  const parent = parentOverride ?? (fromAdd() && window.location.pathname === '/library' ? ['/add', 'Add a text'] : PARENTS[window.location.pathname]);
   document.querySelector('.way-back')?.remove();
   if (!parent && !offer()) return;
   // A page can say where the link goes (the Options page's sheet head); else at the top of main.

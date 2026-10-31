@@ -29,7 +29,7 @@ async function signIn(page) {
 // prompt (a waiting redo or fix-it from an earlier run would otherwise answer "next"; G-02 FR-206).
 async function freshPrompt(page) {
   await page.goto('/add/ai');
-  await expect(page.locator('#ai-steps li').first()).toBeVisible();
+  await expect(page.locator('#step-count')).toHaveText(/^Step \d of 5$/);
   // FR-223: the AI is chosen first; the shared reviewer account uses free ChatGPT, step by step.
   await page.evaluate(async () => {
     const me = await (await fetch('/api/me')).json();
@@ -38,22 +38,20 @@ async function freshPrompt(page) {
     await fetch('/api/prompt', { method: 'POST', headers: h, body: JSON.stringify({ action: 'new_package' }) });
   });
   await page.reload();
-  await expect(page.locator('#ai-steps li[aria-current="step"]')).toBeVisible();
+  await expect(page.locator('#step-count')).toHaveText(/^Step \d of 5$/);
   const home = await page.evaluate(async () => (await fetch('/api/home')).json());
   return home.waiting;
 }
 
-// FR-919: one step at a time; these move on to the request and to the paste box.
+// FR-919 (RQ-461): one step per screen; a copy never moves on by itself, so these tap on.
 async function toRequest(page) {
-  if (await page.locator('.ai-step[data-step="setup"]').isVisible()) await page.getByRole('button', { name: "I've sent them" }).click();
+  if (await page.locator('.ai-step[data-step="setup"]').isVisible()) await page.locator('#setup-done').click();
   await expect(page.locator('.ai-step[data-step="request"]')).toBeVisible();
 }
 async function toPaste(page) {
   await toRequest(page);
   await page.locator('#prompt-steps .prompt-step').last().getByRole('button', { name: 'Copy prompt' }).click();
-  // Copied: the paste step opens; copying blocked: "Next: paste the answer" appears instead.
-  await expect(page.locator('.ai-step[data-step="paste"]:not([hidden]), #request-done:not([hidden])')).toBeVisible();
-  if (await page.locator('#request-done').isVisible()) await page.locator('#request-done').click();
+  await page.locator('#request-done').click();
   await expect(page.getByLabel("Paste the AI's answer here")).toBeVisible();
 }
 
@@ -74,6 +72,7 @@ test('FR-201 FR-203 FR-219 RQ-40 RQ-19 RQ-390 RQ-402: Texts from your AI shows t
   await toRequest(page);
   await page.locator('#prompt-steps .prompt-step').last().getByRole('button', { name: 'Copy prompt' }).click();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toContain(waiting.code);
+  await page.locator('#request-done').click();
   const { text, titles } = answerFor('good.json', waiting.code);
   await page.getByLabel("Paste the AI's answer here").fill(text);
   await page.getByRole('button', { name: 'Add texts' }).click();
@@ -144,6 +143,8 @@ test('FR-223 FR-919 RQ-403 RQ-404 RQ-391 RQ-436: the AI and version put their re
   await expect(page.locator('#setup-steps .prompt-step').first()).toContainText('Setup');
 
   while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
+  // FR-919 (question-pages/92, 3): the ways of asking are folded under How grove asks.
+  await page.locator('#tactics-summary').click();
   await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('lechat');
   await expect(page.getByRole('combobox', { name: 'Version' })).toHaveValue('free');
   await expect(page.locator('.tactic-option')).toHaveCount(3);
@@ -249,10 +250,10 @@ test('FR-223 RQ-403: the first Get texts asks for the AI and its version first',
     await page.locator('#get-texts').click();
     await expect(page.locator('#plan-message')).toHaveText('First choose your AI and its version, so grove can ask it the best way.');
     await expect(page.getByRole('combobox', { name: 'AI', exact: true })).toBeFocused();
-    await expect(page.locator('#ai-steps li[aria-current="step"]')).toContainText('Your AI');
+    await expect(page.locator('#step-count')).toHaveText('Step 1 of 5');
     await page.getByRole('combobox', { name: 'AI', exact: true }).selectOption('chatgpt');
     await page.locator('#get-texts').click();
-    await expect(page.locator('#ai-steps li[aria-current="step"]')).not.toContainText('Your AI');
+    await expect(page.locator('#step-count')).not.toHaveText('Step 1 of 5');
   } finally {
     await t.close();
   }
@@ -275,12 +276,14 @@ test('FR-223 RQ-405: after two failed answers in a row, the other main tactic is
       await post('/api/answer', { exchangeId: first.next.exchangeId, answer: JSON.stringify(one) });
     }, sample('too-many-new.json'));
     await page.goto(`${t.base}/add/ai`);
+    await expect(page.locator('#step-count')).toHaveText(/^Step \d of 5$/);
     while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
     await expect(page.locator('#tactic-note')).toHaveText('After the failed answers, grove now recommends one long prompt.');
     await expect(option(page, 'One long prompt')).toContainText('Recommended');
     await option(page, 'One long prompt').getByRole('radio').check();
     await expect(page.locator('#plan-message')).toContainText('one long prompt');
     await page.reload();
+    await expect(page.locator('#step-count')).toHaveText(/^Step \d of 5$/);
     while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
     await expect(option(page, 'One long prompt')).toContainText('In use');
     await expect(option(page, 'One long prompt')).toContainText('Recommended');

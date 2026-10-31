@@ -16,7 +16,7 @@ export function stateLabel(state) {
 }
 
 let toastTimer = null;
-function toast(text, undo) {
+export function toast(text, undo) {
   document.querySelector('.toast')?.remove();
   clearTimeout(toastTimer);
   const box = el('div', 'toast');

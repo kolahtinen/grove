@@ -17,28 +17,30 @@
 </div>
 </header>
 <main>
-<section class="card session-head">
-<p class="session-line" id="session-line"></p>
-<progress id="session-bar" max="1" value="0" aria-label="Session progress"></progress>
-<p class="small muted" id="session-note" hidden></p>
+<div class="session-top" id="session-top" hidden></div>
+<section class="card" id="no-session" hidden>
+<h2>No session going</h2>
+<p>Start one from Home: Discover, Review or Mix.</p>
+<p><a class="button-link main" href="/">Back to Home</a></p>
 </section>
 <section class="card" id="offer" hidden>
+<p class="small muted" id="offer-label"></p>
 <h2>Not enough new texts</h2>
 <p id="offer-line"></p>
 <div class="row" id="offer-choices"><a class="button-link main" id="offer-add" href="/add?from=session">Add a text</a><button type="button" id="offer-without">Practise without</button></div>
 <p class="small muted" id="offer-note">Practise without goes on with what you have, filled with early reviews and texts again.</p>
+<p class="small"><button type="button" class="link-button" id="offer-leave">Leave: back to Home</button></p>
 </section>
-<section class="card mode-card" id="exercise" hidden>
-<header class="mode-banner" id="exercise-banner"></header>
-<div class="mode-body" id="exercise-box"></div>
+<section class="card b-card" id="start-card" hidden></section>
+<section class="card b-card" id="exercise" hidden>
+<p class="ex-kicker-line" id="exercise-kicker"></p>
+<h2 class="ex-task" id="exercise-task"></h2>
+<p class="small muted ex-hint" id="exercise-hint" hidden></p>
+<div class="ex-body" id="exercise-box"></div>
 </section>
-<section class="card" id="session-end" hidden>
-<h2>Well done</h2>
-<ul class="summary" id="summary"></ul>
-<p><a href="/">Back to Home</a></p>
-</section>
+<section class="card b-card" id="session-end" hidden></section>
 <p class="message" id="session-message" role="status" hidden></p>
-<p class="small"><a href="/">Leave for now</a> <span class="muted">— you can carry on later.</span></p>
+<div class="action-bar" id="action-bar" hidden><div class="action-inner"><p class="fb" id="feedback" role="status" hidden></p><p class="wait" id="wait" hidden></p><div class="actions" id="actions"></div></div></div>
 </main>
 </body>
 </html>

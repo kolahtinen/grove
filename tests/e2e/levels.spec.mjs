@@ -26,6 +26,10 @@ test('FR-605 FR-604 FR-606 RQ-248 RQ-114 RQ-252: a new account goes from the wel
   await page.waitForURL(/\/(start)?$/);
   if (info.project.name === 'phone') {
     if (await page.locator('#welcome').isVisible().catch(() => false)) await page.locator('#welcome-close').click();
+    // FR-605 (RQ-463): Home sends a new account to the starting level once; offered already (by another
+    // test of this shared account), Home's Progress offers it.
+    await page.waitForTimeout(500);
+    if (!/\/start$/.test(page.url())) await page.getByRole('link', { name: 'Pick or assess your level now' }).click();
     await expect(page).toHaveURL(/\/start$/);
   } else {
     await page.goto('/settings');
@@ -81,4 +85,37 @@ test('FR-603 FR-605 RQ-447 RQ-433 RQ-113: Pick my level lists each level with a 
   await page.waitForURL(/\/$/);
   await page.goto('/progress');
   await expect(page.locator('#progress-levels .lv.now .v')).toHaveText('B1');
+});
+
+test('FR-605 FR-922 FR-901 RQ-463 B-02: a brand-new learner goes to the starting level once, after the welcome; its ‹ Home opens Home and Home stays, offering the level from Progress, with the new learner\'s lines', async ({ page }) => {
+  const { startTestGrove, PASSWORD } = await import('../fakes/harness.mjs');
+  const t = await startTestGrove({ host: 'localhost' });
+  try {
+    t.seedAccount({ email: 'brand-new@example.test' });
+    await page.goto(`${t.base}/signin`);
+    await page.getByLabel('Email').fill('brand-new@example.test');
+    await page.getByLabel('Password').fill(PASSWORD);
+    await page.getByRole('button', { name: 'Sign in' }).click();
+    await page.waitForURL(/\/terms$/);
+    await agreeTerms(page);
+    await page.waitForURL(`${t.base}/`);
+    await page.locator('#welcome-close').click();
+    await page.waitForURL(/\/start$/);
+    await expect(page.locator('.way-back a')).toHaveText('‹ Home');
+    await page.locator('.way-back a').click();
+    await page.waitForURL(`${t.base}/`);
+    await expect(page.locator('#tiles .band')).toHaveCount(3);
+    await page.waitForTimeout(500);
+    await expect(page).toHaveURL(`${t.base}/`);
+    await page.reload();
+    await expect(page.locator('#tiles .band')).toHaveCount(3);
+    await expect(page).toHaveURL(`${t.base}/`);
+    await expect(page.getByRole('link', { name: 'Pick or assess your level now' })).toHaveAttribute('href', '/start');
+    await expect(page.locator('#tile-discover-line')).toHaveText('Start here: a first text, words and a pattern.');
+    await expect(page.locator('#tile-discover-count')).toHaveText('Start here');
+    await expect(page.locator('#tile-yours-line')).toHaveText('Nothing here yet. Add a text, or take one from grove’s.');
+    await expect(page.locator('#tile-progress-line')).toHaveText('No level yet. It appears after your first texts.');
+  } finally {
+    await t.close();
+  }
 });

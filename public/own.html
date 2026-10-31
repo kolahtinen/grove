@@ -17,21 +17,40 @@
 </div>
 </header>
 <main>
-<section class="card" id="own-card">
-<h2>Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="small muted">Paste a Swedish text you choose, such as an article or a song. It stays private to you. Your AI checks its new words once, then you read it like any other text.</p>
+<section id="own-card">
+<h2 class="page-title">Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
+<p class="counter" id="own-count">Step 1 of 3</p>
+<div class="mini-steps" id="own-steps" aria-hidden="true"><i class="now"></i><i></i><i></i></div>
+<p class="message" id="own-message" role="status" hidden></p>
+<section class="card own-step" id="own-paste">
+<h2>Paste your text</h2>
 <form id="own-form">
 <label>Title<input type="text" name="title" maxlength="120" required></label>
-<label>Swedish text<textarea name="text" rows="5" maxlength="20000" required></textarea></label>
-<p class="message" id="own-message" role="status" hidden></p>
-<button type="submit" class="main">Save text</button>
+<label>Swedish text<span class="field-hint">Up to 20,000 characters. A news article, a song, a page from a book.</span><textarea name="text" rows="6" maxlength="20000" required></textarea></label>
+<button type="submit" class="main wide">Save</button>
 </form>
 </section>
-<section class="card">
+<section class="card own-step" id="own-check" hidden>
+<h2>Your AI explains its new words</h2>
+<p>Your text is saved. Before you read it, your AI gives the meaning of each word you haven't met, and says if the text looks copyrighted. This happens once. Only you see the text.</p>
+<p class="small" id="own-piece"></p>
+<ol class="prompt-steps"><li class="prompt-step prompt-box" id="own-prompt-box"><span class="step-label" id="own-check-label">Word check</span><button type="button" class="copy" id="own-copy">Copy prompt</button><span class="copied" id="own-copied" role="status" hidden></span><textarea id="own-prompt" readonly rows="6" aria-label="The word check for this text" hidden></textarea></li></ol>
+<p class="small muted">Any chat, new or old. Then paste your AI's whole answer here.</p>
+<label>Paste the AI's answer here<textarea id="own-answer" rows="6"></textarea></label>
+<ul class="problems" id="own-problems" hidden></ul>
+<button type="button" class="main wide" id="own-add">Add the meanings</button>
+</section>
+<section class="card own-step" id="own-ready" hidden>
+<h2>Ready to read</h2>
+<p id="own-known"></p>
+<p class="small muted" id="own-copyright"></p>
+<a class="button-link main" id="own-read" href="/texts">Read</a>
+</section>
+</section>
+<section class="card" id="own-list-card">
 <h2>Your own texts</h2>
 <ul class="text-list" id="own-list"></ul>
-<p class="small muted" id="own-none" hidden>No texts of your own yet.</p>
-<p class="small"><a href="/add">Back to Add a text</a> · <a href="/texts">Your library</a></p>
+<p class="small muted" id="own-none" hidden>Your own texts will be listed here.</p>
 </section>
 </main>
 </body>

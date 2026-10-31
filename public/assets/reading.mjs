@@ -1,20 +1,22 @@
-// The reading page (FR-301…FR-321): sentences of tappable words, one Show translation, pattern
-// marks, the word menu sheet, Explain and Report, Practise and Play. All text via textContent.
+// The reading page (FR-301…FR-321): sentences of tappable words (textview.mjs), one Show translation,
+// pattern marks, the word menu sheet (wordmenu.mjs, FR-305 version A) with Explain and Report, Practise and
+// Play. An own text waiting for its word check opens its step 2 on My own texts (FR-318, RQ-462). All text
+// via textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { startHeartbeat } from './heartbeat.mjs';
 import { speak as say, cancel, hasSwedish, setRate, getRate, onVoices } from './speech.mjs';
+import { renderLines } from './textview.mjs';
+import { createWordMenu } from './wordmenu.mjs';
 
 const speak = (text, onend) => say(text, { onend });
 
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(window.location.search);
 const id = Number(params.get('id'));
-// Opened from a session (G-09 FR-904): the session's id and the exercise's index.
-const session = params.has('session') ? { id: Number(params.get('session')), index: Number(params.get('index')) } : null;
-const STATUS = { new: 'New word', leaf: 'Leaf — a word you are learning', ground: 'In your ground — you know it', name: 'Name — never counts as new' };
+// Old links from a session (`&session=S`) open the session: its texts are inside it now (G-09 FR-933).
+if (params.has('session')) window.location.replace(`/session?id=${encodeURIComponent(params.get('session'))}`);
 let data = null;
-let current = null; // { token, sentence, line }
 let playing = false;
 
 function el(tag, className, text) {
@@ -24,13 +26,9 @@ function el(tag, className, text) {
   return node;
 }
 
-// Colour classes (FR-413): To remember, and the marks a word had when it fell (To read and both only
-// for words that fell before addendum 003). No mark for a form of more than one word (FR-306).
-function markClass(tok) {
-  if (tok.marks?.remember) return ' m-remember';
-  if (tok.fell) return ` f-${tok.fell}`;
-  return '';
-}
+// The word menu (FR-305, version A), shared with a session's texts.
+const menu = createWordMenu({ textId: id, getData: () => data, onChange: () => renderLines($('lines'), data, { onWord: (t, s, l, b) => menu.open(t, s, l, b) }) });
+const draw = (list, opts = {}) => renderLines(list, data, { onWord: (t, s, l, b) => menu.open(t, s, l, b), ...opts });
 
 // One Show translation button under a text, showing the whole text's English below it (FR-301).
 function translationBlock() {
@@ -48,151 +46,6 @@ function translationBlock() {
   });
   wrap.append(button, english);
   return wrap;
-}
-
-// Renders lines into a list; with `practice`, words aren't buttons and sentences can be highlighted.
-function renderLines(list, { tappable = true } = {}) {
-  list.replaceChildren();
-  for (const line of data.lines) {
-    const li = el('li', line.reported ? 'reported' : '');
-    const sv = el('p', 'sv passage');
-    for (const s of line.sentences) {
-      const span = el('span', 'sentence');
-      span.dataset.sentence = s.id;
-      // A word keeps the punctuation right before and after it on its line (FR-320): opening marks
-      // without a space after them and closing marks without a space before them go in one unbreakable group.
-      let group = null;
-      let lead = '';
-      s.tokens.forEach((tok, k) => {
-        if (!tok.word) {
-          const next = s.tokens[k + 1];
-          if (group && !/^\s/.test(tok.t)) {
-            const [stuck, rest] = splitTrailing(tok.t);
-            group.append(document.createTextNode(stuck));
-            if (rest) { span.append(document.createTextNode(rest)); group = null; }
-          } else if (next?.word && !/\s$/.test(tok.t)) {
-            const m = tok.t.match(/^(.*\s)?(\S*)$/s);
-            if (m[1]) span.append(document.createTextNode(m[1]));
-            lead = m[2];
-            group = null;
-          } else {
-            span.append(document.createTextNode(tok.t));
-            group = null;
-          }
-          return;
-        }
-        const w = el(tappable ? 'button' : 'span', `w ${tok.status}${tok.patterns?.length ? ' pattern' : ''}${markClass(tok)}`, tok.t);
-        if (tappable) {
-          w.type = 'button';
-          w.addEventListener('click', () => openMenu(tok, s, line));
-        }
-        group = el('span', 'nb');
-        if (lead) { group.append(document.createTextNode(lead)); lead = ''; }
-        group.append(w);
-        span.append(group);
-      });
-      sv.append(span, document.createTextNode(' '));
-    }
-    li.append(sv);
-    list.append(li);
-  }
-}
-
-// Punctuation stuck to the word before it, up to the first space; the rest.
-function splitTrailing(text) {
-  const at = text.search(/\s/);
-  return at === -1 ? [text, ''] : [text.slice(0, at), text.slice(at)];
-}
-
-function openMenu(token, sentence, line) {
-  current = { token, sentence, line };
-  // FR-305 (question-pages/86): a tap always says the word; ▶ says it again, only with a Swedish voice.
-  speak(token.t);
-  $('menu-say').hidden = !hasSwedish();
-  $('menu-say').setAttribute('aria-label', `Say ${token.t} again`);
-  $('menu-word').textContent = token.t;
-  $('menu-status').textContent = STATUS[token.status] || '';
-  $('menu-status').className = `menu-status ${token.status}`;
-  // A form of more than one dictionary word lists each with its meaning (FR-306).
-  $('menu-lemma').textContent = token.lemmas?.length ? token.lemmas.join(' / ') : token.status === 'name' ? '—' : token.word;
-  if (token.senses?.length > 1) {
-    $('menu-meaning').replaceChildren(...token.senses.map((x) => el('span', 'sense', `${x.lemma}: ${x.en}`)));
-  } else {
-    $('menu-meaning').textContent = token.status === 'name' ? '—' : token.meaning || '';
-  }
-  $('menu-explanation').hidden = !token.explanation;
-  $('menu-explanation').textContent = token.explanation || '';
-  const phrases = token.phrases || [];
-  $('menu-phrases').hidden = phrases.length === 0;
-  $('menu-phrase-list').replaceChildren(...phrases.map((p) => el('li', '', p)));
-  // FR-305 (RQ-455): its own Patterns section, every pattern the word is part of: the text's, then grove's
-  // grammar ladder's (with the ladder's level).
-  const pats = [
-    ...(token.patterns || []).map((pid) => data.patterns.find((p) => p.id === pid)).filter(Boolean),
-    ...(token.ladder || []).map((pid) => (data.ladder || []).find((p) => p.id === pid)).filter(Boolean),
-  ];
-  $('menu-patterns').hidden = pats.length === 0;
-  $('menu-pattern-list').replaceChildren(...pats.map((p) => {
-    const li = el('li');
-    li.append(el('strong', '', p.name));
-    if (p.level) li.append(el('span', 'ladder-level', p.level));
-    li.append(document.createTextNode(` — ${p.explain || ''} `));
-    // Pick up a pattern of the sentence too (FR-411; addendum 003, O-16); a ladder pattern by its ID.
-    if (!p.drilled) {
-      const pick = el('button', 'bar-button', 'Pick up');
-      pick.type = 'button';
-      pick.addEventListener('click', async () => {
-        const r = p.level
-          ? await post('/api/learning/answer', { item: p.id, action: 'pick' })
-          : p.state === 'ground'
-            ? await post('/api/pick-up', { lemma: p.name, kind: 'pattern' })
-            : await post('/api/marks', { lemma: p.name, kind: 'pattern', remember: true });
-        if (!r.ok) { showMessage($('menu-message'), r.message); return; }
-        p.state = 'leaf';
-        p.drilled = 1;
-        pick.remove();
-        showMessage($('menu-message'), `Picked up “${p.name}” — it is due for review now.`, 'ok');
-      });
-      li.append(pick);
-    }
-    return li;
-  }));
-  $('menu-save').hidden = !(data.own && token.status === 'new');
-  // G-04: times met, the To remember switch, Let it fall, Pick up (FR-408…FR-411).
-  $('menu-met').textContent = token.met ? `Met ${token.met} time${token.met === 1 ? '' : 's'}` : '';
-  $('menu-marks').hidden = token.status === 'name';
-  setSwitch($('menu-remember'), !!token.marks?.remember);
-  $('menu-fall').hidden = token.status !== 'leaf';
-  $('menu-pickup').hidden = token.status !== 'ground';
-  $('fall-check').hidden = true;
-  $('menu-explain').hidden = token.status === 'name';
-  $('explain-form').hidden = true;
-  $('report-form').hidden = true;
-  showMessage($('menu-message'), '');
-  $('menu').hidden = false;
-  $('sheet-backdrop').hidden = false;
-}
-
-function closeMenu() {
-  $('menu').hidden = true;
-  $('sheet-backdrop').hidden = true;
-}
-
-let reportTarget = null;
-function openReport(target, what) {
-  reportTarget = target;
-  $('report-what').textContent = what;
-  $('explain-form').hidden = true;
-  $('report-form').hidden = false;
-  if ($('menu').hidden) {
-    $('menu-word').textContent = 'Report';
-    $('menu-status').textContent = '';
-    for (const id2 of ['menu-explanation', 'menu-phrases', 'menu-patterns']) $(id2).hidden = true;
-    $('menu-lemma').textContent = '—';
-    $('menu-meaning').textContent = '—';
-    $('menu').hidden = false;
-    $('sheet-backdrop').hidden = false;
-  }
 }
 
 function renderQuestions(container) {
@@ -222,7 +75,10 @@ function renderQuestions(container) {
     const report = el('button', 'bar-button report', q.reported ? 'Reported' : 'Report');
     report.type = 'button';
     report.disabled = q.reported;
-    report.addEventListener('click', () => openReport({ questionPosition: q.position }, `Question ${q.position + 1}: ${q.q}`));
+    report.addEventListener('click', () => menu.openReport({ questionPosition: q.position }, `Question ${q.position + 1}: ${q.q}`, () => {
+      q.reported = true;
+      renderQuestions($('questions'));
+    }));
     fieldset.append(report);
     container.append(fieldset);
   }
@@ -293,7 +149,7 @@ async function practise() {
     const list = el('ol', 'lines');
     list.id = 'practice-lines';
     box.append(tools, list);
-    renderLines(list, { tappable: false });
+    draw(list, { tappable: false });
     box.append(translationBlock());
     play.addEventListener('click', () => {
       const spans = [...list.querySelectorAll('.sentence')];
@@ -327,9 +183,8 @@ await showAccount();
 await getMe();
 const res = await fetch(`/api/reading?id=${id}`, { credentials: 'same-origin' });
 if (res.status === 409) {
-  // G-03 FR-318: an own text waits for its AI round, piece by piece.
-  $('reading-card').hidden = true;
-  await showOwnRound();
+  // G-03 FR-318 (RQ-462): an own text waits for its word check, step 2 on its own page.
+  window.location.replace(`/own?id=${id}`);
 } else if (!res.ok) {
   $('title').textContent = 'This text was not found.';
 } else {
@@ -348,7 +203,7 @@ if (res.status === 409) {
     $('copyright').hidden = false;
     $('copyright').textContent = `Your AI thinks this ${data.copyright.view === 'copyrighted' ? 'is' : 'may be'} copyrighted${data.copyright.note ? `: ${data.copyright.note}` : '.'}`;
   }
-  renderLines($('lines'));
+  draw($('lines'));
   $('translation').replaceChildren(translationBlock());
   $('questions-card').hidden = data.questions.length === 0;
   renderQuestions($('questions'));
@@ -365,131 +220,6 @@ if (res.status === 409) {
 
   $('practise').addEventListener('click', practise);
 }
-
-$('menu-close').addEventListener('click', closeMenu);
-$('sheet-backdrop').addEventListener('click', closeMenu);
-$('menu-explain').addEventListener('click', () => { $('report-form').hidden = true; $('explain-form').hidden = false; });
-$('menu-report-line').addEventListener('click', () => {
-  if (!current) return;
-  openReport({ linePosition: current.line.position }, `Sentence: ${current.sentence.sv}`);
-});
-$('explain-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const result = await post('/api/explain', { sentenceId: current.sentence.id, form: current.token.t, reason: form.elements.reason.value, note: form.elements.note.value.trim() });
-  if (result.ok) {
-    form.hidden = true;
-    form.reset();
-    showMessage($('menu-message'), 'Asked — the next prompt will include it.', 'ok');
-  } else showMessage($('menu-message'), result.message);
-});
-$('report-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const form = event.target;
-  const result = await post('/api/report', { textId: id, ...reportTarget, reason: form.elements.reason.value, note: form.elements.note.value.trim() });
-  if (result.ok) {
-    form.hidden = true;
-    form.reset();
-    showMessage($('menu-message'), `Reported (${result.data.code}) — it won’t count, and the next prompt asks for a fix.`, 'ok');
-    if (reportTarget.questionPosition !== undefined) {
-      const q = data.questions.find((x) => x.position === reportTarget.questionPosition);
-      if (q) q.reported = true;
-      renderQuestions($('questions'));
-    }
-  } else showMessage($('menu-message'), result.message);
-});
-$('menu-save').addEventListener('click', async () => {
-  const result = await post('/api/leaf', { textId: id, form: current.token.t });
-  if (result.ok) {
-    current.token.status = 'leaf';
-    $('menu-save').hidden = true;
-    $('menu-status').textContent = STATUS.leaf;
-    showMessage($('menu-message'), 'Saved as a leaf.', 'ok');
-  } else showMessage($('menu-message'), result.message);
-});
-
-// G-04: switches, Let it fall, Pick up in the menu (FR-409…FR-411).
-function setSwitch(button, on) {
-  button.setAttribute('aria-pressed', String(on));
-}
-const itemOf = (token) => ({ lemma: token.lemmas?.[0] || token.word, kind: 'word' });
-async function toggleRemember() {
-  const token = current.token;
-  const result = await post('/api/marks', { ...itemOf(token), remember: !token.marks?.remember });
-  if (!result.ok) { showMessage($('menu-message'), result.message); return; }
-  token.marks = { remember: result.data.remember };
-  token.status = result.data.state === 'ground' ? 'ground' : 'leaf';
-  if (!token.lemmas?.length) token.lemmas = [itemOf(token).lemma];
-  setSwitch($('menu-remember'), token.marks.remember);
-  $('menu-status').textContent = STATUS[token.status];
-  $('menu-fall').hidden = token.status !== 'leaf';
-  $('menu-pickup').hidden = token.status !== 'ground';
-  renderLines($('lines'));
-}
-$('menu-remember').addEventListener('click', toggleRemember);
-$('menu-say').addEventListener('click', () => { if (current) speak(current.token.t); });
-
-$('menu-fall').addEventListener('click', async () => {
-  const item = itemOf(current.token);
-  const res2 = await fetch(`/api/fall-check?lemma=${encodeURIComponent(item.lemma)}&kind=${item.kind}`, { credentials: 'same-origin' });
-  const { question } = res2.ok ? await res2.json() : { question: null };
-  const box = $('fall-check');
-  box.replaceChildren();
-  box.hidden = false;
-  const done = async (payload) => {
-    const r = await post('/api/let-it-fall', { ...item, ...payload });
-    if (r.ok && r.data.fell) {
-      current.token.status = 'ground';
-      current.token.fell = current.token.marks?.remember ? 'remember' : null;
-      current.token.marks = { remember: false };
-      showMessage($('menu-message'), 'It fell to your ground.', 'ok');
-      renderLines($('lines'));
-      box.hidden = true;
-    } else if (payload.right === false) {
-      // G-04 FR-410 (B-28): after a wrong answer, Keep it or Let it fall anyway.
-      box.replaceChildren(el('p', 'message bad', 'Not quite. Keep it as a leaf, or let it fall anyway if you know it.'));
-      const row = el('div', 'row');
-      const keep = el('button', '', 'Keep it');
-      keep.type = 'button';
-      keep.addEventListener('click', () => { box.hidden = true; });
-      const anyway = el('button', 'main', 'Let it fall anyway');
-      anyway.type = 'button';
-      anyway.addEventListener('click', () => done({ confirmed: true }));
-      row.append(keep, anyway);
-      box.append(row);
-      return;
-    } else box.hidden = true;
-    $('menu-fall').hidden = current.token.status !== 'leaf';
-  };
-  if (!question) {
-    box.append(el('p', '', 'Are you sure you know it?'));
-    const yes = el('button', 'main', 'Yes, let it fall');
-    yes.type = 'button';
-    yes.addEventListener('click', () => done({ confirmed: true }));
-    box.append(yes);
-    return;
-  }
-  box.append(el('p', 'passage', question.sentence), el('p', 'small', `What does “${question.word}” mean here?`));
-  question.options.forEach((option, index) => {
-    const b = el('button', 'option', option);
-    b.type = 'button';
-    b.addEventListener('click', () => done({ right: index === question.right }));
-    box.append(b);
-  });
-});
-
-$('menu-pickup').addEventListener('click', async () => {
-  const r = await post('/api/pick-up', itemOf(current.token));
-  if (!r.ok) { showMessage($('menu-message'), r.message); return; }
-  current.token.status = 'leaf';
-  current.token.marks = { remember: true };
-  current.token.fell = null;
-  setSwitch($('menu-remember'), true);
-  $('menu-status').textContent = STATUS.leaf;
-  $('menu-pickup').hidden = true;
-  showMessage($('menu-message'), 'Picked up — it is due for review now.', 'ok');
-  renderLines($('lines'));
-});
 
 // G-04: the marking step after a rating (FR-401).
 async function offerMarking() {
@@ -530,24 +260,7 @@ $('marking-done').addEventListener('click', async () => {
   $('marking-list').replaceChildren();
   $('marking-done').hidden = true;
   $('marking-later').hidden = true;
-  if (session) setTimeout(backToSession, 800);
 });
-// G-09 FR-904: a text in a session ends with Done, or with the marking step; then back to the session.
-async function backToSession() {
-  const r = await post('/api/session/next', { sessionId: session.id, index: session.index });
-  if (!r.ok && r.status !== 409) { showMessage($('marking-message'), r.message); return; }
-  window.location.assign(`/session?id=${session.id}`);
-}
-if (session) {
-  const bar = el('section', 'card session-head');
-  bar.append(el('p', 'session-line', 'Part of your session'));
-  const done = el('button', 'main', 'Done — next exercise');
-  done.type = 'button';
-  done.id = 'session-done';
-  done.addEventListener('click', backToSession);
-  bar.append(done);
-  document.querySelector('main').prepend(bar);
-}
 $('marking-later').addEventListener('click', () => { $('marking-card').hidden = true; });
 document.getElementById('ratings').addEventListener('click', (event) => {
   if (event.target.closest('button')) setTimeout(offerMarking, 300);
@@ -676,45 +389,3 @@ $('listen').disabled = !data;
 $('listen').hidden = !data || data.kind !== 'listening';
 if (data && data.kind === 'listening') $('listen').click();
 
-// G-03 FR-318: the own-text AI round. Copy prompt says "Copied to clipboard"; only when copying fails
-// is the prompt shown, selected (G-02 FR-201).
-async function showOwnRound() {
-  const r = await fetch(`/api/own-text?id=${id}`, { credentials: 'same-origin' });
-  if (!r.ok) { $('title').textContent = 'This text was not found.'; $('reading-card').hidden = false; return; }
-  const own = await r.json();
-  if (own.ready) { window.location.reload(); return; }
-  $('own-round').hidden = false;
-  $('own-title').textContent = own.title;
-  document.title = `${own.title} · grove`;
-  $('own-piece').textContent = own.of > 1 ? `Piece ${own.piece} of ${own.of}` : '';
-  $('own-prompt').value = own.prompt;
-  $('own-prompt').hidden = true;
-  $('own-copied').hidden = true;
-  $('own-round').dataset.exchange = String(own.exchangeId);
-}
-$('own-copy').addEventListener('click', async () => {
-  try {
-    await navigator.clipboard.writeText($('own-prompt').value);
-    $('own-copied').textContent = 'Copied to clipboard';
-  } catch {
-    $('own-prompt').hidden = false;
-    $('own-prompt').focus();
-    $('own-prompt').select();
-    $('own-copied').textContent = 'Copying was blocked: the prompt is selected below, copy it by hand.';
-  }
-  $('own-copied').hidden = false;
-});
-$('own-add').addEventListener('click', async () => {
-  const answer = $('own-answer').value.trim();
-  if (!answer) return;
-  const r = await post('/api/answer', { exchangeId: Number($('own-round').dataset.exchange), answer });
-  if (!r.ok) { showMessage($('own-message'), r.message); return; }
-  $('own-answer').value = '';
-  const problems = $('own-problems');
-  problems.replaceChildren();
-  for (const p of r.data.problems || []) { const li = document.createElement('li'); li.textContent = p; problems.append(li); }
-  problems.hidden = !(r.data.problems || []).length;
-  if (r.data.result === 'needs_fix') showMessage($('own-message'), 'Some words have no meaning yet. Copy the new prompt into the same chat.');
-  else if (r.data.ready) { window.location.reload(); return; } else showMessage($('own-message'), `Piece ${r.data.piece} added. Now the next piece.`, 'ok');
-  await showOwnRound();
-});

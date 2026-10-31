@@ -2,7 +2,8 @@
 // my level. Pick lists the levels (each with a line) and beginner; a tap highlights one, Choose applies it,
 // Not sure, assess checks the highlighted level. Assess asks for a guess, then the 30-word check at that
 // level: tick unknown words and confirm. Each step has ‹ Back to the one before (G-09 FR-922); the top
-// link goes to Settings, or Home before a level is chosen.
+// link goes to Settings, or Home before a level is chosen. Opening the page marks the starting level as
+// offered (G-06 FR-605, RQ-463), so Home sends a new account here once and its ‹ Home stays Home.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { showWay } from './way.mjs';
@@ -17,7 +18,9 @@ let previous = 'way';
 await showAccount();
 await getMe();
 const stagesRes = await fetch('/api/stages', { credentials: 'same-origin' });
-if (stagesRes.ok && (await stagesRes.json()).needsStart) await showWay(['/', 'Home']);
+const flags = stagesRes.ok ? await stagesRes.json() : {};
+if (flags.startOpen) await showWay(['/', 'Home']);
+if (flags.needsStart) await post('/api/start/offered', {});
 
 function step(id) {
   for (const s of STEPS) $(s).hidden = s !== id;

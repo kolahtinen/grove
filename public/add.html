@@ -17,28 +17,14 @@
 </div>
 </header>
 <main>
-<section class="card">
-<h2>Add a text</h2>
+<h1 class="page-title">Add a text</h1>
 <p class="muted">Three ways to get Swedish texts into your library.</p>
-<div class="add-ways">
-<section class="add-way">
-<h3>From the common library</h3>
-<p>grove's own texts by topic and level, from complete beginner up. Pick one and it is in your library at once.</p>
-<a class="button-link main" href="/library">Choose from the common library</a>
-</section>
-<section class="add-way">
-<h3>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h3>
-<p>grove gives you prompts to paste into a free AI chat (ChatGPT, Claude, Gemini or another). You paste its answer back; grove checks it and adds texts at your level, mostly in words you know. About 5 minutes.</p>
-<a class="button-link main" href="/add/ai">Get texts from your AI</a>
-</section>
-<section class="add-way">
-<h3>Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h3>
-<p>Paste a Swedish text you choose, such as an article or a song. It stays private to you. Your AI checks its new words once, then you read it like any other text.</p>
-<a class="button-link main" href="/own">Add your own text</a>
-</section>
+<div class="ways" id="ways">
+<a class="way-pick" id="way-library" href="/library?from=add"><span class="way-ico" data-icon="common"></span><span class="way-text"><b>From the common library</b><small>Texts grove has written, by topic and level. Pick one and it's in your library at once.</small></span><span class="go" aria-hidden="true">›</span></a>
+<a class="way-pick" id="way-ai" href="/add/ai"><span class="way-ico" data-icon="ai"></span><span class="way-text"><b>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></b><small>grove gives you requests to paste into a free AI chat. You paste its answer back, and grove adds texts at your level, mostly in words you know. About 5 minutes.</small></span><span class="go" aria-hidden="true">›</span></a>
+<a class="way-pick" id="way-own" href="/own"><span class="way-ico" data-icon="own"></span><span class="way-text"><b>Your own text <span class="beta" title="This part of grove is new and still being tested.">Beta</span></b><small>Paste a Swedish text you like, such as an article or a song. Your AI explains its new words once, then you read it like any other text. Only you see it.</small></span><span class="go" aria-hidden="true">›</span></a>
 </div>
-<p class="small"><a href="/texts">Back to your library</a></p>
-</section>
+<div class="under-way" id="under-way"></div>
 </main>
 </body>
 </html>

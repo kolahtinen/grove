@@ -1,69 +1,94 @@
-// Texts from your AI (G-09 FR-919; G-02 FR-201, FR-203, FR-206, FR-223): a wizard with a step list
-// always at the top (done ✓, now ●, next ○) and one step on screen at a time, with one main button and
-// Back; every action ends in a confirmation. The steps follow G-02's prompting state, so leaving and
-// coming back shows where the learner is. The three tactics are always all there to choose, the one
-// grove recommends labelled; after failed answers the label moves and a line says so (G-02 FR-223;
-// question-pages/78, 2). Everything is set with textContent.
+// Texts from your AI (G-09 FR-919, the picked sketch's version A; RQ-461, question-pages/92; G-02 FR-201,
+// FR-203, FR-206, FR-223): one step per screen. At the top "Step i of 5" and a bar; under it Done so far
+// with what happened in each finished step; then the current step alone, with its one main button and
+// Back. The five steps are always the same five. After every action a green line says what happened and
+// what to do next; a copy never moves on by itself. The ways of asking sit folded under How grove asks,
+// the recommended one chosen (after two failed answers the recommendation moves and a line says so). An
+// answer grove can't use says what went wrong in one line with the fix-it request to copy, never staying on
+// "Reading…"; the next paste is read as the answer to that fix-it (the server routes it). Leaving and coming
+// back opens the step the learner was on (aisteps.mjs). Copy prompt says "Copied to clipboard"; only when
+// copying fails is the prompt shown, selected (FR-201). Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
 import { fromSession } from './way.mjs';
+import { AI_STEPS, aiStep, progressOf, remember } from './aisteps.mjs';
 
 const MAX_ANSWER = 80000;
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
 
+const STEP_IDS = ['ai', 'setup', 'request', 'paste', 'added'];
 const TACTIC_NAMES = { steps: 'Step by step', long: 'One long prompt', whole: 'Whole package' };
 const TACTIC_LINES = {
   steps: 'grove sends your AI a short setup once, then asks for one part at a time.',
   long: 'grove puts everything your AI needs into each prompt, one part at a time.',
   whole: 'grove sends your AI a setup once, then asks for all three parts in one go.',
 };
-const HEADINGS = { part: 'Prompt', package: 'Prompt for the whole package', redo: 'Ask again for one text', fix: 'Fix-it prompt', meanings_fix: 'Meanings prompt' };
+const HEADINGS = { part: 'Copy the request', package: 'Copy the request for the whole package', redo: 'Ask again for one text', fix: 'Fix-it request', meanings_fix: 'Meanings request' };
 
 let home = null;
-let at = 'ai';
+let at = 0;
 let lastAdded = [];
+let lastRead = 0;
 
-function steps() {
-  const list = ['ai'];
-  if (home?.waiting?.steps?.length || at === 'setup') list.push('setup');
-  list.push('request', 'paste', 'added');
-  return list;
-}
-
-function stepLabel(step) {
+const aiName = () => {
   const plan = home?.plan;
-  if (step === 'ai') {
-    const family = plan?.families?.find((f) => f.id === plan.family);
-    const product = family?.products?.find((p) => p.id === plan.product);
-    return family ? `Your AI: ${family.name}${product ? ` (${product.name})` : ''}` : 'Your AI';
+  return plan?.families?.find((f) => f.id === plan.family)?.name ?? 'your AI';
+};
+const productName = () => {
+  const plan = home?.plan;
+  const family = plan?.families?.find((f) => f.id === plan.family);
+  return family?.products?.find((p) => p.id === plan.product)?.name ?? '';
+};
+
+// What happened in each finished step (Done so far).
+function doneLine(i) {
+  const w = home?.waiting;
+  switch (i) {
+    case 0: return `You chose ${aiName()}${productName() ? ` (${productName()})` : ''}. grove will ask it ${TACTIC_NAMES[home?.plan?.tactic ?? 'steps'].toLowerCase()}.`;
+    case 1: return w && !w.steps?.length ? 'No setup needed for this way of asking.' : `${aiName()} said OK to the setup messages.`;
+    case 2: return w?.part ? `You copied the request for part ${w.part}.` : 'You copied the request.';
+    case 3: return `Answer read: ${lastRead} text${lastRead === 1 ? '' : 's'} added.`;
+    default: return '';
   }
-  return { setup: 'Send the setup', request: 'Copy the request', paste: 'Paste the answer', added: 'Texts added' }[step];
 }
 
-function renderStepList() {
-  const list = steps();
-  const now = list.indexOf(at);
-  const ol = $('ai-steps');
-  ol.replaceChildren();
-  list.forEach((step, i) => {
-    const state = i < now ? 'done' : i === now ? 'now' : 'next';
-    const li = el('li', `step ${state}`);
-    li.dataset.step = step;
-    if (state === 'now') li.setAttribute('aria-current', 'step');
-    const mark = el('span', 'step-mark', state === 'done' ? '✓' : state === 'now' ? '●' : '○');
+function renderProgress() {
+  $('step-count').textContent = `Step ${at + 1} of ${AI_STEPS.length}`;
+  const bar = $('mini-steps');
+  bar.replaceChildren(...AI_STEPS.map((_, i) => el('i', i < at ? 'done' : i === at ? 'now' : '')));
+  const done = $('done-so-far');
+  done.hidden = at === 0;
+  $('done-summary').textContent = `Done so far (${at})`;
+  $('done-list').replaceChildren(...AI_STEPS.slice(0, at).map((name, i) => {
+    const li = el('li', 'step done');
+    const mark = el('span', 'step-mark', '✓');
     mark.setAttribute('aria-hidden', 'true');
-    li.append(mark, el('span', 'step-name', stepLabel(step)), el('span', 'visually-hidden', state === 'done' ? ' (done)' : state === 'now' ? ' (now)' : ''));
-    ol.append(li);
-  });
+    const text = el('span', '');
+    text.append(document.createTextNode(name), el('span', 'step-done', doneLine(i)));
+    li.append(mark, text);
+    return li;
+  }));
 }
 
 function go(step) {
   at = step;
-  for (const s of document.querySelectorAll('.ai-step')) s.hidden = s.dataset.step !== step;
-  $('ai-back').hidden = steps().indexOf(step) <= 0;
-  renderStepList();
-  document.querySelector(`.ai-step[data-step="${step}"] h3`)?.focus?.();
+  for (const s of document.querySelectorAll('.ai-step')) s.hidden = s.dataset.step !== STEP_IDS[step];
+  $('ai-back').hidden = step === 0 || step === 4;
+  renderProgress();
+  renderTexts();
+}
+
+// The lines that name the learner's AI.
+function renderTexts() {
+  const name = aiName();
+  const w = home?.waiting;
+  $('setup-intro').textContent = `Open a new chat in ${name}. Send these messages one at a time; ${name} answers "OK" to each.`;
+  $('setup-done').textContent = `${name} said OK to ${w?.steps?.length === 2 ? 'both' : w?.steps?.length > 2 ? 'all of them' : 'it'}`;
+  $('request-intro').textContent = w?.steps?.length || (home?.plan?.tactic ?? 'steps') !== 'long' ? `In the same chat, send this request.` : `In ${name}, send this request. It carries everything ${name} needs.`;
+  $('request-done').textContent = `${name} has answered`;
+  $('paste-intro').textContent = `Copy ${name}'s whole answer (the copy button under it) and paste it here.`;
+  $('get-texts').textContent = w ? 'Next: carry on' : (home?.plan?.tactic ?? 'steps') === 'long' ? 'Next: copy the request' : 'Next: start a new chat';
 }
 
 function fillProducts(family) {
@@ -91,12 +116,13 @@ function renderPlan(plan) {
   family.value = plan.family ?? '';
   fillProducts(plan.families.find((f) => f.id === plan.family));
   if (plan.product) $('plan-product').value = plan.product;
-  // G-02 FR-223, FR-919: all three tactics, the recommended one labelled, the one in use selected.
-  // After two failed answers in this package, the other main tactic to the one grove's table recommends
-  // (one long prompt from step by step, step by step from the others); it stays so after switching.
+  // G-02 FR-223: all three tactics, the recommended one labelled, the one in use selected. After two
+  // failed answers in this package, the other main tactic to the one grove's table recommends.
   const failed = home.package?.oneText && plan.recommended ? (plan.recommended === 'steps' ? 'long' : 'steps') : null;
   const recommended = failed ?? plan.recommended;
   $('tactics').hidden = !plan.family;
+  $('tactics-summary').textContent = `How grove asks ${aiName()}: ${TACTIC_NAMES[plan.tactic ?? 'steps'].toLowerCase()}`;
+  if (failed) $('tactics').open = true;
   const box = $('tactic-options');
   box.replaceChildren();
   for (const t of ['steps', 'long', 'whole']) {
@@ -149,7 +175,7 @@ async function copyStep(text, item, after) {
 }
 
 function stepItem(label, text, after) {
-  const li = el('li', 'prompt-step');
+  const li = el('li', 'prompt-step prompt-box');
   const button = el('button', 'copy', 'Copy prompt');
   button.type = 'button';
   const note = el('span', 'copied');
@@ -167,18 +193,23 @@ function stepItem(label, text, after) {
 }
 
 function renderPrompts(w) {
-  $('setup-steps').replaceChildren(...w.steps.map((step, i) => stepItem(`Setup ${i + 1} of ${w.steps.length} (your AI replies "OK")`, step)));
-  const heading = HEADINGS[w.kind] ?? 'Prompt';
+  const name = aiName();
+  let copied = 0;
+  $('setup-steps').replaceChildren(...w.steps.map((step, i) => stepItem(`Setup message ${i + 1} of ${w.steps.length} (${name} replies "OK")`, step, () => {
+    copied += 1;
+    if (copied >= w.steps.length) showMessage($('package-message'), `Copied. Paste each into the new chat and send it; then tap “${$('setup-done').textContent}”.`, 'ok');
+  })));
+  const heading = HEADINGS[w.kind] ?? 'Copy the request';
   $('prompt-heading').textContent = w.kind === 'package' || !w.part ? heading : `${heading} (part ${w.part} of ${w.of})`;
-  $('prompt-steps').replaceChildren(stepItem(w.steps.length ? 'The request, in the same chat' : 'The request', w.prompt, (copied) => {
-    $('request-done').hidden = copied;
-    if (copied) {
-      showMessage($('package-message'), 'Copied. Now paste it into your AI chat and wait for its answer.', 'ok');
-      go('paste');
-    }
+  $('request-done').disabled = !progressOf(w.exchangeId).copied;
+  $('prompt-steps').replaceChildren(stepItem(w.steps.length ? 'The request, in the same chat' : 'The request', w.prompt, (ok) => {
+    // A copy never moves on by itself (question-pages/92, 2): it says what to do next.
+    remember(w.exchangeId, { copied: true });
+    $('request-done').disabled = false;
+    if (ok) showMessage($('package-message'), `Copied. Now paste it into ${name} and wait for its answer. It takes about a minute.`, 'ok');
   }));
   $('new-chat-note').hidden = !w.newChatSuggested;
-  $('new-chat-note').textContent = 'Your AI may have lost track of the setup. If so, go to Paste the answer and tap “I\'m in a new chat”.';
+  $('new-chat-note').textContent = `${name} may have lost track of the setup. If so, go on to Paste the answer and tap “I'm in a new chat”.`;
 }
 
 function renderAdded() {
@@ -192,20 +223,23 @@ function renderAdded() {
     li.append(a);
     list.append(li);
   }
+  const first = lastAdded[0];
+  $('read-first').hidden = !first;
+  if (first) { $('read-first').textContent = `Read “${first.title}”`; $('read-first').href = `/text?id=${first.id}`; }
   const pkg = home.package;
   const more = pkg && pkg.partsAccepted < pkg.of;
-  $('next-part').textContent = more ? 'Next part' : 'Get more texts';
+  $('added-more').textContent = pkg ? (more ? `That was part ${pkg.partsAccepted} of ${pkg.of}. Parts ${Array.from({ length: pkg.of - pkg.partsAccepted }, (_, k) => pkg.partsAccepted + k + 1).join(' and ')} come from the same chat, when you want them.` : `That was the last part of ${pkg.of}.`) : '';
+  $('next-part').textContent = more ? `Ask ${aiName()} for part ${pkg.partsAccepted + 1} of ${pkg.of}` : 'Get more texts';
   $('new-package').hidden = !more;
 }
 
 function render() {
   $('topic-text').textContent = home.topic;
-  const pkg = home.package;
-  $('progress').textContent = pkg ? `Package: ${pkg.partsAccepted} of ${pkg.of} parts in` : '';
   if (home.waiting) renderPrompts(home.waiting);
   renderPlan(home.plan);
   renderAdded();
-  renderStepList();
+  renderTexts();
+  renderProgress();
 }
 
 async function load() {
@@ -213,13 +247,6 @@ async function load() {
   if (!res.ok) return;
   home = await res.json();
   render();
-}
-
-// Where a learner coming to the page is: their AI first; a waiting prompt; else their texts so far.
-function startingStep() {
-  if (!home.plan.family) return 'ai';
-  if (home.waiting) return home.waiting.steps.length ? 'setup' : 'request';
-  return 'ai';
 }
 
 function showProblems(problems) {
@@ -235,14 +262,33 @@ async function requestPrompt(action) {
   if (!result.ok) { showMessage($('package-message'), result.message); return; }
   await load();
   const w = home.waiting;
-  showMessage($('package-message'), w?.steps.length ? 'Your prompts are ready. Start with the setup.' : 'Your prompt is ready.', 'ok');
-  go(w?.steps.length ? 'setup' : 'request');
+  if (action === 'new_chat') {
+    remember(w.exchangeId, { setup: false, copied: false });
+    showMessage($('package-message'), `Start a new chat in ${aiName()} and send the setup again, then the request.`, 'ok');
+  } else showMessage($('package-message'), w?.steps.length ? `Your setup is ready. Open a new chat in ${aiName()} and copy each message into it.` : 'Your request is ready. Copy it into your chat.', 'ok');
+  go(w?.steps.length ? 1 : 2);
+}
+
+// FR-919: an answer grove can't use says what went wrong and gives the fix-it request to copy.
+function showFix(problems, fix) {
+  const box = $('fix-box');
+  box.replaceChildren();
+  const msg = el('div', 'message bad');
+  msg.setAttribute('role', 'alert');
+  msg.append(el('b', '', `grove couldn't use this answer: ${problems?.[0] ?? 'it is not in grove’s format'}`),
+    el('span', 'next', ' Nothing was added. Copy the fix-it request into the same chat, then paste its new answer here.'));
+  const list = el('ol', 'prompt-steps');
+  list.append(stepItem('Fix-it request', fix.prompt, (ok) => { if (ok) showMessage($('package-message'), `Copied. Paste it into ${aiName()}, then paste its new answer below.`, 'ok'); }));
+  box.append(msg, list);
+  box.hidden = false;
 }
 
 await showAccount();
 await getMe();
 await load();
-go(startingStep());
+const first = aiStep(home);
+go(first);
+if (home.waiting) showMessage($('package-message'), 'Picking up where you left off.', 'ok');
 
 $('topic-edit').addEventListener('click', () => {
   $('topic-form').hidden = false;
@@ -267,7 +313,7 @@ $('get-texts').addEventListener('click', () => {
     $('plan-family').focus();
     return;
   }
-  if (home.waiting) { go(home.waiting.steps.length ? 'setup' : 'request'); return; }
+  if (home.waiting) { go(Math.max(1, aiStep(home))); return; }
   requestPrompt('next');
 });
 $('plan-family').addEventListener('change', () => {
@@ -277,16 +323,22 @@ $('plan-family').addEventListener('change', () => {
 });
 $('plan-product').addEventListener('change', () => savePlan());
 $('setup-done').addEventListener('click', () => {
-  showMessage($('package-message'), 'Setup sent. Now copy the request into the same chat.', 'ok');
-  go('request');
+  if (home.waiting) remember(home.waiting.exchangeId, { setup: true });
+  showMessage($('package-message'), `Setup sent. Now copy the request into the same chat.`, 'ok');
+  go(2);
 });
-$('request-done').addEventListener('click', () => go('paste'));
+$('request-done').addEventListener('click', () => {
+  showMessage($('package-message'), `Now paste ${aiName()}'s whole answer below.`, 'ok');
+  go(3);
+});
 $('next-part').addEventListener('click', () => requestPrompt('next'));
 $('new-package').addEventListener('click', () => requestPrompt('new_package'));
 $('new-chat').addEventListener('click', () => requestPrompt('new_chat'));
 $('ai-back').addEventListener('click', () => {
-  const list = steps();
-  go(list[Math.max(0, list.indexOf(at) - 1)]);
+  // Back to the step before; a tactic without a setup has its Setup done, so Back skips it.
+  let to = Math.max(0, at - 1);
+  if (to === 1 && !home.waiting?.steps?.length) to = 0;
+  go(to);
 });
 
 $('answer').addEventListener('input', () => {
@@ -296,30 +348,44 @@ $('answer').addEventListener('input', () => {
 
 $('add-texts').addEventListener('click', async () => {
   const answer = $('answer').value.trim();
-  if (!answer || !home.waiting || answer.length > MAX_ANSWER) return;
+  if (!answer) { showMessage($('package-message'), 'Paste the answer first.'); return; }
+  if (answer.length > MAX_ANSWER) return;
+  if (!home.waiting) { showMessage($('package-message'), 'There is no request waiting. Go back and ask for texts first.'); return; }
   const button = $('add-texts');
   button.disabled = true;
-  showMessage($('package-message'), 'Reading the answer…', 'ok');
-  const result = await post('/api/answer', { exchangeId: home.waiting.exchangeId, answer });
-  button.disabled = false;
+  const n = (answer.match(/"title"\s*:/g) || []).length;
+  showMessage($('package-message'), `Reading ${aiName()}'s answer… Checking ${n ? `${n} text${n === 1 ? '' : 's'}` : 'it'}: the format, then the new words in each.`, 'ok');
+  let result;
+  try {
+    result = await post('/api/answer', { exchangeId: home.waiting.exchangeId, answer });
+  } finally {
+    button.disabled = false;
+  }
+  // Never left on "Reading…" (RQ-461): every answer says what happened.
   if (!result.ok) { showMessage($('package-message'), result.message); return; }
   $('answer').value = '';
   const r = result.data;
-  lastAdded = r.texts;
-  const added = `${r.texts.length} ${r.texts.length === 1 ? 'text' : 'texts'} added${r.texts.length ? ':' : '.'}`;
+  lastAdded = r.texts ?? [];
+  lastRead = lastAdded.length;
+  const added = `${lastAdded.length} ${lastAdded.length === 1 ? 'text' : 'texts'} added${lastAdded.length ? ':' : '.'}`;
   await load();
   if (r.result === 'accepted') {
     showProblems([]);
-    showMessage($('package-message'), added, 'ok');
-    go('added');
+    $('fix-box').hidden = true;
+    showMessage($('package-message'), `${added} ${lastAdded.map((t) => t.title).join(', ')}`, 'ok');
+    go(4);
   } else if (r.result === 'partly_accepted') {
     showProblems(r.problems);
+    $('fix-box').hidden = true;
     showMessage($('package-message'), `${added} Copy the next request into the same chat for the rest.`, 'ok');
-    go('request');
+    go(2);
   } else if (r.result === 'needs_fix') {
     showProblems(r.problems);
-    showMessage($('package-message'), 'grove couldn\'t use that answer. Copy the fix-it request into the same chat and paste the new answer.');
-    go('request');
+    showFix(r.problems, r.fix);
+    showMessage($('package-message'), `grove couldn't use that answer. Copy the fix-it request into the same chat and paste the new answer.`);
+    go(3);
+  } else {
+    showMessage($('package-message'), 'grove read the answer but found nothing to add. Ask your AI again with the request.');
   }
   if (home.waiting && r.newChatSuggested) $('new-chat-note').hidden = false;
 });

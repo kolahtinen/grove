@@ -22,6 +22,16 @@ const PATHS = {
   words: ['M4 5h16v11H10l-5 4v-4H4z', 'M8 9h8', 'M8 12h5'],
   grammar: ['M7 3v18', 'M7 9h5a4 4 0 0 0 4-4V3', 'M7 15h8a3 3 0 0 1 3 3v3'],
   play: ['M8 5l11 7-11 7z'],
+  // The word menu (G-03 FR-305, version A): Pick up, Let it fall, a folded row's chevron, Explain, Report.
+  up: ['M12 19V5', 'M6 11l6-6 6 6'],
+  down: ['M12 5v14', 'M6 13l6 6 6-6'],
+  chev: ['M9 6l6 6-6 6'],
+  help: ['M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z', 'M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7', 'M12 17h.01'],
+  flag: ['M5 21V4', 'M5 4h11l-2 4 2 4H5'],
+  // Add a text's choices (G-09 FR-918, version A): your AI (a chat bubble) and your own text (a page).
+  ai: ['M4 5h16v11H9l-5 4z', 'M8 10h.01', 'M12 10h.01', 'M16 10h.01'],
+  own: ['M6 3h9l4 4v14H6z', 'M14 3v5h5', 'M9 13h7', 'M9 17h5'],
+  fell: ['M12 4v12', 'M7 11l5 5 5-5', 'M4 20h16'],
 };
 const NS = 'http://www.w3.org/2000/svg';
 

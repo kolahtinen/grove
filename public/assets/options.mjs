@@ -2,7 +2,9 @@
 // Home with "‹ Home" and ✕, the skills as four chips ticked in any number (none = all), the length as
 // one 5 · 10 · 20 · 30 control, Harder questions only on Review, and the session's minutes as a bar split
 // by skill with its legend (FR-905's shares: Review first at most 40% on Mix, then equal shares in
-// turns); Start plans it. The last options used on a tile are kept on this device and shown next time.
+// turns); Start plans it. On Review with Harder questions only, the skill chips are greyed and the bar is
+// one part, "Harder questions" (question-pages/93). A message about a short plan sits above the bottom
+// buttons, never over them. The last options used on a tile are kept on this device and shown next time.
 // Everything is set with textContent.
 import { getMe, post, showMessage } from './api.mjs';
 import { showAccount } from './page.mjs';
@@ -52,15 +54,18 @@ function parts() {
     out.push({ skill: 'review', label: 'review', min: r });
     rest -= r;
   }
+  if (tile === 'review' && picked.hardOnly) return [{ skill: 'review', label: 'harder questions', min: L }];
   for (const s of ticked) {
-    const label = tile === 'review' ? `${picked.hardOnly ? 'harder questions' : 'review'} (${NAME[s].toLowerCase()})` : NAME[s].toLowerCase();
+    const label = tile === 'review' ? `review (${NAME[s].toLowerCase()})` : NAME[s].toLowerCase();
     out.push({ skill: s, label, min: rest / ticked.length });
   }
   return out;
 }
 
+const hardOnly = () => tile === 'review' && picked.hardOnly;
+
 function renderSummary() {
-  $('plan-line').replaceChildren(el('b', '', `Your ${picked.minutes} minutes`), el('span', 'muted', ` · ${skillsLine(picked.skills)}`));
+  $('plan-line').replaceChildren(el('b', '', `Your ${picked.minutes} minutes`), el('span', 'muted', ` · ${hardOnly() ? 'Harder questions' : skillsLine(picked.skills)}`));
   const p = parts();
   $('plan-bar').replaceChildren(...p.map((g) => { const s = el('span'); s.style.flex = String(g.min); s.style.background = `var(--skill-${g.skill})`; return s; }));
   $('plan-legend').replaceChildren(...p.map((g) => {
@@ -81,6 +86,7 @@ function renderChips() {
     b.setAttribute('aria-pressed', String(on));
     const label = el('span', 'chip-name', name);
     if (key === 'listening' && !voice) { b.disabled = true; label.append(el('small', '', 'needs a voice')); }
+    if (hardOnly()) { b.disabled = true; b.classList.add('greyed'); }
     b.append(icon(key), label);
     if (on) { const tick = el('span', 'tick', '✓'); tick.setAttribute('aria-hidden', 'true'); b.append(tick); }
     b.addEventListener('click', () => {
@@ -159,6 +165,7 @@ $('hard').setAttribute('aria-checked', String(picked.hardOnly));
 $('hard').addEventListener('click', () => {
   picked.hardOnly = !picked.hardOnly;
   $('hard').setAttribute('aria-checked', String(picked.hardOnly));
+  renderChips();
   renderSummary();
 });
 $('options-start').addEventListener('click', () => start());

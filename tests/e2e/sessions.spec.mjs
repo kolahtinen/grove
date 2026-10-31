@@ -40,62 +40,50 @@ async function addSample(page) {
   await api(page, '/api/answer', { exchangeId: p.body.exchangeId, answer: JSON.stringify(answer) });
 }
 
-test('FR-904 FR-912 RQ-421 RQ-425: a session shows one exercise at a time under its line and bar, each card with the mode banner\'s two chips, texts open and come back, and it ends with a summary', async ({ page }) => {
+test('FR-904 FR-912 FR-932 FR-933 RQ-421 RQ-425 RQ-457: a session shows its start screen, then one exercise at a time in the shared frame (the session bar, the kicker line with the skill and time, the bottom bar\'s one button), texts inside the session, and ends with a summary of only the lines with something in them', async ({ page }) => {
   await signIn(page);
   await addSample(page);
   const started = await api(page, '/api/sessions', { kind: 'time', tile: 'mix', skill: 'mix', minutes: 10, voice: true, fill: true });
   expect(started.status, JSON.stringify(started.body)).toBe(200);
+  const total = started.body.session.total;
   await page.goto('/session');
-  await expect(page.locator('#session-line')).toHaveText(/^10-minute Mix · 1 of \d+ · about \d+ min left$/);
-  await expect(page.locator('#session-bar')).toBeVisible();
-  const chips = page.locator('#exercise-banner .chip');
-  await expect(chips).toHaveCount(2);
-  await expect(chips.first()).toHaveText(/^(Discover|Review)$/);
-  await expect(chips.first().locator('svg.icon')).toHaveCount(1);
-  await expect(chips.nth(1)).toHaveText(/^\d+ min$/);
-  expect(await chips.first().evaluate((n) => getComputedStyle(n).textTransform)).toBe('none');
-  expect(await page.locator('#exercise-banner').evaluate((n) => getComputedStyle(n).backgroundColor)).not.toBe('rgba(0, 0, 0, 0)');
+  await expect(page.locator('#start-card h2')).toHaveText('10-minute Mix');
+  await expect(page.locator('#start-card .plan-list li')).toHaveCount(total);
+  await page.locator('#session-start').click();
+  await expect(page.locator('#session-count')).toHaveText(`1/${total}`);
+  await expect(page.locator('#session-top .seg')).toHaveCount(total);
+  // FR-912: the kicker line, the skill's icon and name, what it is and its time (seconds under a minute, half minutes above).
+  await expect(page.locator('#exercise-kicker')).toHaveText(/^(Review|Reading|Listening|Words|Grammar) · .+(\d+ s|\d+½? min)$/);
+  await expect(page.locator('#exercise-kicker svg.icon')).toHaveCount(1);
+  expect(await page.locator('#exercise-kicker').evaluate((n) => getComputedStyle(n).textTransform)).toBe('none');
+  await expect(page.locator('#exercise-banner')).toHaveCount(0);
 
-  for (let step = 0; step < 40; step += 1) {
+  for (let step = 0; step < 80; step += 1) {
     await expect(page.locator('#exercise:visible, #session-end:visible')).toHaveCount(1);
     if (await page.locator('#session-end').isVisible()) break;
-    const open = page.getByRole('link', { name: 'Open the text' });
     const option = page.locator('#exercise-box button.option:not([disabled])').first();
-    const show = page.getByRole('button', { name: 'Show' });
-    // FR-928, FR-929 (B-26): a Mix of all skills has Words and Grammar exercises too.
-    const know = page.getByRole('button', { name: 'I know it' });
-    const choice = page.locator('#exercise-box .choices button:not([disabled])').first();
-    const spot = page.getByRole('button', { name: 'Now spot it in a text' });
-    const check = page.getByRole('button', { name: 'Check' });
-    if (await know.isVisible()) {
-      await know.click();
-    } else if (await choice.isVisible()) {
-      await choice.click();
-    } else if (await spot.isVisible()) {
-      await spot.click();
-    } else if (await check.isVisible()) {
-      await check.click();
-    } else if (await open.isVisible()) {
-      await open.click();
-      await page.waitForURL(/\/text\?id=\d+&session=\d+&index=\d+$/);
-      await page.locator('#session-done').click();
-      await page.waitForURL(/\/session\?id=\d+$/);
-    } else if (await option.isVisible()) {
-      await option.click();
-      await page.getByRole('button', { name: 'Next', exact: true }).click();
-    } else if (await show.isVisible()) {
-      await show.click();
-      await page.getByRole('button', { name: 'I knew it' }).click();
-    } else {
-      await page.getByRole('button', { name: 'Next', exact: true }).click();
-    }
-    await page.waitForTimeout(150);
+    const know = page.getByRole('button', { name: /^I know it/ });
+    const knew = page.getByRole('button', { name: 'I knew it' });
+    const play = page.getByRole('button', { name: /^Play the text|^Play again/ });
+    const rate = page.getByRole('button', { name: 'Most', exact: true });
+    const tap = page.locator('#exercise-box .spot button.w:not([disabled])').first();
+    const action = page.locator('#action');
+    if (await know.isVisible()) await know.click();
+    else if (await option.isVisible()) await option.click();
+    else if (await knew.isVisible() && await knew.isEnabled()) await knew.click();
+    else if (await action.isEnabled()) await action.click();
+    else if (await play.isVisible() && await page.locator('#wait').textContent() === 'Play the text first') await play.click();
+    else if (await rate.isVisible() && await rate.getAttribute('aria-pressed') !== 'true') await rate.click();
+    else if (await tap.isVisible()) await tap.click();
+    await page.waitForTimeout(120);
   }
   await expect(page.locator('#session-end')).toBeVisible();
-  // FR-904 (PD-05): minutes, texts, words reviewed, words that fell and the days practised this week.
-  await expect(page.locator('#summary li')).toHaveCount(5);
-  await expect(page.locator('#summary li').last()).toContainText('this week');
-  await expect(page.locator('#summary')).toContainText('min of practice');
+  // FR-904 (RQ-457): only the lines with something in them, and the days practised this week.
+  for (const n of await page.locator('#summary li b').allTextContents()) expect(Number(n)).toBeGreaterThan(0);
+  await expect(page.locator('#summary li').last()).toContainText('Days practised this week');
+  await expect(page.locator('#session-end')).toContainText('minutes of practice');
+  await expect(page.getByRole('button', { name: 'Back to Home' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Another 10 minutes' })).toBeVisible();
   const after = await page.evaluate(async () => (await (await fetch('/api/session')).json()).session);
   expect(after).toBeNull();
 });
@@ -121,67 +109,85 @@ test('FR-915 FR-907 RQ-430 RQ-443: Your library lists the texts by topic, unread
   await page.waitForURL(/\/session$/);
   // FR-920: a session short of new texts opens with its offer; Practise without goes on.
   const without = page.getByRole('button', { name: 'Practise without' });
-  await expect(without.or(page.locator('#exercise'))).toBeVisible();
+  await expect(without.or(page.locator('#start-card:visible')).first()).toBeVisible();
   if (await without.isVisible()) await without.click();
-  await expect(page.locator('#session-line')).toContainText(`10-minute Mix: ${topic.label}`);
+  await expect(page.locator('#start-card h2')).toHaveText(`10-minute Mix: ${topic.label}`);
 });
 
-test('FR-918 RQ-435 RQ-439: Add a text shows the three ways side by side, each with its explainer, each leading to its own page', async ({ page }) => {
+test('FR-918 RQ-435 RQ-439 RQ-460: Add a text is a chooser of three big choices, each with its explainer and an arrow, opening its own page, which leads back with ‹ Add a text; a way half done says Under way with Continue', async ({ page }) => {
   await signIn(page);
   await page.goto('/add');
-  const library = page.locator('.add-way', { has: page.getByRole('heading', { name: 'From the common library' }) });
-  await expect(library).toContainText('level');
-  await expect(library.getByRole('link')).toHaveAttribute('href', '/library');
-  const ai = page.locator('.add-way', { has: page.getByRole('heading', { name: /Texts from your AI/ }) });
-  const own = page.locator('.add-way', { has: page.getByRole('heading', { name: /Your own text/ }) });
-  await expect(ai).toContainText('free AI chat');
-  await expect(ai).toContainText('About 5 minutes');
-  await expect(own).toContainText('stays private');
-  await expect(ai.getByRole('link')).toHaveAttribute('href', '/add/ai');
-  await expect(own.getByRole('link')).toHaveAttribute('href', '/own');
-  await own.getByRole('link').click();
+  await expect(page.locator('main')).toContainText('Three ways to get Swedish texts into your library.');
+  const ways = page.locator('.way-pick');
+  await expect(ways.locator('b')).toHaveText([/^From the common library$/, /^Texts from your AI\s*Beta$/, /^Your own text\s*Beta$/]);
+  await expect(ways.nth(0)).toContainText('Texts grove has written, by topic and level.');
+  await expect(ways.nth(1)).toContainText('free AI chat');
+  await expect(ways.nth(1)).toContainText('About 5 minutes');
+  await expect(ways.nth(2)).toContainText('Only you see it.');
+  await expect(ways.nth(0)).toHaveAttribute('href', '/library?from=add');
+  await expect(ways.nth(1)).toHaveAttribute('href', '/add/ai');
+  await expect(ways.nth(2)).toHaveAttribute('href', '/own');
+  for (const w of await ways.all()) await expect(w.locator('.go')).toHaveText('›');
+  await ways.nth(0).click();
+  await page.waitForURL(/\/library\?from=add$/);
+  await expect(page.locator('.way-back a')).toHaveText('‹ Add a text');
+  await page.locator('.way-back a').click();
+  await page.waitForURL(/\/add$/);
+  await ways.nth(2).click();
   await page.waitForURL(/\/own$/);
+  await expect(page.locator('.way-back a')).toHaveText('‹ Add a text');
   await page.getByLabel('Title').fill('Min lista');
   await page.getByLabel('Swedish text').fill('Jag läser en bok.');
-  await page.getByRole('button', { name: 'Save text' }).click();
-  await page.waitForURL(/\/text\?id=\d+$/);
+  await page.getByRole('button', { name: 'Save', exact: true }).click();
+  await page.waitForURL(/\/own\?id=\d+$/);
+  // A half-done way: Under way, with Continue to where the learner was.
+  await page.goto('/add');
+  const under = page.locator('.way-under', { hasText: 'Under way: step 2 of 3' });
+  await expect(under).toBeVisible();
+  await under.getByRole('link', { name: /Continue/ }).click();
+  await page.waitForURL(/\/own\?id=\d+$/);
+  await expect(page.locator('#own-count')).toHaveText('Step 2 of 3');
 });
 
-test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows done, now and next; one step at a time with Back; a confirmation after each action; all three tactics always there', async ({ page, context }) => {
+test('FR-919 RQ-436 RQ-403 RQ-461: Texts from your AI goes one step per screen: Step i of 5 with a bar, Done so far with what happened, the current step with one main button and Back; a copy never moves on by itself; the ways of asking sit folded under How grove asks; texts added end with Read and Ask for the next part', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await signIn(page);
   await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'steps' });
   await page.goto('/add/ai');
-  const list = page.locator('#ai-steps');
-  await expect(list.locator('li').first()).toContainText('Your AI: ChatGPT');
   await expect(page.locator('#tab-list, [role="tablist"]')).toHaveCount(0);
-  // Start from a fresh package in a new chat, wherever the shared account was.
-  if (await page.locator('.ai-step[data-step="ai"]').isHidden()) {
-    while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
-  }
-  // G-02 FR-223 as amended (question-pages/78, 2): all three tactics, always there to choose.
+  await expect(page.locator('#step-count')).toHaveText(/^Step \d of 5$/);
+  while (await page.locator('.ai-step[data-step="ai"]').isHidden()) await page.getByRole('button', { name: 'Back' }).click();
+  await expect(page.locator('#step-count')).toHaveText('Step 1 of 5');
+  await expect(page.locator('#mini-steps i')).toHaveCount(5);
+  await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
+  // FR-919 (question-pages/92, 3): the ways of asking folded under How grove asks, the recommended one chosen.
+  await expect(page.locator('#tactics-summary')).toHaveText('How grove asks ChatGPT: step by step');
+  await expect(page.locator('#tactics')).not.toHaveAttribute('open', '');
   await expect(page.locator('.tactic-option')).toHaveCount(3);
-  await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
-  await page.evaluate(async () => {
-    const me = await (await fetch('/api/me')).json();
-    await fetch('/api/prompt', { method: 'POST', headers: { 'content-type': 'application/json', 'x-csrf-token': me.csrf }, body: JSON.stringify({ action: 'new_package' }) });
-  });
+  await api(page, '/api/prompt', { action: 'new_package' });
   await page.reload();
-  // A waiting package with a setup: the setup step is now, Your AI done.
-  await expect(list.locator('li[aria-current="step"]')).toContainText('Send the setup');
-  await expect(list.locator('li.done')).toHaveCount(1);
-  await expect(page.locator('.ai-step:not([hidden])')).toHaveCount(1);
+  // A waiting package with a setup: step 2, Your AI done, with what happened in it.
+  await expect(page.locator('#step-count')).toHaveText('Step 2 of 5');
+  await expect(page.locator('#package-message')).toHaveText('Picking up where you left off.');
+  await expect(page.locator('#done-summary')).toHaveText('Done so far (1)');
+  await expect(page.locator('#done-list li')).toContainText('You chose ChatGPT (Free). grove will ask it step by step.');
   for (const b of await page.locator('#setup-steps').getByRole('button', { name: 'Copy prompt' }).all()) await b.click();
-  await page.getByRole('button', { name: "I've sent them" }).click();
+  await expect(page.locator('.ai-step[data-step="setup"]')).toBeVisible();
+  await page.locator('#setup-done').click();
   await expect(page.locator('#package-message')).toContainText('Setup sent');
-  await expect(list.locator('li[aria-current="step"]')).toContainText('Copy the request');
+  await expect(page.locator('#step-count')).toHaveText('Step 3 of 5');
+  await expect(page.locator('#done-list li').nth(1)).toContainText('ChatGPT said OK to the setup messages.');
+  await expect(page.locator('#request-done')).toBeDisabled();
   await page.locator('#prompt-steps').getByRole('button', { name: 'Copy prompt' }).click();
-  await expect(page.locator('#package-message')).toHaveText('Copied. Now paste it into your AI chat and wait for its answer.');
-  await expect(list.locator('li[aria-current="step"]')).toContainText('Paste the answer');
+  await expect(page.locator('#package-message')).toHaveText('Copied. Now paste it into ChatGPT and wait for its answer. It takes about a minute.');
+  // A copy never moves on by itself (question-pages/92, 2).
+  await expect(page.locator('#step-count')).toHaveText('Step 3 of 5');
+  await page.locator('#request-done').click();
+  await expect(page.locator('#step-count')).toHaveText('Step 4 of 5');
   await expect(page.getByLabel("Paste the AI's answer here")).toBeVisible();
   await page.getByRole('button', { name: 'Back' }).click();
-  await expect(list.locator('li[aria-current="step"]')).toContainText('Copy the request');
-  await page.locator('#prompt-steps').getByRole('button', { name: 'Copy prompt' }).click();
+  await expect(page.locator('#step-count')).toHaveText('Step 3 of 5');
+  await page.locator('#request-done').click();
   const code = await page.evaluate(async () => (await (await fetch('/api/home')).json()).waiting.code);
   const tag = Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5);
   const answer = JSON.parse(SAMPLE.replaceAll('TEST-1', code ?? 'TEST-1'));
@@ -189,7 +195,35 @@ test('FR-919 RQ-436 RQ-403: Texts from your AI is a wizard: a step list shows do
   await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify(answer));
   await page.getByRole('button', { name: 'Add texts' }).click();
   await expect(page.locator('#package-message')).toContainText(/\d+ texts? added/);
-  await expect(list.locator('li[aria-current="step"]')).toContainText('Texts added');
+  await expect(page.locator('#step-count')).toHaveText('Step 5 of 5');
   await expect(page.locator('#added-list a').first()).toContainText(tag);
-  await expect(list.locator('li.done')).toHaveCount(await list.locator('li').count() - 1);
+  await expect(page.locator('#added-more')).toContainText('That was part 1 of 3.');
+  await expect(page.locator('#read-first')).toHaveText(new RegExp(`^Read “.*${tag}”$`));
+  await expect(page.locator('#next-part')).toHaveText('Ask ChatGPT for part 2 of 3');
+  await expect(page.getByRole('link', { name: 'Add another text' })).toHaveAttribute('href', '/add');
+  await expect(page.getByRole('link', { name: 'Go to Your library' })).toHaveAttribute('href', '/texts');
+});
+
+test('FR-919 FR-206 RQ-461: an answer grove can\'t use (a refusal) says what went wrong with the fix-it request to copy, never staying on Reading…; the next paste, a correct answer, is added', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await signIn(page);
+  await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'long' });
+  const first = (await api(page, '/api/prompt', { action: 'new_package' })).body;
+  await page.goto('/add/ai');
+  await page.locator('#prompt-steps').getByRole('button', { name: 'Copy prompt' }).click();
+  await page.locator('#request-done').click();
+  await page.getByLabel("Paste the AI's answer here").fill('Sorry, I cannot do that.');
+  await page.getByRole('button', { name: 'Add texts' }).click();
+  await expect(page.locator('#fix-box .message')).toContainText('grove couldn\'t use this answer:');
+  await expect(page.locator('#fix-box').getByRole('button', { name: 'Copy prompt' })).toBeVisible();
+  await expect(page.locator('#package-message')).not.toContainText('Reading');
+  await expect(page.locator('#step-count')).toHaveText('Step 4 of 5');
+  const tag = Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5);
+  const answer = JSON.parse(SAMPLE.replaceAll('TEST-1', first.code));
+  answer.texts.forEach((x) => { x.title = `${x.title} ${tag}`; });
+  await page.getByLabel("Paste the AI's answer here").fill(JSON.stringify(answer));
+  await page.getByRole('button', { name: 'Add texts' }).click();
+  await expect(page.locator('#package-message')).toContainText(/\d+ texts? added/);
+  await expect(page.locator('#package-message')).not.toContainText('already added');
+  await api(page, '/api/plan', { family: 'chatgpt', product: 'free', tactic: 'steps' });
 });

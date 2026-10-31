@@ -86,58 +86,73 @@ test('FR-903 FR-406 RQ-440 RQ-415: the Review tile → Start shows a due leaf in
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await page.locator('#tile-panel').getByRole('button', { name: /^Start/ }).click();
   const shorter = page.getByRole('group', { name: 'This session would be short' }).getByRole('button', { name: 'Start shorter' });
-  await expect(shorter.or(page.locator('#session-line'))).toBeVisible();
+  await expect(shorter.or(page.locator('#session-top'))).toBeVisible();
   if (await shorter.isVisible()) await shorter.click();
   await page.waitForURL(/\/session$/);
-  await expect(page.locator('#session-line')).toContainText('Review');
-  await expect(page.locator('#exercise-banner .chip.review').first()).toContainText('Review');
+  await expect(page.locator('#start-card h2')).toContainText('Review');
+  await page.locator('#session-start').click();
+  await expect(page.locator('#exercise-kicker')).toContainText('Review ·');
   // The sentence is shown, with Play (addendum 003, question-pages/73, 2).
   if (await page.locator('.review-sentence').isVisible()) await expect(page.locator('#exercise-box').getByRole('button', { name: 'Play' })).toBeVisible();
-  for (let i = 0; i < 12; i += 1) {
-    // Wait for the next card (or the end) before answering it.
-    await expect(page.locator('#session-end, #exercise-box button.option:not([disabled]), #exercise-box button:text-is("Show")').first()).toBeVisible();
+  for (let i = 0; i < 24; i += 1) {
+    await expect(page.locator('#session-end:visible, #exercise-box button.option:not([disabled]):visible, #action:enabled:visible, #exercise-box button.play.big:visible, #exercise-box button:has-text("I knew it"):enabled:visible').first()).toBeVisible();
     if (await page.locator('#session-end').isVisible()) break;
+    if (await page.locator('#action').isDisabled() && await page.locator('#wait').textContent() === 'Play the text first') {
+      await page.locator('#exercise-box button.play.big').click();
+      await expect(page.locator('#action')).toBeEnabled();
+    }
     const option = page.locator('#exercise-box button.option:not([disabled])').first();
-    if (await option.isVisible()) { await option.click(); await page.getByRole('button', { name: 'Next' }).click(); continue; }
-    const show = page.getByRole('button', { name: 'Show' });
-    if (await show.isVisible()) { await show.click(); await page.getByRole('button', { name: 'I knew it' }).click(); }
+    if (await option.isVisible()) { await option.click(); continue; }
+    const knew = page.getByRole('button', { name: 'I knew it' });
+    if (await knew.isVisible() && await knew.isEnabled()) { await knew.click(); continue; }
+    // Wait for the next exercise's button: the old one stays until the server answers.
+    const h = await page.locator('#action').elementHandle();
+    await h.click();
+    await h.waitForElementState('hidden').catch(() => {});
   }
   await expect(page.locator('#session-end')).toBeVisible();
 });
 
-test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415: the To remember switch, Let it fall, Pick up for words and patterns, and the Leaves page', async ({ page }) => {
+test('FR-409 FR-410 FR-411 FR-412 RQ-07 RQ-08 RQ-414 RQ-415 RQ-456: the word menu has no To remember: Pick up makes a word or pattern a drilled leaf, Let it fall a leaf ground; and the Leaves page', async ({ page }) => {
   await signIn(page);
   const ids = await addSample(page);
   await setState(page, 'tolv', { remember: true });
+  await setState(page, 'tårta');
   await page.goto(`/text?id=${ids['En kall morgon']}`);
   // "En kall morgon" is the sample's listening text and opens in listening mode (G-05 FR-509): show it.
   await page.getByRole('button', { name: 'Show the text' }).click();
   await page.locator('button.w', { hasText: /^tårta$/ }).first().click();
-  await expect(page.locator('#menu-pickup')).toBeVisible();
-  await page.locator('#menu-remember').click();
-  await expect(page.locator('#menu-remember')).toHaveAttribute('aria-pressed', 'true');
+  // FR-409 (question-pages/95, 1): no To remember in the menu; an unmarked leaf is picked up (FR-411).
+  await expect(page.locator('#menu').getByRole('button', { name: /To remember/ })).toHaveCount(0);
+  await expect(page.locator('#menu-action button')).toHaveText('Pick up tårta');
+  await page.locator('#menu-action button').click();
+  await expect(page.locator('#menu-action button')).toHaveText('Let it fall');
+  await expect(page.locator('.toast')).toContainText('tårta');
   await page.locator('#menu-close').click();
+  expect(await page.evaluate(async () => (await (await fetch('/api/leaves')).json()).remember.some((w) => w.lemma === 'tårta'))).toBe(true);
   await setState(page, 'tårta', { ground: true });
-  // Pick up a grammar pattern of the sentence from the word menu (FR-411, RQ-414).
+  // Pick up a grammar pattern of the sentence from its folded row (FR-411, RQ-414).
   await setState(page, 'har + supine', { kind: 'pattern' });
   await page.goto(`/text?id=${ids['Olles väska']}`);
   await page.locator('button.w.pattern', { hasText: /^glömt$/ }).first().click();
-  await page.locator('#menu-pattern-list li', { hasText: 'har + supine' }).getByRole('button', { name: 'Pick up' }).click();
-  await expect(page.locator('#menu-message')).toContainText('Picked up “har + supine”');
+  const row = page.locator('#menu-pattern-list .prow', { hasText: 'har + supine' });
+  await row.locator('button.phead').click();
+  await row.getByRole('button', { name: 'Pick up har + supine' }).click();
+  await expect(page.locator('.toast')).toContainText('har + supine is a leaf');
   await page.locator('#menu-close').click();
   await page.locator('button.w', { hasText: /^tolv$/ }).click();
-  await page.locator('#menu-fall').click();
+  await page.locator('#menu-action button').click();
   await expect(page.locator('#fall-check')).toBeVisible();
   const option = page.locator('#fall-check button.option').first();
   if (await option.isVisible()) await option.click(); else await page.getByRole('button', { name: 'Yes, let it fall' }).click();
   // G-04 FR-410 (B-28): a wrong answer offers Keep it or Let it fall anyway.
   const anyway = page.locator('#fall-check').getByRole('button', { name: 'Let it fall anyway' });
-  await expect(anyway.or(page.locator('#menu-message', { hasText: 'fell to your ground' }))).toBeVisible();
+  await expect(anyway.or(page.locator('.toast', { hasText: 'fell to your ground' }))).toBeVisible();
   if (await anyway.isVisible()) {
     await expect(page.locator('#fall-check').getByRole('button', { name: 'Keep it' })).toBeVisible();
     await anyway.click();
   }
-  await expect(page.locator('#menu-message')).toHaveText(/fell to your ground/);
+  await expect(page.locator('.toast')).toContainText('fell to your ground');
   await setState(page, 'servitör');
   const word = `kanel${Math.random().toString(36).replace(/[^a-z]/g, '').slice(0, 5)}`;
   await page.goto('/leaves');

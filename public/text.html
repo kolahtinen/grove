@@ -17,17 +17,6 @@
 </div>
 </header>
 <main>
-<section class="card" id="own-round" hidden>
-<h2><span id="own-title"></span> <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<p class="small muted">Before you read it, your AI gives the meaning of every word in this text and says whether it looks copyrighted. Copy the prompt into your AI chat and paste its whole answer below.</p>
-<p class="small" id="own-piece"></p>
-<div class="row"><button type="button" class="copy main" id="own-copy">Copy prompt</button><span class="copied small" id="own-copied" role="status" hidden></span></div>
-<textarea id="own-prompt" readonly rows="6" aria-label="The prompt for this text" hidden></textarea>
-<label>Paste the AI's answer here<textarea id="own-answer" rows="6"></textarea></label>
-<ul class="problems" id="own-problems" hidden></ul>
-<p class="message" id="own-message" role="status" hidden></p>
-<button type="button" class="main" id="own-add">Add the meanings</button>
-</section>
 <section class="card" id="reading-card">
 <h2><span id="title"></span> <span class="beta" id="beta" hidden title="This part of grove is new and still being tested.">Beta</span></h2>
 <p class="small muted" id="beta-note" hidden>This part of grove is new and still being tested.</p>
@@ -91,58 +80,6 @@
 </div>
 <p class="message" id="rating-message" role="status" hidden></p>
 <p><a href="/">Back to Home</a></p>
-</section>
-<div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
-<section class="sheet" id="menu" role="dialog" aria-modal="true" aria-labelledby="menu-word" hidden>
-<div class="sheet-head"><h3 id="menu-word"></h3><button type="button" class="bar-button" id="menu-say" hidden>▶</button><button type="button" class="bar-button" id="menu-close">Close</button></div>
-<p id="menu-status" class="menu-status"></p>
-<dl class="menu-facts">
-<dt>Dictionary form</dt><dd id="menu-lemma"></dd>
-<dt>Meaning here</dt><dd id="menu-meaning"></dd>
-</dl>
-<p class="small muted" id="menu-met"></p>
-<div class="row menu-marks" id="menu-marks">
-<button type="button" class="switch" id="menu-remember" aria-pressed="false">To remember</button>
-</div>
-<p id="menu-explanation" class="menu-explanation" hidden></p>
-<div id="menu-phrases" hidden><h4 class="small">Part of</h4><ul id="menu-phrase-list"></ul></div>
-<div id="menu-patterns" hidden><h4 class="small">Patterns</h4><ul id="menu-pattern-list"></ul></div>
-<div class="row">
-<button type="button" id="menu-explain">Explain</button>
-<button type="button" id="menu-save" hidden>Save as leaf</button>
-<button type="button" id="menu-report-line">Report sentence</button>
-</div>
-<div class="row">
-<button type="button" id="menu-fall" hidden>Let it fall</button>
-<button type="button" id="menu-pickup" hidden>Pick up</button>
-</div>
-<div id="fall-check" hidden></div>
-<form id="explain-form" hidden>
-<p class="small">Why do you want it explained?</p>
-<div class="reasons" id="explain-reasons">
-<label class="check"><input type="radio" name="reason" value="why_form" checked><span>Why this form</span></label>
-<label class="check"><input type="radio" name="reason" value="why_here"><span>Why this word is here</span></label>
-<label class="check"><input type="radio" name="reason" value="other_meaning"><span>A different meaning than I know</span></label>
-<label class="check"><input type="radio" name="reason" value="reading"><span>Reading</span></label>
-<label class="check"><input type="radio" name="reason" value="other"><span>Other</span></label>
-</div>
-<label>Note (optional)<input type="text" name="note" maxlength="200"></label>
-<button type="submit" class="main">Ask for an explanation</button>
-</form>
-<form id="report-form" hidden>
-<p class="small" id="report-what"></p>
-<div class="reasons">
-<label class="check"><input type="radio" name="reason" value="wrong_answer"><span>Wrong answer</span></label>
-<label class="check"><input type="radio" name="reason" value="bad_translation"><span>Bad translation</span></label>
-<label class="check"><input type="radio" name="reason" value="unnatural" checked><span>Unnatural sentence</span></label>
-<label class="check"><input type="radio" name="reason" value="wrong_reading"><span>Wrong reading</span></label>
-<label class="check"><input type="radio" name="reason" value="audio"><span>Audio</span></label>
-<label class="check"><input type="radio" name="reason" value="other"><span>Other</span></label>
-</div>
-<label>Note (optional)<input type="text" name="note" maxlength="200"></label>
-<button type="submit" class="main">Send report</button>
-</form>
-<p class="message" id="menu-message" role="status" hidden></p>
 </section>
 </main>
 </body>

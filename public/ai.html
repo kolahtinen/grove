@@ -17,66 +17,71 @@
 </div>
 </header>
 <main>
-<section class="card" id="package-card">
-<h2>Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
-<ol class="step-list" id="ai-steps" aria-label="Steps"></ol>
-<p class="muted small" id="progress"></p>
+<section id="package-card">
+<h2 class="page-title">Texts from your AI <span class="beta" title="This part of grove is new and still being tested.">Beta</span></h2>
+<p class="counter" id="step-count"></p>
+<div class="mini-steps" id="mini-steps" aria-hidden="true"></div>
+<details class="donelist" id="done-so-far" hidden><summary id="done-summary"></summary><ol class="step-list" id="done-list"></ol></details>
 <p class="message" id="package-message" role="status" hidden></p>
 <ul class="problems" id="problems" hidden></ul>
 
-<section class="ai-step" data-step="ai" hidden>
-<h3>Your AI and your topic</h3>
+<section class="card ai-step" data-step="ai" hidden>
+<h2>Your AI</h2>
+<p class="small muted">Which AI chat will you use? Any free one works.</p>
 <div class="row">
 <label>AI<select id="plan-family"><option value="">Choose…</option></select></label>
 <label>Version<select id="plan-product" disabled></select></label>
 </div>
-<fieldset class="tactics" id="tactics" hidden><legend>How grove asks your AI</legend><div id="tactic-options"></div><p class="small" id="tactic-note" hidden></p></fieldset>
+<details class="how-asks" id="tactics" hidden><summary id="tactics-summary">How grove asks</summary><div id="tactic-options"></div><p class="small" id="tactic-note" hidden></p></details>
 <p class="message" id="plan-message" role="status" hidden></p>
-<p class="topic-line">Topic: <span id="topic-text"></span> <button type="button" class="bar-button" id="topic-edit">Change</button></p>
+<p class="topic-line">Topic: <span id="topic-text"></span> <button type="button" class="link-button" id="topic-edit">Change</button></p>
 <form id="topic-form" hidden>
 <label>Your topic<input type="text" name="topic" maxlength="80" required></label>
 <button type="submit" class="main">Save topic</button>
 </form>
-<div class="row"><button type="button" class="main" id="get-texts">Get texts</button></div>
+<button type="button" class="main wide" id="get-texts">Next: start a new chat</button>
 </section>
 
-<section class="ai-step" data-step="setup" hidden>
-<h3>Send the setup</h3>
-<p class="small muted">Open a new chat in your AI and send these in order. Your AI replies "OK" to each.</p>
+<section class="card ai-step" data-step="setup" hidden>
+<h2>Setup</h2>
+<p id="setup-intro"></p>
 <ol class="prompt-steps" id="setup-steps"></ol>
-<div class="row"><button type="button" class="main" id="setup-done">I've sent them</button></div>
+<button type="button" class="main wide" id="setup-done">They said OK</button>
 </section>
 
-<section class="ai-step" data-step="request" hidden>
-<h3 id="prompt-heading">Copy the request</h3>
+<section class="card ai-step" data-step="request" hidden>
+<h2 id="prompt-heading">Copy the request</h2>
+<p id="request-intro"></p>
 <p class="message" id="new-chat-note" role="status" hidden></p>
 <ol class="prompt-steps" id="prompt-steps"></ol>
-<div class="row"><button type="button" class="main" id="request-done" hidden>Next: paste the answer</button></div>
+<button type="button" class="main wide" id="request-done" disabled>It has answered</button>
+<p class="small muted" id="request-wait">Your AI usually takes about a minute.</p>
 </section>
 
-<section class="ai-step" data-step="paste" hidden>
-<h3>Paste the answer</h3>
-<p class="small muted">When your AI has answered, copy its whole answer and paste it here.</p>
+<section class="card ai-step" data-step="paste" hidden>
+<h2>Paste the answer</h2>
+<div id="fix-box" hidden></div>
+<p class="small" id="paste-intro">Copy your AI's whole answer (the copy button under it) and paste it here.</p>
 <label>Paste the AI's answer here<textarea id="answer" rows="6"></textarea></label>
 <p class="small muted" id="answer-size"></p>
-<div class="row">
-<button type="button" class="main" id="add-texts">Add texts</button>
-<button type="button" id="new-chat">I'm in a new chat</button>
-</div>
+<button type="button" class="main wide" id="add-texts">Add texts</button>
+<button type="button" class="wide" id="new-chat">I'm in a new chat</button>
 </section>
 
-<section class="ai-step" data-step="added" hidden>
-<h3>Texts added</h3>
+<section class="card ai-step" data-step="added" hidden>
+<h2>Texts added</h2>
 <ul class="text-list" id="added-list"></ul>
-<div class="row">
-<button type="button" class="main" id="next-part">Next part</button>
+<p class="small muted" id="added-more"></p>
+<div class="stack">
+<a class="button-link main" id="read-first" href="/texts">Read</a>
+<button type="button" id="next-part">Ask for the next part</button>
 <button type="button" id="new-package" hidden>New package</button>
-<a class="button-link" href="/texts">Your library</a>
+<a class="button-link" href="/add">Add another text</a>
+<a class="button-link" href="/texts">Go to Your library</a>
 </div>
 </section>
 
-<div class="row step-nav"><button type="button" id="ai-back" hidden>Back</button></div>
-<div id="prompt-area" hidden></div>
+<div class="row step-nav"><button type="button" id="ai-back" hidden>‹ Back</button></div>
 </section>
 </main>
 </body>
