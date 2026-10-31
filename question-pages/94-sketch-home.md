@@ -17,3 +17,16 @@ Said done 2026-10-31. No comments.
 ## Applied
 
 RQ-463; G-09 FR-901 (the map: three bands of rows with lines and live counts; Learn rows open in place, the rest open their pages; Resume at the top; side by side from 900 px), FR-904, FR-922 (the starting level's Home link no longer loops); G-06 FR-605 (the starting level once). Build: regen to follow.
+
+## Sketch and build side by side (docs/sketching.md, 6)
+
+Screenshots at 390 px, light look, in `prototypes/sketches/2026-10-31-home/`: `picked-home.png`, `picked-home-discover.png` (version C, its made-up data, a session going) and `built-home.png`, `built-home-discover.png` (the dev server's reviewer, with a 10-minute Mix going).
+
+The build matches the map: three bands with their headings and lines, the rows with icon, name, line and count, Progress with its seven small bars, Discover opening in place below its row with Start and Options…. Differences:
+
+1. **Resume** sits at the very top of Home, above the welcome card and the bands (the spec, question-pages/94, 5); the sketch put it inside the Learn band. It has a coloured stripe at its left.
+2. **The welcome card** shows above the bands for an account that hasn't closed it (G-04 FR-416, kept); the sketch has none.
+3. **The open Discover panel** has no "Waiting: 3 new texts · 4 next words · pattern: …" line; its Start reads "Start · 10 min, all skills" (FR-903), the sketch's "Start · 10 min".
+4. **Band squares**: Learn's is Review's brown, Your texts' green, How you're doing's teal; the sketch had green, brown and teal.
+5. **Progress line** for the demo reviewer says "No level yet · 0 min today · 45 min this week" (the demo has minutes but no level from its ground); the sketch shows "A2 · 14 min today · 67 min this week".
+6. **Pick or assess your level now** appears as a link under Progress while no starting level is chosen (G-06 FR-605); the sketch has no such link.

@@ -17,3 +17,14 @@ Said done 2026-10-31. No comments on the versions.
 ## Applied
 
 RQ-456; G-03 FR-305 (the menu as version A), FR-315 ("not a name"); G-04 FR-409 (no To remember in the menu), FR-411 (Pick up on ground, new and unmarked words, phrases and patterns). Build: regen to follow.
+
+## Sketch and build side by side (docs/sketching.md, 6)
+
+Screenshots at 390 px, light look, in `prototypes/sketches/2026-10-31-word-menu/`: `picked-menu.png`, `picked-name.png` (version A, "Bröden" and the name "Lina") and `built-menu.png`, `built-name.png` (the dev server's reviewer on "Brevet i väskan": "är" with a ladder pattern opened, and the name "Elsa"; whole-page shots, so the menu sits over the text with the page below it).
+
+The menu matches version A: the green head with the word, ▶ and ✕; the state chip and times met; the meaning large with "Dictionary form"; one named ↑ Pick up <word> with its line; "Grammar in this word" with folded rows, level and its own Pick up this pattern; Explain and Report sentence as a quiet row with hints; "Esc, ✕ or a tap outside closes it."; a name shows one line, Report sentence and Not a name?. Differences:
+
+1. **The word in the head** is a little smaller than the sketch's.
+2. **Times met**: a ground word that grove counts as known but has no item yet says "first time you meet it" (the sketch's "met 2 times" needs an item with uses).
+3. **The opened pattern row** shows its short line with More inline; the example (the sentence with the word marked) shows only after More.
+4. **Not a name?** has a question-mark icon and the hint "Tell grove it is a word here" (the sketch had no hint there).
