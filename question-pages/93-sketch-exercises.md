@@ -30,3 +30,7 @@ Said done 2026-10-31. No comments.
 - Both
 
 **Answer:** Tap its segment.
+
+## Applied
+
+RQ-457…RQ-459; G-09 FR-903 (Harder questions only: one bar part; messages never cover buttons), FR-904 (start screen, look again, summary, no Resume for an unstarted plan), FR-905 (never "0 min"), FR-912 (the kicker line replaces the mode banner), FR-928, FR-929 (steps, not tabs; punctuation; outlines), new FR-932 (the shared frame, right/wrong, one more try counted wrong, Recall), FR-933 (texts inside the session; again without questions). Build: regen to follow.

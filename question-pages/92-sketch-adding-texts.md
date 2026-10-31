@@ -13,3 +13,7 @@ Said done 2026-10-31. No comments.
 - 4. Your own text's AI word check → **right after Save, as step 2 on the same page** (default).
 - 5. Something half done → **a line on that way, "Under way: step 4 of 5", with Continue** (default).
 - 6. Beta badges → **keep them** (default).
+
+## Applied
+
+RQ-460…RQ-462; G-09 FR-916 (preview sheet; Added with Read now; the level filter at the learner's level), FR-918 (the chooser, Under way with Continue, ‹ Add a text), FR-919 (one step per screen, five fixed steps, unusable answers never hang, the next paste answers the fix-it); G-03 FR-318 (three steps, the word check at once), FR-321. Build: regen to follow.

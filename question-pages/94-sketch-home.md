@@ -13,3 +13,7 @@ Said done 2026-10-31. No comments.
 - 4. The libraries' names → **keep "Your library" and "Common library"** (default).
 - 5. Resume while a session is going → **at the very top of Home** (default).
 - 6. Home on a computer → **wider, the groups side by side** (default).
+
+## Applied
+
+RQ-463; G-09 FR-901 (the map: three bands of rows with lines and live counts; Learn rows open in place, the rest open their pages; Resume at the top; side by side from 900 px), FR-904, FR-922 (the starting level's Home link no longer loops); G-06 FR-605 (the starting level once). Build: regen to follow.

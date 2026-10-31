@@ -13,3 +13,7 @@ Said done 2026-10-31. No comments on the versions.
 - 4. A pattern's explanation → **one short line, with More for the full text and an example** (default).
 - 5. What closes the menu → **Esc, ✕ and a tap outside** (default).
 - 6. A name's menu → **"A name — grove never counts it as new", Report sentence, and "Not a name?" to report it as a mistake** (not the default).
+
+## Applied
+
+RQ-456; G-03 FR-305 (the menu as version A), FR-315 ("not a name"); G-04 FR-409 (no To remember in the menu), FR-411 (Pick up on ground, new and unmarked words, phrases and patterns). Build: regen to follow.
