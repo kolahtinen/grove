@@ -110,3 +110,15 @@ None.
 - **client**: `options.html` + `assets/options.mjs` (the sheet), `home.mjs` (Options… is a link; "Last time in Options"), `session.mjs` + `assets/learning.mjs` (the Words, phrase and Grammar cards and Report), `reading.mjs` (Patterns section), `grove.css` (sheet, chips, segmented control, split bar, spot text).
 - **store**: migration 020.
 - **owner**: `reports:show`.
+
+## The four sketches (2026-10-31; question-pages/91…95): word menu A, exercises B, adding texts A, Home C
+
+- **store**: migration 021 (`reports` takes `not_a_name`; `learner_settings.start_offered`).
+- **reading**: `REPORT_REASONS` adds `not_a_name`; the payload adds `phrases` (with state, for the menu's phrase rows) and `readAt` (G-03 FR-305, FR-315; G-09 FR-933).
+- **drill**: Pick up also on a new word or an unmarked leaf (`409 already_drilled` on a drilled leaf; G-04 FR-411); questions add `sentenceEn` and drop an unopened closing quotation mark (FR-932).
+- **texts**: an answer to a refused exchange is read by its waiting fix-it (FR-919: the next paste answers the fix-it).
+- **sessions**: each exercise's `skill` and `seconds`, the plan's list for the start screen and the session bar; an exercise frozen when first shown and its answer kept (`POST /api/session/next`'s `answer`), `GET /api/session/exercise` for looking again; `POST /api/session/leave` (an unplanned offer isn't kept); the summary's new lines; `GET /api/overview` for Home's counts (FR-901, FR-904, FR-932, FR-933).
+- **levels**: the starting level offered once (`start_offered`, `POST /api/start/offered`, `startOpen`; G-06 FR-605).
+- **library**: unchanged (the level filter already uses FR-905's level; the preview reads `GET /api/library/text`).
+- **web**: no code change (the new routes are registered by their modules); its route table test lists them.
+- **client**: `home.mjs` (the map, `/api/overview`), `session.mjs` with `frame.mjs` (the slim session bar, the card, the bottom bar, the start screen, the summary, looking again), `questions.mjs` (one more try, ✓/✗, the sentence's English), `learning.mjs` (Words, phrase and Grammar in the frame), `sessiontext.mjs` (a text inside the session, FR-933), `wordmenu.mjs` (the word menu as version A, shared by the reading page and a session's texts), `textview.mjs` (a text's tappable lines, shared), `add.mjs` (the chooser with Under way), `ai.mjs` (one step per screen), `own.mjs` (three steps on one page), `library.mjs` (the preview sheet, Added with Read now, the level line), `start.mjs` (calls `/api/start/offered`), `way.mjs` (‹ Add a text from Add a text), `grove.css`.

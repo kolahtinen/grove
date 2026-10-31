@@ -87,3 +87,22 @@ The import keeps a hash of `server/learning/learning-content.json` in `settings`
 ## Exercise (B-26 additions)
 
 `{ mode: discover, type: words, items: [ids], seconds }` (a Words exercise, 30 s a card) · `{ mode: discover, type: phrase, item, seconds: 150 }` · `{ mode: discover, type: grammar, item, learn: bool, seconds: 300 | 150 }`.
+
+## Migration 021 (RQ-456, RQ-463; G-03 FR-315, G-06 FR-605): Not a name?, the starting level once
+
+`021-sketches.sql` (foreign keys off, a table rebuild) changes no row's meaning:
+
+| Table | Change | Notes |
+|---|---|---|
+| `reports` | rebuilt with the same columns, rows and indexes; `reason` also takes `not_a_name` | A name's word menu reports its sentence with "Not a name?" (G-03 FR-305, FR-315) |
+| `learner_settings` | `start_offered` INTEGER NOT NULL DEFAULT 0 | 1 once the starting level page has been opened (G-06 FR-605: Home sends a new account there once). Existing rows: 1 where the choice is made (`start_done`) or the welcome was closed (an account that already saw Home) |
+
+## Exercise (RQ-457…RQ-459 additions; no migration)
+
+Inside `plan`, an exercise also keeps:
+- `shown`: the exercise as first shown (its question with its options and right answer, the cards, the phrase, the pattern), stored the first time the session shows it (G-04's questions are shuffled when built, so looking again needs the one shown); at most 8 KB.
+- `answer`: the learner's answer sent with `POST /api/session/next` (contracts: `Answer`), shown when the exercise is looked at again.
+
+A session left on its offer, never planned (`plan` = `[]`, `offer` set), is deleted by `POST /api/session/leave` (FR-904: not kept, no Resume). Home's Resume shows only a going session with a plan.
+
+The summary reads, between `started_at` and `finished_at`: done text exercises by kind (not `reread` or `listen`), `review_answers` as before, `words.picked_at` (picked up), `learning_seen.first_at` of patterns (met), `words.fallen_at`.

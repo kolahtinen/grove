@@ -23,7 +23,7 @@ All G-01 rules apply; every route is `access: agreed`; the account comes from th
 | `POST /api/marks` | `{lemma: string ≤80, kind?: enum, remember: boolean}` | `200 {state, drilled, remember}` — creates a leaf for a word grove hasn't got |
 | `GET /api/fall-check?lemma=…&kind=…` | – | `200 {question: {sentence, word, options, right} \| null}` (null → "Are you sure?") |
 | `POST /api/let-it-fall` | `{lemma, kind?, right?: boolean, confirmed?: boolean}` | `200 {fell: bool}` |
-| `POST /api/pick-up` | `{lemma, kind?}` | `200 {result: "picked_up"}` · `409 not_ground` |
+| `POST /api/pick-up` | `{lemma, kind?}` | `200 {result: "picked_up"}` · `409 already_drilled` (a drilled leaf) — RQ-456 (FR-411): a ground item, an unmarked leaf, or an item the learner hasn't got (a new word, phrase or pattern, added with the word list's meaning) becomes a drilled leaf To remember, due now (was: ground only, `409 not_ground`) |
 | `GET /api/review?mode=review\|master` | – | `200 {items: [{lemma, kind, mode: "remember"\|"master"\|"recall", sentence?, word?, meaning?, options?, right?}] (≤ 10), nextDue}` |
 | `POST /api/review` | `{lemma, kind?, mode: enum, right: boolean}` | `200 {gap, fell: bool}` |
 | `GET /api/leaves` | – | `200 {remember: [item], unmarked: [item]}`, item = `{lemma, kind, en, gap, strength, due: bool}` |
@@ -32,7 +32,7 @@ All G-01 rules apply; every route is `access: agreed`; the account comes from th
 | `GET /api/progress` | – | `200 {level, days: [{day, minutes}] (14), ground, drilled}` |
 | `POST /api/input` | `{seconds: integer 1–60, day: "YYYY-MM-DD"}` | `200 {todayMinutes}` · `400` if day is more than a day off |
 
-`kind` enum: `word | phrase | pattern`. Review/Master `mode` in answers: `remember | master | recall`. **Addendum 003 (RQ-415):** To read is gone for Swedish: no `read` fields; a Review item shows its sentence with Play (FR-406); Pick up (`POST /api/pick-up`, also for a pattern, which is added as a leaf if missing) gives To remember (FR-411).
+`kind` enum: `word | phrase | pattern`. Questions (`GET /api/review`, a session's Review exercise) add `sentenceEn`, the English of the sentence's line (G-09 FR-932: shown after answering), and a sentence never carries a closing quotation mark it doesn't open (FR-932). Review/Master `mode` in answers: `remember | master | recall`. **Addendum 003 (RQ-415):** To read is gone for Swedish: no `read` fields; a Review item shows its sentence with Play (FR-406); Pick up (`POST /api/pick-up`, also for a pattern, which is added as a leaf if missing) gives To remember (FR-411).
 
 ## Reading payload additions (G-03 `GET /api/reading`)
 

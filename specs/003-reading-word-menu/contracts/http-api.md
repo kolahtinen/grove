@@ -25,7 +25,9 @@ All G-01 rules apply; every route below is `access: agreed`, the account comes f
 | `GET /api/own-text?id=N` | – | `200 {id, title, ready, piece, of, exchangeId, prompt}` (the waiting piece, or `ready: true`) · `404 not_found` |
 | `POST /api/leaf` | `{textId: integer, form: string 1–80}` | `200 {result: "saved"}` |
 
-Enums: Explain reason `why_form | why_here | other_meaning | reading | other`; Report reason `wrong_answer | bad_translation | unnatural | wrong_reading | audio | other`.
+Enums: Explain reason `why_form | why_here | other_meaning | reading | other`; Report reason `wrong_answer | bad_translation | unnatural | wrong_reading | audio | not_a_name | other` (`not_a_name` from a name's word menu, Not a name?, with `linePosition` only: RQ-456, FR-315; migration 021 rebuilds `reports` for it; the next part prompt names it "not a name").
+
+**Word menu (RQ-456, FR-305):** the reading payload adds `phrases: [{name, en, state, drilled}]` (the learner's phrases met in the text, for the menu's folded phrase rows and their Pick up this phrase / Let it fall; a token's `phrases` name them) and `readAt` (ms when the text was first read, or null; G-09 FR-933's "You read this <when>"). A token's action: Pick up (`POST /api/pick-up`, G-04) on a ground, new or unmarked word (`marks.remember` false); Let it fall on a drilled leaf (`marks.remember` true). An own text's new word is first saved with its AI meaning (`POST /api/leaf`), then picked up.
 
 ## Answer format additions (all optional)
 
