@@ -2189,6 +2189,115 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "B1-23",
+      "level": "B1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "listening",
+      "title": "Lampan vid hållplatsen",
+      "names": [
+        "Henrik",
+        "Maria",
+        "Lind",
+        "Björkvägen"
+      ],
+      "above_level": [
+        "gatlampa",
+        "app"
+      ],
+      "lines": [
+        {
+          "sv": "– Kommunens kundtjänst, du pratar med Henrik. Vad kan jag hjälpa dig med?",
+          "en": "– The council's customer service, you're speaking to Henrik. How can I help you?"
+        },
+        {
+          "sv": "– Hej, jag heter Maria Lind. Jag ringer om en gatlampa som inte fungerar.",
+          "en": "– Hi, my name is Maria Lind. I'm calling about a street lamp that doesn't work."
+        },
+        {
+          "sv": "– Okej. Var står lampan?",
+          "en": "– Okay. Where is the lamp?"
+        },
+        {
+          "sv": "– Vid busshållplatsen på Björkvägen, nära skolan.",
+          "en": "– At the bus stop on Björkvägen, near the school."
+        },
+        {
+          "sv": "– Hur länge har den varit trasig?",
+          "en": "– How long has it been broken?"
+        },
+        {
+          "sv": "– Sedan förra veckan. Det är helt mörkt där på morgonen när barnen väntar på bussen.",
+          "en": "– Since last week. It's completely dark there in the morning when the children are waiting for the bus."
+        },
+        {
+          "sv": "– Det låter inte bra. Har någon annan ringt om den?",
+          "en": "– That doesn't sound good. Has anyone else called about it?"
+        },
+        {
+          "sv": "– Jag vet inte. Jag trodde att någon annan skulle ringa, men ingen verkar ha gjort det.",
+          "en": "– I don't know. I thought someone else would call, but nobody seems to have done it."
+        },
+        {
+          "sv": "– Det är vanligt att alla tänker så. Bra att du ringde.",
+          "en": "– It's common for everyone to think that. Good that you called."
+        },
+        {
+          "sv": "– Hur lång tid tar det att laga den?",
+          "en": "– How long does it take to repair it?"
+        },
+        {
+          "sv": "– Vi försöker laga lampor nära skolor inom tre dagar.",
+          "en": "– We try to repair lamps near schools within three days."
+        },
+        {
+          "sv": "– Vad bra. Behöver ni mitt nummer?",
+          "en": "– Great. Do you need my number?"
+        },
+        {
+          "sv": "– Ja, gärna. Då kan vi skicka ett sms när lampan är lagad.",
+          "en": "– Yes, please. Then we can send you a text when the lamp is fixed."
+        },
+        {
+          "sv": "– Nästa gång kan du också anmäla felet i kommunens app.",
+          "en": "– Next time you can also report the fault in the council's app."
+        },
+        {
+          "sv": "– Det visste jag inte. Tack för hjälpen!",
+          "en": "– I didn't know that. Thanks for your help!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Varför ringer Maria?",
+          "options": [
+            "En gatlampa fungerar inte",
+            "Bussen kom inte",
+            "Skolan är stängd"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Hur snabbt försöker kommunen laga lampor nära skolor?",
+          "options": [
+            "Inom en vecka",
+            "Inom tre dagar",
+            "Samma dag"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Hur kan man anmäla ett fel nästa gång?",
+          "options": [
+            "Med ett brev",
+            "På skolan",
+            "I kommunens app"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }

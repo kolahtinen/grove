@@ -2822,6 +2822,102 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "A1-30",
+      "level": "A1",
+      "topic": "Society",
+      "form": "dialogue",
+      "kind": "reading",
+      "title": "På posten",
+      "names": [
+        "Finland"
+      ],
+      "above_level": [
+        "paket",
+        "okej",
+        "tröja",
+        "kilo"
+      ],
+      "lines": [
+        {
+          "sv": "– Hej! Jag vill skicka ett paket till Finland.",
+          "en": "– Hi! I want to send a parcel to Finland."
+        },
+        {
+          "sv": "– Okej. Vad finns i paketet?",
+          "en": "– Okay. What is in the parcel?"
+        },
+        {
+          "sv": "– En bok och en tröja till min mamma.",
+          "en": "– A book and a jumper for my mum."
+        },
+        {
+          "sv": "– Fint. Paketet väger två kilo.",
+          "en": "– Nice. The parcel weighs two kilos."
+        },
+        {
+          "sv": "– Vad kostar det?",
+          "en": "– What does it cost?"
+        },
+        {
+          "sv": "– Det kostar hundra kronor.",
+          "en": "– It costs a hundred kronor."
+        },
+        {
+          "sv": "– Hur lång tid tar det?",
+          "en": "– How long does it take?"
+        },
+        {
+          "sv": "– Det tar tre eller fyra dagar.",
+          "en": "– It takes three or four days."
+        },
+        {
+          "sv": "– Bra. Min mamma fyller år på fredag.",
+          "en": "– Good. My mum has her birthday on Friday."
+        },
+        {
+          "sv": "– Då kommer paketet i tid.",
+          "en": "– Then the parcel will arrive in time."
+        },
+        {
+          "sv": "– Tack för hjälpen!",
+          "en": "– Thanks for your help!"
+        },
+        {
+          "sv": "– Varsågod. Ha en bra dag!",
+          "en": "– You're welcome. Have a nice day!"
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vart ska paketet?",
+          "options": [
+            "Till Norge",
+            "Till Finland",
+            "Till Danmark"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad kostar det?",
+          "options": [
+            "Hundra kronor",
+            "Fyra kronor",
+            "Tvåhundra kronor"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "När fyller mamma år?",
+          "options": [
+            "På onsdag",
+            "På lördag",
+            "På fredag"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }

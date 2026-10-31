@@ -2050,6 +2050,115 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "id": "B2-21",
+      "level": "B2",
+      "topic": "Daily life",
+      "form": "prose",
+      "kind": "listening",
+      "title": "Morgonmänniska eller kvällsmänniska?",
+      "names": [],
+      "above_level": [
+        "mest",
+        "jetlag",
+        "förskollärare"
+      ],
+      "lines": [
+        {
+          "sv": "Vissa människor vaknar pigga klockan sex och har hunnit träna, äta frukost och läsa tidningen innan resten av familjen har stigit upp.",
+          "en": "Some people wake up full of energy at six and have managed to exercise, eat breakfast and read the paper before the rest of the family has got up."
+        },
+        {
+          "sv": "Andra får knappt upp ögonen före nio, men blir i stället som mest kreativa sent på kvällen.",
+          "en": "Others can hardly open their eyes before nine, but are instead at their most creative late in the evening."
+        },
+        {
+          "sv": "Forskare har länge vetat att det här inte bara handlar om vanor eller vilja.",
+          "en": "Researchers have long known that this is not just a matter of habits or willpower."
+        },
+        {
+          "sv": "Kroppens inre klocka styrs delvis av våra gener, och den skiljer sig mellan olika personer.",
+          "en": "The body's inner clock is partly controlled by our genes, and it differs between people."
+        },
+        {
+          "sv": "Den förändras också under livet.",
+          "en": "It also changes during life."
+        },
+        {
+          "sv": "Små barn vaknar ofta tidigt, tonåringar vill sova länge och äldre blir ofta morgonmänniskor igen.",
+          "en": "Small children often wake early, teenagers want to sleep late and older people often become morning people again."
+        },
+        {
+          "sv": "Problemet är att skolan och arbetslivet för det mesta börjar tidigt.",
+          "en": "The problem is that school and working life mostly start early."
+        },
+        {
+          "sv": "Den som är kvällsmänniska får därför ofta sova för lite under veckan och försöker ta igen det på helgen.",
+          "en": "So an evening person often gets too little sleep during the week and tries to catch up at the weekend."
+        },
+        {
+          "sv": "Det kallas ibland social jetlag, eftersom kroppen hela tiden växlar mellan två olika tider.",
+          "en": "This is sometimes called social jet lag, because the body keeps switching between two different times."
+        },
+        {
+          "sv": "Vissa skolor har därför prövat att börja senare för de äldre eleverna.",
+          "en": "So some schools have tried starting later for the older pupils."
+        },
+        {
+          "sv": "Resultaten tyder på att eleverna sover mer, kommer i tid oftare och mår bättre.",
+          "en": "The results suggest that the pupils sleep more, are on time more often and feel better."
+        },
+        {
+          "sv": "På arbetsplatser med flexibla tider kan de anställda i viss mån välja själva.",
+          "en": "At workplaces with flexible hours, staff can to some extent choose for themselves."
+        },
+        {
+          "sv": "Men det går inte överallt.",
+          "en": "But that isn't possible everywhere."
+        },
+        {
+          "sv": "En busschaufför eller en förskollärare måste vara på plats när andra behöver dem.",
+          "en": "A bus driver or a preschool teacher has to be there when others need them."
+        },
+        {
+          "sv": "För den som inte kan välja finns det ändå några råd.",
+          "en": "For those who can't choose, there is still some advice."
+        },
+        {
+          "sv": "Gå ut i dagsljus på morgonen, undvik skärmar sent på kvällen och håll ungefär samma tider varje dag, även på helgen.",
+          "en": "Go out in daylight in the morning, avoid screens late in the evening and keep roughly the same hours every day, even at the weekend."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Vad styr kroppens inre klocka, enligt texten?",
+          "options": [
+            "Delvis våra gener",
+            "Bara våra vanor",
+            "Vad vi äter"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Vad är social jetlag?",
+          "options": [
+            "Att resa mellan tidszoner",
+            "Att kroppen växlar mellan olika tider på vardagar och helger",
+            "Att jobba på natten"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad hände när skolor började senare?",
+          "options": [
+            "Eleverna blev tröttare",
+            "Inget förändrades",
+            "Eleverna sov mer och mådde bättre"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }

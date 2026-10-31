@@ -1870,6 +1870,119 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "id": "C2-16",
+      "level": "C2",
+      "topic": "Health",
+      "form": "prose",
+      "kind": "reading",
+      "title": "Sockerpillrets gåta",
+      "names": [],
+      "above_level": [
+        "placebo",
+        "brus",
+        "placeboeffekt",
+        "hjärnavbildning",
+        "smärtstillande",
+        "piller",
+        "kvacksalvare"
+      ],
+      "lines": [
+        {
+          "sv": "I medicinska studier jämförs ett nytt läkemedel nästan alltid med ett sockerpiller, ett så kallat placebo, för att forskarna ska kunna avgöra om medlet faktiskt har någon effekt.",
+          "en": "In medical studies a new drug is almost always compared with a sugar pill, a so-called placebo, so that researchers can determine whether the drug actually has any effect."
+        },
+        {
+          "sv": "Det märkliga är att även de patienter som får placebo ofta blir bättre, ibland påtagligt.",
+          "en": "The strange thing is that even the patients who get the placebo often get better, sometimes noticeably."
+        },
+        {
+          "sv": "Länge betraktades denna förbättring som ett störande brus, något som måste räknas bort för att den verkliga effekten skulle träda fram.",
+          "en": "For a long time this improvement was regarded as disturbing noise, something that had to be subtracted for the real effect to emerge."
+        },
+        {
+          "sv": "Under de senaste decennierna har allt fler forskare i stället börjat intressera sig för placeboeffekten i sig.",
+          "en": "Over recent decades, more and more researchers have instead begun to take an interest in the placebo effect itself."
+        },
+        {
+          "sv": "Frågan är inte längre bara om placebo fungerar, utan hur och varför det gör det.",
+          "en": "The question is no longer just whether a placebo works, but how and why it does."
+        },
+        {
+          "sv": "Att förväntningar påverkar hur vi upplever smärta, trötthet och illamående är i dag väl belagt, och hjärnavbildningar visar att kroppen kan frisätta sina egna smärtstillande ämnen när en patient tror sig ha fått medicin.",
+          "en": "That expectations affect how we experience pain, tiredness and nausea is well documented today, and brain scans show that the body can release its own painkilling substances when a patient believes they have been given medicine."
+        },
+        {
+          "sv": "Effekten är störst på symtom som till stor del formas av hur vi tolkar dem, och betydligt mindre, eller obefintlig, när det gäller exempelvis tumörer eller infektioner.",
+          "en": "The effect is greatest on symptoms that are largely shaped by how we interpret them, and much smaller, or non-existent, in the case of, for example, tumours or infections."
+        },
+        {
+          "sv": "Ett av de mest uppmärksammade fynden är att placebo kan fungera även när patienten vet om det.",
+          "en": "One of the most noticed findings is that a placebo can work even when the patient knows it is one."
+        },
+        {
+          "sv": "I flera mindre studier har personer med långvarig smärta fått piller som tydligt märkts som verkningslösa, och ändå rapporterat att de mått bättre.",
+          "en": "In several smaller studies, people with long-term pain have been given pills clearly labelled as having no active ingredient, and have still reported feeling better."
+        },
+        {
+          "sv": "Forskarna tolkar det som att själva ritualen, att ta något regelbundet och bli tagen på allvar, har en betydelse som går utöver pillrets innehåll.",
+          "en": "The researchers interpret this as meaning that the ritual itself, taking something regularly and being taken seriously, matters beyond what is in the pill."
+        },
+        {
+          "sv": "Här ligger också ett etiskt dilemma.",
+          "en": "This is also where an ethical dilemma lies."
+        },
+        {
+          "sv": "En läkare som medvetet skriver ut verkningslösa medel riskerar att undergräva det förtroende som hela vården vilar på, och att ge kvacksalvare argument för sina egna metoder.",
+          "en": "A doctor who knowingly prescribes ineffective remedies risks undermining the trust on which all healthcare rests, and giving quacks arguments for their own methods."
+        },
+        {
+          "sv": "Samtidigt vore det märkligt att bortse från en effekt som är både billig och nästan fri från biverkningar.",
+          "en": "At the same time, it would be strange to ignore an effect that is both cheap and almost free of side effects."
+        },
+        {
+          "sv": "Kanske ligger den viktigaste lärdomen inte i pillret utan i mötet.",
+          "en": "Perhaps the most important lesson lies not in the pill but in the encounter."
+        },
+        {
+          "sv": "Studier visar att patienter som får tid och uppmärksamhet rapporterar mindre smärta, även när behandlingen i övrigt är densamma.",
+          "en": "Studies show that patients who are given time and attention report less pain, even when the treatment is otherwise the same."
+        },
+        {
+          "sv": "En läkare som lyssnar, förklarar och inger hopp tycks på egen hand kunna göra skillnad, oavsett vad som står på receptet.",
+          "en": "A doctor who listens, explains and gives hope seems able to make a difference on their own, whatever is written on the prescription."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Hur betraktades placeboeffekten länge?",
+          "options": [
+            "Som ett störande brus i studierna",
+            "Som en ny medicin",
+            "Som ett bevis på att läkemedel inte fungerar"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Var är placeboeffekten minst, enligt texten?",
+          "options": [
+            "Vid smärta",
+            "Vid exempelvis tumörer och infektioner",
+            "Vid trötthet"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Vad är det etiska dilemmat?",
+          "options": [
+            "Att placebo har många biverkningar",
+            "Att patienter inte vill ta piller",
+            "Att verkningslösa medel kan undergräva förtroendet för vården"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ]
 }
