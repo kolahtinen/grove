@@ -20,4 +20,12 @@ So the motion (B) is settled; round 2 tries how the oak and the leaves are drawn
 
 Published 2026-11-01 on the same link, above round 1. Trees: **T1** refined circles · **T2** lobed clouds with open limbs · **T3** built from leaves · **T4** bold silhouette (each wide and at 28/56 px as the logo). Leaves: **L1** refined · **L2** English oak · **L3** simple, five lobes · **L4** veins and fold. The film plays with the picked pair. Saves to `answers/round2`.
 
+Saved 2026-11-01 12:11. **Tree: T4** (bold silhouette). Leaf: none picked.
+
+Comment: "the leaves look pretty bad still, make them more less detailed, more minimalistic. maybe dont show the leaf as part of the tree at all, and no individual leaves on the ground; just color. in stead, the bushy tree branch shakes a bit in the wind and a leaf appears at that point and falls beside the tree. once the leaf hits the ground it just kind of fades. how about that. i need more sketches."
+
+## Round 3 (the last under docs/sketching.md): the minimal story
+
+T4's oak with no drawn leaves and a plain ground; a part of the crown shakes in the wind, a minimal leaf appears there and falls beside the tree, and fades into the ground on landing.
+
 (waiting: say "done" in Claude Code)
