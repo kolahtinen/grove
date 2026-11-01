@@ -575,10 +575,14 @@ function treeSVG(p, tree = CUR.tree, opts = {}) {
 }
 /* ---------- The picked oak (T5): T4 made geometric. Three circles, each with its light side, on a
    tapered trunk with two limbs; every straight corner rounded (round joins). R is the piece that sways. ---------- */
-const T5_PIECES = { C: [184, 102, 60], L: [128, 132, 44], R: [242, 128, 46] };
+// Pieces, back to front: B a wide rounded bar (the crown's flat underside), C the top circle, L and R
+// the side circles. Each: shadow colour, then the same shape moved up-left in the light colour, clipped to it.
+const T5_PIECES = { B: { rect: [112, 120, 144, 50, 25] }, C: { c: [182, 98, 54] }, L: { c: [124, 128, 40] }, R: { c: [244, 124, 44] } };
 function T5piece(p, k) {
-  const [cx, cy, r] = T5_PIECES[k];
-  return `<clipPath id="${p}-t5${k}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><circle cx="${cx}" cy="${cy}" r="${r}" style="fill:var(--crS)"/><circle cx="${f1(cx - r * 0.2)}" cy="${f1(cy - r * 0.24)}" r="${r}" style="fill:var(--crL)" clip-path="url(#${p}-t5${k})"/>`;
+  const P = T5_PIECES[k];
+  const shape = (dx, dy, st) => (P.rect ? `<rect x="${P.rect[0] + dx}" y="${P.rect[1] + dy}" width="${P.rect[2]}" height="${P.rect[3]}" rx="${P.rect[4]}" ${st}/>` : `<circle cx="${f1(P.c[0] + dx)}" cy="${f1(P.c[1] + dy)}" r="${P.c[2]}" ${st}/>`);
+  const r = P.rect ? 30 : P.c[2]; const dx = -f1(r * 0.2); const dy = -f1(r * 0.24);
+  return `<clipPath id="${p}-t5${k}">${shape(0, 0, '')}</clipPath>${shape(0, 0, 'style="fill:var(--crS)"')}${shape(dx, dy, `style="fill:var(--crL)" clip-path="url(#${p}-t5${k})"`)}`;
 }
 const T5_TRUNK = [
   ['M173 194L180 186L134 146L130 152Z', 'trS'],   // left limb
@@ -586,9 +590,9 @@ const T5_TRUNK = [
   ['M166 248L174 184L180 184L180 248Z', 'trL'],   // trunk, light half
   ['M180 248L180 184L186 184L194 248Z', 'trS'],   // trunk, shadow half
 ];
-TREES.T5 = { name: 'Geometric (picked)', line: 'T4 made geometric: three circles with soft light sides, a tapered trunk and two limbs, rounded corners.', vb: '78 37 216 216',
+TREES.T5 = { name: 'Geometric (picked)', line: 'T4 made geometric: a wide rounded bar and three circles, each with its light side, a tapered trunk and two limbs, rounded corners.', vb: '78 37 216 216',
   trunk: () => T5_TRUNK.map(([d, c]) => `<path d="${d}" style="fill:var(--${c});stroke:var(--${c})" stroke-width="4" stroke-linejoin="round"/>`).join(''),
-  crown: (p, opts = {}) => ['C', 'L', 'R'].filter((k) => k !== opts.except).map((k) => T5piece(p, k)).join('') };
+  crown: (p, opts = {}) => ['B', 'C', 'L', 'R'].filter((k) => k !== opts.except).map((k) => T5piece(p, k)).join('') };
 let logoN = 0;
 function oakLogo(px, cls = '', tree = 'T5') {
   return `<svg class="${cls}" width="${px}" height="${px}" viewBox="${TREES[tree].vb || '54 14 256 256'}" aria-hidden="true" style="flex:none">${treeSVG(`ol${logoN++}`, tree)}</svg>`;
@@ -899,7 +903,7 @@ const R3 = {
 // The bushy part of the crown that sways: one more lobed mass on the crown's lower right.
 const R3_CHUNK = lobedPath(284, 128, 36, 27, 7, 21, 0.8, 0.2);
 const R3V = {
-  F: { key: 'F', L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0, tree: 'T5', leaf: 'M4', E: { x: 266, y: 164 }, pivot: { x: 214, y: 118 }, chunkK: 1.2, logo: { x: 184, y: 139, z: 1.15 } },
+  F: { key: 'F', L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0, tree: 'T5', leaf: 'M4', E: { x: 268, y: 160 }, pivot: { x: 212, y: 116 }, chunkK: 1.2, logo: { x: 184, y: 139, z: 1.15 } },
   R3A: { key: 'A', L: 58, cam: 'still', view: { x: 180, y: 176, z: 0.82 }, land: { x: 300, y: 253 } },
   R3B: { key: 'B', L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0 },
   R3C: { key: 'C', L: 30, cam: 'follow', zIn: 1.75, zMid: 1.35, zGround: 1.7, glide: [0.3, 3.0], soft: 1 },
