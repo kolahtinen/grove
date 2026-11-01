@@ -216,7 +216,7 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
 <body>
 <div class="sk-wrap">
   <header class="sk-head">
-    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · picked</p>
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · picked film, crown of cubes</p>
     <h1>Sketch: Oak animation</h1>
     <ul class="sk-brief">
       <li><b>For:</b> the short film that shows how grove works: a word you know falls from the oak to your ground, and your ground feeds the oak.</li>
@@ -243,6 +243,22 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
       <p class="small muted" style="margin:0">Made-up data only. The film plays by itself; use the frame buttons 1–8 or the slider to stop on any frame, and 0.5× to watch the motion closely. Nothing you tap in the phone is saved.</p>
     </details>
   </header>
+
+  <section id="cubes">
+    <h2 class="lk-h">Crown of cubes · four options</h2>
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Picked film</b>: "don't write the spec yet, this needs fixing. The tree crown should be made of cubes not spheres. let's see some options sketches." Only the crown changes; the camera, timing, leaf, trunk, ground and captions stay as picked. Each option is shown as frame 1 and as the logo; pick one and the film below plays with it.</div>
+    <div class="sk-row"><span class="sk-row-label">Look</span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <div class="lk-grid" id="k-cards"></div>
+    <section class="sk-answers r2" id="answersK">
+      <h2>Your pick</h2>
+      <fieldset><legend>Which crown?</legend><div id="k-radios"></div></fieldset>
+      <fieldset><legend>Comments in your own words</legend><label class="c" for="commentK">Anything: what to change in the one you like</label><textarea id="commentK"></textarea></fieldset>
+    </section>
+  </section>
 
   <section id="picked">
     <h2 class="lk-h">Picked · the final film</h2>
@@ -594,7 +610,59 @@ TREES.T5 = { name: 'Geometric (picked)', line: 'T4 made geometric: a wide rounde
   trunk: () => T5_TRUNK.map(([d, c]) => `<path d="${d}" style="fill:var(--${c});stroke:var(--${c})" stroke-width="4" stroke-linejoin="round"/>`).join(''),
   crown: (p, opts = {}) => ['B', 'C', 'L', 'R'].filter((k) => k !== opts.except).map((k) => T5piece(p, k)).join('') };
 let logoN = 0;
-function oakLogo(px, cls = '', tree = 'T5') {
+/* ---------- Crown of cubes (K1–K4): the picked film's crown made of cubes. Same trunk, limbs and footprint
+   as T5; each has one piece R on the lower right that sways, with the leaf growing out from under it. ---------- */
+const CROWN = { k: 'K1' };   // the crown the picked film and the logo use
+const T5_TRUNK_SVG = () => T5_TRUNK.map(([d, c]) => `<path d="${d}" style="fill:var(--${c});stroke:var(--${c})" stroke-width="4" stroke-linejoin="round"/>`).join('');
+TREES.T5.E = { x: 268, y: 160 }; TREES.T5.pivot = { x: 212, y: 116 }; TREES.T5.piece = (p) => T5piece(p, 'R');
+// K1: rounded squares, slightly turned; each split on its diagonal into a light (upper left) and a shadow half.
+const K1_SQ = [['a', 182, 80, 64, -4], ['b', 126, 112, 56, 5], ['c', 238, 102, 58, -6], ['g', 96, 142, 40, 7], ['d', 160, 138, 54, 3], ['e', 214, 136, 54, -3], ['R', 264, 140, 42, 6]];
+function k1sq(p, [k, x, y, s, r]) {
+  const h = s / 2; const rx = f1(s * 0.16);
+  return `<g transform="translate(${x} ${y}) rotate(${r})"><clipPath id="${p}-k1${k}"><rect x="${-h}" y="${-h}" width="${s}" height="${s}" rx="${rx}"/></clipPath><rect x="${-h}" y="${-h}" width="${s}" height="${s}" rx="${rx}" style="fill:var(--crS)"/><path d="M${-h - 2} ${-h - 2}H${h + 2}L${-h - 2} ${h + 2}Z" style="fill:var(--crL)" clip-path="url(#${p}-k1${k})"/></g>`;
+}
+// Isometric cube centred at x,y with edge a: top face lightest and warm, left face mid, right face shadow.
+function isoCube(x, y, a, sw = 3) {
+  const c = 0.866 * a; const P = (dx, dy) => `${f1(x + dx)} ${f1(y + dy)}`;
+  const face = (d, col) => `<path d="${d}" style="fill:${col};stroke:${col}" stroke-width="${sw}" stroke-linejoin="round"/>`;
+  return face(`M${P(0, -a)}L${P(c, -a / 2)}L${P(0, 0)}L${P(-c, -a / 2)}Z`, 'var(--clL)')
+    + face(`M${P(-c, -a / 2)}L${P(0, 0)}L${P(0, a)}L${P(-c, a / 2)}Z`, 'var(--crL)')
+    + face(`M${P(0, 0)}L${P(c, -a / 2)}L${P(c, a / 2)}L${P(0, a)}Z`, 'var(--crS)');
+}
+// K2: eight isometric cubes in three rows (2, 4, 2), a broad crown; R is the right end of the middle row.
+const K2_CUBES = [['a', 158, 78], ['b', 206.5, 78], ['c', 109.5, 120], ['d', 158, 120], ['e', 206.5, 120], ['R', 255, 120], ['g', 133.75, 162], ['f', 182.25, 162]];
+const K2_ORDER = ['a', 'b', 'c', 'd', 'e', 'R', 'g', 'f'];
+// K3: one big cube as the core, with three small ones at its sides.
+const K3_CUBES = { t: [234, 82, 22], big: [182, 104, 54], l: [130, 134, 26], R: [248, 140, 26] };
+// K4: voxels: a grid of small rounded squares filling a broad crown shape, light to the upper left.
+function k4cells() {
+  const cells = []; const S = 20;
+  for (let y = 44; y <= 168; y += S) for (let x = 84; x <= 284; x += S) {
+    const cx = x + S / 2; const cy = y + S / 2; const nx = (cx - 186) / 106; const ny = (cy - 110) / (cy > 110 ? 58 : 66);
+    if (nx * nx + ny * ny > 1) continue;
+    const lit = -(nx * 0.6 + ny * 0.8);
+    cells.push({ x, y, cx, cy, col: lit > 0.3 ? 'clL' : lit > -0.3 ? 'crL' : 'crS' });
+  }
+  return cells;
+}
+const K4_CELLS = k4cells();
+const K4_R = K4_CELLS.filter((c) => c.cx > 230).sort((a, b) => (b.cy - a.cy) || (b.cx - a.cx))[0];
+const k4vox = (c) => `<rect x="${c.x + 1}" y="${c.y + 1}" width="18" height="18" rx="4" style="fill:var(--${c.col})"/>`;
+Object.assign(TREES, {
+  K1: { name: 'Flat squares', line: 'Seven rounded squares of a few sizes, slightly turned and overlapping, each split on its diagonal into a light and a shadow half. 2D, no perspective.',
+    vb: '74 37 220 220', trunk: T5_TRUNK_SVG, E: { x: 268, y: 161 }, pivot: { x: 224, y: 124 },
+    crown: (p, o = {}) => K1_SQ.filter((q) => q[0] !== 'R' || o.except !== 'R').map((q) => k1sq(p, q)).join(''), piece: (p) => k1sq(p, K1_SQ[6]) },
+  K2: { name: 'Isometric cubes', line: 'Eight isometric cubes stacked 2–4–2 into a broad crown; light top, mid left face, cool right face; rounded edges.',
+    vb: '78 37 216 216', trunk: T5_TRUNK_SVG, E: { x: 266, y: 142 }, pivot: { x: 222, y: 112 },
+    crown: (p, o = {}) => K2_ORDER.filter((k) => k !== 'R' || o.except !== 'R').map((k) => { const c = K2_CUBES.find((q) => q[0] === k); return isoCube(c[1], c[2], 28); }).join(''), piece: () => isoCube(255, 120, 28) },
+  K3: { name: 'One big cube', line: 'One large isometric cube as the core with three small cubes at its sides: the simplest, most logo-like.',
+    vb: '78 37 216 216', trunk: T5_TRUNK_SVG, E: { x: 259, y: 159 }, pivot: { x: 214, y: 128 },
+    crown: (p, o = {}) => ['t', 'big', 'l', 'R'].filter((k) => k !== 'R' || o.except !== 'R').map((k) => { const [x, y, a] = K3_CUBES[k]; return isoCube(x, y, a, k === 'big' ? 5 : 3); }).join(''), piece: () => isoCube(...K3_CUBES.R) },
+  K4: { name: 'Voxel crown', line: 'A broad crown built from a grid of small equal blocks, lighter to the upper left, darker to the lower right.',
+    vb: '78 37 216 216', trunk: T5_TRUNK_SVG, E: { x: K4_R.cx + 4, y: K4_R.y + 20 }, pivot: { x: K4_R.cx - 34, y: K4_R.cy - 24 },
+    crown: (p, o = {}) => K4_CELLS.filter((c) => c !== K4_R || o.except !== 'R').map(k4vox).join(''), piece: () => k4vox(K4_R) },
+});
+function oakLogo(px, cls = '', tree = CROWN.k) {
   return `<svg class="${cls}" width="${px}" height="${px}" viewBox="${TREES[tree].vb || '54 14 256 256'}" aria-hidden="true" style="flex:none">${treeSVG(`ol${logoN++}`, tree)}</svg>`;
 }
 
@@ -926,16 +994,17 @@ function hangAngle(t) {
 }
 const fallCache = {};
 const landOf = (cfg) => cfg.land || R3.LAND;
-const geoE = (cfg) => cfg.E || R3.E;
-const geoP = (cfg) => cfg.pivot || R3.pivot;
+const geoE = (cfg) => (cfg.tree === 'T5' ? TREES[CROWN.k].E : cfg.E || R3.E);
+const geoP = (cfg) => (cfg.tree === 'T5' ? TREES[CROWN.k].pivot : cfg.pivot || R3.pivot);
+const fkey = (cfg) => cfg.key + (cfg.tree === 'T5' ? CROWN.k : '');
 function fall3(cfg) {
   const L = cfg.L;
-  if (fallCache[cfg.key]) return fallCache[cfg.key];
+  if (fallCache[fkey(cfg)]) return fallCache[fkey(cfg)];
   const LD = landOf(cfg);
   const a = rotAbout(geoE(cfg), geoP(cfg), gust(T0) * (cfg.chunkK || 1)); const c = hangCentre(a, hangAngle(T0), L, L * 0.16);
   const fy = monotone([[T0, c.y], [5.4, c.y + 10], [8.6, LD.y - 50], [10.2, LD.y - 14], [11.0, LD.y]]);
   const fx = monotone([[T0, c.x], [6.6, c.x + 14], [8.6, 312], [10.2, LD.x + 3], [11.0, LD.x]]);
-  return (fallCache[cfg.key] = (t) => ({ x: fx(t), y: fy(t) }));
+  return (fallCache[fkey(cfg)] = (t) => ({ x: fx(t), y: fy(t) }));
 }
 // The leaf at time t: { x, y, r, s (grow-in scale), o (opacity) }.
 function leaf3(t, cfg) {
@@ -986,8 +1055,8 @@ function scene3SVG(p, v = S.version) {
       <ellipse data-r="ring" cx="${R3.LAND.x}" cy="${R3.LAND.y + 2}" rx="8" ry="2" fill="none" style="stroke:var(--lsL)" stroke-width="1.4" opacity="0"/>
     </g>
     <g data-r="tree"><g data-r="sway">
-      ${cfg.tree === 'T5' ? treeSVG(p, 'T5', { except: 'R' }) : treeSVG(p, 'T4')}
-      <g data-r="chunk">${cfg.tree === 'T5' ? T5piece(p, 'R') : massSVG(`${p}-ch`, R3_CHUNK, -8, -9)}</g>
+      ${cfg.tree === 'T5' ? treeSVG(p, CROWN.k, { except: 'R' }) : treeSVG(p, 'T4')}
+      <g data-r="chunk">${cfg.tree === 'T5' ? TREES[CROWN.k].piece(p) : massSVG(`${p}-ch`, R3_CHUNK, -8, -9)}</g>
     </g></g>
     <circle data-r="glow" r="3" style="fill:var(--lsL)" opacity="0"/>
     <g data-r="leaf">${leafSVG(L, f1(L * 0.66), 'ls', '', cfg.leaf || S3.leaf)}</g>
@@ -1311,6 +1380,21 @@ function applyLooks() {
 window.collectAnswers2 = collectAnswers2;
 window.applyLooks = applyLooks;
 
+// Crown of cubes: the option cards and the pick
+function withCrown(k, fn) { const keep = CROWN.k; CROWN.k = k; try { return fn(); } finally { CROWN.k = keep; } }
+function buildCubes() {
+  document.getElementById('k-cards').innerHTML = ['K1', 'K2', 'K3', 'K4'].map((k, i) => withCrown(k, () => `<figure class="lk-card"><p class="lk-t"><b>${k}</b>${esc(TREES[k].name)}</p>
+    <div class="oak-stage" data-kc="${k}">${scene3SVG(`kc${i}`, 'F')}</div>
+    <div class="lk-logos"><span class="mini-top">${oakLogo(28, '', k)}<span class="title">grove</span></span>${oakLogo(56, '', k)}<span class="lk-sub">logo at 28 and 56 px</span></div>
+    <p class="lk-line">${esc(TREES[k].line)}</p></figure>`)).join('');
+  document.querySelectorAll('[data-kc]').forEach((el) => withCrown(el.dataset.kc, () => draw3(bind3(el.querySelector('svg')), 0.4, 'F')));
+  document.getElementById('k-radios').innerHTML = ['K1', 'K2', 'K3', 'K4'].map((k) => `<label class="opt"><input type="radio" name="crown" id="crown-${k}" value="${k}"><span><b>${k}</b> ${esc(TREES[k].name)}</span></label>`).join('');
+}
+window.collectAnswersK = () => { const c = document.querySelector('input[name="crown"]:checked'); return { sketch: 'Sketch: Oak animation', round: 'cubes', notes: ['O-01'], crown: c ? c.value : null, comment: document.getElementById('commentK').value.trim() }; };
+window.applyCubes = () => { const A = window.collectAnswersK(); const k = A.crown || 'K1'; if (k !== CROWN.k) { CROWN.k = k; if (S.version !== 'F') S.version = 'F'; window.sketchRender(); } };
+buildCubes();
+document.getElementById('answersK').addEventListener('change', (e) => { if (e.target.name === 'crown') window.applyCubes(); });
+
 buildQuestions();
 // Round 1 is answered: its answers are filled in, so the film plays as picked.
 for (const id of ['pick-B', 'q1-16', 'q2-over', 'q3-on']) document.getElementById(id).checked = true;
@@ -1473,6 +1557,37 @@ window.collectAnswersF = () => ({ sketch: 'Sketch: Oak animation', round: 'final
     const a = snap && snap.exists ? snap.data() : null;
     if (!a) return;
     { const t = document.getElementById('commentF'); if (t && a.comment) t.value = a.comment; }
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+<script>
+// Saving the crown pick and comment for Claude, as round 1 (doc answers/cubes).
+(() => {
+  const box = document.getElementById('answersK');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/cubes').set({ ...JSON.parse(JSON.stringify(window.collectAnswersK())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/cubes').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.crown) { const r = document.getElementById(`crown-${a.crown}`); if (r) r.checked = true; }
+    { const t = document.getElementById('commentK'); if (t && a.comment) t.value = a.comment; }
+    window.applyCubes?.();
     status.textContent = 'Your saved answers are back.';
   })();
 })();
