@@ -216,7 +216,7 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
 <body>
 <div class="sk-wrap">
   <header class="sk-head">
-    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 3 of 3</p>
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · picked</p>
     <h1>Sketch: Oak animation</h1>
     <ul class="sk-brief">
       <li><b>For:</b> the short film that shows how grove works: a word you know falls from the oak to your ground, and your ground feeds the oak.</li>
@@ -244,35 +244,11 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
     </details>
   </header>
 
-  <section id="r3">
-    <h2 class="lk-h">Round 3 · The new story <span class="pill">last round</span></h2>
-    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 2</b> picked oak T4 (bold silhouette), no leaf: "the leaves look pretty bad still, make them more less detailed, more minimalistic. maybe dont show the leaf as part of the tree at all, and no individual leaves on the ground; just color. in stead, the bushy tree branch shakes a bit in the wind and a leaf appears at that point and falls beside the tree. once the leaf hits the ground it just kind of fades. how about that. i need more sketches."</div>
-    <ol class="small r3-story">
-      <li>The oak (T4) on plain ground; no leaves anywhere.</li>
-      <li>A gust: one part of the crown sways, and a single leaf, "läsa", grows out there.</li>
-      <li>It comes loose.</li>
-      <li>It falls beside the tree, swaying.</li>
-      <li>It nears the ground.</li>
-      <li>It lands, and fades into the ground.</li>
-      <li>The oak grows a little.</li>
-      <li>The ground fades; the oak alone is the logo.</li>
-    </ol>
-    <p class="small muted" style="margin:0 0 .4rem">Caption over the picture and "läsa" on the leaf, as answered in round 1; about 16 s. Pick a version (A, B, C) and a leaf (M1–M3); the film below uses the leaf you pick.</p>
-    <h3 class="lk-h3">Leaf: three minimal shapes</h3>
-    <div class="m-grid" id="m-leaves"></div>
-    <h3 class="lk-h3">The film</h3>
+  <section id="picked">
+    <h2 class="lk-h">Picked · the final film</h2>
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 3</b> picked B (Follow) and leaf M3 (geometric): "geometric but soft edges, make the tree more abstract and geometric too." This is the decided version: the round-3 story with B's camera, the oak made geometric (three circles, a tapered trunk, two limbs, rounded corners) and M3 with its corners rounded. Caption over the picture, "läsa" on the leaf, about 16 s.</div>
   <div class="sk-controls" id="controls">
-    <div class="v3-tabs" role="tablist" aria-label="Round 3 version">
-      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3A"><b>A · Still camera</b><small>Wide all the way; a larger-than-life leaf you can read from afar; it leaves a little colour.</small></button>
-      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3B"><b>B · Follow</b><small>Round 1's pick: glide in to the swaying crown, follow the leaf down, pull back out; a soft ring.</small></button>
-      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3C"><b>C · Your idea, softer</b><small>Like B but gentler; a glow sinks into the ground and climbs the trunk as the oak grows.</small></button>
-    </div>
-    <div class="sk-row" role="tablist" aria-label="Earlier versions"><span class="sk-row-label">Round 1</span>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="now">Now</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
-    </div>
+    <div class="sk-row"><span class="sk-row-label">Film</span><button type="button" class="sk-tab" data-act="version" data-v="F">The picked film</button><span class="small muted" id="earlier-note"></span></div>
     <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
       <button type="button" class="sk-tab" role="tab" data-act="state" data-s="playing">Playing</button>
       <button type="button" class="sk-tab" role="tab" data-act="state" data-s="reduced">Reduced motion</button>
@@ -308,6 +284,42 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
   </div>
 
   <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+    <section class="sk-answers" id="answersF">
+      <h2>Anything else?</h2>
+      <fieldset><legend>A last comment (optional)</legend><label class="c" for="commentF">Anything to change before the spec is written</label><textarea id="commentF"></textarea></fieldset>
+    </section>
+  </section>
+
+  <details class="sk-past"><summary>Round 3 · The new story (answered: B, leaf M3)</summary>
+  <section id="r3">
+    <h2 class="lk-h">Round 3 · The new story</h2>
+    <p class="small">Play an earlier version in the player above:</p>
+    <div class="v3-tabs" role="tablist" aria-label="Round 3 version">
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3A"><b>A · Still camera</b><small>Wide all the way; a larger-than-life leaf you can read from afar; it leaves a little colour.</small></button>
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3B"><b>B · Follow</b><small>Round 1's pick: glide in to the swaying crown, follow the leaf down, pull back out; a soft ring.</small></button>
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3C"><b>C · Your idea, softer</b><small>Like B but gentler; a glow sinks into the ground and climbs the trunk as the oak grows.</small></button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Earlier versions"><span class="sk-row-label">Round 1</span>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="now">Now</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
+    </div>
+
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 2</b> picked oak T4 (bold silhouette), no leaf: "the leaves look pretty bad still, make them more less detailed, more minimalistic. maybe dont show the leaf as part of the tree at all, and no individual leaves on the ground; just color. in stead, the bushy tree branch shakes a bit in the wind and a leaf appears at that point and falls beside the tree. once the leaf hits the ground it just kind of fades. how about that. i need more sketches."</div>
+    <ol class="small r3-story">
+      <li>The oak (T4) on plain ground; no leaves anywhere.</li>
+      <li>A gust: one part of the crown sways, and a single leaf, "läsa", grows out there.</li>
+      <li>It comes loose.</li>
+      <li>It falls beside the tree, swaying.</li>
+      <li>It nears the ground.</li>
+      <li>It lands, and fades into the ground.</li>
+      <li>The oak grows a little.</li>
+      <li>The ground fades; the oak alone is the logo.</li>
+    </ol>
+    <p class="small muted" style="margin:0 0 .4rem">Caption over the picture and "läsa" on the leaf, as answered in round 1; about 16 s. Pick a version (A, B, C) and a leaf (M1–M3); the film below uses the leaf you pick.</p>
+    <h3 class="lk-h3">Leaf: three minimal shapes</h3>
+    <div class="m-grid" id="m-leaves"></div>
     <section class="sk-answers r3a" id="answers3">
       <h2>Your round 3 pick</h2>
       <fieldset><legend>Which version?</legend>
@@ -319,6 +331,7 @@ details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px;
       <fieldset><legend>Comments in your own words</legend><label class="c" for="comment3">Anything: the motion, the leaf, the landing, the ending</label><textarea id="comment3"></textarea></fieldset>
     </section>
   </section>
+  </details>
 
   <details class="sk-past"><summary>Round 2 · Looks (answered: oak T4)</summary>
   <section id="looks">
@@ -456,7 +469,8 @@ const veinCol = (pal) => `color-mix(in srgb, var(--${pal}L) 65%, #fff)`;
 const foldCol = (pal) => `color-mix(in srgb, var(--${pal}L) 55%, var(--${pal}S))`;
 function leafSVG(L, W, pal, attrs = '', style = CUR.leaf) {
   const k = `${style}-${L}-${W}`; const p = leafCache[k] || (leafCache[k] = leafPaths(L, W, style));
-  return `<g ${attrs}><path d="${p.stem}" style="stroke:var(--${pal}S)" stroke-width="${f1(L * 0.045)}" stroke-linecap="round" fill="none"/><path d="${p.shade}" style="fill:var(--${pal}S)"/><path d="${p.lit}" style="fill:var(--${pal}L)"/>${p.fold ? `<path d="${p.fold}" style="fill:${foldCol(pal)}"/>` : ''}${p.veins ? `<path d="${p.veins}" fill="none" style="stroke:${veinCol(pal)}" stroke-width="${f1(Math.max(0.45, L * 0.011))}" stroke-linecap="round"/>` : ''}</g>`;
+  const soft = LEAF_SPECS[style].soft; const sw = (c) => (soft ? `;stroke:var(--${pal}${c})" stroke-width="${f1(L * soft)}" stroke-linejoin="round` : '');
+  return `<g ${attrs}><path d="${p.stem}" style="stroke:var(--${pal}S)" stroke-width="${f1(L * 0.045)}" stroke-linecap="round" fill="none"/><path d="${p.shade}" style="fill:var(--${pal}S)${sw('S')}"/><path d="${p.lit}" style="fill:var(--${pal}L)${sw('L')}"/>${p.fold ? `<path d="${p.fold}" style="fill:${foldCol(pal)}"/>` : ''}${p.veins ? `<path d="${p.veins}" fill="none" style="stroke:${veinCol(pal)}" stroke-width="${f1(Math.max(0.45, L * 0.011))}" stroke-linecap="round"/>` : ''}</g>`;
 }
 // Many leaves of one colour merged into one set of paths (cheap to draw while the camera moves).
 function mergedLeaves(items, style = CUR.leaf, stemW = 1) {
@@ -557,11 +571,27 @@ const TREES = {
 // The tree's own shapes (no twig, no leaf): trunk, limbs, crown.
 function treeSVG(p, tree = CUR.tree, opts = {}) {
   const T = TREES[tree];
-  return `${limbsSVG()}${TRUNK}<g data-r="crown">${T.crown(p, opts)}</g>`;
+  return `${T.trunk ? T.trunk() : limbsSVG() + TRUNK}<g data-r="crown">${T.crown(p, opts)}</g>`;
 }
+/* ---------- The picked oak (T5): T4 made geometric. Three circles, each with its light side, on a
+   tapered trunk with two limbs; every straight corner rounded (round joins). R is the piece that sways. ---------- */
+const T5_PIECES = { C: [184, 102, 60], L: [128, 132, 44], R: [242, 128, 46] };
+function T5piece(p, k) {
+  const [cx, cy, r] = T5_PIECES[k];
+  return `<clipPath id="${p}-t5${k}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><circle cx="${cx}" cy="${cy}" r="${r}" style="fill:var(--crS)"/><circle cx="${f1(cx - r * 0.2)}" cy="${f1(cy - r * 0.24)}" r="${r}" style="fill:var(--crL)" clip-path="url(#${p}-t5${k})"/>`;
+}
+const T5_TRUNK = [
+  ['M173 194L180 186L134 146L130 152Z', 'trS'],   // left limb
+  ['M180 186L188 194L234 150L229 145Z', 'trS'],   // right limb
+  ['M166 248L174 184L180 184L180 248Z', 'trL'],   // trunk, light half
+  ['M180 248L180 184L186 184L194 248Z', 'trS'],   // trunk, shadow half
+];
+TREES.T5 = { name: 'Geometric (picked)', line: 'T4 made geometric: three circles with soft light sides, a tapered trunk and two limbs, rounded corners.', vb: '78 37 216 216',
+  trunk: () => T5_TRUNK.map(([d, c]) => `<path d="${d}" style="fill:var(--${c});stroke:var(--${c})" stroke-width="4" stroke-linejoin="round"/>`).join(''),
+  crown: (p, opts = {}) => ['C', 'L', 'R'].filter((k) => k !== opts.except).map((k) => T5piece(p, k)).join('') };
 let logoN = 0;
-function oakLogo(px, cls = '', tree = CUR.tree) {
-  return `<svg class="${cls}" width="${px}" height="${px}" viewBox="54 14 256 256" aria-hidden="true" style="flex:none">${treeSVG(`ol${logoN++}`, tree)}</svg>`;
+function oakLogo(px, cls = '', tree = 'T5') {
+  return `<svg class="${cls}" width="${px}" height="${px}" viewBox="${TREES[tree].vb || '54 14 256 256'}" aria-hidden="true" style="flex:none">${treeSVG(`ol${logoN++}`, tree)}</svg>`;
 }
 
 /* ---------- The world (viewBox 0 0 360 300; the wide shot shows exactly that) ---------- */
@@ -853,6 +883,7 @@ Object.assign(LEAF_SPECS, {
   M2: { wk: 1.0, almond: true },
   M3: { wk: 1.0, poly: [[0.04, 0], [0.4, 0.24], [0.26, 0.34], [0.5, 0.52], [0.32, 0.62], [0.4, 0.78], [0, 1]] },
 });
+LEAF_SPECS.M4 = { wk: 0.92, soft: 0.08, poly: [[0.04, 0], [0.4, 0.24], [0.26, 0.34], [0.5, 0.52], [0.32, 0.62], [0.4, 0.78], [0, 1]] };
 const M_INFO = {
   M1: ['Rounded oak', 'An oak silhouette with three round lobes a side; one colour and a flat shadow half.'],
   M2: ['Soft almond', 'An almond shape with two soft notches a side: the least detail that still says "oak".'],
@@ -868,9 +899,10 @@ const R3 = {
 // The bushy part of the crown that sways: one more lobed mass on the crown's lower right.
 const R3_CHUNK = lobedPath(284, 128, 36, 27, 7, 21, 0.8, 0.2);
 const R3V = {
-  R3A: { L: 58, cam: 'still', view: { x: 180, y: 176, z: 0.82 }, land: { x: 300, y: 253 } },
-  R3B: { L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0 },
-  R3C: { L: 30, cam: 'follow', zIn: 1.75, zMid: 1.35, zGround: 1.7, glide: [0.3, 3.0], soft: 1 },
+  F: { key: 'F', L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0, tree: 'T5', leaf: 'M4', E: { x: 266, y: 164 }, pivot: { x: 214, y: 118 }, chunkK: 1.2, logo: { x: 184, y: 139, z: 1.15 } },
+  R3A: { key: 'A', L: 58, cam: 'still', view: { x: 180, y: 176, z: 0.82 }, land: { x: 300, y: 253 } },
+  R3B: { key: 'B', L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0 },
+  R3C: { key: 'C', L: 30, cam: 'follow', zIn: 1.75, zMid: 1.35, zGround: 1.7, glide: [0.3, 3.0], soft: 1 },
 };
 const CW2_3 = { x: 180, y: 140, z: 0.88 };
 const CLOGO3 = { x: 180, y: 126, z: 0.98 };   // T4 alone, with room for its tallest lobe
@@ -889,23 +921,27 @@ function hangAngle(t) {
   return R3.HANG + gust(t) * 1.4 + env * (5 * Math.sin(2 * Math.PI * 1.6 * (t - 1.6)) + 2 * Math.sin(2 * Math.PI * 3.1 * t));
 }
 const fallCache = {};
-const landOf = (L) => (L === R3V.R3A.L ? R3V.R3A.land : R3.LAND);
-function fall3(L) {
-  if (fallCache[L]) return fallCache[L];
-  const LD = landOf(L);
-  const a = rotAbout(R3.E, R3.pivot, gust(T0)); const c = hangCentre(a, hangAngle(T0), L, L * 0.16);
+const landOf = (cfg) => cfg.land || R3.LAND;
+const geoE = (cfg) => cfg.E || R3.E;
+const geoP = (cfg) => cfg.pivot || R3.pivot;
+function fall3(cfg) {
+  const L = cfg.L;
+  if (fallCache[cfg.key]) return fallCache[cfg.key];
+  const LD = landOf(cfg);
+  const a = rotAbout(geoE(cfg), geoP(cfg), gust(T0) * (cfg.chunkK || 1)); const c = hangCentre(a, hangAngle(T0), L, L * 0.16);
   const fy = monotone([[T0, c.y], [5.4, c.y + 10], [8.6, LD.y - 50], [10.2, LD.y - 14], [11.0, LD.y]]);
   const fx = monotone([[T0, c.x], [6.6, c.x + 14], [8.6, 312], [10.2, LD.x + 3], [11.0, LD.x]]);
-  return (fallCache[L] = (t) => ({ x: fx(t), y: fy(t) }));
+  return (fallCache[cfg.key] = (t) => ({ x: fx(t), y: fy(t) }));
 }
 // The leaf at time t: { x, y, r, s (grow-in scale), o (opacity) }.
-function leaf3(t, L) {
+function leaf3(t, cfg) {
+  const L = cfg.L;
   if (t < T0) {
-    const a = rotAbout(R3.E, R3.pivot, gust(t)); const r = hangAngle(t);
+    const a = rotAbout(geoE(cfg), geoP(cfg), gust(t) * (cfg.chunkK || 1)); const r = hangAngle(t);
     const g = eBack(clamp((t - 1.5) / 0.9)); const c = hangCentre(a, r, L * g, L * g * 0.16);
     return { x: c.x, y: c.y, r, s: g, o: clamp((t - 1.5) / 0.3) };
   }
-  const b = fall3(L)(t);
+  const b = fall3(cfg)(t);
   const ph = 2 * Math.PI * (t - T0) / 1.95 + 0.6;
   const amp = 15 * sstep(T0, T0 + 1.2, t) * (1 - sstep(9.9, 11.0, t));
   const x = b.x + amp * (Math.sin(ph) - Math.sin(0.6) * (1 - sstep(T0, T0 + 1.2, t)));
@@ -921,8 +957,8 @@ function camR3(t, v) {
     if (t < 14) return zoomPath(cfg.view, A7, sstep2(12.0, 13.4, t));
     return zoomPath(A7, CLOGO3, sstep2(14.0, 15.4, t));
   }
-  const CLi = { x: R3.E.x - 10, y: R3.E.y - 4, z: cfg.zIn };
-  const follow = (tt) => { const b = fall3(cfg.L)(Math.min(tt, 11.0)); const k = 0.35 + cfg.soft * 0.25; return { x: lerp(b.x, 290, k), y: b.y + 4 + cfg.soft * 14, z: monotone([[T0, cfg.zIn], [7.6, cfg.zMid], [10.4, cfg.zGround], [12, cfg.zGround]])(tt) }; };
+  const CLi = { x: geoE(cfg).x - 10, y: geoE(cfg).y - 4, z: cfg.zIn };
+  const follow = (tt) => { const b = fall3(cfg)(Math.min(tt, 11.0)); const k = 0.35 + cfg.soft * 0.25; return { x: lerp(b.x, 290, k), y: b.y + 4 + cfg.soft * 14, z: monotone([[T0, cfg.zIn], [7.6, cfg.zMid], [10.4, cfg.zGround], [12, cfg.zGround]])(tt) }; };
   const [g0, g1] = cfg.glide;
   if (t < g1) return zoomPath(CW, CLi, sstep2(g0, g1, t));
   const hold = { x: CLi.x + 0.6 * Math.sin((t - g1) * 1.6), y: CLi.y, z: CLi.z };
@@ -932,7 +968,7 @@ function camR3(t, v) {
     return { x: lerp(hold.x, f.x, w), y: lerp(hold.y, f.y, w), z: Math.exp(lerp(Math.log(hold.z), Math.log(f.z), w)) };
   }
   if (t < 14.0) return zoomPath(follow(11.6), CW2_3, sstep2(11.6, 13.4 + cfg.soft * 0.4, t));
-  return zoomPath(CW2_3, CLOGO3, sstep2(14.0, 15.2, t));
+  return zoomPath(CW2_3, cfg.logo || CLOGO3, sstep2(14.0, 15.2, t));
 }
 function scene3SVG(p, v = S.version) {
   const cfg = R3V[v] || R3V.R3B; const L = cfg.L;
@@ -946,11 +982,11 @@ function scene3SVG(p, v = S.version) {
       <ellipse data-r="ring" cx="${R3.LAND.x}" cy="${R3.LAND.y + 2}" rx="8" ry="2" fill="none" style="stroke:var(--lsL)" stroke-width="1.4" opacity="0"/>
     </g>
     <g data-r="tree"><g data-r="sway">
-      ${treeSVG(p, 'T4')}
-      <g data-r="chunk">${massSVG(`${p}-ch`, R3_CHUNK, -8, -9)}</g>
+      ${cfg.tree === 'T5' ? treeSVG(p, 'T5', { except: 'R' }) : treeSVG(p, 'T4')}
+      <g data-r="chunk">${cfg.tree === 'T5' ? T5piece(p, 'R') : massSVG(`${p}-ch`, R3_CHUNK, -8, -9)}</g>
     </g></g>
     <circle data-r="glow" r="3" style="fill:var(--lsL)" opacity="0"/>
-    <g data-r="leaf">${leafSVG(L, f1(L * 0.66), 'ls', '', S3.leaf)}</g>
+    <g data-r="leaf">${leafSVG(L, f1(L * 0.66), 'ls', '', cfg.leaf || S3.leaf)}</g>
     <g data-r="leaftext"><text text-anchor="middle" y="${f1(L * 0.09)}" class="lw" style="font-size:${f1(L * 0.25)}px">läsa</text></g>
   </g>
 </svg>`;
@@ -967,11 +1003,11 @@ function draw3(S, t, v) {
   S.tree.setAttribute('transform', `translate(${BASE.x} ${BASE.y}) scale(${g.toFixed(4)}) translate(${-BASE.x} ${-BASE.y})`);
   const gu = gust(t);
   S.sway.setAttribute('transform', `rotate(${(gu * 0.12).toFixed(3)} ${BASE.x} ${BASE.y})`);
-  S.chunk.setAttribute('transform', `rotate(${gu.toFixed(3)} ${R3.pivot.x} ${R3.pivot.y})`);
+  S.chunk.setAttribute('transform', `rotate(${(gu * (cfg.chunkK || 1)).toFixed(3)} ${geoP(cfg).x} ${geoP(cfg).y})`);
   const fade = 1 - sstep(14.0, 15.0, t);
   S.fade.setAttribute('opacity', fade.toFixed(3)); S.sky.setAttribute('opacity', fade.toFixed(3));
   // the leaf (in tree space while it hangs, so it grows with nothing; it has fallen long before the oak grows)
-  const l = leaf3(t, cfg.L);
+  const l = leaf3(t, cfg);
   const sway = gu * 0.12; // the whole crown's small sway, applied to the hanging leaf too
   const hp = t < T0 ? rotAbout(l, BASE, sway) : l;
   S.leaf.setAttribute('transform', `translate(${hp.x.toFixed(2)} ${hp.y.toFixed(2)}) rotate(${(l.r + (t < T0 ? sway : 0)).toFixed(2)}) scale(${l.s.toFixed(3)})`);
@@ -980,13 +1016,13 @@ function draw3(S, t, v) {
   S.leaftext.setAttribute('transform', `translate(${hp.x.toFixed(2)} ${hp.y.toFixed(2)}) rotate(${tilt.toFixed(2)}) scale(${l.s.toFixed(3)})`);
   S.leaftext.setAttribute('opacity', (l.o * clamp((t - 1.9) / 0.4)).toFixed(3));
   // what the landing leaves behind: A a little of its colour, B a soft ring, C a glow that sinks and travels up the trunk
-  const LD = landOf(cfg.L);
+  const LD = landOf(cfg);
   if (v === 'R3A') {
     S.stain.setAttribute('cx', LD.x); S.stain.setAttribute('cy', LD.y + 3);
     const k = sstep(11.1, 12.0, t) * (1 - sstep(13.0, 14.6, t));
     S.stain.setAttribute('opacity', (0.32 * k).toFixed(3)); S.stain.setAttribute('rx', (cfg.L * 0.5).toFixed(1)); S.stain.setAttribute('ry', (cfg.L * 0.11).toFixed(1));
   } else S.stain.setAttribute('opacity', 0);
-  if (v === 'R3B') {
+  if (v === 'R3B' || v === 'F') {
     const k = clamp((t - 11.05) / 1.4);
     S.ring.setAttribute('opacity', (k > 0 && k < 1 ? 0.7 * (1 - eOut(k)) : 0).toFixed(3));
     S.ring.setAttribute('rx', (6 + 26 * eOut(k)).toFixed(2)); S.ring.setAttribute('ry', (1.6 + 6 * eOut(k)).toFixed(2));
@@ -1004,7 +1040,7 @@ function draw3(S, t, v) {
     } else S.glow.setAttribute('opacity', 0);
   } else S.glow.setAttribute('opacity', 0);
 }
-const isR3 = (v = S.version) => v.startsWith('R3');
+const isR3 = (v = S.version) => v.startsWith('R3') || v === 'F';
 function mLeafCard(k) {
   const L = 120; const sm = 34;
   return `<figure class="lk-card m-card"><p class="lk-t"><b>${k}</b>${esc(M_INFO[k][0])}</p><div class="lk-leaf"><svg viewBox="0 0 200 170" aria-hidden="true"><rect width="200" height="170" style="fill:var(--sky)"/>
@@ -1014,7 +1050,7 @@ function mLeafCard(k) {
 }
 
 /* ---------- State ---------- */
-const S = { version: 'R3B', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
+const S = { version: 'F', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
 const P = { t: 0, playing: true, speed: 1, ended: false, last: 0 };
 let live = [];     // scenes that follow the player
 let stills = [];   // scenes drawn once at a fixed time
@@ -1025,6 +1061,7 @@ const secs = () => (S.version === 'now' ? NOW_LEN : isR3() ? 16 : Number(answer(
 const capOver = () => answer('q2', 'under') === 'over';
 
 const VERSIONS = {
+  F: 'Picked · round 3\'s B (Follow) with the geometric oak and the soft geometric leaf. The camera glides in to the swaying circle, follows the leaf down beside the oak, holds as it lands (a soft ring spreads and it fades into the ground), then pulls back out while the oak grows, and settles on the oak alone.',
   R3A: 'A · Still camera. The wide shot the whole time (it only settles on the oak at the very end). The leaf is drawn larger than life so "läsa" can be read from afar; when it lands, the ground keeps a little of its colour for a moment.',
   R3B: 'B · Follow (round 1\'s pick). One continuous camera: it glides in to the part of the crown that sways, follows the leaf down beside the tree, holds as it lands and fades (a soft ring spreads on the ground), then pulls back out to the oak.',
   R3C: 'C · Your idea, softer. Like B with a gentler camera (less zoom, slower moves). The landing leaves a faint glow that sinks into the ground, travels to the trunk and up it as the oak grows.',
@@ -1286,10 +1323,10 @@ function collectAnswers3() {
   A.pick = v ? v.value : null; A.leaf = l ? l.value : null; A.comment = document.getElementById('comment3').value.trim();
   return A;
 }
-function applyR3() {
+function applyR3(e) {
   const A = collectAnswers3();
   const leaf = A.leaf || 'M1'; const changed = leaf !== S3.leaf; S3.leaf = leaf;
-  if (A.pick && S.version !== `R3${A.pick}`) { S.version = `R3${A.pick}`; window.sketchRender(); seek(0, true); return; }
+  if (e && A.pick && S.version !== `R3${A.pick}`) { S.version = `R3${A.pick}`; window.sketchRender(); seek(0, true); return; }
   if (changed) window.sketchRender();
 }
 window.collectAnswers3 = collectAnswers3;
@@ -1402,6 +1439,36 @@ requestAnimationFrame(tick);
     if (a.leaf) { const r = document.getElementById(`mleaf-${a.leaf}`); if (r) r.checked = true; }
     { const t = document.getElementById('comment3'); if (t && a.comment) t.value = a.comment; }
     window.applyR3?.();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+<script>
+window.collectAnswersF = () => ({ sketch: 'Sketch: Oak animation', round: 'final', notes: ['O-01'], version: 'F', comment: document.getElementById('commentF').value.trim() });
+// Saving the final comment for Claude, as round 1 (doc answers/final).
+(() => {
+  const box = document.getElementById('answersF');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/final').set({ ...JSON.parse(JSON.stringify(window.collectAnswersF())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/final').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    { const t = document.getElementById('commentF'); if (t && a.comment) t.value = a.comment; }
     status.textContent = 'Your saved answers are back.';
   })();
 })();
