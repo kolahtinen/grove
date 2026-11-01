@@ -18,4 +18,6 @@ So the motion (B) is settled; round 2 tries how the oak and the leaves are drawn
 
 ## Round 2: how the oak and the leaf are drawn
 
+Published 2026-11-01 on the same link, above round 1. Trees: **T1** refined circles · **T2** lobed clouds with open limbs · **T3** built from leaves · **T4** bold silhouette (each wide and at 28/56 px as the logo). Leaves: **L1** refined · **L2** English oak · **L3** simple, five lobes · **L4** veins and fold. The film plays with the picked pair. Saves to `answers/round2`.
+
 (waiting: say "done" in Claude Code)

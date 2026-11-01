@@ -28,7 +28,7 @@
   /* Scene colours (new in this sketch), dark look: each shape has a lighter, warmer light side (…L)
      and a darker, cooler shadow side (…S). Same shapes in both looks. */
   --sky: #1F2620; --gdL: #5A4632; --gdS: #3F3428;
-  --crL: #6E9A57; --crS: #2E5444; --clL: #86AD62; --clS: #3D6650;
+  --crL: #6E9A57; --crS: #2E5444; --cdL: #4F7D4C; --cdS: #23443A; --clL: #86AD62; --clS: #3D6650;
   --gnL: #7FA95E; --gnS: #3E6A4E; --trL: #82603F; --trS: #4C3B31;
   --lsL: #F4B163; --lsS: #C2713A;
   --amL: #D3954F; --amS: #9C6234; --ocL: #C9A456; --ocS: #8F7436; --ruL: #B65F3B; --ruS: #7C3E2B; --taL: #A27A4B; --taS: #6E5139;
@@ -47,7 +47,7 @@
     --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
     --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
     --sky: #F4ECDD; --gdL: #A88560; --gdS: #86684C;
-    --crL: #8DB063; --crS: #47755A; --clL: #A4C374; --clS: #5A8A5E;
+    --crL: #8DB063; --crS: #47755A; --cdL: #6E9A57; --cdS: #3A6650; --clL: #A4C374; --clS: #5A8A5E;
     --gnL: #93B868; --gnS: #4E7E58; --trL: #8E6644; --trS: #5E4535;
     --lsL: #F2AA55; --lsS: #C46E33;
     --amL: #E3A55B; --amS: #B87439; --ocL: #DDB660; --ocS: #A9853B; --ruL: #CC6F43; --ruS: #964A30; --taL: #BE8D55; --taS: #8C6440;
@@ -66,7 +66,7 @@
   --pbg: #F5F4EC; --pink: #26241F; --pbord: #2F5A40; --phtx: #FFFFFF;
   --cw: #2E6B5E; --gpk: #92592C; --discover: #92592C; --review: #74432C; --master: #4B2E2B;
   --sky: #F4ECDD; --gdL: #A88560; --gdS: #86684C;
-  --crL: #8DB063; --crS: #47755A; --clL: #A4C374; --clS: #5A8A5E;
+  --crL: #8DB063; --crS: #47755A; --cdL: #6E9A57; --cdS: #3A6650; --clL: #A4C374; --clS: #5A8A5E;
   --gnL: #93B868; --gnS: #4E7E58; --trL: #8E6644; --trS: #5E4535;
   --lsL: #F2AA55; --lsS: #C46E33;
   --amL: #E3A55B; --amS: #B87439; --ocL: #DDB660; --ocS: #A9853B; --ruL: #CC6F43; --ruS: #964A30; --taL: #BE8D55; --taS: #8C6440;
@@ -184,6 +184,23 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
 .lg-cmp > div { background: var(--card2); border: 1px solid var(--line); border-radius: 16px; padding: .6rem; display: grid; justify-items: center; gap: .3rem; font-size: .78rem; color: var(--muted-strong); text-align: center; }
 .mini-top { display: flex; align-items: center; gap: .45rem; padding: .45rem .6rem; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); width: 100%; }
 .mini-top .title { font-size: 1.05rem; }
+
+/* ---------- Round 2: looks ---------- */
+.lk-h { font-size: 1.2rem; margin: 1.2rem 0 .4rem; }
+.lk-h3 { font-size: 1.02rem; margin: 1rem 0 .5rem; }
+.lk-grid { display: grid; gap: .8rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .lk-grid { grid-template-columns: 1fr 1fr; } }
+.lk-card { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: .6rem .6rem .7rem; box-shadow: var(--shadow); }
+.lk-card .lk-t { font-weight: 700; margin: 0 .2rem .45rem; }
+.lk-card .lk-t b { color: var(--link); margin-right: .3rem; }
+.lk-card .oak-stage, .lk-leaf { border-radius: 14px; overflow: hidden; }
+.lk-leaf svg { display: block; width: 100%; height: auto; }
+.lk-logos { display: flex; align-items: center; gap: .6rem; margin: .55rem .1rem .2rem; flex-wrap: wrap; }
+.lk-logos .mini-top { width: auto; }
+.lk-line { font-size: .86rem; color: var(--muted-strong); margin: .35rem .2rem 0; line-height: 1.45; }
+.lk-sub { font-size: .74rem; color: var(--muted); }
+.sk-answers.r2 { margin-top: 1.2rem; }
+.r1-done { font-size: .82rem; color: var(--muted-strong); }
 </style>
 </head>
 <body>
@@ -217,6 +234,29 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
     </details>
   </header>
 
+  <section id="looks">
+    <h2 class="lk-h">Round 2 · Looks</h2>
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 1</b> picked B (one camera), about 16 s, caption over the picture, "läsa" written on the leaf: "the leaf and the tree still don't look quite right. need some more sketches (images) on alternatives, but the animation itself looks fine."</div>
+    <p class="small muted" style="margin-bottom:.4rem">Still pictures of four oaks and four oak leaves, two separate choices. Each oak is shown as frame 1 of the film and as the logo; each leaf big with its word (as in the close-up) and small, green on a twig and on the ground. Pick one of each below; the film further down then uses your pick.</p>
+    <div class="sk-row"><span class="sk-row-label">Look</span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <h3 class="lk-h3">Oak tree: four drawings</h3>
+    <div class="lk-grid" id="lk-trees"></div>
+    <h3 class="lk-h3">Leaf: four drawings</h3>
+    <div class="lk-grid" id="lk-leaves"></div>
+    <section class="sk-answers r2" id="answers2">
+      <h2>Your round 2 pick</h2>
+      <fieldset><legend>Which oak?</legend><div id="r2-trees"></div></fieldset>
+      <fieldset><legend>Which leaf?</legend><div id="r2-leaves"></div></fieldset>
+      <fieldset><legend>Comments in your own words</legend><label class="c" for="comment2">Anything: what still looks wrong, what to mix</label><textarea id="comment2"></textarea></fieldset>
+    </section>
+  </section>
+
+  <h2 class="lk-h">Round 1 · The animation</h2>
+  <p class="r1-done">Answered: B, about 16 s, caption over the picture, läsa on the leaf (already chosen below). It draws the oak and leaf you pick in round 2.</p>
   <div class="sk-controls" id="controls">
     <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
       <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="now">Now</button>
@@ -261,7 +301,7 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
   <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
 
   <section class="sk-answers" id="answers">
-    <h2>Your pick</h2>
+    <h2>Your round 1 pick</h2>
     <fieldset id="pick">
       <legend>Which version should the spec be written from?</legend>
       <label class="opt"><input type="radio" name="pick" id="pick-A" value="A"><span><b>A</b> Cuts <small>The storyboard shot by shot: each frame holds still, with a short eased zoom between shots.</small></span></label>
@@ -311,32 +351,166 @@ function monotone(keys) {
 
 /* ---------- The oak leaf: lobed, split along the midrib into a light (warm) and a shadow (cool) half ---------- */
 // Local coordinates: the leaf's centre at 0,0, its tip at 0,-L/2, its base at 0,L/2, the stem below the base.
-function leafPaths(L, W) {
+// Round 2 has four leaf drawings (L1–L4); the one picked on the page (or L1) is used everywhere.
+const LEAF_SPECS = {
+  // L1: round 1's leaf, refined: small ear-lobes at the base, broadest past the middle.
+  L1: { wk: 1.1, s: [0, 0.1, 0.3, 0.5, 0.68, 0.84], sw: [0.03, 0.08, 0.15, 0.19, 0.17, 0.1], lw: [0.18, 0.36, 0.5, 0.56, 0.42], c1: 0.04, c2: 0.04, tip: [0.3, 0.16], off: 0.03 },
+  // L2: English oak: deeper, rounder, slightly uneven lobes; ears curl round the short stalk.
+  L2: { wk: 1.15, s: [0, 0.08, 0.24, 0.41, 0.58, 0.74, 0.87], sw: [0.02, 0.06, 0.12, 0.15, 0.15, 0.12, 0.07], lw: [0.26, 0.31, 0.43, 0.51, 0.49, 0.35], c1: 0.18, c2: 0.06, tip: [0.24, 0.13], off: 0.04, jit: 0.09 },
+  // L3: simple, icon-like: five big round lobes (two a side and the tip), small ears.
+  L3: { wk: 1.15, s: [0, 0.08, 0.35, 0.64], sw: [0.04, 0.06, 0.13, 0.12], lw: [0.22, 0.5, 0.56], c1: 0.16, c2: 0.05, tip: [0.46, 0.26], off: 0 },
+  // L4: L1's outline with its veins drawn as light lines and a fold along the midrib.
+  L4: { wk: 1.1, s: [0, 0.1, 0.3, 0.5, 0.68, 0.84], sw: [0.03, 0.08, 0.15, 0.19, 0.17, 0.1], lw: [0.18, 0.36, 0.5, 0.56, 0.42], c1: 0.04, c2: 0.04, tip: [0.3, 0.16], off: 0.03, veins: true, fold: true },
+};
+const CUR = { tree: 'T1', leaf: 'L1' };
+function leafPaths(L, W0, style = CUR.leaf) {
+  const sp = LEAF_SPECS[style]; const W = W0 * sp.wk;
   const y = (u) => L / 2 - u * L;
+  const n = sp.lw.length;
   const half = (side, off) => {
-    const s = [0, 0.17, 0.34, 0.51, 0.67, 0.81].map((u, i) => (i ? u + off : u));
-    const sw = [0.05, 0.13, 0.17, 0.18, 0.15, 0.1];   // sinus depth (half-width, × W)
-    const lw = [0.27, 0.42, 0.5, 0.47, 0.36];          // lobe reach (× W)
-    let d = `M0 ${f1(y(0))}L${f1(side * sw[0] * W)} ${f1(y(0))}`;
-    for (let i = 0; i < 5; i++) {
-      const ya = y(s[i]); const yb = y(s[i + 1]); const dy = yb - ya; const wp = side * lw[i] * W;
-      d += `C${f1(wp * 0.92)} ${f1(ya + dy * 0.02)} ${f1(wp * 1.06)} ${f1(yb - dy * 0.38)} ${f1(side * sw[i + 1] * W)} ${f1(yb)}`;
+    const s = sp.s.map((u, i) => (i ? u + off : u));
+    let d = `M0 ${f1(y(0))}L${f1(side * sp.sw[0] * W)} ${f1(y(0))}`;
+    for (let i = 0; i < n; i++) {
+      const j = sp.jit ? (((i * 7 + (side > 0 ? 3 : 0)) % 5) / 4 - 0.5) * sp.jit : 0;
+      const ya = y(s[i]); const yb = y(s[i + 1]); const dy = yb - ya; const wp = side * (sp.lw[i] + j) * W;
+      // One round lobe: out from sinus A, round its rounded end P (a little toward the tip), back into sinus B.
+      const xa = side * sp.sw[i] * W; const xb = side * sp.sw[i + 1] * W; const yp = ya + dy * 0.6; const k = 0.56;
+      d += `C${f1(xa + (wp - xa) * 0.5)} ${f1(ya - dy * sp.c1)} ${f1(wp)} ${f1(yp - dy * k * 0.56)} ${f1(wp)} ${f1(yp)}`;
+      d += `C${f1(wp)} ${f1(yp + dy * k * 0.44)} ${f1(xb + (wp - xb) * 0.55)} ${f1(yb - dy * sp.c2)} ${f1(xb)} ${f1(yb)}`;
     }
-    d += `C${f1(side * 0.3 * W)} ${f1(y(0.86))} ${f1(side * 0.2 * W)} ${f1(y(0.99))} 0 ${f1(y(1))}Z`;
+    const last = s[n];
+    d += `C${f1(side * sp.tip[0] * W)} ${f1(y(last + (1 - last) * 0.35))} ${f1(side * sp.tip[1] * W)} ${f1(y(0.99))} 0 ${f1(y(1))}Z`;
     return d;
   };
-  return { lit: half(-1, 0.025), shade: half(1, 0), stem: `M0 ${f1(y(0) - 1)}L${f1(L * 0.03)} ${f1(y(0) + L * 0.16)}` };
+  const out = { lit: half(-1, sp.off), shade: half(1, 0), stem: `M0 ${f1(y(0) - 1)}L${f1(L * 0.03)} ${f1(y(0) + L * 0.16)}` };
+  if (sp.veins) {
+    let v = `M0 ${f1(y(0))}L0 ${f1(y(0.9))}`;
+    for (const side of [-1, 1]) for (let i = 1; i < n; i++) {
+      const um = (sp.s[i] + sp.s[i + 1]) / 2 + (side < 0 ? sp.off : 0);
+      v += `M0 ${f1(y(um - 0.07))}L${f1(side * sp.lw[i] * W * 0.7)} ${f1(y(um + 0.02))}`;
+    }
+    out.veins = v;
+  }
+  if (sp.fold) out.fold = scaleX(out.lit, 0.38);
+  return out;
 }
+function scaleX(d, k) { return d.replace(/(-?[\d.]+) (-?[\d.]+)/g, (_, x, y) => `${f1(x * k)} ${y}`); }
 const leafCache = {};
-function leafSVG(L, W, pal, attrs = '') {
-  const k = `${L}-${W}`; const p = leafCache[k] || (leafCache[k] = leafPaths(L, W));
-  return `<g ${attrs}><path d="${p.stem}" style="stroke:var(--${pal}S)" stroke-width="${f1(L * 0.045)}" stroke-linecap="round" fill="none"/><path d="${p.shade}" style="fill:var(--${pal}S)"/><path d="${p.lit}" style="fill:var(--${pal}L)"/></g>`;
+const veinCol = (pal) => `color-mix(in srgb, var(--${pal}L) 65%, #fff)`;
+const foldCol = (pal) => `color-mix(in srgb, var(--${pal}L) 55%, var(--${pal}S))`;
+function leafSVG(L, W, pal, attrs = '', style = CUR.leaf) {
+  const k = `${style}-${L}-${W}`; const p = leafCache[k] || (leafCache[k] = leafPaths(L, W, style));
+  return `<g ${attrs}><path d="${p.stem}" style="stroke:var(--${pal}S)" stroke-width="${f1(L * 0.045)}" stroke-linecap="round" fill="none"/><path d="${p.shade}" style="fill:var(--${pal}S)"/><path d="${p.lit}" style="fill:var(--${pal}L)"/>${p.fold ? `<path d="${p.fold}" style="fill:${foldCol(pal)}"/>` : ''}${p.veins ? `<path d="${p.veins}" fill="none" style="stroke:${veinCol(pal)}" stroke-width="${f1(Math.max(0.45, L * 0.011))}" stroke-linecap="round"/>` : ''}</g>`;
+}
+// Many leaves of one colour merged into one set of paths (cheap to draw while the camera moves).
+function mergedLeaves(items, style = CUR.leaf, stemW = 1) {
+  const by = {};
+  for (const [L, W, pal, x, y, rot] of items) {
+    const p = leafPaths(f1(L), f1(W), style); const m = by[pal] || (by[pal] = { shade: '', lit: '', stem: '', fold: '', veins: '' });
+    m.shade += movePath(p.shade, x, y, rot); m.lit += movePath(p.lit, x, y, rot); m.stem += movePath(p.stem, x, y, rot);
+    if (p.fold) m.fold += movePath(p.fold, x, y, rot); if (p.veins) m.veins += movePath(p.veins, x, y, rot);
+  }
+  return Object.entries(by).map(([pal, m]) => `<path d="${m.stem}" style="stroke:var(--${pal}S)" stroke-width="${stemW}" stroke-linecap="round" fill="none"/><path d="${m.shade}" style="fill:var(--${pal}S)"/><path d="${m.lit}" style="fill:var(--${pal}L)"/>${m.fold ? `<path d="${m.fold}" style="fill:${foldCol(pal)}"/>` : ''}${m.veins ? `<path d="${m.veins}" fill="none" style="stroke:${veinCol(pal)}" stroke-width="0.6"/>` : ''}`).join('');
+}
+// A path moved and turned into place (the paths use absolute commands with x y pairs only).
+function movePath(d, tx, ty, deg) {
+  const r = deg * Math.PI / 180; const c = Math.cos(r); const s = Math.sin(r);
+  return d.replace(/(-?[\d.]+) (-?[\d.]+)/g, (_, x, y) => `${f1(tx + x * c - y * s)} ${f1(ty + x * s + y * c)}`);
+}
+
+/* ---------- The oak tree: four drawings (T1–T4) on the same footprint ---------- */
+// Footprint shared by all four, so the twig, the läsa leaf and the cameras fit any of them: trunk foot at
+// 180,248, crown about x 58–306, y 30–185, the twig leaving the crown's lower right at about 236,172.
+const LIMBS = [
+  ['M172 214C160 196 148 190 138 176C130 164 116 158 100 150', 13],
+  ['M181 206C184 184 172 168 176 150C179 134 188 122 184 100', 11],
+  ['M190 214C204 198 220 192 230 178C238 166 252 160 266 154', 12],
+  ['M138 176C132 160 136 144 128 126', 6], ['M230 178C234 162 228 148 236 132', 6],
+  ['M176 150C166 138 158 126 152 112', 5], ['M100 150C90 146 80 148 72 140', 5], ['M266 154C278 150 288 140 296 136', 5],
+];
+function limbsSVG() {
+  return LIMBS.map(([d, w]) => `<path d="${d}" fill="none" style="stroke:var(--trS)" stroke-width="${w}" stroke-linecap="round"/><path d="${d}" fill="none" style="stroke:var(--trL)" stroke-width="${f1(w * 0.42)}" stroke-linecap="round" transform="translate(${f1(-w * 0.2)} ${f1(-w * 0.12)})"/>`).join('');
+}
+const TRUNK = `<path d="M150 248C164 244 167 232 168 214C169 204 176 198 181 196L181 248Z" style="fill:var(--trL)"/><path d="M181 248L181 196C186 198 193 204 194 214C195 232 198 244 212 248Z" style="fill:var(--trS)"/>`;
+// A lobed outline round an ellipse: n bumps, each a circular arc; the bottom a little flatter.
+function lobedPath(cx, cy, rx, ry, n, seed, flat = 0.78, jit = 0.12) {
+  const R = rng(seed); const pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = -Math.PI / 2 + (i + (R() - 0.5) * 0.35) * 2 * Math.PI / n; const k = 1 + (R() - 0.5) * jit;
+    const s = Math.sin(a);
+    pts.push([cx + rx * k * Math.cos(a), cy + ry * k * s * (s > 0 ? flat : 1)]);
+  }
+  let d = `M${f1(pts[0][0])} ${f1(pts[0][1])}`;
+  for (let i = 0; i < n; i++) {
+    const [x1, y1] = pts[i]; const [x2, y2] = pts[(i + 1) % n];
+    const r = Math.hypot(x2 - x1, y2 - y1) * (0.55 + R() * 0.2);
+    d += `A${f1(r)} ${f1(r)} 0 0 1 ${f1(x2)} ${f1(y2)}`;
+  }
+  return `${d}Z`;
+}
+// A flat mass: the shadow shape, then the same shape moved up-left as the light side, clipped to it.
+function massSVG(id, d, dx = -9, dy = -10) {
+  return `<clipPath id="${id}"><path d="${d}"/></clipPath><path d="${d}" style="fill:var(--crS)"/><path d="${d}" transform="translate(${dx} ${dy})" style="fill:var(--crL)" clip-path="url(#${id})"/>`;
+}
+function circlesMass(id, circles, sx, sy) {
+  const c = (dx, dy) => circles.map(([x, y, r]) => `<circle cx="${f1(x + dx)}" cy="${f1(y + dy)}" r="${f1(r)}"/>`).join('');
+  return `<clipPath id="${id}">${c(0, 0)}</clipPath><g style="fill:var(--crS)">${c(0, 0)}</g><g style="fill:var(--crL)" clip-path="url(#${id})">${c(sx, sy)}</g>`;
+}
+const TREES = {
+  T1: { name: 'Refined circles', line: 'Round 1\'s tree made irregular: clusters of circles with small bumps on their outer edge, each cluster lit from the upper left; short forked trunk.',
+    crown(p) {
+      const R = rng(11); const ctr = [182, 120];
+      const cl = [[182, 76, 38], [130, 94, 33], [236, 90, 35], [88, 132, 27], [276, 128, 27], [150, 124, 36], [214, 120, 36], [118, 158, 24], [180, 142, 27], [248, 156, 25]];
+      return cl.map(([x, y, r], i) => {
+        const out = Math.atan2(y - ctr[1], x - ctr[0]); const circles = [[x, y, r]];
+        const nb = 3 + Math.floor(R() * 2);
+        for (let k = 0; k < nb; k++) { const a = out + (k / (nb - 1) - 0.5) * 2.4 + (R() - 0.5) * 0.4; const br = r * (0.36 + R() * 0.14); circles.push([x + Math.cos(a) * r * 0.8, y + Math.sin(a) * r * 0.8, br]); }
+        return circlesMass(`${p}-t1-${i}`, circles, -r * 0.24, -r * 0.28);
+      }).join('');
+    } },
+  T2: { name: 'Lobed clouds, open limbs', line: 'Three big lobed cloud masses with gaps between them, so the gnarled limbs show; the most "tree-like" of the four.',
+    crown(p) {
+      return [[116, 126, 54, 38, 9, 3], [184, 78, 70, 46, 11, 5], [250, 120, 56, 40, 9, 8]]
+        .map(([cx, cy, rx, ry, n, s], i) => massSVG(`${p}-t2-${i}`, lobedPath(cx, cy, rx, ry, n, s))).join('');
+    }, limbs: true },
+  T3: { name: 'Built from leaves', line: 'A solid crown fringed and covered with overlapping oak leaves, darker to the lower right; the leaf shape is the tree.',
+    crown(p, opts = {}) {
+      const R = rng(23); const items = []; const ctr = [182, 118];
+      const cl = [[182, 78, 40], [130, 96, 35], [236, 92, 37], [88, 132, 29], [276, 128, 29], [150, 124, 38], [214, 120, 38], [118, 156, 26], [180, 144, 28], [248, 154, 27]];
+      const inside = (x, y, k) => cl.some(([cx, cy, r]) => Math.hypot(x - cx, y - cy) < r * k);
+      for (let y = 30; y <= 190; y += 15) for (let x = 50; x <= 314; x += 16) {
+        const px = x + (R() - 0.5) * 10; const py = y + (R() - 0.5) * 10;
+        if (!inside(px, py, 1.02)) continue;
+        const edge = !inside(px, py, 0.8);
+        const nx = (px - ctr[0]) / 124; const ny = (py - ctr[1]) / 80; const lit = -(nx * 0.6 + ny * 0.8);
+        const pal = lit > 0.28 ? 'cl' : lit > -0.25 ? 'cr' : 'cd';
+        const rot = edge ? Math.atan2(py - ctr[1], px - ctr[0]) * 180 / Math.PI + 90 + (R() - 0.5) * 40 : Math.floor(R() * 360);
+        const L = 27 + R() * 8; items.push([L, L * 0.62, pal, px, py, rot, lit + (edge ? -0.01 : 0) + R() * 0.15]);
+      }
+      items.sort((a, b) => a[6] - b[6]);
+      const under = cl.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${f1(r * 0.86)}"/>`).join('');
+      const groups = ['cd', 'cr', 'cl'].map((g) => mergedLeaves(items.filter((it) => it[2] === g), opts.leaf || CUR.leaf, 1.2)).join('');
+      return `<g style="fill:var(--cdS)">${under}</g>${groups}`;
+    } },
+  T4: { name: 'Bold silhouette', line: 'One irregular lobed crown with a single light/shadow split, and a stout trunk; the simplest, closest to a logo.',
+    crown(p) {
+      const d = lobedPath(182, 102, 130, 64, 11, 12, 0.85, 0.3);
+      return massSVG(`${p}-t4`, d, -15, -19);
+    } },
+};
+// The tree's own shapes (no twig, no leaf): trunk, limbs, crown.
+function treeSVG(p, tree = CUR.tree, opts = {}) {
+  const T = TREES[tree];
+  return `${limbsSVG()}${TRUNK}<g data-r="crown">${T.crown(p, opts)}</g>`;
+}
+let logoN = 0;
+function oakLogo(px, cls = '', tree = CUR.tree) {
+  return `<svg class="${cls}" width="${px}" height="${px}" viewBox="54 14 256 256" aria-hidden="true" style="flex:none">${treeSVG(`ol${logoN++}`, tree)}</svg>`;
 }
 
 /* ---------- The world (viewBox 0 0 360 300; the wide shot shows exactly that) ---------- */
 const GROUND = 246;
 const BASE = { x: 180, y: 248 };                 // the trunk's foot: the oak grows around it
-const BLOBS = [[180, 80, 44], [124, 104, 38], [238, 100, 40], [88, 136, 30], [274, 132, 32], [180, 122, 42], [140, 148, 38], [222, 146, 40]];
 const TWIG = [[236, 172], [268, 162], [306, 162]];
 const qpt = (s) => { const [a, b, c] = TWIG; const u = 1 - s; return { x: u * u * a[0] + 2 * u * s * b[0] + s * s * c[0], y: u * u * a[1] + 2 * u * s * b[1] + s * s * c[1] }; };
 const PIVOT = qpt(0.62);                          // where läsa's stem meets the twig
@@ -425,33 +599,25 @@ function capAt(t) {
 const frameOf = (t) => { for (let i = 1; i < FRAMES.length; i++) if (t < FRAMES[i]) return i; return 8; };
 
 /* ---------- Building one scene (each player and still has its own, ids prefixed) ---------- */
-function blobSVG(p, i, [cx, cy, r]) {
-  return `<clipPath id="${p}-b${i}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><circle cx="${cx}" cy="${cy}" r="${r}" style="fill:var(--crS)"/><circle cx="${f1(cx - r * 0.26)}" cy="${f1(cy - r * 0.3)}" r="${f1(r * 0.93)}" style="fill:var(--crL)" clip-path="url(#${p}-b${i})"/>`;
+function sceneSVG(p, opts = {}) {
+  const keep = { ...CUR }; Object.assign(CUR, opts);
+  try { return sceneSVG1(p); } finally { Object.assign(CUR, keep); }
 }
-// A leaf path moved and turned into place (the paths use absolute commands with x y pairs only).
-function movePath(d, tx, ty, deg) {
-  const r = deg * Math.PI / 180; const c = Math.cos(r); const s = Math.sin(r);
-  return d.replace(/(-?[\d.]+) (-?[\d.]+)/g, (_, x, y) => `${f1(tx + x * c - y * s)} ${f1(ty + x * s + y * c)}`);
-}
-function sceneSVG(p) {
+function sceneSVG1(p) {
   const R = rng(7);
   // Fallen leaves: the ground covered, a little beyond the frame for the zoomed views.
-  let fallen = '';
-  const merged = Object.fromEntries(PALS.map((k) => [k, { shade: '', lit: '', stem: '' }]));
+  const items = [];
   for (let y = 251; y < 352; y += 11) {
     for (let x = -14 + (y % 2 ? 8 : 0); x < 378; x += 17) {
       const px = x + (R() - 0.5) * 10; const py = y + (R() - 0.5) * 7;
       if (WORDS.some((w) => Math.hypot(w[1] - px, w[2] - py) < 13)) continue;
       const L = 18 + R() * 7; const pal = PALS[Math.floor(R() * 4)];
-      const lp = leafPaths(f1(L), f1(L * 0.64)); const rot = Math.floor(R() * 360);
-      const m = merged[pal];
-      m.shade += movePath(lp.shade, px, py, rot); m.lit += movePath(lp.lit, px, py, rot); m.stem += movePath(lp.stem, px, py, rot);
+      items.push([L, L * 0.64, pal, px, py, Math.floor(R() * 360)]);
     }
   }
-  // All plain fallen leaves of one colour are one path each (lighter to draw while the camera moves).
-  for (const pal of PALS) { const m = merged[pal]; fallen += `<path d="${m.stem}" style="stroke:var(--${pal}S)" stroke-width="1" stroke-linecap="round" fill="none"/><path d="${m.shade}" style="fill:var(--${pal}S)"/><path d="${m.lit}" style="fill:var(--${pal}L)"/>`; }
+  const fallen = mergedLeaves(items);
   const words = WORDS.map(([w, x, y, r], i) => `<g data-r="word" data-x="${x}" data-y="${y}" data-a="${r}" transform="translate(${x} ${y}) rotate(${r})">${leafSVG(29, 19, ['oc', 'am', 'ta'][i % 3])}<text transform="rotate(-90)" y="2.3" text-anchor="middle" class="lw">${w}</text></g>`).join('');
-  const crownLeaves = [[150, 92, 30, 'cl'], [198, 60, -20, 'cl'], [232, 90, 40, 'cl'], [104, 122, -50, 'cl'], [170, 108, 10, 'cl'], [210, 130, 60, 'cl'], [130, 152, -30, 'cl'], [262, 126, 20, 'cl'], [76, 140, -70, 'cl']]
+  const crownLeaves = CUR.tree !== 'T1' ? '' : [[150, 92, 30, 'cl'], [198, 60, -20, 'cl'], [232, 90, 40, 'cl'], [104, 122, -50, 'cl'], [170, 108, 10, 'cl'], [210, 130, 60, 'cl'], [130, 152, -30, 'cl'], [262, 126, 20, 'cl'], [76, 140, -70, 'cl']]
     .map(([x, y, r, pal]) => leafSVG(16, 11, pal, `transform="translate(${x} ${y}) rotate(${r})"`)).join('');
   const greens = [[0.22, 196], [0.84, 152]].map(([s, a]) => { const pv = qpt(s); return `<g data-r="green" data-px="${f1(pv.x)}" data-py="${f1(pv.y)}" data-a="${a}">${leafSVG(28, 18, 'gn')}</g>`; }).join('');
   const motes = WORDS.map(() => '<circle data-r="mote" r="2.4" style="fill:var(--lsL)" opacity="0"/>').join('');
@@ -465,11 +631,7 @@ function sceneSVG(p) {
       <ellipse cx="212" cy="${GROUND + 4}" rx="74" ry="7" style="fill:var(--gdS)"/>
     </g>
     <g data-r="tree">
-      <path d="M174 196Q160 172 132 156L138 149Q166 162 182 186Z" style="fill:var(--trS)"/>
-      <path d="M186 190Q200 168 228 154L233 161Q206 176 192 200Z" style="fill:var(--trS)"/>
-      <path d="M158 ${BASE.y}Q170 236 170 140L180 140L180 ${BASE.y}Z" style="fill:var(--trL)"/>
-      <path d="M180 ${BASE.y}L180 140L190 140Q190 236 203 ${BASE.y}Z" style="fill:var(--trS)"/>
-      <g data-r="crown">${BLOBS.map((bl, i) => blobSVG(p, i, bl)).join('')}</g>
+      ${treeSVG(p)}
       <g data-r="detail">
         ${crownLeaves}
         <path d="M${a[0]} ${a[1]}Q${b[0]} ${b[1]} ${c[0]} ${c[1]}" fill="none" style="stroke:var(--trS)" stroke-width="3.2" stroke-linecap="round"/>
@@ -626,17 +788,8 @@ function nowCap(t) { let i = 0; NOW_STEPS.forEach((s, k) => { if (t >= s) i = k;
 
 /* ---------- Logos ---------- */
 const LOGO_TREES = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
-let logoN = 0;
-// The oak alone, simplified for 28 px: three crown circles and a trunk, each with its light and shadow side.
-function oakLogo(px, cls = '') {
-  const id = `ol${logoN++}`;
-  const blobs = [[16, 10.5, 8.2], [9.6, 15.6, 6.4], [22.4, 15.2, 6.8]];
-  const b = blobs.map(([x, y, r], i) => `<clipPath id="${id}-${i}"><circle cx="${x}" cy="${y}" r="${r}"/></clipPath><circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--crS)"/><circle cx="${f1(x - r * 0.26)}" cy="${f1(y - r * 0.3)}" r="${f1(r * 0.93)}" style="fill:var(--crL)" clip-path="url(#${id}-${i})"/>`).join('');
-  return `<svg class="${cls}" width="${px}" height="${px}" viewBox="0 0 32 32" aria-hidden="true" style="flex:none"><path d="M13.6 30Q15 26 15 19H16V30Z" style="fill:var(--trL)"/><path d="M16 30V19H17Q17 26 18.6 30Z" style="fill:var(--trS)"/>${b}</svg>`;
-}
-
 /* ---------- State ---------- */
-const S = { version: 'A', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
+const S = { version: 'B', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
 const P = { t: 0, playing: true, speed: 1, ended: false, last: 0 };
 let live = [];     // scenes that follow the player
 let stills = [];   // scenes drawn once at a fixed time
@@ -836,7 +989,65 @@ window.sketchRender = () => { const t = P.t; const pl = P.playing; render(); see
 // For checking: jump to a version and a time.
 window.sketchGo = (v, t, state) => { S.version = v; if (state) S.state = state; render(); seek(t, false); };
 
+
+/* ---------- Round 2: the looks ---------- */
+function leafCardSVG(style) {
+  const R = rng(31);
+  const piv = { x: 92, y: 21 }; const L = 120; const c = hangCentre(piv, 172, L, L * 0.16);
+  const greens = [[220, 186], [270, 166], [322, 196]].map(([x, a]) => { const y = 30 - (x - 196) * 0.06; const g = hangCentre({ x, y }, a, 36, 36 * 0.16); return leafSVG(36, 24, 'gn', `transform="translate(${f1(g.x)} ${f1(g.y)}) rotate(${a})"`, style); }).join('');
+  const items = []; for (let i = 0; i < 16; i++) { const L2 = 26 + R() * 8; items.push([L2, L2 * 0.64, PALS[Math.floor(R() * 4)], 192 + R() * 170, 132 + R() * 80, Math.floor(R() * 360)]); }
+  return `<svg viewBox="0 0 360 210" aria-hidden="true"><rect width="360" height="210" style="fill:var(--sky)"/>
+    <path d="M6 28Q60 14 178 22" fill="none" style="stroke:var(--trL)" stroke-width="4.5" stroke-linecap="round"/>
+    ${leafSVG(L, L * 0.66, 'ls', `transform="translate(${f1(c.x)} ${f1(c.y)}) rotate(172)"`, style)}
+    <text x="${f1(c.x)}" y="${f1(c.y + 9)}" text-anchor="middle" class="lw" style="font-size:30px">läsa</text>
+    <path d="M196 30Q270 16 356 26" fill="none" style="stroke:var(--trL)" stroke-width="3" stroke-linecap="round"/>${greens}
+    <rect x="186" y="122" width="180" height="100" style="fill:var(--gdL)"/>
+    <g opacity=".85">${mergedLeaves(items, style)}</g>
+    <g transform="translate(262 168) rotate(96)">${leafSVG(40, 26, 'oc', '', style)}<text transform="rotate(-90)" y="3.2" text-anchor="middle" class="lw" style="font-size:9.5px">hej</text></g>
+    <line x1="182" y1="0" x2="182" y2="210" style="stroke:var(--line)" stroke-width="1"/></svg>`;
+}
+const LEAF_LINES = {
+  L1: 'Round 1\'s leaf, refined: four round lobes a side, small ear-lobes at the base, broadest past the middle.',
+  L2: 'English oak: five deep, rounded, slightly uneven lobes a side; ears curl round a short stalk.',
+  L3: 'Simple and icon-like: five big round lobes, two a side and the tip. Reads best when small.',
+  L4: 'L1 with its veins as light lines and a fold along the midrib: more detail, more "real".',
+};
+function buildLooks() {
+  document.getElementById('lk-trees').innerHTML = Object.entries(TREES).map(([k, T], i) => `<figure class="lk-card"><p class="lk-t"><b>${k}</b>${esc(T.name)}</p>
+    <div class="oak-stage" data-look="${k}">${sceneSVG(`lk${i}`, { tree: k })}</div>
+    <div class="lk-logos"><span class="mini-top">${oakLogo(28, '', k)}<span class="title">grove</span></span>${oakLogo(56, '', k)}<span class="lk-sub">logo at 28 and 56 px</span></div>
+    <p class="lk-line">${esc(T.line)}</p></figure>`).join('');
+  document.querySelectorAll('[data-look]').forEach((el) => draw(bind(el.querySelector('svg')), 1.0, 'A'));
+  document.getElementById('lk-leaves').innerHTML = Object.keys(LEAF_SPECS).map((k) => `<figure class="lk-card"><p class="lk-t"><b>${k}</b>${esc({ L1: 'Refined', L2: 'English oak', L3: 'Simple, five lobes', L4: 'Veins and fold' }[k])}</p>
+    <div class="lk-leaf">${leafCardSVG(k)}</div><p class="lk-line">${esc(LEAF_LINES[k])}</p></figure>`).join('');
+}
+function buildR2Form() {
+  document.getElementById('r2-trees').innerHTML = Object.entries(TREES).map(([k, T]) => `<label class="opt"><input type="radio" name="tree" id="tree-${k}" value="${k}"><span><b>${k}</b> ${esc(T.name)}</span></label>`).join('');
+  document.getElementById('r2-leaves').innerHTML = Object.keys(LEAF_SPECS).map((k) => `<label class="opt"><input type="radio" name="leaf" id="leaf-${k}" value="${k}"><span><b>${k}</b> ${esc({ L1: 'Refined', L2: 'English oak', L3: 'Simple, five lobes', L4: 'Veins and fold' }[k])}</span></label>`).join('');
+}
+window.sketchAnswers2 = { sketch: 'Sketch: Oak animation', round: 2, notes: ['O-01'], tree: null, leaf: null, comment: '' };
+function collectAnswers2() {
+  const A = window.sketchAnswers2;
+  const t = document.querySelector('input[name="tree"]:checked'); const l = document.querySelector('input[name="leaf"]:checked');
+  A.tree = t ? t.value : null; A.leaf = l ? l.value : null; A.comment = document.getElementById('comment2').value.trim();
+  return A;
+}
+function applyLooks() {
+  const A = collectAnswers2(); const leafChanged = (A.leaf || 'L1') !== CUR.leaf;
+  CUR.tree = A.tree || 'T1'; CUR.leaf = A.leaf || 'L1';
+  if (leafChanged) buildLooks();
+  window.sketchRender();
+}
+window.collectAnswers2 = collectAnswers2;
+window.applyLooks = applyLooks;
+
 buildQuestions();
+// Round 1 is answered: its answers are filled in, so the film plays as picked.
+for (const id of ['pick-B', 'q1-16', 'q2-over', 'q3-on']) document.getElementById(id).checked = true;
+buildR2Form();
+buildLooks();
+document.getElementById('answers2').addEventListener('input', collectAnswers2);
+document.getElementById('answers2').addEventListener('change', (e) => { if (e.target.name === 'tree' || e.target.name === 'leaf') applyLooks(); else collectAnswers2(); });
 document.getElementById('answers').addEventListener('input', collectAnswers);
 document.getElementById('answers').addEventListener('change', (e) => { collectAnswers(); if (/^q[123]$/.test(e.target.name)) window.sketchRender(); });
 collectAnswers();
@@ -877,6 +1088,38 @@ requestAnimationFrame(tick);
     }
     window.collectAnswers();
     window.sketchRender?.();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+<script>
+// Saving the round 2 picks and comment for Claude, as round 1 (doc answers/round2).
+(() => {
+  const box = document.getElementById('answers2');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round2').set({ ...JSON.parse(JSON.stringify(window.collectAnswers2())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round2').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.tree) { const r = document.getElementById(`tree-${a.tree}`); if (r) r.checked = true; }
+    if (a.leaf) { const r = document.getElementById(`leaf-${a.leaf}`); if (r) r.checked = true; }
+    { const t = document.getElementById('comment2'); if (t && a.comment) t.value = a.comment; }
+    window.applyLooks?.();
     status.textContent = 'Your saved answers are back.';
   })();
 })();
