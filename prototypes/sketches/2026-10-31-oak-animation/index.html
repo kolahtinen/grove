@@ -157,7 +157,7 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
 .oak-ctl svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 .oak-cap { min-height: 3.1em; margin: .55rem .3rem 0; text-align: center; font-size: .98rem; font-weight: 500; line-height: 1.45; display: flex; align-items: center; justify-content: center; }
 .oak-cap span { will-change: opacity, transform; }
-.oak-cap.over { position: absolute; left: .5rem; right: .5rem; bottom: .5rem; min-height: 0; margin: 0; z-index: 1; padding: .35rem .7rem; border-radius: 12px; background: color-mix(in srgb, var(--card) 84%, transparent); font-size: .92rem; }
+.oak-cap.over { position: absolute; left: .5rem; right: .5rem; bottom: .5rem; min-height: 0; margin: 0; z-index: 1; padding: .3rem .6rem; border-radius: 12px; background: color-mix(in srgb, var(--card) 84%, transparent); font-size: .86rem; line-height: 1.35; }
 .oak-cap.over.empty { opacity: 0 !important; }
 .oak-stills { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
 .oak-stills figure { margin: 0; }
@@ -201,17 +201,27 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
 .lk-sub { font-size: .74rem; color: var(--muted); }
 .sk-answers.r2 { margin-top: 1.2rem; }
 .r1-done { font-size: .82rem; color: var(--muted-strong); }
+.v3-tabs { display: grid; gap: .35rem; margin: .2rem 0 .5rem; }
+.sk-tab.v3 { display: block; width: 100%; text-align: left; border-radius: 14px; padding: .4rem .75rem; min-height: 44px; }
+.sk-tab.v3 b { display: block; font-size: .9rem; }
+.sk-tab.v3 small { display: block; font-weight: 400; color: var(--muted-strong); font-size: .78rem; line-height: 1.35; }
+.m-grid { display: grid; gap: .6rem; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .m-grid { grid-template-columns: repeat(3, 1fr); } }
+.r3-story { margin: .2rem 0 .6rem; padding-left: 1.2rem; }
+details.sk-past { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: .5rem .8rem; margin: 1.2rem 0 0; }
+details.sk-past > summary { cursor: pointer; font-weight: 700; min-height: 32px; }
+.sk-answers.r3a { margin-top: 1.4rem; }
 </style>
 </head>
 <body>
 <div class="sk-wrap">
   <header class="sk-head">
-    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 1</p>
+    <p class="sk-kicker">grove · UI sketch · 2026-10-31 · round 3 of 3</p>
     <h1>Sketch: Oak animation</h1>
     <ul class="sk-brief">
       <li><b>For:</b> the short film that shows how grove works: a word you know falls from the oak to your ground, and your ground feeds the oak.</li>
       <li><b>Places:</b> a card at the top of Home, and the same film in a pop-up.</li>
-      <li><b>Open:</b> how the camera moves (A cuts, B one camera, C a still camera with a lens), and the three questions under the sketch.</li>
+      <li><b>Open (round 3, the last):</b> the owner's new story: a gust, one minimal leaf grows out of the crown, falls beside the oak and fades into plain ground. Which camera (A, B, C) and which leaf (M1–M3).</li>
     </ul>
     <div class="sk-notes">
       <div class="sk-note"><b>O-01</b> "the animation needs some work": the tree is an oak, not a spruce. The camera zooms in to a single leaf that shakes and starts falling, zooms out to show the leaf fall, then zooms in to ground covered with leaves, where the falling leaf joins them. Look: "flat, minimalistic, shaded using simple color theory"; and "the oaktree is the logo, fade the ground and any other details in the last frame 8 which is just the logo."</div>
@@ -234,35 +244,34 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
     </details>
   </header>
 
-  <section id="looks">
-    <h2 class="lk-h">Round 2 · Looks</h2>
-    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 1</b> picked B (one camera), about 16 s, caption over the picture, "läsa" written on the leaf: "the leaf and the tree still don't look quite right. need some more sketches (images) on alternatives, but the animation itself looks fine."</div>
-    <p class="small muted" style="margin-bottom:.4rem">Still pictures of four oaks and four oak leaves, two separate choices. Each oak is shown as frame 1 of the film and as the logo; each leaf big with its word (as in the close-up) and small, green on a twig and on the ground. Pick one of each below; the film further down then uses your pick.</p>
-    <div class="sk-row"><span class="sk-row-label">Look</span>
-      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
-      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
-      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
-    </div>
-    <h3 class="lk-h3">Oak tree: four drawings</h3>
-    <div class="lk-grid" id="lk-trees"></div>
-    <h3 class="lk-h3">Leaf: four drawings</h3>
-    <div class="lk-grid" id="lk-leaves"></div>
-    <section class="sk-answers r2" id="answers2">
-      <h2>Your round 2 pick</h2>
-      <fieldset><legend>Which oak?</legend><div id="r2-trees"></div></fieldset>
-      <fieldset><legend>Which leaf?</legend><div id="r2-leaves"></div></fieldset>
-      <fieldset><legend>Comments in your own words</legend><label class="c" for="comment2">Anything: what still looks wrong, what to mix</label><textarea id="comment2"></textarea></fieldset>
-    </section>
-  </section>
-
-  <h2 class="lk-h">Round 1 · The animation</h2>
-  <p class="r1-done">Answered: B, about 16 s, caption over the picture, läsa on the leaf (already chosen below). It draws the oak and leaf you pick in round 2.</p>
+  <section id="r3">
+    <h2 class="lk-h">Round 3 · The new story <span class="pill">last round</span></h2>
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 2</b> picked oak T4 (bold silhouette), no leaf: "the leaves look pretty bad still, make them more less detailed, more minimalistic. maybe dont show the leaf as part of the tree at all, and no individual leaves on the ground; just color. in stead, the bushy tree branch shakes a bit in the wind and a leaf appears at that point and falls beside the tree. once the leaf hits the ground it just kind of fades. how about that. i need more sketches."</div>
+    <ol class="small r3-story">
+      <li>The oak (T4) on plain ground; no leaves anywhere.</li>
+      <li>A gust: one part of the crown sways, and a single leaf, "läsa", grows out there.</li>
+      <li>It comes loose.</li>
+      <li>It falls beside the tree, swaying.</li>
+      <li>It nears the ground.</li>
+      <li>It lands, and fades into the ground.</li>
+      <li>The oak grows a little.</li>
+      <li>The ground fades; the oak alone is the logo.</li>
+    </ol>
+    <p class="small muted" style="margin:0 0 .4rem">Caption over the picture and "läsa" on the leaf, as answered in round 1; about 16 s. Pick a version (A, B, C) and a leaf (M1–M3); the film below uses the leaf you pick.</p>
+    <h3 class="lk-h3">Leaf: three minimal shapes</h3>
+    <div class="m-grid" id="m-leaves"></div>
+    <h3 class="lk-h3">The film</h3>
   <div class="sk-controls" id="controls">
-    <div class="sk-row" role="tablist" aria-label="Version"><span class="sk-row-label">Version</span>
+    <div class="v3-tabs" role="tablist" aria-label="Round 3 version">
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3A"><b>A · Still camera</b><small>Wide all the way; a larger-than-life leaf you can read from afar; it leaves a little colour.</small></button>
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3B"><b>B · Follow</b><small>Round 1's pick: glide in to the swaying crown, follow the leaf down, pull back out; a soft ring.</small></button>
+      <button type="button" class="sk-tab v3" role="tab" data-act="version" data-v="R3C"><b>C · Your idea, softer</b><small>Like B but gentler; a glow sinks into the ground and climbs the trunk as the oak grows.</small></button>
+    </div>
+    <div class="sk-row" role="tablist" aria-label="Earlier versions"><span class="sk-row-label">Round 1</span>
       <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="now">Now</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A · Cuts</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B · One camera</button>
-      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C · Quiet</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="A">A</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="B">B</button>
+      <button type="button" class="sk-tab version" role="tab" data-act="version" data-v="C">C</button>
     </div>
     <div class="sk-row" role="tablist" aria-label="State"><span class="sk-row-label">State</span>
       <button type="button" class="sk-tab" role="tab" data-act="state" data-s="playing">Playing</button>
@@ -299,7 +308,43 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
   </div>
 
   <div class="sk-stage phone" id="stage"><div class="frame" id="frame"></div></div>
+    <section class="sk-answers r3a" id="answers3">
+      <h2>Your round 3 pick</h2>
+      <fieldset><legend>Which version?</legend>
+        <label class="opt"><input type="radio" name="pick3" id="pick3-A" value="A"><span><b>A</b> Still camera <small>Wide all the way, a larger-than-life leaf; a little colour stays on the ground.</small></span></label>
+        <label class="opt"><input type="radio" name="pick3" id="pick3-B" value="B"><span><b>B</b> Follow <small>One continuous camera in, down and out; a soft ring where it lands.</small></span></label>
+        <label class="opt"><input type="radio" name="pick3" id="pick3-C" value="C"><span><b>C</b> Your idea, softer <small>Gentler camera; a glow sinks in and climbs the trunk as the oak grows.</small></span></label>
+      </fieldset>
+      <fieldset><legend>Which leaf?</legend><div id="r3-leaves"></div></fieldset>
+      <fieldset><legend>Comments in your own words</legend><label class="c" for="comment3">Anything: the motion, the leaf, the landing, the ending</label><textarea id="comment3"></textarea></fieldset>
+    </section>
+  </section>
 
+  <details class="sk-past"><summary>Round 2 · Looks (answered: oak T4)</summary>
+  <section id="looks">
+    <h2 class="lk-h">Round 2 · Looks</h2>
+    <div class="sk-note" style="margin-bottom:.6rem"><b>Round 1</b> picked B (one camera), about 16 s, caption over the picture, "läsa" written on the leaf: "the leaf and the tree still don't look quite right. need some more sketches (images) on alternatives, but the animation itself looks fine."</div>
+    <p class="small muted" style="margin-bottom:.4rem">Still pictures of four oaks and four oak leaves, two separate choices. Each oak is shown as frame 1 of the film and as the logo; each leaf big with its word (as in the close-up) and small, green on a twig and on the ground. Pick one of each below; the film further down then uses your pick.</p>
+    <div class="sk-row"><span class="sk-row-label">Look</span>
+      <button type="button" class="sk-tab" data-act="theme" data-t="auto">Auto</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="light">Light</button>
+      <button type="button" class="sk-tab" data-act="theme" data-t="dark">Dark</button>
+    </div>
+    <h3 class="lk-h3">Oak tree: four drawings</h3>
+    <div class="lk-grid" id="lk-trees"></div>
+    <h3 class="lk-h3">Leaf: four drawings</h3>
+    <div class="lk-grid" id="lk-leaves"></div>
+    <section class="sk-answers r2" id="answers2">
+      <h2>Your round 2 pick</h2>
+      <fieldset><legend>Which oak?</legend><div id="r2-trees"></div></fieldset>
+      <fieldset><legend>Which leaf?</legend><div id="r2-leaves"></div></fieldset>
+      <fieldset><legend>Comments in your own words</legend><label class="c" for="comment2">Anything: what still looks wrong, what to mix</label><textarea id="comment2"></textarea></fieldset>
+    </section>
+  </section>
+
+  </details>
+  <details class="sk-past"><summary>Round 1 · The animation (answered: B, about 16 s, caption over, läsa on the leaf)</summary>
+    <p class="r1-done">Round 1's films are still under "Round 1" in the version tabs above. Its answers:</p>
   <section class="sk-answers" id="answers">
     <h2>Your round 1 pick</h2>
     <fieldset id="pick">
@@ -318,6 +363,8 @@ button.menu-button { margin-left: auto; min-width: 44px; padding: .3rem .7rem; f
     <p class="small muted">Leave any blank and it takes the default. All three change the sketch above as you answer.</p>
     <div id="questions"></div>
   </section>
+  </details>
+
 </div>
 
 <script>
@@ -362,10 +409,19 @@ const LEAF_SPECS = {
   // L4: L1's outline with its veins drawn as light lines and a fold along the midrib.
   L4: { wk: 1.1, s: [0, 0.1, 0.3, 0.5, 0.68, 0.84], sw: [0.03, 0.08, 0.15, 0.19, 0.17, 0.1], lw: [0.18, 0.36, 0.5, 0.56, 0.42], c1: 0.04, c2: 0.04, tip: [0.3, 0.16], off: 0.03, veins: true, fold: true },
 };
-const CUR = { tree: 'T1', leaf: 'L1' };
+const CUR = { tree: 'T4', leaf: 'L1' };
 function leafPaths(L, W0, style = CUR.leaf) {
   const sp = LEAF_SPECS[style]; const W = W0 * sp.wk;
   const y = (u) => L / 2 - u * L;
+  if (sp.almond) {
+    const P = (side, x, u) => `${f1(side * x * W)} ${f1(y(u))}`;
+    const half = (side) => `M0 ${f1(y(0))}Q${P(side, 0.4, 0.06)} ${P(side, 0.44, 0.3)}L${P(side, 0.33, 0.36)}Q${P(side, 0.52, 0.42)} ${P(side, 0.48, 0.58)}L${P(side, 0.36, 0.63)}Q${P(side, 0.44, 0.74)} ${P(side, 0.3, 0.86)}Q${P(side, 0.16, 0.97)} 0 ${f1(y(1))}Z`;
+    return { lit: half(-1), shade: half(1), stem: `M0 ${f1(y(0) - 1)}L${f1(L * 0.03)} ${f1(y(0) + L * 0.16)}` };
+  }
+  if (sp.poly) {
+    const half = (side) => `M0 ${f1(y(0))}${sp.poly.map(([x, u]) => `L${f1(side * x * W)} ${f1(y(u))}`).join('')}Z`;
+    return { lit: half(-1), shade: half(1), stem: `M0 ${f1(y(0) - 1)}L${f1(L * 0.03)} ${f1(y(0) + L * 0.16)}` };
+  }
   const n = sp.lw.length;
   const half = (side, off) => {
     const s = sp.s.map((u, i) => (i ? u + off : u));
@@ -788,18 +844,190 @@ function nowCap(t) { let i = 0; NOW_STEPS.forEach((s, k) => { if (t >= s) i = k;
 
 /* ---------- Logos ---------- */
 const LOGO_TREES = '<svg class="logo" viewBox="0 0 32 32" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 27h26"/><path d="M9 27V19M5 19l4-9 4 9z"/><path d="M17 27V15M12 15l5-11 5 11z"/><path d="M25 27v-6M22 21l3-7 3 7z"/></svg>';
+/* ---------- Round 3: the new story ---------- */
+// T4's oak with no leaves drawn; plain ground. A part of the crown sways in a gust, one minimal leaf
+// grows out at that spot, comes loose, falls beside the tree, lands and fades into the ground.
+// Minimal leaves (M1–M3): one amber with one flat shadow half, no veins.
+Object.assign(LEAF_SPECS, {
+  M1: { wk: 1.1, s: [0, 0.22, 0.48, 0.72], sw: [0.05, 0.16, 0.2, 0.15], lw: [0.38, 0.5, 0.46], c1: 0.08, c2: 0.04, tip: [0.34, 0.18], off: 0 },
+  M2: { wk: 1.0, almond: true },
+  M3: { wk: 1.0, poly: [[0.04, 0], [0.4, 0.24], [0.26, 0.34], [0.5, 0.52], [0.32, 0.62], [0.4, 0.78], [0, 1]] },
+});
+const M_INFO = {
+  M1: ['Rounded oak', 'An oak silhouette with three round lobes a side; one colour and a flat shadow half.'],
+  M2: ['Soft almond', 'An almond shape with two soft notches a side: the least detail that still says "oak".'],
+  M3: ['Geometric', 'Straight cuts only, like an icon; crisp at any size, the most graphic.'],
+};
+const R3 = {
+  pivot: { x: 250, y: 128 },               // the swaying part of the crown turns round this point
+  chunk: { cx: 282, cy: 116, r: 44 },      // and is the crown inside this circle
+  E: { x: 288, y: 150 },                   // where the leaf grows out (on the crown's lower right edge)
+  LAND: { x: 300, y: 264, r: 96 },
+  HANG: 152,
+};
+// The bushy part of the crown that sways: one more lobed mass on the crown's lower right.
+const R3_CHUNK = lobedPath(284, 128, 36, 27, 7, 21, 0.8, 0.2);
+const R3V = {
+  R3A: { L: 58, cam: 'still', view: { x: 180, y: 176, z: 0.82 }, land: { x: 300, y: 253 } },
+  R3B: { L: 30, cam: 'follow', zIn: 2.5, zMid: 1.7, zGround: 2.4, glide: [0.5, 2.6], soft: 0 },
+  R3C: { L: 30, cam: 'follow', zIn: 1.75, zMid: 1.35, zGround: 1.7, glide: [0.3, 3.0], soft: 1 },
+};
+const CW2_3 = { x: 180, y: 140, z: 0.88 };
+const CLOGO3 = { x: 180, y: 126, z: 0.98 };   // T4 alone, with room for its tallest lobe
+const R3_FRAME_AT = [1.0, 3.2, 4.9, 7.0, 9.6, 11.6, 13.4, 16.0];
+const S3 = { leaf: 'M1' };
+// The gust: the crown part sways (degrees), calm frequencies, and springs back after the leaf lets go.
+function gust(t) {
+  const env = sstep(0.9, 2.2, t) * (1 - sstep(4.7, 6.2, t));
+  let a = env * (3.0 * Math.sin(2 * Math.PI * 0.85 * (t - 0.9)) + 1.1 * Math.sin(2 * Math.PI * 2.1 * (t - 0.9) + 1));
+  if (t > T0) a += 2.2 * Math.exp(-(t - T0) * 2.6) * Math.sin((t - T0) * 9);
+  return a;
+}
+const rotAbout = (p, c, deg) => { const r = deg * Math.PI / 180; const dx = p.x - c.x; const dy = p.y - c.y; return { x: c.x + dx * Math.cos(r) - dy * Math.sin(r), y: c.y + dx * Math.sin(r) + dy * Math.cos(r) }; };
+function hangAngle(t) {
+  const env = sstep(1.6, 2.6, t) * (0.6 + 0.4 * sstep(3.6, 4.4, t));
+  return R3.HANG + gust(t) * 1.4 + env * (5 * Math.sin(2 * Math.PI * 1.6 * (t - 1.6)) + 2 * Math.sin(2 * Math.PI * 3.1 * t));
+}
+const fallCache = {};
+const landOf = (L) => (L === R3V.R3A.L ? R3V.R3A.land : R3.LAND);
+function fall3(L) {
+  if (fallCache[L]) return fallCache[L];
+  const LD = landOf(L);
+  const a = rotAbout(R3.E, R3.pivot, gust(T0)); const c = hangCentre(a, hangAngle(T0), L, L * 0.16);
+  const fy = monotone([[T0, c.y], [5.4, c.y + 10], [8.6, LD.y - 50], [10.2, LD.y - 14], [11.0, LD.y]]);
+  const fx = monotone([[T0, c.x], [6.6, c.x + 14], [8.6, 312], [10.2, LD.x + 3], [11.0, LD.x]]);
+  return (fallCache[L] = (t) => ({ x: fx(t), y: fy(t) }));
+}
+// The leaf at time t: { x, y, r, s (grow-in scale), o (opacity) }.
+function leaf3(t, L) {
+  if (t < T0) {
+    const a = rotAbout(R3.E, R3.pivot, gust(t)); const r = hangAngle(t);
+    const g = eBack(clamp((t - 1.5) / 0.9)); const c = hangCentre(a, r, L * g, L * g * 0.16);
+    return { x: c.x, y: c.y, r, s: g, o: clamp((t - 1.5) / 0.3) };
+  }
+  const b = fall3(L)(t);
+  const ph = 2 * Math.PI * (t - T0) / 1.95 + 0.6;
+  const amp = 15 * sstep(T0, T0 + 1.2, t) * (1 - sstep(9.9, 11.0, t));
+  const x = b.x + amp * (Math.sin(ph) - Math.sin(0.6) * (1 - sstep(T0, T0 + 1.2, t)));
+  const y = b.y - 0.3 * amp * Math.pow(Math.sin(ph), 2);
+  let r = lerp(R3.HANG + 18 * eOut(clamp((t - T0) / 0.7)), 108 + 26 * Math.cos(ph), sstep(T0 + 0.1, T0 + 1.4, t));
+  r = lerp(r, R3.LAND.r, sstep(10.0, 11.0, t));
+  return { x, y, r, s: 1, o: 1 - sstep(11.3, 12.4, t) };
+}
+function camR3(t, v) {
+  const cfg = R3V[v];
+  if (cfg.cam === 'still') {
+    const A7 = { x: 180, y: 160, z: 0.8 };
+    if (t < 14) return zoomPath(cfg.view, A7, sstep2(12.0, 13.4, t));
+    return zoomPath(A7, CLOGO3, sstep2(14.0, 15.4, t));
+  }
+  const CLi = { x: R3.E.x - 10, y: R3.E.y - 4, z: cfg.zIn };
+  const follow = (tt) => { const b = fall3(cfg.L)(Math.min(tt, 11.0)); const k = 0.35 + cfg.soft * 0.25; return { x: lerp(b.x, 290, k), y: b.y + 4 + cfg.soft * 14, z: monotone([[T0, cfg.zIn], [7.6, cfg.zMid], [10.4, cfg.zGround], [12, cfg.zGround]])(tt) }; };
+  const [g0, g1] = cfg.glide;
+  if (t < g1) return zoomPath(CW, CLi, sstep2(g0, g1, t));
+  const hold = { x: CLi.x + 0.6 * Math.sin((t - g1) * 1.6), y: CLi.y, z: CLi.z };
+  if (t < 11.6) {
+    const w = sstep2(4.4, 6.2 + cfg.soft * 0.6, t); if (w <= 0) return hold;
+    const f = follow(t);
+    return { x: lerp(hold.x, f.x, w), y: lerp(hold.y, f.y, w), z: Math.exp(lerp(Math.log(hold.z), Math.log(f.z), w)) };
+  }
+  if (t < 14.0) return zoomPath(follow(11.6), CW2_3, sstep2(11.6, 13.4 + cfg.soft * 0.4, t));
+  return zoomPath(CW2_3, CLOGO3, sstep2(14.0, 15.2, t));
+}
+function scene3SVG(p, v = S.version) {
+  const cfg = R3V[v] || R3V.R3B; const L = cfg.L;
+  return `<svg viewBox="0 0 360 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g data-r="cam">
+    <rect data-r="sky" x="-600" y="-600" width="1560" height="${600 + GROUND}" style="fill:var(--sky)"/>
+    <g data-r="fade">
+      <rect x="-600" y="${GROUND}" width="1560" height="700" style="fill:var(--gdL)"/>
+      <ellipse cx="206" cy="${GROUND + 4}" rx="86" ry="6" style="fill:var(--gdS)"/>
+      <ellipse data-r="stain" cx="${R3.LAND.x}" cy="${R3.LAND.y + 2}" rx="16" ry="4" style="fill:var(--lsL)" opacity="0"/>
+      <ellipse data-r="ring" cx="${R3.LAND.x}" cy="${R3.LAND.y + 2}" rx="8" ry="2" fill="none" style="stroke:var(--lsL)" stroke-width="1.4" opacity="0"/>
+    </g>
+    <g data-r="tree"><g data-r="sway">
+      ${treeSVG(p, 'T4')}
+      <g data-r="chunk">${massSVG(`${p}-ch`, R3_CHUNK, -8, -9)}</g>
+    </g></g>
+    <circle data-r="glow" r="3" style="fill:var(--lsL)" opacity="0"/>
+    <g data-r="leaf">${leafSVG(L, f1(L * 0.66), 'ls', '', S3.leaf)}</g>
+    <g data-r="leaftext"><text text-anchor="middle" y="${f1(L * 0.09)}" class="lw" style="font-size:${f1(L * 0.25)}px">läsa</text></g>
+  </g>
+</svg>`;
+}
+function bind3(svg) {
+  const one = (k) => svg.querySelector(`[data-r="${k}"]`);
+  return { svg, cam: one('cam'), tree: one('tree'), sway: one('sway'), chunk: one('chunk'), fade: one('fade'), sky: one('sky'), stain: one('stain'), ring: one('ring'), glow: one('glow'), leaf: one('leaf'), leaftext: one('leaftext') };
+}
+function draw3(S, t, v) {
+  const cfg = R3V[v] || R3V.R3B;
+  const cam = camR3(t, v);
+  S.cam.setAttribute('transform', `translate(180 150) scale(${cam.z.toFixed(4)}) translate(${(-cam.x).toFixed(3)} ${(-cam.y).toFixed(3)})`);
+  const g = 1 + 0.06 * eBack(clamp((t - 12.9) / 1.1));
+  S.tree.setAttribute('transform', `translate(${BASE.x} ${BASE.y}) scale(${g.toFixed(4)}) translate(${-BASE.x} ${-BASE.y})`);
+  const gu = gust(t);
+  S.sway.setAttribute('transform', `rotate(${(gu * 0.12).toFixed(3)} ${BASE.x} ${BASE.y})`);
+  S.chunk.setAttribute('transform', `rotate(${gu.toFixed(3)} ${R3.pivot.x} ${R3.pivot.y})`);
+  const fade = 1 - sstep(14.0, 15.0, t);
+  S.fade.setAttribute('opacity', fade.toFixed(3)); S.sky.setAttribute('opacity', fade.toFixed(3));
+  // the leaf (in tree space while it hangs, so it grows with nothing; it has fallen long before the oak grows)
+  const l = leaf3(t, cfg.L);
+  const sway = gu * 0.12; // the whole crown's small sway, applied to the hanging leaf too
+  const hp = t < T0 ? rotAbout(l, BASE, sway) : l;
+  S.leaf.setAttribute('transform', `translate(${hp.x.toFixed(2)} ${hp.y.toFixed(2)}) rotate(${(l.r + (t < T0 ? sway : 0)).toFixed(2)}) scale(${l.s.toFixed(3)})`);
+  S.leaf.setAttribute('opacity', l.o.toFixed(3));
+  const tilt = lerp(clamp(0.3 * (l.r - R3.HANG), -22, 22), l.r - 90 - (l.r - 90 > 90 ? 180 : 0), sstep(10.3, 11.0, t));
+  S.leaftext.setAttribute('transform', `translate(${hp.x.toFixed(2)} ${hp.y.toFixed(2)}) rotate(${tilt.toFixed(2)}) scale(${l.s.toFixed(3)})`);
+  S.leaftext.setAttribute('opacity', (l.o * clamp((t - 1.9) / 0.4)).toFixed(3));
+  // what the landing leaves behind: A a little of its colour, B a soft ring, C a glow that sinks and travels up the trunk
+  const LD = landOf(cfg.L);
+  if (v === 'R3A') {
+    S.stain.setAttribute('cx', LD.x); S.stain.setAttribute('cy', LD.y + 3);
+    const k = sstep(11.1, 12.0, t) * (1 - sstep(13.0, 14.6, t));
+    S.stain.setAttribute('opacity', (0.32 * k).toFixed(3)); S.stain.setAttribute('rx', (cfg.L * 0.5).toFixed(1)); S.stain.setAttribute('ry', (cfg.L * 0.11).toFixed(1));
+  } else S.stain.setAttribute('opacity', 0);
+  if (v === 'R3B') {
+    const k = clamp((t - 11.05) / 1.4);
+    S.ring.setAttribute('opacity', (k > 0 && k < 1 ? 0.7 * (1 - eOut(k)) : 0).toFixed(3));
+    S.ring.setAttribute('rx', (6 + 26 * eOut(k)).toFixed(2)); S.ring.setAttribute('ry', (1.6 + 6 * eOut(k)).toFixed(2));
+  } else S.ring.setAttribute('opacity', 0);
+  if (v === 'R3C') {
+    const sink = sstep(11.1, 11.8, t) * (1 - sstep(11.9, 12.5, t));
+    S.stain.setAttribute('opacity', (0.38 * sink).toFixed(3)); S.stain.setAttribute('rx', (13 - 5 * sstep(11.8, 12.5, t)).toFixed(1)); S.stain.setAttribute('ry', '3.4');
+    S.stain.setAttribute('cy', (LD.y + 2 + 4 * sstep(11.8, 12.5, t)).toFixed(1));
+    const k = clamp((t - 12.0) / 1.35);
+    if (k > 0 && k < 1) {
+      const k1 = eInOut(clamp(k / 0.45)); const k2 = eInOut(clamp((k - 0.45) / 0.55));
+      const x = lerp(lerp(LD.x, BASE.x + 6, k1), BASE.x + 2, k2); const y = lerp(lerp(LD.y + 4, BASE.y - 2, k1), 168, k2);
+      S.glow.setAttribute('cx', x.toFixed(2)); S.glow.setAttribute('cy', y.toFixed(2));
+      S.glow.setAttribute('opacity', (Math.sin(k * Math.PI) * 0.85).toFixed(3));
+    } else S.glow.setAttribute('opacity', 0);
+  } else S.glow.setAttribute('opacity', 0);
+}
+const isR3 = (v = S.version) => v.startsWith('R3');
+function mLeafCard(k) {
+  const L = 120; const sm = 34;
+  return `<figure class="lk-card m-card"><p class="lk-t"><b>${k}</b>${esc(M_INFO[k][0])}</p><div class="lk-leaf"><svg viewBox="0 0 200 170" aria-hidden="true"><rect width="200" height="170" style="fill:var(--sky)"/>
+    ${leafSVG(L, L * 0.66, 'ls', `transform="translate(80 84) rotate(-12)"`, k)}<text x="80" y="92" text-anchor="middle" class="lw" style="font-size:28px" transform="rotate(-12 80 84)">läsa</text>
+    ${leafSVG(sm, sm * 0.66, 'ls', `transform="translate(170 40) rotate(20)"`, k)}${leafSVG(sm, sm * 0.66, 'gn', `transform="translate(170 92) rotate(-25)"`, k)}
+    <rect x="146" y="130" width="54" height="40" style="fill:var(--gdL)"/>${leafSVG(24, 16, 'ls', `transform="translate(172 136) rotate(96)"`, k)}</svg></div><p class="lk-line">${esc(M_INFO[k][1])}</p></figure>`;
+}
+
 /* ---------- State ---------- */
-const S = { version: 'B', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
+const S = { version: 'R3B', state: 'playing', where: 'card', width: 'phone', theme: 'auto' };
 const P = { t: 0, playing: true, speed: 1, ended: false, last: 0 };
 let live = [];     // scenes that follow the player
 let stills = [];   // scenes drawn once at a fixed time
 
 function answer(id, dflt) { const c = document.querySelector(`input[name="${id}"]:checked`); return c ? c.value : dflt; }
 const total = () => (S.version === 'now' ? NOW_LEN : 16);
-const secs = () => (S.version === 'now' ? NOW_LEN : Number(answer('q1', '16')));
+const secs = () => (S.version === 'now' ? NOW_LEN : isR3() ? 16 : Number(answer('q1', '16')));
 const capOver = () => answer('q2', 'under') === 'over';
 
 const VERSIONS = {
+  R3A: 'A · Still camera. The wide shot the whole time (it only settles on the oak at the very end). The leaf is drawn larger than life so "läsa" can be read from afar; when it lands, the ground keeps a little of its colour for a moment.',
+  R3B: 'B · Follow (round 1\'s pick). One continuous camera: it glides in to the part of the crown that sways, follows the leaf down beside the tree, holds as it lands and fades (a soft ring spreads on the ground), then pulls back out to the oak.',
+  R3C: 'C · Your idea, softer. Like B with a gentler camera (less zoom, slower moves). The landing leaves a faint glow that sinks into the ground, travels to the trunk and up it as the oak grows.',
   now: 'Now · today\'s animation, roughly copied from grow.mjs: a line-drawn spruce on a ground line, three leaves pop out, two of them fall, the ground thickens, then the scene fades to the three-trees logo and its tagline. About 10 s. The frame buttons jump to the same share of its length.',
   A: 'A · Cuts. The storyboard shot by shot: each frame holds still while its action plays, and a short eased zoom (under a second) takes you to the next shot: wide → the leaf → wide while it falls → the ground → wide while the oak grows → the oak alone.',
   B: 'B · One camera. One continuous move with no holds and no cuts: the view glides in to the leaf, lets it shake and snap, then follows it all the way down, easing out a little mid-fall so you see the tree, and settles close on the ground as it lands; then it pulls back out and centres the oak.',
@@ -816,15 +1044,16 @@ const STATES = {
 const ICON_REPLAY = '<svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></svg>';
 const ICON_CLOSE = '<svg viewBox="0 0 24 24"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>';
 let instN = 0;
+const sceneFor = (p) => (S.version === 'now' ? nowSVG() : isR3() ? scene3SVG(p) : sceneSVG(p));
 function stageHTML() {
   const p = `s${instN++}`;
-  const svg = S.version === 'now' ? nowSVG() : sceneSVG(p);
+  const svg = sceneFor(p);
   const cap = capOver() ? '<p class="oak-cap over" data-cap aria-live="polite"><span></span></p>' : '';
   return `<div class="oak-stage" data-live>${svg}<button type="button" class="oak-ctl" data-act="skip">Skip</button>${cap}</div>${capOver() ? '' : '<p class="oak-cap" data-cap aria-live="polite"><span></span></p>'}`;
 }
 function stillHTML(t, cap, n) {
   const p = `s${instN++}`;
-  const svg = S.version === 'now' ? nowSVG() : sceneSVG(p);
+  const svg = sceneFor(p);
   return `<figure><div class="oak-stage" data-still="${t}">${svg}</div><figcaption><span class="num">${n}</span>${esc(cap || '(no caption: the oak alone)')}</figcaption></figure>`;
 }
 function topbar(logo = true) { return `<header class="topbar"><div class="topbar-inner"><span class="brand">${logo ? oakLogo(28, 'logo-oak') : LOGO_TREES}<span class="name"><span class="title">grove</span><span class="tagline">grow from what you know</span></span></span><button type="button" class="menu-button" aria-label="Menu (not part of this sketch)">☰</button></div></header>`; }
@@ -838,7 +1067,7 @@ function playingCard() { return `<section class="card oak-card">${kicker()}${sta
 function reducedCard() {
   const v = S.version;
   const list = v === 'now' ? [[2.6, NOW_CAPS[1], 1], [5.6, NOW_CAPS[2], 2], [8.2, NOW_CAPS[3], 3], [NOW_LEN, NOW_CAPS[4], 4]]
-    : [[1.0, CAPS[0], 1], [7.0, CAPS[1], 4], [11.6, CAPS[1], 6], [16, '', 8]];
+    : [[1.0, CAPS[0], 1], [7.0, CAPS[1], 4], [isR3() ? 11.2 : 11.6, CAPS[1], 6], [16, '', 8]];
   return `<section class="card oak-card">${kicker()}<div class="oak-stills">${list.map(([t, c, n]) => stillHTML(t, c, n)).join('')}</div><button type="button" style="display:block;margin:.7rem auto 0;min-width:8rem">Done</button></section>`;
 }
 function logoPage() {
@@ -850,7 +1079,7 @@ function logoPage() {
     <p class="lg-label">Tab icon drawn at 32 px (how it looks on a sharp screen)</p>
     <div class="lg-row">${oakLogo(32)}<span class="small muted">Oak</span><span style="width:1rem"></span>${LOGO_TREES.replace('class="logo"', 'style="width:32px;height:32px;stroke:var(--accent)"')}<span class="small muted">Now</span></div>
     <p class="lg-label">Frame 8 (the film's last frame) beside the small oak</p>
-    <div class="lg-row"><div style="width:150px">${`<div class="oak-stage" data-still="16" style="border-radius:12px">${sceneSVG(`s${instN++}`)}</div>`}</div>${oakLogo(96, 'big-logo')}</div>
+    <div class="lg-row"><div style="width:150px">${`<div class="oak-stage" data-still="16" style="border-radius:12px">${sceneFor(`s${instN++}`)}</div>`}</div>${oakLogo(96, 'big-logo')}</div>
   </div></section></div></div>`;
 }
 function wherePage() {
@@ -876,13 +1105,13 @@ function render() {
   else if (S.state === 'reduced') frame.innerHTML = `${topbar()}<div class="scr"><div class="g-main">${reducedCard()}${homeRest()}</div></div>`;
   else if (S.state === 'logo') frame.innerHTML = logoPage();
   else frame.innerHTML = wherePage();
-  live = [...frame.querySelectorAll('[data-live]')].map((el) => ({ el, S: S.version === 'now' ? null : bind(el.querySelector('svg')), svg: el.querySelector('svg'), cap: el.parentElement.querySelector('[data-cap]'), ctl: el.querySelector('.oak-ctl') }));
+  live = [...frame.querySelectorAll('[data-live]')].map((el) => ({ el, S: S.version === 'now' ? null : isR3() ? bind3(el.querySelector('svg')) : bind(el.querySelector('svg')), svg: el.querySelector('svg'), cap: el.parentElement.querySelector('[data-cap]'), ctl: el.querySelector('.oak-ctl') }));
   stills = [...frame.querySelectorAll('[data-still]')].map((el) => ({ el, t: Number(el.dataset.still), svg: el.querySelector('svg') }));
   stills.forEach((s) => { if (S.version === 'now' && S.state === 'reduced') drawNow(s.svg, s.t); else drawStill(s); });
   fit();
   paint(true);
 }
-function drawStill(s) { draw(bind(s.svg), s.t, S.version === 'now' ? 'A' : S.version); }
+function drawStill(s) { if (isR3()) draw3(bind3(s.svg), s.t, S.version); else draw(bind(s.svg), s.t, S.version === 'now' ? 'A' : S.version); }
 function fit() {
   const stage = document.getElementById('stage'); const frame = document.getElementById('frame');
   if (S.width !== 'desktop') { frame.style.transform = ''; stage.style.height = ''; return; }
@@ -896,7 +1125,7 @@ let lastCapKey = null;
 function paint(force) {
   const t = P.t;
   for (const L of live) {
-    if (S.version === 'now') drawNow(L.svg, t); else draw(L.S, t, S.version);
+    if (S.version === 'now') drawNow(L.svg, t); else if (isR3()) draw3(L.S, t, S.version); else draw(L.S, t, S.version);
     if (L.cap) {
       const span = L.cap.firstElementChild;
       if (S.version === 'now') { const c = nowCap(t); span.textContent = c; span.style.opacity = 1; L.cap.classList.toggle('empty', !c); }
@@ -943,7 +1172,7 @@ document.addEventListener('click', (e) => {
     case 'replay': seek(0, true); return;
     case 'skip': seek(total(), false); return;
     case 'speed': P.speed = P.speed === 1 ? 0.5 : 1; break;
-    case 'frame': { const f = Number(el.dataset.f); seek(S.version === 'now' ? NOW_LEN * (f - 0.5) / 8 : FRAME_AT[f - 1], false); return; }
+    case 'frame': { const f = Number(el.dataset.f); seek(S.version === 'now' ? NOW_LEN * (f - 0.5) / 8 : (isR3() ? R3_FRAME_AT : FRAME_AT)[f - 1], false); return; }
     default: return;
   }
   e.preventDefault();
@@ -1034,7 +1263,7 @@ function collectAnswers2() {
 }
 function applyLooks() {
   const A = collectAnswers2(); const leafChanged = (A.leaf || 'L1') !== CUR.leaf;
-  CUR.tree = A.tree || 'T1'; CUR.leaf = A.leaf || 'L1';
+  CUR.tree = A.tree || 'T4'; CUR.leaf = A.leaf || 'L1';
   if (leafChanged) buildLooks();
   window.sketchRender();
 }
@@ -1045,7 +1274,28 @@ buildQuestions();
 // Round 1 is answered: its answers are filled in, so the film plays as picked.
 for (const id of ['pick-B', 'q1-16', 'q2-over', 'q3-on']) document.getElementById(id).checked = true;
 buildR2Form();
+document.getElementById('tree-T4').checked = true;
 buildLooks();
+// Round 3
+document.getElementById('m-leaves').innerHTML = Object.keys(M_INFO).map(mLeafCard).join('');
+document.getElementById('r3-leaves').innerHTML = Object.keys(M_INFO).map((k) => `<label class="opt"><input type="radio" name="mleaf" id="mleaf-${k}" value="${k}"><span><b>${k}</b> ${esc(M_INFO[k][0])}</span></label>`).join('');
+window.sketchAnswers3 = { sketch: 'Sketch: Oak animation', round: 3, notes: ['O-01'], pick: null, leaf: null, comment: '' };
+function collectAnswers3() {
+  const A = window.sketchAnswers3;
+  const v = document.querySelector('input[name="pick3"]:checked'); const l = document.querySelector('input[name="mleaf"]:checked');
+  A.pick = v ? v.value : null; A.leaf = l ? l.value : null; A.comment = document.getElementById('comment3').value.trim();
+  return A;
+}
+function applyR3() {
+  const A = collectAnswers3();
+  const leaf = A.leaf || 'M1'; const changed = leaf !== S3.leaf; S3.leaf = leaf;
+  if (A.pick && S.version !== `R3${A.pick}`) { S.version = `R3${A.pick}`; window.sketchRender(); seek(0, true); return; }
+  if (changed) window.sketchRender();
+}
+window.collectAnswers3 = collectAnswers3;
+window.applyR3 = applyR3;
+document.getElementById('answers3').addEventListener('input', collectAnswers3);
+document.getElementById('answers3').addEventListener('change', applyR3);
 document.getElementById('answers2').addEventListener('input', collectAnswers2);
 document.getElementById('answers2').addEventListener('change', (e) => { if (e.target.name === 'tree' || e.target.name === 'leaf') applyLooks(); else collectAnswers2(); });
 document.getElementById('answers').addEventListener('input', collectAnswers);
@@ -1120,6 +1370,38 @@ requestAnimationFrame(tick);
     if (a.leaf) { const r = document.getElementById(`leaf-${a.leaf}`); if (r) r.checked = true; }
     { const t = document.getElementById('comment2'); if (t && a.comment) t.value = a.comment; }
     window.applyLooks?.();
+    status.textContent = 'Your saved answers are back.';
+  })();
+})();
+</script>
+<script>
+// Saving the round 3 picks and comment for Claude, as round 1 (doc answers/round3).
+(() => {
+  const box = document.getElementById('answers3');
+  const status = document.createElement('p');
+  status.className = 'small muted';
+  status.setAttribute('role', 'status');
+  box.append(status);
+  let db = null;
+  let timer = null;
+  const save = async () => {
+    if (!db) { status.textContent = 'Answers can only be saved on the published page.'; return; }
+    try { status.textContent = 'Saving…'; await db.doc('answers/round3').set({ ...JSON.parse(JSON.stringify(window.collectAnswers3())), at: new Date().toISOString() }); status.textContent = 'Saved. Say "done" in Claude Code when you have finished.'; }
+    catch { status.textContent = 'Couldn’t save just now; try again in a moment.'; }
+  };
+  const later = () => { clearTimeout(timer); timer = setTimeout(save, 700); };
+  box.addEventListener('input', later);
+  box.addEventListener('change', later);
+  (async () => {
+    db = window.claude ? await window.claude.use('db') : null;
+    if (!db) return;
+    const snap = await db.doc('answers/round3').get().catch(() => null);
+    const a = snap && snap.exists ? snap.data() : null;
+    if (!a) return;
+    if (a.pick) { const r = document.getElementById(`pick3-${a.pick}`); if (r) r.checked = true; }
+    if (a.leaf) { const r = document.getElementById(`mleaf-${a.leaf}`); if (r) r.checked = true; }
+    { const t = document.getElementById('comment3'); if (t && a.comment) t.value = a.comment; }
+    window.applyR3?.();
     status.textContent = 'Your saved answers are back.';
   })();
 })();
