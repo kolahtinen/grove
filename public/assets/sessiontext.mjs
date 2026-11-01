@@ -2,11 +2,13 @@
 // the text page, with no links that leave the session. Its title, "<n> words", the text (a word opens the
 // word menu, G-03 FR-305), then, once read or heard, its questions (locked once answered, FR-932 (4)) and
 // How much did you understand?; the feedback "Text done. …" and Next. A listening text starts with Play the
-// text and the text blurred, with Show the text. Read again and listen again ask nothing and end with Done
+// text, Sentences beside it (G-05 FR-506, FR-507: sentences.mjs) and the text blurred, with Show the text,
+// then the loop strip. Read again and listen again ask nothing and end with Done
 // reading / Done listening. Looked at again (RQ-459), the questions show as answered. All text via
 // textContent.
 import { post } from './api.mjs';
-import { speak, cancel, hasSwedish, setRate } from './speech.mjs';
+import { hasSwedish, setRate } from './speech.mjs';
+import { createSentences } from './sentences.mjs';
 import { icon } from './icons.mjs';
 import { renderLines, sentencesOf } from './textview.mjs';
 import { createWordMenu } from './wordmenu.mjs';
@@ -26,6 +28,7 @@ function ago(ms) {
 
 let menu = null;
 let current = null;
+let sentencesUi = null;
 
 // The kind of input this exercise is (G-09 FR-925's heartbeat): listening while a listening text shows.
 export const listeningNow = () => current?.kind === 'listening';
@@ -64,7 +67,10 @@ export async function renderText(frame, ex) {
   const after = el('div');
   const textWrap = el('div', listen && !locked ? 'blurred' : '');
   textWrap.append(lines);
-  // Listening: Play the text (large), the text blurred until Show the text.
+  // Listening: Play the text (large) with Sentences beside it (G-05 FR-506, FR-507, version A), the text
+  // blurred until Show the text, the loop strip under it.
+  sentencesUi?.destroy();
+  sentencesUi = null;
   if (listen) {
     const show = btn('link-button', 'Show the text', () => { textWrap.classList.remove('blurred'); show.remove(); });
     if (locked) show.remove();
@@ -72,33 +78,37 @@ export async function renderText(frame, ex) {
     const play = btn('play big', '');
     const label = el('span', '', 'Play the text');
     play.append(icon('play'), label);
+    const all = () => sentencesOf(current.data);
+    const ui = createSentences({
+      sentences: all,
+      highlight: (i) => lines.querySelectorAll('.sentence').forEach((span, k) => span.classList.toggle('speaking', k === i)),
+      onUser: () => { if (playing) { playing = false; label.textContent = 'Play again'; } },
+      onNoVoice: () => { label.textContent = 'No Swedish voice on this device'; },
+      compact: true,
+    });
+    sentencesUi = ui;
+    const step = (k) => {
+      if (!playing || k >= all().length) {
+        playing = false;
+        label.textContent = 'Play again';
+        if (!heard) { heard = true; showAfter(); }
+        return;
+      }
+      ui.play(k, () => step(k + 1));
+    };
     play.addEventListener('click', () => {
       if (!hasSwedish()) { label.textContent = 'No Swedish voice on this device'; return; }
-      if (playing) { playing = false; cancel(); label.textContent = 'Play again'; return; }
+      if (playing) { playing = false; ui.stop(); label.textContent = 'Play again'; return; }
+      ui.stop();
       playing = true;
       label.textContent = 'Playing…';
-      const spans = [...lines.querySelectorAll('.sentence')];
-      const all = sentencesOf(current.data);
-      let k = 0;
-      const step = () => {
-        spans.forEach((s) => s.classList.remove('speaking'));
-        if (!playing || k >= all.length) {
-          playing = false;
-          label.textContent = 'Play again';
-          if (!heard) { heard = true; showAfter(); }
-          return;
-        }
-        spans[k]?.classList.add('speaking');
-        const sv = all[k].sv;
-        k += 1;
-        speak(sv, { onend: step });
-      };
-      step();
+      step(0);
     });
-    const row = el('div', 'play-row');
-    row.append(play);
+    const row = el('div', 'play-row with-sentences');
+    row.append(play, ui.button);
     parts.push(row, textWrap);
     if (!locked) parts.push(show);
+    parts.push(ui.strip, ui.note);
   } else parts.push(textWrap);
   parts.push(after);
   box.replaceChildren(...parts);
