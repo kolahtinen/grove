@@ -9,6 +9,7 @@ Built for a course project on specification-driven, AI-assisted software constru
 ## Try it
 
 <!-- grove-link -->
+**grove is at:** https://redhead-luther-estimate-potatoes.trycloudflare.com
 <!-- /grove-link -->
 
 The link above is kept up to date while grove is running. Reviewer account: kalle.o.lahtinen+grove-reviewer@gmail.com / Forest-walk-42
