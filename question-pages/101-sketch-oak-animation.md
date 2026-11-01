@@ -35,3 +35,11 @@ Comment: "geometric but soft edges, make the tree more abstract and geometric to
 ## Decided (after the third round)
 
 B's film with the minimal story: T4's oak made abstract and geometric with soft (rounded) corners; no leaves in the crown; a plain ground; a gust sways one part of the crown, an M3-style leaf (geometric, soft corners, amber, "läsa" on it) grows out there, falls beside the tree, lands and fades into the ground; the oak grows a little and the ground fades, leaving the oak alone as the logo (also the top bar's and the tab's logo). About 16 s; captions over the picture (1–2 / 3–6 / 7); Skip, Replay; reduced motion shows four stills. The comment's change is applied to the picked version without a fourth round of choices (docs/sketching.md: up to three rounds, then decide).
+
+## The picked film, checked (2026-11-01 13:19)
+
+Comment: "don't write the spec yet, this needs fixing. The tree crown should be made of cubes not spheres. let's see some options sketches."
+
+So the spec waits; the next sketch shows crowns made of cubes, as options, with the rest of the film unchanged.
+
+(waiting: say "done" in Claude Code)
