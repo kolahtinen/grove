@@ -15,7 +15,6 @@ The link above is kept up to date while grove is running. Reviewer account: give
 
 ## Where things are
 
-- `docs/report/report.md`: the course report (draft).
 - `docs/STATUS.md`: where the project stands, with a changelog.
 - `docs/requirements.md`, `docs/needs.md`: the combined requirements and the needs they serve.
 - `specs/001…009/`: the Spec Kit specifications, one per user goal; the code is generated from them.
