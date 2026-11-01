@@ -28,4 +28,10 @@ Comment: "the leaves look pretty bad still, make them more less detailed, more m
 
 T4's oak with no drawn leaves and a plain ground; a part of the crown shakes in the wind, a minimal leaf appears there and falls beside the tree, and fades into the ground on landing.
 
-(waiting: say "done" in Claude Code)
+Saved 2026-11-01 13:12. **Pick: B** (follow: one camera). **Leaf: M3** (geometric).
+
+Comment: "geometric but soft edges, make the tree more abstract and geometric too."
+
+## Decided (after the third round)
+
+B's film with the minimal story: T4's oak made abstract and geometric with soft (rounded) corners; no leaves in the crown; a plain ground; a gust sways one part of the crown, an M3-style leaf (geometric, soft corners, amber, "läsa" on it) grows out there, falls beside the tree, lands and fades into the ground; the oak grows a little and the ground fades, leaving the oak alone as the logo (also the top bar's and the tab's logo). About 16 s; captions over the picture (1–2 / 3–6 / 7); Skip, Replay; reduced motion shows four stills. The comment's change is applied to the picked version without a fourth round of choices (docs/sketching.md: up to three rounds, then decide).
