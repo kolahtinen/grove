@@ -10,4 +10,12 @@ Questions on the page: length (about 16 s); caption place (under the picture); t
 
 ## Your pick and comments
 
+Saved 2026-11-01 10:24. **Pick: B** (one camera). Q1 length: **about 16 s**. Q2 caption: **over the picture** (not the default). Q3 the word: **written on the leaf**.
+
+Comment: "the leaf and the tree still don't look quite right. need some more sketches (images) on alternatives, but the animation itself looks fine."
+
+So the motion (B) is settled; round 2 tries how the oak and the leaves are drawn, as stills.
+
+## Round 2: how the oak and the leaf are drawn
+
 (waiting: say "done" in Claude Code)
